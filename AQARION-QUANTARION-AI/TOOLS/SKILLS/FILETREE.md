@@ -1,6 +1,6 @@
 TOOLS/
 │
-├── skills/                    ← START HERE
+├── SKILLS/                    ← START HERE
 │   ├── claimlock/
 │   ├── verification/
 │   ├── formalization/
