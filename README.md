@@ -512,4 +512,22 @@ Individual results have different evidence levels. Consult the corresponding cla
 
 Research status is claim-specific, not repository-wide.
 
-https://github.com/quantarion369-arch/AQARION/https://github.com/quantarion369-arch/AQARION/tree/main/AQARION-QUANTARION-AI/TOOLS
+AQARION continuity
+
+Active AQARION development is maintained under this "quantarion369-arch" identity.
+
+Earlier AQARION work was developed across the author's "JASKSG9" repositories and related forks. That history is retained as historical provenance where accessible.
+
+The transition does not imply that every historical artifact has already been reconstructed here.
+
+The current policy is:
+
+preserve → identify → reconstruct → compare → hash → verify
+
+Historical artifacts are not silently rewritten as current artifacts, and missing history is not filled by inference.
+
+The canonical current working repository is:
+
+"quantarion369-arch/AQARION"
+
+The purpose of this separation is simple: AQARION should remain reproducible even if the previous working account becomes inaccessible, while preserving an honest record of where earlier research came from.
