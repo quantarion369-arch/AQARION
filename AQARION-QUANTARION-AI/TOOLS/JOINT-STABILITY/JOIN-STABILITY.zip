@@ -1,0 +1,3 @@
+unzip JOIN-STABILITY.zip
+cd JOIN-STABILITY
+./reproduce.sh
