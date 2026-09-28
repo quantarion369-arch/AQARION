@@ -2,6 +2,102 @@ AQARION
 
 Auditable Mathematical Research Infrastructure
 
+«Repository continuity notice — September 2026»
+
+AQARION development is currently maintained under the "quantarion369-arch" GitHub identity.
+
+Earlier AQARION research, experiments, repositories, and development history exist across the author's previous "JASKSG9" GitHub identity and related fork lineage. Those materials are historical research provenance and remain relevant to reconstruction, comparison, and verification.
+
+Current canonical working repository
+
+"quantarion369-arch/AQARION"
+
+This repository is the current working home for the AQARION / Quantarion-AI research infrastructure, including:
+
+- "JOIN-STABILITY"
+- theorem and mathematical-kernel infrastructure
+- verification and reproducibility tooling
+- provenance and evidence structures
+- research ledgers
+- ClaimLock / ProofGym / Replay infrastructure
+- future reconstruction of earlier AQARION research artifacts
+
+Account and fork transition
+
+Following the transition to the "quantarion369-arch" account, active development is being consolidated here rather than assuming continued access to the previous "JASKSG9" working environment.
+
+This is a continuity transition, not a claim that historical state has already been completely reconstructed.
+
+The repository therefore distinguishes:
+
+1. Current canonical work — artifacts maintained in "quantarion369-arch/AQARION".
+2. Historical provenance — earlier AQARION material associated with "JASKSG9".
+3. Fork lineage — repositories whose GitHub fork relationship preserves part of the development history.
+4. Reconstruction work — explicit recovery and verification of earlier artifacts that have not yet been reproduced here.
+5. Verified current state — artifacts that have been independently checked in the present repository.
+
+Reconstruction rule
+
+Historical material must not be silently rewritten into the current repository as though it had always existed here.
+
+When an earlier artifact is recovered, the preferred record is:
+
+HISTORICAL SOURCE
+        ↓
+RECOVERED ARTIFACT
+        ↓
+CONTENT / HISTORY COMPARISON
+        ↓
+CURRENT REPOSITORY LOCATION
+        ↓
+HASH / VERSION / PROVENANCE RECORD
+        ↓
+CURRENT VERIFICATION STATUS
+
+If an artifact cannot yet be reconstructed, it remains identified as unreconstructed, rather than being inferred or recreated without provenance.
+
+Access-continuity principle
+
+The "quantarion369-arch" repository is intended to remain understandable and reproducible without requiring future access to the previous "JASKSG9" working identity.
+
+The historical account and repositories remain part of the provenance record where publicly accessible, but they are not treated as an operational dependency for current development.
+
+What this means for contributors and reviewers
+
+Do not assume that:
+
+- an artifact mentioned in historical AQARION material exists in this repository;
+- a historical claim has automatically been reconstructed;
+- a fork relationship proves that every later artifact is present;
+- a public repository is equivalent to mathematical certification.
+
+Instead, consult the current artifact, its provenance, its evidence status, and its verification record.
+
+AQARION deliberately preserves the distinction:
+
+historical ≠ recovered ≠ reproduced ≠ verified ≠ formally certified
+
+Current research boundary
+
+The immediate objective is therefore:
+
+«Preserve the historical lineage, establish "quantarion369-arch/AQARION" as the canonical working repository, and reconstruct earlier AQARION material only through explicit provenance and verification.»
+
+Until that reconstruction is complete, historical and current artifacts should remain distinguishable.
+
+---
+
+Current canonical repository: "quantarion369-arch/AQARION"
+
+Historical lineage: "JASKSG9" AQARION repositories and associated forks
+
+Status: Active development · historical reconstruction in progress
+
+Principle:
+Preserve the history. Reconstruct explicitly. Verify independently. Never manufacture continuity.
+
+Auditable Mathematical Research Infrastructure
+
 AQARION is a research program for exact finite mathematics, dynamical systems, operator methods, computational verification, and reproducible mathematical software.
 
 Its central objective is simple:
