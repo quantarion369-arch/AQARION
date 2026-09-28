@@ -1,0 +1,62 @@
+{
+  "kernel_id": "AQARION-THEOREM-KERNEL",
+  "version": "0.1.0",
+  "status": "ACTIVE_RESEARCH",
+  "scope": "finite deterministic dynamics, observable quotients, defect rank, pullback-stable equivalences, finite join stability",
+  "principle": "mathematical source of truth",
+  "theorems": [
+    {
+      "id": "AQ-05",
+      "name": "observable quotient criterion",
+      "status": "PROOF_TARGET",
+      "domain": "finite deterministic dynamical systems"
+    },
+    {
+      "id": "BRT-02",
+      "name": "defect-rank identity",
+      "status": "PROOF_TARGET_WITH_INDEPENDENT_VERIFICATION",
+      "statement": "rank(D_Pi) = m - c(Gamma)"
+    },
+    {
+      "id": "BRT-03",
+      "name": "sharp defect-rank bound",
+      "status": "PROOF_TARGET",
+      "statement": "rank(D_Pi) <= min(m-1,n-m)"
+    },
+    {
+      "id": "BRT-04",
+      "name": "global defect-rank maximum",
+      "status": "PROOF_TARGET",
+      "statement": "max rank(D_Pi) = floor((n-1)/2)"
+    },
+    {
+      "id": "JS-02",
+      "name": "finite kernel equality",
+      "status": "FORMALIZATION_PRIORITY"
+    },
+    {
+      "id": "JS-03",
+      "name": "finite quotient permutation",
+      "status": "FORMALIZATION_TARGET"
+    },
+    {
+      "id": "JS-11",
+      "name": "finite pullback-stable join",
+      "status": "OPEN_FORMALIZATION"
+    }
+  ],
+  "negative_results": [
+    {
+      "id": "NEG-02",
+      "name": "unrestricted pullback-stable join",
+      "status": "KILLED",
+      "reason": "infinite counterexample"
+    }
+  ],
+  "evidence_policy": {
+    "computation_is_proof": false,
+    "verification_is_proof": false,
+    "formal_build_is_certification": false,
+    "hash_is_semantic_certificate": false
+  }
+}
