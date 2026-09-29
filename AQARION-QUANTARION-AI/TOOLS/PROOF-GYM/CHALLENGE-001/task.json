@@ -1,0 +1,35 @@
+{
+  "id": "JOIN-001",
+  "title": "The Direction You Were Not Given",
+  "domain": "finite_dynamics",
+  "claim": "Pullback-stable equivalence relations are closed under join on finite sets.",
+  "hypotheses": [
+    "X is finite",
+    "T : X -> X is total",
+    "E is an equivalence relation on X",
+    "F is an equivalence relation on X",
+    "T(x) E T(y) -> x E y",
+    "T(x) F T(y) -> x F y"
+  ],
+  "target": "T(x) (E join F) T(y) -> x (E join F) y",
+  "forbidden_shortcuts": [
+    "assume T is surjective",
+    "assume T is injective",
+    "assume x E y -> T(x) E T(y)",
+    "assume the theorem for E join F"
+  ],
+  "required_reasoning": [
+    "finite_pullback_rigidity",
+    "induced_class_permutations",
+    "incidence_relation",
+    "finite_forward_invariance_implies_invariance",
+    "connected_components"
+  ],
+  "failure_classes": [
+    "PF-001",
+    "PF-004"
+  ],
+  "formal_status": "OPEN",
+  "verification_status": "V-n6",
+  "promotion_status": "BLOCKED"
+}
