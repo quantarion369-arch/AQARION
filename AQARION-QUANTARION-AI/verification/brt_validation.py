@@ -80,10 +80,6 @@ SCHEMA = "AQ-BRT-VALIDATION/2"
 CASE_SCHEMA = "AQ-BRT-CASES-002"
 
 
-# ---------------------------------------------------------------------------
-# Exact rational linear algebra
-# ---------------------------------------------------------------------------
-
 def rank_frac(matrix: list[list[Fraction]]) -> int:
     """Return exact matrix rank over Q."""
     if not matrix:
@@ -167,27 +163,11 @@ def matmul(
     ]
 
 
-# ---------------------------------------------------------------------------
-# Partition normalization
-# ---------------------------------------------------------------------------
-
 def normalize_partition_labels(
     labels: list[int],
     n: int,
 ) -> list[list[int]]:
-    """
-    Convert integer block labels into canonical block lists.
-
-    Example:
-
-        [4, 4, 9, 4, 9]
-
-    becomes
-
-        [[0, 1, 3], [2, 4]]
-
-    in first-seen label order.
-    """
+    """Convert integer block labels into canonical block lists."""
     if len(labels) != n:
         raise AssertionError(
             "partition label count must equal transition length"
@@ -246,19 +226,11 @@ def validate_partition(
             )
 
 
-# ---------------------------------------------------------------------------
-# BRT matrices
-# ---------------------------------------------------------------------------
-
 def build_projection(
     blocks: list[list[int]],
     n: int,
 ) -> list[list[Fraction]]:
-    """
-    Orthogonal block-average projection.
-
-    P[x,y] = 1/|B| when x and y lie in the same block.
-    """
+    """Orthogonal block-average projection."""
     p = [
         [Fraction(0) for _ in range(n)]
         for _ in range(n)
@@ -278,11 +250,7 @@ def build_koopman(
     transition: list[int],
     n: int,
 ) -> list[list[Fraction]]:
-    """
-    Deterministic Koopman matrix.
-
-    K[x,T(x)] = 1.
-    """
+    """Deterministic Koopman matrix."""
     k = [
         [Fraction(0) for _ in range(n)]
         for _ in range(n)
@@ -298,9 +266,7 @@ def build_normalized_block_transition(
     transition: list[int],
     blocks: list[list[int]],
 ) -> list[list[Fraction]]:
-    """
-    Build the normalized block-transition matrix Q.
-    """
+    """Build the normalized block-transition matrix Q."""
     block_of: dict[int, int] = {}
 
     for index, block in enumerate(blocks):
@@ -339,10 +305,6 @@ def validate_q_normalization(
             )
 
 
-# ---------------------------------------------------------------------------
-# Forward co-occurrence graph
-# ---------------------------------------------------------------------------
-
 def graph_components_from_q(
     q: list[list[Fraction]],
 ) -> int:
@@ -350,9 +312,6 @@ def graph_components_from_q(
     Count connected components of the forward co-occurrence graph.
 
     Each partition block is a vertex.
-
-    For every source block, every target block occurring in that
-    source row belongs to one co-occurrence component.
     """
     k = len(q)
 
@@ -398,21 +357,11 @@ def graph_components_from_q(
     })
 
 
-# ---------------------------------------------------------------------------
-# Exact defect operator
-# ---------------------------------------------------------------------------
-
 def exact_defect_matrix(
     transition: list[int],
     blocks: list[list[int]],
 ) -> list[list[Fraction]]:
-    """
-    Return
-
-        D = (I-P) K P
-
-    exactly over Q.
-    """
+    """Return D = (I-P) K P exactly over Q."""
     n = len(transition)
 
     p = build_projection(blocks, n)
@@ -444,10 +393,6 @@ def exact_defect_rank(
         )
     )
 
-
-# ---------------------------------------------------------------------------
-# Individual case
-# ---------------------------------------------------------------------------
 
 def validate_case(
     case: dict[str, Any],
@@ -551,23 +496,10 @@ def validate_case(
     }
 
 
-# ---------------------------------------------------------------------------
-# Built-in semantic controls
-# ---------------------------------------------------------------------------
-
 def semantic_controls() -> list[dict[str, Any]]:
-    """
-    Regression controls for the mathematical interpretation of H.
-
-    These are deliberately independent of the repository case corpus.
-    """
+    """Regression controls for the mathematical interpretation of H."""
     controls: list[dict[str, Any]] = []
 
-    # Singleton transposition.
-    #
-    # The state-transition graph is connected, but the correct
-    # block co-occurrence graph has two singleton vertices with one
-    # outgoing target per row, hence two components.
     trap = {
         "name": "singleton-permutation-trap",
         "transition": [1, 0],
@@ -589,7 +521,6 @@ def semantic_controls() -> list[dict[str, Any]]:
 
     controls.append(result)
 
-    # Constant map.
     trap = {
         "name": "constant-map-trap",
         "transition": [0, 0],
@@ -605,10 +536,6 @@ def semantic_controls() -> list[dict[str, Any]]:
 
     controls.append(result)
 
-    # Connected attaining construction.
-    #
-    # Four blocks of size two. Each source block sees two consecutive
-    # target blocks, making H connected and producing rank k-1 = 3.
     blocks = [
         [0, 1],
         [2, 3],
@@ -650,10 +577,6 @@ def semantic_controls() -> list[dict[str, Any]]:
     return controls
 
 
-# ---------------------------------------------------------------------------
-# Repository corpus
-# ---------------------------------------------------------------------------
-
 def load_cases(path: Path) -> list[dict[str, Any]]:
     data = json.loads(
         path.read_text(encoding="utf-8")
@@ -686,10 +609,6 @@ def load_cases(path: Path) -> list[dict[str, Any]]:
 
     return cases
 
-
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
 
 def main() -> int:
     parser = argparse.ArgumentParser(
