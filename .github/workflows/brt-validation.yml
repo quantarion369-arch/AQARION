@@ -1,0 +1,70 @@
+name: AQARION BRT Kernel Validation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/verification/brt_validation.py"
+      - "AQARION-QUANTARION-AI/verification/brt_cases.json"
+      - "AQARION-QUANTARION-AI/verification/brt_mutation.py"
+      - ".github/workflows/brt-validation.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/verification/brt_validation.py"
+      - "AQARION-QUANTARION-AI/verification/brt_cases.json"
+      - "AQARION-QUANTARION-AI/verification/brt_mutation.py"
+      - ".github/workflows/brt-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brt-validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validation:
+    name: BRT Exact Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile BRT Python files
+        run: |
+          python -m py_compile \
+            AQARION-QUANTARION-AI/verification/brt_validation.py \
+            AQARION-QUANTARION-AI/verification/brt_mutation.py
+
+      - name: Run exact BRT validator
+        run: |
+          python AQARION-QUANTARION-AI/verification/brt_validation.py \
+            --cases AQARION-QUANTARION-AI/verification/brt_cases.json \
+            --report AQARION-QUANTARION-AI/verification/brt-validation-report.json
+
+      - name: Run BRT semantic mutation suite
+        run: |
+          python AQARION-QUANTARION-AI/verification/brt_mutation.py
+
+      - name: Upload BRT evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brt-validation-${{ github.sha }}
+          path: |
+            AQARION-QUANTARION-AI/verification/brt-validation-report.json
+          if-no-files-found: error
+          retention-days: 30
