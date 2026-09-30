@@ -3,65 +3,48 @@
 AQARION BRT semantic mutation suite.
 
 Purpose:
-    Verify that the BRT implementation is sensitive to a meaningful
-    semantic error in the graph construction.
+    Verify that the BRT graph construction is sensitive to a
+    deliberately wrong semantic substitution.
 
-This suite does NOT mutate source text.
-
-Instead it implements an explicitly wrong alternative calculation
-and proves that the repository's semantic trap distinguishes it from
-the correct BRT construction.
+The mutant replaces the BRT block co-occurrence graph with the
+individual state-transition graph.
 
 Correct BRT graph:
     vertices = partition blocks
-    edges = target-block co-occurrence within each source block
+    each source block connects all target blocks appearing in
+    that source block's transition row
 
-Mutant:
+Mutant graph:
     vertices = individual states
-    edges = individual transition edges x -- T(x)
+    edges = state -> T(state)
 
-The mutant is deliberately wrong for BRT because it computes
-connectivity of the state-transition graph rather than connectivity
-of the block co-occurrence graph.
+These graphs are not the same mathematical object.
 
-The singleton transposition
+The suite therefore requires explicit killing cases where the
+resulting component counts, and hence rank predictions, differ.
 
-    T = [1, 0]
-
-with singleton partition
-
-    [0, 1]
-
-is the required killing case:
-
-    correct BRT components = 2
-    correct rank prediction = 0
-
-    mutant state-graph components = 1
-    mutant rank prediction = 1
-
-A mutation suite passes only when the wrong implementation is actually
-distinguished from the correct contract.
+Governance:
+    MUTATION PASS means the declared mutant was killed.
+    MUTATION PASS is not a mathematical proof.
+    NO PROMOTION AUTHORITY.
 """
 
 from __future__ import annotations
 
 import json
-import sys
-from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "AQ-BRT-MUTATION/1"
+SCHEMA = "AQ-BRT-MUTATION/2"
 
-
-# ---------------------------------------------------------------------------
-# Correct block normalization
-# ---------------------------------------------------------------------------
 
 def normalize_partition(
     labels: list[int],
 ) -> list[list[int]]:
+    """Convert integer labels into canonical partition blocks."""
+    if not labels:
+        raise AssertionError("partition must not be empty")
+
     groups: dict[int, list[int]] = {}
 
     for state, label in enumerate(labels):
@@ -70,17 +53,37 @@ def normalize_partition(
     return list(groups.values())
 
 
-# ---------------------------------------------------------------------------
-# Correct BRT component count
-# ---------------------------------------------------------------------------
+def validate_inputs(
+    transition: list[int],
+    labels: list[int],
+) -> None:
+    """Validate the finite transition and partition inputs."""
+    n = len(transition)
+
+    if n == 0:
+        raise AssertionError("transition must not be empty")
+
+    if len(labels) != n:
+        raise AssertionError(
+            "partition label count must equal transition length"
+        )
+
+    for target in transition:
+        if not 0 <= target < n:
+            raise AssertionError(
+                f"transition target {target} leaves state space"
+            )
+
 
 def correct_block_components(
     transition: list[int],
     labels: list[int],
 ) -> int:
     """
-    Count components of the correct block co-occurrence graph.
+    Count components of the correct BRT block co-occurrence graph.
     """
+    validate_inputs(transition, labels)
+
     blocks = normalize_partition(labels)
 
     block_of = {
@@ -100,19 +103,22 @@ def correct_block_components(
         return x
 
     def union(a: int, b: int) -> None:
-        a = find(a)
-        b = find(b)
+        root_a = find(a)
+        root_b = find(b)
 
-        if a != b:
-            parent[b] = a
+        if root_a != root_b:
+            parent[root_b] = root_a
 
     for block in blocks:
-        targets = {
+        targets = sorted({
             block_of[transition[state]]
             for state in block
-        }
+        })
 
-        targets = sorted(targets)
+        if not targets:
+            raise AssertionError(
+                "source block has no transition targets"
+            )
 
         first = targets[0]
 
@@ -120,27 +126,25 @@ def correct_block_components(
             union(first, target)
 
     return len({
-        find(i)
-        for i in range(k)
+        find(index)
+        for index in range(k)
     })
 
-
-# ---------------------------------------------------------------------------
-# Deliberately wrong mutant
-# ---------------------------------------------------------------------------
 
 def mutant_state_transition_components(
     transition: list[int],
 ) -> int:
     """
-    WRONG implementation.
+    DELIBERATELY WRONG MUTANT.
 
-    Computes connected components of the state-transition graph.
-
-    This is not the BRT forward co-occurrence graph.
+    Computes connected components of the individual
+    state-transition graph instead of the BRT block
+    co-occurrence graph.
     """
-    n = len(transition)
+    if not transition:
+        raise AssertionError("transition must not be empty")
 
+    n = len(transition)
     parent = list(range(n))
 
     def find(x: int) -> int:
@@ -151,45 +155,42 @@ def mutant_state_transition_components(
         return x
 
     def union(a: int, b: int) -> None:
-        a = find(a)
-        b = find(b)
+        root_a = find(a)
+        root_b = find(b)
 
-        if a != b:
-            parent[b] = a
+        if root_a != root_b:
+            parent[root_b] = root_a
 
     for state, target in enumerate(transition):
         union(state, target)
 
     return len({
-        find(i)
-        for i in range(n)
+        find(index)
+        for index in range(n)
     })
 
 
-def mutant_rank_prediction(
-    transition: list[int],
-    labels: list[int],
-) -> int:
-    """
-    Rank prediction produced by the deliberately wrong mutant.
-    """
-    k = len(normalize_partition(labels))
-    components = mutant_state_transition_components(transition)
-
-    return k - components
-
-
-# ---------------------------------------------------------------------------
-# Mutation cases
-# ---------------------------------------------------------------------------
-
 def run_mutation_case(
+    *,
     name: str,
     transition: list[int],
     labels: list[int],
     expected_correct_components: int,
     expected_correct_rank: int,
+    expected_mutant_components: int,
+    expected_mutant_rank: int,
 ) -> dict[str, Any]:
+    """
+    Execute one mutation-killing case.
+
+    Every expected value is checked explicitly so that a broken
+    test expectation cannot silently convert into a PASS.
+    """
+    validate_inputs(transition, labels)
+
+    blocks = normalize_partition(labels)
+    k = len(blocks)
+
     correct_components = correct_block_components(
         transition,
         labels,
@@ -199,50 +200,63 @@ def run_mutation_case(
         transition,
     )
 
-    k = len(normalize_partition(labels))
-
+    correct_rank = k - correct_components
     mutant_rank = k - mutant_components
 
     if correct_components != expected_correct_components:
         raise AssertionError(
-            f"{name}: correct component expectation failed: "
+            f"{name}: incorrect correct-components expectation: "
             f"expected={expected_correct_components}, "
             f"actual={correct_components}"
         )
 
-    if k - correct_components != expected_correct_rank:
+    if correct_rank != expected_correct_rank:
         raise AssertionError(
-            f"{name}: correct rank expectation failed: "
+            f"{name}: incorrect correct-rank expectation: "
             f"expected={expected_correct_rank}, "
-            f"actual={k - correct_components}"
+            f"actual={correct_rank}"
         )
 
-    if mutant_rank == expected_correct_rank:
+    if mutant_components != expected_mutant_components:
         raise AssertionError(
-            f"{name}: mutant survived; "
-            f"mutant_rank={mutant_rank}, "
-            f"correct_rank={expected_correct_rank}"
+            f"{name}: incorrect mutant-components expectation: "
+            f"expected={expected_mutant_components}, "
+            f"actual={mutant_components}"
+        )
+
+    if mutant_rank != expected_mutant_rank:
+        raise AssertionError(
+            f"{name}: incorrect mutant-rank expectation: "
+            f"expected={expected_mutant_rank}, "
+            f"actual={mutant_rank}"
+        )
+
+    if mutant_components == correct_components:
+        raise AssertionError(
+            f"{name}: mutant component count survived"
+        )
+
+    if mutant_rank == correct_rank:
+        raise AssertionError(
+            f"{name}: mutant rank prediction survived"
         )
 
     return {
         "name": name,
+        "state_count": len(transition),
+        "block_count": k,
         "correct_components": correct_components,
-        "correct_rank": expected_correct_rank,
+        "correct_rank": correct_rank,
         "mutant_state_components": mutant_components,
         "mutant_rank": mutant_rank,
         "killed": True,
     }
 
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
-
 def main() -> int:
     try:
         results = []
 
-        # Required semantic killing case.
         results.append(
             run_mutation_case(
                 name="singleton-transposition-state-graph-mutant",
@@ -250,17 +264,20 @@ def main() -> int:
                 labels=[0, 1],
                 expected_correct_components=2,
                 expected_correct_rank=0,
+                expected_mutant_components=1,
+                expected_mutant_rank=1,
             )
         )
 
-        # A second non-singleton regression case.
         results.append(
             run_mutation_case(
-                name="two-block-four-cycle-state-graph-mutant",
-                transition=[1, 2, 3, 0],
-                labels=[0, 0, 1, 1],
-                expected_correct_components=1,
-                expected_correct_rank=1,
+                name="constant-map-non-singleton-state-graph-mutant",
+                transition=[0, 0, 0],
+                labels=[0, 0, 1],
+                expected_correct_components=2,
+                expected_correct_rank=0,
+                expected_mutant_components=1,
+                expected_mutant_rank=1,
             )
         )
 
@@ -270,8 +287,9 @@ def main() -> int:
             "mutation": {
                 "id": "BRT-MUT-STATE-GRAPH",
                 "description": (
-                    "Replace the block co-occurrence graph with the "
-                    "individual state-transition graph."
+                    "Replace the partition-block co-occurrence "
+                    "graph with the individual state-transition "
+                    "graph."
                 ),
                 "survived": False,
                 "killed": True,
@@ -306,8 +324,7 @@ def main() -> int:
                 failure,
                 indent=2,
                 sort_keys=True,
-            ),
-            file=sys.stderr,
+            )
         )
 
         return 1
