@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Executable Mathematics — Verification Dashboard</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: #0f1d31;
+      --panel2: #14263f;
+      --text: #e7eef9;
+      --muted: #9db0ca;
+      --line: #294564;
+      --green: #36d399;
+      --amber: #f8c557;
+      --red: #ff6b6b;
+      --blue: #58b6ff;
+      --purple: #a78bfa;
+      --shadow: 0 14px 35px rgba(0, 0, 0, .25);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(88,182,255,.14), transparent 27rem),
+        radial-gradient(circle at 90% 8%, rgba(167,139,250,.12), transparent 28rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8,17,31,.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .wrap {
+      width: min(1300px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      padding: 20px 0;
+      display: flex;
+      gap: 18px;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 8px;
+      font-size: clamp(1.45rem, 2.8vw, 2.3rem);
+      letter-spacing: -.03em;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: .98rem;
+    }
+
+    .subtitle {
+      max-width: 780px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .badges, .controls, .legend {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .badge, .status {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    .source { color: var(--blue); background: rgba(88,182,255,.10); border-color: rgba(88,182,255,.35); }
+    .proof { color: var(--green); background: rgba(54,211,153,.10); border-color: rgba(54,211,153,.35); }
+    .cv { color: var(--amber); background: rgba(248,197,87,.10); border-color: rgba(248,197,87,.35); }
+    .open { color: var(--amber); background: rgba(248,197,87,.10); border-color: rgba(248,197,87,.35); }
+    .blocked { color: var(--red); background: rgba(255,107,107,.10); border-color: rgba(255,107,107,.35); }
+    .formal { color: var(--purple); background: rgba(167,139,250,.10); border-color: rgba(167,139,250,.35); }
+    .muted { color: var(--muted); }
+
+    main { padding: 28px 0 54px; }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .overview {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-bottom: 18px;
+    }
+
+    .two {
+      grid-template-columns: 1.1fr .9fr;
+      margin-bottom: 18px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(20,38,63,.96), rgba(15,29,49,.96));
+      box-shadow: var(--shadow);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .metric {
+      min-height: 132px;
+    }
+
+    .metric-value {
+      margin: 8px 0;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .metric p, .panel p, .small {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: .9rem;
+    }
+
+    button {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: #172b47;
+      border-radius: 10px;
+      padding: 9px 12px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    button:hover { border-color: var(--blue); }
+    button.active {
+      color: #06111f;
+      border-color: var(--green);
+      background: var(--green);
+    }
+
+    .pipeline {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(9, minmax(100px, 1fr));
+      align-items: stretch;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .node {
+      min-width: 105px;
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: rgba(8,17,31,.42);
+    }
+
+    .node:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -17px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .node-title {
+      font-size: .76rem;
+      letter-spacing: .08em;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .node-state {
+      margin-top: 8px;
+      font-size: .84rem;
+      font-weight: 800;
+    }
+
+    .claim-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .claim {
+      border: 1px solid var(--line);
+      background: rgba(8,17,31,.4);
+      border-radius: 12px;
+      padding: 13px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .claim code {
+      color: #d7eaff;
+      font-size: .84rem;
+      overflow-wrap: anywhere;
+    }
+
+    .claim .desc {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.45;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: .76rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    code, pre {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    pre {
+      overflow: auto;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #07101e;
+      color: #d9ecff;
+      font-size: .82rem;
+      line-height: 1.55;
+    }
+
+    .result {
+      min-height: 125px;
+      padding: 14px;
+      border-left: 4px solid var(--amber);
+      border-radius: 8px;
+      background: rgba(248,197,87,.08);
+    }
+
+    .result.pass {
+      border-left-color: var(--green);
+      background: rgba(54,211,153,.08);
+    }
+
+    .result.fail {
+      border-left-color: var(--red);
+      background: rgba(255,107,107,.08);
+    }
+
+    .result strong { display: block; margin-bottom: 8px; }
+
+    .agent-flow {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tool {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(8,17,31,.4);
+    }
+
+    .tool-icon {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: #06111f;
+      background: var(--blue);
+      font-weight: 900;
+    }
+
+    .tool p { margin: 3px 0 0; }
+
+    .warning {
+      border: 1px solid rgba(255,107,107,.35);
+      color: #ffd2d2;
+      background: rgba(255,107,107,.08);
+      border-radius: 12px;
+      padding: 14px;
+      line-height: 1.5;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 980px) {
+      .overview, .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pipeline { grid-template-columns: repeat(9, 135px); }
+    }
+
+    @media (max-width: 620px) {
+      .overview, .two { grid-template-columns: 1fr; }
+      .claim { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap header-inner">
+      <div>
+        <h1>Executable Mathematics Verification Dashboard</h1>
+        <p class="subtitle">
+          An evidence-aware model of how a mathematical paper becomes a formal
+          specification, executable computation, tested tool surface, reproducible
+          receipt, and—only when justified—a formally verified theorem.
+        </p>
+      </div>
+
+      <div class="badges">
+        <span class="badge source">SOURCE-AWARE</span>
+        <span class="badge cv">COMPUTATION ≠ PROOF</span>
+        <span class="badge blocked">PROMOTION GATED</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid overview">
+      <article class="panel metric">
+        <div class="small">Research claim</div>
+        <div class="metric-value">AQ-QP-FIN</div>
+        <p>Finite quotient-permutation branch for pullback-fixed relations.</p>
+        <span class="status cv">[CV] finite scope</span>
+      </article>
+
+      <article class="panel metric">
+        <div class="small">Finite experiment</div>
+        <div class="metric-value">3,984</div>
+        <p>Function–partition pairs tested exhaustively for carrier sizes 1 through 4.</p>
+        <span class="status proof">0 counterexamples</span>
+      </article>
+
+      <article class="panel metric">
+        <div class="small">Formal source</div>
+        <div class="metric-value">READY</div>
+        <p>Target theorem is identified against the actual quotient/pullback API.</p>
+        <span class="status open">[SOURCE] build pending</span>
+      </article>
+
+      <article class="panel metric">
+        <div class="small">Formal promotion</div>
+        <div class="metric-value">BLOCKED</div>
+        <p>Requires pinned toolchain, clean build, axiom audit, and independent receipt.</p>
+        <span class="status blocked">[FV] absent</span>
+      </article>
+    </section>
+
+    <section class="panel" style="margin-bottom:18px;">
+      <h2>Research artifact pipeline</h2>
+      <p class="small">
+        The dashboard does not collapse execution, agreement, reproducibility,
+        proof, and formal verification into a single “verified” status.
+      </p>
+
+      <div class="pipeline" id="pipeline">
+        <div class="node" data-stage="Source">
+          <div class="node-title">SOURCE</div>
+          <div class="node-state source">Located</div>
+        </div>
+        <div class="node" data-stage="Specification">
+          <div class="node-title">SPECIFICATION</div>
+          <div class="node-state proof">Defined</div>
+        </div>
+        <div class="node" data-stage="Implementation">
+          <div class="node-title">IMPLEMENTATION</div>
+          <div class="node-state source">Present</div>
+        </div>
+        <div class="node" data-stage="Fixture">
+          <div class="node-title">FIXTURE</div>
+          <div class="node-state cv">Finite corpus</div>
+        </div>
+        <div class="node" data-stage="Execution">
+          <div class="node-title">EXECUTION</div>
+          <div class="node-state proof">Passed</div>
+        </div>
+        <div class="node" data-stage="Comparison">
+          <div class="node-title">COMPARISON</div>
+          <div class="node-state proof">0 mismatches</div>
+        </div>
+        <div class="node" data-stage="Independence">
+          <div class="node-title">INDEPENDENCE</div>
+          <div class="node-state open">Partial</div>
+        </div>
+        <div class="node" data-stage="Formal Status">
+          <div class="node-title">FORMAL STATUS</div>
+          <div class="node-state blocked">Blocked</div>
+        </div>
+        <div class="node" data-stage="Agent Interface">
+          <div class="node-title">AGENT INTERFACE</div>
+          <div class="node-state source">Modeled</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid two">
+      <article class="panel">
+        <h2>Evidence model</h2>
+        <p class="small">
+          Choose a claim to inspect its evidence chain. A status is earned only
+          when its corresponding gates are present.
+        </p>
+
+        <div class="controls" id="claimControls">
+          <button class="active" data-claim="quotient">Finite quotient theorem</button>
+          <button data-claim="defect">Defect operator</button>
+          <button data-claim="congruence">Cycle congruence count</button>
+          <button data-claim="agent">Paper-to-agent tool</button>
+        </div>
+
+        <div id="claimDisplay" class="claim-list" style="margin-top:14px;"></div>
+      </article>
+
+      <article class="panel">
+        <h2>Evidence boundary</h2>
+        <div class="warning">
+          <strong>Core rule</strong>
+          A successful test run means the implementation produced the declared
+          output for the declared input. It does not automatically establish
+          that the mathematical specification was correct, that another
+          implementation agrees, or that the theorem holds universally.
+        </div>
+
+        <div class="legend" style="margin-top:14px;">
+          <span class="badge source">[SOURCE]</span>
+          <span class="badge proof">[P]</span>
+          <span class="badge cv">[CV]</span>
+          <span class="badge formal">[FV]</span>
+          <span class="badge open">[OPEN]</span>
+          <span class="badge blocked">[BLOCKED]</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="panel">
+        <h2>Verification simulator</h2>
+        <p class="small">
+          This models a paper-to-agent system. The agent may run a tool, compare
+          results with an oracle, run a mutation test, and emit a claim receipt.
+          The dashboard then computes the strongest status justified by the gates.
+        </p>
+
+        <div class="controls">
+          <button id="runImplementation">Run implementation</button>
+          <button id="runOracle">Run independent oracle</button>
+          <button id="runMutation">Run mutation test</button>
+          <button id="runFormal">Run formal checker</button>
+          <button id="resetSimulation">Reset</button>
+        </div>
+
+        <div id="simulationResult" class="result" style="margin-top:14px;">
+          <strong>Awaiting evidence</strong>
+          No execution has been recorded in this simulation.
+        </div>
+
+        <pre id="receipt" style="margin-top:14px;">{
+  "claim_id": "AQ-QP-FIN-01",
+  "status": "[OPEN]",
+  "implementation_run": false,
+  "oracle_agreement": false,
+  "mutation_rejected": false,
+  "formal_receipt": false
+}</pre>
+      </article>
+
+      <article class="panel">
+        <h2>Paper-to-agent transformation</h2>
+        <p class="small">
+          The agent is an interface over explicit tools and receipts. It can
+          assist research, but it cannot upgrade evidence on its own.
+        </p>
+
+        <div class="agent-flow">
+          <div class="tool">
+            <div class="tool-icon">1</div>
+            <div>
+              <strong>Parse claim and definitions</strong>
+              <p class="small">Extract theorem statement, assumptions, symbols, and scope.</p>
+            </div>
+            <span class="status source">SPEC</span>
+          </div>
+
+          <div class="tool">
+            <div class="tool-icon">2</div>
+            <div>
+              <strong>Expose executable tools</strong>
+              <p class="small">Wrap enumerators, exact arithmetic, formal checkers, and validators as callable operations.</p>
+            </div>
+            <span class="status cv">MCP TOOL</span>
+          </div>
+
+          <div class="tool">
+            <div class="tool-icon">3</div>
+            <div>
+              <strong>Validate against fixtures</strong>
+              <p class="small">Run reference cases, adversarial mutations, and independent implementations.</p>
+            </div>
+            <span class="status proof">TESTED</span>
+          </div>
+
+          <div class="tool">
+            <div class="tool-icon">4</div>
+            <div>
+              <strong>Return evidence-aware answers</strong>
+              <p class="small">Report what was computed, what was proved, and what remains open.</p>
+            </div>
+            <span class="status blocked">NO AUTO-PROMOTION</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel" style="margin-bottom:18px;">
+      <h2>AQARION finite verification record</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Claim</th>
+            <th>Scope</th>
+            <th>Evidence</th>
+            <th>Current status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>PullbackFixed(T,E) ↔ quotientMap(T,E) bijective</code></td>
+            <td>Finite carriers of size (1le nle4)</td>
+            <td>3,984 exhaustive function–partition pairs; no counterexample</td>
+            <td><span class="status cv">[CV]</span></td>
+          </tr>
+          <tr>
+            <td><code>PullbackFixed → quotientMap_injective</code></td>
+            <td>General source-level theorem target</td>
+            <td>Existing AQARION source theorem located</td>
+            <td><span class="status source">[SOURCE]</span></td>
+          </tr>
+          <tr>
+            <td><code>Finite + injective endomap → bijective</code></td>
+            <td>Finite quotient type</td>
+            <td>Standard finite-cardinality lemma</td>
+            <td><span class="status proof">[P]</span></td>
+          </tr>
+          <tr>
+            <td><code>pullbackFixed_quotientMap_bijective</code></td>
+            <td>General finite quotient theorem</td>
+            <td>Lean target source specified; no current clean build receipt</td>
+            <td><span class="status blocked">[BLOCKED]</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="grid two">
+      <article class="panel">
+        <h2>Reference theorem target</h2>
+        <pre>import AQARIONPullbackCore.QuotientInjective
+
+namespace Aqarion
+
+theorem finite_injective_endomap_bijective
+    {Q : Type*}
+    [Finite Q]
+    (g : Q → Q)
+    (hg : Function.Injective g) :
+    Function.Bijective g := by
+  letI : Fintype Q := Fintype.ofFinite Q
+  exact ⟨hg, Finite.surjective_of_injective hg⟩
+
+theorem pullbackFixed_quotientMap_bijective
+    {X : Type u}
+    (T : X → X)
+    (E : Setoid X)
+    [Finite (Quotient E)]
+    (hFixed : PullbackFixed T E) :
+    Function.Bijective (quotientMap T E hFixed) := by
+  apply finite_injective_endomap_bijective
+  exact quotientMap_injective T E hFixed
+
+end Aqarion</pre>
+      </article>
+
+      <article class="panel">
+        <h2>Required formal receipt</h2>
+        <pre>{
+  "claim_id": "AQ-QP-FIN-01",
+  "source_sha256": "required",
+  "lean_toolchain": "required",
+  "mathlib_revision": "required",
+  "lake_build": "required",
+  "no_sorry_scan": "required",
+  "axiom_report": "required",
+  "external_checker": "preferred",
+  "formal_status": "[FV] only after all required gates"
+}</pre>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Dashboard principles</h2>
+      <ol class="small">
+        <li>A definition must be locked before code or data are trusted as evidence.</li>
+        <li>Finite exhaustive computation is a scoped computational certificate, not a universal theorem.</li>
+        <li>Independent agreement is stronger than self-consistency.</li>
+        <li>Mutation tests show whether a validator distinguishes plausible wrong semantics.</li>
+        <li>A formal proof claim requires a clean toolchain-specific build receipt.</li>
+        <li>An AI agent can call tools and explain evidence, but may not silently promote claim status.</li>
+      </ol>
+    </section>
+  </main>
+
+  <script>
+    const claims = {
+      quotient: [
+        {
+          id: "AQ-QP-FIN-PY-01",
+          title: "Finite quotient-permutation experiment",
+          status: "[CV]",
+          className: "cv",
+          desc: "Exhaustive verification of 3,984 function–partition pairs for n = 1, 2, 3, 4. It supports the finite equivalence between pullback-fixedness and quotient bijectivity within the declared domain."
+        },
+        {
+          id: "AQ-QP-FIN-01",
+          title: "General finite quotient theorem",
+          status: "[OPEN]",
+          className: "open",
+          desc: "Mathematically reduces to quotientMap_injective plus the finite injective-endomap lemma. Lean source target is known, but no current-session build, axiom audit, or external-checker receipt exists."
+        }
+      ],
+      defect: [
+        {
+          id: "AQ-DEFECT-001",
+          title: "Defect operator square-zero identity",
+          status: "[P]",
+          className: "proof",
+          desc: "For D = (I-P)KP with idempotent P, D² = 0 follows from P(I-P) = 0. The precise operator convention must remain attached to the statement."
+        },
+        {
+          id: "AQ-RANK-001",
+          title: "Defect rank via co-occurrence graph",
+          status: "[P]",
+          className: "proof",
+          desc: "Under the stated deterministic Koopman and averaging-projection definitions, rank((I-P)KP) = k - c(H) follows by identifying the kernel with component-constant block values."
+        }
+      ],
+      congruence: [
+        {
+          id: "AQ-CYCLE-PHASE-001",
+          title: "Finite cycle congruence enumeration",
+          status: "[CV]",
+          className: "cv",
+          desc: "Direct enumeration and phase-formula comparison are computationally corroborated over the declared finite cycle types. The general bijection remains a proof target."
+        },
+        {
+          id: "AQ-PCN-001",
+          title: "Canonical phase normal form",
+          status: "[OPEN]",
+          className: "open",
+          desc: "Extraction and reconstruction are the correct certificate architecture. A canonical representation becomes stronger evidence only after round-trip validation and independent implementation."
+        }
+      ],
+      agent: [
+        {
+          id: "AQ-AGENT-001",
+          title: "Paper-to-agent workflow",
+          status: "[SOURCE]",
+          className: "source",
+          desc: "A paper-to-agent layer may expose code, fixtures, validators, and formal commands as callable tools. It must return evidence-aware answers rather than treat a conversational explanation as proof."
+        },
+        {
+          id: "AQ-PROVENANCE-001",
+          title: "Claim receipt graph",
+          status: "[P]",
+          className: "proof",
+          desc: "Every promoted claim should bind source, specification, implementation, input, execution, output, oracle, independence relation, and formal status."
+        }
+      ]
+    };
+
+    const display = document.getElementById("claimDisplay");
+
+    function renderClaim(name) {
+      display.innerHTML = claims[name].map(claim => `
+        <div class="claim">
+          <div>
+            <code>${claim.id}</code>
+            <h3 style="margin:7px 0 0;">${claim.title}</h3>
+            <div class="desc">${claim.desc}</div>
+          </div>
+          <span class="status ${claim.className}">${claim.status}</span>
+        </div>
+      `).join("");
+    }
+
+    document.querySelectorAll("#claimControls button").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("#claimControls button")
+          .forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        renderClaim(button.dataset.claim);
+      });
+    });
+
+    renderClaim("quotient");
+
+    const state = {
+      implementation: false,
+      oracle: false,
+      mutation: false,
+      formal: false
+    };
+
+    const output = document.getElementById("simulationResult");
+    const receipt = document.getElementById("receipt");
+
+    function updateSimulation() {
+      let status = "[OPEN]";
+      let message = "A claim specification exists, but no simulation evidence has been recorded.";
+      let className = "";
+
+      if (state.implementation) {
+        status = "[V]";
+        message = "The reference implementation executed successfully on the declared fixture.";
+        className = "pass";
+      }
+
+      if (state.implementation && state.oracle) {
+        status = "[CV]";
+        message = "Reference implementation and independent oracle agree on the declared fixture.";
+        className = "pass";
+      }
+
+      if (state.implementation && state.oracle && state.mutation) {
+        status = "[CV+]";
+        message = "Independent agreement exists and a plausible semantic mutation was rejected. The test suite is semantically discriminating.";
+        className = "pass";
+      }
+
+      if (state.formal) {
+        status = "[FV]";
+        message = "Formal checker receipt recorded in the simulation. In a real artifact, this status additionally requires source, toolchain, axiom, and build receipts.";
+        className = "pass";
+      }
+
+      output.className = "result " + className;
+      output.innerHTML = `<strong>${status}</strong>${message}`;
+
+      receipt.textContent = JSON.stringify({
+        claim_id: "AQ-QP-FIN-01",
+        status,
+        implementation_run: state.implementation,
+        oracle_agreement: state.oracle,
+        mutation_rejected: state.mutation,
+        formal_receipt: state.formal,
+        policy: "No status promotion beyond recorded evidence gates."
+      }, null, 2);
+    }
+
+    document.getElementById("runImplementation").addEventListener("click", () => {
+      state.implementation = true;
+      updateSimulation();
+    });
+
+    document.getElementById("runOracle").addEventListener("click", () => {
+      if (!state.implementation) {
+        output.className = "result fail";
+        output.innerHTML = "<strong>ORDER VIOLATION</strong>Run the reference implementation before comparing an independent oracle.";
+        return;
+      }
+      state.oracle = true;
+      updateSimulation();
+    });
+
+    document.getElementById("runMutation").addEventListener("click", () => {
+      if (!state.implementation) {
+        output.className = "result fail";
+        output.innerHTML = "<strong>ORDER VIOLATION</strong>A mutation test needs a reference execution baseline.";
+        return;
+      }
+      state.mutation = true;
+      updateSimulation();
+    });
+
+    document.getElementById("runFormal").addEventListener("click", () => {
+      if (!(state.implementation && state.oracle)) {
+        output.className = "result fail";
+        output.innerHTML = "<strong>FORMAL RECEIPT INCOMPLETE</strong>The simulator requires execution and independent-oracle evidence before formal status can be modeled.";
+        return;
+      }
+      state.formal = true;
+      updateSimulation();
+    });
+
+    document.getElementById("resetSimulation").addEventListener("click", () => {
+      Object.keys(state).forEach(key => state[key] = false);
+      updateSimulation();
+    });
+
+    updateSimulation();
+  </script>
+</body>
+        </html>
