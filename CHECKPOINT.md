@@ -346,3 +346,204 @@ The intended progression is:
 ]
 
 No promotion is implied by this checkpoint.
+
+---
+
+AQ-PB-CORE-004 — Stable Equivalence/Core Congruence Classification
+
+Date: October 3, 2026
+
+Status
+
+PROVED
+
+Computational audit: PASS for every finite map on sets of size n\le5.
+
+Exhaustive maps checked:
+
+[
+1+4+27+256+3125=3413.
+]
+
+No counterexample found.
+
+The mathematical classification is proved independently of the computation.
+
+Definitions
+
+Let T:X\to X be a map on a finite set.
+
+Let
+
+[
+P=\operatorname{Per}(T)
+]
+
+be the eventual periodic set. Choose h\ge0 such that
+
+[
+T^h(X)=P.
+]
+
+Then T|_P is a permutation.
+
+For an equivalence relation E on X, define
+
+[
+T^*E=T^{-1}(E)
+
+{(x,y):T(x)\mathrel E T(y)}.
+]
+
+Define
+
+[
+\operatorname{Stab}(T)
+
+{E\in\operatorname{Eq}(X):T^*E=E}.
+]
+
+Define
+
+[
+\operatorname{Con}(P,T|_P)
+
+{F\in\operatorname{Eq}(P):
+xFy\Rightarrow T(x)F T(y)}.
+]
+
+Theorem
+
+Restriction to the eventual periodic core induces an order-lattice isomorphism
+
+[
+\boxed{
+\rho:\operatorname{Stab}(T)
+\overset{\cong}{\longrightarrow}
+\operatorname{Con}(P,T|_P)
+}
+]
+
+given by
+
+[
+\rho(E)=E|_P.
+]
+
+Its inverse is
+
+[
+\boxed{
+\operatorname{Ext}(F)
+
+{(x,y):
+T^h(x)\mathrel F T^h(y)}.
+}
+]
+
+The extension is independent of the chosen sufficiently large h.
+
+Proof
+
+For F\in\operatorname{Con}(P,T|_P), invariance under the permutation T|_P gives
+
+[
+uFv
+\iff
+T(u)F T(v)
+]
+
+for all u,v\in P.
+
+Hence the relation
+
+[
+x\operatorname{Ext}(F)y
+\iff
+T^h(x)F T^h(y)
+]
+
+is independent of increasing h, is an equivalence relation, and satisfies
+
+[
+T^*\operatorname{Ext}(F)=\operatorname{Ext}(F).
+]
+
+Its restriction to P is F.
+
+Conversely, if E\in\operatorname{Stab}(T), then
+
+[
+E=T^*E,
+]
+
+so
+
+[
+xEy
+\iff
+T(x)E T(y).
+]
+
+Iterating,
+
+[
+xEy
+\iff
+T^h(x)E T^h(y).
+]
+
+Since T^h(X)=P,
+
+[
+E=\operatorname{Ext}(E|_P).
+]
+
+Thus restriction and extension are inverse bijections.
+
+Both preserve refinement order. Therefore they form an order isomorphism and consequently preserve meet and join.
+
+Exhaustive computational audit
+
+For every map T:X\to X with 1\le |X|\le5, all equivalence relations were enumerated.
+
+Aggregate counts:
+
+n| maps| stable equivalences| core congruences
+1| 1| 1| 1
+2| 4| 6| 6
+3| 27| 51| 51
+4| 256| 592| 592
+5| 3125| 8565| 8565
+
+The restriction map was tested for both surjectivity and injectivity for every map. No failure occurred.
+
+Evidence classification
+
+[T] The classification theorem follows directly from the finite eventual-core property and the equality T^*E=E.
+
+[C2] Exhaustive computational confirmation for all maps through n=5.
+
+The computation is corroboration, not the proof.
+
+Scope restriction
+
+The theorem is established only for finite deterministic maps.
+
+It does not establish any analogous result for arbitrary infinite dynamical systems.
+
+It also does not imply the false pullback-distributivity identity
+
+[
+T^{-1}(E\vee F)
+
+T^{-1}(E)\vee T^{-1}(F).
+]
+
+That separate statement remains REFUTED.
+
+Research consequence
+
+The transient portion of a finite deterministic system introduces no independent freedom into a pullback-fixed equivalence relation.
+
+The complete lattice of such relations is determined by the congruence lattice of the eventual permutation core.
