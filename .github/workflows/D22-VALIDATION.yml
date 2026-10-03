@@ -1,0 +1,60 @@
+name: AQARION D22 Direct Projection Validation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/verification/D22/**"
+      - ".github/workflows/D22-validation.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/verification/D22/**"
+      - ".github/workflows/D22-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: d22-validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validation:
+    name: D22 Direct Projection Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile D22 audit
+        run: |
+          python -m py_compile \
+            AQARION-QUANTARION-AI/verification/D22/D22_DIRECT_PROJECTION_AUDIT.py
+
+      - name: Run D22 direct projection audit
+        run: |
+          python AQARION-QUANTARION-AI/verification/D22/D22_DIRECT_PROJECTION_AUDIT.py \
+            | tee AQARION-QUANTARION-AI/verification/D22/D22-direct-projection-report.txt
+
+      - name: Upload D22 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d22-validation-${{ github.sha }}
+          path: |
+            AQARION-QUANTARION-AI/verification/D22/D22-direct-projection-report.txt
+          if-no-files-found: error
+          retention-days: 30
