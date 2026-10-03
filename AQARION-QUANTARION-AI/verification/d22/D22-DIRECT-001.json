@@ -1,0 +1,44 @@
+{
+  "audit_id": "D22-DIRECT-001",
+  "schema_version": "1.0",
+  "scope": {
+    "k_min": 3,
+    "k_max": 1000,
+    "d_range": "1 <= d < k"
+  },
+  "case_count": 499499,
+  "convention": {
+    "K_e_j": "e_(j-1 mod k)",
+    "u_d": "e_0 - e_d",
+    "P_d": "I - (1/2) u_d u_d^T",
+    "Q_d": "(1/2) u_d u_d^T",
+    "D_d": "Q_d K P_d"
+  },
+  "checks": {
+    "definition_level_factor_vs_closed_factor": "PASS",
+    "a_transpose_u": "PASS",
+    "rank_one_factorization": "PASS",
+    "square_zero": "PASS",
+    "frobenius_split": "PASS",
+    "operator_norm_split": "PASS",
+    "autocorrelation_orientation_ambiguity": "PASS"
+  },
+  "evidence": {
+    "large_domain_definition_level": "COMPUTATIONALLY_VERIFIED",
+    "dense_literal_matrix": {
+      "k_max": 20,
+      "case_count": 189,
+      "status": "COMPUTATIONALLY_VERIFIED"
+    }
+  },
+  "mathematical_status": {
+    "direct_factorization": "PROVED",
+    "square_zero": "PROVED",
+    "jordan_form": "PROVED",
+    "norm_formula": "PROVED"
+  },
+  "provenance": {
+    "canonical_source_equivalence": "OPEN"
+  },
+  "promotion": "BLOCKED"
+}
