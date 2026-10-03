@@ -5,18 +5,14 @@ on:
     branches:
       - main
     paths:
-      - "AQARION-QUANTARION-AI/verification/brt_validation.py"
-      - "AQARION-QUANTARION-AI/verification/brt_cases.json"
-      - "AQARION-QUANTARION-AI/verification/brt_mutation.py"
-      - ".github/workflows/brt-validation.yml"
+      - "AQARION-QUANTARION-AI/verification/BRT/**"
+      - ".github/workflows/BRT-validation.yml"
   pull_request:
     branches:
       - main
     paths:
-      - "AQARION-QUANTARION-AI/verification/brt_validation.py"
-      - "AQARION-QUANTARION-AI/verification/brt_cases.json"
-      - "AQARION-QUANTARION-AI/verification/brt_mutation.py"
-      - ".github/workflows/brt-validation.yml"
+      - "AQARION-QUANTARION-AI/verification/BRT/**"
+      - ".github/workflows/BRT-validation.yml"
   workflow_dispatch:
 
 permissions:
@@ -46,18 +42,18 @@ jobs:
       - name: Compile BRT Python files
         run: |
           python -m py_compile \
-            AQARION-QUANTARION-AI/verification/brt_validation.py \
-            AQARION-QUANTARION-AI/verification/brt_mutation.py
+            AQARION-QUANTARION-AI/verification/BRT/brt_validation.py \
+            AQARION-QUANTARION-AI/verification/BRT/brt_mutation.py
 
       - name: Run exact BRT validator
         run: |
-          python AQARION-QUANTARION-AI/verification/brt_validation.py \
-            --cases AQARION-QUANTARION-AI/verification/brt_cases.json \
-            --report AQARION-QUANTARION-AI/verification/brt-validation-report.json
+          python AQARION-QUANTARION-AI/verification/BRT/brt_validation.py \
+            --cases AQARION-QUANTARION-AI/verification/BRT/brt_cases.json \
+            --report AQARION-QUANTARION-AI/verification/BRT/brt-validation-report.json
 
       - name: Run BRT semantic mutation suite
         run: |
-          python AQARION-QUANTARION-AI/verification/brt_mutation.py
+          python AQARION-QUANTARION-AI/verification/BRT/brt_mutation.py
 
       - name: Upload BRT evidence
         if: always()
@@ -65,6 +61,6 @@ jobs:
         with:
           name: brt-validation-${{ github.sha }}
           path: |
-            AQARION-QUANTARION-AI/verification/brt-validation-report.json
+            AQARION-QUANTARION-AI/verification/BRT/brt-validation-report.json
           if-no-files-found: error
           retention-days: 30
