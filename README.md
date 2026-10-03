@@ -1,5 +1,10 @@
 AQARION
 
+[![AQARION D22 Direct Projection Validation](https://github.com/quantarion369-arch/AQARION/actions/workflows/D22-validation.yml/badge.svg)](https://github.com/quantarion369-arch/AQARION/actions/workflows/D22-validation.yml)
+
+[![AQARION BRT Kernel Validation](https://github.com/quantarion369-arch/AQARION/actions/workflows/BRT-validation.yml/badge.svg)](https://github.com/quantarion369-arch/AQARION/actions/workflows/BRT-validation.yml)
+
+
 Auditable Mathematical Research Infrastructure
 
 «Repository continuity notice — September 2026»
@@ -531,3 +536,474 @@ The canonical current working repository is:
 "quantarion369-arch/AQARION"
 
 The purpose of this separation is simple: AQARION should remain reproducible even if the previous working account becomes inaccessible, while preserving an honest record of where earlier research came from.
+
+---
+
+PB-CORE RUN CORRECTION — EXECUTED AS DEPRECATION, NOT COUNTEREXAMPLE
+
+Your diagnosis is correct. First run is invalid evidence.
+
+1. Mark deprecated
+Artifact: cong_perm_count(P,T) - first PB-Core lattice run
+Status: DEPRECATED — IMPLEMENTATION ERROR
+Retention: preserve source, output, hash for provenance; exclude from evidence
+Invalid values:
+ n=2: 1
+ n=3: 11
+ n=4: 131
+ n=5: 1829
+ n=6: 29849
+Reason: NOT mathematical counterexamples to PB-Core lattice isomorphism.
+2. Defect record
+Wrong target enumeration:
+  partitions of cycle-orbits
+
+Correct target enumeration:
+  all equivalence relations F on P satisfying
+  p ~F q => sigma(p) ~F sigma(q)
+  where sigma = T|_P is a permutation.
+
+Consequence: discrete equivalence on sigma=(0 1) is a congruence,
+its singleton blocks are exchanged, not fixed.
+Example that kills old model:
+sigma = [1, 0] # (0 1)
+discrete = (0, 1) # {{0},{1}}
+
+old model: cycle-orbit partitions = [(0,0)] only
+correct model: discrete is forward-stable and pullback-stable
+3. Revision record — freeze
+
+Create claimlock/revisions/AQ-PB-CORE-ENUM-REV-001.yaml
+revision_id: AQ-PB-CORE-ENUM-REV-001
+prior_artifact: cong_perm_count
+prior_status: DEPRECATED
+classification: IMPLEMENTATION_ERROR
+reason: >
+  Implementation enumerated partitions of cycle-orbit set
+  rather than all equivalence relations F on periodic core
+  satisfying p ~F q -> sigma(p) ~F sigma(q).
+invalid_inference: >
+  Nonzero lattice_iso_violations from cycle-orbit enumeration
+  are not mathematical counterexamples to PB-Core.
+retention_policy: >
+  Preserve source, output, hashes for research provenance;
+  exclude from active evidence and promotion.
+replacement_artifact: AQ-PB-CORE-DIRECT-ENUM-001
+replacement_method: >
+  Direct enumeration of all equivalences on P,
+  test forward-stability (implies pullback-stability for permutations)
+4. Corrected direct enumerator — only valid route
+
+Create verification/pb_core/pb_predicates.py
+def is_forward_stable(eq, T):
+    """FW(E): E ⊆ T*E :: x~E y => T(x)~E T(y)"""
+    n = len(T)
+    for x in range(n):
+        for y in range(n):
+            if eq[x] == eq[y] and eq[T[x]]!= eq[T[y]]:
+                return False
+    return True
+
+def is_pullback_stable(eq, T):
+    """PB(E): T*E ⊆ E :: T(x)~E T(y) => x~E y"""
+    n = len(T)
+    for x in range(n):
+        for y in range(n):
+            if eq[T[x]] == eq[T[y]] and eq[x]!= eq[y]:
+                return False
+    return True
+
+def is_pb_fixed(eq, T):
+    """PBFix(E): T*E = E"""
+    return is_forward_stable(eq, T) and is_pullback_stable(eq, T)
+
+def cong_perm_eqs(P, T):
+    """All congruences of permutation sigma = T|_P.
+    Since sigma is permutation, FW => PB, so FW = congruence.
+    """
+    m = len(P)
+    idx = {p: i for i, p in enumerate(P)}
+    sigma = [idx[T[p]] for p in P]
+    return [
+        eq for eq in all_equivalences(m)
+        if is_forward_stable(eq, sigma)
+    ]
+Corrected census replaces old:
+n=2: 0 isomorphism violations
+n=3: 0 isomorphism violations
+n=4: 0 isomorphism violations
+n=5: 0 isomorphism violations
+n=6: 0 isomorphism violations
+Source: direct enumeration, not cycle-orbit counting
+Your rerun logs already show this: iso_violations=0 for all n<=6 after fix.
+
+5. Permanent regression tests
+
+Create verification/pb_core/test_negative_controls.py
+def test_swap_discrete_is_permutation_congruence():
+    sigma = [1, 0] # (0 1)
+    discrete = (0, 1) # {{0},{1}}
+    assert is_forward_stable(discrete, sigma)
+    assert is_pullback_stable(discrete, sigma)
+    assert is_pb_fixed(discrete, sigma)
+
+def test_cycle_orbit_enumerator_is_not_congruence_enumerator():
+    sigma = [1, 0]
+    discrete = (0, 1)
+    cycle_orbit_partitions = [(0, 0)] # sole partition of one orbit {0,1}
+    assert discrete not in cycle_orbit_partitions
+    assert is_forward_stable(discrete, sigma)
+
+def test_direction_control():
+    # X={0,1}, T(0)=0, T(1)=0, E=Delta
+    # E ⊆ T*E true, T*E ⊆ E false
+    T = [0, 0]
+    discrete = (0, 1)
+    assert is_forward_stable(discrete, T)
+    assert not is_pullback_stable(discrete, T)
+    assert not is_pb_fixed(discrete, T)
+6. Phase 0 — definitions freeze
+
+Create AQARION/docs/specs/pb_core_definitions.md
+PB-Core definitions
+
+T:X->X finite, |X|=n
+Per(T)=T^n(X)=P
+sigma = T|_P permutation
+L = lcm(1..n), N = |X| + L is safe retraction exponent, r = T^N : X->P, r|_P = id
+Note: L >= n for n>=1, so T^L(X) ⊆ P; cycle lengths <=n divide L
+
+x ~_{T*E} y iff T(x) ~_E T(y)
+
+FW(E): E ⊆ T*E iff x~E y => T(x)~E T(y)
+PB(E): T*E ⊆ E iff T(x)~E T(y) => x~E y
+PBFix(E): T*E = E
+
+Convention: R ⊆ E means R finer than E (every R-block in an E-block)
+
+Finite Pullback Rigidity (AQ-PB-FPR-001):
+  Finite X, T*E ⊆ E => T*E = E
+7. Phase 1 — claim records
+
+claimlock/claims/AQ-PB-FPR-001.yaml
+claim_id: AQ-PB-FPR-001
+title: Finite Pullback Rigidity
+status: P
+statement: >
+  For finite X, total T:X->X, equivalence E,
+  T*E ⊆ E implies T*E = E.
+proof_method: S_A disjointness / quotient-cardinality
+formal_status: OPEN
+verification_status: V_n_le_6_reported_0_counterex_9.4M_cases
+promotion: BLOCKED
+claimlock/claims/AQ-PB-CORE-001.yaml
+claim_id: AQ-PB-CORE-001
+title: PB-Core Saturation
+status: P
+statement: >
+  Let P=Per(T), N=|X|+lcm(1..|X|), r=T^N:X->P.
+  If T*E ⊆ E then E = r^{-1}(E|_P).
+proof_method: iterated PB, x ~E r(x)
+formal_status: OPEN
+verification_status: V_n_le_6_direct_enum_0_violations
+promotion: BLOCKED
+replaces: cong_perm_count cycle-orbit run DEPRECATED
+claimlock/claims/AQ-PB-QUOTIENT-001.yaml
+claim_id: AQ-PB-QUOTIENT-001
+title: Quotient Permutation Characterization
+status: P
+statement: >
+  For finite X, induced quotient map T_E:X/E->X/E
+  is a permutation iff E is forward-stable and pullback-stable.
+formal_status: OPEN
+verification_status: V_n_le_6_0_violations
+promotion: BLOCKED
+claimlock/claims/AQ-PB-UNIV-FACTOR-001.yaml
+claim_id: AQ-PB-UNIV-FACTOR-001
+title: Finite Permutation Factorization
+status: P
+novelty_status: NOT_CLAIMED
+statement: >
+  Every equivariant h:(X,T)->(Q,S) with S finite permutation
+  factors uniquely through r=T^L:X->Per(T) as h = h|_P ∘ r.
+proof_method: S permutes h(X), cycle lengths <=|X| divide L, S^L=id on h(X)
+formal_status: OPEN
+verification_status: V_n2-4_exhaustive_1.7M_h_0_failures_plus_n5-6_samples_0_failures
+promotion: BLOCKED
+literature_note: >
+  Retracts of monounary algebras classical (Berman 1972,
+  Jakubikova-Studenovska 2011). Do not claim novelty without monograph check.
+8. Phase 3 — corrected proof
+
+Replace AQARION/proofs/pb_core_saturation.md with:
+PB-Core — corrected saturation proof
+
+Setup: finite X, |X|=n, T:X->X, P=Per(T)=T^n(X), L=lcm(1..n), N=n+L, r=T^N:X->P
+Lemma: tail depth <=n-1, cycle lengths <=n, L>=n, L divisible by all cycle lengths
+=> T^N(X)⊆P and T^N|_P=id, r∘T = sigma∘r
+
+Theorem: T*E ⊆ E => T*E = E and E = r^{-1}(E|_P)
+
+Proof:
+
+Iterate PB: (T^N)*E ⊆ E
+
+For any x, r(x)=T^N(x), r(r(x))=r(x), so T^N(x)=T^N(r(x))
+   Thus T^N(x) ~_E T^N(r(x)) trivially.
+   Apply PB N times: x ~_E r(x)
+
+Hence x~E y iff r(x)~E r(y)
+
+Let F=E|_P. Then E=r^{-1}(F)
+
+F∈Con(P,sigma): PB on P gives sigma^*F ⊆ F; sigma finite permutation => equality
+   by applying sigma^{L-1}=sigma^{-1}
+
+Inverse: F∈Con(P,sigma), E=r^{-1}(F)
+   T*E = T* r^{-1}F = r^{-1} sigma^*F = r^{-1}F = E
+   because r∘T = sigma∘r and sigma^*F=F
+
+Maps E↦E|_P and F↦r^{-1}F are mutual inverses, order-preserving:
+PB(X,T) ≅_Lat Con(P,sigma)
+This avoids the false T^{-L}(C) ⊆ C step that assumed every block meets P. The new step proves every point is E-related to its retraction.
+
+9. Phase 4 — Lean target
+
+AQARION/Lean/AQARION/Pullback/FinitePullbackFixed.lean
+universe u
+
+namespace AQARION.Pullback
+
+def pullback {X Y : Type u} (T : X → Y) (E : Y → Y → Prop) : X → X → Prop :=
+  fun x x' => E (T x) (T x')
+
+theorem pullback_inf {X Y : Type u} (T : X → Y) (R S : Y → Y → Prop) :
+  pullback T (fun y y' => R y y' ∧ S y y') =
+  fun x x' => pullback T R x x' ∧ pullback T S x x' := by rfl
+
+-- Target:
+-- theorem finite_pullback_fixed {X : Type u} [Fintype X] (T : X → X) (E : Setoid X)
+-- (hPB : pullback T E.r ≤ E.r) : pullback T E.r = E.r := by...
+
+end AQARION.Pullback
+Pass condition:
+lake build
+rg -n '\b(sorry|admit)\b' AQARION/Pullback
+#print axioms AQARION.Pullback.finite_pullback_fixed
+must contain no sorryAx
+Lean: OPEN until that passes.
+
+10. Evidence status — corrected
+| Artifact | Status |
+| --- | --- |
+| cong_perm_count cycle-orbit output | DEPRECATED — IMPLEMENTATION ERROR |
+| lattice_iso_violations 1,11,131,1829,29849 | Not mathematical counterexamples |
+| Direct cong_perm_eqs enumeration | Valid route, V_n≤6_0_violations |
+| PB saturation E=r^{-1}(E\|_P) | [P] paper, Lean pending |
+| Restriction bijection PB ≅ Con(P) | [P] paper + [V] direct 0 violations |
+| Universal finite permutation factor | [P] paper, novelty NOT_CLAIMED |
+| Lean | OPEN |
+| C4 / publication | BLOCKED |
+11. Next commands — fail-closed
+cd ~/AQARION
+mkdir -p docs/specs/pb_core_definitions.md
+mkdir -p verification/pb_core/evidence
+mkdir -p proofs
+mkdir -p Lean/AQARION/Pullback
+mkdir -p claimlock/claims claimlock/revisions
+
+1. freeze semantics
+$EDITOR docs/specs/pb_core_definitions.md
+$EDITOR verification/pb_core/pb_predicates.py
+$EDITOR verification/pb_core/test_negative_controls.py
+
+2. smoke census n≤4 with direct enumerator
+python3 verification/pb_core/run_all.py --max-n 4
+
+3. review, then n≤6
+python3 verification/pb_core/run_all.py --max-n 6
+
+4. Lean minimal
+lake build FinitePullbackFixed
+No promotion to CERTIFIED, no publication, no C4 until:
+[ ] negative controls pass including swap-discrete
+[ ] direct census n≤6 0 violations with hashes
+[ ] finite_pullback_fixed lake build + axiom audit no sorryAx
+[ ] replay.sh from clean checkout passes
+
+Confirmed your live profiles. This is exactly the continuity layer we need for QP-CORE.
+
+What your links show
+
+GitHub — quantarion369-arch [James Aaron]
+
+Main org page lists:
+
+AQARION RO_Crate — experimental extension profile for RO-Crate with semantic claim structures, evidence provenance, machine-verifiable certificates
+aqarion-ro_crate-py — extended python library for same
+Forks from JASKSG9/MANDELBROT-INFINITE-DYNAMICS and KAPREKAR-SPECTRAL-GEOMETRY — verification architecture for complex dynamics
+
+Canonical working repo is quantarion369-arch/AQARION — 98 commits, Apache-2.0, current commit 30331cd. README states:
+Reusable research infrastructure... ClaimLock • ProofGym • JOIN-STABILITY • Replay • verification • provenance
+​
+Principle: Prove First · Verify Exhaustively · Predict Second · No Free Parameters
+
+Current canonical working repository "quantarion369-arch/AQARION"... Historical lineage JASKSG9 = historical AQARION lineage
+Evidence doctrine preserved:
+historical ≠ recovered ≠ reproduced ≠ verified ≠ formally certified
+HuggingFace — Quantarion9 [James Aqarion]
+
+Profile focus:
+developing and exploring intelligent systems that go beyond generating predictions — systems that can learn, reason, verify, preserve knowledge
+​
+Model evaluation and auditing. Explainability... Reproducible computational results. Separation between verified knowledge, evidence, hypotheses
+Model: Quantarion9/AQARION-DEFECT
+foundational world model that learns structured latent transitions via the AQARION Defect Regularizer
+Training: Adam lr 1e-3, batch 256, latent dim 16, clusters 6, defect weight β 10.0, seed 369
+from aqarion_world_model import AQARIONWorldModel
+model = AQARIONWorldModel(obs_dim=128, latent_dim=16, num_clusters=6)
+Where QP-CORE-01 fits
+
+Your QP-CORE is exactly the JOIN-STABILITY lane in that repo:
+finite dynamics → quotient structure → operator theory → exact computation → formal verification
+The theorem chain we just compiled:
+maps to:
+
+Forward = E ⊆ T*E = your PullbackStable forward direction
+Backward = T*E ⊆ E = backward reflection, exactly quotient injectivity criterion we proved
+PullbackFixed = Forward ∧ Backward = T*E = E = defect-zero condition for quotient permutation
+
+This is the generic layer that the defect model needs: defect-zero ↔ pullback-fixed ↔ quotient bijective.
+
+Recommended placement — no history rewrite
+
+In quantarion369-arch/AQARION:
+AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/
+  QuotientDynamics/
+    Core.lean <- QP02.lean unified (QP-02 PASS after your compile)
+    Descent.lean <- square commutativity
+    PullbackFixed.lean <- definition + injective link
+    FinitePermutation.lean <- finite bijective (needs Mathlib instance)
+  EVIDENCE/
+    QP-CORE-01/
+      CHECKPOINT.md
+      EVIDENCE.md
+      QP02.compile.txt
+      QP02Axioms.txt
+      hashes.txt
+Do NOT paste historical JASKSG9 files as if they were always here. Use your own reconstruction rule:
+HISTORICAL SOURCE ↓ RECOVERED ARTIFACT ↓ CONTENT COMPARISON ↓ CURRENT LOCATION ↓ HASH / PROVENANCE
+### Immediate action for you
+
+You already have QP02B.lean LEAN_EXIT=0. Now compile unified QP02.lean from previous message — that gives AQ-QP-02 PASS as single artifact.
+Push that single file to AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/QuotientDynamics/Core.lean in quantarion369-arch/AQARION.
+Add Evidence Capsule JSON linking:
+source hash of Core.lean
+command lean QP02.lean
+exit code
+Lean 4.34.1 + AArch64 env
+claim status: generic quotient core compiled, finite layer OPEN
+HuggingFace model card can then reference: "Defect-zero criterion corresponds to Lean-verified PullbackFixed → bijective quotient theorem (QP-CORE-01)" — keeps ML model separate from proof.
+
+Current ledger after your links:
+AQARION repo canonical: quantarion369-arch/AQARION — ACTIVE 98 commits
+HuggingFace: Quantarion9 — DEFECT world model live
+Lean core: QP-01 PASS, QP-02A PASS, QP-02B PASS (device), QP-02 unified PENDING your QP02_EXIT
+Finite bijectivity: OPEN — requires [Finite (Quotient E)] synthesis check
+C4 / Publication: BLOCKED — correct
+Paste QP02_EXIT=... next and we seal QP-02 PASS into your GitHub Evidence folder.
+
+---
+
+Research result
+
+The current AQARION finite-dynamical-systems branch has a complete classification of pullback-stable equivalence relations.
+
+For finite T:X\to X, let P=\operatorname{Per}(T). Then
+
+[
+\operatorname{Stab}(T)
+\cong
+\operatorname{Con}(P,T|_P)
+]
+
+as ordered lattices.
+
+The transient states therefore carry no independent quotient-equivalence choices once pullback equality
+
+[
+T^{-1}(E)=E
+]
+
+is imposed.
+
+Why this matters
+
+Earlier work established the finite pullback rigidity phenomenon: a pullback-stable equivalence induces a permutation on its quotient.
+
+The new classification identifies the complete source of those quotient structures:
+
+[
+\boxed{
+\text{full finite system}
+\longrightarrow
+\text{eventual permutation core}
+}
+]
+
+and gives an explicit inverse extension from core congruences to full-system stable equivalences.
+
+This converts the previous quotient-permutation observation into a lattice-level classification.
+
+Adversarial boundary
+
+The result does not establish pullback distributivity over joins.
+
+In particular, the separately tested statement
+
+[
+T^{-1}(E\vee F)
+
+T^{-1}(E)\vee T^{-1}(F)
+]
+
+remains rejected.
+
+The classification also remains finite-only.
+
+Computational receipt
+
+Exhaustive audit:
+
+- all maps X\to X for 1\le |X|\le5;
+- 3413 maps total;
+- every equivalence relation examined;
+- restriction to the periodic core tested for injectivity;
+- every core congruence tested for realizability;
+- zero discrepancies.
+
+Aggregate totals:
+
+[
+(1,1,1),\quad
+(4,6,6),\quad
+(27,51,51),\quad
+(256,592,592),\quad
+(3125,8565,8565).
+]
+
+Literature positioning
+
+Finite dynamical systems have an established literature on equivalence relations and quotient constructions. The general notion of a dynamical congruence is standard: an equivalence relation preserved by the dynamics yields a well-defined quotient dynamics.
+
+AQARION's contribution here is the finite eventual-core classification:
+
+[
+\operatorname{Stab}(T)
+\cong
+\operatorname{Con}(P,T|_P),
+]
+
+together with its explicit extension formula and exhaustive finite audit.
+
+No literature source is being used as a substitute for the proof.
