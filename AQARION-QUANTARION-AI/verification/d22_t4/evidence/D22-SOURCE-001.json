@@ -1,0 +1,38 @@
+{
+  "audit_id": "D22-SOURCE-001",
+  "schema_version": "1.0",
+  "claim": {
+    "id": "D22-CANONICAL-SOURCE-EQUIVALENCE",
+    "statement": "The locked D22 operator construction is identical to the intended canonical D22 source construction."
+  },
+  "required_primary_source": {
+    "required_definitions": [
+      "K",
+      "P_d",
+      "D_d",
+      "A_m",
+      "normalization_conventions",
+      "indexing_conventions",
+      "cyclic_shift_convention"
+    ]
+  },
+  "source_search_status": "PRIMARY_SOURCE_NOT_LOCATED",
+  "public_tree_status": "NO_CANONICAL_D22_SOURCE_CONFIRMED",
+  "accepted_sources": [
+    "primary_definition",
+    "versioned_primary_artifact",
+    "recoverable_source_file"
+  ],
+  "excluded_as_primary": [
+    "session_summary",
+    "screenshot",
+    "secondary_checkpoint_prose",
+    "frozen_pointer_without_recoverable_content",
+    "derived_verification_output"
+  ],
+  "mathematical_model_status": "DERIVED_MODEL_OF_EXPLICIT_LOCKED_CONVENTION",
+  "canonical_equivalence_status": "OPEN",
+  "promotion": "BLOCKED",
+  "formalization": "LEAN_OPEN",
+  "note": "Analytic correctness of the locked operator model does not establish provenance-equivalence with an unavailable canonical D22 source."
+}
