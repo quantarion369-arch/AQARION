@@ -26,7 +26,7 @@ A research result may have several independent dimensions of status:
 - contradiction or refutation;
 - publication/promotion state.
 
-ClaimLock keeps those dimensions explicit.
+ClaimLock keeps these dimensions explicit.
 
 The central rule is:
 
@@ -122,7 +122,7 @@ Disposition describes the current state of a claim or research object.
 | `FROZEN` | The specified artifact/version is locked for audit |
 | `BLOCKED` | A declared gate prevents promotion or publication |
 | `QUARANTINED` | Evidence is retained but excluded from promotion pending resolution |
-| `DEPRECATED` | The artifact/status representation is obsolete and retained for provenance |
+| `DEPRECATED` | The artifact or representation is obsolete and retained for provenance |
 | `SUPERSEDED` | Replaced by a successor claim or artifact |
 | `RETRACTED` | Withdrawn because the result should no longer be relied upon as stated |
 | `REFUTED` | A counterexample or contradiction establishes that the stated claim is false |
@@ -141,33 +141,109 @@ In particular:
 
 ---
 
-## 5. Legacy Terminology
+## 5. Disposition Selection Rules
 
-`KILLED` is not a current ClaimLock disposition.
+Use the most specific disposition supported by the evidence.
 
-The canonical vocabulary is:
+### OPEN
 
-- `DEPRECATED`
-- `SUPERSEDED`
-- `RETRACTED`
-- `REFUTED`
-- `QUARANTINED`
+Use `OPEN` when research remains active or unresolved.
 
-Historical artifacts may contain older terminology.
+Examples:
 
-Historical wording must not be silently rewritten when doing provenance
-reconstruction.
+- proof incomplete;
+- literature comparison incomplete;
+- formalization incomplete;
+- computational question still under investigation.
 
-When an old record is migrated into the current ClaimLock model,
-the migration must state the mapping explicitly.
+### FROZEN
 
-Example:
+Use `FROZEN` when a particular artifact or version is intentionally
+locked for audit.
+
+`FROZEN` means:
+
+> This exact object is the object being audited.
+
+It does not mean:
+
+> This object is mathematically correct.
+
+### BLOCKED
+
+Use `BLOCKED` when a declared gate prevents promotion or publication.
+
+Examples:
+
+- missing independent reproduction;
+- missing certificate;
+- unresolved provenance;
+- failed required audit;
+- formalization gate not satisfied.
+
+### QUARANTINED
+
+Use `QUARANTINED` when evidence is worth preserving but is excluded
+from promotion pending resolution.
+
+Examples:
+
+- suspicious but not disproved result;
+- incomplete reproduction;
+- unresolved implementation discrepancy;
+- result awaiting independent reconstruction.
+
+### DEPRECATED
+
+Use `DEPRECATED` when an artifact or representation is obsolete and
+should no longer be used as the current representation.
+
+The historical artifact may remain valid provenance.
+
+### SUPERSEDED
+
+Use `SUPERSEDED` when a successor claim or artifact replaces the
+previous one.
+
+Supersession does not necessarily mean that the earlier claim was false.
+
+### RETRACTED
+
+Use `RETRACTED` when the project withdraws a result because it should
+no longer be relied upon as stated.
+
+Typical causes include:
+
+- implementation error;
+- incorrect derivation;
+- unrecoverable provenance;
+- invalid experimental procedure;
+- discovered mismatch between stated and executed computation.
+
+### REFUTED
+
+Use `REFUTED` when a mathematical counterexample, contradiction, or
+other decisive evidence establishes that the stated claim is false.
+
+A refuted claim should identify the witness or contradiction whenever
+possible.
+
+---
+
+## 6. Evidence and Disposition Are Separate
+
+Evidence class and disposition answer different questions.
+
+Evidence class asks:
+
+> What kind of research object is this?
+
+Disposition asks:
+
+> What is its current state?
+
+For example:
 
 ```text
-legacy status:
-    KILLED
-
-migration:
-    reason = REFUTED
-    witness = <counterexample>
-    migrated_status = REFUTED
+evidence_class = [C]
+disposition    = OPEN
