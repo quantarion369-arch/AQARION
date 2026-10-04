@@ -225,6 +225,45 @@ It does not automatically establish:
 
 Known counterexamples and killed claims remain part of the research record rather than being deleted.
 
+# AQARION TOOLS — JOIN-STABILITY
+
+Finite-set theorem program for pullback-stable equivalence relations and their joins.
+
+## Evidence Discipline
+
+Evidence classes: `[D]` Definition, `[P]` Proof, `[V]` Verification, `[PV]` Proof+Verification, `[C]` Conjecture, `[R]` Research.
+
+Dispositions: `OPEN`, `FROZEN`, `BLOCKED`, `QUARANTINED`, `DEPRECATED`, `SUPERSEDED`, `RETRACTED`, `REFUTED`.
+
+Evidence does not migrate upward automatically.
+
+## Theorem Status
+
+FINITE JOIN THEOREM — ACTIVE — Finite X: Join closure holds.
+UNRESTRICTED JOIN THEOREM — DEPRECATED — Infinite case refuted by infinite shift counterexample. Retained for provenance, excluded from promotion.
+
+The finite-cardinality step is structural and must be proved explicitly. The infinite counterexample is a first-class artifact, not a footnote.
+
+## Current Proof Architecture
+
+- JS-00 Definitions
+- JS-01 Quotient map
+- JS-02 Kernel refinement
+- JS-03 Finite kernel equality
+- JS-04 x E y ↔ Tx E Ty
+- JS-05 Quotient permutation
+- JS-06 F quotient permutation
+- JS-07 Join-chain characterization
+- JS-08 Chain lifting
+
+## Computational Boundary
+
+Exhaustive finite census is corroboration, not a substitute for proof. Search ≠ reproduced, reproduced ≠ proved.
+
+## License
+
+Apache License 2.0 — Copyright 2026 James Aaron / quantarion369-arch / AQARION
+
 ---
 
 Status
