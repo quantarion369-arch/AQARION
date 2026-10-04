@@ -1,31 +1,51 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "ClaimLock Status",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/quantarion369-arch/AQARION/blob/main/AQARION-QUANTARION-AI/TOOLS/CLAIMLOCK/schemas/claim_status.schema.json",
+  "title": "AQARION ClaimLock Disposition",
+  "description": "Canonical disposition vocabulary for AQARION research claims. Evidence class is a separate semantic field.",
   "type": "string",
   "enum": [
-    "D",
-    "P",
-    "V",
-    "PV",
-    "C",
-    "R",
+    "OPEN",
+    "FROZEN",
+    "BLOCKED",
+    "QUARANTINED",
     "DEPRECATED",
     "SUPERSEDED",
     "RETRACTED",
-    "REFUTED",
-    "QUARANTINED",
-    "FROZEN",
-    "BLOCKED",
-    "OPEN"
+    "REFUTED"
   ],
-  "x-deprecated-enum": {
-    "KILLED": "Use DEPRECATED | RETRACTED | REFUTED | SUPERSEDED — KILLED was removed 2026-10-04"
-  },
-  "descriptions": {
-    "DEPRECATED": "Refuted, superseded, or invalidated — retained for provenance, excluded from promotion",
-    "SUPERSEDED": "Replaced by newer claim — see successor field",
-    "RETRACTED": "Withdrawn due to error — see correction record",
-    "REFUTED": "Counterexample exists — see witness",
-    "QUARANTINED": "Evidence retained but not currently promoted"
-  }
+  "oneOf": [
+    {
+      "const": "OPEN",
+      "description": "Research remains active or unresolved."
+    },
+    {
+      "const": "FROZEN",
+      "description": "The specified artifact or version is locked for audit. FROZEN does not imply mathematical proof."
+    },
+    {
+      "const": "BLOCKED",
+      "description": "A declared evidence or governance gate prevents promotion or publication."
+    },
+    {
+      "const": "QUARANTINED",
+      "description": "Evidence is retained but excluded from promotion pending resolution."
+    },
+    {
+      "const": "DEPRECATED",
+      "description": "The artifact or representation is obsolete and retained for provenance."
+    },
+    {
+      "const": "SUPERSEDED",
+      "description": "The claim or artifact has been replaced by a successor."
+    },
+    {
+      "const": "RETRACTED",
+      "description": "The result has been withdrawn because it should no longer be relied upon as stated."
+    },
+    {
+      "const": "REFUTED",
+      "description": "A counterexample or contradiction establishes that the stated claim is false."
+    }
+  ]
 }
