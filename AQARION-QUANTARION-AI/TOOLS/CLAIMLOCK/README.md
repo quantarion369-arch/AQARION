@@ -1,74 +1,57 @@
-AQARION TOOLS — CLAIMLOCK
+# AQARION TOOLS — CLAIMLOCK
 
 Claim and evidence management infrastructure for AQARION.
 
-Purpose
+## Purpose
 
 ClaimLock records the relationship between a mathematical claim and the evidence that supports, limits, invalidates, or leaves it unresolved.
 
 ClaimLock is a control layer. It does not prove claims.
 
-Core objects
+## Core Objects
 
 A ClaimLock record should identify:
 
-- claim ID;
-- exact statement;
-- definitions and hypotheses;
-- evidence class;
-- verification domain;
-- proof artifact;
-- verification artifact;
-- formalization status;
-- dependencies;
-- source revision;
-- artifact hashes;
-- reproduction instructions;
-- limitations;
-- invalidation history;
-- promotion history.
+- claim id
+- statement
+- evidence class
+- proof artifact + hash
+- verification artifact + hash
+- dependencies
+- formalization status
+- reproduction instructions
+- invalidation history
+- successor / witness / correction links
 
-Evidence classes
+## Evidence Classes
 
-- "[D]" Definition
-- "[P]" Mathematical proof
-- "[V]" Exhaustive or independently reproducible verification
-- "[PV]" Proof + verification
-- "[C]" Conjecture
-- "[R]" Research / exploratory result
-- "KILLED" — refuted or invalidated
-- "QUARANTINED" — retained but not currently promoted
+| Code | Meaning |
+|---|---|
+| `[D]` | Definition |
+| `[P]` | Mathematical proof |
+| `[V]` | Verification |
+| `[PV]` | Proof + verification |
+| `[C]` | Conjecture |
+| `[R]` | Research |
+| `DEPRECATED` | Refuted or invalidated — was KILLED — retained for provenance, excluded from promotion |
+| `SUPERSEDED` | Replaced by successor |
+| `RETRACTED` | Withdrawn due to error |
+| `REFUTED` | Counterexample exists |
+| `QUARANTINED` | Retained but not currently promotable |
+| `FROZEN` | Locked audit |
+| `BLOCKED` | Publication blocked |
+| `OPEN` | Open research |
 
 Evidence does not upgrade automatically.
 
-Invalidation
+## Invalidation
 
-Killed or superseded claims remain identifiable.
+Deprecated or superseded claims remain identifiable.
+Versioned artifacts remain traceable.
+Corrections are recorded, not silently rewritten.
 
-Preserve:
+Legacy: `KILLED` is deprecated term — use `DEPRECATED` with reason `IMPLEMENTATION_ERROR | REFUTED | RETRACTED`.
 
-- original statement;
-- reason for invalidation;
-- supporting counterexample or correction;
-- revision;
-- replacement claim, where applicable.
+## License
 
-Boundary
-
-ClaimLock manages claims.
-
-It does not own:
-
-- mathematical proofs;
-- research-specific algorithms;
-- Lean projects;
-- generic replay execution;
-- public application UI.
-
-Those remain in their respective research or tooling layers.
-
-Status
-
-DOCUMENTED — implementation follows schema definition and extraction from existing AQARION claim workflows.
-
-Certification: ClaimLock metadata does not certify the mathematical claim it describes.
+Apache License 2.0 — Copyright 2026 James Aaron / quantarion369-arch / AQARION
