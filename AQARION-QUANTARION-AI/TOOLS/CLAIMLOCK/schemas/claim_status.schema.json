@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClaimLock Status",
+  "type": "string",
+  "enum": [
+    "D",
+    "P",
+    "V",
+    "PV",
+    "C",
+    "R",
+    "DEPRECATED",
+    "SUPERSEDED",
+    "RETRACTED",
+    "REFUTED",
+    "QUARANTINED",
+    "FROZEN",
+    "BLOCKED",
+    "OPEN"
+  ],
+  "x-deprecated-enum": {
+    "KILLED": "Use DEPRECATED | RETRACTED | REFUTED | SUPERSEDED — KILLED was removed 2026-10-04"
+  },
+  "descriptions": {
+    "DEPRECATED": "Refuted, superseded, or invalidated — retained for provenance, excluded from promotion",
+    "SUPERSEDED": "Replaced by newer claim — see successor field",
+    "RETRACTED": "Withdrawn due to error — see correction record",
+    "REFUTED": "Counterexample exists — see witness",
+    "QUARANTINED": "Evidence retained but not currently promoted"
+  }
+}
