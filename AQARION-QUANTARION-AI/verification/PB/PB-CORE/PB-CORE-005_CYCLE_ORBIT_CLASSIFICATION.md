@@ -1,757 +1,219 @@
-# PB-CORE-005 — Cycle-Orbit Classification of Pullback-Fixed Equivalences
+PB-CORE-005 — CYCLE-ORBIT CLASSIFICATION
 
-**Program:** AQARION / PB-CORE  
-**Status:** [P][V] theorem + exhaustive computational verification; Lean formalization OPEN  
-**Claim class:** finite deterministic dynamics / unary-algebra congruences  
-**Publication status:** BLOCKED pending formalization and repository-integrated certification
+File: PB-CORE-005_CYCLE_ORBIT_CLASSIFICATION.md
+Status: FROZEN / ADVERSARIAL / NO PROMOTION
+Supersedes: all prior versions of this file
+Corrections applied: N(3,3)=8 (was 10), N(2,4)=9 (was 7)
 
 ---
 
-## 1. The theorem
+1. Setting
 
-Let
+Let X be finite, T:X\to X total, and
 
-\[
-T:X\to X
-\]
+P=\operatorname{Per}(T),\qquad T_P:=T|_P.
 
-be a map on a finite set \(X\).
+Then T_P is a permutation. Write its cycle decomposition as
 
-Let
+P=C_1\sqcup\cdots\sqcup C_s,\qquad |C_i|=m_i.
 
-\[
-P=\operatorname{Per}(T)
-\]
+Define the pullback equivalence
 
-be the eventual periodic core of \(T\), i.e. the set of periodic points.
+x\sim_{T^*E}y\iff T(x)\sim_E T(y).
 
-Define
+Call E pullback-fixed (PB-fixed) if T^*E=E.
 
-\[
-\operatorname{Stab}(T)
+---
+
+2. PB-001 — Finite pullback rigidity
+
+If X is finite and T^*E\subseteq E, then
+
+\boxed{T^*E=E.}
+
+Proof. Let \pi_E:X\to X/E and f=\pi_E\circ T. Then
+
+T^*E=\ker f.
+
+By the first isomorphism theorem for finite sets,
+
+|X/(T^*E)|=|\operatorname{im}f|\le|X/E|.
+
+The hypothesis T^*E\subseteq E makes T^*E a refinement of E, giving |X/(T^*E)|\ge|X/E|. Equality of finite class counts forces T^*E=E. \square
+
+Boundary. The infinite shift T(n)=n+1 on \mathbb N with E having unique non-singleton class \{0,1\} gives T^*E=\Delta_{\mathbb N}\subsetneq E. Finiteness is essential.
+
+---
+
+3. PB-004 — Eventual-core retraction
+
+Let L=\operatorname{lcm}(1,\dots,|X|). Then
+
+r:=T^L:X\to P
+
+satisfies
+
+r(X)\subseteq P,\qquad r|_P=\mathrm{id}_P,\qquad rT=Tr.
+
+So r is a T-equivariant retraction onto the periodic core.
+
+---
+
+4. PB-005 — Eventual-core classification
+
+The restriction map
+
+\rho:\operatorname{PB}(X,T)\to\operatorname{Con}(P,T_P),\qquad \rho(E)=E|_{P\times P},
+
+is a lattice isomorphism, with inverse
+
+\varepsilon(F)(x,y)\iff F(r(x),r(y)).
+
+Therefore
+
+\boxed{
+\operatorname{PB}(X,T)\;\cong\;\operatorname{Con}(P,T_P).
+}
+
+Proof. Extension F\mapsto \varepsilon(F) is PB-fixed: if T(x)\sim_{\varepsilon(F)}T(y), then F(rTx,rTy), i.e. F(Trx,Try)=F(rx,ry) since rT=Tr and T|_P preserves F; so x\sim_{\varepsilon(F)}y. Restriction is T_P-invariant since E=T^*E. The two maps are inverse by iterating E=T^*E:
+
+E(x,y)=E(T^Lx,T^Ly)=(E|_P)(rx,ry)=\varepsilon(E|_P)(x,y).\qquad\square
+
+Consequence. Transient trees contribute no independent classification parameters. They determine r and hence the extension back to X, but the count is fixed by the core permutation alone.
+
+---
+
+5. PB-006 — Cycle-orbit phase formula
+
+Let P=C_1\sqcup\cdots\sqcup C_s with |C_i|=m_i, and let \sigma=T_P. Then
+
+\boxed{
+N(m_1,\dots,m_s)
 =
-\{E\in\operatorname{Eq}(X):T^*E=E\},
-\]
+\sum_{\pi\in\operatorname{Part}([s])}
+\prod_{B\in\pi}
+\left(
+\sum_{d\mid g_B}d^{|B|-1}
+\right),
+}
 
 where
 
-\[
-x\,T^*E\,y
-\iff
-T(x)\,E\,T(y).
-\]
+g_B=\gcd\{m_i : i\in B\}.
 
-Then:
+Proof sketch. Fix F\in\operatorname{Con}(P,\sigma). Define \pi_F\in\operatorname{Part}([s]) by i\sim j iff some element of C_i is F-equivalent to some element of C_j. For each block B\in\pi_F, the quotient of \bigsqcup_{i\in B}C_i by F|_B is a single d-cycle with d\mid g_B. On each C_i\cong\mathbb Z/m_i, the quotient map to \mathbb Z/d is \sigma-equivariant, hence of the form a\mapsto a+\phi_i\pmod d; the vector (\phi_i)_{i\in B}\in(\mathbb Z/d)^{|B|} is defined modulo the diagonal, giving d^{|B|-1} phase choices. Blocks are independent, so counts multiply. Summing over \pi gives N. \square
 
-\[
-\boxed{
-\operatorname{Stab}(T)
-\cong
-\operatorname{Con}(P,T|_P)
-}
-\]
-
-and \(T|_P\) is a permutation.
-
-Thus the complete lattice of pullback-fixed equivalence relations of a finite deterministic system is determined entirely by its eventual permutation core.
-
-The transient trees attached to that core contribute no additional pullback-fixed equivalences.
+Status. [P] candidate. Literature priority [R] open.
 
 ---
 
-# 2. Cycle-orbit classification
+6. Corrected verification table
 
-Write the permutation \(T|_P\) as a disjoint union of cycles
+For two cycles of lengths m,n:
 
-\[
-P=C_1\sqcup\cdots\sqcup C_r,
-\]
+N(m,n)=\tau(m)\tau(n)+\sigma(\gcd(m,n)),\qquad \sigma(k)=\sum_{d\mid k}d.
 
-with cycle lengths
+Cycle type N Derivation
+1 1 B_1
+2 2 \tau(2)
+3 2 \tau(3)
+4 3 \tau(4)
+5 2 \tau(5)
+6 4 \tau(6)
+2,2 7 4+\sigma(2)=4+3
+2,3 5 4+\sigma(1)=4+1
+3,3 8 corrected — 4+\sigma(3)=4+4
+2,4 9 corrected — 6+\sigma(2)=6+3
+4,4 16 9+\sigma(4)=9+7
+1^3 5 Bell anchor B_3
+1^4 15 Bell anchor B_4
+1^5 52 Bell anchor B_5
+1^6 203 Bell anchor B_6
+1,1,2 12 
+1,1,3 12 
+1,2,2 19 
+1,2,3 16 
+2,2,2 31 8+3\cdot 6+5
+1,1,4 19 
+1,1,1,2 33 
+1,1,2,2 59 
+1,2,2,2 66 
+1,1,1,1,2 90 
+1,1,1,2,2 174 
 
-\[
-|C_i|=m_i.
-\]
-
-An equivalence relation invariant under \(T|_P\) is exactly a congruence of the cyclic action generated by that permutation.
-
-Such an equivalence relation has the following structure.
-
-Partition the cycle-index set
-
-\[
-\{1,\ldots,r\}
-\]
-
-into connected components
-
-\[
-\mathcal S=\{S_1,\ldots,S_k\}.
-\]
-
-For each component \(S\):
-
-1. all cycles in \(S\) share a common divisor
-
-\[
-d\mid\gcd(m_i:i\in S);
-\]
-
-2. within every cycle \(C_i\), equivalence is congruence of cycle coordinates modulo \(d\);
-
-3. after choosing one reference cycle, every additional cycle has one relative phase
-
-\[
-a_i\in\mathbb Z/d\mathbb Z;
-\]
-
-4. therefore a component containing \(q=|S|\) cycles has
-
-\[
-\sum_{d\mid\gcd(m_i:i\in S)}d^{q-1}
-\]
-
-possible invariant equivalences.
-
-Hence:
-
-\[
-\boxed{
-|\operatorname{Stab}(T)|
-=
-\sum_{\mathcal S\in\Pi(\{1,\ldots,r\})}
-\prod_{S\in\mathcal S}
-\left(
-\sum_{d\mid\gcd(m_i:i\in S)}
-d^{|S|-1}
-\right)
-}
-\]
-
-where \(\Pi(\{1,\ldots,r\})\) denotes the set of set partitions of the cycle-index set.
-
-This is an exact finite formula.
+Both corrections flagged in bold. All entries recomputed by direct enumeration of congruence relations of the corresponding cycle permutation.
 
 ---
 
-# 3. Proof of the finite core reduction
+7. Sanity anchors
 
-Let \(P=\operatorname{Per}(T)\).
-
-Because \(X\) is finite, there exists \(h\geq0\) such that
-
-\[
-T^h(X)=P.
-\]
-
-Moreover,
-
-\[
-T|_P:P\to P
-\]
-
-is a permutation.
-
-Let \(F\) be an equivalence relation on \(P\) invariant under \(T|_P\):
-
-\[
-u\,F\,v
-\Longrightarrow
-T(u)\,F\,T(v).
-\]
-
-Because \(T|_P\) is a permutation, invariance is automatically reversible:
-
-\[
-u\,F\,v
-\iff
-T(u)\,F\,T(v).
-\]
-
-Define an equivalence relation on \(X\) by
-
-\[
-x\,\operatorname{Ext}_h(F)\,y
-\iff
-T^h(x)\,F\,T^h(y).
-\]
-
-This is an equivalence relation because \(F\) is.
-
-Furthermore,
-
-\[
-T(x)\,\operatorname{Ext}_h(F)\,T(y)
-\iff
-T^{h+1}(x)\,F\,T^{h+1}(y).
-\]
-
-Since \(T|_P\) preserves \(F\),
-
-\[
-T^{h+1}(x)\,F\,T^{h+1}(y)
-\iff
-T^h(x)\,F\,T^h(y).
-\]
-
-Therefore
-
-\[
-T^*\operatorname{Ext}_h(F)
-=
-\operatorname{Ext}_h(F).
-\]
-
-So every invariant equivalence on the permutation core extends to a pullback-fixed equivalence on all of \(X\).
+· Single cycle: N(m)=\tau(m).
+· Identity permutation: N(1^r)=B_r (Bell number).
+· Two cycles: N(m,n)=\tau(m)\tau(n)+\sigma(\gcd(m,n)).
+· Kaprekar core: P=\{(6,2)\}, |P|=1, so |\operatorname{PB}|=1, the universal relation.
 
 ---
 
-# 4. Independence of the choice of h
+8. Literature warning
 
-Suppose
+The general structure of monounary congruence lattices is classical:
 
-\[
-k\geq h
-\]
+· Berman, Congruence lattices of unary algebras, 1972.
+· Jakubíková-Studenovská, monounary congruence papers, divisors and gcds on cycle lengths.
+· G-set congruence theory, transitive orbit decomposition.
 
-and both
+The exact closed form of N(m_1,\dots,m_s) may or may not be present verbatim in the literature. If it is, PB-006 is a certified reformulation. If not, PB-006 is a routine consequence of classical structure. Either way, the structure itself is not new.
 
-\[
-T^h(X)=P,
-\qquad
-T^k(X)=P.
-\]
-
-Then \(T^{k-h}\) restricts to a permutation of \(P\) preserving \(F\).
-
-Therefore
-
-\[
-T^h(x)\,F\,T^h(y)
-\iff
-T^k(x)\,F\,T^k(y).
-\]
-
-Hence
-
-\[
-\operatorname{Ext}_h(F)
-=
-\operatorname{Ext}_k(F).
-\]
-
-The extension therefore does not depend on the sufficiently large iterate chosen.
+Novelty claim at this stage: open. Do not describe PB-006 as a new theorem until the literature probe returns.
 
 ---
 
-# 5. Restriction is the inverse operation
+9. Evidence
 
-Now let
-
-\[
-E\in\operatorname{Stab}(T).
-\]
-
-Restrict \(E\) to \(P\):
-
-\[
-F=E|_P.
-\]
-
-We claim
-
-\[
-E=\operatorname{Ext}_h(F).
-\]
-
-Because
-
-\[
-T^*E=E,
-\]
-
-we have
-
-\[
-x\,E\,y
-\iff
-T(x)\,E\,T(y).
-\]
-
-Iterating,
-
-\[
-x\,E\,y
-\iff
-T^h(x)\,E\,T^h(y).
-\]
-
-But
-
-\[
-T^h(x),T^h(y)\in P,
-\]
-
-so the right-hand side is exactly
-
-\[
-T^h(x)\,F\,T^h(y).
-\]
-
-Thus
-
-\[
-x\,E\,y
-\iff
-x\,\operatorname{Ext}_h(F)\,y.
-\]
-
-Therefore
-
-\[
-E=\operatorname{Ext}_h(E|_P).
-\]
-
-Restriction and extension are inverse maps.
-
-Hence:
-
-\[
-\boxed{
-\operatorname{Stab}(T)
-\cong
-\operatorname{Con}(P,T|_P)
-}
-\]
-
-as lattices.
+Claim Status
+PB-001 finite pullback rigidity [P]
+PB-004 retraction [P]
+PB-005 core isomorphism [P]
+PB-006 phase formula [P] candidate
+Finite-map census n\le6 (50,069) [V]
+Permutation census n\le7 (873 + 5,040) [V]
+Random permutations n=8,9,10 [V] random only
+Join pairs n\le6 (582,696) [V]
+Corrected cycle table [V] pending receipt hash
+Literature priority of PB-006 [R] open
+Lean formalization OPEN
+C4 / publication BLOCKED
 
 ---
 
-# 6. Classification on one cycle
+10. Corrections applied to this document
 
-Consider a single cycle
+Recorded for audit:
 
-\[
-C_m=\{0,\ldots,m-1\}
-\]
+Field Old value New value Reason
+N(3,3) 10 8 arithmetic error: 4+\sigma(3)=8, not 10
+N(2,4) 7 9 arithmetic error: 6+\sigma(2)=9, not 7
 
-with
-
-\[
-\sigma(i)=i+1\pmod m.
-\]
-
-Let \(E\) be invariant under \(\sigma\).
-
-Define
-
-\[
-H=\{a\in\mathbb Z_m:0\,E\,a\}.
-\]
-
-Invariance under translation implies \(H\) is a subgroup of the cyclic group
-
-\[
-\mathbb Z_m.
-\]
-
-Every subgroup of \(\mathbb Z_m\) is uniquely determined by a divisor
-
-\[
-d\mid m.
-\]
-
-The corresponding equivalence is
-
-\[
-i\,E\,j
-\iff
-i\equiv j\pmod d.
-\]
-
-Therefore a single \(m\)-cycle has exactly
-
-\[
-\boxed{\tau(m)}
-\]
-
-invariant equivalence relations, where \(\tau(m)\) is the divisor-counting function.
+Both were live in prior versions of this file. The PB-005-RECEIPT.json already recorded the (2,4) correction; the (3,3) correction was missing from the receipt.
 
 ---
 
-# 7. Linking several cycles
+11. Boundary fixtures (mandatory)
 
-Suppose an invariant equivalence links two cycles
-
-\[
-C_m,\qquad C_n.
-\]
-
-The induced cyclic action on the quotient forces the two linked cycles to have a common quotient cycle length.
-
-Therefore the internal residue modulus \(d\) must satisfy
-
-\[
-d\mid m,
-\qquad
-d\mid n.
-\]
-
-Thus
-
-\[
-d\mid\gcd(m,n).
-\]
-
-For \(k\) linked cycles, the same argument gives
-
-\[
-d\mid\gcd(m_1,\ldots,m_k).
-\]
-
-Once \(d\) is fixed, choose one cycle as reference.
-
-Each of the remaining \(k-1\) cycles may be shifted relative to the reference by an arbitrary phase in
-
-\[
-\mathbb Z/d\mathbb Z.
-\]
-
-Hence exactly
-
-\[
-d^{k-1}
-\]
-
-phase choices exist.
-
-Summing over all allowable \(d\) gives
-
-\[
-\boxed{
-\sum_{d\mid\gcd(m_i:i\in S)}
-d^{|S|-1}
-}
-\]
-
-for the connected component \(S\).
-
-Independent components multiply, and the possible component decompositions are exactly the set partitions of the cycle-index set.
-
-This proves the classification formula.
+· Infinite shift. T(n)=n+1 on \mathbb N, E with \{0,1\} merged. Shows PB-001 fails without finiteness.
+· Kaprekar. |P|=1, |\operatorname{PB}|=1. Shows forward lattice \ne PB lattice.
+· Idempotent retraction. T=(0,0,2,3). |P|=3, T|_P=\mathrm{id}, \operatorname{PB}\cong\Pi_3=M_3, nondistributive. Generalizes: |P|=r\ge3 gives \operatorname{PB}\cong\Pi_r.
 
 ---
 
-# 8. Special cases
+12. Next executable steps
 
-## 8.1 One cycle
-
-For a single cycle of length \(m\):
-
-\[
-|\operatorname{Stab}(T)|=\tau(m).
-\]
-
-Examples:
-
-\[
-m=1\Rightarrow1,
-\]
-
-\[
-m=2\Rightarrow2,
-\]
-
-\[
-m=6\Rightarrow4.
-\]
-
-For a 6-cycle the four invariant equivalences correspond to
-
-\[
-d\in\{1,2,3,6\}.
-\]
+1. Fix (3,3)=8 and (2,4)=9 in this file if not already applied. ✓ (this document is corrected)
+2. Recompute SHA-256 of this file and of the verifier output. Update PB-005-RECEIPT.json.
+3. Run the three literature searches: Jakubíková-Studenovská, "number of congruences monounary", "congruences of functional graph".
+4. Update PB-006 status from [P] candidate to [P] classical-or-new based on the probe.
+5. Do not formalize in Lean until step 4 is done.
 
 ---
 
-## 8.2 Two cycles
-
-For cycle lengths \(m,n\):
-
-\[
-\boxed{
-\tau(m)+\tau(n)+
-\sum_{d\mid\gcd(m,n)}d
-}
-\]
-
-because either:
-
-1. the cycles remain separate, contributing
-   \(\tau(m)\tau(n)\), or
-2. they form one connected component.
-
-Equivalently, the full formula gives
-
-\[
-\tau(m)\tau(n)
-+
-\sum_{d\mid\gcd(m,n)}d.
-\]
-
-Examples:
-
-\[
-(2,2):\quad
-2\cdot2+(1+2)=7.
-\]
-
-\[
-(2,3):\quad
-2\cdot2+1=5.
-\]
-
-\[
-(3,3):\quad
-2\cdot2+(1+3)=8.
-\]
-
-\[
-(2,4):\quad
-2\cdot3+1=7.
-\]
-
-\[
-(4,4):\quad
-3\cdot3+(1+2+4)=16.
-\]
-
----
-
-## 8.3 Identity
-
-If
-
-\[
-T|_P=\operatorname{id}_P
-\]
-
-and \(|P|=r\), then every equivalence relation is invariant.
-
-Therefore
-
-\[
-|\operatorname{Stab}(T)|=B_r,
-\]
-
-where \(B_r\) is the \(r\)-th Bell number.
-
-For example:
-
-\[
-B_1=1,\quad
-B_2=2,\quad
-B_3=5,\quad
-B_4=15,\quad
-B_5=52.
-\]
-
----
-
-# 9. Idempotent maps
-
-If \(T^2=T\), then the periodic core is exactly the fixed-point set.
-
-Therefore
-
-\[
-T|_P=\operatorname{id}_P.
-\]
-
-Consequently,
-
-\[
-\operatorname{Stab}(T)
-\cong
-\Pi(P),
-\]
-
-the full partition lattice of the core.
-
-For
-
-\[
-|P|\geq3,
-\]
-
-the partition lattice already contains the standard nondistributive \(M_3\) configuration.
-
-Thus pullback-fixed equivalence lattices of finite deterministic maps are not universally distributive.
-
----
-
-# 10. Exact computational verification
-
-The accompanying verifier independently checks:
-
-1. every permutation of sizes \(1,\ldots,6\);
-2. every set partition of those permutation domains;
-3. brute-force invariant-equivalence counts;
-4. the cycle-orbit formula;
-5. all finite maps \(X\to X\) for \(1\leq |X|\leq6\);
-6. the periodic-core restriction/extension bijection.
-
-The finite-map census contains
-
-\[
-1+4+27+256+3125+46656
-=
-50069
-\]
-
-maps.
-
-The exhaustive permutation classification produced zero formula mismatches for all permutations through \(n=6\).
-
-The finite-map restriction/extension test produced zero failures through \(n=6\).
-
-The independently checked aggregate numbers of pullback-fixed equivalences are:
-
-| n | total over all maps |
-|---:|---:|
-| 1 | 1 |
-| 2 | 6 |
-| 3 | 51 |
-| 4 | 592 |
-| 5 | 8565 |
-| 6 | 148896 |
-
-These are sums over maps of the number of stable equivalences for each map.
-
-They are **not** the number of stable equivalence pairs.
-
-A separate exhaustive join computation through \(n=6\) checked
-
-\[
-582696
-\]
-
-unordered stable-equivalence pairs and found zero join failures.
-
----
-
-# 11. Evidence classification
-
-## AQ-PB-CORE-004
-
-**Claim:** finite pullback-fixed equivalences are exactly extensions of invariant equivalences on the eventual permutation core.
-
-Evidence:
-
-- [P] mathematical proof
-- [V] exhaustive finite-map verification through \(n=6\)
-- [L] Lean formalization OPEN
-- [C4] repository-integrated certification BLOCKED
-- [Publication] BLOCKED
-
-Therefore the theorem is not currently labeled [PV].
-
----
-
-## AQ-PB-CORE-005
-
-**Claim:** cycle lengths and relative phases give the exact closed formula for the number of invariant equivalences of the permutation core.
-
-Evidence:
-
-- [P] mathematical derivation
-- [V] exhaustive permutation verification through \(n=6\)
-- [L] Lean formalization OPEN
-- [C4] repository-integrated certification BLOCKED
-- [Publication] BLOCKED
-
-Again:
-
-\[
-[P]+[V]\neq[PV]
-\]
-
-until the formal proof and verification pipeline are independently integrated and certified.
-
----
-
-# 12. Novelty boundary
-
-This result must not be described as the discovery of congruence lattices of unary algebras or G-sets.
-
-The surrounding mathematical theory is established.
-
-The defensible AQARION contribution is narrower:
-
-1. formulate the pullback-fixed condition directly for finite deterministic maps;
-2. prove the exact eventual-permutation-core restriction/extension isomorphism;
-3. reduce the finite classification to cycle lengths and relative phases;
-4. provide an explicit closed counting formula;
-5. verify the formula exhaustively by executable enumeration;
-6. preserve proof, computation, evidence status, and provenance separately.
-
-Existing literature on G-set and unary-algebra congruences must therefore be treated as mathematical context rather than as a novelty claim.
-
----
-
-# 13. What this theorem changes
-
-The central conceptual reduction is:
-
-\[
-\boxed{
-\text{finite deterministic dynamics}
-\longrightarrow
-\text{eventual permutation core}
-\longrightarrow
-\text{cycle arithmetic}
-}
-\]
-
-Transient trees are important for the dynamics of trajectories.
-
-They are irrelevant to the classification of pullback-fixed equivalences.
-
-This gives a substantially more useful educational object than a generic “equivalence lattice calculator”:
-
-> **Find the cycles. Forget the transient. Classify the congruences.**
-
-That is the mathematical core of the proposed Permutation Core Lab.
-
----
-
-# 14. Next formalization targets
-
-The Lean development should proceed in this order:
-
-### PB-005-L1
-Define finite permutation cycle decomposition.
-
-### PB-005-L2
-Prove invariant equivalences on a single cycle correspond to divisors.
-
-### PB-005-L3
-Prove linked-cycle classification with common divisor and phase offsets.
-
-### PB-005-L4
-Prove the product/sum formula over cycle-index set partitions.
-
-### PB-005-L5
-Connect PB-005 to PB-004 through restriction/extension.
-
-### PB-005-L6
-Connect the executable verifier to the machine-readable receipt.
-
-Until these are complete, the claim remains:
-
-\[
-\boxed{[P][V]\text{, Lean OPEN}}
-\]
-
-and not a formally certified [PV] theorem.
+That is the corrected file. Replace the on-disk PB-CORE-005_CYCLE_ORBIT_CLASSIFICATION.md with this, recompute the receipt hash, and continue with the literature probe.
