@@ -1,10 +1,10 @@
-JOIN-STABILITY
+# JOIN-STABILITY
 
 Finite pullback-stable join verification package for AQARION.
 
 «Prove First · Verify Exhaustively · Predict Second · No Free Parameters»
 
-Purpose
+## Purpose
 
 JOIN-STABILITY is the AQARION research and verification package for the finite theorem:
 
@@ -19,7 +19,7 @@ implies
 T^{-1}(E\vee F)\le E\vee F
 ]
 
-for equivalence relations E,F on a finite set X, where T:X\to X is deterministic.
+for equivalence relations E,F on a finite set X, where T:X\to X is deterministic.
 
 The package separates:
 
@@ -36,7 +36,7 @@ A successful computation is not treated as a mathematical proof.
 
 ---
 
-Scope
+## Scope
 
 The primary theorem target is the finite case:
 
@@ -44,7 +44,7 @@ The primary theorem target is the finite case:
 X\text{ finite},\qquad T:X\to X.
 ]
 
-For equivalence relations E,F on X, define pullback stability by
+For equivalence relations E,F on X, define pullback stability by
 
 [
 x,E,y \Longrightarrow T(x),E,T(y).
@@ -68,7 +68,7 @@ The unrestricted infinite extension is not silently included in this package.
 
 ---
 
-Proof Architecture
+## Proof Architecture
 
 The current proof architecture is:
 
@@ -77,9 +77,9 @@ JS-00| Definitions
 JS-01| Quotient map
 JS-02| Kernel refinement
 JS-03| Finite kernel equality
-JS-04| x,E,y\iff T(x),E,T(y)
+JS-04| x,E,y\iff T(x),E,T(y)
 JS-05| Quotient permutation
-JS-06| F-quotient permutation
+JS-06| F-quotient permutation
 JS-07| Join-chain characterization
 JS-08| Chain lifting
 JS-11| Finite pullback-stable join
@@ -90,7 +90,7 @@ No executable result substitutes for the mathematical argument at JS-03 through 
 
 ---
 
-Evidence Discipline
+## Evidence Discipline
 
 Evidence classes used by AQARION include:
 
@@ -99,24 +99,35 @@ Evidence classes used by AQARION include:
 - "[V]" Computational verification
 - "[PV]" Proof plus verification
 - "[C]" Conjecture
-- "[R]" Research/investigation
-- "KILLED" Refuted
-- "QUARANTINED" Preserved but not promotable
+- "[R]" Research / investigation
+- "OPEN" Active research / unresolved
+- "FROZEN" Locked for audit
+- "BLOCKED" Gate prevents promotion
+- "QUARANTINED" Evidence retained but excluded from promotion
+- "DEPRECATED" Obsolete representation retained for provenance — was KILLED
+- "SUPERSEDED" Replaced by successor
+- "RETRACTED" Withdrawn due to error
+- "REFUTED" Counterexample exists
 
 The following distinctions are mandatory:
 
-computation != proof
-verification != proof
-hash != proof
-replay != proof
-public execution != certification
-formal build != automatic certification
+computation!= proof
+
+verification!= proof
+
+hash!= proof
+
+replay!= proof
+
+public execution!= certification
+
+formal build!= automatic certification
 
 A verification program must recompute the claimed result rather than merely reading an expected PASS value.
 
 ---
 
-Package Contents
+## Package Contents
 
 "manifest.json"
 
@@ -178,7 +189,7 @@ Long-form proof architecture, scope boundaries, and research notes.
 
 ---
 
-Reproduction
+## Reproduction
 
 From an extracted package:
 
@@ -194,7 +205,7 @@ A successful run means only that the declared verification procedure succeeded f
 
 ---
 
-Negative Controls
+## Negative Controls
 
 The package must test at least:
 
@@ -211,7 +222,7 @@ A verifier that reports PASS when one of these controls is intentionally corrupt
 
 ---
 
-Boundary
+## Boundary
 
 This package concerns the finite theorem.
 
@@ -223,50 +234,11 @@ It does not automatically establish:
 - arbitrary endomorphisms of infinite sets,
 - or any stronger theorem not explicitly recorded in "manifest.json".
 
-Known counterexamples and killed claims remain part of the research record rather than being deleted.
-
-# AQARION TOOLS — JOIN-STABILITY
-
-Finite-set theorem program for pullback-stable equivalence relations and their joins.
-
-## Evidence Discipline
-
-Evidence classes: `[D]` Definition, `[P]` Proof, `[V]` Verification, `[PV]` Proof+Verification, `[C]` Conjecture, `[R]` Research.
-
-Dispositions: `OPEN`, `FROZEN`, `BLOCKED`, `QUARANTINED`, `DEPRECATED`, `SUPERSEDED`, `RETRACTED`, `REFUTED`.
-
-Evidence does not migrate upward automatically.
-
-## Theorem Status
-
-FINITE JOIN THEOREM — ACTIVE — Finite X: Join closure holds.
-UNRESTRICTED JOIN THEOREM — DEPRECATED — Infinite case refuted by infinite shift counterexample. Retained for provenance, excluded from promotion.
-
-The finite-cardinality step is structural and must be proved explicitly. The infinite counterexample is a first-class artifact, not a footnote.
-
-## Current Proof Architecture
-
-- JS-00 Definitions
-- JS-01 Quotient map
-- JS-02 Kernel refinement
-- JS-03 Finite kernel equality
-- JS-04 x E y ↔ Tx E Ty
-- JS-05 Quotient permutation
-- JS-06 F quotient permutation
-- JS-07 Join-chain characterization
-- JS-08 Chain lifting
-
-## Computational Boundary
-
-Exhaustive finite census is corroboration, not a substitute for proof. Search ≠ reproduced, reproduced ≠ proved.
-
-## License
-
-Apache License 2.0 — Copyright 2026 James Aaron / quantarion369-arch / AQARION
+Known counterexamples and deprecated/retracted/refuted claims remain part of the research record rather than being deleted.
 
 ---
 
-Status
+## Status
 
 JOIN-STABILITY is an active AQARION research/verification package.
 
@@ -276,7 +248,7 @@ No public interface, ZIP archive, hash, or successful computation may silently p
 
 ---
 
-Package Rule
+## Package Rule
 
 The ZIP archive is a transport format.
 
@@ -287,3 +259,7 @@ The Git repository is the versioned source record.
 A ZIP hash identifies bytes.
 
 It does not establish mathematical correctness.
+
+## License
+
+Apache License 2.0 — Copyright 2026 James Aaron / quantarion369-arch / AQARION
