@@ -20,9 +20,3 @@ AQARION-QUANTARION-AI/
             ├── challenge_001.json
             ├── challenge_002.json
             └── challenge_003.json
-PB-CORE/
-├── PB-CORE-005_CYCLE_ORBIT_CLASSIFICATION.md
-├── PB-CORE-005_RUN_REPORT.md
-├── PB-CORE-005_RECEIPT.json
-├── verify_cycle_classification.py
-└── PERMUTATION_CORE_LAB.md
