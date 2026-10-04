@@ -98,8 +98,17 @@ Evidence class describes the kind of research object being recorded.
 
 Evidence class does not itself determine promotion.
 
-`[V]` means that a verification artifact exists. It does not mean the
-theorem is proved, the scope is universal, or the result is publication-ready.
+For example:
+
+`[V]` means that a verification artifact exists.
+
+It does not mean:
+
+- the underlying theorem has been proved;
+- the implementation is mathematically correct;
+- the scope is universal;
+- the result is formally verified;
+- the claim is publication-ready.
 
 ---
 
@@ -119,6 +128,8 @@ Disposition describes the current state of a claim or research object.
 | `REFUTED` | A counterexample or contradiction establishes that the stated claim is false |
 
 These dispositions are deliberately distinct.
+
+In particular:
 
 - `REFUTED` is not the same as `RETRACTED`;
 - `RETRACTED` is not the same as `SUPERSEDED`;
@@ -145,11 +156,15 @@ The canonical vocabulary is:
 - `BLOCKED`
 - `OPEN`
 
-Historical artifacts may contain older terminology. Historical wording must not
-be silently rewritten during provenance reconstruction.
+Historical artifacts may contain older terminology.
 
-When an old record is migrated into the current model, the migration must
-state the mapping explicitly:
+Historical wording must not be silently rewritten when doing provenance
+reconstruction.
+
+When an old record is migrated into the current ClaimLock model,
+the migration must state the mapping explicitly.
+
+Example:
 
 ```text
 legacy status:
