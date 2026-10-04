@@ -1,4 +1,3 @@
-
 AQARION-TOOLS
 
 Its purpose is not to absorb every research project. It is the reusable infrastructure layer:
@@ -33,8 +32,6 @@ Facebook
 
 And importantly, don't fork more things into the new personal repo just to populate it. Make it an original repository with its own history.
 
-Here is the transition README I would use as the starting point.
-
 AQARION-TOOLS
 
 AQARION reusable research, verification, provenance, and reproducibility infrastructure
@@ -53,15 +50,15 @@ Why This Repository Exists
 
 AQARION has accumulated several independent infrastructure components:
 
-- ClaimLock
-- ProofGym
-- JOIN-STABILITY verification
-- replay and reproducibility tooling
-- evidence/claim ledgers
-- verification scripts
-- research skills
-- provenance utilities
-- executable research workflows
+ClaimLock
+ProofGym
+JOIN-STABILITY verification
+replay and reproducibility tooling
+evidence/claim ledgers
+verification scripts
+research skills
+provenance utilities
+executable research workflows
 
 These tools should no longer be scattered across unrelated research repositories.
 
@@ -71,21 +68,21 @@ These tools should no longer be scattered across unrelated research repositories
 
 Architecture
 
-                         AQARION
+AQARION
                             │
           ┌─────────────────┴─────────────────┐
-          │                                   │
-     RESEARCH LAYER                       TOOLING LAYER
-          │                                   │
-   Mathematical claims                  AQARION-TOOLS
-   FDS research                         │
-   Kaprekar research                    ├── ClaimLock
-   J30 research                         ├── ProofGym
-   other research                       ├── JOIN-STABILITY
-          │                             ├── Replay
-          │                             ├── Verification
-          │                             ├── Evidence
-          │                             └── Skills
+          │ │
+     RESEARCH LAYER TOOLING LAYER
+          │ │
+   Mathematical claims AQARION-TOOLS
+   FDS research │
+   Kaprekar research ├── ClaimLock
+   J30 research ├── ProofGym
+   other research ├── JOIN-STABILITY
+          │ ├── Replay
+          │ ├── Verification
+          │ ├── Evidence
+          │ └── Skills
           │
           └───────────────┬───────────────────┘
                           │
@@ -94,9 +91,9 @@ Architecture
                   Git + CI + Receipts
                           │
              ┌────────────┴────────────┐
-             │                         │
-       Public Applications       Research Objects
-       Replit / HF               RO-Crate / archives
+             │ │
+       Public Applications Research Objects
+       Replit / HF RO-Crate / archives
 
 ---
 
@@ -104,15 +101,19 @@ Evidence Discipline
 
 AQARION-TOOLS follows the AQARION evidence taxonomy.
 
-Code| Meaning
-"[D]"| Definition
-"[P]"| Mathematical proof
-"[V]"| Exhaustive computational verification
-"[PV]"| Proof + verification
-"[C]"| Conjecture
-"[R]"| Research / investigation
-"KILLED"| Refuted or disproved
-"QUARANTINED"| Preserved but not currently promotable
+| Code | Meaning |
+|---|---|
+| [D] | Definition |
+| [P] | Mathematical proof |
+| [V] | Exhaustive computational verification |
+| [PV] | Proof + verification |
+| [C] | Conjecture |
+| [R] | Research / investigation |
+| DEPRECATED | Refuted or disproved — retained for provenance, excluded from promotion |
+| SUPERSEDED | Replaced by successor claim |
+| RETRACTED | Withdrawn due to error |
+| REFUTED | Counterexample exists |
+| QUARANTINED | Preserved but not currently promotable |
 
 Evidence does not migrate upward automatically.
 
@@ -148,17 +149,13 @@ reproducibility receipt
   ↓
 promotion decision
 
----
-
 ProofGym
 
 ProofGym is the interactive mathematical verification surface.
 
 Current primary challenge:
 
-JOIN-001
-
-Pullback-Stable Equivalence Relations Are Closed Under Join on Finite Sets
+JOIN-001 — Pullback-Stable Equivalence Relations Are Closed Under Join on Finite Sets
 
 ProofGym is designed to expose the actual mathematical computation rather than simulate a proof environment.
 
@@ -170,34 +167,23 @@ It should distinguish:
 
 The application must never manufacture a certification result merely because a computation succeeds.
 
----
-
 JOIN-STABILITY
 
 JOIN-STABILITY is the dedicated research lane for the theorem:
 
-[
-T^{-1}(E)\le E,\qquad
-T^{-1}(F)\le F
-]
-
-on a finite set X, with target:
-
-[
-T^{-1}(E\vee F)\le E\vee F.
-]
+T^{-1}(E) ≤ E, T^{-1}(F) ≤ F on finite X, target: T^{-1}(E ∨ F) ≤ E ∨ F
 
 Current proof architecture includes:
 
-JS-00  Definitions
-JS-01  Quotient map
-JS-02  Kernel refinement
-JS-03  Finite kernel equality
-JS-04  x E y ↔ Tx E Ty
-JS-05  Quotient permutation
-JS-06  F quotient permutation
-JS-07  Join-chain characterization
-JS-08  Chain lifting
+JS-00 Definitions
+JS-01 Quotient map
+JS-02 Kernel refinement
+JS-03 Finite kernel equality
+JS-04 x E y ↔ Tx E Ty
+JS-05 Quotient permutation
+JS-06 F quotient permutation
+JS-07 Join-chain characterization
+JS-08 Chain lifting
 
 The finite-cardinality step is structural and must be proved explicitly.
 
@@ -205,54 +191,34 @@ Computational searches are corroboration, not substitutes for the theorem proof.
 
 The infinite case is treated separately because finiteness is expected to be essential.
 
----
-
 Replay
 
 Replay provides deterministic reproduction of computational research.
 
 Target chain:
 
-Question
-   ↓
-Conjecture
-   ↓
-Counterexample?
-   ↓
-Correction
-   ↓
-Computation
-   ↓
-Proof
-   ↓
-Verification
-   ↓
-Hash
-   ↓
-Receipt
+Question → Conjecture → Counterexample? → Correction → Computation → Proof → Verification → Hash → Receipt
 
 A replayable result should identify:
 
-- source state
-- inputs
-- algorithm
-- parameters
-- execution
-- output
-- verification status
-- hashes
-- environment where relevant
-
----
+source state
+inputs
+algorithm
+parameters
+execution
+output
+verification status
+hashes
+environment where relevant
 
 Skills
 
 Reusable AQARION research skills belong here when they are:
 
-- deterministic
-- documented
-- independently executable
-- useful across multiple research repositories
+deterministic
+documented
+independently executable
+useful across multiple research repositories
 
 Skills should not become undocumented prompt collections.
 
@@ -279,17 +245,10 @@ Reusable infrastructure belongs here.
 
 Examples:
 
-AQARION mathematical repository
-    → theorem / experiment / dataset / paper
-
-AQARION-TOOLS
-    → reusable verifier / replay / provenance / tooling
-
-ProofGym
-    → interactive application
-
-Hugging Face / Replit
-    → deployed public execution surface
+AQARION mathematical repository → theorem / experiment / dataset / paper
+AQARION-TOOLS → reusable verifier / replay / provenance / tooling
+ProofGym → interactive application
+Hugging Face / Replit → deployed public execution surface
 
 This separation prevents infrastructure from obscuring mathematical provenance.
 
@@ -317,32 +276,32 @@ Repositories
 
 Research
 
-- AQARION / Quantarion finite dynamical systems
-- Kaprekar spectral geometry
-- JOIN-STABILITY research
-- J30 / Universal Closure research
-- other specialized mathematical projects
+AQARION / Quantarion finite dynamical systems
+Kaprekar spectral geometry
+JOIN-STABILITY research
+J30 / Universal Closure research
+other specialized mathematical projects
 
 Tooling
 
-- "AQARION-TOOLS"
+"AQARION-TOOLS"
 
 Applications
 
-- AQARION ProofGym
+AQARION ProofGym
 
 Research objects
 
-- RO-Crate / provenance infrastructure
+RO-Crate / provenance infrastructure
 
 Public execution
 
-- Replit
-- Hugging Face Spaces
+Replit
+Hugging Face Spaces
 
 Dissemination
 
-- public social channels
+public social channels
 
 The source repository and its verification artifacts remain authoritative over screenshots, posts, and deployed interfaces.
 
@@ -352,16 +311,16 @@ Development Standard
 
 Every new tool should answer:
 
-1. What problem does it solve?
-2. What is its exact input/output contract?
-3. Is the computation deterministic?
-4. How is it tested?
-5. How is it reproduced?
-6. What evidence does it produce?
-7. What can make its result invalid?
-8. Where is its source?
-9. Where is its verification?
-10. What is explicitly not certified?
+What problem does it solve?
+What is its exact input/output contract?
+Is the computation deterministic?
+How is it tested?
+How is it reproduced?
+What evidence does it produce?
+What can make its result invalid?
+Where is its source?
+Where is its verification?
+What is explicitly not certified?
 
 No tool should receive a stronger status merely because it has a polished interface.
 
@@ -372,32 +331,19 @@ Initial Build Order
 The transition is intentionally staged.
 
 PHASE 1
-AQARION-TOOLS repository
-README
-LICENSE
-repository policy
-basic package structure
-CI
+AQARION-TOOLS repository, README, LICENSE, repository policy, basic package structure, CI
 
 PHASE 2
-ClaimLock
-Replay
-shared evidence/provenance schemas
+ClaimLock, Replay, shared evidence/provenance schemas
 
 PHASE 3
-JOIN-STABILITY
-finite verifier
-proof dependency graph
-adversarial fixtures
-verification receipts
+JOIN-STABILITY, finite verifier, proof dependency graph, adversarial fixtures, verification receipts
 
 PHASE 4
-ProofGym
-connect application to the reusable tooling layer
+ProofGym, connect application to the reusable tooling layer
 
 PHASE 5
-shared CLI/package interfaces
-reusable research skills
+shared CLI/package interfaces, reusable research skills
 
 PHASE 6
 RO-Crate/export/reproducibility integration
@@ -424,7 +370,7 @@ no hard-coded PASS
 
 For mathematical claims:
 
-[D] → [P] → [V] → [PV]
+→ → → [PV][D][P][V]
 
 is not an automatic promotion pipeline.
 
@@ -434,17 +380,17 @@ Each evidence transition requires its own justification.
 
 Current Transition Status
 
-JASKSG9 historical lineage       PRESERVED
-quantarion369-arch namespace     ACTIVE
-forked research repositories     PRESERVED
-original tooling repository      NEXT
-ProofGym                         IMPLEMENTED
-JOIN-STABILITY                   ACTIVE RESEARCH
-ClaimLock                        CORE TOOL
-Replay                           CORE TOOL
-Skills                           CORE TOOLING
-CI                               REQUIRED
-Reproducibility                  REQUIRED
+JASKSG9 historical lineage — PRESERVED
+quantarion369-arch namespace — ACTIVE
+forked research repositories — PRESERVED
+original tooling repository — NEXT
+ProofGym — IMPLEMENTED
+JOIN-STABILITY — ACTIVE RESEARCH
+ClaimLock — CORE TOOL
+Replay — CORE TOOL
+Skills — CORE TOOLING
+CI — REQUIRED
+Reproducibility — REQUIRED
 
 ---
 
@@ -459,3 +405,9 @@ And:
 «Prove First · Verify Exhaustively · Predict Second · No Free Parameters.»
 
 ---
+
+License
+
+Apache License 2.0 — Apache-2.0
+Copyright 2026 James Aaron / quantarion369-arch / AQARION Project
+http://www.apache.org/licenses/LICENSE-2.0
