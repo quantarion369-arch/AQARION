@@ -1,12 +1,14 @@
-Claim Audit Skill
+# Claim Audit Skill
 
-Purpose
+## Purpose
 
-Audit a mathematical claim before it is promoted, published, or attached to a stronger evidence label.
+Audit a mathematical claim before it is promoted, published, or attached to
+a stronger evidence label.
 
-This skill is infrastructure, not a proof engine. It records the actual evidence boundary.
+This skill is infrastructure, not a proof engine. It records the actual
+evidence boundary.
 
-Inputs
+## Inputs
 
 - claim identifier, if one exists;
 - exact mathematical statement;
@@ -16,7 +18,7 @@ Inputs
 - formalization status, if any;
 - known counterexamples, corrections, or retractions.
 
-Outputs
+## Outputs
 
 A claim-audit record containing:
 
@@ -30,7 +32,7 @@ A claim-audit record containing:
 8. invalidation history;
 9. promotion recommendation limited to the evidence actually present.
 
-Evidence classes
+## Evidence classes
 
 - "[D]" Definition
 - "[P]" Mathematical proof
@@ -38,46 +40,65 @@ Evidence classes
 - "[PV]" Proof + verification
 - "[C]" Conjecture
 - "[R]" Research / exploratory result
-- "KILLED" Refuted or invalidated
-- "QUARANTINED" Evidence retained but not currently promoted
+- "OPEN" Active research / unresolved
+- "FROZEN" Locked for audit
+- "BLOCKED" Gate prevents promotion
+- "QUARANTINED" Evidence retained but excluded from promotion
+- "DEPRECATED" Obsolete representation retained for provenance — was KILLED
+- "SUPERSEDED" Replaced by successor
+- "RETRACTED" Withdrawn due to error
+- "REFUTED" Counterexample exists
 
 Evidence classes do not upgrade automatically.
 
-Procedure
+## Procedure
 
 1. Normalize the statement.
 2. List every hypothesis explicitly.
 3. Separate mathematical proof from computation.
 4. Record the exact finite domain for exhaustive claims.
-5. Check whether the computation is independent of the producer implementation when independence is claimed.
+5. Check whether the computation is independent of the producer
+implementation when independence is claimed.
 6. Check for negative controls when a verifier exists.
-7. Check formal files for unfinished proof markers such as "sorry" or "admit" when formal completion is claimed.
+7. Check formal files for unfinished proof markers such as "sorry" or
+"admit" when formal completion is claimed.
 8. Search the correction/retraction ledger for superseded statements.
 9. Record what the evidence does not establish.
-10. Preserve the original claim text when the result is killed or quarantined.
+10. Preserve the original claim text when the result is deprecated /
+retracted / refuted / quarantined.
 
-Failure conditions
+## Failure conditions
 
 The audit must stop or downgrade the claim when:
 
 - the statement is broader than the verified domain;
 - a proof depends on an unproved lemma;
 - a computation is presented as proof;
-- the verifier imports the producer implementation when independence is required;
+- the verifier imports the producer implementation when independence is
+required;
 - a negative control is expected but absent;
-- formalization contains unfinished obligations while formal completion is claimed;
+- formalization contains unfinished obligations while formal completion is
+claimed;
 - the claim conflicts with a known correction or counterexample.
 
-Required principle
+## Required principle
 
-SEARCH != PROOF
-REPRODUCED != MINIMAL
-MINIMAL != PROVED
-PROVED != FORMALLY VERIFIED
-PUBLIC != CERTIFIED
+SEARCH!= PROOF
 
-Evidence status
+REPRODUCED!= MINIMAL
+
+MINIMAL!= PROVED
+
+PROVED!= FORMALLY VERIFIED
+
+PUBLIC!= CERTIFIED
+
+## Evidence status
 
 [R] Research infrastructure specification.
 
 The skill itself does not certify any mathematical claim.
+
+## License
+
+Apache License 2.0 — Copyright 2026 James Aaron / quantarion369-arch / AQARION
