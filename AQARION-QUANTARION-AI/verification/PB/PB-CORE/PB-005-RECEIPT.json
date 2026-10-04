@@ -1,8 +1,8 @@
-
 {
   "claim_id": "AQ-PB-CORE-005",
   "title": "Cycle-Orbit Classification of Pullback-Fixed Equivalences",
   "program": "AQARION/PB-CORE",
+
   "status": {
     "proof": "P",
     "verification": "V",
@@ -10,99 +10,84 @@
     "repository_certification": "BLOCKED",
     "publication": "BLOCKED"
   },
+
   "theorem": {
-    "statement": "For a finite permutation with cycle lengths m_i, invariant equivalences are classified by a partition of the cycle-index set, a common divisor d of the cycle lengths within each connected component, and relative phases modulo d.",
-    "count_formula": "sum over set partitions S of {1,...,r} of product over components S of sum_{d | gcd(m_i : i in S)} d^(|S|-1)"
+    "statement": "For a finite deterministic map T, pullback-fixed equivalences are in lattice isomorphism with invariant equivalences of the eventual permutation core.",
+    "formula": "sum over set partitions S of the cycle-index set of product over components S of sum_{d | gcd(m_i : i in S)} d^(|S|-1)"
   },
-  "core_reduction": {
-    "claim_id": "AQ-PB-CORE-004",
-    "statement": "For finite T:X->X, pullback-fixed equivalences on X are in lattice isomorphism with invariant equivalences of the eventual periodic permutation core P=Per(T).",
-    "proof_status": "P",
-    "verification_status": "V",
-    "lean_status": "OPEN"
-  },
-  "execution": {
-    "execution_mode": "independently_executed_in_chat_environment",
-    "language": "Python",
-    "exact_integer_arithmetic": true,
-    "floating_point_used": false,
-    "external_network_required": false,
-    "current_repository_ci_executed": false
-  },
-  "permutation_verification": {
-    "domain_sizes": [1, 2, 3, 4, 5, 6],
-    "permutations_checked": 873,
-    "formula_mismatches": 0
-  },
-  "finite_map_core_verification": {
-    "domain_sizes": [1, 2, 3, 4, 5, 6],
-    "maps_checked": 50069,
-    "restriction_failures": 0,
-    "extension_failures": 0,
-    "surjectivity_failures": 0
-  },
-  "aggregate_stable_equivalence_counts": {
-    "1": 1,
-    "2": 6,
-    "3": 51,
-    "4": 592,
-    "5": 8565,
-    "6": 148896
-  },
-  "join_verification": {
-    "domain_sizes": [1, 2, 3, 4, 5, 6],
-    "stable_pairs_checked": 582696,
+
+  "canonical_verification": {
+    "permutations_checked_n_le_6": 873,
+    "formula_mismatches": 0,
+    "maps_checked_n_le_6": 50069,
+    "core_restriction_failures": 0,
+    "core_extension_failures": 0,
+    "aggregate_stable_equivalence_counts": {
+      "1": 1,
+      "2": 6,
+      "3": 51,
+      "4": 592,
+      "5": 8565,
+      "6": 148896
+    },
+    "stable_pairs_checked_n_le_6": 582696,
     "join_failures": 0
   },
-  "examples": {
-    "single_cycle_1": 1,
-    "single_cycle_2": 2,
-    "single_cycle_3": 2,
-    "single_cycle_4": 3,
-    "single_cycle_6": 4,
-    "cycles_2_2": 7,
-    "cycles_2_3": 5,
-    "cycles_3_3": 8,
-    "cycles_2_4": 9,
-    "cycles_4_4": 16
+
+  "adversarial_extension": {
+    "all_permutations_n_7": 5040,
+    "n_7_formula_mismatches": 0,
+    "random_permutations": {
+      "n_8": {
+        "samples": 500,
+        "mismatches": 0
+      },
+      "n_9": {
+        "samples": 500,
+        "mismatches": 0
+      },
+      "n_10": {
+        "samples": 500,
+        "mismatches": 0
+      }
+    },
+    "n_12_bruteforce": "INTERRUPTED_NO_RESULT"
   },
-  "correction_record": [
+
+  "corrections": [
     {
-      "item": "(2,4) cycle-type count",
+      "item": "cycle-type (2,4)",
       "old_value": 7,
       "correct_value": 9,
-      "reason": "2*3 + (1+2) = 9",
-      "action": "superseded"
+      "derivation": "2*3 + (1+2) = 9",
+      "status": "CORRECTED"
+    },
+    {
+      "item": "surjectivity_failures field",
+      "action": "RENAME",
+      "replacement": "core_restriction_roundtrip_failures",
+      "reason": "The test checks restriction-extension roundtrip equality, not surjectivity of T."
     }
   ],
-  "novelty_boundary": {
-    "not_claimed": [
-      "discovery of congruence lattices of unary algebras",
-      "discovery of G-set congruence theory",
-      "universal classification of all unary algebra congruence lattices"
-    ],
-    "claimed_scope": [
-      "finite deterministic pullback-fixed equivalence formulation",
-      "eventual permutation-core restriction/extension theorem",
-      "explicit cycle-length and phase counting formula",
-      "exhaustive executable verification and provenance"
-    ]
+
+  "literature_boundary": {
+    "unary_algebra_congruence_theory": "ESTABLISHED",
+    "monounary_algebra_congruence_theory": "ESTABLISHED",
+    "permutation_cycle_congruence_divisor_structure": "ESTABLISHED",
+    "exact_PB_CORE_005_formula_novelty": "OPEN",
+    "publication_novelty_claim": "BLOCKED_PENDING_LITERATURE_COMPARISON"
   },
+
   "known_limits": [
-    "Lean formalization is not complete.",
-    "Current repository HEAD CI certification is not asserted by this receipt.",
-    "Finite exhaustive verification is not a substitute for the general proof.",
-    "Literature novelty requires careful comparison with unary-algebra and G-set congruence theory."
+    "Lean formalization is incomplete.",
+    "Current repository CI certification is not asserted by this receipt.",
+    "Finite exhaustive verification does not replace proof.",
+    "The n=12 brute-force extension produced no result.",
+    "The exact novelty of the phase-counting formula has not been established."
   ],
-  "reproducibility_contract": {
-    "verifier": "PB-CORE/verify_cycle_classification.py",
-    "expected_formula_mismatches": 0,
-    "expected_core_restriction_failures": 0,
-    "expected_core_extension_failures": 0,
-    "expected_join_failures": 0
-  },
+
   "hashes": {
-    "status": "NOT_YET_COMPUTED",
+    "status": "RECOMPUTE_AFTER_EDIT",
     "sha256_manifest": null
   }
 }
