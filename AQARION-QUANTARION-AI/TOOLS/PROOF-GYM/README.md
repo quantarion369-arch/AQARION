@@ -339,6 +339,97 @@ The application should come after the verifier.
 
 Not the other way around.
 
+# AQARION TOOLS — PROOF-GYM
+
+Executable mathematical verification surface for AQARION research.
+
+ProofGym is a tooling/application layer for exposing finite mathematical
+claims through exact computation, structured witnesses, verification
+procedures, and reproducible evidence.
+
+It is not a replacement for mathematical proof.
+Its purpose is to make computational evidence inspectable.
+
+---
+
+## Purpose
+
+ProofGym connects a mathematical claim to an executable verification workflow:
+
+MATHEMATICAL CLAIM → DEFINITIONS / INPUTS → EXACT COMPUTATION →
+STRUCTURED RESULT → VERIFICATION → EVIDENCE RECEIPT
+
+Where a mathematical proof exists, the proof remains a separate evidence artifact.
+
+---
+
+## Evidence Separation
+
+ProofGym uses two distinct semantic dimensions. They must not be conflated.
+
+### Evidence class
+
+| Code | Meaning |
+|---|---|
+| `[D]` | Definition |
+| `[P]` | Mathematical proof |
+| `[V]` | Exhaustive or independently reproducible verification |
+| `[PV]` | Proof + verification |
+| `[C]` | Conjecture |
+| `[R]` | Research / investigation |
+
+Evidence class describes what kind of object is being recorded. It does not determine promotion.
+
+### Claim disposition
+
+| Disposition | Meaning |
+|---|---|
+| `OPEN` | Research remains active or unresolved |
+| `FROZEN` | Artifact/version locked for audit |
+| `BLOCKED` | Promotion/publication gate not satisfied |
+| `QUARANTINED` | Evidence retained but excluded from promotion |
+| `DEPRECATED` | Obsolete representation retained for provenance |
+| `SUPERSEDED` | Replaced by successor |
+| `RETRACTED` | Withdrawn due to error |
+| `REFUTED` | Counterexample or contradiction exists |
+
+COMPUTATION != PROOF
+VERIFICATION != FORMAL PROOF
+FORMAL PROOF != AUTOMATIC CERTIFICATION
+PUBLIC RESULT != CERTIFIED RESULT
+
+---
+
+## What ProofGym Does and Does Not Do
+
+Does:
+- expose exact finite instances;
+- produce structured witnesses;
+- run deterministic verification;
+- record adversarial fixtures;
+- emit verification receipts with hashes.
+
+Does not:
+- promote a claim merely because a computation succeeded;
+- manufacture a certificate;
+- replace independent proof review;
+- treat a Lean build with `sorry` as a completed formal proof.
+
+---
+
+## Relationship to ClaimLock
+
+ProofGym produces verification artifacts. ClaimLock records what those
+artifacts mean for the claim's disposition, scope, and promotion gate.
+
+## Current Focus
+
+JOIN-001: Pullback-stable equivalence relations are closed under join on finite sets.
+
+## License
+
+Apache License 2.0 — Copyright 2026 James Aaron / quantarion369-arch / AQARION
+
 Current Status
 
 Directory: "AQARION-QUANTARION-AI/TOOLS/PROOF-GYM/"
