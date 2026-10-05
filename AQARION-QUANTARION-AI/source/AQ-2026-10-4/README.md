@@ -87,3 +87,43 @@ Add requirements.txt with numpy
 Principle
 
 Prove First · Verify Exhaustively · Predict Second · No Free Parameters
+
+AQ-2026-10-4 — Corrected Package Boundary
+What this package actually proves (H_AQ-001C)
+This package proves congruence join closure:
+
+E, F are congruences (E ⊆ T*E)  =>  E ∨ F is a congruence
+where is_congruence = x~y => T(x)~T(y).
+
+That theorem is valid and the n≤4 census (7440 joins, 0 fails) supports it.
+
+What it does NOT prove
+It does NOT prove PB-Join closure:
+
+T*E ⊆ E, T*F ⊆ F  =>  T*(E ∨ F) ⊆ E ∨ F
+where is_pb_stable = T(x)~T(y) => x~y.
+
+These are opposite implications:
+
+congruence: E ⊆ T*E
+PB-stable: T*E ⊆ E
+rigid: T*E = E
+Fixed defects in this commit
+aqarion/joins.py: from.stability → from .stability (was syntax error)
+Test imports: from src.aqarion... → from aqarion... (no src/ dir in live tree)
+Removed stale duplicate-file statement from README
+Added is_pb_stable as distinct predicate
+Renamed hypothesis to H_AQ-001C (congruence join), separate H_AQ-001_PB
+Reproduction
+cd AQARION-QUANTARION-AI/source/AQ-2026-10-4
+pip install -r requirements.txt
+PYTHONPATH=. python -m pytest tests/test_join_stability_property.py -v
+bash reproduce.sh
+Receipt status
+Computational result (n≤4 congruence join): VERIFIED (7440 joins)
+Cryptographic provenance: OPEN — need real SHA256 of source + env, not labels
+PB-Join theorem: OPEN — requires new census with is_pb_stable predicate
+H_AQ-001A defect nilpotency D²=0: PASS (trivial from P²=P)
+Next
+Create separate experiment AQ-2026-10-5 for PB-Join with predicate T*E ⊆ E
+Add machine-generated result artifact + SHA256 binding for provenance
