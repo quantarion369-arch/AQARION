@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
-pip install -q -r requirements.txt
+echo "AQ-2026-10-4 — Corrected reproduction"
+echo "H_AQ-001C = congruence join closure (E ⊆ T*E)"
+echo "H_AQ-001_PB = PB-Join (T*E ⊆ E) — OPEN"
+pip install -r requirements.txt -q
 PYTHONPATH=. python -m pytest tests/test_join_stability_property.py -v
-echo "Receipt: $SCRIPT_DIR/verification/receipts/H_AQ-001_n4_receipt.json"
-ls -lh verification/receipts/
+echo "Done — see README for distinction"
