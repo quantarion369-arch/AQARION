@@ -2,8 +2,7 @@ name: Verify AQ-2026-10-4 H_AQ-001
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -12,5 +11,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install -r AQARION-QUANTARION-AI/source/AQ-2026-10-4/requirements.txt
-      - run: PYTHONPATH=AQARION-QUANTARION-AI/source/AQ-2026-10-4 python -m pytest AQARION-QUANTARION-AI/source/AQ-2026-10-4/tests/test_join_stability_property.py -v
+      - name: Install
+        run: pip install numpy pytest
+      - name: Test n<=4 - 7440 joins
+        run: PYTHONPATH=AQARION-QUANTARION-AI/source/AQ-2026-10-4 python -m pytest AQARION-QUANTARION-AI/source/AQ-2026-10-4/tests/test_join_stability_property.py -v
