@@ -11,6 +11,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Show real folder spelling
+        run: |
+          pwd
+          ls -la
+          ls -la AQARION-QUANTARION-AI || echo "NO AQARION-QUANTARION-AI"
+          ls -la AQARION-QUANTARION-AI/source || echo "NO source"
+          ls -la AQARION-QUANTARION-AI/source/AQ-2026-10-4 || echo "NO AQ-2026-10-4"
       - name: Install deps
         working-directory: AQARION-QUANTARION-AI/source/AQ-2026-10-4
         run: pip install numpy pytest
