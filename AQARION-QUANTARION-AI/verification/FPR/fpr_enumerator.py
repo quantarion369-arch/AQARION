@@ -1,30 +1,40 @@
-from math import gcd, prod
+"""
+AQ-FPR-006 — Invariant Partition Enumerator under a Permutation
+
+Formula:
+    W(B) = sum_{d | gcd(c_i : i in B)} d^(|B|-1)
+
+    N(lambda) = sum_{pi in Pi([r])} prod_{B in pi} W(B)
+
+EVIDENCE BOUNDARY (must match README ledger)
+    Mathematical status:               proof candidate
+    Internal corroboration:            distinct route only
+    External independent reproduction: NOT ESTABLISHED
+    Literature:                        OPEN
+    Lean:                              OPEN
+    C4:                                BLOCKED
+    Publication:                       BLOCKED
+
+This script MUST NOT print a status string stronger than the ledger above.
+
+The formula and the direct enumeration route are separate computational
+routes within the same source artifact. This is internal corroboration only;
+it is NOT external independent reproduction.
+
+The direct enumeration is retained as an audit oracle; it is not part of
+the mathematical proof.
+"""
+from math import gcd
 
 
-# ============================================================
-# AQ-FPR-006
-# Invariant Partition Enumerator under a Permutation
-#
-# Formula:
-#
-#   W(B) = sum_{d | gcd(c_i : i in B)} d^(|B|-1)
-#
-#   N(lambda) =
-#       sum_{pi in Pi([r])} prod_{B in pi} W(B)
-#
-# Independent brute-force verification is retained only as
-# an audit oracle; it is not part of the theorem.
-# ============================================================
-
+# ---------------------------------------------------------------- formula side
 
 def divisors(n):
     return [d for d in range(1, n + 1) if n % d == 0]
 
 
 def cycle_type_part_weight(cycle_lengths):
-    """
-    W(B) for a nonempty set B of sigma-cycles.
-    """
+    """W(B) for a nonempty set B of sigma-cycles."""
     g = 0
     for c in cycle_lengths:
         g = gcd(g, c)
@@ -35,10 +45,7 @@ def cycle_type_part_weight(cycle_lengths):
 
 
 def set_partitions(r):
-    """
-    All set partitions of {0,...,r-1} in restricted-growth form.
-    Each partition is returned as a list of blocks.
-    """
+    """All set partitions of {0,...,r-1} via restricted-growth strings."""
     if r == 0:
         yield []
         return
@@ -64,9 +71,7 @@ def set_partitions(r):
 
 
 def formula_count(cycle_type):
-    """
-    Exact theorem formula.
-    """
+    """Candidate formula under audit."""
     total = 0
 
     for pi in set_partitions(len(cycle_type)):
@@ -81,10 +86,10 @@ def formula_count(cycle_type):
     return total
 
 
+# ---------------------------------------------------------------- direct enumeration route
+
 def build_permutation(cycle_type):
-    """
-    Canonical permutation realizing a cycle type.
-    """
+    """Canonical permutation realizing a cycle type."""
     n = sum(cycle_type)
     perm = list(range(n))
 
@@ -100,9 +105,7 @@ def build_permutation(cycle_type):
 
 
 def partitions_rgs(n):
-    """
-    All set partitions of {0,...,n-1}.
-    """
+    """All set partitions of {0,...,n-1}."""
     if n == 0:
         yield []
         return
@@ -133,9 +136,7 @@ def partitions_rgs(n):
 
 
 def invariant_partition(blocks, permutation):
-    """
-    Exact sigma-invariance test.
-    """
+    """Exact sigma-invariance test."""
     mapped = []
 
     for block in blocks:
@@ -147,9 +148,7 @@ def invariant_partition(blocks, permutation):
 
 
 def brute_force_count(cycle_type):
-    """
-    Independent oracle.
-    """
+    """Direct invariant-partition enumeration audit oracle."""
     permutation = build_permutation(cycle_type)
 
     count = 0
@@ -161,10 +160,10 @@ def brute_force_count(cycle_type):
     return count
 
 
+# ---------------------------------------------------------------- driver
+
 def integer_partitions(n, maximum=None):
-    """
-    Integer partitions of n in nonincreasing order.
-    """
+    """Integer partitions of n in nonincreasing order."""
     if n == 0:
         yield ()
         return
@@ -182,7 +181,6 @@ def verify(n_max=7):
 
     for n in range(1, n_max + 1):
         for cycle_type in integer_partitions(n):
-
             formula = formula_count(cycle_type)
             brute = brute_force_count(cycle_type)
 
@@ -205,5 +203,20 @@ if __name__ == "__main__":
 
     print("AQ-FPR-006")
     print(f"CYCLE_TYPE_CASES={cases}")
-    print("FORMULA_VS_BRUTE_FORCE=PASS")
-    print("STATUS=THEOREM_SUPPORTED_AND_INDEPENDENTLY_REPRODUCED")
+    print("FORMULA_VS_DIRECT_ENUMERATION=PASS")
+
+    EMITTED_STATUS = "COMPUTATIONALLY_CORROBORATED"
+
+    ALLOWED_STATUSES = {
+        EMITTED_STATUS,
+    }
+
+    print(f"STATUS={EMITTED_STATUS}")
+    print("INTERNAL_CORROBORATION=DISTINCT_ROUTE_ONLY")
+    print("EXTERNAL_INDEPENDENT_REPRODUCTION=NOT_ESTABLISHED")
+
+    assert EMITTED_STATUS in ALLOWED_STATUSES, (
+        f"Refusing to emit status {EMITTED_STATUS!r}: "
+        f"not in allowed set {sorted(ALLOWED_STATUSES)}. "
+        f"See EVIDENCE BOUNDARY header."
+            )
