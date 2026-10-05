@@ -12,6 +12,8 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install deps
+        working-directory: AQARION-QUANTARION-AI/source/AQ-2026-10-4
         run: pip install numpy pytest
       - name: Run join stability test
-        run: PYTHONPATH=AQARION-QUANTARION-AI/source/AQ-2026-10-4 python -m pytest AQARION-QUANTARION-AI/source/AQ-2026-10-4/tests/test_join_stability_property.py -v
+        working-directory: AQARION-QUANTARION-AI/source/AQ-2026-10-4
+        run: python -m pytest tests/test_join_stability_property.py -v
