@@ -1,568 +1,720 @@
-# quantarion369-arch/AQARION
+"Aqarion-Quantarion-AI" (https://img.shields.io/badge/license-Apache--2.0-blue) "C3" (https://img.shields.io/badge/C3-OPEN-yellow) "C4" (https://img.shields.io/badge/C4-BLOCKED-red) "Lean" (https://img.shields.io/badge/Lean-OPEN-lightgrey) "SDS-002" (https://img.shields.io/badge/SDS--002-QUARANTINED-orange) "Publication" (https://img.shields.io/badge/publication-BLOCKED-red) "Promotable" (https://img.shields.io/badge/promotable-false-lightgrey)
 
-Reusable research infrastructure for AQARION/Quantarion-AI. ClaimLock • ProofGym • JOIN-STABILITY • Replay • verification • provenance • evidence schemas • research skills • CLI tools. Principle: Prove First · Verify Exhaustively · Predict Second · No Free Parameters. Built for reproducibility, auditability, and rigorous mathematical research.
+Aqarions-Quantarion-AI
 
-## Repository details
+Governance, policy, provenance, and cross-repository orchestration hub for the AQARION / Quantarion research corpus, covering finite dynamical systems, observable quotients, and Koopman defect operators.
 
-- **Visibility:** Public
-- **Default branch:** main
-- **Current commit:** 8ae78b5569799c03d96039db417cc6d1abd7ad95
-- **Commits:** 72
-- **Stars:** 0
-- **Watchers:** 0
-- **Forks:** 0
-- **License:** Apache License 2.0 (Apache-2.0)
-- **Releases:** 0
-- **Tags:** 0
-- **Created:** 2026-09-28T21:11:08.000Z
-- **Fork:** No
-- **Archived:** No
-- **Template:** No
+This repository is a hub, not a self-contained mathematical library. It provides:
 
-## Root files
+- CLAIMLOCK policy evaluation.
+- Reproduction-object and provenance semantics.
+- Independent verification entry points.
+- Cross-repository dependency declarations.
+- Adversarial negative controls.
+- A public computational replay surface for selected AQARION claims.
 
-- `AQARION-QUANTARION-AI/TOOLS` (directory)
-- `JASKSG9-MIGRATION-INVENTORY` (directory)
-- `scripts` (directory)
-- `.gitignore` (file)
-- `BIO-CONTACT.md` (file)
-- `FILETREE.md` (file)
-- `LICENSE` (file)
-- `README.md` (file)
+It does not decide mathematical truth.
 
-## README
+Governance state
 
-AQARION
+Layer| State
+C3| OPEN
+C4| BLOCKED
+Lean| OPEN
+SDS-002| QUARANTINED
+Publication| BLOCKED
+Promotable| false
 
-Auditable Mathematical Research Infrastructure
-
-«Repository continuity notice — September 2026»
-
-AQARION development is currently maintained under the "quantarion369-arch" GitHub identity.
-
-Earlier AQARION research, experiments, repositories, and development history exist across the author's previous "JASKSG9" GitHub identity and related fork lineage. Those materials are historical research provenance and remain relevant to reconstruction, comparison, and verification.
-
-Current canonical working repository
-
-"quantarion369-arch/AQARION"
-
-This repository is the current working home for the AQARION / Quantarion-AI research infrastructure, including:
-
-- "JOIN-STABILITY"
-- theorem and mathematical-kernel infrastructure
-- verification and reproducibility tooling
-- provenance and evidence structures
-- research ledgers
-- ClaimLock / ProofGym / Replay infrastructure
-- future reconstruction of earlier AQARION research artifacts
-
-Account and fork transition
-
-Following the transition to the "quantarion369-arch" account, active development is being consolidated here rather than assuming continued access to the previous "JASKSG9" working environment.
-
-This is a continuity transition, not a claim that historical state has already been completely reconstructed.
-
-The repository therefore distinguishes:
-
-1. Current canonical work — artifacts maintained in "quantarion369-arch/AQARION".
-2. Historical provenance — earlier AQARION material associated with "JASKSG9".
-3. Fork lineage — repositories whose GitHub fork relationship preserves part of the development history.
-4. Reconstruction work — explicit recovery and verification of earlier artifacts that have not yet been reproduced here.
-5. Verified current state — artifacts that have been independently checked in the present repository.
-
-Reconstruction rule
-
-Historical material must not be silently rewritten into the current repository as though it had always existed here.
-
-When an earlier artifact is recovered, the preferred record is: HISTORICAL SOURCE
-
-↓
-
-RECOVERED ARTIFACT
-
-↓
-
-CONTENT / HISTORY COMPARISON
-
-↓
-
-CURRENT REPOSITORY LOCATION
-
-↓
-
-HASH / VERSION / PROVENANCE RECORD
-
-↓
-
-CURRENT VERIFICATION STATUS
-
-If an artifact cannot yet be reconstructed, it remains identified as unreconstructed, rather than being inferred or recreated without provenance.
-
-Access-continuity principle
-
-The "quantarion369-arch" repository is intended to remain understandable and reproducible without requiring future access to the previous "JASKSG9" working identity.
-
-The historical account and repositories remain part of the provenance record where publicly accessible, but they are not treated as an operational dependency for current development.
-
-What this means for contributors and reviewers
-
-Do not assume that:
-
-- an artifact mentioned in historical AQARION material exists in this repository;
-- a historical claim has automatically been reconstructed;
-- a fork relationship proves that every later artifact is present;
-- a public repository is equivalent to mathematical certification.
-
-Instead, consult the current artifact, its provenance, its evidence status, and its verification record.
-
-AQARION deliberately preserves the distinction:
-
-historical ≠ recovered ≠ reproduced ≠ verified ≠ formally certified
-
-Current research boundary
-
-The immediate objective is therefore:
-
-«Preserve the historical lineage, establish "quantarion369-arch/AQARION" as the canonical working repository, and reconstruct earlier AQARION material only through explicit provenance and verification.»
-
-Until that reconstruction is complete, historical and current artifacts should remain distinguishable.
+No repository-level policy result is a mathematical proof.
+No public application status is itself mathematical certification.
 
 ---
 
-Current canonical repository: "quantarion369-arch/AQARION"
+Evidence discipline
 
-Historical lineage: "JASKSG9" AQARION repositories and associated forks
+AQARION distinguishes:
 
-Status: Active development · historical reconstruction in progress
+Label| Meaning
+[D]| DEFINED
+[V]| VERIFIED COMPUTATION
+[P]| PROVED
+[PV]| PROVED + VERIFIED
+[C]| CONJECTURE
+[R]| RESEARCH
+[F]| REFUTED / KILLED
+[Q]| QUARANTINED
 
-Principle:
+Evidence must not migrate upward merely because a later artifact repeats the same statement.
 
-Preserve the history. Reconstruct explicitly. Verify independently. Never manufacture continuity.
+In particular:
 
-Auditable Mathematical Research Infrastructure
+- public ≠ certified
+- runnable ≠ verified
+- numeric agreement ≠ proof
+- repeated computation ≠ independent computation
+- Lean source file ≠ Lean proof
+- policy ALLOW ≠ mathematical truth
+- matching outputs ≠ independence
+- repository existence ≠ reproduction
 
-AQARION is a research program for exact finite mathematics, dynamical systems, operator methods, computational verification, and reproducible mathematical software.
+Terminology and vocabulary disclaimer
 
-Its central objective is simple:
+The repository's canonical README, manifests, schemas, claim records, verification packages, and research artifacts are the authoritative sources for AQARION terminology.
 
-«Prove First · Verify Exhaustively · Predict Second · No Free Parameters»
+This repository does not permit an assistant, contributor, generated document, or downstream artifact to silently replace established terminology with preferred synonyms.
 
-AQARION treats mathematical claims as evidence-bearing objects. Definitions, proofs, exhaustive computation, formal verification, conjectures, refutations, and research observations are kept explicitly separated so that computational agreement is never silently promoted to proof.
+In particular:
 
----
+- "[F]" means REFUTED / KILLED.
+- KILLED does not mean erased or deleted. A killed claim remains in the historical research ledger so that the counterexample, failure mode, and correction remain auditable.
+- REFUTED / KILLED is a status designation, not a statement that the associated file, experiment, or historical record should be removed.
+- A claim may be superseded, restricted, corrected, quarantined, or killed; those states must not be conflated.
+- Evidence labels are not interchangeable.
+- A computational result must not be relabeled as a proof merely because another artifact repeats it.
+- A local execution must not be described as CI execution unless the CI workflow actually executed it.
+- A repository search result, fork relationship, copied file, or repeated text does not establish mathematical validation.
+- When terminology is uncertain, the canonical repository README, relevant manifest, claim record, or source artifact must be inspected before assigning a status.
+- No newly invented status label may silently replace an existing AQARION status.
+- Historical terminology may be preserved when required for provenance, but current status must follow the canonical vocabulary of the relevant repository artifact.
 
-Research Principles
-
-AQARION is built around five principles:
-
-- Proof before promotion — a computational observation is not a theorem.
-- Exactness over approximation — finite objects are represented and tested exactly whenever possible.
-- Independent verification — proofs and computational checks are separate evidence lanes.
-- Reproducibility by construction — experiments should be rerunnable from documented inputs and procedures.
-- Provenance without mythology — AI assistance may be part of the research process, but certification concerns the mathematical artifact and its verification, not claims about authorship by inference.
-
-Evidence classes
-
-Code| Meaning
-"[D]"| Definition
-"[P]"| Mathematical proof
-"[V]"| Exhaustive or independently reproducible verification
-"[PV]"| Proof + verification
-"[C]"| Conjecture
-"[R]"| Research / exploratory result
-"OPEN"| Active research / unresolved
-"FROZEN"| Locked for audit
-"BLOCKED"| Gate prevents promotion
-"QUARANTINED"| Evidence retained but excluded from promotion
-"DEPRECATED"| Obsolete representation retained for provenance — was KILLED
-"SUPERSEDED"| Replaced by successor
-"RETRACTED"| Withdrawn due to error
-"REFUTED"| Counterexample exists
-
-Evidence does not migrate upward automatically.
-
-A numerical match does not become a proof.
-
-A successful search does not become certification.
-
-A formalization containing "sorry"/"admit" does not become a completed formal proof.
-
-A public repository does not, by itself, constitute mathematical certification.
+Terminology drift is itself an audit issue.
 
 ---
 
-What AQARION Studies
+CLAIMLOCK
 
-AQARION develops reusable methods around finite dynamical systems and their induced operators.
+"source/python/claimlock.py" is a policy evaluator. It answers:
 
-A recurring construction is
+«Does this evidence set satisfy this promotion policy?»
 
-[
-D_\Pi=(I-P_\Pi)KP_\Pi,
-]
+It does not answer:
 
-where:
+«Is the mathematical claim true?»
 
-- T:X\to X is a finite dynamical system,
-- K is the Koopman pullback operator,
-- \Pi is a partition of X,
-- P_\Pi projects onto block-constant observables,
-- D_\Pi measures the failure of the partition to be closed under the dynamics.
-
-This framework connects:
-
-finite dynamics → quotient structure → operator theory → graph structure → exact computation → formal verification.
+That distinction is fundamental. "policy decision ≠ mathematical truth".
 
 ---
 
-Core Results
+Reproduction provenance
 
-The current AQARION core includes exact results concerning the defect operator and partition closure.
+AQARION uses a reproduction-object model with separate predicates:
 
-Among the established results are:
+"CLAIM", "SPECIFICATION", "SOURCE", "IMPLEMENTATION", "FIXTURE", "EXECUTION", "OUTPUT", "COMPARISON", "INDEPENDENCE", "FORMAL STATUS", "DRIFT".
 
-- D_\Pi=0 exactly when the partition is dynamically closed.
-- D_\Pi=0 exactly when the corresponding quotient dynamics is well-defined.
-- D_\Pi^2=0 for every idempotent projection P_\Pi.
-- PK=KP is sufficient for D_\Pi=0, but is not necessary.
-- Exact rank formulas connect the defect operator with a complement graph.
-- An exact Frobenius-energy identity provides a quantitative defect measure.
-- Large finite censuses have been used as independent verification of these identities.
-- Numerical census: 1+4+27+256+3125 = 3413 maps for n≤5 — corrected from 3412.
+A reproduction requires execution, binding, and output agreement.
 
-Formalization status is tracked separately from computational verification; incomplete formal files are never presented as completed certification.
+An independent reproduction additionally requires an independent basis.
+
+Formalization and proof are separate evidence dimensions.
 
 ---
 
-Research Programs
+Verification entry point
 
-JOIN-STABILITY
+Run the fail-closed runner:
 
-A finite-set theorem program studying pullback-stable equivalence relations and their joins.
+python3 verification/run-all.py \
+  --manifest verification/manifest.json \
+  --receipt verification/receipts/run_all_receipt.json
 
-Current work includes:
-
-- finite kernel-equality arguments;
-- quotient-map injectivity and permutation structure;
-- incidence-graph formulations;
-- chain-lifting proofs;
-- adversarial counterexample search;
-- exhaustive finite verification;
-- formalization planning.
-
-The finite theorem and its verification are maintained as separate evidence lanes until the formalization and independent review requirements are satisfied.
-
-ProofGym
-
-ProofGym is the executable verification surface for mathematical claims.
-
-It is designed to make a mathematical statement inspectable through:
-
-- exact finite instances;
-- structured witnesses;
-- deterministic verification;
-- adversarial fixtures;
-- proof dependencies;
-- evidence traces;
-- reproducible verification receipts.
-
-The goal is not to replace mathematical proof with software. The goal is to make computational evidence auditable.
-
-ClaimLock
-
-ClaimLock is intended as the claim/provenance layer for AQARION.
-
-It provides a structured way to associate claims with:
-
-- evidence status;
-- proof artifacts;
-- verification artifacts;
-- hashes;
-- dependencies;
-- reproduction instructions;
-- invalidation history.
-
-Replay
-
-Replay infrastructure records enough information to rerun computational research rather than merely displaying its final result.
-
-The intended chain is: Question
-
-↓, Conjecture, ↓, Counterexample?, ↓, Correction, ↓, Computation, ↓, Proof, ↓, Verification, ↓, Hash
+The runner never treats NOT_IMPLEMENTED as PASS. A missing registered artifact is a failure, not a silent success.
 
 ---
 
-Tools
+Registered verification manifest
 
-Reusable infrastructure is being consolidated under: AQARION-QUANTARION-AI/
+Canonical manifest: "verification/manifest.json"
+Schema: "AQARION-VERIFICATION-MANIFEST-1"
+Status: "ACTIVE_ADVERSARIAL"
 
-└── TOOLS/
+The manifest is the authoritative registry of checks participating in the current semantic promotion boundary. The promotion rule requires:
 
-The tools layer is intended to contain reusable components rather than duplicate individual research repositories.
+- all registered checks to pass,
+- required executable artifacts to be present,
+- NOT_IMPLEMENTED to be treated as failure,
+- missing artifacts to be treated as failure,
+- external fallback paths to be forbidden,
+- an independent oracle to be present,
+- a mutation suite to be present.
 
-Planned infrastructure includes: TOOLS/
+Currently registered checks
 
-├── ClaimLock/, ├── ProofGym/, ├── JOIN-STABILITY/, ├── Replay/, ├── verification/, ├── provenance/, ├── schemas/, ├── skills/, └── cli/
+ID| Executable| Scope
+AQ-S14-SEMANTIC-K3| "verification/aq_s14/aq_s14_semantic_suite.py"| K3 forest/incidence semantic suite
+AQ-CONTRACT-OBJECT-OPERATOR| "verification/aq_contract/aq_contract_semantic_suite.py"| Frozen object/operator semantics: Koopman orientation, arbitrary-map transport, raw image-block distinction, T_* equivalence generation
+AQ-ORACLE-EXHAUSTIVE-N4| "verification/aq_oracle/aq_independent_oracle_suite.py"| Every deterministic map and every partition for |X| ≤ 4
+AQ-MUTATION-SEMANTIC| "verification/aq_mutation_suite.py"| Registered semantic mutations
 
-The boundary is deliberate: research repositories contain mathematical investigations;
+Explicitly excluded until bound
 
-TOOLS contains reusable infrastructure.
+Excluded checks are not equivalent to passing checks. They are declared unbound regions of the verification boundary.
 
----
+ID| Reason
+K2R-PARAMETRIC| Fixture present; no executable verifier bound.
+BETA-ENVELOPE| No independent executable verifier bound.
+SV-001-V2| See next section — status depends on whether the executable package is committed at this revision.
 
-Reproducibility
-
-AQARION treats reproducibility as an engineering requirement rather than a publication slogan.
-
-Where applicable, research artifacts are designed around:
-
-- deterministic computation;
-- exact finite enumeration;
-- independent verification;
-- machine-readable claim registries;
-- verification reports;
-- SHA-256 manifests;
-- Lean formalization;
-- Dockerized environments;
-- CI checks;
-- RO-Crate metadata;
-- research ledgers;
-- explicit evidence status.
-
-A target artifact should allow an independent researcher to answer:
-
-1. What exactly is being claimed?
-2. What definitions does the claim depend on?
-3. What constitutes proof?
-4. What was computationally verified?
-5. What remains conjectural?
-6. Can the verification be rerun?
-7. Which exact files produced the result?
-8. Which version/hash was evaluated?
+Verify before committing: the exact filename of the AQ-MUTATION-SEMANTIC executable. Two candidates appear in this repository's own documentation: "verification/aq_mutation_suite.py" and "verification/aq-mutation-suit.py". Only one exists on disk, and the manifest must match it exactly.
 
 ---
 
-AI and Research Provenance
+SV-001-V2 — Cyclic block-shift defect (1176-case replay contract)
 
-AQARION does not attempt to infer whether a mathematical result was “really produced by AI” from the final artifact.
+Canonical domain:
 
-That is not a reliable certification problem.
+m ∈ {2,…,8},  k ∈ {2,…,8},  s ∈ {1,…, m·k − 1}
 
-Instead, AQARION records AI assistance as part of the research process when such provenance is available.
+Total cases: 1176.
+Zero-remainder ("s mod k = 0"): 196.
+Nonzero-remainder: 980.
 
-The relevant question is:
+The historical 5720-case domain is deprecated. It must not appear as an active execution count in any verifier, CI step, or manifest.
 
-«Can the mathematical claim, computation, proof, and verification be independently inspected and reproduced?»
+Contract
 
-AI systems are therefore treated as research-process nodes rather than as mathematical authorities.
+Let "n = m·k", "r = s mod k", "α² = r(k−r)/k²", "Q = U Uᵀ", "D = (I − Q) K Q", and "S" the "m×m" cyclic shift. Then:
 
-An AI-generated conjecture remains a conjecture.
+Uᵀ Dᵀ D U      = α² (2I − S − Sᵀ)
+tr(Uᵀ Dᵀ D U)   = 2 m α²
+‖D‖₂            = 2 √(α²)              if m even
+‖D‖₂            = 2 √(α²) cos(π / 2m)  if m odd
 
-An AI-generated proof must still be checked.
+Package layout (declared)
 
-An AI-generated computation must still be reproducible.
+verification/sv-001-v2/contract.json
+verification/sv-001-v2/oracle.py
+verification/sv-001-v2/verifier.py
+verification/sv-001-v2/replay.py
+verification/sv-001-v2/mutation/executor.py
+verification/sv-001-v2/mutation/metamorphic.py
+verification/sv-001-v2/receipt/schema.json
+verification/sv-001-v2/receipt/writer.py
+.github/workflows/sv-001-v2.yaml
+claims/sv-001-v2.json
+aqarion.toml
 
-A failed proof remains failed.
+Receipt policy
 
-A counterexample remains a counterexample.
+Receipts are runtime artifacts. They are written to "artifacts/SV-001-V2/" by the workflow and are uploaded as CI artifacts. They are not committed.
 
----
+A committed "receipt/latest.json" would violate the repository receipt policy and is rejected by "verification/repo_self_audit.py".
 
-Repository Architecture
+Evidence state
 
-AQARION is intentionally separated into layers.
+- Evidence class: [V] finite computational replay.
+- Independence: the oracle uses closed-form contract identities; the verifier constructs "U", "Q", "K", "D" directly and does not call the oracle for answers. This is implementation-route independence within one repository. It is not external independent reproduction.
+- Formal status: LEAN OPEN.
+- C4: BLOCKED.
+- Publication: BLOCKED.
 
-AQARION
-
-│
-
-├── Research
-
-│ ├── finite dynamical systems
-
-│ ├── operator theory
-
-│ ├── quotient structures
-
-│ ├── graph methods
-
-│ └── asymptotic investigations
-
-│
-
-├── Verification
-
-│ ├── exact enumeration
-
-│ ├── adversarial testing
-
-│ ├── proof checking
-
-│ └── reproducibility
-
-│
-
-├── Formalization
-
-│ └── Lean / machine-checked mathematics
-
-│, ├── AQARION-QUANTARION-AI, │ └── TOOLS, │ ├── ClaimLock, │ ├── ProofGym, │ ├── Replay, │ ├── schemas, │ ├── skills
-
-│ └── verification utilities
-
-│ └── Provenance, ├── research ledgers, ├── manifests, ├── hashes, └── RO-Crate metadata
-
-The structure is designed to prevent infrastructure, experiments, proofs, and historical research artifacts from becoming indistinguishable.
+A green run of "sv-001-v2.yaml" establishes finite computational evidence over the declared 1176-case domain only. It does not establish a universal theorem, a Lean proof, or C4 promotion.
 
 ---
 
-Certification Standard
+AQ-SM-003-MATRIX — Block-transition defect geometry
 
-AQARION uses a conservative promotion rule: Observation
+For a partition "Π = {B₁,…,B_q}" with "|B_i| = p_i" and transition counts "m_ij = #{x ∈ B_i : T(x) ∈ B_j}":
 
-↓, Reproducible computation, ↓, Independent verification, ↓, Mathematical proof, ↓
+‖D‖_F²  =  Σ_{i,j}  (m_ij / p_j) (1 − m_ij / p_i)
+rank(D) ≤ q − 1
+G_Π = Uᵀ Dᵀ D U = Σ_i p_i · Cov_{a_i}(z),   a_ij = m_ij / p_i
 
-Formal verification where applicable
+Two-block specialization:
 
-↓
+‖D‖_F² = [ b(p − b)/p + c(q − c)/q ] [ 1/p + 1/q ]
 
-Certified claim
+S14 specialization ("p = 4, q = 1"):
 
-Not every research result needs every stage immediately.
+‖D‖_F² = 5 b (4 − b) / 16
 
-But no result is promoted beyond its actual evidence.
+Values: "b = 1 → 15/16", "b = 2 → 5/4", "b = 3 → 15/16".
 
-In particular: SEARCH ≠ REPRODUCED
+Realization counts: 256, 96, 16. Total: 368.
 
-REPRODUCED ≠ MINIMAL
+Evidence class: [D] derivation + [V] finite checks. Lean OPEN. C4 BLOCKED.
 
-MINIMAL ≠ PROVED
-
-PROVED ≠ FORMALLY VERIFIED
-
-PUBLIC ≠ CERTIFIED
-
-This distinction is part of the research infrastructure itself.
+Full derivation: "docs/research/AQ-SM-003-MATRIX.md".
 
 ---
 
-Development Standard
+K2R closure-stabilization replay
 
-AQARION development follows a strict preference for small, inspectable artifacts.
+Independent computational replay of the K2R closure family.
 
-New infrastructure should:
+Fixtures:
 
-- have a defined input/output contract;
-- include deterministic tests;
-- preserve existing evidence;
-- expose failures rather than hide them;
-- avoid silently changing historical results;
-- distinguish exploratory code from certification code;
-- document dependencies;
-- remain independently runnable where practical.
+verification/k2r/fixtures/AQ-K2R-R2.json
+verification/k2r/fixtures/AQ-K2R-R3.json
+verification/k2r/fixtures/AQ-K2R-R5.json
+verification/k2r/fixtures/AQ-K2R-R15.json
 
-Historical research is preserved rather than rewritten to make the current state appear cleaner.
+Verifier: "verification/k2r/verify.py"
 
-Corrections are recorded.
+python3 verification/k2r/verify.py
 
-Deprecated / retracted / refuted claims remain identifiable.
+The verifier reconstructs objects from "r" rather than importing a mathematical implementation from another AQARION repository.
 
-Versioned artifacts remain traceable.
+Recorded computational results for the tested fixtures:
 
----
+h_min(P) = 2
+h_min(Q) = r
+h_min(M) = 2r
+h_min(U) = 1
+Δ        = −(r − 1)
 
-Current Direction
+Evidence status: "RECONSTRUCTED_INDEPENDENT_COMPUTATION".
 
-The immediate infrastructure direction is to establish a clean reusable spine for:
+Not Lean-certified. The fixture boundary and verifier implementation must remain visible when these results are cited.
 
-1. ClaimLock — claim and evidence management.
-2. Replay — deterministic research reproduction.
-3. JOIN-STABILITY — exact theorem verification and proof infrastructure.
-4. ProofGym — executable mathematical verification.
-5. Shared schemas — evidence, provenance, receipts, and claim registries.
-6. Research skills — reusable workflows for rigorous computational mathematics.
-7. CLI tooling — one consistent interface for verification and replay.
-8. RO-Crate integration — machine-readable research packaging.
+Three-orbit-term negative control
 
-The objective is not to build an oversized framework before the mathematics requires it.
+The closure certificate defines "three orbit terms" as "R ∨ T(R) ∨ T²(R)". This is not the same as three recurrence applications — the distinction already matters for "r = 2".
 
-The objective is to extract reusable infrastructure from already-tested research workflows.
+The verifier checks both the three-orbit-term result and full orbit closure separately.
 
----
+Canonicalization
 
-Research Philosophy
+The K2R certificate manifest declares RFC 8785 JSON Canonicalization Scheme (JCS) as the intended canonical serialization contract.
 
-AQARION is intentionally skeptical of its own results.
+"json.dumps(sort_keys=True, …)" is deterministic JSON. It is not automatically RFC 8785 JCS.
 
-A result becomes stronger by surviving:
-
-- adversarial testing;
-- independent reconstruction;
-- exact enumeration;
-- counterexample searches;
-- proof review;
-- formalization;
-- reproducibility checks.
-
-The system is therefore designed to preserve negative information as carefully as positive information.
-
-A disproved conjecture is useful.
-
-A failed proof is useful.
-
-A detected implementation bug is useful.
-
-A quarantined claim is useful.
-
-They show where the boundary of current knowledge actually lies.
+Deterministic serialization must not be described as RFC 8785 compliance unless a conforming implementation has been established.
 
 ---
 
-Guiding Principle
+Two-application federation architecture
 
-«Ideas may come from anywhere. Confidence comes from verification.»
+Role| URL
+Public federation hub| "https://aqarion-federation-hub--quantarion9.replit.app"
+Certificate / evidence service| "https://quantarion-federation-hub--aqarionaaron.replit.app"
 
-AQARION exists to make that verification process explicit, reproducible, and auditable.
+These two roles must remain explicit in machine-readable metadata.
 
-Prove First · Verify Exhaustively · Predict Second · No Free Parameters
-
----
-
-Project Links
-
-- AQARION: https://github.com/quantarion369-arch/AQARION
-- TOOLS: https://github.com/quantarion369-arch/AQARION/tree/main/AQARION-QUANTARION-AI/TOOLS
-- Quantarion-AI: https://github.com/quantarion369-arch
-- Hugging Face: https://huggingface.co/Quantarion9
+A single ambiguous "liveAppUrl" field must not represent both.
 
 ---
 
-Status
+Cross-repository policy
 
-AQARION is an active research and infrastructure project.
+The hub declares sibling repositories and their pinned commits.
 
-Individual results have different evidence levels. Consult the corresponding claim registry, research ledger, verification report, formalization status, and reproducibility artifacts before treating any individual result as certified.
+A pinned commit is a dependency statement. It does not mean the referenced repository is current, correct, or mathematically certified.
 
-Research status is claim-specific, not repository-wide.
+It identifies a specific revision.
 
-AQARION continuity
+---
 
-Active AQARION development is maintained under this "quantarion369-arch" identity.
+AI and provenance
 
-Earlier AQARION work was developed across the author's "JASKSG9" repositories and related forks. That history is retained as historical provenance where accessible.
+AQARION does not claim its infrastructure can determine whether a human or an AI produced a particular mathematical idea.
 
-The transition does not imply that every historical artifact has already been reconstructed here.
+The relevant provenance questions are:
 
-The current policy is:
+- What claim was evaluated?
+- What specification was used?
+- What source revision was executed?
+- What implementation ran?
+- What input was used?
+- What output was produced?
+- What comparison was performed?
+- Was independence established?
+- Was a formal proof artifact checked?
 
-preserve → identify → reconstruct → compare → hash → verify
+AI-assisted activity can be recorded in the provenance graph where known.
 
-Historical artifacts are not silently rewritten as current artifacts, and missing history is not filled by inference.
+That provenance does not itself establish mathematical truth.
 
-The canonical current working repository is: "quantarion369-arch/AQARION"
+---
 
-The purpose of this separation is simple: AQARION should remain reproducible even if the previous working account becomes inaccessible, while preserving an honest record of where earlier research came from.
+Reproducibility hierarchy
 
-## License
+CLAIMED
+  → AVAILABLE
+    → EXECUTED
+      → REPRODUCED
+        → INDEPENDENTLY REPRODUCED
+          → FORMALIZED
+            → PROVED
 
-Apache License 2.0 — Copyright 2026 James Aaron / quantarion369-arch / AQARION
+Each stage requires its own evidence.
+
+A repository being public is not an independent reproduction.
+
+Agreement between two programs that share the same semantic construction is not independence.
+
+---
+
+What a green CI result means
+
+A green CI result means only what the executed workflow actually checked, for that specific repository revision.
+
+It does not establish:
+
+- that all AQARION mathematics is correct,
+- that any conjecture is proved,
+- that all repositories are synchronized,
+- that external dependencies are correct,
+- or that all possible implementations are correct.
+
+CI is an evidence mechanism, not an oracle for mathematical truth.
+
+---
+
+Publication gate
+
+Publication status is deliberately separated from computational status.
+
+- A computational replay may establish "RECONSTRUCTED_INDEPENDENT_COMPUTATION" without changing a publication gate.
+- CI PASS does not imply PUBLICATION APPROVED.
+- PROMOTION POLICY SATISFIED does not imply MATHEMATICAL THEOREM PROVED.
+
+Current gate: BLOCKED.
+
+---
+
+Repository layout
+
+.github/
+  workflows/
+    aqarion-ci.yml
+    sv-001-v2.yaml
+    verify.yml
+    readme.md
+
+api/
+claims/
+  sv-001-v2.json
+
+docs/
+  discovery/
+    SV001-V2.md
+  research/
+    AQ-SM-003-MATRIX.md
+  markdowns/
+  checkpoints/
+  logs/
+  scripts/
+
+objects/
+pdf/
+projects/
+schemas/
+skills/
+source/
+  python/
+    claimlock.py
+
+verification/
+  manifest.json
+  run-all.py
+  replay-harness.py
+  provenance.py
+  repo_self_audit.py
+  requirements.txt
+  aq_s14/
+  aq_contract/
+  aq_oracle/
+  aq-mutation-suit.py
+  k2r/
+    verify.py
+    fixtures/
+  receipts/
+  sv-001-v2/
+    contract.json
+    oracle.py
+    verifier.py
+    replay.py
+    mutation/
+      executor.py
+      metamorphic.py
+    receipt/
+      schema.json
+      writer.py
+
+Path names above are marked from the repository's own documentation.
+
+Verify each against the live tree before citing.
+
+In particular, the mutation-suite filename appears in this repository's own documentation under two spellings; only one is correct.
+
+---
+
+Minimal local verification procedure
+
+From the repository root:
+
+python3 -m compileall -q verification
+python3 verification/aq_s14/aq_s14_semantic_suite.py
+python3 verification/aq_contract/aq_contract_semantic_suite.py
+python3 verification/aq_oracle/aq_independent_oracle_suite.py
+python3 verification/aq_mutation_suite.py
+python3 verification/sv-001-v2/verifier.py
+python3 verification/sv-001-v2/mutation/executor.py
+python3 verification/sv-001-v2/mutation/metamorphic.py
+python3 verification/sv-001-v2/replay.py --receipt artifacts/SV-001-V2/receipt.json
+python3 verification/run-all.py \
+  --manifest verification/manifest.json \
+  --receipt verification/receipts/run_all_receipt.json
+
+A successful local run must not be described as a successful CI run unless the CI workflow itself executed the same required verification.
+
+A successful local run must not be described as a universal mathematical proof.
+
+---
+
+Anti-overclaiming rules
+
+Documentation must avoid:
+
+- "verified" when the result was only computed once.
+- "proved" when the result was only exhaustively checked for "|X| ≤ 4" or for 1176 cases.
+- "independent" when the second implementation shares the same semantic construction.
+- "RFC 8785 compliant" when the implementation is merely deterministic JSON.
+- "certified" when the artifact has only passed a repository policy gate.
+- replacing canonical AQARION terminology with assistant-generated terminology.
+- treating a local sandbox execution as repository-bound execution.
+- treating a copied or repeated result as an independent reproduction.
+- treating a green mutation gate as proof of the underlying mathematical claim.
+
+Precision of language is part of the verification system.
+
+---
+
+Verification Infrastructure — Current Audit Boundary
+
+Governance: FROZEN AUDIT · NO PROMOTION · C4 BLOCKED · PUBLICATION BLOCKED
+
+The canonical executable verification registry is:
+
+verification/manifest.json
+
+Current manifest
+
+AQARION-VERIFICATION-MANIFEST-1
+version 1.4.0
+status ACTIVE_ADVERSARIAL
+
+The manifest currently contains seven registered executable checks:
+
+AQ-S14-SEMANTIC-K3
+AQ-CONTRACT-OBJECT-OPERATOR
+AQ-ORACLE-EXHAUSTIVE-N4
+AQ-MUTATION-SEMANTIC
+SV-001-V2
+SV-001-V2-MUTATION
+SV-001-V2-METAMORPHIC
+
+The manifest-bound mutation executable is:
+
+verification/aq-mutation-suite.py
+
+The manifest is authoritative for the executable filename.
+
+Documentation must not substitute another spelling.
+
+---
+
+Verification Documentation
+
+The complete verification-directory documentation is:
+
+verification/README.md
+
+It defines:
+
+- the active verification boundary;
+- manifest semantics;
+- registered checks;
+- excluded checks;
+- fail-closed requirements;
+- receipt policy;
+- independence requirements;
+- mutation requirements;
+- AQ-S15 research-side verification;
+- anti-overclaiming rules;
+- runtime evidence classifications.
+
+---
+
+Manifest Binding Audit
+
+The repository now includes:
+
+verification/manifest_binding_audit.py
+
+Identifier:
+
+AQ-SIDE-PIVOT-002
+
+This audit checks the binding between the active manifest and the executable filesystem without executing the registered checks.
+
+Run:
+
+python3 verification/manifest_binding_audit.py
+
+A successful result is reported as:
+
+RESULT=PASS
+
+This audit is infrastructure evidence.
+
+Its existence does not itself modify the active seven-check manifest.
+
+---
+
+AQ-S15 Exact Bridge Audit
+
+The repository also contains the research-side exact verifier:
+
+verification/sv-001-v2/bridge_exact.py
+
+Identifier:
+
+AQ-S15-SIDE-PIVOT-002
+
+It uses exact rational arithmetic and independently constructs the block-incidence matrix, projection, Koopman pullback, defect, and compressed operator.
+
+It checks the finite identity:
+
+A_actual = Wᵀ K W / k
+
+against:
+
+A_model = q S^b + p S^(b+1)
+
+with:
+
+s = b k + r
+p = r/k
+q = (k-r)/k
+0 < r < k
+
+and then checks:
+
+AᵀA = I - p q L_m
+
+and:
+
+UᵀDᵀDU = p q L_m.
+
+The audit uses exact "Fraction" arithmetic rather than floating-point numerical comparison.
+
+Its finite execution domain is:
+
+m = 2,...,20
+k = 2,...,12
+b = 0,...,m-1
+r = 1,...,k-1
+
+A successful execution is classified:
+
+EXACT_FINITE_REPLAY
+
+and explicitly retains the boundary:
+
+NOT_A_UNIVERSAL_PROOF
+
+Therefore this artifact must not be described as a universal proof merely because its finite exact checks pass.
+
+---
+
+Current Verification Rule
+
+The repository distinguishes:
+
+computed
+verified computation
+independent computation
+formalized
+proved
+
+These are separate evidence states.
+
+In particular:
+
+CI PASS ≠ mathematical proof
+finite exhaustive replay ≠ universal theorem
+policy PASS ≠ mathematical truth
+different scripts ≠ automatic independence
+public artifact ≠ certification
+
+---
+
+Current Governance
+
+The current governance boundary remains:
+
+C3              OPEN
+C4              BLOCKED
+Lean            OPEN
+Publication     BLOCKED
+Promotion       BLOCKED
+
+Adding verification infrastructure does not automatically change any of these states.
+
+The repository remains under:
+
+FROZEN AUDIT · NO PROMOTION · C4 BLOCKED · PUBLICATION BLOCKED
+
+---
+
+Canonical Verification Entry Point
+
+The primary fail-closed runner remains:
+
+python3 verification/run-all.py \
+  --manifest verification/manifest.json \
+  --receipt verification/receipts/run_all_receipt.json
+
+The exact registered checks are determined by the manifest, not by an independently maintained README list.
+
+For the full verification-directory specification, see:
+
+verification/README.md
+
+---
+
+Evidence Boundary
+
+The strongest permissible statement about any result is determined by the evidence actually generated.
+
+A finite executable result establishes finite computational evidence over its tested domain.
+
+A formal proof establishes a formal proposition only after the formal system actually checks that proof.
+
+A provenance receipt establishes evidence concerning an execution.
+
+A promotion gate establishes satisfaction of its stated policy conditions.
+
+None of these categories may be silently substituted for another.
+
+No fabricated receipts. No fabricated execution counts. No fabricated hashes. No promotion by repetition.
+
+---
+
+Final interpretation rule
+
+The strongest statement that can safely be made about an AQARION result is determined by its actual evidence.
+
+- A computation establishes computational evidence.
+- An independent computation establishes stronger computational evidence.
+- An exhaustive finite computation establishes exhaustive evidence over its declared finite domain — for SV-001-V2 this is 1176 cases.
+- A formal proof establishes a mathematical proposition within its formal system.
+- A provenance receipt establishes evidence about what was executed.
+- A promotion gate establishes that an evidence policy was satisfied.
+
+None of these may be silently substituted for another.
+
+---
+
+License
+
+Apache 2.0. See LICENSE.
+
+Primary pointers
+
+- AQARION mathematical core: "JASKSG9/AQARION-ARITHMETIC-FDS-FINITE-DYNAMICAL-SYSTEMS-"
+- Kaprekar spectral case study: "JASKSG9/KAPREKAR-SPECTRAL-GEOMETRY"
+- AQARION Academy: "huggingface.co/spaces/Quantarion9/AQARION-ACADEMY"Important: I intentionally did not add PB-006 to the main manifest, because you have not pushed the five files yet and your current rule says the replay remains repository-unbound until executed in your environment. The live README confirms that the manifest is authoritative and that unbound checks are not equivalent to passing checks. 
+
+I also corrected the terminology issue precisely: [F] is officially REFUTED / KILLED in your actual README, and the updated disclaimer now says KILLED means retained in the historical ledger, not erased. 
