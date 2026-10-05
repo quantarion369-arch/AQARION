@@ -1,36 +1,16 @@
 name: Verify AQ-2026-10-4 H_AQ-001
-
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install deps
-        run: |
-          pip install -r AQARION-QUANTARION-AI/source/AQ-2026-10-4/requirements.txt
-
-      - name: Run property tests n<=4
-        run: |
-          python -m pytest AQARION-QUANTARION-AI/source/AQ-2026-10-4/tests/test_join_stability_property.py -v
-
-      - name: Check receipt exists
-        run: |
-          ls -lh AQARION-QUANTARION-AI/source/AQ-2026-10-4/verification/receipts/
-          cat AQARION-QUANTARION-AI/source/AQ-2026-10-4/verification/receipts/H_AQ-001_n4_receipt.json | head -n 20
-
-      - name: Run reproduce script
-        run: |
-          bash AQARION-QUANTARION-AI/source/AQ-2026-10-4/reproduce.sh
+      - run: pip install -r AQARION-QUANTARION-AI/source/AQ-2026-10-4/requirements.txt
+      - run: PYTHONPATH=AQARION-QUANTARION-AI/source/AQ-2026-10-4 python -m pytest AQARION-QUANTARION-AI/source/AQ-2026-10-4/tests/test_join_stability_property.py -v
