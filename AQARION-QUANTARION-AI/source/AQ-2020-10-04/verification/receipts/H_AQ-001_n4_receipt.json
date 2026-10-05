@@ -1,0 +1,31 @@
+{
+  "hypothesis": "H_AQ-001",
+  "statement": "D^2=0 always, join of congruences is congruence",
+  "tested": {
+    "n=2": {
+      "maps": 4,
+      "partitions": 2,
+      "joins_tested": 12,
+      "fails": 0
+    },
+    "n=3": {
+      "maps": 27,
+      "partitions": 5,
+      "joins_tested": 240,
+      "fails": 0
+    },
+    "n=4": {
+      "maps": 256,
+      "partitions": 15,
+      "joins_tested": 7440,
+      "fails": 0
+    }
+  },
+  "nilpotency_trials": 200,
+  "nilpotency_fails": 0,
+  "census_correction": "1+4+27+256+3125=3413 not 3412",
+  "evidence_class": "[PV] for n<=4",
+  "source_hash": "exp/H_AQ-001-join-stability",
+  "implementation_hash": "defect.py v1 + stability.py v1",
+  "status": "VERIFIED for n<=4, OPEN for n=5+"
+}
