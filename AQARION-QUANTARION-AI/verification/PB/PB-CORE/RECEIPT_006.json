@@ -1,0 +1,70 @@
+{
+  "artifact": "PB-CORE-006",
+  "title": "Exact Enumeration of Pullback-Fixed Equivalences",
+  "date": "2026-10-06",
+  "status": "OPEN",
+  "evidence": {
+    "finite_pullback_rigidity": "[P]",
+    "eventual_permutation_core": "[P]",
+    "cycle_orbit_classification": "[P]",
+    "phase_count": "[P]",
+    "permutation_aggregate": "[P]",
+    "finite_map_enumeration_formula": "[P]",
+    "permutation_bruteforce": "[V]",
+    "full_map_n_le_6": "[V]",
+    "full_map_n_eq_7": "[V]",
+    "join_audit_n_le_6": "[V]"
+  },
+  "exact_computation": {
+    "all_maps_n_eq_7": 823543,
+    "stable_equivalence_total_n_eq_7": 3018127,
+    "stable_join_pairs_n_eq_6": 582696,
+    "join_failures_n_le_6": 0
+  },
+  "stable_equivalence_counts": {
+    "1": 1,
+    "2": 6,
+    "3": 51,
+    "4": 592,
+    "5": 8565,
+    "6": 148896,
+    "7": 3018127
+  },
+  "closed_formula": "A_n = n! * sum_{k=1}^n k*p(k)*n^(n-k-1)/(n-k)!",
+  "formula_values": {
+    "1": 1,
+    "2": 6,
+    "3": 51,
+    "4": 592,
+    "5": 8565,
+    "6": 148896,
+    "7": 3018127,
+    "8": 69844608,
+    "9": 1816084233,
+    "10": 52399129600,
+    "11": 1660832066091,
+    "12": 57351480413184
+  },
+  "lean": {
+    "local_phase_setoid": "USER_REPORTED_COMPILED",
+    "phaseRel_invariant": "OPEN",
+    "global_assembly": "OPEN",
+    "full_classification": "OPEN"
+  },
+  "literature": {
+    "unary_congruence_theory": "ESTABLISHED",
+    "cycle_divisor_structure": "ESTABLISHED",
+    "G_set_congruence_context": "ESTABLISHED",
+    "exact_AQARION_formulation_priority": "UNRESOLVED",
+    "sequence_novelty": "NOT_CLAIMED"
+  },
+  "governance": {
+    "C4": "BLOCKED",
+    "publication": "BLOCKED_PENDING_FORMALIZATION_AND_LITERATURE_AUDIT",
+    "promotion": false
+  },
+  "hashes": {
+    "source_hash": null,
+    "manifest_hash": null
+  }
+}
