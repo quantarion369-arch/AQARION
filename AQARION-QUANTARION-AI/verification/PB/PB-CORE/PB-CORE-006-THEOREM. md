@@ -1,0 +1,104 @@
+# PB-CORE-006 — Enumeration Theorem
+
+## Theorem
+
+Let X be an n-element finite set.
+
+For each total map
+
+    T : X -> X,
+
+let
+
+    Stab(T)
+      =
+    {E in Eq(X) : T*E = E}.
+
+Then the total number of pullback-fixed equivalence relations over
+all labeled maps T : X -> X is
+
+    A_n
+      =
+    n!
+    sum_{k=1}^n
+      k p(k) n^(n-k-1)
+      /
+      (n-k)!,
+
+where p(k) is the number of integer partitions of k.
+
+Equivalently,
+
+    A_n
+      =
+    sum_{T:X->X} |Stab(T)|.
+
+---
+
+## Proof architecture
+
+1. Every finite T has a periodic core P.
+
+2. T|P is a permutation.
+
+3. Pullback-fixed equivalences of T are in bijection with invariant
+   equivalences of T|P.
+
+4. If |P|=k, summing over all permutations of P gives
+
+       k! p(k).
+
+5. A fixed k-element core can receive
+
+       k n^(n-k-1)
+
+   rooted forests from the remaining n-k labeled vertices.
+
+6. Choose the core in
+
+       binomial(n,k)
+
+   ways.
+
+7. Sum over k.
+
+This yields
+
+    A_n
+      =
+    sum_k
+      binomial(n,k)
+      k n^(n-k-1)
+      k!p(k),
+
+which simplifies to the stated formula.
+
+---
+
+## Evidence
+
+[P] mathematical derivation.
+
+[V] exhaustive all-map check for n <= 7.
+
+[V] independent permutation formula checks.
+
+[PV] exact values n <= 12 obtained from the theorem.
+
+---
+
+## Novelty boundary
+
+No claim is made that the underlying cycle congruence theory is new.
+
+The relevant classical literature includes Berman's work on unary
+algebra congruence lattices, subsequent work on monounary algebras,
+and G-set congruence theory.
+
+The AQARION-specific contribution is the synthesis around the
+pullback-fixed relation T*E=E and the explicit finite dynamical
+core/extension classification, together with executable verification
+and provenance.
+
+A separate literature search is still required before making a
+priority claim for the enumeration formula itself.
