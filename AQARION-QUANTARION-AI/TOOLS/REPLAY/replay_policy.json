@@ -1,0 +1,67 @@
+{
+  "policy_id": "AQ-REPLAY-POLICY-AQARION-QUADRATIC",
+  "policy_authority": "AQARION research operator",
+  "repository": "quantarion369-arch/AQARION",
+  "commit": "8e3aa281bf3ccfe8318853ba93b14e49977fb623",
+  "package_path": "AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT",
+  "archive": {
+    "format": "github-commit-zip",
+    "max_bytes": 52428800,
+    "max_files": 10000,
+    "max_file_bytes": 10485760,
+    "max_seconds": 600
+  },
+  "required_files": [
+    {
+      "path": "examples/quadratic_contract_atlas.py",
+      "sha256": null
+    },
+    {
+      "path": "tools/verify_quadratic_atlas.py",
+      "sha256": null
+    },
+    {
+      "path": "tests/test_quadratic_atlas_saved_evidence.py",
+      "sha256": null
+    },
+    {
+      "path": "tools/run_regression.py",
+      "sha256": null
+    },
+    {
+      "path": "tools/verify_package.py",
+      "sha256": null
+    },
+    {
+      "path": "tests/fixtures/quadratic_atlas_q2.json",
+      "sha256": "46f873f7c067c01f90cb62e2c21ea5653199b93e9e43bd3b95ab145ae43fe214"
+    }
+  ],
+  "required_tests": [
+    "tests/test_quadratic_atlas_saved_evidence.py"
+  ],
+  "execution": {
+    "allow_exec": false,
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test*.py"
+    ],
+    "timeout_seconds": 300
+  },
+  "mutations": {
+    "required": true,
+    "fixture": "tests/fixtures/quadratic_atlas_q2.json",
+    "mode": "byte-flip-hash-must-change"
+  },
+  "unexpected_files": "report",
+  "limits": {
+    "extracted_bytes": 104857600,
+    "receipt_bytes": 5242880
+  }
+}
