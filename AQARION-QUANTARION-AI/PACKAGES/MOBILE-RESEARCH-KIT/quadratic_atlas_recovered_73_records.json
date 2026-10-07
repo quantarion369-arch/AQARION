@@ -1,0 +1,135 @@
+{
+  "title": "Quadratic Atlas — 73 Recovered Records",
+  "recovery_status": "partial_transcription_from_visible_chunks",
+  "record_count": 73,
+  "format": "Each record is an array whose positions correspond to columns. Counterexamples and certificate entries are arrays whose positions correspond to evidence_columns.",
+  "columns": [
+    "c",
+    "a",
+    "b",
+    "complete_acceptance",
+    "exact_acceptance",
+    "three_point_acceptance",
+    "strict_acceptance",
+    "primary_routes_agree",
+    "strict_false_rejection",
+    "strict_false_acceptance",
+    "first_counterexample",
+    "witness_replayed",
+    "equivalence_certificate"
+  ],
+  "evidence_columns": [
+    "input",
+    "reference_output",
+    "candidate_output",
+    "reference_residue",
+    "candidate_residue"
+  ],
+  "records": [
+    [-2,-2,2,true,true,true,false,true,true,false,null,null,[[0,0,2,0,0],[1,2,-2,0,0]]],
+    [-2,-2,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [-2,-1,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [-2,-1,-2,false,false,false,false,true,false,false,[1,2,-5,0,1],true,null],
+    [-2,-1,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [-2,-1,0,false,false,false,false,true,false,false,[1,2,-3,0,1],true,null],
+    [-2,-1,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [-2,-1,2,false,false,false,false,true,false,false,[1,2,-1,0,1],true,null],
+    [-2,-1,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [-2,0,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [-2,0,-2,true,true,true,false,true,true,false,null,null,[[0,0,-2,0,0],[1,2,-4,0,0]]],
+    [-2,0,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [-2,0,0,true,true,true,false,true,true,false,null,null,[[0,0,0,0,0],[1,2,-2,0,0]]],
+    [-2,0,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [-2,0,2,true,true,true,false,true,true,false,null,null,[[0,0,2,0,0],[1,2,0,0,0]]],
+    [-2,0,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [-2,1,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [-2,1,-2,false,false,false,false,true,false,false,[1,2,-3,0,1],true,null],
+    [-2,1,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [-2,1,0,false,false,false,false,true,false,false,[1,2,-1,0,1],true,null],
+    [-2,1,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [-2,1,2,false,false,false,false,true,false,false,[1,2,1,0,1],true,null],
+    [-2,1,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [-2,2,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [-2,2,-2,true,true,true,false,true,true,false,null,null,[[0,0,-2,0,0],[1,2,-2,0,0]]],
+    [-2,2,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [-2,2,0,true,true,true,false,true,true,false,null,null,[[0,0,0,0,0],[1,2,0,0,0]]],
+    [-2,2,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [-2,2,2,true,true,true,false,true,true,false,null,null,[[0,0,2,0,0],[1,2,2,0,0]]],
+    [-2,2,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [-2,3,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [-2,3,-2,false,false,false,false,true,false,false,[1,2,-1,0,1],true,null],
+    [-2,3,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [-2,3,0,false,false,false,false,true,false,false,[1,2,1,0,1],true,null],
+    [-2,3,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [-2,3,2,false,false,false,false,true,false,false,[1,2,3,0,1],true,null],
+    [-2,3,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [-1,-3,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [-1,-3,-2,true,true,true,true,true,false,false,null,null,null],
+    [-1,-3,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [-1,-3,0,true,true,true,true,true,false,false,null,null,null],
+    [-1,-3,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [-1,-3,2,true,true,true,true,true,false,false,null,null,null],
+    [-1,-3,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [-1,-2,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [-1,-2,-2,false,false,false,false,true,false,false,[1,2,-5,0,1],true,null],
+    [-1,-2,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [-1,-2,0,false,false,false,false,true,false,false,[1,2,-3,0,1],true,null],
+    [-1,-2,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+
+    [3,0,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [3,0,2,false,false,false,false,true,false,false,[1,2,5,0,1],true,null],
+    [3,0,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [3,1,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [3,1,-2,true,true,true,true,true,false,false,null,null,null],
+    [3,1,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [3,1,0,true,true,true,true,true,false,false,null,null,null],
+    [3,1,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [3,1,2,true,true,true,true,true,false,false,null,null,null],
+    [3,1,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [3,2,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [3,2,-2,false,false,false,false,true,false,false,[1,2,3,0,1],true,null],
+    [3,2,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [3,2,0,false,false,false,false,true,false,false,[1,2,5,0,1],true,null],
+    [3,2,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [3,2,2,false,false,false,false,true,false,false,[1,2,7,0,1],true,null],
+    [3,2,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null],
+
+    [3,3,-3,false,false,false,false,true,false,false,[0,0,-3,0,1],true,null],
+    [3,3,-2,true,true,true,true,true,false,false,null,null,null],
+    [3,3,-1,false,false,false,false,true,false,false,[0,0,-1,0,1],true,null],
+    [3,3,0,true,true,true,true,true,false,false,null,null,null],
+    [3,3,1,false,false,false,false,true,false,false,[0,0,1,0,1],true,null],
+    [3,3,2,true,true,true,true,true,false,false,null,null,null],
+    [3,3,3,false,false,false,false,true,false,false,[0,0,3,0,1],true,null]
+  ],
+  "original_report_ending": {
+    "all_checks_passed": true,
+    "scope": "Complete residues, exact quadratic conditions, and three evaluation points are compared. Strict coefficient matching is an adversarial rule. False rejections by that rule are expected findings, not harness failures. This is not a general polynomial classifier or formal certification.",
+    "exit_code": 0,
+    "exit_interpretation": "0: primary routes agree and consistency checks pass; 1: disagreement or consistency failure; 2: invalid input or output failure."
+  },
+  "recovery_notes": {
+    "source": "Complete record objects visible in the supplied terminal excerpts.",
+    "representation": "Original record objects have been converted to positional arrays using the explicit columns above. This wrapper and title are newly assigned recovery metadata.",
+    "duplicates": "Overlapping repeated records are included only once.",
+    "excluded_incomplete_record": {
+      "c": -1,
+      "a": -2,
+      "b": 2,
+      "reason": "The supplied record stops before its final evidence fields and closing brace."
+    },
+    "missing_material": "Original fixture header, unpasted record ranges, project scripts, project documentation, and the previously claimed 1800-line deliverable are not available in the visible conversation.",
+    "verification_limit": "Original report success flags are transcribed, not results of a newly executed verification.",
+    "original_schema_preserved": false,
+    "replacement_for_original_fixture": false
+  }
+}
