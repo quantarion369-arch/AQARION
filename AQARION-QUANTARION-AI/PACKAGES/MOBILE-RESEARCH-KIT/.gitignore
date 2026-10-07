@@ -1,13 +1,20 @@
+# Python caches
 __pycache__/
 *.py[cod]
+
+# Local virtual environments
 .venv/
 venv/
 
+# Generated execution and packaging outputs
+/reports/
+/handoffs/
+
+# Repair backups
 *.before_repair
 *.before-string-fix
 *.before-fixture-switch
 
-/reports/
-/handoffs/
+# Historical local archives and session checkpoints
 /*.zip
 /WORKFLOW_CHECKPOINT-*.md
