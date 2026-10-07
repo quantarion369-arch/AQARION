@@ -1,14 +1,19 @@
-# Mobile Research Kit — File Tree
+# Mobile Research Kit: File Tree
 
-## Package layout
+Date: October 7, 2026.
+
+## Selected package structure
 
     mobile-research-kit/
     ├── README.md
     ├── .gitignore
     ├── CHECKPOINT.md
     ├── FILETREE.md
-    ├── RECOVERY.md
     ├── manifest.json
+    ├── docs/
+    │   └── history/
+    │       ├── README-25tests.md
+    │       └── CHECKPOINT-25tests.md
     ├── examples/
     │   ├── coefficient_sweep.py
     │   ├── contract_collision_lab.py
@@ -17,88 +22,78 @@
     ├── tools/
     │   ├── inspect_environment.py
     │   ├── record_run.py
+    │   ├── run_regression.py
     │   ├── run_workflow.py
+    │   ├── verify_package.py
     │   ├── verify_quadratic_atlas.py
     │   └── view_report.py
-    ├── tests/
-    │   ├── fixtures/
-    │   │   └── quadratic_atlas_q2.json
-    │   ├── test_coefficient_sweep.py
-    │   ├── test_contract_collision_lab.py
-    │   ├── test_contract_selection.py
-    │   ├── test_inspect_environment.py
-    │   ├── test_modular_contract_atlas.py
-    │   ├── test_quadratic_atlas_saved_evidence.py
-    │   ├── test_quadratic_contract_atlas.py
-    │   ├── test_record_run.py
-    │   ├── test_run_workflow.py
-    │   ├── test_view_report.py
-    │   ├── test_workflow_failures.py
-    │   └── test_workflow_os_errors.py
-    └── docs/
-        └── history/
-            ├── README-25tests.md
-            └── CHECKPOINT-25tests.md
+    └── tests/
+        ├── fixtures/
+        │   └── quadratic_atlas_q2.json
+        ├── test_coefficient_sweep.py
+        ├── test_contract_collision_lab.py
+        ├── test_contract_selection.py
+        ├── test_inspect_environment.py
+        ├── test_modular_contract_atlas.py
+        ├── test_quadratic_atlas_saved_evidence.py
+        ├── test_quadratic_contract_atlas.py
+        ├── test_record_run.py
+        ├── test_run_regression.py
+        ├── test_run_workflow.py
+        ├── test_verify_package.py
+        ├── test_view_report.py
+        ├── test_workflow_failures.py
+        └── test_workflow_os_errors.py
 
-The root name above is the logical package name. The current repository
-directory is MOBILE-RESEARCH-KIT; the verified phone directory is
-Mobile-Research-Kit-Deliverables.
+The tree describes the selected source package, not every file currently
+present in the phone directory.
 
-The historical documents are included in the verified local package.
-Their presence in the repository must be checked separately.
+The logical package name is mobile-research-kit.
+The current phone working directory is Mobile-Research-Kit-Deliverables.
 
-## Root documents
+## Responsibilities
 
-| File | Purpose |
-|---|---|
-| README.md | Installation context, usage commands, results interpretation, and limitations. |
-| CHECKPOINT.md | Dated verification evidence, archive identity, and remaining work. |
-| FILETREE.md | Package layout and file responsibilities. |
-| RECOVERY.md | Recovery history and technical specification. |
-| manifest.json | Selected package paths, byte sizes, and SHA-256 hashes. |
-| .gitignore | Repository exclusion rules. |
+- examples/: experimental programs and atlas generators.
+- tools/: inspection, recording, orchestration, verification, and viewing.
+- tests/: implementation and failure-path regression tests.
+- tests/fixtures/: saved evidence required by fixture-based tests.
+- docs/history/: preserved earlier operating documents.
+- manifest.json: selected file paths, byte sizes, and SHA-256 hashes.
+- CHECKPOINT.md: recorded execution and release boundaries.
+- FILETREE.md: selected structure and file responsibilities.
 
-## Implementation
+## Verification entry points
 
-examples/ contains the four experimental programs.
+Package integrity:
 
-tools/ contains environment inspection, command recording, workflow
-coordination, saved-evidence verification, and report viewing.
+    python tools/verify_package.py
 
-tests/ contains twelve test modules.
+Package integrity followed by the complete test suite:
 
-tests/fixtures/quadratic_atlas_q2.json is the original saved fixture used
-for quadratic evidence verification. Recovery excerpts are not replacements
-for this file.
+    python tools/run_regression.py
 
-## Historical records
+The integrity verifier checks listed files only.
+A successful check does not establish authenticity or verify unlisted files.
 
-docs/history/ preserves the earlier README and checkpoint.
+## Items requiring presence checks
 
-Those documents describe an earlier build. Current operating instructions
-belong in README.md; current verification evidence belongs in CHECKPOINT.md.
+LICENSE and RECOVERY.md were discussed previously but their current
+presence was not established by this document inspection.
 
-## Additional root items
+Add them to the selected tree after confirming the actual files.
+Do not invent filenames for recovery artifacts.
 
-LICENSE was included as a planned entry in the earlier tree. Add it to the
-actual inventory when the completed file is installed.
+## Generated and excluded items
 
-A separate recovery JSON is visible in the repository, but its full filename
-has not been supplied. It is therefore not assigned an invented name here.
+Runtime reports, caches, temporary directories, and historical archives
+are not shown as source components.
 
-## Generated outputs
-
-reports/ is used by the documented workflow commands for generated artifacts.
-It is not included in this source tree as a pre-existing packaged directory.
-
-Archives, temporary extraction folders, caches, and backups are not
-implementation components.
+Keep the saved quadratic fixture distinct from generated reports.
+Recovery excerpts are not replacements for the fixture.
 
 ## Maintenance
 
-Update this tree when files are added, removed, or moved.
+Update this document when selected files are added, removed, or moved.
 
-Update manifest.json when selected package contents change.
-
-Verification results apply to the files and archive actually tested, not
-automatically to subsequent edits.
+Update affected manifest entries deliberately after approved edits.
+Verification results apply to the snapshot actually checked.
