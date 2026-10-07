@@ -413,6 +413,182 @@ Passing tests and successful packaging do not clear those restrictions.
 
 ---
 
+# Mobile Research Kit: Build and Packaging Checkpoint
+
+Checkpoint date: October 7, 2026.
+Latest reported verification: approximately 05:49 EDT.
+
+## Purpose
+
+This document records the build's verified state and packaging handoff.
+Usage instructions, experiment commands, and limitations belong in README.md.
+
+Results below distinguish newly reported extraction checks from earlier
+recorded experiments. No unperformed operation is marked complete.
+
+## Selected package contents
+
+| Category | Count |
+|---|---:|
+| Tools | 5 |
+| Examples | 4 |
+| Test modules | 12 |
+| Saved fixtures | 1 |
+| Current documentation files | 2 |
+| Historical documentation files | 2 |
+| .gitignore | 1 |
+| Manifest | 1 |
+| Total selected files, including manifest | 28 |
+
+The manifest contains 27 file entries and excludes itself.
+
+The earlier Python, Markdown, and JSON inventory counted 27 files and
+10660 lines. That filter included manifest.json but excluded .gitignore.
+
+The largest listed file is tests/fixtures/quadratic_atlas_q2.json:
+7189 lines and 223091 bytes.
+
+No separate 1800-line file was identified in that inventory.
+
+## Source-package integrity
+
+The local manifest verification reported:
+
+    RESULT: 27 verified; 0 missing or mismatched
+
+Every manifest-listed file matched both its expected byte size and SHA-256
+hash at the time of that check.
+
+Original fixture identity:
+
+    Path: tests/fixtures/quadratic_atlas_q2.json
+    Bytes: 223091
+    SHA-256: 46f873f7c067c01f90cb62e2c21ea5653199b93e9e43bd3b95ab145ae43fe214
+
+The original local fixture is the authoritative packaged file.
+Recovery excerpts and reconstructed attachments are not substitutes for it.
+
+Matching the manifest establishes agreement with its recorded bytes.
+It does not independently authenticate the manifest or the package's origin.
+
+## Whole-kit extraction test
+
+The previously pending whole-kit archive extraction test completed
+successfully.
+
+Tested environment:
+
+    Termux on Android
+    Python 3.13.13, as previously reported for the local environment
+
+Archive produced:
+
+    Mobile-Research-Kit-Verified-20261007-054913-408214.zip
+
+Archive location:
+
+    Phone Downloads folder
+
+The packaging sequence selected the manifest-listed files plus manifest.json,
+checked ZIP integrity, extracted into a temporary directory, checked extracted
+file sizes and hashes, compared the extracted manifest with the source
+manifest, and executed the documented test and fixture-verification commands.
+
+Final reported status:
+
+    WHOLE_KIT_EXTRACTION_TEST: PASS
+
+The temporary extraction directory was managed for automatic cleanup.
+The verified source folder was not overwritten by this test.
+
+## Extracted execution evidence
+
+Full-suite result:
+
+    Ran 66 tests in 8.525s
+    OK
+    EXTRACTED_FULL_SUITE_EXIT: 0
+
+Fixture-verifier result:
+
+    CASES_RECOMPUTED=343
+    ACCEPTED_CASES=75
+    REJECTION_WITNESSES_REPLAYED=268
+    EQUIVALENCE_COMPARISONS_REPLAYED=27
+    SAVED_QUADRATIC_EVIDENCE_REPLAY_OK
+    EXTRACTED_FIXTURE_VERIFIER_EXIT: 0
+
+This closes the outstanding whole-kit extraction-test item for that archive.
+
+It does not establish that later edits or later archives have passed the
+same checks.
+
+## Earlier experiment evidence
+
+The earlier local full suite reported 66 passing tests in 8.568 seconds
+with explicit exit code 0.
+
+The recorded six-modulus quadratic experiment covered 2058 cases:
+100 acceptances and 33 strict false rejections.
+
+It reported zero primary disagreements, strict false acceptances, and failed
+witness replays.
+
+An earlier full saved-report replay covered 1958 rejection witnesses and
+33 equivalence comparison lists.
+
+A separately extracted six-test verifier subset also passed.
+
+These are retained historical results. The latest extraction test reran
+the full suite and the packaged modulus-2 fixture verifier; it did not
+establish a new standalone replay of the earlier full six-modulus report.
+
+## Documentation revision handoff
+
+The verified archive above contains the documentation version that described
+whole-kit extraction testing as pending.
+
+These replacement README.md and CHECKPOINT.md documents record its completed
+status and separate operational guidance from build evidence.
+
+At the time these replacement texts were prepared, writing them into the
+phone's source folder was not established.
+
+After installing these documents:
+
+1. Regenerate manifest entries for the changed packaged files.
+2. Verify all files against the regenerated manifest.
+3. Create a new archive without overwriting the earlier verified archive.
+4. Repeat extraction, integrity, full-suite, and fixture-verifier checks.
+5. Record the new archive identity and actual results.
+
+Do not reuse the old documentation hashes after changing these files.
+Do not describe the revised archive as tested before those checks finish.
+
+## Repository and release boundaries
+
+Historical documentation remains under docs/history/.
+
+Git previously did not recognize the working directory as a repository.
+No later repository initialization or commit is established here.
+
+No license selection, upload, publication, or public release is established.
+
+Package verification does not resolve ownership, provenance, privacy review,
+or any applicable publication restrictions.
+
+## Current handoff status
+
+Original packaged files: verified against the supplied manifest.
+Whole-kit extraction test: passed for the named archive.
+Extracted full suite: passed.
+Extracted fixture replay: passed.
+Replacement documentation: provided as complete text.
+Installation of replacement documentation: not yet established.
+Updated manifest and revised archive: not yet established.
+
+---
+
 Inspect what is available.
 Record what ran.
 View what was supplied.
