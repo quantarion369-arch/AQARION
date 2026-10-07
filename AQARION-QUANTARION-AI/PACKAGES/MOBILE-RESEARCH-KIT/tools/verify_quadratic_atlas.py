@@ -17,6 +17,15 @@ def _verify(report):
         "unexpected report kind",
     )
 
+    require(
+        report["reference"] == "x*x + x",
+        "unexpected reference contract",
+    )
+    require(
+        report["candidate"] == "c*x*x + a*x + b",
+        "unexpected candidate contract",
+    )
+
     bound = report["coefficient_bound"]
     require(
         type(bound) is int and bound >= 0,
