@@ -1,0 +1,88 @@
+{
+  "schema_version": "AQ-BURNSIDE-M3-001.v1",
+  "claim_id": "AQ-BURNSIDE-M3-001",
+  "artifact_title": "Burnside Third Moment Computational Evidence Record",
+  "statement": {
+    "text": "M3(k) = sum_{lambda |- k} C(lambda)^3 / z_lambda",
+    "definitions": {
+      "z_lambda": "product_j j^(m_j) m_j!",
+      "C_lambda": "weighted count of set partitions fixed by a permutation of cycle type lambda"
+    }
+  },
+  "disposition": {
+    "status": "COMPUTED",
+    "promotion": "BLOCKED"
+  },
+  "results": {
+    "domain": {
+      "k_min": 1,
+      "k_max": 31
+    },
+    "arithmetic": "exact_integer",
+    "M3": {
+      "1": 1,
+      "2": 8,
+      "3": 37,
+      "4": 285,
+      "5": 2150,
+      "6": 21205,
+      "7": 233612,
+      "8": 2999988,
+      "9": 43357512,
+      "10": 701807683,
+      "11": 12570466215,
+      "12": 247281304802,
+      "13": 5304907920014,
+      "14": 123393869390395,
+      "15": 3096302408284709,
+      "16": 83448087454450819,
+      "17": 2406167833876730327,
+      "18": 73972737679222896343,
+      "19": 2417180063095461143113,
+      "20": 83719158308015688839537,
+      "21": 3065623525717440739290263,
+      "22": 118409781450440136366073489,
+      "23": 4814067838687576395036404648,
+      "24": 205611616989885591180133977847,
+      "25": 9209030758458199302082042010781,
+      "26": 431806009048364070095706790249596,
+      "27": 21164152737458354181271060616858881,
+      "28": 1082743048110523297647521576062705103,
+      "29": 57740206450084684434628859141458156260,
+      "30": 3205626834037541326237961731886193129380,
+      "31": 185061579111216388766483589520017796300033
+    }
+  },
+  "evidence": {
+    "direct_permutation_M3": {
+      "scope": "1 <= k <= 5",
+      "status": "PASS",
+      "mismatches": 0
+    },
+    "direct_cycle_type_C": {
+      "scope": "every cycle type for k <= 6",
+      "status": "PASS",
+      "mismatches": 0
+    },
+    "cycle_type_M3": {
+      "scope": "1 <= k <= 31",
+      "status": "PASS",
+      "mismatches": 0
+    }
+  },
+  "scaling": {
+    "direct_bruteforce_boundary": "k <= 14 (historical production run)",
+    "cycle_type_completed_through": 31,
+    "cycle_type_next_boundary_observed": 32,
+    "k32_status": "not_completed_under_previous_60s_execution_boundary"
+  },
+  "formal": {
+    "status": "OPEN"
+  },
+  "independent_reproduction": {
+    "status": "PARTIAL"
+  },
+  "provenance": {
+    "status": "BOUND"
+  }
+}
