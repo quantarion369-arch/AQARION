@@ -107,6 +107,19 @@ class QuadraticOracleSeparationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "exact_acceptance mismatch"):
             verifier.verify(tampered)
 
+    def test_verifier_rejects_tampered_contract_metadata(self):
+        baseline = atlas.build_report([4], 3)
+        verifier.verify(baseline)
+
+        tampered = copy.deepcopy(baseline)
+        tampered["reference"] = "TOTALLY_DIFFERENT_FUNCTION"
+        tampered["candidate"] = "TOTALLY_DIFFERENT_CANDIDATE"
+
+        with self.assertRaisesRegex(
+            ValueError, "unexpected reference contract"
+        ):
+            verifier.verify(tampered)
+
     def test_verifier_does_not_call_generator_classifier(self):
         report = atlas.build_report([4], 3)
 
