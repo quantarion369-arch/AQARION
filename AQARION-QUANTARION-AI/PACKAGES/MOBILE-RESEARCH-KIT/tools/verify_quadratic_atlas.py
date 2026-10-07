@@ -12,21 +12,36 @@ def require(condition, message):
 
 
 def _verify(report):
-    require(report["kind"] == "quadratic_contract_atlas",
-            "unexpected report kind")
+    require(
+        report["kind"] == "quadratic_contract_atlas",
+        "unexpected report kind",
+    )
 
     bound = report["coefficient_bound"]
-    require(type(bound) is int and bound >= 0, "invalid coefficient bound")
+    require(
+        type(bound) is int and bound >= 0,
+        "invalid coefficient bound",
+    )
 
     moduli = report["moduli"]
-    require(isinstance(moduli, list) and bool(moduli), "invalid moduli")
-    require(all(type(q) is int and q >= 2 for q in moduli),
-            "invalid modulus")
-    require(len(set(moduli)) == len(moduli), "duplicate moduli")
+    require(
+        isinstance(moduli, list) and bool(moduli),
+        "invalid moduli",
+    )
+    require(
+        all(type(q) is int and q >= 2 for q in moduli),
+        "invalid modulus",
+    )
+    require(
+        len(set(moduli)) == len(moduli),
+        "duplicate moduli",
+    )
 
     groups = report["results"]
-    require([group["modulus"] for group in groups] == moduli,
-            "modulus groups mismatch")
+    require(
+        [group["modulus"] for group in groups] == moduli,
+        "modulus groups mismatch",
+    )
 
     expected_triples = {
         (c, a, b)
@@ -48,12 +63,18 @@ def _verify(report):
         rows = group["candidates"]
         triples = [(row["c"], row["a"], row["b"]) for row in rows]
 
-        require(all(type(v) is int for triple in triples for v in triple),
-                f"q={q}: noninteger coefficient")
-        require(len(triples) == len(expected_triples),
-                f"q={q}: candidate count mismatch")
-        require(set(triples) == expected_triples,
-                f"q={q}: missing or duplicate candidates")
+        require(
+            all(type(v) is int for triple in triples for v in triple),
+            f"q={q}: noninteger coefficient",
+        )
+        require(
+            len(triples) == len(expected_triples),
+            f"q={q}: candidate count mismatch",
+        )
+        require(
+            set(triples) == expected_triples,
+            f"q={q}: missing or duplicate candidates",
+        )
 
         accepted_count = 0
         false_rejections = 0
@@ -80,6 +101,11 @@ def _verify(report):
                 if item["reference_residue"] != item["candidate_residue"]
             ]
             accepted = not failures
+            exact = (
+                b % q == 0
+                and (c + a - 2) % q == 0
+                and (2 * (c - 1)) % q == 0
+            )
             strict = (
                 c % q == 1 % q
                 and a % q == 1 % q
@@ -92,12 +118,14 @@ def _verify(report):
             false_rejection = accepted and not strict
             false_acceptance = strict and not accepted
 
-            require(three_point == accepted,
-                    f"{label}: recomputed primary disagreement")
+            require(
+                accepted == exact == three_point,
+                f"{label}: recomputed primary disagreement",
+            )
 
             expected_flags = {
                 "complete_acceptance": accepted,
-                "exact_acceptance": accepted,
+                "exact_acceptance": exact,
                 "three_point_acceptance": three_point,
                 "strict_acceptance": strict,
                 "primary_routes_agree": True,
@@ -105,18 +133,26 @@ def _verify(report):
                 "strict_false_acceptance": false_acceptance,
             }
             for field, expected in expected_flags.items():
-                require(row[field] is expected,
-                        f"{label}: {field} mismatch")
+                require(
+                    row[field] is expected,
+                    f"{label}: {field} mismatch",
+                )
 
             witness = failures[0] if failures else None
-            require(row["first_counterexample"] == witness,
-                    f"{label}: counterexample mismatch")
-            require(row["witness_replayed"] is (True if failures else None),
-                    f"{label}: witness replay status mismatch")
+            require(
+                row["first_counterexample"] == witness,
+                f"{label}: counterexample mismatch",
+            )
+            require(
+                row["witness_replayed"] is (True if failures else None),
+                f"{label}: witness replay status mismatch",
+            )
 
             certificate = comparisons if false_rejection else None
-            require(row["equivalence_certificate"] == certificate,
-                    f"{label}: equivalence comparison mismatch")
+            require(
+                row["equivalence_certificate"] == certificate,
+                f"{label}: equivalence comparison mismatch",
+            )
 
             accepted_count += int(accepted)
             false_rejections += int(false_rejection)
@@ -156,7 +192,10 @@ def main():
         report = json.loads(args.report.read_text(encoding="utf-8"))
         totals = verify(report)
     except (OSError, ValueError, RecursionError) as error:
-        parser.exit(1, "VERIFICATION_FAILED: " + str(error) + chr(10))
+        parser.exit(
+            1,
+            "VERIFICATION_FAILED: " + str(error) + chr(10),
+        )
 
     names = {
         "cases": "CASES_RECOMPUTED",
