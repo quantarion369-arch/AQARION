@@ -589,6 +589,112 @@ Updated manifest and revised archive: not yet established.
 
 ---
 
+# Mobile Research Kit: Current Packaging Checkpoint
+
+Date: October 7, 2026.
+
+## Current working package
+
+Directory: Mobile-Research-Kit-Deliverables.
+
+Environment previously reported: Python 3.13.13 in Termux on Android.
+
+Current selected implementation:
+- Seven tools.
+- Four examples.
+- Fourteen test modules.
+- One saved quadratic fixture.
+
+## Latest supplied execution
+
+Command:
+
+    python tools/run_regression.py
+
+Recorded results:
+- Manifest-listed files: 31.
+- Files hashed: 31.
+- Failed file checks: 0.
+- Tests run: 91.
+- Full-suite duration: 11.540 seconds.
+- unittest result: OK.
+- Runner result: REGRESSION_OK.
+- Skipped tests: 0.
+
+These results apply to the phone working directory tested.
+They do not establish that GitHub or an extracted archive matches it.
+
+## Integrity and regression additions
+
+New tools:
+- tools/verify_package.py
+- tools/run_regression.py
+
+New test modules:
+- tests/test_verify_package.py: 16 tests.
+- tests/test_run_regression.py: 9 tests.
+
+The package verifier checks selected files against recorded byte sizes
+and SHA-256 hashes. Unlisted files are outside its verification scope.
+
+The regression runner checks package integrity before test discovery.
+It rejects an empty suite and reports skipped tests.
+Skipped tests do not currently make the runner fail.
+
+The current manifest includes the four new Python files.
+
+## Previously recorded mathematical evidence
+
+Quadratic atlas:
+- 2,058 candidate-modulus cases.
+- 100 acceptances.
+- 33 strict coefficient-rule false rejections.
+- Zero primary disagreements.
+- Zero strict-rule false accepts.
+- Zero failed replays.
+
+Full saved-evidence replay:
+- 1,958 rejection witnesses.
+- 33 equivalence comparison lists.
+
+Modulus-2 fixture:
+- 343 cases.
+- 75 acceptances.
+- 268 rejection witnesses.
+- 27 equivalence comparison lists.
+
+These figures are retained from the preceding checkpoint.
+The latest test run is not a newly recorded full atlas generation run.
+
+## Historical evidence
+
+An earlier checkpoint recorded 66 tests passing in 8.568 seconds
+with explicit exit code 0.
+
+A separately extracted six-test verifier subset previously passed.
+This does not establish whole-package extracted-archive verification.
+
+Original README and checkpoint are retained in docs/history/.
+
+## Release boundaries
+
+Whole-package extracted-archive verification remains pending.
+
+The working directory was previously reported as not recognized by Git
+as a repository. Its current Git status has not been rechecked here.
+
+An MIT license personalized for James Aaron
+(AQARION & QUANTARION_AI) was prepared in conversation.
+Its presence in this working directory has not been verified here.
+
+GitHub file preparation does not establish a verified remote copy,
+Git commit, upload, or published release.
+
+After editing this document, deliberately update its manifest entry.
+Do not silently regenerate unrelated hashes to hide mismatches.
+
+---
+
 Inspect what is available.
 Record what ran.
 View what was supplied.
