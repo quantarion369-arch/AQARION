@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:aqarion:replay:receipt",
+  "title": "AQARION Replay Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "target",
+    "policy",
+    "source",
+    "stages",
+    "overall_status",
+    "promotion"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "AQ-REPLAY-001/1"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "commit",
+        "package_path"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "package_path": {
+          "type": "string"
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "sha256"
+      ],
+      "properties": {
+        "policy_id": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archive_sha256",
+        "inventory_sha256",
+        "inventory_count"
+      ],
+      "properties": {
+        "archive_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "inventory_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "inventory_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "stages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archive",
+        "inventory",
+        "manifest",
+        "fixtures",
+        "tests",
+        "mutations"
+      ],
+      "properties": {
+        "archive": {
+          "$ref": "#/$defs/plain_stage"
+        },
+        "inventory": {
+          "$ref": "#/$defs/plain_stage"
+        },
+        "manifest": {
+          "$ref": "#/$defs/plain_stage"
+        },
+        "fixtures": {
+          "$ref": "#/$defs/plain_stage"
+        },
+        "tests": {
+          "$ref": "#/$defs/test_stage"
+        },
+        "mutations": {
+          "$ref": "#/$defs/plain_stage"
+        }
+      }
+    },
+    "overall_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INCOMPLETE"
+      ]
+    },
+    "promotion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed"
+      ],
+      "properties": {
+        "allowed": {
+          "const": false
+        }
+      }
+    },
+    "elapsed_seconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "inventory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string"},
+          "bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "manifest_findings": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "fixture_findings": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "$defs": {
+    "plain_stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {
+        "status": {
+          "enum": ["PASS", "FAIL", "NOT_RUN", "INCOMPLETE"]
+        },
+        "reason": {"type": "string"}
+      }
+    },
+    "test_stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason"],
+      "properties": {
+        "status": {
+          "enum": ["PASS", "FAIL", "NOT_RUN", "INCOMPLETE"]
+        },
+        "reason": {"type": "string"},
+        "discovered": {"type": "integer", "minimum": 0},
+        "executed": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "skipped": {"type": "integer", "minimum": 0},
+        "ids_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "returncode": {
+          "type": ["integer", "null"]
+        },
+        "static_ids": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+      }
