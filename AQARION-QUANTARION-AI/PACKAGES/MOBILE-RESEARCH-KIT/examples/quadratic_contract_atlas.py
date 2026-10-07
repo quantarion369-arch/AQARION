@@ -50,7 +50,10 @@ def evaluate(c, a, b, q, domain):
             first_failure = row.copy()
 
     return {
-        "accepted": first_failure is None,
+        "accepted": (first_failure is None) if comparisons else None,
+        "evidence_status": (
+            "observed" if comparisons else "no_evidence"
+        ),
         "inputs_checked": len(comparisons),
         "first_counterexample": first_failure,
         "comparisons": comparisons,
@@ -131,7 +134,9 @@ def build_report(moduli, bound):
         summaries.append({
             "modulus": q,
             "candidates": len(rows),
-            "accepted": sum(row["complete_acceptance"] for row in rows),
+            "accepted": sum(
+                row["complete_acceptance"] for row in rows
+            ),
             "primary_disagreements": sum(
                 not row["primary_routes_agree"] for row in rows
             ),
@@ -196,7 +201,10 @@ def main():
         description="Compare polynomial coefficients with induced functions."
     )
     parser.add_argument(
-        "--moduli", nargs="+", type=int, default=[2, 3, 4, 5, 6, 8]
+        "--moduli",
+        nargs="+",
+        type=int,
+        default=[2, 3, 4, 5, 6, 8],
     )
     parser.add_argument("--bound", type=int, default=3)
     parser.add_argument("--output-dir", type=Path, required=True)
@@ -229,7 +237,10 @@ def main():
         ) as handle:
             handle.write(table)
     except OSError as error:
-        print("QUADRATIC_ATLAS_ERROR=" + str(error), file=sys.stderr)
+        print(
+            "QUADRATIC_ATLAS_ERROR=" + str(error),
+            file=sys.stderr,
+        )
         return 2
 
     print(table, end="")
