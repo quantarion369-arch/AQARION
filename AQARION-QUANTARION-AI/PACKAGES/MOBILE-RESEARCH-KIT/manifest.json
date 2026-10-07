@@ -93,9 +93,19 @@
       "sha256": "c865e79021e7cfcfa72eb6992b9f1cd567738f33a57a16d89455eea04de88f77"
     },
     {
+      "path": "tests/test_run_regression.py",
+      "bytes": 4846,
+      "sha256": "de2caa4e88d88b1fa0651651e643b9d2b5ec2a93b4dcd83028c958847c26776d"
+    },
+    {
       "path": "tests/test_run_workflow.py",
       "bytes": 3193,
       "sha256": "35f70c9317cb8fd1aca025779087cee6f7daea78c9808eb57db20e44c24becd9"
+    },
+    {
+      "path": "tests/test_verify_package.py",
+      "bytes": 5975,
+      "sha256": "b0fe3ecfd8e6b80fb3a1ffb8cccdc50826cb7e1a3c9e168b1eadd133c8d7746b"
     },
     {
       "path": "tests/test_view_report.py",
@@ -123,9 +133,19 @@
       "sha256": "15867a4d1ff5f45c71427f0c0335453fe62a198764be3d58b3231b5eaa5a7a12"
     },
     {
+      "path": "tools/run_regression.py",
+      "bytes": 1761,
+      "sha256": "7a9d08991a6e07aa94ea44b545b90c82d8f93ec4ad76d51430e552c8c1039722"
+    },
+    {
       "path": "tools/run_workflow.py",
       "bytes": 3892,
       "sha256": "5d69fa41091c4f4014273005be9e4ee3f4db381c48171b14833096af8aa15e8f"
+    },
+    {
+      "path": "tools/verify_package.py",
+      "bytes": 5103,
+      "sha256": "1214ac60040f3565c700cd6bbb3e5cf3b966244093ec5d06a8c7f6e76a2bdbe4"
     },
     {
       "path": "tools/verify_quadratic_atlas.py",
