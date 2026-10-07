@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+*.before_repair
+*.before-string-fix
+*.before-fixture-switch
+
+/reports/
+/handoffs/
+/*.zip
+/WORKFLOW_CHECKPOINT-*.md
