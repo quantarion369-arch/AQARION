@@ -1,3 +1,2 @@
-{"evidence_id":"EV-JS-001","claim_id":"JS-11","class":"[R]","type":"research-package","artifact":"docs/PROOF-ARCHITECTURE.md","status":"ACTIVE","description":"Structured finite proof architecture and verification package."}
-{"evidence_id":"EV-JS-002","claim_id":"JS-11","class":"[V]","type":"computational-verification","artifact":"verify.py","status":"IMPLEMENTATION_TARGET","description":"Independent executable verification of declared finite fixtures."}
-{"evidence_id":"EV-JS-003","claim_id":"NEG-02","class":"KILLED","type":"counterexample","artifact":"negative-controls/","status":"RECORDED","description":"Infinite-domain boundary is kept separate from the finite theorem."}
+
+{"evidence_id":"EV-JS-002","claim_id":"JS-11","class":"[V]","type":"structural-package-validation","artifact":"verify.py","status":"IMPLEMENTED_STRUCTURAL_ONLY","description":"Validates package structure, JSON/JSONL parsing, identifier uniqueness, and claim/evidence references. This evidence does not establish the JOIN-STABILITY theorem and does not independently verify the declared finite fixtures."}
