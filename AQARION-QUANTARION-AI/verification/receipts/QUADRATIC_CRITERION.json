@@ -1,0 +1,18 @@
+{
+  "TITLE": "Quadratic_Criterion_b≡0_c+a-2≡0_2(c-1)≡0_mod_q",
+  "DESCRIPTION": "Family f_{c,a,b}=c x^2+a x+b vs g=x^2+x, h=Ax^2+Bx+b, A=c-1,B=a-1 = A x(x-1)+(A+B)x+b, exact criterion q|b, q|(A+B), q|2A, distinguishing example f=3x^2-x vs x^2+x mod 4 diff 2x(x-1) divisible by 4 functional equivalence without coeff match — null polynomial.",
+  "criterion": "b≡0 mod q, c+a-2≡0 mod q, 2(c-1)≡0 mod q",
+  "necessity": "h(0)=b, h(1)-h(0)=A+B, h(2)-2h(1)+h(0)=2A",
+  "sufficiency": "x(x-1) even, A x(x-1) = (2A)·x(x-1)/2 divisible by q",
+  "distinguishing_example": {
+    "q": 4,
+    "f": "3x^2 - x",
+    "g": "x^2 + x",
+    "difference": "2x(x-1)",
+    "functional_equivalence_mod_4": true,
+    "criterion_holds": true,
+    "coeff_match_false": true,
+    "significance": "Coefficient-equality classifier falsely rejects functionally equivalent candidate"
+  },
+  "odd_vs_even": "Odd moduli forces A≡0 then B≡0. Even moduli extra null polynomial possibility."
+}
