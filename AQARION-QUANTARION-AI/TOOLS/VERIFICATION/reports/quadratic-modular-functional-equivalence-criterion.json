@@ -1,0 +1,78 @@
+{
+  "title": "Quadratic Modular Functional Equivalence: Exact Divisibility Criterion and Modulus-Four Example",
+  "record_type": "mathematical_derivation_with_historical_example_report",
+  "record_date": "2026-10-07",
+  "historical_aliases": [
+    "MOD-ATLAS-002",
+    "QUADRATIC_CRITERION.json"
+  ],
+  "scope": {
+    "coefficients": "Integers c, a and b",
+    "modulus": "Positive integer q",
+    "inputs": "All integers x",
+    "reference": "g(x) = x^2 + x",
+    "candidate": "f_c_a_b(x) = c*x^2 + a*x + b"
+  },
+  "derivation": {
+    "A": "c-1",
+    "B": "a-1",
+    "difference": "h(x) = A*x^2 + B*x + b",
+    "decomposition": "h(x) = A*x*(x-1) + (A+B)*x + b",
+    "criterion": [
+      "q divides b",
+      "q divides c+a-2",
+      "q divides 2*(c-1)"
+    ]
+  },
+  "proof": {
+    "necessity": [
+      "h(0)=b",
+      "h(1)-h(0)=A+B",
+      "h(2)-2*h(1)+h(0)=2*A"
+    ],
+    "sufficiency": "For every integer x, x*(x-1)/2 is an integer. Thus A*x*(x-1) = (2*A)*(x*(x-1)/2), and each term in the decomposition is divisible by q under the three conditions."
+  },
+  "distinguishing_example": {
+    "q": 4,
+    "c": 3,
+    "a": -1,
+    "b": 0,
+    "candidate": "3*x^2 - x",
+    "reference": "x^2 + x",
+    "difference": "2*x*(x-1)",
+    "functional_equivalence": true,
+    "criterion_holds": true,
+    "coefficientwise_equality_modulo_q": false,
+    "interpretation": "Coefficientwise equality is sufficient but not necessary for polynomial functions to agree modulo a composite modulus."
+  },
+  "parity_distinction": {
+    "odd_modulus": "The condition q divides 2*A implies q divides A; the criterion then forces q to divide B and b.",
+    "even_modulus": "The condition q divides 2*A can hold without q dividing A, allowing additional functionally equivalent candidates."
+  },
+  "reported_execution_scope": {
+    "examples_verified": true,
+    "complete_quadratic_atlas_included": false,
+    "grid_size": null,
+    "case_count": null
+  },
+  "planned_comparison_routes": [
+    "Exhaustive evaluation on complete residue systems",
+    "Exact three-condition divisibility classifier",
+    "Coefficientwise equality classifier as an intentionally overstrict comparison"
+  ],
+  "evidence_boundary": {
+    "mathematical_argument": "included",
+    "fresh_execution_performed_for_this_record": false,
+    "source_digest": null,
+    "repository_revision": null,
+    "original_execution_authenticated": false,
+    "formalization_status": "NOT_ESTABLISHED"
+  },
+  "governance": {
+    "C3": "OPEN",
+    "C4": "BLOCKED",
+    "publication": "BLOCKED",
+    "promotion": "DENY",
+    "promotion_code": "CL008"
+  }
+}
