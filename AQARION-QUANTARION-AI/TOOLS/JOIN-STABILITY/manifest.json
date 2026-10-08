@@ -1,0 +1,35 @@
+
+{
+  "schema_version": "1.0",
+  "package_id": "JOIN-STABILITY",
+  "package_version": "0.1.0",
+  "status": "BLOCKED_PENDING_REPRODUCTION",
+  "source_revision": "REPLACE_WITH_FULL_GIT_COMMIT_SHA",
+  "verification_policy": {
+    "fail_closed": true,
+    "allow_automatic_manifest_generation": false,
+    "mathematical_verification_status": "NOT_ESTABLISHED_BY_STRUCTURAL_VALIDATION"
+  },
+  "required_artifacts": [
+    "manifest.json",
+    "verify.py",
+    "reproduce.sh",
+    "evidence.jsonl"
+  ],
+  "verification_requirements": [
+    "manifest_schema_valid",
+    "required_artifacts_present",
+    "json_and_jsonl_parse",
+    "claim_identifiers_unique",
+    "evidence_identifiers_unique",
+    "evidence_references_resolve",
+    "source_revision_matches_checkout",
+    "independent_fixtures_pass",
+    "reproduction_exit_code_zero"
+  ],
+  "promotion": {
+    "reproduction_verified": false,
+    "proof_reviewed": false,
+    "publication_approved": false
+  }
+}
