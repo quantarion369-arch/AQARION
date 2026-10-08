@@ -1,0 +1,82 @@
+{
+  "title": "Burnside Partition Moments: First, Second and Third Moments for k = 1 through 10",
+  "record_type": "historical_computational_result_report",
+  "record_date": "2026-10-07",
+  "subject": "Fixed set partitions under permutations",
+  "historical_aliases": [
+    "AQ-RM-002",
+    "AQ-RM-003",
+    "AQ-RM-004",
+    "BURNSIDE_MOMENTS_k1_10.json"
+  ],
+  "definitions": {
+    "E_k": "The set of set partitions of a labeled k-element set",
+    "C_sigma": "The number of elements of E_k fixed by the permutation sigma",
+    "M_j_k": "(1/k!) times the sum of C_sigma^j over sigma in S_k",
+    "p_k": "The number of integer partitions of k",
+    "variance": "M_2(k) - M_1(k)^2",
+    "orbit_interpretation": "M_j(k) counts diagonal S_k orbits of ordered j-tuples of set partitions"
+  },
+  "reported_method": {
+    "arithmetic": "Exact Fraction arithmetic",
+    "cycle_type_formula": "C(lambda) = sum over partitions pi of the cycle index set of the product over blocks B of sum over positive d dividing gcd(lambda_i : i in B) of d^(|B|-1)",
+    "cycle_type_weight": "z_lambda = product over j of j^(m_j) times m_j!",
+    "moment_aggregation": "M_j(k) = sum over integer partitions lambda of k of C(lambda)^j / z_lambda",
+    "subset_recurrence": "F(empty) = 1; F(S) = sum over B contained in S and containing a fixed chosen i in S of w(B) F(S minus B)",
+    "state_count_bound": "2^r subset states for r cycles",
+    "transition_count_bound": "O(3^r) before additional compression",
+    "identity_control": "C(1^k) = Bell(k)"
+  },
+  "results": [
+    {"k": 1, "M1": 1, "M2": 1, "M3": 1, "integer_partition_count": 1, "variance": 0},
+    {"k": 2, "M1": 2, "M2": 4, "M3": 8, "integer_partition_count": 2, "variance": 0},
+    {"k": 3, "M1": 3, "M2": 10, "M3": 37, "integer_partition_count": 3, "variance": 1},
+    {"k": 4, "M1": 5, "M2": 33, "M3": 285, "integer_partition_count": 5, "variance": 8},
+    {"k": 5, "M1": 7, "M2": 91, "M3": 2150, "integer_partition_count": 7, "variance": 42},
+    {"k": 6, "M1": 11, "M2": 298, "M3": 21205, "integer_partition_count": 11, "variance": 177},
+    {"k": 7, "M1": 15, "M2": 910, "M3": 233612, "integer_partition_count": 15, "variance": 685},
+    {"k": 8, "M1": 22, "M2": 3017, "M3": 2999988, "integer_partition_count": 22, "variance": 2533},
+    {"k": 9, "M1": 30, "M2": 9945, "M3": 43357512, "integer_partition_count": 30, "variance": 9045},
+    {"k": 10, "M1": 42, "M2": 34207, "M3": 701807683, "integer_partition_count": 42, "variance": 32443}
+  ],
+  "reported_validation": [
+    {
+      "check": "First moment equals the integer partition count",
+      "scope": "k = 1 through 13",
+      "expected_values": [1, 2, 3, 5, 7, 11, 15, 22, 30, 42, 56, 77, 101],
+      "result": "PASS_REPORTED"
+    },
+    {
+      "check": "Cycle-type formula agrees with direct fixed-partition counting",
+      "scope": "Every cycle type through k = 6",
+      "result": "PASS_REPORTED"
+    },
+    {
+      "check": "Weighted first-moment aggregation",
+      "scope": "k = 1 through 10",
+      "result": "PASS_REPORTED"
+    },
+    {
+      "check": "Direct enumeration of permutations and set partitions for all three moments",
+      "scope": "k = 1 through 5",
+      "result": "PASS_REPORTED"
+    }
+  ],
+  "evidence_boundary": {
+    "execution_status": "historical_execution_reported",
+    "fresh_execution_performed_for_this_record": false,
+    "complete_executable_source_included": false,
+    "source_digest": null,
+    "repository_revision": null,
+    "original_execution_authenticated": false,
+    "independent_implementation_status": "reported_control_not_source_audited",
+    "lean_status": "OPEN"
+  },
+  "governance": {
+    "C3": "OPEN",
+    "C4": "BLOCKED",
+    "publication": "BLOCKED",
+    "promotion": "DENY",
+    "promotion_code": "CL008"
+  }
+}
