@@ -1,0 +1,88 @@
+{
+  "title": "Burnside Partition Moments: Evidence Record and Verification Boundary",
+  "record_type": "evidence_record",
+  "record_date": "2026-10-08",
+  "subject": "Permutation action on ordered tuples of set partitions",
+  "historical_aliases": [
+    "AQ-RM-002",
+    "AQ-RM-003",
+    "AQ-RM-004",
+    "EVIDENCE_BURNSIDE_MOMENTS.json"
+  ],
+  "claim": {
+    "statement": "The mean of C(sigma)^j over S_k equals the number of diagonal S_k orbits of ordered j-tuples of set partitions.",
+    "definitions": {
+      "C_sigma": "Number of set partitions fixed by sigma",
+      "tuple_order": "Ordered",
+      "action": "Simultaneous relabeling of every partition in the tuple"
+    },
+    "first_moment_statement": "The first moment equals p(k), the number of integer partitions of k."
+  },
+  "reported_run": {
+    "environment": "Historical sandbox Python 3.9",
+    "arithmetic": "Exact Fraction",
+    "method": "Cycle-type formula, subset recurrence and weighted moment aggregation",
+    "execution_timestamp": null,
+    "command": null,
+    "source_digest": null,
+    "repository_revision": null
+  },
+  "reported_evidence": {
+    "k": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "first_moment": [1, 2, 3, 5, 7, 11, 15, 22, 30, 42],
+    "second_moment": [1, 4, 10, 33, 91, 298, 910, 3017, 9945, 34207],
+    "third_moment": [1, 8, 37, 285, 2150, 21205, 233612, 2999988, 43357512, 701807683],
+    "variance": [0, 0, 1, 8, 42, 177, 685, 2533, 9045, 32443]
+  },
+  "reported_controls": [
+    {
+      "description": "Direct permutation and set-partition enumeration",
+      "scope": "k <= 5",
+      "outcome": "PASS_REPORTED"
+    },
+    {
+      "description": "Cycle-type formula against direct fixed-partition counting",
+      "scope": "Every cycle type for k <= 6",
+      "outcome": "PASS_REPORTED"
+    },
+    {
+      "description": "Weighted first moment equals p(k)",
+      "scope": "k <= 10",
+      "outcome": "PASS_REPORTED"
+    }
+  ],
+  "replay": {
+    "fresh_replay_performed_for_this_record": false,
+    "executable_source_included_in_this_record": false,
+    "original_run_authenticated": false,
+    "independent_control_source_inspected": false,
+    "required_for_source_bound_replay": [
+      "Complete executable implementation",
+      "Exact source digest",
+      "Exact command and input configuration",
+      "Environment record",
+      "Detailed execution output",
+      "Bound execution receipt"
+    ]
+  },
+  "linked_report": {
+    "path_relative_to_tools": "VERIFICATION/reports/burnside-partition-moments-first-through-third-k1-to-k10.json",
+    "relationship": "Detailed table and historical validation scopes",
+    "path_existence_authenticated": false
+  },
+  "provenance": {
+    "record_is_execution_receipt": false,
+    "record_is_json_schema": false,
+    "record_is_signature": false,
+    "provenance_negative_controls_executed": false
+  },
+  "disposition": {
+    "mathematical_argument": "RECOVERED",
+    "computational_results": "REPORTED",
+    "formalization": "OPEN",
+    "repository_authentication": "UNESTABLISHED",
+    "publication": "BLOCKED",
+    "promotion": "DENY",
+    "promotion_code": "CL008"
+  }
+}
