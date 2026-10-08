@@ -1,0 +1,14 @@
+{
+  "TITLE": "Modular_Atlas_Linear_605_Cases",
+  "DESCRIPTION": "Linear family f_{a,b}=x^2+a x+b vs g=x^2+x, 121 pairs a,b in -5..5 x5 moduli 2,3,4,5,6 =605 candidate-modulus cases, classifier b≡0 and a≡1 mod q exact proof via x=0,1, complete residue 2420 evaluations vs sample x=0 605 evaluations, 106 false accepts measured, 15/15 negative controls detected.",
+  "grid": "a,b in {-5..5} =121 pairs",
+  "moduli": [2, 3, 4, 5, 6],
+  "table": [
+    {"q": 2, "candidates": 121, "accept_complete": 30, "reject_complete": 91,  "disagreements_classifier_vs_complete": 0, "sample_false_accepts": 25, "controls_detected": "3/3"},
+    {"q": 3, "candidates": 121, "accept_complete": 12, "reject_complete": 109, "disagreements_classifier_vs_complete": 0, "sample_false_accepts": 21, "controls_detected": "3/3"},
+    {"q": 4, "candidates": 121, "accept_complete": 9,  "reject_complete": 112, "disagreements_classifier_vs_complete": 0, "sample_false_accepts": 24, "controls_detected": "3/3"},
+    {"q": 5, "candidates": 121, "accept_complete": 6,  "reject_complete": 115, "disagreements_classifier_vs_complete": 0, "sample_false_accepts": 27, "controls_detected": "3/3"},
+    {"q": 6, "candidates": 121, "accept_complete": 2,  "reject_complete": 119, "disagreements_classifier_vs_complete": 0, "sample_false_accepts": 9,  "controls_detected": "3/3"}
+  ],
+  "totals": {"cases": 605, "accept_complete": 59, "reject_complete": 546, "disagreements": 0, "sample_false_accepts": 106, "controls_total": "15/15 detected"}
+}
