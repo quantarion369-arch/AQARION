@@ -1,0 +1,32 @@
+{
+  "mode": "full",
+  "overall_pass": true,
+  "platform": "linux",
+  "python_version": "3.9.25",
+  "receipt_sha256": "597d0744b6fee3b3d7fbaeff7db2669fb0c7ec1df5d3675675fa09c8fd093d86",
+  "results": [
+    {"mismatches": 0, "passed": true, "test": "PB-006", "types": 138},
+    {"anchors": 9, "failed": [], "passed": true, "test": "PB-006-ANCHORS"},
+    {"failed": [], "passed": true, "test": "PB-006-TWO-CYCLE", "tested": 49},
+    {"cases": 166484, "passed": true, "test": "PB-001", "violations": 0},
+    {"fails_phi_into_con": 0, "fails_phi_psi_id": 0, "fails_psi_into_fix": 0, "fails_psi_phi_id": 0, "maps": 3413, "passed": true, "test": "PB-CORE"},
+    {"P": [0,1,2,3], "T": [1,2,0,3,3], "T_n_of_0": 2, "false_claim_holds": false, "passed": true, "test": "PB-CORE-NEG"},
+    {"cases": 625770, "passed": true, "test": "FWD-JOIN", "violations": 0},
+    {"cases": 42473, "component_violations": 0, "edge_violations": 0, "passed": true, "test": "INC"},
+    {"mutations": [
+      {"detected": true, "name": "M01-pullback-identity"},
+      {"detected": true, "name": "M02-fw-vs-pb"},
+      {"detected": true, "name": "M03-join-replaced"},
+      {"detected": true, "name": "M04-canonicalize"},
+      {"detected": true, "name": "M05-no-phase-norm"},
+      {"detected": true, "name": "M06-phi-not-d"},
+      {"detected": true, "name": "M07-rgs-truncated"},
+      {"detected": true, "name": "M08-Tn-not-identity"}
+    ], "passed": true, "test": "MUT"}
+  ],
+  "source_sha256": "7a1c5ffe8190c10ad2152c034f7ca90c3402aa33a5d03102f9fefb48bdc43bf9",
+  "suite": "AQARION Math Verification Test Suite",
+  "summary": {"failed": 0, "passed": 9, "total": 9},
+  "timestamp_utc": "2026-10-05T03:34:30.038167+00:00",
+  "version": "1.1"
+}
