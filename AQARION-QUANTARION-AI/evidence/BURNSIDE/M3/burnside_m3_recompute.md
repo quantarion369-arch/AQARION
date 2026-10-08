@@ -1,154 +1,216 @@
+AQ-BURNSIDE-M3-001 — Independent M3 Recompute
+
+Purpose
+
+This document specifies the independent recomputation required to validate the Burnside M_3 evidence object.
+
+The recomputation is deliberately separate from the stored evidence.
+
+The stored M3 table must not be treated as the computational oracle.
+
+---
+
+Mathematical quantity
+
+For each k,
+
+[
+M_3(k)
+
+\frac{1}{k!}
+\sum_{\sigma\in S_k} C(\sigma)^3.
+]
+
+Equivalently, using cycle types,
+
+[
+M_3(k)
+
+\sum_{\lambda\vdash k}
+\frac{C(\lambda)^3}{z_\lambda},
+]
+
+where
+
+[
+z_\lambda
+
+\prod_{j\ge1}j^{m_j}m_j!
+]
+
+for
+
+[
+\lambda=1^{m_1}2^{m_2}\cdots.
+]
+
+All arithmetic is exact.
+
+No floating-point computation is permitted.
+
+---
+
+Required independent checks
+
+1. JSON integrity
+
+The stored evidence object must parse successfully and contain the expected M3 table.
+
+JSON_INTEGRITY=PASS
+
+This check validates structure only. It does not validate the mathematical values.
+
+---
+
+2. Direct permutation control
+
+For
+
+[
+k=1,\ldots,5,
+]
+
+enumerate all permutations in S_k, compute C(\sigma) independently, and evaluate
+
+[
+\frac1{k!}\sum_{\sigma\in S_k}C(\sigma)^3.
+]
+
+The result must agree exactly with the corresponding cycle-type computation.
+
+Required result:
+
+DIRECT_PERMUTATION_M3_K1_5=PASS
+
+---
+
+3. Direct cycle-type control
+
+For
+
+[
+k=1,\ldots,6,
+]
+
+compute C(\lambda) independently for every partition \lambda\vdash k.
+
+Then compare the resulting cycle-type values against the independently enumerated permutation values.
+
+Required result:
+
+DIRECT_CYCLE_TYPE_C_K1_6=PASS
+
+with
+
+MISMATCHES=0
+
+---
+
+4. Full cycle-type M3 computation
+
+For
+
+[
+k=1,\ldots,31,
+]
+
+compute
+
+[
+M_3(k)
+
+\sum_{\lambda\vdash k}
+\frac{C(\lambda)^3}{z_\lambda}.
+]
+
+The calculation must regenerate the values from the underlying C(\lambda) computation.
+
+It must not simply read the claimed M3 values and reproduce them.
+
+Required result:
+
+CYCLE_TYPE_M3_K1_31=PASS
+
+---
+
+Corrected transcription targets
+
+The following five entries were previously transcribed incorrectly and must be regenerated and checked against the independent computation.
+
+k=25
+CORRECT=...2082042010781
+
+k=27
+CORRECT=...21060616858881
+
+k=28
+CORRECT=...7521576062705103
+
+k=29
+CORRECT=...628859141458156260
+
+k=30
+CORRECT=...6237961731886193129380
+
+The omitted leading portions above are intentionally not reconstructed here.
+
+The authoritative values must come from the exact recomputation.
+
+No manually reconstructed integer is accepted as evidence.
+
+---
+
+Why the second computation is required
+
+The previous M3 pass demonstrated that a computational pipeline can produce a table containing transcription errors.
+
+Therefore:
+
+[
+\text{stored table}
+\neq
+\text{oracle}.
+]
+
+The validation must independently regenerate the mathematical quantities and then compare them with the stored evidence.
+
+This is the reason the recomputation is a separate evidence-control step.
+
+---
+
+Required final receipt
+
+Only after the actual recomputation has been executed may the following receipt be emitted:
+
 AQ-BURNSIDE-M3-001
+JSON_INTEGRITY=PASS
+DIRECT_PERMUTATION_M3_K1_5=PASS
+DIRECT_CYCLE_TYPE_C_K1_6=PASS
+CYCLE_TYPE_M3_K1_31=PASS
+EXACT_INTEGER_ARITHMETIC=PASS
+MISMATCHES=0
+FORMALIZATION=OPEN
+PROMOTION=BLOCKED
 
-Independent recomputation specification.
+Until the execution has actually occurred, these are required receipt fields, not a prewritten PASS receipt.
 
-This program must compute C(lambda) and M3(k) independently
+---
 
-of the stored evidence JSON.
+Governance boundary
 
-Exact arithmetic only.
+A successful recomputation establishes computational consistency of the finite M3 evidence.
 
-No floating point.
+It does not by itself establish:
 
-No hard-coded claimed M3 values.
+- Lean formalization;
+- a publication-level theorem certificate;
+- novelty;
+- asymptotic consequences beyond the verified finite data;
+- promotion status.
 
-from future import annotations
+Therefore the required terminal state remains:
 
-from collections import Counter
-from fractions import Fraction
-from itertools import permutations
-from math import factorial, gcd
+FORMALIZATION=OPEN
+PROMOTION=BLOCKED
 
-def partitions(n: int, lo: int = 1):
-if n == 0:
-yield ()
-return
-
-for first in range(lo, n + 1):
-    for rest in partitions(n - first, first):
-        yield (first,) + rest
-
-def z_lambda(lam):
-c = Counter(lam)
-z = 1
-for part, multiplicity in c.items():
-z *= (part ** multiplicity) * factorial(multiplicity)
-return z
-
-def permutation_cycles(p):
-n = len(p)
-seen = [False] * n
-cycles = []
-
-for i in range(n):
-    if seen[i]:
-        continue
-
-    j = i
-    length = 0
-
-    while not seen[j]:
-        seen[j] = True
-        length += 1
-        j = p[j]
-
-    cycles.append(length)
-
-return tuple(sorted(cycles))
-
-def enumerate_set_partitions(n):
-"""
-Independent partition generator for small-k direct controls.
-
-Returns partitions of range(n) as tuples of blocks.
-"""
-blocks = []
-
-def rec(i):
-    if i == n:
-        yield tuple(tuple(b) for b in blocks)
-        return
-
-    for j in range(len(blocks)):
-        blocks[j].append(i)
-        yield from rec(i + 1)
-        blocks[j].pop()
-
-    blocks.append([i])
-    yield from rec(i + 1)
-    blocks.pop()
-
-yield from rec(0)
-
-def canonical_partition(partition):
-return tuple(sorted(tuple(sorted(block)) for block in partition))
-
-def permutation_respects_partition(p, partition):
-"""
-Placeholder for the exact C(lambda) predicate.
-
-This MUST be replaced by the already-established independent
-semantic definition of C for the AQARION Burnside object.
-
-Do not substitute a guessed formula here.
-"""
-raise NotImplementedError(
-    "Bind to the independently established C(lambda) definition."
-)
-
-def direct_C_for_permutation(p):
-"""
-Direct small-k control.
-
-Counts partitions satisfying the exact semantic predicate.
-"""
-n = len(p)
-total = 0
-
-for part in enumerate_set_partitions(n):
-    if permutation_respects_partition(p, part):
-        total += 1
-
-return total
-
-def direct_M3(n):
-total = 0
-
-for p in permutations(range(n)):
-    c = direct_C_for_permutation(p)
-    total += c ** 3
-
-return Fraction(total, factorial(n))
-
-def cycle_type_M3(n, C_by_lambda):
-total = Fraction(0, 1)
-
-for lam in partitions(n):
-    c = C_by_lambda(lam)
-    total += Fraction(c ** 3, z_lambda(lam))
-
-return total
-
-def main():
-print("AQ-BURNSIDE-M3-001")
-print("EXACT_INTEGER_ARITHMETIC=REQUIRED")
-print("STORED_EVIDENCE_IS_NOT_USED_AS_ORACLE")
-
-# Small direct control.
-#
-# The semantic C implementation must be bound before execution.
-for k in range(1, 6):
-    value = direct_M3(k)
-    print(f"DIRECT_M3[{k}]={value}")
-
-print("DIRECT_PERMUTATION_M3_K1_5=REQUIRES_SEMANTIC_C_BINDING")
-
-# Cycle-type computation must use the independently established
-# C(lambda) evaluator.
-print("CYCLE_TYPE_M3_K1_31=REQUIRES_SEMANTIC_C_BINDING")
-
-print("FORMALIZATION=OPEN")
-print("PROMOTION=BLOCKED")
-
-if name == "main":
-main()
+until those separate conditions are satisfied.
