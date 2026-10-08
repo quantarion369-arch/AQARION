@@ -1,0 +1,55 @@
+name: AQARION Mobile Research Kit Validation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT/**"
+      - ".github/workflows/mobile-research-kit.yml"
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT/**"
+      - ".github/workflows/mobile-research-kit.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mobile-research-kit-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    name: Mobile Research Kit Regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    defaults:
+      run:
+        working-directory: AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.13.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.13"
+
+      - name: Verify Python environment
+        run: |
+          python --version
+          python -c "import sys; print(sys.executable)"
+
+      - name: Run package regression
+        run: |
+          python tools/run_regression.py
