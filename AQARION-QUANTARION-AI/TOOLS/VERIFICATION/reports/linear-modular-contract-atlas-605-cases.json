@@ -1,0 +1,85 @@
+{
+  "title": "Linear Modular Contract Atlas: Complete Residue Checks versus Single-Point Sampling",
+  "record_type": "historical_computational_result_report_with_proof",
+  "record_date": "2026-10-07",
+  "historical_aliases": [
+    "MOD-ATLAS-001",
+    "MODULAR_ATLAS_LINEAR_605.json"
+  ],
+  "specification": {
+    "reference": "g(x) = x^2 + x",
+    "candidate": "f_a_b(x) = x^2 + a*x + b",
+    "difference": "h(x) = (a-1)*x + b",
+    "coefficient_domain": {
+      "a_min": -5,
+      "a_max": 5,
+      "b_min": -5,
+      "b_max": 5
+    },
+    "moduli": [2, 3, 4, 5, 6],
+    "candidate_pairs": 121,
+    "candidate_modulus_cases": 605,
+    "complete_domain": "All residues x = 0 through q-1 for each modulus q",
+    "sample_domain": [0],
+    "exact_acceptance_criterion": "b is divisible by q and a-1 is divisible by q"
+  },
+  "proof": {
+    "necessity": "At x=0, h(0)=b forces q to divide b. Subtracting h(0) from h(1) forces q to divide a-1.",
+    "sufficiency": "If q divides b and a-1, then q divides (a-1)*x+b for every integer x.",
+    "complete_residue_scope": "Integer polynomials take congruent inputs to congruent outputs, so checking a complete residue system establishes the modular equality for every integer input."
+  },
+  "reported_results": [
+    {"q": 2, "candidates": 121, "complete_accept": 30, "complete_reject": 91, "criterion_disagreements": 0, "sample_false_accept": 25, "negative_controls_detected": 3, "negative_controls_total": 3},
+    {"q": 3, "candidates": 121, "complete_accept": 12, "complete_reject": 109, "criterion_disagreements": 0, "sample_false_accept": 21, "negative_controls_detected": 3, "negative_controls_total": 3},
+    {"q": 4, "candidates": 121, "complete_accept": 9, "complete_reject": 112, "criterion_disagreements": 0, "sample_false_accept": 24, "negative_controls_detected": 3, "negative_controls_total": 3},
+    {"q": 5, "candidates": 121, "complete_accept": 6, "complete_reject": 115, "criterion_disagreements": 0, "sample_false_accept": 27, "negative_controls_detected": 3, "negative_controls_total": 3},
+    {"q": 6, "candidates": 121, "complete_accept": 2, "complete_reject": 119, "criterion_disagreements": 0, "sample_false_accept": 9, "negative_controls_detected": 3, "negative_controls_total": 3}
+  ],
+  "totals": {
+    "candidate_modulus_cases": 605,
+    "complete_residue_evaluations": 2420,
+    "single_point_evaluations": 605,
+    "complete_accept": 59,
+    "complete_reject": 546,
+    "criterion_disagreements": 0,
+    "sample_false_accept": 106,
+    "negative_controls_detected": 15,
+    "negative_controls_total": 15
+  },
+  "counting_formula": {
+    "N_a_q": "Number of a values in [-5,5] congruent to 1 modulo q",
+    "N_b_q": "Number of b values in [-5,5] congruent to 0 modulo q",
+    "complete_accept": "N_a_q * N_b_q",
+    "sample_accept": "11 * N_b_q",
+    "sample_false_accept": "(11 - N_a_q) * N_b_q"
+  },
+  "negative_controls": [
+    "Omit the constant-term condition",
+    "Omit the slope condition",
+    "Replace conjunction of both conditions with disjunction"
+  ],
+  "historically_reported_engineering_boundaries": [
+    "Empty sample domains can return acceptance with zero checks",
+    "No resource limits",
+    "Full report retained in memory",
+    "Output not transactional",
+    "No schema validation",
+    "No witness-replay command",
+    "No extracted-package replay established for this atlas checkpoint"
+  ],
+  "evidence_boundary": {
+    "execution_status": "historical_execution_reported",
+    "fresh_execution_performed_for_this_record": false,
+    "source_digest": null,
+    "repository_revision": null,
+    "original_execution_authenticated": false,
+    "later_package_replay_does_not_automatically_authenticate_this_report": true
+  },
+  "governance": {
+    "C3": "OPEN",
+    "C4": "BLOCKED",
+    "publication": "BLOCKED",
+    "promotion": "DENY",
+    "promotion_code": "CL008"
+  }
+}
