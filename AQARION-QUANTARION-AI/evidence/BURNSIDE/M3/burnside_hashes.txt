@@ -1,0 +1,9 @@
+SHA-256 manifest — AQ-BURNSIDE-M3-001
+
+Hashes cover exact UTF-8 file bytes.
+
+This manifest intentionally does not hash itself.
+
+364405a49264835884fd5e97be89e1499a0d18fb9b87c38e97e9668719b1e845  burnside_m3.json
+1924b987a84b162868ad5f1c90af15bd14e573c33811d435fda11bea2f9ec35a  burnside_m3_recompute.py
+140570e0172aca0825df20464fc96dd317ecaef0540a85876003ee4e13616cbc  burnside_m3_validation.md
