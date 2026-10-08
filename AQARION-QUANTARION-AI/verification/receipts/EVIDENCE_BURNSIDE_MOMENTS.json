@@ -1,0 +1,16 @@
+{
+  "TITLE": "Evidence_Burnside_Moments_Complete_Capsule",
+  "DESCRIPTION": "Complete evidence capsule for Burnside moment hierarchy with CLAIM RUN EVIDENCE ATTACK REPLAY VERDICT pattern, no placeholders",
+  "CLAIM": "M_j(k)=mean_{sigma in S_k} C(sigma)^j = |E_k^j / S_k| ordered tuples, C(sigma)=|Fix_{E_k}(sigma)|",
+  "RUN": "Sandbox Python 3.9 exact Fraction, subset recurrence F(S)=sum_{B∋i} w(B)F(S\\B), 3^r terms 2^r states, Bell-free",
+  "EVIDENCE": {
+    "M1":  [1,2,3,5,7,11,15,22,30,42],
+    "M2":  [1,4,10,33,91,298,910,3017,9945,34207],
+    "M3":  [1,8,37,285,2150,21205,233612,2999988,43357512,701807683],
+    "Var": [0,0,1,8,42,177,685,2533,9045,32443]
+  },
+  "ATTACK": "Brute enumeration k<=5 permutations plus set partitions counting fixed partitions directly, cycle-type vs brute k<=6, weighted sum k<=10",
+  "REPLAY": "Brute control PASS, cycle-type PASS, weighted sum PASS, Fraction denominator 1",
+  "VERDICT": "COMPUTED — Promotion DENY CL008 Lean OPEN, no external independent reproduction yet",
+  "LIMITATIONS": "Computational scaling boundary at B_15 = 1,382,958,545, no Lean compilation, no cryptographic binding"
+}
