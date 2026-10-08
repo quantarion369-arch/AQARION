@@ -4,18 +4,18 @@
   "files": [
     {
       "path": ".gitignore",
-      "bytes": 180,
-      "sha256": "222a358db85b5cf07de34f3400fe11dc970e30cdbab6aeb9f305005ba1d6c077"
+      "bytes": 312,
+      "sha256": "95ac933385a2da32e5e2c335d528eaadd8fcab7b7d568094b670d1dafffd34b5"
     },
     {
       "path": "CHECKPOINT.md",
-      "bytes": 930,
-      "sha256": "9d5077780e057677ffbacfbba8b6399ec353903a25186155be2c146e7ab0365c"
+      "bytes": 13525,
+      "sha256": "573bac89d2cc443b28a27ae6e47db21150fdba6e93e875d20b38735cd2ea9311"
     },
     {
       "path": "README.md",
-      "bytes": 5705,
-      "sha256": "4fcbf33ef4562e3c3bc41926862c05fb40792e731011feb769b69be79433a904"
+      "bytes": 14370,
+      "sha256": "399cad55081ebc2695a6f97b134e1dd4c04354e23ea24ce14ec966315412b7ef"
     },
     {
       "path": "docs/history/CHECKPOINT-25tests.md",
@@ -23,9 +23,9 @@
       "sha256": "d62c97e5d04085b0312702c260559230a3236029b0cfe30ab6ff0f8908ef5fe2"
     },
     {
-      "path": "docs/history/README-25tests.md",
-      "bytes": 9309,
-      "sha256": "e7a6f0526c9c37987b5248a64eb9c9ae833db70c2b47b22496154b68bdc64336"
+      "path": "docs/history/README-25-tests.md",
+      "bytes": 9308,
+      "sha256": "cedaae50fc2c88344de0f28688f6f94445a960b60999e5dfb40ace84d7104d3b"
     },
     {
       "path": "examples/coefficient_sweep.py",
@@ -34,8 +34,8 @@
     },
     {
       "path": "examples/contract_collision_lab.py",
-      "bytes": 3471,
-      "sha256": "899ef4ace43c79a1c0d6c557306706efcef79275cb63ec5700ef1195faea35f1"
+      "bytes": 3803,
+      "sha256": "3e060c0ad5dfa6298b57bb38711512da7bae3ec1e723cfdc781123ba69171fdb"
     },
     {
       "path": "examples/modular_contract_atlas.py",
@@ -44,13 +44,13 @@
     },
     {
       "path": "examples/quadratic_contract_atlas.py",
-      "bytes": 7292,
-      "sha256": "995dce0e9015860287c1780af77de3db41f542e8e6f571e1d5f8d475a43d7efa"
+      "bytes": 7506,
+      "sha256": "95b3e8720d76f898e51db772e31e5d562e98eb5a12a6e5e4688b5af3d77d9416"
     },
     {
       "path": "tests/fixtures/quadratic_atlas_q2.json",
-      "bytes": 223091,
-      "sha256": "46f873f7c067c01f90cb62e2c21ea5653199b93e9e43bd3b95ab145ae43fe214"
+      "bytes": 223099,
+      "sha256": "14ba005ecae116101084462481b817e0785ec4d13042b117e35156a20b5a039a"
     },
     {
       "path": "tests/test_coefficient_sweep.py",
@@ -59,23 +59,28 @@
     },
     {
       "path": "tests/test_contract_collision_lab.py",
-      "bytes": 5307,
-      "sha256": "974dc27d1d425ccaa9fa61caa86b052ae38cfd4b8328375b8a7ce9d9bc43375b"
+      "bytes": 5308,
+      "sha256": "c88247d207127aacd6ca10bc629031a2bc60b51a4765fd57cdf357abe9c1a036"
+    },
+    {
+      "path": "tests/test_contract_evidence.py",
+      "bytes": 3363,
+      "sha256": "269189f8d98a43aed699596e0c7bb087c98ae43d4a401971f37f644f19217b35"
     },
     {
       "path": "tests/test_contract_selection.py",
-      "bytes": 1780,
-      "sha256": "8cd986a888973edca4cbb4ad26238fc24f32ee1c63d202310ff6e8bdb42560e6"
+      "bytes": 1831,
+      "sha256": "8594bcc9525f652b6dcf50363197fcfed9e37024a97ef66bfb985e5e285620db"
     },
     {
       "path": "tests/test_inspect_environment.py",
-      "bytes": 1965,
-      "sha256": "76f8cdc7f4869fcae1f6d3451dcbc1256aab6b7df5ceea8d94554e1c368e0085"
+      "bytes": 1967,
+      "sha256": "3005544b70d35881b7a6e10ba625da80b074c04b70c76f2545c631d042756c8d"
     },
     {
       "path": "tests/test_modular_contract_atlas.py",
-      "bytes": 5354,
-      "sha256": "df45f3956a23cced7e9a3d854f0056d5fa0fee2b4f7669b28866859731b3d2ec"
+      "bytes": 5481,
+      "sha256": "7c89268f2a17876e52571c60c2c35160a5ad2852a6cffbb4f691b5ecb83b3836"
     },
     {
       "path": "tests/test_quadratic_atlas_saved_evidence.py",
@@ -88,9 +93,24 @@
       "sha256": "578d7de485d1e3336849c8c1bb72391f56d2b2a016d59b52617692d8906a9b6e"
     },
     {
+      "path": "tests/test_quadratic_empty_evidence.py",
+      "bytes": 1252,
+      "sha256": "c37f042401a32cc59bb048438618933044c102b2a81581434ee54d67eb246f26"
+    },
+    {
+      "path": "tests/test_quadratic_oracle_mutation.py",
+      "bytes": 1320,
+      "sha256": "17033d593f2aea72252dae8e07b8218e8318e53f88b849aec2483d89c79be443"
+    },
+    {
+      "path": "tests/test_quadratic_oracle_separation.py",
+      "bytes": 4672,
+      "sha256": "2782373ecaa00f99927a9be411a7ff72628056331c2f762cc516aca36ba4a79c"
+    },
+    {
       "path": "tests/test_record_run.py",
-      "bytes": 3107,
-      "sha256": "c865e79021e7cfcfa72eb6992b9f1cd567738f33a57a16d89455eea04de88f77"
+      "bytes": 3448,
+      "sha256": "57848fb06ae06133b8bb572be737f185b46dc515d9f8c6f3de1ea5b7a3feeb5a"
     },
     {
       "path": "tests/test_run_regression.py",
@@ -99,8 +119,8 @@
     },
     {
       "path": "tests/test_run_workflow.py",
-      "bytes": 3193,
-      "sha256": "35f70c9317cb8fd1aca025779087cee6f7daea78c9808eb57db20e44c24becd9"
+      "bytes": 3376,
+      "sha256": "8898a07547efca45db566e58f01b0a33f6112b3c865aff815c0ddf67f500f407"
     },
     {
       "path": "tests/test_verify_package.py",
@@ -109,18 +129,18 @@
     },
     {
       "path": "tests/test_view_report.py",
-      "bytes": 3235,
-      "sha256": "ffafabf96253f4d5ffc7b873efb39934ae01362622be84120b778a84fcc1be7b"
+      "bytes": 3321,
+      "sha256": "d2f4eb28e5f662d78dacfa6d000b6bbc589838bf1d5f75db8ad6e1e5400db3aa"
     },
     {
       "path": "tests/test_workflow_failures.py",
-      "bytes": 7105,
-      "sha256": "77c0a9b3570e5051e8f3b42ee76d75434ea6336c715b2c3ec2fc115253285e86"
+      "bytes": 7358,
+      "sha256": "ebcb513ef788a56209bb1f4f33de7e065bf8fc0fd628e8068b920b60e880ec14"
     },
     {
       "path": "tests/test_workflow_os_errors.py",
-      "bytes": 2695,
-      "sha256": "abf10146172fb88d40ff4e7d3f7f13e2d4849532fc127a55ff7730d770342234"
+      "bytes": 2820,
+      "sha256": "89ec36a968213fcf89eeb56b06d8c5087a61e9d061357bb6dda67b60ea442d97"
     },
     {
       "path": "tools/inspect_environment.py",
@@ -139,8 +159,8 @@
     },
     {
       "path": "tools/run_workflow.py",
-      "bytes": 3892,
-      "sha256": "5d69fa41091c4f4014273005be9e4ee3f4db381c48171b14833096af8aa15e8f"
+      "bytes": 3893,
+      "sha256": "9079bb43c9889ce7ab45f3ef38d4efc7e5ea0ac535023557c06ffae8bdd46255"
     },
     {
       "path": "tools/verify_package.py",
@@ -149,13 +169,13 @@
     },
     {
       "path": "tools/verify_quadratic_atlas.py",
-      "bytes": 5928,
-      "sha256": "a6a264ae3388e76280a1d9ebf8fdc5b4877cdf1d076a5ca7e66a76cfcf70b9e7"
+      "bytes": 6631,
+      "sha256": "c4c3fe1d745c2849df0baa829baf553a4b517f183354ffffb92876804eadfaae"
     },
     {
       "path": "tools/view_report.py",
-      "bytes": 3581,
-      "sha256": "494991765c23e8b5905d0d24f0a310076dd5295ef7f47d9dbc23f32f8cdced57"
+      "bytes": 3580,
+      "sha256": "de0670fd71f3c129221f39557f194a1a5bd5164b94e98974f171c4a2a41d04a8"
     }
   ]
 }
