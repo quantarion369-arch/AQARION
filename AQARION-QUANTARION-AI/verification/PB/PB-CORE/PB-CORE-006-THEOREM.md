@@ -659,3 +659,91 @@ Lane A is the shortest route to a new closed mathematical theorem.
 Lane B is the deeper structural theorem.
 
 Neither should be allowed to masquerade as formally complete until its own proof obligations close.
+
+PB-CORE-006 — Aggregate Enumeration of Pullback-Fixed Equivalences
+
+Date: 2026-10-09
+Status: CANDIDATE FORMULA — independent derivation and Lean formalization remain OPEN
+C4: BLOCKED
+Publication: BLOCKED
+Promotion: FALSE
+
+1. Definitions
+
+For (n\geq1), let (X_n={0,\ldots,n-1}). For a map (T:X_n\to X_n), let (F(T)) be the number of equivalence relations (E) on (X_n) satisfying
+
+[
+E(x,y)\iff E(Tx,Ty).
+]
+
+Define the aggregate
+
+[
+A_n=\sum_{T:X_n\to X_n}F(T).
+]
+
+There are (n^n) labelled maps in this sum. Let (p(k)) denote the number of integer partitions of (k).
+
+2. Candidate formula
+
+The candidate identity is
+
+[
+\boxed{
+A_n=
+\sum_{k=1}^{n-1}
+\frac{n!,k,p(k),n^{,n-k-1}}{(n-k)!}
++n!,p(n)
+}.
+]
+
+The formula is interpreted as an exact rational expression whose total summands are integers. In an implementation, compute the factorial ratio as
+
+[
+\frac{n!}{(n-k)!}
+]
+
+using exact integer arithmetic before multiplying by (k,p(k)n^{n-k-1}).
+
+3. Reported values
+
+(n)| Reported (A_n)
+1| 1
+2| 6
+3| 51
+4| 592
+5| 8,565
+6| 148,896
+7| 3,018,127
+8| 69,844,608
+9| 1,816,084,233
+10| 52,399,129,600
+11| 1,660,832,066,091
+12| 57,351,480,413,184
+
+These are reference values reported in the research record. They are not certified by their inclusion in this document; the arithmetic verifier must independently recompute them.
+
+4. Required proof obligations
+
+A complete proof of the candidate formula must establish all of the following:
+
+1. A precise classification of pullback-fixed equivalences by the periodic core.
+2. A correct count of admissible core equivalences for each permutation cycle structure.
+3. A correct enumeration of labelled maps with the required periodic-core structure.
+4. The aggregation over integer-partition profiles without omissions or double counting.
+5. The boundary cases (n=1) and (n=2).
+6. Agreement between the resulting formula and independently implemented exact arithmetic.
+
+A computation matching the formula for finitely many (n) does not prove the identity for all (n). Likewise, proving a fixed-core factor such as (k!p(k)) does not by itself establish the aggregate formula: the map-counting and aggregation steps must also be justified.
+
+5. Evidence boundary
+
+- Formula arithmetic: independently testable by the companion script.
+- Direct map census: independently testable by the PB-CORE-004 audit script.
+- General combinatorial identity: OPEN until a complete derivation is reviewed.
+- Lean: OPEN until the formalization compiles with zero unresolved proof obligations.
+- C4: BLOCKED.
+- Publication: BLOCKED.
+- Promotion: FALSE.
+
+The reported finite census is supporting evidence, not a substitute for the general proof.
