@@ -182,6 +182,16 @@ def _verify(report):
         })
 
     require(report["summaries"] == summaries, "summary mismatch")
+    checks_passed = all(
+        summary["primary_disagreements"] == 0
+        and summary["strict_false_acceptances"] == 0
+        and summary["failed_witness_replays"] == 0
+        for summary in summaries
+    )
+    require(
+        report["all_checks_passed"] is checks_passed,
+        "all_checks_passed mismatch",
+    )
     return totals
 
 
