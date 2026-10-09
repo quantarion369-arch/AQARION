@@ -1,35 +1,62 @@
-
 {
   "schema_version": "1.0",
   "package_id": "JOIN-STABILITY",
-  "package_version": "0.1.0",
+  "package_version": "0.1.1",
   "status": "BLOCKED_PENDING_REPRODUCTION",
-  "source_revision": "REPLACE_WITH_FULL_GIT_COMMIT_SHA",
+  "source_revision": "6ba13ec6bb764a2e822f75a3953967efdfaa6e34",
+  "claim_registry": "claims.jsonl",
+  "evidence_registry": "evidence.jsonl",
+  "required_artifacts": [
+    "README.md",
+    "manifest.json",
+    "claims.jsonl",
+    "evidence.jsonl",
+    "reproduce.sh",
+    "verify.py",
+    "join_stability_independent_audit.py",
+    "AQ_DYN_PULL_RIGID-001.lean",
+    "zip-clone.md",
+    "docs/README.md",
+    "docs/finite-pullback-rigidity.md",
+    "fixtures/README.md",
+    "negative-controls/README.md",
+    "receipts/README.md"
+  ],
+  "required_directories": [
+    "docs",
+    "fixtures",
+    "negative-controls",
+    "receipts"
+  ],
   "verification_policy": {
     "fail_closed": true,
     "allow_automatic_manifest_generation": false,
-    "mathematical_verification_status": "NOT_ESTABLISHED_BY_STRUCTURAL_VALIDATION"
+    "reject_unknown_record_fields": true,
+    "require_source_revision_match": true,
+    "require_independent_audit": true,
+    "require_negative_controls": true,
+    "mathematical_verification_status": "NOT_ESTABLISHED_BY_PACKAGE_VALIDATION",
+    "lean_status": "OPEN"
   },
-  "required_artifacts": [
-    "manifest.json",
-    "verify.py",
-    "reproduce.sh",
-    "evidence.jsonl"
-  ],
-  "verification_requirements": [
-    "manifest_schema_valid",
-    "required_artifacts_present",
-    "json_and_jsonl_parse",
-    "claim_identifiers_unique",
-    "evidence_identifiers_unique",
-    "evidence_references_resolve",
-    "source_revision_matches_checkout",
-    "independent_fixtures_pass",
-    "reproduction_exit_code_zero"
-  ],
+  "audit": {
+    "script": "join_stability_independent_audit.py",
+    "expected": {
+      "1": [1, 0],
+      "2": [10, 0],
+      "3": [117, 0],
+      "4": [1960, 0],
+      "5": [40385, 0],
+      "6": [1016496, 0]
+    },
+    "columns": [
+      "ordered_stable_relation_pairs",
+      "join_stability_failures"
+    ]
+  },
   "promotion": {
     "reproduction_verified": false,
     "proof_reviewed": false,
+    "lean_verified": false,
     "publication_approved": false
   }
 }
