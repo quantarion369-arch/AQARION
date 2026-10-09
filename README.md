@@ -1,7 +1,5 @@
 AQARION — Evidence-First Research Intelligence
 
-5 October 2026
-
 ""C3" (https://img.shields.io/badge/C3-OPEN-yellow)"
 ""C4" (https://img.shields.io/badge/C4-BLOCKED-red)"
 ""Lean" (https://img.shields.io/badge/Lean-OPEN-lightgrey)"
@@ -16,9 +14,9 @@ The repository is governed as an auditable research record, not as an oracle of 
 Its central rule is:
 
 [
-\boxed{
+
 \text{Do not promote a result beyond what its evidence establishes.}
-}
+
 ]
 
 A result may execute successfully and still test the wrong claim.
@@ -32,7 +30,7 @@ A formal proof may compile and still prove a proposition different from the inte
 Therefore AQARION keeps the following layers separate:
 
 [
-\boxed{
+
 \text{specification}
 \neq
 \text{execution}
@@ -42,7 +40,7 @@ Therefore AQARION keeps the following layers separate:
 \text{formal proof}
 \neq
 \text{provenance}
-}
+
 ]
 
 ---
@@ -51,20 +49,20 @@ Research Standard
 
 Every significant research claim should answer:
 
-- What exactly is being claimed?
-- Which definitions are frozen?
-- Which conventions are frozen?
-- What source artifact defines the claim?
-- What implementation was actually executed?
-- What domain was actually tested?
-- Was the computation independently reconstructed?
-- Is the second route genuinely independent?
-- Were negative controls used?
-- Were known mutations detected?
-- What remains unproved?
-- What remains open?
-- What is blocked from promotion?
-- What provenance connects the claim to the evidence?
+· What exactly is being claimed?
+· Which definitions are frozen?
+· Which conventions are frozen?
+· What source artifact defines the claim?
+· What implementation was actually executed?
+· What domain was actually tested?
+· Was the computation independently reconstructed?
+· Is the second route genuinely independent?
+· Were negative controls used?
+· Were known mutations detected?
+· What remains unproved?
+· What remains open?
+· What is blocked from promotion?
+· What provenance connects the claim to the evidence?
 
 AQARION preserves corrections, failed approaches, counterexamples, incomplete formalizations, and superseded claims because those records explain how the present result was established.
 
@@ -205,10 +203,10 @@ AQARION does not restore obsolete infrastructure merely to make a historical REA
 The current rule is:
 
 [
-\boxed{
+
 \text{live filesystem} >
 \text{stale path description}
-}
+
 ]
 
 when determining whether an executable artifact presently exists.
@@ -223,8 +221,8 @@ The invariant-partition enumeration work is currently represented by:
 
 AQARION-QUANTARION-AI/
 └── verification/
-    └── FPR/
-        └── fpr_enumerator.py
+└── FPR/
+└── fpr_enumerator.py
 
 The principal artifact is:
 
@@ -268,49 +266,69 @@ Current safe ledger:
 AQ-FPR-006
 
 Claim
------
+
+---
+
 Invariant-partition count for a finite permutation cycle type.
 
 Formula
--------
+
+---
+
 N(λ)
 =
 Σ_{π ∈ Π([r])}
-  Π_{B ∈ π}
-    Σ_{d | gcd(c_i : i ∈ B)}
-      d^(|B|-1)
+Π_{B ∈ π}
+Σ_{d | gcd(c_i : i ∈ B)}
+d^(|B|-1)
 
 Mathematical status
--------------------
+
+---
+
 Analytically derived / proof candidate.
 
 Computational route
--------------------
+
+---
+
 Formula evaluation.
 
 Computational oracle
---------------------
+
+---
+
 Direct invariant-partition enumeration.
 
 Finite support
---------------
+
+---
+
 Cycle types n ≤ 7.
 
 Independence
-------------
+
+---
+
 Independent computational route within the artifact:
 YES.
 
 External independent reproduction
-----------------------------------
+
+---
+
 NOT ESTABLISHED.
 
 Literature priority
--------------------
+
+---
+
 OPEN.
 
 Lean
-----
+
+---
+
 OPEN.
 
 C4
@@ -318,11 +336,15 @@ C4
 BLOCKED.
 
 Publication
------------
+
+---
+
 BLOCKED.
 
 Promotion
----------
+
+---
+
 BLOCKED.
 
 The executable artifact must not print or be documented as having stronger evidence than this ledger supports.
@@ -383,7 +405,7 @@ The corresponding exponential generating function is
 
 [
 \boxed{
-\sum_{m\ge0}N_m\frac{z^m}{m!}
+\sum_{m\ge0}N_m\frac{z^m}{m!
 
 \exp\left(
 e^z+\frac12e^{2z}-\frac32
@@ -394,7 +416,7 @@ e^z+\frac12e^{2z}-\frac32
 The initial values are
 
 [
-\boxed{
+
 N_0=1,\quad
 N_1=2,\quad
 N_2=7,\quad
@@ -402,7 +424,7 @@ N_3=31,\quad
 N_4=164,\quad
 N_5=999,\quad
 N_6=6841.
-}
+
 ]
 
 The earlier sequence
@@ -423,9 +445,9 @@ The broader permutation/block line contains the cycle-orbit classification artif
 
 AQARION-QUANTARION-AI/
 └── verification/
-    └── PB/
-        └── PB-CORE/
-            └── PB-CORE-005_CYCLE_ORBIT_CLASSIFICATION.md
+└── PB/
+└── PB-CORE/
+└── PB-CORE-005_CYCLE_ORBIT_CLASSIFICATION.md
 
 The classification uses the same structural formula:
 
@@ -448,12 +470,12 @@ g_B=\gcd{m_i:i\in B}.
 
 The phase interpretation is:
 
-- choose a partition of the participating cycles;
-- choose a common quotient cycle length d;
-- require d\mid g_B;
-- choose phase labels in (\mathbb Z/d\mathbb Z)^{|B|};
-- quotient by the common diagonal phase;
-- obtain d^{|B|-1} phase choices.
+· choose a partition of the participating cycles;
+· choose a common quotient cycle length d;
+· require d\mid g_B;
+· choose phase labels in (\mathbb Z/d\mathbb Z)^{|B|};
+· quotient by the common diagonal phase;
+· obtain d^{|B|-1} phase choices.
 
 This gives the weighted Bell-type assembly formula.
 
@@ -523,7 +545,9 @@ For two cycles,
 N(m,n)
 
 \tau(m)\tau(n)
-+
+
+· 
+
 \sigma(\gcd(m,n)),
 ]
 
@@ -544,23 +568,23 @@ AQ-FPR-006 should not be treated as an isolated enumeration script.
 Its formula is structurally connected to the PB cycle-orbit classification:
 
 finite permutation
-       │
-       ▼
+│
+▼
 cycle decomposition
-       │
-       ▼
+│
+▼
 cycle-index partition
-       │
-       ▼
+│
+▼
 common quotient modulus
-       │
-       ▼
+│
+▼
 phase degrees of freedom
-       │
-       ▼
+│
+▼
 weighted Bell assembly
-       │
-       ▼
+│
+▼
 invariant-partition count
 
 This relationship is evidence of mathematical coherence between the research artifacts.
@@ -600,16 +624,16 @@ D22 Provenance Firewall
 The D22 research line is deliberately separated into two claims:
 
 locked operator model
-        │
-        ├── direct algebra
-        ├── exact computation
-        └── operator consequences
+│
+├── direct algebra
+├── exact computation
+└── operator consequences
 
 and
 
 canonical D22 source
-        │
-        └── source-equivalence question
+│
+└── source-equivalence question
 
 The first can be mathematically analyzed under its explicit convention.
 
@@ -738,15 +762,15 @@ Independence Standard
 AQARION distinguishes:
 
 same function
-    ↓
+↓
 different implementation
-    ↓
+↓
 different algorithmic route
-    ↓
+↓
 independent reconstruction
-    ↓
+↓
 independent source
-    ↓
+↓
 formal proof
 
 These are different evidence strengths.
@@ -809,13 +833,13 @@ would establish evidence over those 1176 cases only.
 
 The phrase “verified” must therefore always be interpreted together with:
 
-- the specification;
-- the implementation;
-- the domain;
-- the execution;
-- the oracle;
-- the comparison;
-- and the independence status.
+· the specification;
+· the implementation;
+· the domain;
+· the execution;
+· the oracle;
+· the comparison;
+· and the independence status.
 
 ---
 
@@ -833,13 +857,13 @@ Conversely, a potentially novel formulation still requires prior-art investigati
 
 For the PB/FPR cycle-orbit formula, relevant mathematical territory includes:
 
-- congruences of monounary algebras;
-- invariant equivalence relations;
-- permutation group actions;
-- G-set congruence structures;
-- block systems;
-- functional-graph congruences;
-- cycle decompositions.
+· congruences of monounary algebras;
+· invariant equivalence relations;
+· permutation group actions;
+· G-set congruence structures;
+· block systems;
+· functional-graph congruences;
+· cycle decompositions.
 
 The exact prior-art status of the closed weighted-Bell formula remains a research question.
 
@@ -916,13 +940,13 @@ AQARION does not delete a failed claim merely because it was corrected.
 
 A historical record can document:
 
-- the original hypothesis;
-- the incorrect computation;
-- the counterexample;
-- the mutation;
-- the correction;
-- the revised specification;
-- the resulting status change.
+· the original hypothesis;
+· the incorrect computation;
+· the counterexample;
+· the mutation;
+· the correction;
+· the revised specification;
+· the resulting status change.
 
 The objective is not to present a frictionless history.
 
@@ -953,18 +977,18 @@ E
 
 Important questions include:
 
-- How does refinement E\le F act on the cycle-index partition?
-- How do phase systems transform under refinement?
-- How are meets represented in phase coordinates?
-- How are joins represented?
-- What algebraic object controls the residual phase constraints?
-- Can invariant-partition counts be expressed directly through quotient data?
-- How does the cycle-orbit structure interact with the defect operator
+· How does refinement E\le F act on the cycle-index partition?
+· How do phase systems transform under refinement?
+· How are meets represented in phase coordinates?
+· How are joins represented?
+· What algebraic object controls the residual phase constraints?
+· Can invariant-partition counts be expressed directly through quotient data?
+· How does the cycle-orbit structure interact with the defect operator
   [
   D_\Pi=(I-\Pi)K\Pi?
   ]
-- Can rank or defect invariants be characterized combinatorially?
-- Which statements admit Lean certification?
+· Can rank or defect invariants be characterized combinatorially?
+· Which statements admit Lean certification?
 
 These questions are research targets, not promoted theorems unless separately certified.
 
@@ -975,33 +999,33 @@ AQARION Research Workflow
 The preferred workflow is:
 
 claim
-  ↓
+↓
 freeze specification
-  ↓
+↓
 identify conventions
-  ↓
+↓
 locate primary source
-  ↓
+↓
 implement
-  ↓
+↓
 construct oracle
-  ↓
+↓
 construct negative control
-  ↓
+↓
 execute
-  ↓
+↓
 compare
-  ↓
+↓
 attempt independent reconstruction
-  ↓
+↓
 audit provenance
-  ↓
+↓
 formalize
-  ↓
+↓
 review prior art
-  ↓
+↓
 assign evidence status
-  ↓
+↓
 promotion decision
 
 The workflow is deliberately conservative.
@@ -1040,21 +1064,21 @@ What AQARION Refuses to Do
 
 AQARION does not intentionally:
 
-- convert finite computation into universal proof;
-- convert repeated computation into independence;
-- convert policy approval into mathematical truth;
-- convert repository presence into reproduction;
-- convert a source filename into source equivalence;
-- convert a Lean file into a Lean proof;
-- convert deterministic serialization into RFC compliance without evidence;
-- convert a corrected result into a historical deletion;
-- convert an open problem into a theorem;
-- silently replace canonical terminology;
-- fabricate receipts;
-- fabricate execution counts;
-- fabricate hashes;
-- fabricate source provenance;
-- promote a claim because it appears repeatedly in documentation.
+· convert finite computation into universal proof;
+· convert repeated computation into independence;
+· convert policy approval into mathematical truth;
+· convert repository presence into reproduction;
+· convert a source filename into source equivalence;
+· convert a Lean file into a Lean proof;
+· convert deterministic serialization into RFC compliance without evidence;
+· convert a corrected result into a historical deletion;
+· convert an open problem into a theorem;
+· silently replace canonical terminology;
+· fabricate receipts;
+· fabricate execution counts;
+· fabricate hashes;
+· fabricate source provenance;
+· promote a claim because it appears repeatedly in documentation.
 
 ---
 
@@ -1065,7 +1089,7 @@ The strongest permissible statement about a research result is the intersection 
 A useful hierarchy is:
 
 [
-\boxed{
+
 \text{CLAIMED}
 \rightarrow
 \text{AVAILABLE}
@@ -1079,7 +1103,7 @@ A useful hierarchy is:
 \text{FORMALIZED}
 \rightarrow
 \text{PROVED}
-}
+
 ]
 
 Movement upward requires new evidence.
@@ -1107,6 +1131,75 @@ Those unresolved questions are part of the research record.
 
 ---
 
+Update — 8 October 2026
+
+This section records changes since the 5 October 2026 version.
+
+Quadratic Contract Criterion
+
+Contract:
+
+[
+f(x)=x^2+x,\qquad
+g(x)=cx^2+ax+b,
+]
+
+[
+g(x)\equiv f(x)\pmod q\quad\forall x\in\mathbb Z.
+]
+
+Exact criterion:
+
+[
+
+b\equiv0,\quad
+c+a-2\equiv0,\quad
+2(c-1)\equiv0\pmod q.
+
+]
+
+Status: [P], for this specific contract.
+
+Computational corroboration
+
+· q\in\{2,3,4,5,6,8\}, (c,a,b)\in[-3,3]^3: 2058 cases, 0 disagreements.
+· q\in[2,20], (c,a,b)\in[-5,5]^3: 25289 cases, 0 disagreements.
+
+Status: [V] over the declared finite domains only.
+
+Semantic mutation
+
+Mutant replaces
+
+2(c-1)\equiv0\pmod q
+
+with
+
+c-1\equiv0\pmod q.
+
+Witness:
+
+q=4,\quad c=3,\quad a=-1,\quad b=0.
+
+Correct classifier accepts; mutant rejects. Over the 2058-case domain, the mutant produces 33 false rejections.
+
+Status: [V].
+
+Oracle-independence limitation
+
+The saved-evidence verifier verify_quadratic_atlas.py derives exact_acceptance from the complete-residue route rather than independently re-deriving the algebraic criterion. It certifies internal consistency of saved evidence but does not independently detect corruption of the algebraic implementation. Recorded as OPEN.
+
+Mobile Research Kit packaging
+
+Working-tree test count advanced to 102. Archive-level reproduction not yet established. The following remain OPEN:
+
+· fresh archive extraction and manifest re-verification;
+· archive SHA256, byte size, and entry-count receipt;
+· public/GitHub byte identity with the working tree;
+· PB-006 Gate 2 (gcd → lcm semantic mutation).
+
+---
+
 Final Principle
 
 A result can run, reproduce, and still test the wrong claim.
@@ -1120,7 +1213,7 @@ A computation can be exact and still answer the wrong question.
 Therefore:
 
 [
-\boxed{
+
 \text{specification}
 \neq
 \text{execution}
@@ -1130,15 +1223,15 @@ Therefore:
 \text{formal proof}
 \neq
 \text{provenance}
-}
+
 ]
 
 And the governing rule remains:
 
 [
-\boxed{
+
 \text{Do not promote a result beyond what its evidence establishes.}
-}
+
 ]
 
 AQARION — Evidence-First Research Intelligence
