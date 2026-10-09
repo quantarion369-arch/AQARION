@@ -27,7 +27,7 @@ The supplied local inventory contains:
 
 - Seven tool scripts.
 - Four example scripts.
-- Fifteen Python test modules.
+- Eighteen Python test modules.
 - One quadratic atlas JSON fixture.
 - Root documentation and a SHA-256 manifest.
 - Two historical documents under `docs/history/`.
@@ -399,7 +399,7 @@ Report the discovered test count, exit code, skipped tests, source
 revision, and execution location from the actual run. Do not assume that
 a prior reported count describes the current repository.
 
-The current local listing contains fifteen test modules. The supplied
+The inspected local checkout contains eighteen test modules. The supplied
 audit discusses an earlier fourteen-module state and a reported 91-test
 result. Those descriptions must be reconciled against a frozen revision.
 
