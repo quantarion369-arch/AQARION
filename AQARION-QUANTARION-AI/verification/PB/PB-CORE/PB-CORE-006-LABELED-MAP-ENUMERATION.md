@@ -1,246 +1,248 @@
+
 # PB-CORE-006 — Exact Enumeration of Pullback-Fixed Equivalences
 
 ## 1. Definition
 
-Let
+For n >= 1, let
 
-    A_n
-      =
-    sum over all maps T : [n] -> [n]
-      of
-    |Stab(T)|.
+    A_n = sum_{T : [n] -> [n]} |Stab(T)|,
 
-Thus A_n counts pairs
+where [n] = {1,...,n} and
 
-    (T,E)
+    Stab(T) = {E : E is an equivalence relation on [n]
+                  and T*E = E}.
 
-with
+Equivalently, A_n counts pairs (T,E) such that T is a labeled
+self-map of [n], E is an equivalence relation, and
 
-    T : [n] -> [n]
-    E an equivalence relation
-    T*E = E.
+    x E y  iff  T(x) E T(y).
 
----
+## 2. Permutation aggregate
 
-# 2. Permutation case
+Let S_k denote the aggregate number of invariant equivalences over
+all permutations of a labeled k-element set:
 
-Let S_k be the total number of invariant equivalences over all
-permutations of a k-element labeled set:
+    S_k = sum_{σ in Sym(k)} |Con([k],σ).
 
-    S_k
-      =
-    sum_{σ ∈ Sym(k)}
-      |Con([k],σ)|.
+Let p(k) be the number of integer partitions of k.
 
-We obtain the exact identity
-
-    S_k = k! p(k),
-
-where p(k) is the number of integer partitions of k.
-
----
-
-# 3. Proof of the permutation identity
-
-Count pairs
-
-    (σ,E)
-
-directly by E rather than by σ.
-
-Fix an equivalence relation E whose block sizes have multiplicities
-
-    m_1, m_2, ...
-
-where m_s is the number of E-blocks of size s.
-
-The number of set partitions with this block-size profile is
-
-    k!
-    /
-    product_s ((s!)^(m_s) m_s!).
-
-For this fixed E, σ preserves E exactly when σ permutes blocks of
-equal size and chooses a bijection between blocks.
-
-Therefore the number of preserving permutations is
-
-    product_s ( (s!)^(m_s) m_s! ).
-
-Multiplying:
-
-    k!
-
-for every block-size profile.
-
-The possible block-size profiles are precisely the integer partitions
-of k.
-
-Hence
+The exact identity is
 
     S_k = k! p(k).
 
-This is an exact proof, not an empirical sequence fit.
+## 3. Proof of the permutation identity
 
----
+Count pairs (σ,E), where σ is a permutation and E is an equivalence
+relation preserved by σ, by first fixing E.
 
-# 4. Functional-graph decomposition
+Suppose the block-size profile of E has m_s blocks of size s.
+Then
 
-Every finite map T decomposes into:
+    sum_{s >= 1} s m_s = k.
 
-    periodic core
-        +
-    rooted directed trees feeding into the core.
+The number of set partitions with this profile is
 
-Let the periodic core have size k.
+    k! / product_{s >= 1} ((s!)^(m_s) m_s!).
 
-The restriction of T to the core is a permutation σ of k elements.
+For a fixed E, a preserving permutation may permute the m_s blocks
+of each size s and choose a bijection on each block. Therefore the
+number of preserving permutations is
 
-The remaining n-k vertices form a rooted forest whose roots are the
-k core vertices.
+    product_{s >= 1} ((s!)^(m_s) m_s!).
 
-For a fixed set of k labeled roots, the number of such forests is
+Multiplying the two quantities gives exactly k! for every block-size
+profile.
 
-    k n^(n-k-1)
+The possible block-size profiles are precisely the integer
+partitions of k. There are p(k) such profiles. Hence
 
-for k < n,
+    S_k = k! p(k).
 
-with the value 1 when k=n.
+This is an exact counting proof, not a fit to a computed sequence.
 
-This is the rooted-forest form of Cayley's formula.
+## 4. Functional-graph decomposition
 
----
+Every self-map of a finite set has a functional graph consisting of
+directed cycles and directed trees feeding into those cycles.
 
-# 5. Number of maps with a specified core permutation
+Let the periodic core have size k. The restriction of the map to
+that core is a permutation of the k core vertices. Every remaining
+vertex belongs to a rooted tree feeding into exactly one core vertex.
 
-Choose the k core vertices:
+For a fixed set of k labeled roots in an n-element labeled set, the
+number of rooted forests in which each component contains exactly
+one of those roots is
 
-    binomial(n,k).
+    F(n,k) = k n^(n-k-1),   1 <= k < n,
 
-Choose the permutation of those k vertices:
+and
 
-    k!.
+    F(n,n) = 1.
 
-Attach the remaining vertices as a rooted forest:
+The endpoint k=n is a separate case: there are no transient vertices,
+so the unique forest is the empty forest.
 
-    k n^(n-k-1).
+## 5. Counting maps by core size
 
-Thus the contribution from all maps whose core has size k is
+Fix 1 <= k <= n.
+
+Choose the core vertices in
 
     binomial(n,k)
-    k n^(n-k-1)
-    S_k.
 
-Substitute
+ways.
+
+Choose the permutation on those vertices. Summing the number of
+invariant equivalences over all possible core permutations gives
 
     S_k = k! p(k).
 
-We obtain
+For k<n, attach the remaining vertices as a rooted forest in
 
-    A_n
-      =
-    sum_{k=1}^n
-      binomial(n,k)
-      k n^(n-k-1)
-      k! p(k).
+    k n^(n-k-1)
 
-Simplifying:
+ways.
 
-    A_n
-      =
-    n!
-    sum_{k=1}^n
-      k p(k) n^(n-k-1)
-      /
-      (n-k)!.
+Thus the total contribution from maps with core size k<n is
+
+    binomial(n,k) * k n^(n-k-1) * k! p(k).
+
+For k=n, there are no transient vertices, so the contribution is
+
+    n! p(n).
+
+Therefore the boundary-safe exact formula is
+
+    A_n =
+      sum_{k=1}^{n-1}
+        binomial(n,k) k n^(n-k-1) k! p(k)
+      + n! p(n).
+
+Using
+
+    binomial(n,k) k! = n!/(n-k)!,
+
+we obtain the equivalent form
+
+    A_n =
+      n! * sum_{k=1}^{n-1}
+        k p(k) n^(n-k-1)/(n-k)!
+      + n! p(n).
+
+This is the canonical formula for this artifact.
+
+The sum stops at n-1. The all-core contribution n! p(n) is added
+separately. No negative exponent or 0^(-1) convention is needed.
+
+## 6. Exact values
+
+The formula gives:
+
+    n = 1     A_n = 1
+    n = 2     A_n = 6
+    n = 3     A_n = 51
+    n = 4     A_n = 592
+    n = 5     A_n = 8565
+    n = 6     A_n = 148896
+    n = 7     A_n = 3018127
+    n = 8     A_n = 69844608
+    n = 9     A_n = 1816084233
+    n = 10    A_n = 52399129600
+    n = 11    A_n = 1660832066091
+    n = 12    A_n = 57351480413184
+
+These values are exact integer values of the formula.
+
+## 7. Boundary checks
+
+### n = 1
+
+The only map on a one-element set is the identity, and there is
+exactly one equivalence relation. Thus
+
+    A_1 = 1! p(1) = 1.
+
+The summation from k=1 to n-1 is empty, so the formula returns the
+correct value without evaluating a negative exponent.
+
+### n = 2
+
+Here p(1)=1 and p(2)=2. The k=1 contribution is
+
+    binomial(2,1) * 1 * 2^(0) * 1! p(1) = 2.
+
+The k=2 contribution is
+
+    2! p(2) = 4.
 
 Therefore
 
-    ┌───────────────────────────────────────────┐
-    │                                           │
-    │  A_n = n! Σ_{k=1}^n                     │
-    │        k p(k) n^(n-k-1)/(n-k)!            │
-    │                                           │
-    └───────────────────────────────────────────┘
+    A_2 = 2 + 4 = 6.
 
-is an exact enumeration formula.
+This is a mandatory regression test for any implementation of the
+formula.
 
----
+### General endpoint
 
-# 6. Exact values
+At k=n, the forest count is 1, not an expression involving
+n^(n-k-1). The endpoint contribution is exactly
 
-n = 1     A_n = 1
-n = 2     A_n = 6
-n = 3     A_n = 51
-n = 4     A_n = 592
-n = 5     A_n = 8565
-n = 6     A_n = 148896
-n = 7     A_n = 3018127
-n = 8     A_n = 69844608
-n = 9     A_n = 1816084233
-n = 10    A_n = 52399129600
-n = 11    A_n = 1660832066091
-n = 12    A_n = 57351480413184
+    n! p(n).
 
----
+## 8. Computational evidence
 
-# 7. Independent exhaustive check
+The repository receipt records the following direct finite-map
+aggregates:
 
-Direct enumeration of all maps was performed for:
+    n = 1     1
+    n = 2     6
+    n = 3     51
+    n = 4     592
+    n = 5     8565
+    n = 6     148896
+    n = 7     3018127
 
-    n = 1,...,7.
+It records an exhaustive n=7 census of
 
-Number of maps at n=7:
+    7^7 = 823543
 
-    7^7 = 823543.
+maps, with aggregate stable-equivalence count 3018127.
 
-The exact direct count at n=7 is
+These are repository-recorded results. They should not be described
+as a fresh execution unless the current source revision is run and
+its output is captured.
 
-    3018127,
+The formula has a mathematical derivation through the permutation
+aggregate and rooted-forest decomposition. Independent direct
+enumeration provides [V] evidence for the tested finite sizes; it
+does not replace the proof.
 
-matching the formula.
+## 9. Evidence status
 
-The previous counts
+Permutation aggregate S_k = k! p(k):
+    [P] by block-size-profile counting.
 
-    1, 6, 51, 592, 8565, 148896
+Rooted-forest factor:
+    [P] by the rooted-forest form of Cayley's formula.
 
-also match exactly.
+Aggregate formula A_n:
+    [P] provided the stated decomposition and standard forest-count
+    theorem are accepted or independently established in the proof
+    chain.
 
----
+Exact values from the formula:
+    [V] when evaluated by exact integer arithmetic.
 
-# 8. Interpretation
+Direct map enumeration through n=7:
+    [V] as recorded by the repository; reproduce before claiming a
+    new run.
 
-A_n is not merely a sequence of "stable partitions".
+Lean formalization of the complete enumeration theorem:
+    OPEN unless a corresponding complete proof and successful build
+    are recorded.
 
-It counts all finite deterministic systems together with a pullback-fixed
-equivalence relation.
+Publication:
+    BLOCKED pending formalization, independent reproduction, and
+    literature review.
 
-Equivalently:
-
-    number of finite dynamical systems
-    weighted by their pullback-fixed quotient structures.
-
-The weighting factors through the eventual permutation core.
-
-This is the strongest current computationally supported consequence
-of PB-CORE-004/005.
-
----
-
-# 9. Evidence status
-
-The enumeration formula itself:
-
-    [P]
-
-The values obtained from the formula:
-
-    [PV]
-
-The direct n <= 7 enumeration:
-
-    [V]
-
-No OEIS or literature novelty claim is made from the sequence alone.
-
-An absence of an indexed match is not evidence of mathematical novelty.
+No novelty claim is made from the sequence of values alone.
