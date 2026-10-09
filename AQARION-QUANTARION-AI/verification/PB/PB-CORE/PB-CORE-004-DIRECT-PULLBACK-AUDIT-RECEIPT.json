@@ -1,0 +1,37 @@
+{
+"artifact_id": "PB-CORE-004-DIRECT-PULLBACK-AUDIT-BOUND-v2",
+"status": "NOT_YET_REPLAYED_FROM_THIS_DELIVERABLE",
+"scope": {
+"intended_n_min": 1,
+"intended_n_max": 6,
+"method": "Independent candidate construction compared against direct enumeration of all set partitions."
+},
+"historical_report": {
+"reported_maps_n_1_through_6": 50069,
+"reported_mismatches": 0,
+"reported_pair_counts": {
+"1": 1,
+"2": 6,
+"3": 51,
+"4": 592,
+"5": 8565,
+"6": 148896
+},
+"reported_source_sha256": "15792dd2d09e17ee6f57b22be8311734a6b87b834afe9fb81fd101f7cf3379c3",
+"authentication": "Historical report only. Not asserted to hash the source text in this deliverable."
+},
+"current_replay": {
+"executed": false,
+"source_sha256": null,
+"runtime_seconds": null,
+"environment": null,
+"result": null
+},
+"governance": {
+"paper_proof": "See PB-CORE-004-PERIODIC-CORE-PROOF.md",
+"lean": "OPEN",
+"C4": "BLOCKED",
+"publication": "BLOCKED",
+"promotion": false
+}
+}
