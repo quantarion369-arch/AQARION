@@ -1,267 +1,55 @@
 name: AQARION Mobile Research Kit Validation
 
 on:
-push:
-branches:
-- main
-paths:
-- "AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT/**"
-- ".github/workflows/mobile-research-kit.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT/**"
+      - ".github/workflows/mobile-research-kit.yml"
 
-pull_request:
-branches:
-- main
-paths:
-- "AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT/**"
-- ".github/workflows/mobile-research-kit.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT/**"
+      - ".github/workflows/mobile-research-kit.yml"
 
-workflow_dispatch:
+  workflow_dispatch:
 
 permissions:
-contents: read
+  contents: read
 
 concurrency:
-group: mobile-research-kit-${{ github.workflow }}-${{ github.ref }}
-cancel-in-progress: true
+  group: mobile-research-kit-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-regression:
-name: Mobile Research Kit Regression
-runs-on: ubuntu-latest
-timeout-minutes: 15
+  regression:
+    name: Mobile Research Kit Regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
 
-defaults:
-  run:
-    working-directory: AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT
+    defaults:
+      run:
+        working-directory: AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT
 
-steps:
-  - name: Checkout repository
-    uses: actions/checkout@v4
-    with:
-      fetch-depth: 1
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-  - name: Set up Python 3.13.13
-    uses: actions/setup-python@v5
-    with:
-      python-version: "3.13.13"
+      - name: Set up Python 3.13.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.13"
 
-  - name: Initialize evidence directory
-    shell: bash
-    run: |
-      mkdir -p "${RUNNER_TEMP}/mobile-research-kit-ci-evidence"
-      printf '%s\n' "${GITHUB_SHA}" \
-        > "${RUNNER_TEMP}/mobile-research-kit-ci-evidence/commit.txt"
+      - name: Verify Python environment
+        run: |
+          python --version
+          python -c "import sys; print(sys.executable)"
 
-  - name: Record Python environment
-    shell: bash
-    run: |
-      EVIDENCE_DIR="${RUNNER_TEMP}/mobile-research-kit-ci-evidence"
-
-      {
-        python --version
-        python -c 'import platform, sys; print("executable:", sys.executable); print("implementation:", platform.python_implementation()); print("platform:", platform.platform()); print("machine:", platform.machine()); print("python_version:", sys.version)'
-      } > "${EVIDENCE_DIR}/python-environment.txt" 2>&1
-
-  - name: Run package regression
-    id: regression
-    continue-on-error: true
-    shell: bash
-    env:
-      EVIDENCE_DIR: ${{ runner.temp }}/mobile-research-kit-ci-evidence
-    run: |
-      set +e
-      python tools/run_regression.py 2>&1 \
-        | tee "${EVIDENCE_DIR}/regression.log"
-
-      regression_exit=${PIPESTATUS[0]}
-
-      printf '%s\n' "${regression_exit}" \
-        > "${EVIDENCE_DIR}/regression-exit-code.txt"
-
-      printf 'exit_code=%s\n' "${regression_exit}" \
-        >> "${GITHUB_OUTPUT}"
-
-      exit "${regression_exit}"
-
-  - name: Generate revision-bound regression receipt
-    if: always()
-    shell: bash
-    env:
-      EVIDENCE_DIR: ${{ runner.temp }}/mobile-research-kit-ci-evidence
-      REPOSITORY: ${{ github.repository }}
-      COMMIT_SHA: ${{ github.sha }}
-      GIT_REF: ${{ github.ref }}
-      WORKFLOW_NAME: ${{ github.workflow }}
-      WORKFLOW_FILE: .github/workflows/mobile-research-kit.yml
-      RUN_ID: ${{ github.run_id }}
-      RUN_ATTEMPT: ${{ github.run_attempt }}
-      RUNNER_OS_NAME: ${{ runner.os }}
-      RUNNER_ARCH_NAME: ${{ runner.arch }}
-      REGRESSION_EXIT_CODE: ${{ steps.regression.outputs.exit_code }}
-    run: |
-      python - <<'PY'
-      import hashlib
-      import json
-      import os
-      import platform
-      import re
-      import sys
-      from datetime import datetime, timezone
-      from pathlib import Path
-
-      evidence = Path(os.environ["EVIDENCE_DIR"])
-      evidence.mkdir(parents=True, exist_ok=True)
-
-      log_path = evidence / "regression.log"
-      exit_path = evidence / "regression-exit-code.txt"
-      environment_path = evidence / "python-environment.txt"
-      commit_path = evidence / "commit.txt"
-
-      log_text = (
-          log_path.read_text(encoding="utf-8", errors="replace")
-          if log_path.is_file()
-          else ""
-      )
-
-      if exit_path.is_file():
-          try:
-              exit_code = int(
-                  exit_path.read_text(encoding="utf-8").strip()
-              )
-          except ValueError:
-              exit_code = None
-      else:
-          raw_exit = os.environ.get("REGRESSION_EXIT_CODE", "")
-          try:
-              exit_code = int(raw_exit)
-          except ValueError:
-              exit_code = None
-
-      discovered_match = re.search(
-          r"^DISCOVERED_TESTS:\s*(\d+)\s*$",
-          log_text,
-          re.MULTILINE,
-      )
-      skipped_match = re.search(
-          r"^SKIPPED_TESTS:\s*(\d+)\s*$",
-          log_text,
-          re.MULTILINE,
-      )
-
-      discovered_tests = (
-          int(discovered_match.group(1))
-          if discovered_match
-          else None
-      )
-      skipped_tests = (
-          int(skipped_match.group(1))
-          if skipped_match
-          else None
-      )
-
-      regression_marker = "REGRESSION_OK" in log_text
-
-      if exit_code == 0 and regression_marker:
-          status = "PASS"
-      elif exit_code is not None:
-          status = "FAIL"
-      else:
-          status = "NOT_RUN_OR_NO_EXIT_RECORDED"
-
-      def file_sha256(path):
-          if not path.is_file():
-              return None
-
-          digest = hashlib.sha256()
-          with path.open("rb") as handle:
-              for chunk in iter(
-                  lambda: handle.read(1024 * 1024), b""
-              ):
-                  digest.update(chunk)
-
-          return digest.hexdigest()
-
-      recorded_commit = (
-          commit_path.read_text(encoding="utf-8").strip()
-          if commit_path.is_file()
-          else os.environ.get("COMMIT_SHA", "")
-      )
-
-      repository = os.environ.get("REPOSITORY", "")
-      run_id = os.environ.get("RUN_ID", "")
-
-      receipt = {
-          "schema": "aqarion.mobile_research_kit.ci_receipt.v1",
-          "status": status,
-          "created_at_utc": datetime.now(timezone.utc).isoformat(),
-          "repository": repository,
-          "commit_sha": recorded_commit,
-          "ref": os.environ.get("GIT_REF"),
-          "workflow": os.environ.get("WORKFLOW_NAME"),
-          "workflow_file": os.environ.get("WORKFLOW_FILE"),
-          "run_id": run_id,
-          "run_attempt": os.environ.get("RUN_ATTEMPT"),
-          "run_url": (
-              f"https://github.com/{repository}/actions/runs/{run_id}"
-          ),
-          "runner": {
-              "os": os.environ.get("RUNNER_OS_NAME"),
-              "architecture": os.environ.get("RUNNER_ARCH_NAME"),
-              "python_version": platform.python_version(),
-              "python_implementation": platform.python_implementation(),
-              "python_platform": platform.platform(),
-              "machine": platform.machine(),
-              "executable": sys.executable,
-          },
-          "regression": {
-              "command": "python tools/run_regression.py",
-              "exit_code": exit_code,
-              "discovered_tests": discovered_tests,
-              "skipped_tests": skipped_tests,
-              "regression_ok_marker_present": regression_marker,
-          },
-          "evidence_files": {
-              "regression.log": file_sha256(log_path),
-              "regression-exit-code.txt": file_sha256(exit_path),
-              "python-environment.txt": file_sha256(environment_path),
-              "commit.txt": file_sha256(commit_path),
-          },
-          "interpretation": (
-              "Records the hosted process result for this commit. "
-              "A passing regression run is not a universal proof, "
-              "independent certification, or release signature."
-          ),
-      }
-
-      receipt_path = evidence / "regression-receipt.json"
-      receipt_path.write_text(
-          json.dumps(receipt, indent=2, sort_keys=True) + "\n",
-          encoding="utf-8",
-      )
-
-      print("CI_RECEIPT_STATUS=" + status)
-      print("CI_RECEIPT_FILE=" + str(receipt_path))
-      PY
-
-  - name: Upload regression evidence
-    if: always()
-    uses: actions/upload-artifact@v4
-    with:
-      name: mobile-research-kit-regression-${{ github.run_id }}-${{ github.run_attempt }}
-      path: ${{ runner.temp }}/mobile-research-kit-ci-evidence/
-      if-no-files-found: error
-      retention-days: 30
-
-  - name: Enforce regression result
-    if: always()
-    shell: bash
-    env:
-      REGRESSION_EXIT_CODE: ${{ steps.regression.outputs.exit_code }}
-    run: |
-      if [[ "${REGRESSION_EXIT_CODE}" != "0" ]]; then
-        echo "MOBILE_RESEARCH_KIT_REGRESSION_FAILED"
-        echo "Recorded exit code: ${REGRESSION_EXIT_CODE:-NOT_RECORDED}"
-        exit 1
-      fi
-
-      echo "MOBILE_RESEARCH_KIT_REGRESSION_PASSED"
+      - name: Run package regression
+        run: |
+          python tools/run_regression.py
