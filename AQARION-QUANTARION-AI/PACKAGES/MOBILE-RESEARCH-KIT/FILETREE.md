@@ -1,55 +1,56 @@
 # Mobile Research Kit: File Tree
 
-Date: October 7, 2026.
+Date: October 9, 2026.
 
 ## Selected package structure
 
     mobile-research-kit/
-    ├── README.md
-    ├── .gitignore
-    ├── CHECKPOINT.md
-    ├── FILETREE.md
-    ├── manifest.json
-    ├── docs/
-    │   └── history/
-    │       ├── README-25tests.md
-    │       └── CHECKPOINT-25tests.md
-    ├── examples/
-    │   ├── coefficient_sweep.py
-    │   ├── contract_collision_lab.py
-    │   ├── modular_contract_atlas.py
-    │   └── quadratic_contract_atlas.py
-    ├── tools/
-    │   ├── inspect_environment.py
-    │   ├── record_run.py
-    │   ├── run_regression.py
-    │   ├── run_workflow.py
-    │   ├── verify_package.py
-    │   ├── verify_quadratic_atlas.py
-    │   └── view_report.py
-    └── tests/
-        ├── fixtures/
-        │   └── quadratic_atlas_q2.json
-        ├── test_coefficient_sweep.py
-        ├── test_contract_collision_lab.py
-        ├── test_contract_selection.py
-        ├── test_inspect_environment.py
-        ├── test_modular_contract_atlas.py
-        ├── test_quadratic_atlas_saved_evidence.py
-        ├── test_quadratic_contract_atlas.py
-        ├── test_record_run.py
-        ├── test_run_regression.py
-        ├── test_run_workflow.py
-        ├── test_verify_package.py
-        ├── test_view_report.py
-        ├── test_workflow_failures.py
-        └── test_workflow_os_errors.py
+        .gitignore
+        README.md
+        CHECKPOINT.md
+        FILETREE.md
+        LICENSE
+        OVERVIEW.md
+        RECOVERY.md
+        manifest.json
+        docs/history/CHECKPOINT-25tests.md
+        docs/history/README-25-tests.md
+        examples/coefficient_sweep.py
+        examples/contract_collision_lab.py
+        examples/modular_contract_atlas.py
+        examples/quadratic_contract_atlas.py
+        tools/inspect_environment.py
+        tools/record_run.py
+        tools/run_regression.py
+        tools/run_workflow.py
+        tools/verify_package.py
+        tools/verify_quadratic_atlas.py
+        tools/view_report.py
+        tests/test_coefficient_sweep.py
+        tests/test_contract_collision_lab.py
+        tests/test_contract_evidence.py
+        tests/test_contract_selection.py
+        tests/test_inspect_environment.py
+        tests/test_modular_contract_atlas.py
+        tests/test_quadratic_atlas_saved_evidence.py
+        tests/test_quadratic_contract_atlas.py
+        tests/test_quadratic_empty_evidence.py
+        tests/test_quadratic_oracle_mutation.py
+        tests/test_quadratic_oracle_separation.py
+        tests/test_record_run.py
+        tests/test_run_regression.py
+        tests/test_run_workflow.py
+        tests/test_verify_package.py
+        tests/test_view_report.py
+        tests/test_workflow_failures.py
+        tests/test_workflow_os_errors.py
+        tests/fixtures/quadratic_atlas_q2.json
 
 The tree describes the selected source package, not every file currently
 present in the phone directory.
 
 The logical package name is mobile-research-kit.
-The current phone working directory is Mobile-Research-Kit-Deliverables.
+Repository path: AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT.
 
 ## Responsibilities
 
@@ -75,13 +76,11 @@ Package integrity followed by the complete test suite:
 The integrity verifier checks listed files only.
 A successful check does not establish authenticity or verify unlisted files.
 
-## Items requiring presence checks
+## Confirmed inventory
 
-LICENSE and RECOVERY.md were discussed previously but their current
-presence was not established by this document inspection.
-
-Add them to the selected tree after confirming the actual files.
-Do not invent filenames for recovery artifacts.
+The inspected checkout contains eighteen Python test modules.
+LICENSE, OVERVIEW.md, and RECOVERY.md are present.
+Presence does not establish license interpretation or recovery completeness.
 
 ## Generated and excluded items
 
