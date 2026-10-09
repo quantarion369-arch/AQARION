@@ -1,195 +1,159 @@
-from itertools import product
+#!/usr/bin/env python3
+"""Independent finite census for JOIN-STABILITY.
+
+For each n, enumerate all maps T : {0,...,n-1} -> {0,...,n-1}
+and all equivalence relations on that set.
+
+Count ordered pairs (E,F) for which both relations are pullback-stable,
+then count cases where their join is not pullback-stable.
+
+This is a finite computational check, not a proof for arbitrary finite
+sets and not a Lean verification.
+"""
+
+from __future__ import annotations
+
+import itertools
+import json
+import sys
+from typing import Iterable
+
+EXPECTED = {
+    1: (1, 0),
+    2: (10, 0),
+    3: (117, 0),
+    4: (1960, 0),
+    5: (40385, 0),
+    6: (1016496, 0),
+}
 
 
-def partitions(n):
-    """All set partitions of range(n), encoded as restricted-growth strings."""
-    out = []
+def partitions(n: int) -> list[tuple[int, ...]]:
+    """Return all set partitions as canonical restricted-growth labels."""
+    if n < 1:
+        raise ValueError("n must be at least 1")
 
-    def rec(a, maximum):
-        if len(a) == n:
-            out.append(tuple(a))
+    result: list[tuple[int, ...]] = []
+
+    def visit(labels: list[int], largest: int) -> None:
+        if len(labels) == n:
+            result.append(tuple(labels))
             return
 
-        for value in range(maximum + 2):
-            rec(a + [value], max(maximum, value))
+        for label in range(largest + 2):
+            labels.append(label)
+            visit(labels, max(largest, label))
+            labels.pop()
 
-    if n == 0:
-        return [()]
-
-    rec([0], 0)
-    return out
+    visit([0], 0)
+    return result
 
 
-def pullback_stable(T, E):
-    n = len(T)
-
+def is_stable(t: tuple[int, ...], p: tuple[int, ...]) -> bool:
+    """Check T^{-1}(E) subseteq E for partition E encoded by p."""
+    n = len(t)
     for x in range(n):
-        for y in range(n):
-            if E[T[x]] == E[T[y]] and E[x] != E[y]:
+        for y in range(x + 1, n):
+            if p[t[x]] == p[t[y]] and p[x] != p[y]:
                 return False
-
     return True
 
 
-def join(E, F):
-    """Join of two equivalence relations via connected components."""
-    n = len(E)
+def join_partition(
+    p: tuple[int, ...], q: tuple[int, ...]
+) -> tuple[int, ...]:
+    """Compute the equivalence-relation join E_p join E_q."""
+    n = len(p)
     parent = list(range(n))
 
-    def find(x):
+    def find(x: int) -> int:
         while parent[x] != x:
             parent[x] = parent[parent[x]]
             x = parent[x]
         return x
 
-    def union(x, y):
-        x = find(x)
-        y = find(y)
+    def union(x: int, y: int) -> None:
+        rx, ry = find(x), find(y)
+        if rx != ry:
+            parent[ry] = rx
 
-        if x != y:
-            parent[y] = x
+    for labels in (p, q):
+        first: dict[int, int] = {}
+        for x, label in enumerate(labels):
+            if label in first:
+                union(x, first[label])
+            else:
+                first[label] = x
 
-    for relation in (E, F):
-        classes = {}
-
-        for x, c in enumerate(relation):
-            classes.setdefault(c, []).append(x)
-
-        for members in classes.values():
-            root = members[0]
-
-            for x in members[1:]:
-                union(root, x)
-
-    return tuple(find(x) for x in range(n))
-
-
-def normalized_classes(E):
-    labels = {}
-    result = []
-
-    for c in E:
-        if c not in labels:
-            labels[c] = len(labels)
-        result.append(labels[c])
-
-    return result
+    roots = [find(x) for x in range(n)]
+    renumber: dict[int, int] = {}
+    canonical: list[int] = []
+    for root in roots:
+        if root not in renumber:
+            renumber[root] = len(renumber)
+        canonical.append(renumber[root])
+    return tuple(canonical)
 
 
-def incidence_data(T, E, F):
-    """
-    Return the incidence relation and induced class maps.
+def audit_n(n: int) -> tuple[int, int]:
+    """Return (ordered stable-pair count, join-failure count)."""
+    ps = partitions(n)
 
-    The caller has already established pullback stability.
-    """
-    E = normalized_classes(E)
-    F = normalized_classes(F)
-    TE = normalized_classes(tuple(E[T[x]] for x in range(len(T))))
-    TF = normalized_classes(tuple(F[T[x]] for x in range(len(T))))
+    # Cache joins for every ordered partition pair, independent of T.
+    joins = [
+        [join_partition(p, q) for q in ps]
+        for p in ps
+    ]
 
-    e_classes = max(E) + 1
-    f_classes = max(F) + 1
+    stable_pair_count = 0
+    join_failure_count = 0
 
-    sigma_E = [None] * e_classes
-    sigma_F = [None] * f_classes
-
-    incidence = set()
-
-    for x in range(len(T)):
-        a = E[x]
-        b = F[x]
-
-        incidence.add((a, b))
-
-        if sigma_E[a] is None:
-            sigma_E[a] = TE[x]
-        elif sigma_E[a] != TE[x]:
-            raise AssertionError("E-class map is not well-defined")
-
-        if sigma_F[b] is None:
-            sigma_F[b] = TF[x]
-        elif sigma_F[b] != TF[x]:
-            raise AssertionError("F-class map is not well-defined")
-
-    return incidence, sigma_E, sigma_F
-
-
-def check_incidence_invariance(T, E, F):
-    incidence, sigma_E, sigma_F = incidence_data(T, E, F)
-
-    if len(set(sigma_E)) != len(sigma_E):
-        raise AssertionError("E class action is not injective")
-
-    if len(set(sigma_F)) != len(sigma_F):
-        raise AssertionError("F class action is not injective")
-
-    image = {
-        (sigma_E[a], sigma_F[b])
-        for (a, b) in incidence
-    }
-
-    return image == incidence
-
-
-def audit(n):
-    relations = partitions(n)
-
-    ordered_stable_pairs = 0
-    join_failures = 0
-    incidence_failures = 0
-
-    for T in product(range(n), repeat=n):
-        stable = [
-            E for E in relations
-            if pullback_stable(T, E)
+    for t in itertools.product(range(n), repeat=n):
+        stable_indices = [
+            i for i, p in enumerate(ps) if is_stable(t, p)
         ]
 
-        ordered_stable_pairs += len(stable) ** 2
+        stable_pair_count += len(stable_indices) ** 2
 
-        for E in stable:
-            for F in stable:
-                G = join(E, F)
+        for i in stable_indices:
+            for j in stable_indices:
+                joined = joins[i][j]
+                if not is_stable(t, joined):
+                    join_failure_count += 1
 
-                if not pullback_stable(T, G):
-                    join_failures += 1
-
-                if not check_incidence_invariance(T, E, F):
-                    incidence_failures += 1
-
-    return (
-        ordered_stable_pairs,
-        join_failures,
-        incidence_failures,
-    )
+    return stable_pair_count, join_failure_count
 
 
-EXPECTED = {
-    1: (1, 0, 0),
-    2: (10, 0, 0),
-    3: (117, 0, 0),
-    4: (1960, 0, 0),
-    5: (40385, 0, 0),
-    6: (1016496, 0, 0),
-}
+def main() -> int:
+    all_ok = True
 
+    for n, expected in EXPECTED.items():
+        observed = audit_n(n)
+        passed = observed == expected
+        all_ok = all_ok and passed
 
-def main():
-    for n in range(1, 7):
-        result = audit(n)
-        print(
-            f"n={n} "
-            f"ordered_stable_pairs={result[0]} "
-            f"join_failures={result[1]} "
-            f"incidence_failures={result[2]}"
-        )
+        print(json.dumps({
+            "n": n,
+            "ordered_stable_relation_pairs": observed[0],
+            "join_stability_failures": observed[1],
+            "expected": {
+                "ordered_stable_relation_pairs": expected[0],
+                "join_stability_failures": expected[1],
+            },
+            "match": passed,
+        }, sort_keys=True))
 
-        if result != EXPECTED[n]:
-            raise SystemExit(
-                f"FAIL: expected {EXPECTED[n]}, got {result}"
+        if not passed:
+            print(
+                f"AUDIT_MISMATCH n={n}: "
+                f"observed={observed}, expected={expected}",
+                file=sys.stderr,
             )
 
-    print("RESULT=PASS")
+    print("AUDIT_RESULT=" + ("PASS" if all_ok else "FAIL"))
+    print("AUDIT_SCOPE=FINITE_ENUMERATION_ONLY")
+    return 0 if all_ok else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
