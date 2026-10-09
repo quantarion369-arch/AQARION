@@ -1,391 +1,687 @@
 
-# PB-CORE-005 — Cycle-Orbit Classification of Pullback-Fixed Equivalences
+# PB-CORE-005 — Cycle-Orbit Classification
 
-## 1. Status and evidence boundary
+**Program:** AQARION / Quantarion-AI  
+**Lane:** PB — finite pullback and eventual-core structure  
+**Artifact:** PB-CORE-005-CYCLE-ORBIT-CLASSIFICATION.md  
+**Status:** corrected consolidated research document  
+**Promotion:** not authorized  
+**Lean status:** open; no Lean certification is claimed by this document  
+**Publication status:** blocked pending completion of the stated proof and reproducibility obligations
 
-Artifact ID: `AQ-PB-CORE-005`
+---
 
-Status:
-- Finite pullback rigidity: [P]
-- Eventual permutation-core restriction/extension: [P]
-- Cycle-phase classification: [P-CANDIDATE]
-- Local phase-count formula: [P-CANDIDATE]
-- Global cycle-assembly formula: [P-CANDIDATE]
-- Exhaustive finite checks: [V], as recorded by the repository
-- General Lean classification: [L-OPEN]
-- C4: BLOCKED
-- Publication: BLOCKED pending formalization and literature audit
-- Promotion: NOT AUTHORIZED
+## 1. Scope and evidence discipline
 
-The mathematical arguments below give the intended proof architecture.
-The general phase-classification and assembly results must not be
-described as Lean-certified until their formal proof obligations are
-closed and the corresponding build is independently reproduced.
+This document studies congruence relations preserved by a finite self-map and the reduction of that problem to the eventual periodic core. It then records cycle-level classification results and a proposed global counting formula.
 
-Computational agreement supports the formulas but does not replace
-a proof for arbitrary cycle lengths.
+The document distinguishes the following evidence categories:
 
-## 2. Finite pullback rigidity
+- **[P]** — mathematical proof supplied in this document.
+- **[V-recorded]** — computational result reported by the repository; not represented here as a fresh execution.
+- **[P-CANDIDATE]** — a proposed classification or formula whose full proof obligations remain open.
+- **[L-open]** — formalization or Lean verification remains outstanding.
+- **[R]** — research context or a direction requiring further investigation.
 
-Let X be a finite set, let T : X -> X, and let E be an equivalence
-relation on X.
+A computational match does not substitute for a proof. A written proof does not establish that a Lean project builds. A candidate formula is not a certified theorem merely because its small cases agree.
 
-Define the pullback relation T*E by
+The correction policy is strict: contradictions in earlier versions are resolved in favor of the mathematically correct statements below. In particular, the two-cycle example for lengths \(2\) and \(4\) has value \(9\), not \(8\).
 
-    x (T*E) y  iff  T(x) E T(y).
+---
 
-The finite pullback-rigidity theorem is
+## 2. Basic definitions
 
-    T*E ⊆ E  =>  T*E = E.
+Let \(X\) be a set and let \(T:X\to X\).
 
-### Proof
+For an equivalence relation \(E\) on \(X\), define its pullback under \(T\) by
 
-Let π : X -> X/E be the quotient map. Then
+\[
+T^*E
+=
+\{(x,y)\in X^2:T(x)\mathrel E T(y)\}.
+\]
 
-    E = ker(π)
-    T*E = ker(π ∘ T).
+Call \(E\) **forward invariant** when
 
-The assumed inclusion
-
-    ker(π ∘ T) ⊆ ker(π)
-
-induces a surjection from X/(T*E) onto X/E. Therefore
-
-    |X/(T*E)| >= |X/E|.
-
-On the other hand, the classes of ker(π ∘ T) correspond to the
-distinct values in im(π ∘ T), so
-
-    |X/(T*E)| = |im(π ∘ T)| <= |X/E|.
-
-Consequently the two quotient sets have the same finite cardinality.
-The induced surjection is therefore a bijection. Its fibers are
-singletons, which implies that the two kernels coincide:
-
-    T*E = E.
-
-Finiteness is essential to this argument.
-
-## 3. Infinite counterexample
-
-Let
-
-    X = N
-    T(n) = n + 1.
-
-Let E have classes
-
-    {0,1}, {2}, {3}, {4}, ...
-
-Then T*E is the equality relation Δ, whereas E is strictly coarser:
-
-    T*E = Δ ⊊ E.
-
-Thus the finite pullback-rigidity theorem does not extend to arbitrary
-infinite sets.
-
-## 4. Eventual permutation core
-
-Let T : X -> X be a map on a finite set and define its periodic core
-
-    P = Per(T).
-
-There exists h >= 0 such that
-
-    T^h(X) = P.
-
-The restriction
-
-    σ = T|P
-
-is a permutation.
-
-Define
-
-    Stab(T) = {E : E is an equivalence relation on X and T*E = E}
-
-and
-
-    Con(P,σ) = {F : F is an equivalence relation on P
-                   and x F y => σ(x) F σ(y)}.
-
-For F in Con(P,σ), define an extension by
-
-    x Ext_h(F) y  iff  T^h(x) F T^h(y).
-
-Because σ is a permutation and F is σ-invariant, this extension is
-independent of the sufficiently large choice of h.
-
-Conversely, restriction sends E in Stab(T) to E|P. Pullback equality
-implies that this restriction is σ-invariant.
-
-For E in Stab(T), iteration gives
-
-    x E y  iff  T^h(x) E T^h(y).
-
-Hence extension after restriction recovers E. Restricting an extension
-to P recovers F because T^h|P is a power of σ, which preserves F in
-both directions.
-
-Therefore restriction and extension are mutually inverse:
-
-    Stab(T) ≅ Con(P,σ).
-
-This is the PB-CORE-004 eventual-permutation-core theorem. The
-computational checks recorded for it remain verification evidence,
-not a substitute for the mathematical proof or a Lean build.
-
-## 5. Cycle decomposition
-
-Write the periodic core as a disjoint union of cycles:
-
-    P = C_1 ⊔ ... ⊔ C_r,
-
-with cycle lengths
-
-    m_1, ..., m_r.
-
-An equivalence relation invariant under σ partitions the cycle-index
-set into connected groups. Here, two cycle indices are connected when
-their cycles belong to the same equivalence class of the induced
-connectivity relation generated by cross-cycle identifications.
-
-We first count the invariant equivalences for one specified connected
-group S of k cycles.
-
-## 6. One-cycle divisor classification
-
-On a single cycle C_m, identify the points with Z/mZ and let σ act
-by addition of 1.
-
-Every σ-invariant equivalence relation on C_m is determined by a
-unique divisor d of m. Its equivalence classes are the residue
-classes modulo d:
-
-    x ~ y  iff  x ≡ y (mod d).
-
-Thus the number of invariant equivalences on one cycle is
-
-    τ(m),
-
-where τ(m) is the number of positive divisors of m.
-
-This is established cyclic/monounary structure, not a claim of
-discovery by AQARION.
-
-## 7. Connected groups of cycles
-
-Let S be a nonempty set of k cycle indices, and let
-
-    g(S) = gcd(m_i : i in S).
-
-For a connected invariant equivalence joining the cycles indexed by S,
-the induced quotient dynamics on that connected component is a cycle
-of some length d. Each original cycle maps equivariantly onto that
-quotient cycle. Therefore
-
-    d | m_i  for every i in S,
+\[
+x\mathrel E y
+\implies
+T(x)\mathrel E T(y),
+\]
 
 equivalently,
 
-    d | g(S).
+\[
+E\subseteq T^*E.
+\]
 
-For a fixed admissible d, choose cyclic coordinates on each cycle.
-An equivariant map from C_{m_i} onto C_d has the form
+Call \(E\) **pullback-stable** when
 
-    a |-> a + t_i (mod d),
+\[
+T^*E\subseteq E.
+\]
 
-where t_i belongs to Z/dZ.
+Call \(E\) **exactly invariant** when
 
-Thus the phase data form a vector
+\[
+T^*E=E.
+\]
 
-    (t_1,...,t_k) in (Z/dZ)^k.
+These are different conditions in general. The direction of each inclusion must be retained in every theorem statement.
 
-Changing the origin chosen on the common quotient adds the same
-element to every phase. Define the diagonal subgroup
+For a self-map \(T\), write
 
-    Δ_d = {(s,...,s) : s in Z/dZ}.
+\[
+\operatorname{Con}(X,T)
+=
+\{E:E\text{ is an equivalence relation on }X
+\text{ and }E\subseteq T^*E\}.
+\]
 
-The intrinsic phase parameter is therefore the orbit
+Thus \(\operatorname{Con}(X,T)\) denotes the forward-invariant equivalence relations, or congruences of the unary algebra \((X,T)\).
 
-    (Z/dZ)^k / Δ_d.
+The periodic core is
 
-The diagonal action is free, so the number of phase orbits is
+\[
+P=\operatorname{Per}(T)
+=\{x\in X:\exists m\geq 1,\ T^m(x)=x\}.
+\]
 
-    d^k / d = d^(k-1).
+When \(X\) is finite, \(P\) is nonempty if \(X\) is nonempty, \(T(P)=P\), and the restriction
 
-Consequently, the candidate connected-block weight is
+\[
+\sigma=T|_P:P\to P
+\]
 
-    W(S) = sum_{d | g(S)} d^(k-1).
+is a permutation.
 
-### Proof obligations still required for formal closure
+---
 
-A complete general proof must establish all of the following:
+## 3. Finite pullback rigidity
 
-1. Extract the quotient cycle length d from an arbitrary connected
-   invariant equivalence.
-2. Prove d divides every cycle length in S.
-3. Extract phase data relative to cyclic coordinates.
-4. Prove the phase vector is unique up to a common diagonal shift.
-5. Reconstruct the equivalence from the divisor and phase orbit.
-6. Prove injectivity and surjectivity of the parameterization.
-7. Assemble the connected blocks over all partitions of the cycle set.
+### Theorem PB-005-T1 — finite pullback rigidity
 
-The count d^(k-1) follows once the claimed bijection with the phase
-orbits has been proved. Until the extraction and reconstruction steps
-are closed, this general classification remains [P-CANDIDATE].
+Let \(X\) be finite, let \(E\) be an equivalence relation on \(X\), and let \(T:X\to X\). If
 
-## 8. Global cycle-assembly formula
+\[
+T^*E\subseteq E,
+\]
 
-Let Part([r]) denote the set of set partitions of the cycle-index
-set [r] = {1,...,r}.
+then
 
-An arbitrary invariant equivalence first determines a partition
-of the cycles into connected blocks. Each block S independently
-contributes W(S).
+\[
+\boxed{T^*E=E.}
+\]
 
-The proposed global formula is
+Consequently, on a finite set, pullback-stability of an equivalence relation implies exact invariance.
 
-    |Con(P,σ)|
-      =
-    sum_{π in Part([r])}
-      product_{S in π}
-        sum_{d | gcd(m_i : i in S)} d^(|S|-1).
+### Proof
 
-This formula is a consequence of the connected-block classification
-and the independent assembly of blocks. Its status remains
-[P-CANDIDATE] until the general classification and assembly proof
-obligations are formally closed.
+Let \(\pi:X\to X/E\) be the quotient map. By definition,
 
-## 9. Exact examples and negative controls
+\[
+x\mathrel E y
+\iff
+\pi(x)=\pi(y).
+\]
 
-For one cycle of length m:
+Therefore
 
-    |Con(C_m,σ)| = τ(m).
+\[
+x\mathrel{T^*E}y
+\iff
+\pi(T(x))=\pi(T(y)),
+\]
 
-For two cycles of lengths m and n:
+so \(T^*E\) is the kernel equivalence relation of \(\pi\circ T\).
 
-    |Con(C_m ⊔ C_n,σ)|
-      = τ(m)τ(n) + sum_{d | gcd(m,n)} d.
+The assumption \(T^*E\subseteq E\) means that every \(T^*E\)-class is contained in an \(E\)-class. Hence the map
 
-The correct examples are:
+\[
+X/(T^*E)\longrightarrow X/E,
+\qquad
+[x]_{T^*E}\longmapsto [x]_E
+\]
 
-    (2,2): 2*2 + (1+2)       = 7
-    (2,3): 2*2 + 1           = 5
-    (3,3): 3*3 + (1+3)       = 13
-    (2,4): 2*3 + (1+2)       = 9
-    (4,4): 3*3 + (1+2+4)     = 16
+is well-defined and surjective. It follows that
 
-Important correction:
-The value for cycle lengths (2,4) is 9, not 8 and not 7.
+\[
+|X/(T^*E)|\geq |X/E|.
+\]
 
-For three fixed points, all cycle lengths are 1. Every connected
-block has weight 1, so the global formula gives the Bell number
+On the other hand, the number of equivalence classes of \(T^*E\) equals the size of the image of \(\pi\circ T\):
 
-    B_3 = 5,
+\[
+|X/(T^*E)|
+=
+|\operatorname{im}(\pi\circ T)|
+\leq |X/E|.
+\]
 
-as required for the identity permutation on three points.
+Thus
 
-## 10. Computational verification
+\[
+|X/(T^*E)|=|X/E|.
+\]
 
-The repository contains scripts for exact finite verification of
-the cycle formula and the eventual-core restriction/extension result.
+The natural surjection between these finite quotient sets is therefore bijective. Its fibers cannot merge distinct \(T^*E\)-classes, so the two kernel relations coincide:
 
-The recorded checkpoint reports:
+\[
+T^*E=E.
+\]
 
-- 873 permutations in sizes n <= 6: zero formula mismatches.
-- 5,040 permutations of size 7: zero formula mismatches.
-- 500 sampled permutations each at sizes 8, 9, and 10: zero
-  mismatches.
-- All finite maps through size 6: zero recorded restriction and
-  extension failures.
+This proves the theorem. \(\square\)
 
-These are repository-recorded results. A new execution should be
-logged separately with the exact source revision, command, exit code,
-and output. Do not describe these historical records as a fresh run.
+### Scope limitation
 
-The finite verification is [V] evidence only. It does not establish
-the general theorem by itself.
+Finiteness is essential to this argument. The corresponding assertion is false for arbitrary infinite sets.
 
-## 11. Literature boundary
+---
 
-The following subject matter is established:
+## 4. Infinite counterexample
 
-- congruences of unary and monounary algebras;
-- cyclic and permutation actions;
-- divisor structure of invariant equivalences on a cycle;
-- finite dynamical decomposition into periodic cores and transient
-  trees;
-- gcd restrictions arising from equivariant maps between cycles.
+Let
 
-Relevant literature recorded for further comparison includes:
+\[
+X=\mathbb N=\{0,1,2,\ldots\},
+\qquad T(n)=n+1.
+\]
 
-- Joel Berman, "On the congruence lattices of unary algebras" (1972).
-- C. Ratanaprasert and K. Denecke, "Unary operations with long
-  pre-periods," Discrete Mathematics 308 (2008), 4998–5005.
-- D. Jakubíková-Studenovská and L. Janičková, "Congruence lattices
-  of connected monounary algebras," Algebra Universalis 81 (2020),
-  Article 54.
+Define \(E\) to have the single nonsingleton class \(\{0,1\}\), with every \(n\geq2\) in its own singleton class.
 
-The existing literature search did not establish priority for the
-specific phase-orbit parameterization
+Then
 
-    (Z/dZ)^k / Δ_d
+\[
+T(0)=1,\qquad T(1)=2.
+\]
 
-or for the resulting weighted set-partition assembly formula.
+Since \(1\not\mathrel E2\), the pair \((0,1)\) does not belong to \(T^*E\). All other distinct pairs are also excluded from \(T^*E\). Therefore
 
-This means only that priority remains unresolved. It does not imply
-novelty.
+\[
+T^*E=\Delta_X,
+\]
 
-Permitted wording:
+where \(\Delta_X\) is equality. But
 
-    "The current literature search did not locate an exact source
-    for this specific phase-orbit formulation."
+\[
+\Delta_X\subsetneq E.
+\]
 
-Prohibited wording:
+Hence
 
-    "This is novel."
-    "No one has proved this before."
-    "AQARION discovered congruences of unary algebras."
+\[
+T^*E\subsetneq E.
+\]
 
-## 12. Current theorem ladder
+This is an infinite counterexample to pullback rigidity without finiteness. It also identifies exactly where the finite quotient-cardinality argument ceases to apply.
 
-PB-CORE-004:
-    Stab(T) ≅ Con(Per(T), T|Per(T))      [P]
+---
 
-PB-CORE-005:
-    Connected phase-orbit classification [P-CANDIDATE]
-    Connected-block count                [P-CANDIDATE]
-    Global cycle-assembly formula        [P-CANDIDATE]
+## 5. Reduction to the eventual periodic core
 
-Computational evidence recorded:
-    Permutation checks through n = 6     [V]
-    Formula checks for n = 7             [V]
-    Finite-map restriction/extension
-    checks through n = 6                 [V]
+### Theorem PB-005-T2 — eventual-core correspondence
 
-Lean:
-    Local phase-setoid layer             USER-REPORTED / VERIFY
-    General phase invariance              OPEN
-    Extraction and reconstruction         OPEN
-    Global assembly                       OPEN
-    Full classification                   OPEN
+Let \(X\) be finite and \(T:X\to X\). Put
 
-Governance:
-    C4                                   BLOCKED
-    Publication                          BLOCKED
-    Promotion                            NOT AUTHORIZED
+\[
+P=\operatorname{Per}(T).
+\]
 
-## 13. Next proof target
+Choose \(h\geq0\) large enough that
 
-The next target is not another numerical fit. It is the local
-classification theorem:
+\[
+T^h(X)=P.
+\]
 
-    Every invariant equivalence joining exactly k specified cycles
-    corresponds to exactly one admissible divisor d and one phase
-    orbit in (Z/dZ)^k / Δ_d.
+Let
 
-Start with two cycles of length 2, then generalize the extraction,
-uniqueness, and reconstruction arguments. Keep computational
-verification, general mathematical proof, Lean compilation, and
-publication review as separate evidence gates.
+\[
+\sigma=T|_P.
+\]
+
+Then restriction to \(P\) induces a bijection
+
+\[
+\boxed{
+\operatorname{Con}(X,T)
+\cong
+\operatorname{Con}(P,\sigma).
+}
+\]
+
+More explicitly, if \(E\in\operatorname{Con}(X,T)\), its restriction \(F=E|_P\) determines \(E\) uniquely by
+
+\[
+\boxed{
+x\mathrel E y
+\iff
+T^h(x)\mathrel F T^h(y).
+}
+\]
+
+### Proof
+
+First, let \(E\in\operatorname{Con}(X,T)\). Since \(E\) is forward invariant, every iterate \(T^j\) preserves \(E\). In particular,
+
+\[
+x\mathrel E y
+\implies
+T^h(x)\mathrel E T^h(y).
+\]
+
+Thus the restriction \(F=E|_P\) controls every pair in \(E\) through its image under \(T^h\).
+
+Because \(T^h(X)=P\), the map \(T^h:X\to P\) is surjective. For \(u,v\in P\), forward invariance gives
+
+\[
+u\mathrel Fv
+\implies
+\sigma(u)\mathrel F\sigma(v).
+\]
+
+Hence \(F\in\operatorname{Con}(P,\sigma)\).
+
+Conversely, suppose \(F\in\operatorname{Con}(P,\sigma)\). Define a relation \(E_F\) on \(X\) by
+
+\[
+x\mathrel{E_F}y
+\iff
+T^h(x)\mathrel F T^h(y).
+\]
+
+As the inverse image of an equivalence relation under a map, \(E_F\) is an equivalence relation. To show forward invariance, assume \(x\mathrel{E_F}y\). Then
+
+\[
+T^h(x)\mathrel F T^h(y).
+\]
+
+Forward invariance of \(F\) under \(\sigma\) yields
+
+\[
+\sigma(T^h(x))
+\mathrel F
+\sigma(T^h(y)).
+\]
+
+Since \(T\) commutes with its iterates and \(T^h(x),T^h(y)\in P\),
+
+\[
+T^h(T(x))\mathrel F T^h(T(y)).
+\]
+
+Thus \(T(x)\mathrel{E_F}T(y)\), proving \(E_F\in\operatorname{Con}(X,T)\).
+
+Finally, \(T^h\) acts as a permutation iterate on \(P\), so \(T^h|_P\) is bijective. Its inverse preserves \(F\) because a congruence for a permutation is also invariant under its inverse: on a finite set, forward invariance under a permutation implies exact invariance by Theorem PB-005-T1. Therefore the restriction of \(E_F\) to \(P\) is precisely \(F\).
+
+The two constructions are inverse bijections. \(\square\)
+
+### Consequence
+
+The finite congruence problem for an arbitrary self-map reduces to the congruence problem for a permutation on its periodic core. The transient trees affect how the core relation is pulled back, but introduce no additional independent choice of congruence.
+
+---
+
+## 6. Cycle decomposition
+
+Let the permutation \(\sigma\) on \(P\) have disjoint cycles
+
+\[
+C_1,\ldots,C_r
+\]
+
+of lengths
+
+\[
+m_1,\ldots,m_r.
+\]
+
+Then
+
+\[
+|P|=m_1+\cdots+m_r.
+\]
+
+An equivalence relation \(F\) on \(P\) is a congruence precisely when
+
+\[
+x\mathrel Fy
+\implies
+\sigma(x)\mathrel F\sigma(y).
+\]
+
+By finite pullback rigidity, this condition is equivalent to
+
+\[
+x\mathrel Fy
+\iff
+\sigma(x)\mathrel F\sigma(y).
+\]
+
+Thus congruences on the periodic core are exactly the equivalence relations invariant under simultaneous application of the permutation.
+
+This statement is proved. A full closed-form classification and count for arbitrary cycle type is a separate claim and must not be inferred merely from this equivalence.
+
+---
+
+## 7. One-cycle classification
+
+Consider a single cycle of length \(m\), identified with the cyclic group
+
+\[
+\mathbb Z/m\mathbb Z
+\]
+
+and acted on by translation \(x\mapsto x+1\).
+
+### Theorem PB-005-T3 — congruences on a single cycle
+
+Every invariant equivalence relation on a single cycle is determined by a subgroup of \(\mathbb Z/m\mathbb Z\). Consequently, such relations are in bijection with the positive divisors of \(m\), and the number of them is
+
+\[
+\boxed{\tau(m)},
+\]
+
+where \(\tau(m)\) denotes the number of positive divisors of \(m\).
+
+### Proof
+
+Let \(F\) be an equivalence relation invariant under translation. Define
+
+\[
+H=\{a\in\mathbb Z/m\mathbb Z:a\mathrel F0\}.
+\]
+
+Since \(F\) is invariant under translation, \(a\mathrel F0\) implies that all translates of this pair remain related. In particular, translating by \(-a\) gives \(0\mathrel F(-a)\), and symmetry gives \((-a)\mathrel F0\). Thus \(H\) is closed under additive inverses.
+
+If \(a,b\in H\), then \(a\mathrel F0\) and \(b\mathrel F0\). Translating the latter relation by \(a\) gives \(a+b\mathrel Fa\). Combining with \(a\mathrel F0\), transitivity gives \(a+b\mathrel F0\). Hence \(a+b\in H\).
+
+Therefore \(H\) is a subgroup. Translation invariance also gives
+
+\[
+x\mathrel Fy
+\iff
+x-y\in H.
+\]
+
+Conversely, every subgroup \(H\leq\mathbb Z/m\mathbb Z\) defines an invariant equivalence relation by this formula.
+
+The subgroups of a finite cyclic group are in bijection with the divisors of \(m\). Their number is \(\tau(m)\). \(\square\)
+
+---
+
+## 8. Multiple-cycle phase relations: precise candidate statement
+
+For two disjoint cycles of lengths \(m,n\), write their phases as
+
+\[
+\mathbb Z/m\mathbb Z
+\quad\text{and}\quad
+\mathbb Z/n\mathbb Z.
+\]
+
+An invariant equivalence relation that connects the two cycles must be compatible with the simultaneous shift
+
+\[
+(a,b)\longmapsto(a+1,b+1).
+\]
+
+For \(k\) labeled cycles of lengths \(m_1,\ldots,m_k\), the phase tuple lies in
+
+\[
+G=\prod_{i=1}^{k}\mathbb Z/m_i\mathbb Z.
+\]
+
+Simultaneous application of the permutation corresponds to translation by
+
+\[
+\delta=(1,\ldots,1)\in G.
+\]
+
+A proposed description of connected cross-cycle relations in terms of phase orbits and stabilizer subgroups must explicitly account for:
+
+1. the subgroup generated by \(\delta\);
+2. the kernel of the phase representation;
+3. the individual cycle stabilizers;
+4. compatibility with equivalence-relation transitivity;
+5. possible multiple connections between cycle pairs;
+6. overcounting when the same equivalence relation admits multiple descriptions.
+
+For equal cycle lengths \(d\), a useful candidate phase space is
+
+\[
+(\mathbb Z/d\mathbb Z)^k/\langle(1,\ldots,1)\rangle.
+\]
+
+This quotient describes phase tuples modulo a common shift. It is a natural organizing device, but its existence alone does not prove that arbitrary invariant equivalence relations are classified bijectively by subgroups or orbits in this quotient.
+
+**Status:** [P-CANDIDATE]. A complete classification theorem requires an explicit construction in both directions and a proof of uniqueness. No general classification or counting formula is certified here solely on the basis of this candidate description.
+
+---
+
+## 9. Global cycle-assembly count: corrected formula
+
+Let \(A_n\) denote the total number of pairs
+
+\[
+(T,E)
+\]
+
+where \(T:[n]\to[n]\) is a self-map and \(E\in\operatorname{Con}([n],T)\). Equivalently,
+
+\[
+A_n
+=
+\sum_{T:[n]\to[n]}
+|\operatorname{Con}([n],T)|.
+\]
+
+Every finite functional digraph decomposes into a rooted forest feeding into a permutation on its periodic vertices.
+
+Let \(k\) be the number of periodic vertices. The periodic restriction is a permutation of those \(k\) labeled vertices. Let
+
+\[
+p(k)
+\]
+
+denote the integer partition function, and define the aggregate permutation count
+
+\[
+S_k
+=
+\sum_{\sigma\in S_k}
+|\operatorname{Con}([k],\sigma)|.
+\]
+
+The proposed cycle-assembly identity is
+
+\[
+\boxed{S_k=k!\,p(k).}
+\]
+
+The corresponding global formula is
+
+\[
+\boxed{
+A_n
+=
+\sum_{k=1}^{n-1}
+\binom nk
+k\,n^{\,n-k-1}\,k!\,p(k)
++
+n!\,p(n).
+}
+\]
+
+Equivalently,
+
+\[
+\boxed{
+A_n
+=
+n!\sum_{k=1}^{n-1}
+\frac{k\,p(k)\,n^{\,n-k-1}}{(n-k)!}
++
+n!\,p(n).
+}
+\]
+
+The final term is a separate endpoint term. It must not be written as though the factor \(n^{n-k-1}\) could be used unchanged at \(k=n\): that would introduce the exponent \(-1\) and would not express the correct forest count.
+
+### 9.1 Rooted-forest factor
+
+For \(1\leq k<n\), the number of rooted forests on \(n\) labeled vertices with a specified set of \(k\) roots, in which every component contains exactly one root, is
+
+\[
+F(n,k)=k\,n^{\,n-k-1}.
+\]
+
+For \(k=n\), every vertex is a root and there are no nonroot vertices to attach, so
+
+\[
+F(n,n)=1.
+\]
+
+This endpoint is handled separately in the global sum.
+
+### 9.2 Aggregate permutation identity
+
+The proposed identity
+
+\[
+S_k=k!\,p(k)
+\]
+
+is a statement about the sum of congruence counts over all permutations of a labeled \(k\)-element set. It is not a claim that every individual permutation has exactly \(p(k)\) congruences.
+
+A proof must group permutations by cycle type and establish that the sum of the invariant-equivalence counts over each cycle type, weighted by the number of permutations of that type, yields the stated aggregate.
+
+The cycle type is indexed by an integer partition \(\lambda\vdash k\). If \(a_j\) is the number of parts of size \(j\), the number of permutations of type \(\lambda\) is
+
+\[
+\frac{k!}{\prod_{j\geq1}j^{a_j}a_j!}.
+\]
+
+The full proof must evaluate the congruence count for each type and show that the resulting sum is \(k!p(k)\). A list of small numerical agreements is not a substitute for that derivation.
+
+**Evidence status:** [P-CANDIDATE] for the global assembly unless the complete cycle-type sum proof and all required lemmas are supplied in the formal verification artifact. Do not upgrade the formula's status on the basis of the table below alone.
+
+---
+
+## 10. Correct exact examples
+
+For a single cycle of length \(m\), the count is \(\tau(m)\).
+
+For two cycles of lengths \(m,n\), the recorded candidate formula is
+
+\[
+C(m,n)
+=
+\tau(m)\tau(n)
++
+\sum_{d\mid\gcd(m,n)}d.
+\]
+
+Here \(\tau\) is the divisor-counting function. The sum ranges over the positive divisors of \(\gcd(m,n)\).
+
+Under this formula, the following examples are arithmetically correct:
+
+| Cycle lengths | Calculation | Value |
+|---|---:|---:|
+| \((2,2)\) | \(2\cdot2+(1+2)\) | \(7\) |
+| \((2,3)\) | \(2\cdot2+1\) | \(5\) |
+| \((3,3)\) | \(2\cdot2+(1+3)\) | \(8\) |
+| \((2,4)\) | \(2\cdot3+(1+2)\) | \(9\) |
+| \((4,4)\) | \(3\cdot3+(1+2+4)\) | \(16\) |
+
+These are examples of the two-cycle candidate formula. They do not, by themselves, prove it for all \(m,n\), nor do they establish the general \(k\)-cycle formula.
+
+### Identity permutation on three points
+
+The identity permutation on three points has five equivalence relations, corresponding to the five set partitions of a three-element set. Thus
+
+\[
+|\operatorname{Con}([3],\operatorname{id})|
+=
+B_3
+=
+5,
+\]
+
+where \(B_3\) is the third Bell number.
+
+This is a useful independent boundary check: when every point is a fixed point, every equivalence relation is invariant.
+
+---
+
+## 11. Computational evidence recorded by the repository
+
+The following results are recorded in the PB research artifacts. They are reproduced as repository claims, not as assertions of fresh execution in this editing pass.
+
+- The repository reports finite-map and finite-permutation checks for the stated congruence and restriction/extension identities.
+- The repository reports small-case checks for the cycle-level and aggregate-count formulas.
+- The repository's broader checkpoint records exhaustive permutation checks through \(n=7\), with additional random permutation checks at \(n=8,9,10\).
+- The checkpoint records a brute-force extension attempt at \(n=12\) that timed out; it does not record a successful result for that attempt.
+
+For every reported computational result, a release-quality receipt should identify:
+
+1. the exact source commit;
+2. the exact source file hashes;
+3. the test command and environment;
+4. the generated output;
+5. the number of cases executed;
+6. the expected and observed values;
+7. the manifest hash;
+8. the distinction between a completed run, a timeout, and an unexecuted test.
+
+A receipt with `source_hash: null` or `manifest_hash: null` does not cryptographically bind the reported results to a specific source artifact and manifest.
+
+No result is promoted to [V] merely because it appears in this document.
+
+---
+
+## 12. Literature and novelty boundary
+
+Congruences of unary algebras, invariant equivalence relations, and functional digraphs are established mathematical subjects. Relevant literature recorded for this research includes:
+
+- Joel Berman, “On the congruence lattices of unary algebras” (1972).
+- C. Ratanaprasert and K. Denecke, “Unary operations with long pre-periods,” *Discrete Mathematics* 308 (2008), 4998–5005.
+- D. Jakubíková-Studenovská and L. Janičková, “Congruence lattices of connected monounary algebras,” *Algebra Universalis* 81 (2020), Article 54.
+
+These references are research context, not a claim that each formula in this document appears in those works. Conversely, absence of a matching formula in an incomplete literature search does not establish novelty or priority.
+
+Any publication claim about the phase-orbit formulation or the aggregate identity must be preceded by a literature review that compares exact definitions, hypotheses, statements, and proofs.
+
+---
+
+## 13. Theorem and obligation ledger
+
+| ID | Claim | Evidence status | Remaining obligation |
+|---|---|---|---|
+| PB-005-T1 | Finite pullback rigidity | [P] | Formalize and verify in Lean |
+| PB-005-T2 | Eventual-core correspondence | [P] | Formalize and verify in Lean |
+| PB-005-T3 | Single-cycle divisor classification | [P] | Formalize and verify in Lean |
+| PB-005-C1 | Two-cycle count formula | [P-CANDIDATE] | Complete general proof and independent verification |
+| PB-005-C2 | General phase-orbit classification | [P-CANDIDATE] | Prove existence, completeness, and uniqueness |
+| PB-005-C3 | Aggregate identity \(S_k=k!p(k)\) | [P-CANDIDATE] unless its full cycle-type proof is supplied | Complete the cycle-type sum proof |
+| PB-005-C4 | Global formula for \(A_n\) | [P-CANDIDATE] pending the aggregate identity and assembly proof | Prove the forest/permutation decomposition and verify the formal statement |
+| PB-005-V1 | Repository-reported finite checks | [V-recorded] | Reproduce from pinned source and environment |
+| PB-005-L1 | Lean certification | [L-open] | Complete formalization and build |
+| PB-005-R1 | Novelty/priority of phase classification | [R] | Complete comparative literature review |
+
+---
+
+## 14. Corrected research conclusion
+
+The finite pullback-rigidity theorem, the reduction to the eventual periodic core, and the single-cycle divisor classification are supported by explicit mathematical proofs in this document.
+
+The two-cycle count, general phase-orbit classification, aggregate permutation identity, and global total-count formula are kept at candidate status unless and until their complete proofs and verification obligations are met. Repository-reported computations remain recorded evidence rather than fresh certification.
+
+The immediate mathematical target is a complete proof of the cycle-type aggregate
+
+\[
+S_k=k!\,p(k),
+\]
+
+including the exact invariant-equivalence count for each permutation cycle type. Only after that proof is established should the global forest-assembly formula be promoted. Lean formalization, reproducible computation, hash-bound receipts, and literature review remain separate gates.
+
+**Final status:** corrected mathematical document; no claim of fresh execution, Lean completion, source modification, or publication approval is made here.
