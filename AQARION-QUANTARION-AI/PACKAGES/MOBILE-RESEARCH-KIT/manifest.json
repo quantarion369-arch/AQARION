@@ -14,8 +14,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 14375,
-      "sha256": "41d52100ebcdab4ce426001f9992e2a2ca4d707591b1241f464972ca927d95ca"
+      "bytes": 15436,
+      "sha256": "904d0111e7a7382718253531eff1acdd35c11340d4133ff1c36e04d75b93d73d"
     },
     {
       "path": "docs/history/CHECKPOINT-25tests.md",
@@ -104,8 +104,8 @@
     },
     {
       "path": "tests/test_quadratic_oracle_separation.py",
-      "bytes": 4672,
-      "sha256": "2782373ecaa00f99927a9be411a7ff72628056331c2f762cc516aca36ba4a79c"
+      "bytes": 5429,
+      "sha256": "d05908c06210b5693e3fc4d093d7f889f58e760112bf5832ba2c9d0e3e4b4716"
     },
     {
       "path": "tests/test_record_run.py",
@@ -169,8 +169,8 @@
     },
     {
       "path": "tools/verify_quadratic_atlas.py",
-      "bytes": 6631,
-      "sha256": "c4c3fe1d745c2849df0baa829baf553a4b517f183354ffffb92876804eadfaae"
+      "bytes": 6956,
+      "sha256": "62f265bc9cc76b23a32dab406f8c74a2e62f80a6b6a7cb166344dc56be63ca69"
     },
     {
       "path": "tools/view_report.py",
