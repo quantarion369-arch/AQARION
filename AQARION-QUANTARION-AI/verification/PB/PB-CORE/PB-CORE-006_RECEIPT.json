@@ -1,31 +1,21 @@
 {
-"artifact": "PB-CORE-006",
+"artifact_id": "PB-CORE-006",
 "title": "Aggregate Enumeration of Pullback-Fixed Equivalences",
 "date": "2026-10-09",
 "status": "OPEN",
-"scope": {
-"mathematical_claim": "Candidate aggregate formula derived from periodic-core reduction, permutation/equivalence pair count, and fixed-root forest enumeration.",
-"pullback_fixed_definition": "E(x,y) iff E(Tx,Ty)",
-"not_equivalent_to": "Forward-stable relation E(x,y) implies E(Tx,Ty)"
+"claim": {
+"symbolic_formula": "A_n = sum_{k=1}^{n-1} n! * k * p(k) * n^(n-k-1) / (n-k)! + n! * p(n)",
+"definitions": {
+"A_n": "Sum over all maps T on an n-element labelled set of the number of equivalence relations E satisfying E(x,y) iff E(T(x),T(y)).",
+"p(k)": "Number of integer partitions of k."
 },
-"formula": {
-"symbolic": "A_n = sum_{k=1}^{n-1} n! * k * p(k) * n^(n-k-1)/(n-k)! + n! * p(n)",
-"integer_partition_function": "p(k) is the number of integer partitions of k",
-"arithmetic_note": "In the displayed Python implementation, division by (n-k)! is exact because (n-k)! divides n!, but this fact alone does not establish the combinatorial formula."
+"proof_status": "Candidate formula; full combinatorial derivation remains open."
 },
-"evidence": {
-"T5A_k_factorial_p_k": {
-"status": "PAPER_PROOF_REPORTED",
-"basis": "For each integer-partition block-size profile, the number of equivalence relations multiplied by the size of its stabilizer is k!. Summing over p(k) profiles yields k! p(k).",
-"PB006_phase_classification_dependency": false
-},
-"PB_CORE_004_restriction_extension": {
-"status": "PAPER_PROOF_REPORTED_CORRECTED_RETRACTION_REQUIRED",
-"note": "Choose r=T^L where L is at least a transient-depth bound and divisible by every cycle length. An arbitrary h satisfying T^h(X)=P need not fix P pointwise."
-},
-"formula_arithmetic_n_le_12": {
-"status": "REPORTED_ONLY_NOT_INDEPENDENTLY_REPLAYED_HERE",
-"values": {
+"arithmetic": {
+"verifier_path": "AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-CORE-006-ARITHMETIC-VERIFY.py",
+"method": "Python standard-library integer arithmetic",
+"factorial_ratio": "Compute n! divided by (n-k)! with divmod and reject a nonzero remainder.",
+"reported_values_n_1_through_12": {
 "1": 1,
 "2": 6,
 "3": 51,
@@ -38,13 +28,15 @@
 "10": 52399129600,
 "11": 1660832066091,
 "12": 57351480413184
-}
 },
-"v2_direct_map_census_n_le_6": {
-"status": "REPORTED_ONLY_SOURCE_AND_RECEIPT_NOT_AUTHENTICATED_TO_THIS_COMMIT",
-"maps": 50069,
-"mismatches_reported": 0,
-"pair_counts_reported": {
+"replay_performed_for_this_receipt": false,
+"result": "NOT_YET_REPLAYED"
+},
+"bounded_direct_audit": {
+"source_path": "AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-CORE-004-DIRECT-PULLBACK-AUDIT-2026-10-06-BOUND-v2.py",
+"reported_maps_n_1_through_6": 50069,
+"reported_mismatches": 0,
+"reported_pair_counts": {
 "1": 1,
 "2": 6,
 "3": 51,
@@ -52,35 +44,24 @@
 "5": 8565,
 "6": 148896
 },
-"source_sha256_reported": "15792dd2d09e17ee6f57b22be8311734a6b87b834afe9fb81fd101f7cf3379c3",
-"source_file_path_in_repository": null,
-"receipt_file_path_in_repository": null
-},
-"n_eq_7_exhaustive_census": {
-"status": "REPOSITORY_RECEIPT_REPORTED_NOT_INDEPENDENTLY_REPLAYED_HERE",
-"maps_reported": 823543,
-"pair_count_reported": 3018127
-}
+"reported_source_sha256": "15792dd2d09e17ee6f57b22be8311734a6b87b834afe9fb81fd101f7cf3379c3",
+"authentication_status": "HISTORICAL_REPORT_NOT_AUTHENTICATED_TO_THIS_FILE",
+"replay_performed_for_this_receipt": false
 },
 "formalization": {
 "lean": "OPEN",
-"lean_build_verified_by_this_receipt": false,
+"lake_build_verified": false,
+"unresolved_proof_obligations": "NOT_RECHECKED"
+},
+"governance": {
 "C4": "BLOCKED",
 "publication": "BLOCKED",
 "promotion": false
 },
 "provenance": {
+"repository_commit": null,
 "source_hash": null,
 "manifest_hash": null,
-"reason": "The bounded v2 source and receipt were not located in the inspected repository tree at the audited commit. No source or manifest hash is asserted here.",
-"audited_main_commit": "e717844a93ef4b188eef873704d0da55bcc22b64",
-"independent_replay_performed_for_this_replacement": false
-},
-"governance": {
-"do_not_upgrade_status_from_reported_numbers": true,
-"do_not_conflate_pullback_fixed_and_forward_stable": true,
-"C4": "BLOCKED",
-"publication": "BLOCKED",
-"promotion": false
+"reason": "No successful repository write or fresh execution is asserted by this receipt."
 }
 }
