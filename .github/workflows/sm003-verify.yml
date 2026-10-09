@@ -1,0 +1,204 @@
+name: AQARION SM003 Exact Verification
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/verification/SM/SM003/**"
+      - ".github/workflows/sm003-verify.yml"
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "AQARION-QUANTARION-AI/verification/SM/SM003/**"
+      - ".github/workflows/sm003-verify.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sm003-verification-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Exact Rank and Mutation Verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout tested revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run SM003 tests and exact census
+        id: sm003
+        shell: bash
+        env:
+          TESTED_COMMIT: ${{ github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -u
+
+          SM_DIR="AQARION-QUANTARION-AI/verification/SM/SM003"
+          OUT="$RUNNER_TEMP/sm003-evidence"
+          mkdir -p "$OUT"
+
+          git rev-parse HEAD > "$OUT/checked-out-commit.txt"
+          python --version > "$OUT/python-version.txt" 2>&1
+          python -c \
+            'import platform, sys; print(sys.executable); print(platform.platform()); print(platform.python_implementation())' \
+            > "$OUT/python-environment.txt"
+
+          mutation_start=$(date +%s)
+          python "$SM_DIR/mutations.py" \
+            --max-n 4 \
+            --report "$OUT/sm003-mutation-report.json" \
+            > "$OUT/mutation.stdout.txt" \
+            2> "$OUT/mutation.stderr.txt"
+          mutation_rc=$?
+          mutation_seconds=$(( $(date +%s) - mutation_start ))
+
+          test_start=$(date +%s)
+          python -m unittest discover \
+            -s "$SM_DIR" \
+            -p "test_sm003.py" \
+            -v \
+            > "$OUT/tests.stdout.txt" \
+            2> "$OUT/tests.stderr.txt"
+          test_rc=$?
+          test_seconds=$(( $(date +%s) - test_start ))
+
+          export SM003_OUT="$OUT"
+          export SM003_MUTATION_RC="$mutation_rc"
+          export SM003_MUTATION_SECONDS="$mutation_seconds"
+          export SM003_TEST_RC="$test_rc"
+          export SM003_TEST_SECONDS="$test_seconds"
+
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import platform
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          out = Path(os.environ["SM003_OUT"])
+          repo = Path.cwd()
+          sm_dir = repo / "AQARION-QUANTARION-AI/verification/SM/SM003"
+
+          tracked = [
+              sm_dir / "README.md",
+              sm_dir / "manifest.json",
+              sm_dir / "mutations.py",
+              sm_dir / "test_sm003.py",
+          ]
+
+          def sha256(path):
+              h = hashlib.sha256()
+              with path.open("rb") as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          def output_hash(name):
+              path = out / name
+              return sha256(path) if path.is_file() else None
+
+          mutation_rc = int(os.environ["SM003_MUTATION_RC"])
+          test_rc = int(os.environ["SM003_TEST_RC"])
+
+          receipt = {
+              "schema": "AQ-SM003-CI-RECEIPT/1",
+              "status": "PASS" if mutation_rc == 0 and test_rc == 0 else "FAIL",
+              "tested_commit": os.environ["TESTED_COMMIT"],
+              "checked_out_commit": subprocess.check_output(
+                  ["git", "rev-parse", "HEAD"], text=True
+              ).strip(),
+              "event": os.environ["EVENT_NAME"],
+              "run_id": os.environ["RUN_ID"],
+              "run_attempt": os.environ["RUN_ATTEMPT"],
+              "environment": {
+                  "python_version": sys.version,
+                  "implementation": platform.python_implementation(),
+                  "platform": platform.platform(),
+                  "dependencies": "Python standard library only",
+              },
+              "commands": [
+                  {
+                      "command": (
+                          "python AQARION-QUANTARION-AI/verification/SM/SM003/"
+                          "mutations.py --max-n 4 --report "
+                          "$RUNNER_TEMP/sm003-evidence/sm003-mutation-report.json"
+                      ),
+                      "exit_code": mutation_rc,
+                      "runtime_seconds": int(
+                          os.environ["SM003_MUTATION_SECONDS"]
+                      ),
+                      "stdout_sha256": output_hash("mutation.stdout.txt"),
+                      "stderr_sha256": output_hash("mutation.stderr.txt"),
+                  },
+                  {
+                      "command": (
+                          "python -m unittest discover -s "
+                          "AQARION-QUANTARION-AI/verification/SM/SM003 "
+                          '-p "test_sm003.py" -v'
+                      ),
+                      "exit_code": test_rc,
+                      "runtime_seconds": int(os.environ["SM003_TEST_SECONDS"]),
+                      "stdout_sha256": output_hash("tests.stdout.txt"),
+                      "stderr_sha256": output_hash("tests.stderr.txt"),
+                  },
+              ],
+              "source_sha256": {
+                  str(path.relative_to(repo)): sha256(path)
+                  for path in tracked
+              },
+              "mutation_report_sha256": output_hash("sm003-mutation-report.json"),
+              "scope": {
+                  "max_n": 4,
+                  "expected_cases": 3984,
+                  "arithmetic": "fractions.Fraction",
+              },
+              "limitations": [
+                  "Finite computation does not prove the universal theorem.",
+                  "This receipt does not establish Lean verification.",
+                  "This receipt does not independently certify the repository.",
+                  "The report is bound to this tested commit and run.",
+              ],
+          }
+
+          (out / "sm003-ci-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          PY
+
+          if [ "$mutation_rc" -ne 0 ] || [ "$test_rc" -ne 0 ]; then
+            echo "SM003 verification failed: mutation=$mutation_rc tests=$test_rc"
+            exit 1
+          fi
+
+          echo "SM003 exact census and regression tests passed."
+
+      - name: Upload revision-bound evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm003-evidence-${{ github.sha }}-${{ github.run_id }}
+          path: ${{ runner.temp }}/sm003-evidence/
+          if-no-files-found: warn
+          retention-days: 90
