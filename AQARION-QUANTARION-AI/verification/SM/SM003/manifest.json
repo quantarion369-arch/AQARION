@@ -1,52 +1,37 @@
 {
   "id": "AQ-SM-003-MATRIX",
+  "version": "2.0-freeze",
+  "commit": "REPLACE_WITH_YOUR_COMMIT_HASH_AFTER_PUSH",
   "path": "AQARION-QUANTARION-AI/verification/SM/SM003",
   "formulas": {
     "frobenius": "||D||^2 = Σ m(|B|-m)/(|B||B'|)",
     "rank": "rank(D) = k - c"
   },
-  "executables": [
-    "AQARION-QUANTARION-AI/verification/SM/SM003/rank.py",
-    "AQARION-QUANTARION-AI/verification/SM/SM003/frobenius.py",
-    "AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py"
+  "domain_verified": "n<=4 exhaustive 3975, n=3,4,5 166475",
+  "mutant_ids_explicit": [
+    "D:K^T", "D:[K,P]", "D:(I-P)K", "D:PKP", "D:(I-P)K^T", "D:KP(I-P)",
+    "R:ignore+preimage_cluster", "R:c", "R:k-c-1", "R:first", "R:c-only-variant"
   ],
-  "domain": {
-    "n=3,4,5": 166475,
-    "n=6 f0=0": 1578528,
-    "total": 1745003,
-    "verified_exhaustive": "n<=4"
-  },
-  "ground_truth": "matrix_rank tol=1e-9 + Fraction exact",
-  "results": {
-    "rank_exact_mismatch": 0,
-    "frobenius_exact_mismatch": 0,
-    "frobenius_intdiv_mismatch": 125348,
-    "mutant_clusters": {
-      "note": "ignore isolated == preimage graph (identical kill sets at n<=4: 1664=1664 intersection 1664)",
-      "clusters": [
-        {"ids": ["ignore isolated","preimage graph"], "count": 1, "kills_n<=4": 1664},
-        {"id": "c not subtracted", "kills_n<=4": 129387},
-        {"id": "k-c-1", "kills_n<=4": 166475},
-        {"id": "elementwise first", "kills_n<=4": 125348}
-      ]
-    }
-  },
-  "witness_requirement": {
-    "non_injective_f": true,
-    "unreached_block": true,
-    "non_singleton_block": true,
-    "non_constant_f": true
-  },
+  "mutant_cluster_note": "ignore isolated == preimage graph identical kill sets 1664=1664 at n<=4 -> recorded as one cluster. 12 raw IDs -> 11 distinct",
   "witness_suite": {
     "id": "W-AQ001-MIN",
     "instances": [
-      {"f": [0,0,2], "partition": [[0,2],[1]], "kills": 9},
-      {"f": [0,0,1], "partition": [[0,2],[1]], "kills": 3}
+      {"w": "W1", "f": [0,0,2], "partition": [[0,2],[1]], "kills": ["D:K^T","D:[K,P]","D:(I-P)K","D:PKP","D:(I-P)K^T","D:KP(I-P)","R:ignore+preimage_cluster","R:c","R:k-c-1"]},
+      {"w": "W2", "f": [0,0,1], "partition": [[0,2],[1]], "kills": ["D:(I-P)K","R:ignore+preimage_cluster","R:k-c-1","R:first"]}
     ],
-    "covers": "mutant set M-AQ001-v1 (11 mutants: 6 D-level K^T,[K,P],(I-P)K,PKP,(I-P)K^T,KP(I-P) + 5 R-level), n<=4 exhaustive",
-    "requires": {"non_injective_f": true, "unreached_block": true, "non_constant_f": true},
-    "caveat": "kills my 11, not repo's incidence mutation. Coverage claim must name mutant set.",
-    "verification": "[V] brute-force n<=4"
+    "requires": {"non_injective_f": true, "unreached_block": true, "non_constant_f": true, "non_singleton_block": true},
+    "covers": "M-AQ001-v1 11 mutants n<=4 exhaustive",
+    "caveat": "Does NOT cover BRT:incidence-state-vs-block mutation. Must run verification/BRT/brt_mutation.py separately"
   },
-  "evidence_class": "[V] n<=4 exhaustive, n=5 formula 166475 verified previously"
+  "open_items": [
+    "all-n mutant-equivalence claim for ignore==preimage — keep open, only n<=4 proven",
+    "BRT incidence mutation coverage — must run repo's actual implementation",
+    "Lean formalization — keep separate from [V]"
+  ],
+  "repro": {
+    "command": "python3 rank.py; python3 frobenius.py; python3 mutations.py",
+    "env": "python 3.11 ubuntu-latest, numpy, workflow 21s green",
+    "hashes": "record after commit: sha256 of 3.py files"
+  },
+  "evidence_class": "[V] bounded n<=4, ready for ledger pending reproducible artifact"
 }
