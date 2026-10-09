@@ -1,43 +1,48 @@
 {
-"schema": "AQ-SM003-VERIFICATION-1.0",
-"claim": "rank(D_Pi) = k - c(H_Pi)",
-"status": "SOURCE_AUDIT_REQUIRED",
-"revision": {
-"commit": "REPLACE_AFTER_COMMIT",
-"tree": "RECORD_AFTER_COMMIT"
-},
-"mathematical_claim": {
-"space": "Finite-dimensional real functions on a finite set X",
-"map": "T : X -> X",
-"partition": "Pi = {B_1,...,B_k}",
-"operator": "K f = f o T",
-"projector": "P_Pi is the blockwise averaging orthogonal projector",
-"defect": "D_Pi = (I - P_Pi) K P_Pi",
-"graph": "H_Pi has one vertex per partition block; each source block induces edges among all target blocks intersecting its image",
-"rank_identity": "rank(D_Pi) = k - c(H_Pi)",
-"components": "c(H_Pi) counts all graph components, including isolated vertices"
-},
-"evidence_policy": {
-"P": "Proof from stated definitions",
-"V": "Reproducible bounded computation with retained output and revision binding",
-"L": "Lean proof accepted only after lake build succeeds with zero sorry in the claimed dependency closure",
-"C": "Certification requires independent clean-checkout replay and complete provenance",
-"F": "Frozen only when the claim registry explicitly records the frozen revision and evidence"
-},
-"required_checks": [
-"independent graph-oracle versus exact matrix-rank comparison",
-"isolated target-block regression",
-"noninjective-map regression",
-"partition-label permutation invariance",
-"source-block image must include every target block hit by T",
-"clean-checkout replay",
-"record stdout, stderr, exit status, runtime, interpreter and dependency versions",
-"record source and fixture SHA-256 hashes",
-"bind outputs to the committed revision"
-],
-"mutation_policy": {
-"rule": "Every declared mutant must have a uniquely named executable implementation and a recorded test outcome.",
-"required_outcomes": ["KILLED", "SURVIVED", "NOT_RUN", "INVALID_MUTANT"],
-"prohibition": "Do not claim a mutation score for mutants not implemented and executed."
-}
+  "schema": "AQ-SM003-VERIFICATION-1.0",
+  "claim": "rank(D_Pi) = k - c(H_Pi)",
+  "status": "SOURCE_AUDIT_REQUIRED",
+  "revision": {
+    "commit": "REPLACE_AFTER_COMMIT",
+    "tree": "RECORD_AFTER_COMMIT"
+  },
+  "mathematical_claim": {
+    "space": "Finite-dimensional real functions on a finite set X",
+    "map": "T : X -> X",
+    "partition": "Pi = {B_1,...,B_k}",
+    "operator": "K f = f o T",
+    "projector": "P_Pi is the blockwise averaging orthogonal projector",
+    "defect": "D_Pi = (I - P_Pi) K P_Pi",
+    "graph": "H_Pi has one vertex per partition block; each source block induces edges among all target blocks intersecting its image",
+    "rank_identity": "rank(D_Pi) = k - c(H_Pi)",
+    "components": "c(H_Pi) counts all graph components, including isolated vertices"
+  },
+  "evidence_policy": {
+    "P": "Proof from stated definitions",
+    "V": "Reproducible bounded computation with retained output and revision binding",
+    "L": "Lean proof accepted only after lake build succeeds with zero sorry in the claimed dependency closure",
+    "C": "Certification requires independent clean-checkout replay and complete provenance",
+    "F": "Frozen only when the claim registry explicitly records the frozen revision and evidence"
+  },
+  "required_checks": [
+    "independent graph-oracle versus exact matrix-rank comparison",
+    "isolated target-block regression",
+    "noninjective-map regression",
+    "partition-label permutation invariance",
+    "source-block image must include every target block hit by T",
+    "clean-checkout replay",
+    "record stdout, stderr, exit status, runtime, interpreter and dependency versions",
+    "record source and fixture SHA-256 hashes",
+    "bind outputs to the committed revision"
+  ],
+  "mutation_policy": {
+    "rule": "Every declared mutant must have a uniquely named executable implementation and a recorded test outcome.",
+    "required_outcomes": [
+      "DETECTED",
+      "NOT_DETECTED",
+      "NOT_RUN",
+      "INVALID_MUTANT"
+    ],
+    "prohibition": "Do not claim a mutation detection score for mutants not implemented and executed."
+  }
 }
