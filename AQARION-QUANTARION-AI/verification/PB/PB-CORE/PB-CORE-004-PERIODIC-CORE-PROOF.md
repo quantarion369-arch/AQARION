@@ -1,603 +1,252 @@
-AQ-PB-CORE-004 — PERIODIC-CORE CONGRUENCE EQUIVALENCE
+AQ-PB-CORE-004 — Periodic-Core Congruence Equivalence
 
 Artifact ID: AQ-PB-CORE-004A
-Status: "[P]" mathematical proof closed · "[L]" Lean OPEN · "[V]" computational corroboration exists · "C4 BLOCKED"
-Scope: finite total maps and pullback-fixed equivalence relations
-Dependency: PB-001 / finite pullback rigidity
-Purpose: remove transient states from the classification of pullback-fixed equivalence relations.
+Scope: Finite nonempty sets, total maps, and pullback-fixed equivalence relations
+Mathematical status: Paper proof, corrected retraction lemma
+Lean: OPEN — compilation not claimed
+Independent computational evidence: Bounded reports require separate authentication and replay
+C4: BLOCKED
+Publication: BLOCKED
+Promotion: FALSE
 
 ---
 
-1. Statement
+1. Definitions and theorem
 
-Let X be a finite nonempty set and let
+Let (X) be a finite nonempty set and (T:X\to X) a total map. Define the periodic core
 
 [
-T:X\to X
+P=\operatorname{Per}(T)
+={x\in X:\exists m\ge1,\ T^m(x)=x}.
 ]
 
-be a total map.
-
-Define the periodic core
+An equivalence relation (E) on (X) is pullback-fixed if
 
 [
-P:=\operatorname{Per}(T)
-
-{x\in X:\exists m\ge 1,\ T^m(x)=x}.
+\forall x,y\in X,\qquad
+E(x,y)\iff E(Tx,Ty).
 ]
 
-Choose h\ge 0 such that
+Write (\operatorname{Stab}(T)) for the set of pullback-fixed equivalence relations on (X). Write (\operatorname{Con}(P,T|_P)) for the equivalence relations (\theta) on (P) satisfying
 
 [
-T^h(X)=P.
+\forall p,q\in P,\qquad
+\theta(p,q)\iff\theta(Tp,Tq).
 ]
 
-Define
+Theorem (PB-CORE-004). Restriction to the periodic core is an order isomorphism
 
 [
-r:=T^h.
+\operatorname{res}:\operatorname{Stab}(T)
+\longrightarrow \operatorname{Con}(P,T|_P),
+\qquad E\longmapsto E|_P.
 ]
 
-Then
+Its inverse maps (\theta) to the relation (\widehat{\theta}) defined by
 
 [
-r(X)=P,
-\qquad
-r|_P=\operatorname{id}_P,
-\qquad
-rT=Tr.
+\widehat{\theta}(x,y)
+\iff \theta(r(x),r(y)),
 ]
 
-Let
+where (r) is the periodic retraction constructed below. Consequently, restriction and extension are inverse order isomorphisms and preserve the induced lattice operations.
+
+2. Correct construction of the periodic retraction
+
+Because (X) is finite, every orbit eventually reaches a cycle. Hence there exists (h_0\ge0) such that
 
 [
-\operatorname{Stab}(T)
-:=
-{E\in\operatorname{Eq}(X):T^*E=E}.
+T^{h_0}(X)=P.
 ]
 
-Let
+Choose a positive integer (L) such that:
+
+1. (L\ge h_0);
+2. every cycle length of (T) divides (L).
+
+Such an (L) exists because there are finitely many cycles: take a common multiple of their lengths and, if necessary, multiply it by a sufficiently large positive integer to ensure (L\ge h_0).
+
+Define (r=T^L). Then
 
 [
-\operatorname{Con}(P,T|_P)
-:=
-{\theta\in\operatorname{Eq}(P):
-\forall p,q\in P,\
-p\theta q\Longleftrightarrow T(p)\theta T(q)}.
+\boxed{r(X)=P,\qquad r|_P=\operatorname{id}_P,\qquad rT=Tr.}
 ]
 
-Then restriction to the periodic core gives a lattice isomorphism
+Proof. Since (L\ge h_0), every point in (T^L(X)) lies on a cycle. Thus (T^L(X)\subseteq P). Since (T|_P) is a permutation, (T^L(P)=P), so (P\subseteq T^L(X)). Hence (r(X)=P).
+
+For each (p\in P), its cycle length divides (L). Therefore (T^L(p)=p), proving (r|_P=\operatorname{id}_P).
+
+Finally, iterates of the same map commute:
 
 [
-\boxed{
-\operatorname{Stab}(T)
-\cong
-\operatorname{Con}(P,T|_P).
-}
+rT=T^LT=T^{L+1}=TT^L=Tr.
 ]
 
-The inverse map is
+This proves the three retraction identities. (\square)
+
+Correction note. The weaker condition (T^h(X)=P) does not imply (T^h|_P=\operatorname{id}_P). For a two-cycle (T(a)=b,\ T(b)=a), one has (P=X) and (T(X)=P), but (T|_P\ne\operatorname{id}_P). The common-multiple condition on (L) is essential for the pointwise identity.
+
+3. Restriction maps pullback-fixed relations to core congruences
+
+Let (E\in\operatorname{Stab}(T)). Restricting its defining biconditional to (p,q\in P) gives
 
 [
-\boxed{
-x,\widehat{\theta},y
-\iff
-r(x),\theta,r(y).
-}
+E(p,q)\iff E(Tp,Tq).
 ]
 
----
+Thus (E|_P\in\operatorname{Con}(P,T|_P)), so restriction is well-defined.
 
-2. Preliminary facts
-
-Because X is finite, every orbit eventually enters a cycle.
-
-Therefore there exists h such that
+Moreover, iteration of pullback-fixedness gives, for every (j\ge0),
 
 [
-T^h(X)=P.
+E(x,y)\iff E(T^jx,T^jy).
 ]
 
-For p\in P, p is periodic, hence some iterate of T returns to p. Since T^h(X)=P,
+Taking (j=L) yields
 
 [
-r(p)=T^h(p)=p.
+\boxed{E(x,y)\iff E(r(x),r(y).}
 ]
 
-Thus
+Equivalently, with the closing delimiter written explicitly,
 
 [
-r|_P=\operatorname{id}_P.
+\boxed{E(x,y)\iff E(r(x),r(y)).}
 ]
 
-Since r=T^h,
+This identity is the key to the inverse construction.
+
+4. Extension maps core congruences to pullback-fixed relations
+
+Let (\theta\in\operatorname{Con}(P,T|_P)). Define
 
 [
-rT=T^hT=T^{h+1}=TT^h=Tr.
+\widehat{\theta}(x,y)
+\iff\theta(r(x),r(y)).
+]
+
+Because (r(x),r(y)\in P) and (\theta) is an equivalence relation, reflexivity, symmetry, and transitivity of (\widehat{\theta}) follow from those of (\theta). Thus (\widehat{\theta}) is an equivalence relation on (X).
+
+For all (x,y\in X), using (rT=Tr),
+
+[
+\begin{aligned}
+\widehat{\theta}(Tx,Ty)
+&\iff\theta(r(Tx),r(Ty))\
+&\iff\theta(T(r(x)),T(r(y)))\
+&\iff\theta(r(x),r(y))\
+&\iff\widehat{\theta}(x,y).
+\end{aligned}
+]
+
+The third equivalence is the defining biconditional invariance of (\theta) on the core. Therefore (\widehat{\theta}\in\operatorname{Stab}(T)).
+
+5. Restriction and extension are inverse
+
+5.1 Restriction after extension
+
+For (p,q\in P), the retraction law gives (r(p)=p) and (r(q)=q). Hence
+
+[
+\widehat{\theta}(p,q)
+\iff\theta(r(p),r(q))
+\iff\theta(p,q).
 ]
 
 Therefore
 
 [
-\boxed{rT=Tr.}
+\boxed{\operatorname{res}(\widehat{\theta})=\theta.}
 ]
 
-Finally, T|_P is a permutation because every element of P lies on a finite cycle.
+5.2 Extension after restriction
 
----
-
-3. Extension map
-
-For
+Let (E\in\operatorname{Stab}(T)). Section 3 gives
 
 [
-\theta\in\operatorname{Con}(P,T|_P),
+E(x,y)\iff E(r(x),r(y)).
 ]
 
-define a relation \widehat{\theta} on X by
+Since (r(x),r(y)\in P), this is equivalent to
 
 [
-x,\widehat{\theta},y
-\iff
-r(x),\theta,r(y).
+(E|_P)(r(x),r(y)),
 ]
 
-We prove that this is a member of \operatorname{Stab}(T).
-
----
-
-4. \widehat{\theta} is an equivalence relation
-
-Reflexivity
-
-For every x\in X,
+which by definition is (\widehat{E|_P}(x,y)). Consequently,
 
 [
-r(x)\theta r(x)
+\boxed{\widehat{E|_P}=E.}
 ]
 
-because \theta is reflexive.
+Thus restriction and extension are mutually inverse bijections.
 
-Therefore
+6. Order and lattice structure
 
-[
-x,\widehat{\theta},x.
-]
+If (E_1\subseteq E_2), then (E_1|_P\subseteq E_2|_P).
 
-Symmetry
-
-If
+If (\theta_1\subseteq\theta_2), then
 
 [
-x,\widehat{\theta},y,
-]
-
-then
-
-[
-r(x)\theta r(y).
-]
-
-By symmetry of \theta,
-
-[
-r(y)\theta r(x).
-]
-
-Hence
-
-[
-y,\widehat{\theta},x.
-]
-
-Transitivity
-
-If
-
-[
-x,\widehat{\theta},y
-\quad\text{and}\quad
-y,\widehat{\theta},z,
-]
-
-then
-
-[
-r(x)\theta r(y)
-]
-
-and
-
-[
-r(y)\theta r(z).
-]
-
-By transitivity of \theta,
-
-[
-r(x)\theta r(z).
-]
-
-Hence
-
-[
-x,\widehat{\theta},z.
-]
-
-Therefore
-
-[
-\boxed{\widehat{\theta}\in\operatorname{Eq}(X).}
-]
-
----
-
-5. \widehat{\theta} is pullback-fixed
-
-We prove
-
-[
-T^*\widehat{\theta}=\widehat{\theta}.
-]
-
-For x,y\in X,
-
-[
-Tx,\widehat{\theta},Ty
-]
-
-if and only if
-
-[
-r(Tx)\theta r(Ty).
-]
-
-Using rT=Tr,
-
-[
-r(Tx)=T(r(x)),
-\qquad
-r(Ty)=T(r(y)).
-]
-
-Thus
-
-[
-Tx,\widehat{\theta},Ty
-\iff
-T(r(x))\theta T(r(y)).
-]
-
-Because \theta is T|_P-invariant,
-
-[
-T(r(x))\theta T(r(y))
-\iff
-r(x)\theta r(y).
-]
-
-Therefore
-
-[
-Tx,\widehat{\theta},Ty
-\iff
-x,\widehat{\theta},y.
-]
-
-Hence
-
-[
-\boxed{
-T^*\widehat{\theta}=\widehat{\theta}.
-}
-]
-
----
-
-6. Restriction followed by extension
-
-Let
-
-[
-p,q\in P.
-]
-
-Since r|_P=\operatorname{id}_P,
-
-[
-r(p)=p,
-\qquad
-r(q)=q.
-]
-
-Therefore
-
-[
-p,\widehat{\theta},q
-\iff
-r(p)\theta r(q)
-\iff
-p\theta q.
-]
-
-Hence
-
-[
-\boxed{
-(\widehat{\theta})|_P=\theta.
-}
-]
-
----
-
-7. Every pullback-fixed equivalence is recovered from its core restriction
-
-Let
-
-[
-E\in\operatorname{Stab}(T).
-]
-
-Since
-
-[
-T^*E=E,
-]
-
-iteration gives
-
-[
-(T^h)^*E=E.
-]
-
-But r=T^h, so
-
-[
-r(x)Er(y)
-\iff
-xEy.
-]
-
-Because r(x),r(y)\in P,
-
-[
-r(x)E|_P r(y)
-\iff
-xEy.
-]
-
-By definition of the extension,
-
-[
-x,\widehat{E|_P},y
-\iff
-r(x)E|_P r(y).
-]
-
-Therefore
-
-[
-\boxed{
-\widehat{E|_P}=E.
-}
-]
-
----
-
-8. The two maps are inverse
-
-Define
-
-[
-R:\operatorname{Stab}(T)\to\operatorname{Con}(P,T|_P)
-]
-
-by
-
-[
-R(E)=E|_P.
-]
-
-Define
-
-[
-S:\operatorname{Con}(P,T|_P)\to\operatorname{Stab}(T)
-]
-
-by
-
-[
-S(\theta)=\widehat{\theta}.
-]
-
-Sections 6 and 7 establish
-
-[
-R(S(\theta))=\theta
-]
-
-and
-
-[
-S(R(E))=E.
-]
-
-Therefore
-
-[
-\boxed{
-R^{-1}=S.
-}
-]
-
-Hence
-
-[
-\boxed{
-\operatorname{Stab}(T)
-\cong
-\operatorname{Con}(P,T|_P).
-}
-]
-
----
-
-9. Order preservation
-
-If
-
-[
-E_1\subseteq E_2,
-]
-
-then immediately
-
-[
-E_1|_P\subseteq E_2|_P.
-]
-
-Conversely, if
-
-[
-\theta_1\subseteq\theta_2,
-]
-
-then
-
-[
-r(x)\theta_1r(y)
+\theta_1(r(x),r(y))
 \Longrightarrow
-r(x)\theta_2r(y),
+\theta_2(r(x),r(y)),
 ]
 
-so
+so (\widehat{\theta}_1\subseteq\widehat{\theta}_2).
 
-[
-\widehat{\theta_1}
-\subseteq
-\widehat{\theta_2}.
-]
-
-Thus the bijection is an order isomorphism.
-
-Because equivalence relations form a lattice under inclusion, the order isomorphism preserves the lattice operations.
-
-Therefore
+The bijection and its inverse are therefore order-preserving:
 
 [
 \boxed{
 \operatorname{Stab}(T)
-\cong_{\mathrm{lat}}
+\cong_{\mathrm{ord}}
 \operatorname{Con}(P,T|_P).
 }
 ]
 
----
+Both families are lattices under inclusion: meets are intersections, and joins are the equivalence-relation closures of unions. An order isomorphism preserves these operations. Hence the bijection is also a lattice isomorphism.
 
-10. Independence of the chosen h
+7. Independence of the retraction exponent
 
-The construction does not depend on the particular sufficiently large h.
-
-Suppose
+Suppose (L_1,L_2) both satisfy the conditions of Section 2, with (r_i=T^{L_i}). For any pullback-fixed (E), iteration gives
 
 [
-T^h(X)=P
+E(x,y)\iff E(r_i(x),r_i(y)),
+\qquad i\in{1,2}.
 ]
 
-and k\ge h.
+Thus extension recovers the same (E) from its core restriction under either valid retraction.
 
-Then
+For a core congruence (\theta), its biconditional invariance under the core permutation ensures that pulling (\theta) back along either valid retraction gives the same relation. The classification therefore does not depend on the chosen valid exponent.
+
+8. Scope and certification boundary
+
+This theorem concerns pullback-fixed relations:
 
 [
-T^k=T^{k-h}T^h.
+E(x,y)\iff E(Tx,Ty).
 ]
 
-Restricted to P, T^{k-h} is a permutation of P.
-
-If \theta is invariant under T|_P, then it is invariant under every positive and negative power of that permutation.
-
-Therefore
+It must not be conflated with forward-stable relations:
 
 [
-T^h(x)\theta T^h(y)
-\iff
-T^k(x)\theta T^k(y).
+E(x,y)\Longrightarrow E(Tx,Ty),
 ]
 
-Thus the extension relation is independent of which sufficiently large iterate is used.
+which are relevant to the one-directional quotient/defect criterion. These two classes are not interchangeable.
 
----
+Obligation| Status
+Corrected restriction/extension proof| PROVED ON PAPER
+Lean formalization and build| OPEN — not claimed compiled
+Bounded v2 source/receipt authentication against repository commit| NOT ESTABLISHED
+Independent replay of bounded census| NOT ESTABLISHED
+C4| BLOCKED
+Publication| BLOCKED
+Promotion| FALSE
 
-11. Consequence
+This document does not claim that a Lean build has passed, that a receipt has been authenticated, or that finite computation establishes the universal theorem.
 
-All transient states are determined by their eventual images in the periodic core.
+9. Literature boundary
 
-They contribute no independent degrees of freedom to a pullback-fixed equivalence relation.
-
-The classification problem therefore reduces exactly to
-
-[
-\boxed{
-\text{finite map}
-\longrightarrow
-\text{periodic core}
-\longrightarrow
-\text{permutation}
-\longrightarrow
-\text{permutation congruence lattice}.
-}
-]
-
----
-
-12. Evidence status
-
-Component| Status
-Finite eventual-core existence| "[P]"
-r| _P=\mathrm{id}
-rT=Tr| "[P]"
-Extension is equivalence| "[P]"
-Extension is pullback-fixed| "[P]"
-Restriction ∘ extension| "[P]"
-Extension ∘ restriction| "[P]"
-Order/lattice preservation| "[P]"
-Full theorem| "[P]"
-Lean formalization| "[O]" OPEN
-Exhaustive finite corroboration| "[V]" repository-recorded
-C4| "BLOCKED"
-Publication| "BLOCKED"
-Promotion| "FALSE"
-
-This artifact does not claim Lean compilation.
-
----
-
-13. Literature boundary
-
-The reduction of finite unary dynamics to cyclic/core structure and the study of congruence lattices of monounary algebras are classical.
-
-Relevant literature includes:
-
-- Joel Berman, On the congruence lattices of unary algebras, 1972.
-- D. Jakubíková-Studenovská and L. Janičková, Congruence lattices of connected monounary algebras, Algebra Universalis 81 (2020), Article 54.
-- C. Ratanaprasert and K. Denecke, Unary operations with long pre-periods, Discrete Mathematics 308 (2008), 4998–5005.
-
-The present theorem should therefore be presented as an AQARION formalization/reduction result, not as a claim that the underlying monounary-algebra structure was discovered here.
-
----
-
-14. Certification boundary
-
-This artifact is mathematically closed at the paper-proof level.
-
-It is not C4-certified.
-
-The remaining certification obligations are:
-
-1. formal Lean proof;
-2. reproducible Lean build;
-3. receipt/hash reconciliation;
-4. consistency between claim registry and formal source;
-5. independent replay where required by the AQARION certification policy.
-
-Current final status: "[P] CLOSED · [L] OPEN · C4 BLOCKED".
+The reduction of finite unary dynamics to periodic-core structure and the study of congruence lattices of monounary algebras are classical. Present this result as an AQARION proof and verification formulation of the stated reduction, not as a claim that the surrounding monounary-algebra structure is newly discovered.
