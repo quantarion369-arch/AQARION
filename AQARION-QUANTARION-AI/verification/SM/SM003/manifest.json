@@ -1,37 +1,43 @@
 {
-  "id": "AQ-SM-003-MATRIX",
-  "version": "2.0-freeze",
-  "commit": "REPLACE_WITH_YOUR_COMMIT_HASH_AFTER_PUSH",
-  "path": "AQARION-QUANTARION-AI/verification/SM/SM003",
-  "formulas": {
-    "frobenius": "||D||^2 = Σ m(|B|-m)/(|B||B'|)",
-    "rank": "rank(D) = k - c"
-  },
-  "domain_verified": "n<=4 exhaustive 3975, n=3,4,5 166475",
-  "mutant_ids_explicit": [
-    "D:K^T", "D:[K,P]", "D:(I-P)K", "D:PKP", "D:(I-P)K^T", "D:KP(I-P)",
-    "R:ignore+preimage_cluster", "R:c", "R:k-c-1", "R:first", "R:c-only-variant"
-  ],
-  "mutant_cluster_note": "ignore isolated == preimage graph identical kill sets 1664=1664 at n<=4 -> recorded as one cluster. 12 raw IDs -> 11 distinct",
-  "witness_suite": {
-    "id": "W-AQ001-MIN",
-    "instances": [
-      {"w": "W1", "f": [0,0,2], "partition": [[0,2],[1]], "kills": ["D:K^T","D:[K,P]","D:(I-P)K","D:PKP","D:(I-P)K^T","D:KP(I-P)","R:ignore+preimage_cluster","R:c","R:k-c-1"]},
-      {"w": "W2", "f": [0,0,1], "partition": [[0,2],[1]], "kills": ["D:(I-P)K","R:ignore+preimage_cluster","R:k-c-1","R:first"]}
-    ],
-    "requires": {"non_injective_f": true, "unreached_block": true, "non_constant_f": true, "non_singleton_block": true},
-    "covers": "M-AQ001-v1 11 mutants n<=4 exhaustive",
-    "caveat": "Does NOT cover BRT:incidence-state-vs-block mutation. Must run verification/BRT/brt_mutation.py separately"
-  },
-  "open_items": [
-    "all-n mutant-equivalence claim for ignore==preimage — keep open, only n<=4 proven",
-    "BRT incidence mutation coverage — must run repo's actual implementation",
-    "Lean formalization — keep separate from [V]"
-  ],
-  "repro": {
-    "command": "python3 rank.py; python3 frobenius.py; python3 mutations.py",
-    "env": "python 3.11 ubuntu-latest, numpy, workflow 21s green",
-    "hashes": "record after commit: sha256 of 3.py files"
-  },
-  "evidence_class": "[V] bounded n<=4, ready for ledger pending reproducible artifact"
+"schema": "AQ-SM003-VERIFICATION-1.0",
+"claim": "rank(D_Pi) = k - c(H_Pi)",
+"status": "SOURCE_AUDIT_REQUIRED",
+"revision": {
+"commit": "REPLACE_AFTER_COMMIT",
+"tree": "RECORD_AFTER_COMMIT"
+},
+"mathematical_claim": {
+"space": "Finite-dimensional real functions on a finite set X",
+"map": "T : X -> X",
+"partition": "Pi = {B_1,...,B_k}",
+"operator": "K f = f o T",
+"projector": "P_Pi is the blockwise averaging orthogonal projector",
+"defect": "D_Pi = (I - P_Pi) K P_Pi",
+"graph": "H_Pi has one vertex per partition block; each source block induces edges among all target blocks intersecting its image",
+"rank_identity": "rank(D_Pi) = k - c(H_Pi)",
+"components": "c(H_Pi) counts all graph components, including isolated vertices"
+},
+"evidence_policy": {
+"P": "Proof from stated definitions",
+"V": "Reproducible bounded computation with retained output and revision binding",
+"L": "Lean proof accepted only after lake build succeeds with zero sorry in the claimed dependency closure",
+"C": "Certification requires independent clean-checkout replay and complete provenance",
+"F": "Frozen only when the claim registry explicitly records the frozen revision and evidence"
+},
+"required_checks": [
+"independent graph-oracle versus exact matrix-rank comparison",
+"isolated target-block regression",
+"noninjective-map regression",
+"partition-label permutation invariance",
+"source-block image must include every target block hit by T",
+"clean-checkout replay",
+"record stdout, stderr, exit status, runtime, interpreter and dependency versions",
+"record source and fixture SHA-256 hashes",
+"bind outputs to the committed revision"
+],
+"mutation_policy": {
+"rule": "Every declared mutant must have a uniquely named executable implementation and a recorded test outcome.",
+"required_outcomes": ["KILLED", "SURVIVED", "NOT_RUN", "INVALID_MUTANT"],
+"prohibition": "Do not claim a mutation score for mutants not implemented and executed."
+}
 }
