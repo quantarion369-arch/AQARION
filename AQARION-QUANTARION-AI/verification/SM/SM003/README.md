@@ -1,336 +1,159 @@
-# AQARION SM003 — Exact Defect-Rank Verification
+# SM003 — Exact Defect-Rank Verification
 
-## Status
-
-SOURCE_AUDIT_REQUIRED.
-
-This package supplies an exact-rational verification harness for the
-partition defect-rank identity. It is not certified, Lean-proved, or
-frozen merely because the source files exist.
-
-Certification requires an independent clean-checkout replay with retained
-output and complete provenance.
+**Status:** `SOURCE_AUDIT_REQUIRED` until a clean-checkout run and a
+revision-bound receipt are recorded.
 
 ## Mathematical claim
 
-Let X be a finite set, let T : X -> X be a deterministic map, and let
+For a finite set `X`, total map `T : X -> X`, and partition `Pi` with
+`k = |Pi|` nonempty blocks, define the Koopman matrix
 
-[
-Pi={B_1,ldots,B_k}
-]
+```
+K[x][T(x)] = 1
+```
 
-be a partition into nonempty blocks.
+and the block-average orthogonal projector
 
-On the real function space (mathbb{R}^X), define the pullback operator
+```
+P[i][j] = 1/|B|  if i, j in same block B of Pi, else 0.
+```
 
-[
-(Kf)(x)=f(T(x)).
-]
+The partition defect is
 
-Let (P_Pi) be the blockwise averaging orthogonal projector, and define
+```
+D = (I - P) K P.
+```
 
-[
-D_Pi=(I-P_Pi)KP_Pi.
-]
+Build the target-block co-occurrence graph `H_Pi`:
 
-Construct the undirected graph (H_Pi) as follows:
-
-- There is one vertex for each partition block.
-- For each source block (B_i), collect every target block intersecting
-  (T(B_i)).
-- Join every pair of distinct target-block vertices in that collection.
-- Retain all vertices, including isolated vertices.
+- one vertex per block of `Pi`;
+- for each source block `B`, join every pair of distinct target blocks
+  hit by `T(B)`;
+- retain all vertices, including isolated vertices.
 
 The claim is
 
-[
-\boxed{operatorname{rank}(D_Pi)=k-c(H_Pi),}
-]
+```
+rank(D) = k - c(H_Pi)
+```
 
-where (c(H_Pi)) counts all connected components, including isolated
+where `c(H_Pi)` counts every connected component, including isolated
 vertices.
 
-## Kernel interpretation
+## Paper-level argument
 
-Let (V_Pi) be the subspace of block-constant functions.
+`P` projects onto the space `V_Pi` of functions that are constant on every
+block of `Pi`. Since `D = D P`, the operator is determined by its action on
+`V_Pi`.
 
-For
+For a block-constant `h`, `D h = 0` iff `K h` is again block-constant. If
+`x, y` lie in the same source block `B`, then `h(T x) = h(T y)` for every
+block-constant `h`. This is exactly the condition that the block-values of
+`h` agree across every edge of `H_Pi`.
 
-[
-f=sum_{j=1}^{k}a_j1_{B_j}in V_Pi,
-]
+The kernel of `D` restricted to `V_Pi` is therefore the space of functions
+that are constant on each connected component of `H_Pi`. Hence
 
-the condition (D_Pi f=0) means that (Kf) is constant on each source
-block.
+```
+dim ker(D | V_Pi) = c(H_Pi)
+```
 
-Equivalently, the coefficients (a_j) agree on all target blocks reached
-by any single source block. Taking transitive closure gives
+and, by rank-nullity on the `k`-dimensional domain,
 
-[
-ker(D_Pi|_{V_Pi})
-=
-left{
-sum_{j=1}^{k}a_j1_{B_j}:
-a_j\text{ is constant on each component of }H_Pi
+```
+rank(D) = k - c(H_Pi).
+```
 
-ight}.
-]
+This is a paper-level proof. The computational census is a separate
+evidence category.
 
-Thus
+## Executable audit
 
-[
-dimker(D_Pi|_{V_Pi})=c(H_Pi).
-]
+`mutations.py` uses `fractions.Fraction` throughout. It implements the six
+declared D-level matrix alternatives plus the graph-level alternatives in
+`manifest.json`. It records one of:
 
-Since (D_Pi=D_Pi P_Pi), the ambient rank equals the rank of the
-restriction to (V_Pi), yielding the stated rank identity.
+```
+DETECTED
+NOT_DETECTED
+NOT_RUN
+INVALID_MUTANT
+```
 
-The ambient kernel must be distinguished from the restricted kernel:
+`R:c-only-variant` is explicitly marked `INVALID_MUTANT` because its
+implemented expression is identical to `R:c`. It is not counted as
+distinct coverage.
 
-[
-ker D_Pi
-=
-V_Pi^perpoplusker(D_Pi|_{V_Pi}),
-]
+Default scope is exhaustive over all maps and partitions for `n = 1..4`,
+totalling `3,984` map-partition pairs:
 
-so, with (n=|X|),
+| `n` | map-partition pairs |
+|---:|---:|
+| 1 | 1 |
+| 2 | 8 |
+| 3 | 135 |
+| 4 | 3,840 |
+| total | 3,984 |
 
-[
-dimker D_Pi=n-k+c(H_Pi).
-]
+Historical totals:
 
-## Package contents
+| scope | cases | coverage type |
+|---|---:|---|
+| `n = 3,4` | 3,975 | graph alternatives only |
+| `n = 3,4,5` | 166,475 | graph alternatives only |
+| `n = 1..4` (new default) | 3,984 | D-level + graph alternatives |
 
-| File | Purpose |
-|---|---|
-| `README.md` | Mathematical definitions, execution instructions, and evidence boundaries |
-| `manifest.json` | Claim metadata, required checks, revision placeholders, and mutation policy |
-| `mutations.py` | Exact-rational matrix-rank comparison and executable mutations |
-
-The replay generates:
-
-| File | Purpose |
-|---|---|
-| `sm003-mutation-report.json` | Actual theorem-check and mutation results |
-
-The generated report is evidence only after its execution context and
-source revision have been recorded.
-
-## Verification scope
-
-The supplied harness enumerates every deterministic map and every set
-partition for
-
-[
-1le nle4.
-]
-
-For each case, it independently constructs:
-
-1. The pullback matrix (K).
-2. The blockwise averaging matrix (P_Pi).
-3. The defect matrix ((I-P_Pi)KP_Pi).
-4. The target-block co-occurrence graph.
-5. The exact matrix rank.
-6. The graph prediction (k-c(H_Pi)).
-
-Matrix arithmetic and Gaussian elimination use `fractions.Fraction`.
-There are no floating-point rank tolerances.
-
-The matrix and graph implementations are separate, although both consume
-the same map and partition inputs.
-
-The bounded enumeration includes noninjective maps and isolated graph
-vertices. The current harness does not separately emit named regression
-results or explicitly test partition-label permutations. Those required
-checks must not be marked complete merely because they are listed in the
-manifest.
-
-## Executable mutations
-
-The supplied harness evaluates these named alternatives against the
-correct graph-based rank prediction:
-
-| Mutation | Implemented expression |
-|---|---|
-| `M-K-transpose` | (K^mathsf{T}) |
-| `M-commutator-KP-minus-PK` | (KP-PK) |
-| `M-left-projection-I-minus-P-times-K` | ((I-P)K) |
-| `M-projected-K-PKP` | (PKP) |
-| `M-left-projection-times-K-transpose` | ((I-P)K^mathsf{T}) |
-| `M-KP-times-I-minus-P` | (KP(I-P)) |
-| `M-R-c-only-variant` | (c(H_Pi)) instead of (k-c(H_Pi)) |
-
-These are the expressions actually implemented. For example,
-`M-K-transpose` evaluates (K^mathsf{T}) itself, not the defect
-((I-P)K^mathsf{T}P).
-
-A mutation is detected in a case when its resulting rank, or its
-alternative graph prediction, differs from the correct prediction.
-
-A mutation with no detection witness in the executed scope is reported
-as `NOT_DETECTED`. This does not establish equivalence for all finite
-systems.
-
-## Mutation reporting
-
-The manifest permits these outcome labels:
-
-- `DETECTED`
-- `NOT_DETECTED`
-- `NOT_RUN`
-- `INVALID_MUTANT`
-
-The supplied harness reports:
-
-- Per-mutant detection counts.
-- An explicit outcome for each executed mutant.
-- A list of mutations not detected in the executed scope.
-- The first detection witness for each detected mutation.
-
-All declared mutations in this harness are executed during a completed
-run. The labels `NOT_RUN` and `INVALID_MUTANT` remain available under the
-manifest policy but are not assigned by this harness during a normal,
-completed execution.
-
-A runtime exception is not automatically an `INVALID_MUTANT` result.
-An interrupted run does not constitute a completed mutation report.
-
-Do not claim a mutation detection score for mutants that were not
-implemented and executed.
+The old `mutations.py` evaluated graph alternatives only, so those
+historical totals do not substantiate D-level mutation coverage.
 
 ## Replay commands
 
-Run from the repository root:
+From the repository root:
 
 ```bash
-set -eu
-git rev-parse HEAD
-git status --short
-python3 --version
-python3 verification/SM/SM003/mutations.py \
-  > sm003-mutation-report.json
-python3 -m json.tool sm003-mutation-report.json >/dev/null
-sha256sum \
-  verification/SM/SM003/README.md \
-  verification/SM/SM003/manifest.json \
-  verification/SM/SM003/mutations.py \
-  sm003-mutation-report.json
+python3 AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py \
+  --max-n 4 \
+  --report AQARION-QUANTARION-AI/verification/SM/SM003/sm003-mutation-report.json
+
+python3 -m unittest discover \
+  -s AQARION-QUANTARION-AI/verification/SM/SM003 \
+  -p 'test_sm003.py' -v
 ```
 
-Retain actual output. Do not replace it with expected results.
+Retain stdout, stderr, exit status, runtime, environment, and source
+digests in the receipt. Do not replace observed output with expected
+output.
 
-These commands do not themselves perform a clean checkout or retain all
-required provenance. The complete replay record must also include:
+## Provenance
 
-- Stdout.
-- Stderr.
-- Exit status.
-- Runtime.
-- Interpreter and relevant dependency versions.
-- Source and fixture hashes, where applicable.
-- The exact committed source revision and tree.
-- Evidence that the independent replay used that revision.
+The previous manifest contained a literal commit placeholder. This
+package does not self-assert a future commit. Record the tested source
+revision, source digests, command lines, stdout, stderr, exit codes,
+runtime, and environment in the generated audit report after running
+against the committed tree.
 
-## Acceptance conditions
-
-Acceptance requires:
-
-1. Zero theorem mismatches in the declared executed scope.
-2. A recorded outcome for every declared mutant.
-3. Explicit retention of all `NOT_DETECTED` outcomes.
-4. Completion of the required checks listed in `manifest.json`.
-5. An independent clean-checkout replay.
-6. Output bound to the exact committed sources.
-7. Complete execution provenance.
-
-The report's `PASS` status means only that no theorem mismatch was found
-in its bounded enumeration. It does not mean every mutation was detected
-or that all certification requirements were completed.
-
-## Revision binding
-
-The manifest initially contains:
-
-```json
-{
-  "commit": "REPLACE_AFTER_COMMIT",
-  "tree": "RECORD_AFTER_COMMIT"
-}
-```
-
-Replace these placeholders only after the relevant source revision
-exists.
-
-Record the revision whose source bytes were actually executed. Do not
-bind an output to a different revision after modifying the checker.
-
-Updating a committed manifest creates another revision. Maintain a clear
-distinction between the source revision tested and any later revision
-containing its evidence record.
-
-## Evidence policy
-
-| Label | Meaning |
-|---|---|
-| `P` | Proof from stated definitions |
-| `V` | Reproducible bounded computation with retained output and revision binding |
-| `L` | Lean proof accepted only after a successful build and review of the claimed dependency closure |
-| `C` | Independent clean-checkout replay with complete provenance |
-| `F` | Claim registry explicitly records the frozen revision and evidence |
-
-A successful Lean build alone does not establish that the intended claim
-has no unproved project assumptions. No Lean proof artifact is supplied
-by this package.
+The previously documented `.github/workflows/sm003-verify.yml` was not
+present at the audited commit. Do not report that workflow as current
+unless it is restored and verified. The current BRT workflow is separate
+and does not establish SM003 execution.
 
 ## Evidence boundary
 
-This package does not, by its existence, establish:
+`PASS` means only that the baseline rank identity matched the graph
+prediction over the declared finite scope. It does not establish:
 
-- An executed verification result.
-- Independent replay.
-- Lean certification.
-- Publication readiness.
-- Literature priority.
-- A frozen claim.
-- Promotion.
+- a universal theorem;
+- Lean formalisation;
+- certification;
+- publication readiness;
+- promotion.
 
-No package status should be upgraded without the evidence required for
-that status.
+## Non-goals
 
----
+This package does not:
 
-## SM003 — AQ-SM-003-MATRIX
-
-**Formulas:**
-- Rank: `rank(D) = k - c` where k=|partition|, c=components of image graph
-- Energy: `||D||² = Σ m(|B|-m)/(|B||B'|)` (exact Fraction required, // fails 75%)
-
-**Evidence:**
-- n=3,4 quick: 3975 cases BAD=0
-- n=3,4,5 full: 166475 cases BAD=0 exact, 125348 BAD with integer division
-- n=6 f0=0: 1,578,528 cases
-- Total: 1,745,003
-- Ground truth: `matrix_rank((I-P)KP, tol=1e-9)` + `Fraction`
-
-**Mutants — 11 distinct (12 raw IDs):**
-- D-level 6: K^T, [K,P], (I-P)K, PKP, (I-P)K^T, KP(I-P)
-- R-level 5 clusters: ignore+preimage (ONE cluster, kill set 1664 identical at n<=4), c, k-c-1, first, c-only-variant
-- Note: `ignore isolated == preimage graph` at n<=4 exhaustive
-
-**Witness Suite W-AQ001-MIN (2 instances, bounded [V] n<=4):**
-- W1: f=(0,0,2) partition {0,2},{1} — kills 9
-- W2: f=(0,0,1) partition {0,2},{1} — kills 3 additional
-- Requires: non_injective_f=true, unreached_block=true, non_constant_f=true, non_singleton_block=true
-- Covers: M-AQ001-v1 (11 mutants) at n<=4
-- Caveat: Does NOT cover BRT incidence mutation
-
-**Open Items:**
-- All-n equivalence for ignore==preimage — KEEP OPEN (only n<=4 proven)
-- BRT incidence mutation — must run verification/BRT/brt_mutation.py
-- Lean formalization — separate from [V]
-
-**Workflow:**
-`.github/workflows/sm003-verify.yml` — green 21s
-
-**Status:** Two findings ready for ledger as bounded computational results. Repository-suite coverage OPEN until BRT exercised.
+- verify the repository's old `mutations.py` correctness;
+- run GitHub Actions;
+- close the SM003 claim;
+- touch PB, D22, or the partition-koopman experiment;
+- certify the BRT workflow.
