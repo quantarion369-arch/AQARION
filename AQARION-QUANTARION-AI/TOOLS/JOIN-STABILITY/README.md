@@ -1,8 +1,119 @@
 # JOIN-STABILITY
+## Finite Pullback Rigidity and Join Stability
 
-Finite pullback-stable join verification package for AQARION.
+Package ID: JOIN-STABILITY
+Package version: 0.1.1
+Release status: BLOCKED_PENDING_REPRODUCTION
+Lean status: OPEN
 
-«Prove First · Verify Exhaustively · Predict Second · No Free Parameters»
+## Purpose
+
+This package studies pullback-stable equivalence relations for a
+deterministic map T : X -> X.
+
+For a relation E on X, define
+
+    T^{-1}(E) = {(x,y) in X x X : (T(x),T(y)) in E}.
+
+Pullback stability means
+
+    T^{-1}(E) subseteq E.
+
+For equivalence relations E and F, E join F is the smallest
+equivalence relation containing E and F.
+
+## Finite theorem 1: pullback rigidity
+
+Let X be finite, T : X -> X, and E an equivalence relation on X.
+If T^{-1}(E) subseteq E, then
+
+    T^{-1}(E) = E.
+
+Consequently, T induces a permutation on the finite quotient X/E.
+
+A proof is included in docs/finite-pullback-rigidity.md.
+
+## Finite theorem 2: join stability
+
+Let X be finite, T : X -> X, and E,F equivalence relations on X.
+If
+
+    T^{-1}(E) subseteq E
+    T^{-1}(F) subseteq F,
+
+then
+
+    T^{-1}(E join F) = E join F.
+
+The proof uses finite pullback rigidity and a bipartite incidence
+graph of E-classes and F-classes. It does not assume the desired
+join-stability conclusion.
+
+## Boundary
+
+The finite hypothesis is essential to the stated rigidity argument.
+The unrestricted infinite-set analogue is false; see the proof
+document for a counterexample.
+
+## Evidence policy
+
+[D] Definition
+[P] Mathematical proof
+[V] Independently reproduced computation
+[PV] Proof plus computation
+[C] Conjecture
+[R] Reproduction or implementation record
+[CE] Counterexample
+
+A source file is not an execution receipt.
+A passing structural verifier is not a mathematical proof.
+A finite enumeration is not a Lean proof.
+A Lean file containing `sorry` is not a completed formal proof.
+
+## Current release gates
+
+The package must not be described as release-verified until all of
+the following are true:
+
+1. The manifest's source baseline is valid and is an ancestor of the
+   tested Git revision.
+2. The tested revision is supplied independently through
+   AQ_EXPECTED_TESTED_REVISION.
+3. The structural verifier passes.
+4. The finite audit runs successfully and matches its expected counts.
+5. Negative controls execute and reject invalid package states.
+6. The run's stdout, stderr, exit code, revision, and artifact hashes
+   are recorded in a receipt.
+7. Lean status is reported separately and honestly.
+
+The reproduction script does not promote the mathematical claims,
+approve publication, or certify the Lean formalization.
+
+## Run
+
+From this directory in a Git checkout:
+
+    AQ_EXPECTED_TESTED_REVISION="<full-tested-commit-sha>" \
+      bash reproduce.sh
+
+Do not copy a revision from the package itself and treat that as an
+independent revision check. Obtain the tested SHA from the trusted
+checkout or external CI job.
+
+## Files
+
+- manifest.json: package contract and release gates.
+- claims.jsonl: claim registry.
+- evidence.jsonl: evidence registry.
+- verify.py: structural and provenance checks.
+- join_stability_independent_audit.py: finite census and join checks.
+- reproduce.sh: reproducible command sequence and receipt.
+- AQ_DYN_PULL_RIGID-001.lean: Lean formalization work; status remains open.
+- docs/finite-pullback-rigidity.md: mathematical definitions and proofs.
+- fixtures/: explicit test-data policy.
+- negative-controls/: adversarial validation policy.
+- receipts/: run-record policy.
+- zip-clone.md: clone and provenance requirements.
 
 ## Purpose
 
