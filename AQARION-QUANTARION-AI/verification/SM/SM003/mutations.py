@@ -1,38 +1,54 @@
 #!/usr/bin/env python3
-"""SM003 exact-rational theorem and mutation audit.
+"""SM003 exact-rational defect-rank and alternative audit.
 
-Usage:
-    python3 verification/SM/SM003/mutations.py
+Default scope is exhaustive over all maps and partitions for n = 1..4.
+Use --max-n 5 for the larger census. The exact matrix arithmetic uses only
+fractions.Fraction; no floating-point rank tolerance is used.
 
-Exhaustively checks all maps and set partitions for n <= 4.
-Every mutant is evaluated against the correct defect-rank oracle.
-This script is a test harness; its output must be retained as evidence.
+Mutation outcome vocabulary:
+    DETECTED, NOT_DETECTED, NOT_RUN, INVALID_MUTANT.
+
+A DETECTED result means the alternative's output differs from the baseline
+on at least one enumerated case. It is not a proof about all finite systems.
 """
+from __future__ import annotations
 
-from fractions import Fraction as F
-from itertools import product
+import argparse
+import itertools
 import json
 import platform
 import sys
+from fractions import Fraction as F
+from pathlib import Path
 
 
-def partitions(n):
-    """Generate each set partition of range(n) exactly once."""
-    if n == 0:
-        yield ()
-        return
-    for part in partitions(n - 1):
-        yield part + ((n - 1,),)
-        for i in range(len(part)):
-            yield part[:i] + (part[i] + (n - 1,),) + part[i + 1:]
+def parts(n: int):
+    """Yield all set partitions of range(n) as lists of nonempty blocks."""
+    if n < 1:
+        raise ValueError("n must be positive")
+    labels = [0] * n
+
+    def visit(i: int, maximum: int):
+        if i == n:
+            groups = [[] for _ in range(maximum + 1)]
+            for x, label in enumerate(labels):
+                groups[label].append(x)
+            yield groups
+            return
+        for label in range(maximum + 2):
+            labels[i] = label
+            yield from visit(i + 1, max(maximum, label))
+
+    labels[0] = 0
+    yield from visit(1, 0)
 
 
-def mat_zero(n, m):
-    return [[F(0) for _ in range(m)] for _ in range(n)]
+def zeros(rows: int, cols: int):
+    return [[F(0) for _ in range(cols)] for _ in range(rows)]
 
 
-def identity(n):
-    a = mat_zero(n, n)
+def eye(n: int):
+    a = zeros(n, n)
     for i in range(n):
         a[i][i] = F(1)
     return a
@@ -42,237 +58,286 @@ def transpose(a):
     return [list(row) for row in zip(*a)]
 
 
-def add(a, b):
-    return [
-        [x + y for x, y in zip(ra, rb)]
-        for ra, rb in zip(a, b)
-    ]
+def matadd(a, b):
+    return [[x + y for x, y in zip(ra, rb)] for ra, rb in zip(a, b)]
 
 
-def sub(a, b):
-    return [
-        [x - y for x, y in zip(ra, rb)]
-        for ra, rb in zip(a, b)
-    ]
+def matsub(a, b):
+    return [[x - y for x, y in zip(ra, rb)] for ra, rb in zip(a, b)]
 
 
-def mul(a, b):
+def matmul(a, b):
     if not a or not b or len(a[0]) != len(b):
         raise ValueError("incompatible matrix dimensions")
     bt = transpose(b)
     return [
-        [
-            sum((x * y for x, y in zip(row, col)), F(0))
-            for col in bt
-        ]
+        [sum((x * y for x, y in zip(row, col)), F(0)) for col in bt]
         for row in a
     ]
 
 
-def rank(a):
-    """Exact rank by rational row reduction."""
+def matrix_rank(a):
+    """Exact rank over Q by Gauss-Jordan elimination."""
     if not a:
         return 0
-    a = [row[:] for row in a]
-    rows, cols = len(a), len(a[0])
-    r = 0
+    a = [list(map(F, row)) for row in a]
+    if any(len(row) != len(a[0]) for row in a):
+        raise ValueError("matrix is not rectangular")
+    rows, cols, pivot_row = len(a), len(a[0]), 0
     for col in range(cols):
         pivot = next(
-            (i for i in range(r, rows) if a[i][col]),
-            None,
+            (r for r in range(pivot_row, rows) if a[r][col]), None
         )
         if pivot is None:
             continue
-        a[r], a[pivot] = a[pivot], a[r]
-        p = a[r][col]
-        a[r] = [x / p for x in a[r]]
-        for i in range(rows):
-            if i != r and a[i][col]:
-                q = a[i][col]
-                a[i] = [
-                    x - q * y
-                    for x, y in zip(a[i], a[r])
-                ]
-        r += 1
-        if r == rows:
+        a[pivot_row], a[pivot] = a[pivot], a[pivot_row]
+        scale = a[pivot_row][col]
+        a[pivot_row] = [v / scale for v in a[pivot_row]]
+        for r in range(rows):
+            if r == pivot_row or not a[r][col]:
+                continue
+            scale = a[r][col]
+            a[r] = [
+                x - scale * y for x, y in zip(a[r], a[pivot_row])
+            ]
+        pivot_row += 1
+        if pivot_row == rows:
             break
-    return r
+    return pivot_row
 
 
 def koopman(t):
     n = len(t)
-    k = mat_zero(n, n)
-    for x, y in enumerate(t):
-        k[x][y] = F(1)
+    k = zeros(n, n)
+    for x, target in enumerate(t):
+        if not 0 <= target < n:
+            raise ValueError("transition target outside state space")
+        k[x][target] = F(1)
     return k
 
 
-def projector(part, n):
-    p = mat_zero(n, n)
-    for block in part:
-        size = F(len(block))
+def projector(blocks, n):
+    p = zeros(n, n)
+    flat = [x for block in blocks for x in block]
+    if (
+        sorted(flat) != list(range(n))
+        or len(set(flat)) != n
+        or any(not b for b in blocks)
+    ):
+        raise ValueError("blocks must be an exact partition of the state space")
+    for block in blocks:
+        weight = F(1, len(block))
         for x in block:
             for y in block:
-                p[x][y] = F(1) / size
+                p[x][y] = weight
     return p
 
 
-def graph_component_count(t, part):
-    """Count components in the undirected target-block co-occurrence graph."""
-    nblocks = len(part)
-    block_of = {}
-    for j, block in enumerate(part):
-        for x in block:
-            block_of[x] = j
+def component_count(k: int, groups, vertices=None):
+    parent = list(range(k))
 
-    adj = [set() for _ in range(nblocks)]
-    for source in part:
-        targets = sorted({block_of[t[x]] for x in source})
-        for u in targets:
-            for v in targets:
-                if u != v:
-                    adj[u].add(v)
-                    adj[v].add(u)
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
 
-    seen = set()
-    components = 0
-    for start in range(nblocks):
-        if start in seen:
-            continue
-        components += 1
-        stack = [start]
-        seen.add(start)
-        while stack:
-            u = stack.pop()
-            for v in adj[u]:
-                if v not in seen:
-                    seen.add(v)
-                    stack.append(v)
-    return components
+    def union(a, b):
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[rb] = ra
+
+    for group in groups:
+        group = sorted(set(group))
+        for x in group[1:]:
+            union(group[0], x)
+    nodes = list(range(k)) if vertices is None else list(vertices)
+    return len({find(x) for x in nodes})
 
 
-def inspect_case(t, part):
+def graph_data(t, blocks):
+    n, k = len(t), len(blocks)
+    block_of = {x: i for i, b in enumerate(blocks) for x in b}
+    images = [sorted({block_of[t[x]] for x in b}) for b in blocks]
+    touched = sorted(set().union(*(set(s) for s in images)))
+    preimages = [[] for _ in range(k)]
+    for source, targets in enumerate(images):
+        for target in targets:
+            preimages[target].append(source)
+    return k, images, touched, [g for g in preimages if g]
+
+
+def case_values(t, blocks):
     n = len(t)
-    k_blocks = len(part)
-    K = koopman(t)
-    P = projector(part, n)
-    I = identity(n)
-    D = mul(sub(I, P), mul(K, P))
-    expected = k_blocks - graph_component_count(t, part)
-    actual = rank(D)
-
-    mutants = {
-        "M-K-transpose": transpose(K),
-        "M-commutator-KP-minus-PK": sub(
-            mul(K, P),
-            mul(P, K),
-        ),
-        "M-left-projection-I-minus-P-times-K": mul(
-            sub(I, P),
-            K,
-        ),
-        "M-projected-K-PKP": mul(
-            P,
-            mul(K, P),
-        ),
-        "M-left-projection-times-K-transpose": mul(
-            sub(I, P),
-            transpose(K),
-        ),
-        "M-KP-times-I-minus-P": mul(
-            K,
-            mul(P, sub(I, P)),
-        ),
-    }
-
-    results = {
-        name: rank(matrix) != expected
-        for name, matrix in mutants.items()
-    }
-
-    # Deliberately wrong graph oracle: returns c instead of k-c.
-    results["M-R-c-only-variant"] = (
-        graph_component_count(t, part) != expected
-    )
-
-    return actual, expected, results
-
-
-def main():
-    max_n = 4
-    cases = 0
-    theorem_mismatches = []
-    mutation_detection_counts = {}
-    mutation_first_detection = {}
-
-    for n in range(1, max_n + 1):
-        for t in product(range(n), repeat=n):
-            for part in partitions(n):
-                cases += 1
-                actual, expected, results = inspect_case(t, part)
-
-                if actual != expected:
-                    theorem_mismatches.append({
-                        "n": n,
-                        "map": t,
-                        "partition": part,
-                        "matrix_rank": actual,
-                        "graph_rank": expected,
-                    })
-
-                for name, detected in results.items():
-                    mutation_detection_counts.setdefault(name, 0)
-
-                    if detected:
-                        mutation_detection_counts[name] += 1
-                        mutation_first_detection.setdefault(
-                            name,
-                            {
-                                "n": n,
-                                "map": t,
-                                "partition": part,
-                                "correct_rank": expected,
-                            },
-                        )
-
-    mutation_outcomes = {
-        name: "DETECTED" if count > 0 else "NOT_DETECTED"
-        for name, count in mutation_detection_counts.items()
-    }
-
-    report = {
-        "schema": "AQ-SM003-MUTATION-REPORT-1.0",
-        "status": "PASS" if not theorem_mismatches else "FAIL",
-        "scope": {
-            "maps_and_partitions": "exhaustive",
-            "n": f"1..{max_n}",
-            "cases": cases,
-            "arithmetic": "exact rational",
+    K, P, I = koopman(t), projector(blocks, n), eye(n)
+    D = matmul(matsub(I, P), matmul(K, P))
+    k, images, touched, preimage_groups = graph_data(t, blocks)
+    c = component_count(k, images)
+    baseline = matrix_rank(D)
+    prediction = k - c
+    KP = matmul(K, P)
+    return {
+        "baseline_rank": baseline,
+        "graph_prediction": prediction,
+        "components": c,
+        "block_count": k,
+        "mutants": {
+            "D:K^T": matrix_rank(transpose(K)),
+            "D:[K,P]": matrix_rank(matsub(KP, matmul(P, K))),
+            "D:(I-P)K": matrix_rank(matmul(matsub(I, P), K)),
+            "D:PKP": matrix_rank(matmul(P, KP)),
+            "D:(I-P)K^T": matrix_rank(matmul(matsub(I, P), transpose(K))),
+            "D:KP(I-P)": matrix_rank(matmul(KP, matsub(I, P))),
+            "R:ignore-isolated": k - component_count(k, images, touched),
+            "R:preimage": k - component_count(k, preimage_groups),
+            "R:c": c,
+            "R:k-c-1": k - c - 1,
+            "R:first": k - component_count(
+                k, [[g[0]] for g in images if g]
+            ),
+            "R:c-only-variant": c,
         },
+        "graph_details": {
+            "images": images,
+            "touched": touched,
+            "preimage_groups": preimage_groups,
+        },
+    }
+
+
+def run(max_n=4):
+    if not 1 <= max_n <= 5:
+        raise ValueError("max_n must be in 1..5")
+    alias_of = {"R:c-only-variant": "R:c"}
+    detection_counts: dict[str, int] = {}
+    detection_sets: dict[str, set] = {}
+    first_witness: dict[str, dict] = {}
+    per_n: dict[str, dict] = {}
+    total_cases = 0
+    mismatch_count = 0
+    for n in range(1, max_n + 1):
+        cases_n = 0
+        mismatch_n = 0
+        for t in itertools.product(range(n), repeat=n):
+            for blocks in parts(n):
+                values = case_values(list(t), blocks)
+                cases_n += 1
+                total_cases += 1
+                if values["baseline_rank"] != values["graph_prediction"]:
+                    mismatch_n += 1
+                    mismatch_count += 1
+                for name, value in values["mutants"].items():
+                    if name in alias_of:
+                        continue
+                    detected = value != values["baseline_rank"]
+                    detection_counts[name] = (
+                        detection_counts.get(name, 0) + int(detected)
+                    )
+                    if detected:
+                        detection_sets.setdefault(name, set()).add(
+                            (
+                                n,
+                                tuple(t),
+                                tuple(tuple(b) for b in blocks),
+                            )
+                        )
+                    if detected and name not in first_witness:
+                        first_witness[name] = {
+                            "n": n,
+                            "transition": list(t),
+                            "partition": blocks,
+                            "baseline_rank": values["baseline_rank"],
+                            "alternative_value": value,
+                        }
+        per_n[str(n)] = {
+            "map_count": n ** n,
+            "partition_map_pairs": cases_n,
+            "expected_partition_map_pairs": n ** n * len(list(parts(n))),
+            "theorem_mismatches": mismatch_n,
+        }
+    outcomes = {
+        name: ("DETECTED" if count else "NOT_DETECTED")
+        for name, count in detection_counts.items()
+    }
+    cluster_same_sets = (
+        detection_sets.get("R:ignore-isolated", set())
+        == detection_sets.get("R:preimage", set())
+    )
+    outcomes["R:ignore+preimage_cluster"] = (
+        "DETECTED"
+        if cluster_same_sets
+        and detection_counts.get("R:ignore-isolated", 0)
+        else "INVALID_MUTANT"
+    )
+    outcomes["R:c-only-variant"] = "INVALID_MUTANT"
+    expected_total = sum(
+        n ** n * len(list(parts(n))) for n in range(1, max_n + 1)
+    )
+    if total_cases != expected_total:
+        raise AssertionError(
+            f"enumeration incomplete: {total_cases} != {expected_total}"
+        )
+    return {
+        "schema": "AQ-SM003-MUTATION-AUDIT/2",
+        "status": "PASS" if mismatch_count == 0 else "FAIL",
+        "scope": {
+            "n_min": 1,
+            "n_max": max_n,
+            "cases": total_cases,
+            "expected_cases": expected_total,
+        },
+        "per_n": per_n,
+        "theorem_mismatch_count": mismatch_count,
+        "mutation_detection_counts": detection_counts,
+        "mutation_outcomes": outcomes,
+        "mutation_aliases": alias_of,
+        "ignore_preimage_cluster": {
+            "same_detection_sets_in_executed_scope": cluster_same_sets,
+            "ignore_isolated_detection_cases": len(
+                detection_sets.get("R:ignore-isolated", set())
+            ),
+            "preimage_detection_cases": len(
+                detection_sets.get("R:preimage", set())
+            ),
+        },
+        "first_detection_witnesses": first_witness,
         "environment": {
             "python": sys.version,
             "implementation": platform.python_implementation(),
             "platform": platform.platform(),
         },
-        "theorem_mismatch_count": len(theorem_mismatches),
-        "theorem_mismatch_examples": theorem_mismatches[:10],
-        "mutation_detection_counts": mutation_detection_counts,
-        "mutation_outcomes": mutation_outcomes,
-        "mutations_not_detected": [
-            name
-            for name, count in mutation_detection_counts.items()
-            if count == 0
-        ],
-        "first_detection_witnesses": mutation_first_detection,
-        "warning": (
-            "This report covers only the mutations implemented here and "
-            "the enumerated finite scope. It does not establish Lean proof, "
-            "publication readiness, or certification."
+        "interpretation": (
+            "PASS checks the baseline matrix-rank identity on the "
+            "declared finite scope only."
         ),
     }
 
-    print(json.dumps(report, indent=2, sort_keys=True))
-    return 0 if not theorem_mismatches else 1
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--max-n", type=int, default=4)
+    parser.add_argument("--report", type=Path)
+    args = parser.parse_args()
+    try:
+        report = run(args.max_n)
+        text = json.dumps(report, indent=2, sort_keys=True) + "\n"
+        print(text, end="")
+        if args.report:
+            args.report.parent.mkdir(parents=True, exist_ok=True)
+            args.report.write_text(text, encoding="utf-8")
+        return 0 if report["status"] == "PASS" else 1
+    except Exception as exc:
+        failure = {
+            "schema": "AQ-SM003-MUTATION-AUDIT/2",
+            "status": "FAIL",
+            "error": str(exc),
+        }
+        text = json.dumps(failure, indent=2, sort_keys=True) + "\n"
+        print(text, file=sys.stderr, end="")
+        if args.report:
+            args.report.parent.mkdir(parents=True, exist_ok=True)
+            args.report.write_text(text, encoding="utf-8")
+        return 1
 
 
 if __name__ == "__main__":
