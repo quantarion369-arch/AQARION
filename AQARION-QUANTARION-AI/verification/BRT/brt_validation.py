@@ -49,6 +49,7 @@ Case-file schema:
 
 {
   "schema": "AQ-BRT-CASES-002",
+  "case_count": 10,
   "cases": [
     {
       "name": "...",
@@ -64,6 +65,11 @@ Case-file schema:
 
 The partition is represented by integer block labels. Labels need not
 be consecutive; the verifier canonicalizes them.
+
+If "case_count" is present in the case file, it must equal the number
+of loaded cases. If any case carries an "expected" object, the fields
+declared inside it must match recomputed values, and the object must
+only contain the declared fields "rank_D" and "support_components".
 """
 
 from __future__ import annotations
@@ -78,6 +84,8 @@ from typing import Any
 
 SCHEMA = "AQ-BRT-VALIDATION/2"
 CASE_SCHEMA = "AQ-BRT-CASES-002"
+
+EXPECTED_FIELDS = ("rank_D", "support_components")
 
 
 def rank_frac(matrix: list[list[Fraction]]) -> int:
@@ -298,6 +306,17 @@ def validate_q_normalization(
     q: list[list[Fraction]],
 ) -> None:
     """Every source block must distribute total mass exactly one."""
+    if not q:
+        raise AssertionError("Q matrix is empty")
+
+    width = len(q[0])
+
+    if any(len(row) != width for row in q):
+        raise AssertionError("Q matrix is not rectangular")
+
+    if len(q) != width:
+        raise AssertionError("Q matrix is not square")
+
     for row_index, row in enumerate(q):
         if sum(row) != Fraction(1):
             raise AssertionError(
@@ -394,6 +413,57 @@ def exact_defect_rank(
     )
 
 
+def validate_declared_expected(
+    declared: Any,
+    rank_d: int,
+    support_components: int,
+) -> None:
+    """
+    Validate the optional 'expected' block of a case.
+
+    Rules:
+      - If present, must be a JSON object.
+      - Only the fields 'rank_D' and 'support_components' are allowed.
+      - Declared values must match recomputed values.
+      - No silent acceptance of empty or malformed 'expected' objects.
+    """
+    if declared is None:
+        return
+
+    if not isinstance(declared, dict):
+        raise AssertionError(
+            "'expected' must be a JSON object when supplied"
+        )
+
+    unknown = set(declared) - set(EXPECTED_FIELDS)
+
+    if unknown:
+        raise AssertionError(
+            "unrecognized fields in 'expected': "
+            f"{sorted(unknown)}"
+        )
+
+    if "rank_D" in declared:
+        declared_rank = int(declared["rank_D"])
+
+        if declared_rank != rank_d:
+            raise AssertionError(
+                "declared rank does not match recomputation: "
+                f"declared={declared_rank}, actual={rank_d}"
+            )
+
+    if "support_components" in declared:
+        declared_components = int(declared["support_components"])
+
+        if declared_components != support_components:
+            raise AssertionError(
+                "declared component count does not match "
+                f"recomputation: "
+                f"declared={declared_components}, "
+                f"actual={support_components}"
+            )
+
+
 def validate_case(
     case: dict[str, Any],
 ) -> dict[str, Any]:
@@ -456,35 +526,11 @@ def validate_case(
             f"rank(D)={rank_d} > {k - 1}"
         )
 
-    expected = case.get("expected")
-
-    if expected is not None:
-        if not isinstance(expected, dict):
-            raise AssertionError(
-                "'expected' must be an object when supplied"
-            )
-
-        if "rank_D" in expected:
-            declared_rank = int(expected["rank_D"])
-
-            if declared_rank != rank_d:
-                raise AssertionError(
-                    "declared rank does not match recomputation: "
-                    f"declared={declared_rank}, actual={rank_d}"
-                )
-
-        if "support_components" in expected:
-            declared_components = int(
-                expected["support_components"]
-            )
-
-            if declared_components != support_components:
-                raise AssertionError(
-                    "declared component count does not match "
-                    f"recomputation: "
-                    f"declared={declared_components}, "
-                    f"actual={support_components}"
-                )
+    validate_declared_expected(
+        case.get("expected"),
+        rank_d,
+        support_components,
+    )
 
     return {
         "name": str(case.get("name", "unnamed")),
@@ -606,6 +652,18 @@ def load_cases(path: Path) -> list[dict[str, Any]]:
         raise AssertionError(
             "BRT case corpus must not be empty"
         )
+
+    declared_case_count = data.get("case_count")
+
+    if declared_case_count is not None:
+        declared_case_count = int(declared_case_count)
+
+        if declared_case_count != len(cases):
+            raise AssertionError(
+                "declared case_count does not match loaded cases: "
+                f"declared={declared_case_count}, "
+                f"loaded={len(cases)}"
+            )
 
     return cases
 
