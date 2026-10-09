@@ -125,7 +125,9 @@ steps:
 
       if exit_path.is_file():
           try:
-              exit_code = int(exit_path.read_text(encoding="utf-8").strip())
+              exit_code = int(
+                  exit_path.read_text(encoding="utf-8").strip()
+              )
           except ValueError:
               exit_code = None
       else:
@@ -169,10 +171,14 @@ steps:
       def file_sha256(path):
           if not path.is_file():
               return None
+
           digest = hashlib.sha256()
           with path.open("rb") as handle:
-              for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+              for chunk in iter(
+                  lambda: handle.read(1024 * 1024), b""
+              ):
                   digest.update(chunk)
+
           return digest.hexdigest()
 
       recorded_commit = (
@@ -181,22 +187,22 @@ steps:
           else os.environ.get("COMMIT_SHA", "")
       )
 
+      repository = os.environ.get("REPOSITORY", "")
+      run_id = os.environ.get("RUN_ID", "")
+
       receipt = {
           "schema": "aqarion.mobile_research_kit.ci_receipt.v1",
           "status": status,
           "created_at_utc": datetime.now(timezone.utc).isoformat(),
-          "repository": os.environ.get("REPOSITORY"),
+          "repository": repository,
           "commit_sha": recorded_commit,
           "ref": os.environ.get("GIT_REF"),
           "workflow": os.environ.get("WORKFLOW_NAME"),
           "workflow_file": os.environ.get("WORKFLOW_FILE"),
-          "run_id": os.environ.get("RUN_ID"),
+          "run_id": run_id,
           "run_attempt": os.environ.get("RUN_ATTEMPT"),
           "run_url": (
-              "https://github.com/"
-              + os.environ.get("REPOSITORY", "")
-              + "/actions/runs/"
-              + os.environ.get("RUN_ID", "")
+              f"https://github.com/{repository}/actions/runs/{run_id}"
           ),
           "runner": {
               "os": os.environ.get("RUNNER_OS_NAME"),
