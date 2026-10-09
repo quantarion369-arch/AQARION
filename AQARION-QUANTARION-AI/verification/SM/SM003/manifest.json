@@ -1,34 +1,52 @@
 {
   "id": "AQ-SM-003-MATRIX",
-  "path": "AQARION-QUANTARION-AI/verification/SM003",
+  "path": "AQARION-QUANTARION-AI/verification/SM/SM003",
   "formulas": {
     "frobenius": "||D||^2 = Σ m(|B|-m)/(|B||B'|)",
     "rank": "rank(D) = k - c"
   },
   "executables": [
-    "AQARION-QUANTARION-AI/verification/SM003/rank.py",
-    "AQARION-QUANTARION-AI/verification/SM003/frobenius.py",
-    "AQARION-QUANTARION-AI/verification/SM003/mutation.py"
+    "AQARION-QUANTARION-AI/verification/SM/SM003/rank.py",
+    "AQARION-QUANTARION-AI/verification/SM/SM003/frobenius.py",
+    "AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py"
   ],
-  "domain": "n=3,4,5=166475, n=6 f0=0=1578528 total 1745003",
+  "domain": {
+    "n=3,4,5": 166475,
+    "n=6 f0=0": 1578528,
+    "total": 1745003,
+    "verified_exhaustive": "n<=4"
+  },
   "ground_truth": "matrix_rank tol=1e-9 + Fraction exact",
   "results": {
     "rank_exact_mismatch": 0,
     "frobenius_exact_mismatch": 0,
     "frobenius_intdiv_mismatch": 125348,
-    "mutation_kills": {
-      "TRUE": 0,
-      "ignore_isolated": 77819,
-      "preimage": 77819,
-      "c": 129387,
-      "k-c-1": 166475,
-      "first": 125348
+    "mutant_clusters": {
+      "note": "ignore isolated == preimage graph (identical kill sets at n<=4: 1664=1664 intersection 1664)",
+      "clusters": [
+        {"ids": ["ignore isolated","preimage graph"], "count": 1, "kills_n<=4": 1664},
+        {"id": "c not subtracted", "kills_n<=4": 129387},
+        {"id": "k-c-1", "kills_n<=4": 166475},
+        {"id": "elementwise first", "kills_n<=4": 125348}
+      ]
     }
   },
   "witness_requirement": {
     "non_injective_f": true,
     "unreached_block": true,
-    "non_singleton_block": true
+    "non_singleton_block": true,
+    "non_constant_f": true
   },
-  "evidence_class": "[V]"
+  "witness_suite": {
+    "id": "W-AQ001-MIN",
+    "instances": [
+      {"f": [0,0,2], "partition": [[0,2],[1]], "kills": 9},
+      {"f": [0,0,1], "partition": [[0,2],[1]], "kills": 3}
+    ],
+    "covers": "mutant set M-AQ001-v1 (11 mutants: 6 D-level K^T,[K,P],(I-P)K,PKP,(I-P)K^T,KP(I-P) + 5 R-level), n<=4 exhaustive",
+    "requires": {"non_injective_f": true, "unreached_block": true, "non_constant_f": true},
+    "caveat": "kills my 11, not repo's incidence mutation. Coverage claim must name mutant set.",
+    "verification": "[V] brute-force n<=4"
+  },
+  "evidence_class": "[V] n<=4 exhaustive, n=5 formula 166475 verified previously"
 }
