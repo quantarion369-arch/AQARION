@@ -19,6 +19,24 @@ def overly_strict_exact_classifier(c, a, b, q):
 
 
 class QuadraticOracleSeparationTests(unittest.TestCase):
+    def test_verifier_checks_top_level_success_flag(self):
+        baseline = atlas.build_report([4], 3)
+        verifier.verify(baseline)
+        for flag in (False, None, 0, 1, 'true'):
+            with self.subTest(flag=flag):
+                tampered = copy.deepcopy(baseline)
+                tampered["all_checks_passed"] = flag
+                with self.assertRaisesRegex(
+                    ValueError, "all_checks_passed mismatch"
+                ):
+                    verifier.verify(tampered)
+
+    def test_verifier_requires_top_level_success_flag(self):
+        report = atlas.build_report([4], 3)
+        del report["all_checks_passed"]
+        with self.assertRaisesRegex(ValueError, "malformed report"):
+            verifier.verify(report)
+
     def test_even_modulus_witness_family(self):
         for q in (2, 4, 6, 8, 10, 12):
             c = 1 + q // 2
