@@ -1,0 +1,34 @@
+{
+  "id": "AQ-SM-003-MATRIX",
+  "path": "AQARION-QUANTARION-AI/verification/SM003",
+  "formulas": {
+    "frobenius": "||D||^2 = Σ m(|B|-m)/(|B||B'|)",
+    "rank": "rank(D) = k - c"
+  },
+  "executables": [
+    "AQARION-QUANTARION-AI/verification/SM003/rank.py",
+    "AQARION-QUANTARION-AI/verification/SM003/frobenius.py",
+    "AQARION-QUANTARION-AI/verification/SM003/mutation.py"
+  ],
+  "domain": "n=3,4,5=166475, n=6 f0=0=1578528 total 1745003",
+  "ground_truth": "matrix_rank tol=1e-9 + Fraction exact",
+  "results": {
+    "rank_exact_mismatch": 0,
+    "frobenius_exact_mismatch": 0,
+    "frobenius_intdiv_mismatch": 125348,
+    "mutation_kills": {
+      "TRUE": 0,
+      "ignore_isolated": 77819,
+      "preimage": 77819,
+      "c": 129387,
+      "k-c-1": 166475,
+      "first": 125348
+    }
+  },
+  "witness_requirement": {
+    "non_injective_f": true,
+    "unreached_block": true,
+    "non_singleton_block": true
+  },
+  "evidence_class": "[V]"
+}
