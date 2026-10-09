@@ -1,85 +1,72 @@
+
 # PB-CORE-005 — Cycle-Orbit Classification of Pullback-Fixed Equivalences
 
-## Status
+## 1. Status and evidence boundary
 
-Evidence:
-- [P] finite pullback rigidity
-- [P] eventual permutation-core restriction/extension
-- [P] cycle-orbit classification
-- [P] local phase-count formula
-- [V] brute-force permutation checks through n = 6
-- [V] formula-level permutation checks through n = 7
-- [V] all finite maps through n = 6 for restriction/extension
-- [V] all maps through n = 7 for aggregate stable-equivalence count
+Artifact ID: `AQ-PB-CORE-005`
 
-Lean:
-- local setoid layer exists
-- phaseRel_invariant remains the current local proof gate
-- full classification theorem remains OPEN
+Status:
+- Finite pullback rigidity: [P]
+- Eventual permutation-core restriction/extension: [P]
+- Cycle-phase classification: [P-CANDIDATE]
+- Local phase-count formula: [P-CANDIDATE]
+- Global cycle-assembly formula: [P-CANDIDATE]
+- Exhaustive finite checks: [V], as recorded by the repository
+- General Lean classification: [L-OPEN]
+- C4: BLOCKED
+- Publication: BLOCKED pending formalization and literature audit
+- Promotion: NOT AUTHORIZED
 
-Publication:
-- BLOCKED pending independent formalization and literature-normalized presentation
+The mathematical arguments below give the intended proof architecture.
+The general phase-classification and assembly results must not be
+described as Lean-certified until their formal proof obligations are
+closed and the corresponding build is independently reproduced.
 
-Promotion:
-- FALSE until formal proof and repository replay are complete
+Computational agreement supports the formulas but does not replace
+a proof for arbitrary cycle lengths.
 
----
+## 2. Finite pullback rigidity
 
-## 1. Finite pullback rigidity
+Let X be a finite set, let T : X -> X, and let E be an equivalence
+relation on X.
 
-Let X be finite, T : X -> X, and E an equivalence relation.
+Define the pullback relation T*E by
 
-Define
+    x (T*E) y  iff  T(x) E T(y).
 
-    T*E = {(x,y) : T(x) E T(y)}.
+The finite pullback-rigidity theorem is
 
-If
-
-    T*E ⊆ E,
-
-then
-
-    T*E = E.
+    T*E ⊆ E  =>  T*E = E.
 
 ### Proof
 
-Let π : X -> X/E be the quotient map.
+Let π : X -> X/E be the quotient map. Then
 
-Then
+    E = ker(π)
+    T*E = ker(π ∘ T).
 
-    E = ker π
+The assumed inclusion
 
-and
+    ker(π ∘ T) ⊆ ker(π)
 
-    T*E = ker (π ∘ T).
-
-The inclusion
-
-    ker(π ∘ T) ⊆ ker π
-
-means that the quotient induced by π ∘ T is at least as fine as X/E.
-
-Therefore
+induces a surjection from X/(T*E) onto X/E. Therefore
 
     |X/(T*E)| >= |X/E|.
 
-But
+On the other hand, the classes of ker(π ∘ T) correspond to the
+distinct values in im(π ∘ T), so
 
     |X/(T*E)| = |im(π ∘ T)| <= |X/E|.
 
-Because X is finite, equality holds throughout. Two equivalence
-relations on a finite set cannot be a proper refinement while having
-the same number of equivalence classes.
-
-Hence
+Consequently the two quotient sets have the same finite cardinality.
+The induced surjection is therefore a bijection. Its fibers are
+singletons, which implies that the two kernels coincide:
 
     T*E = E.
 
-The finiteness assumption is essential.
+Finiteness is essential to this argument.
 
----
-
-## 2. Infinite counterexample
+## 3. Infinite counterexample
 
 Let
 
@@ -90,27 +77,20 @@ Let E have classes
 
     {0,1}, {2}, {3}, {4}, ...
 
-Then
+Then T*E is the equality relation Δ, whereas E is strictly coarser:
 
-    T*E = Δ
+    T*E = Δ ⊊ E.
 
-while
+Thus the finite pullback-rigidity theorem does not extend to arbitrary
+infinite sets.
 
-    Δ ⊊ E.
+## 4. Eventual permutation core
 
-Thus finite pullback rigidity does not extend to arbitrary infinite sets.
+Let T : X -> X be a map on a finite set and define its periodic core
 
----
+    P = Per(T).
 
-## 3. Eventual permutation core
-
-Let
-
-    P = Per(T)
-
-be the set of periodic points.
-
-For finite X, there exists h such that
+There exists h >= 0 such that
 
     T^h(X) = P.
 
@@ -120,988 +100,292 @@ The restriction
 
 is a permutation.
 
-Define Stab(T) by
+Define
 
-    Stab(T) = { E : E is an equivalence relation and T*E = E }.
-
-For F in Con(P,σ), define
-
-    Ext_h(F)
-
-by
-
-    x Ext_h(F) y
-      iff
-    T^h(x) F T^h(y).
-
-Because σ is a permutation and F is σ-invariant,
-
-    Ext_h(F)
-
-is independent of the sufficiently large choice of h.
-
-Restriction gives
-
-    Res(E) = E|P.
-
-Then
-
-    Res : Stab(T) -> Con(P,σ)
+    Stab(T) = {E : E is an equivalence relation on X and T*E = E}
 
 and
 
-    Ext : Con(P,σ) -> Stab(T)
+    Con(P,σ) = {F : F is an equivalence relation on P
+                   and x F y => σ(x) F σ(y)}.
 
-are mutually inverse.
+For F in Con(P,σ), define an extension by
 
-Therefore
+    x Ext_h(F) y  iff  T^h(x) F T^h(y).
+
+Because σ is a permutation and F is σ-invariant, this extension is
+independent of the sufficiently large choice of h.
+
+Conversely, restriction sends E in Stab(T) to E|P. Pullback equality
+implies that this restriction is σ-invariant.
+
+For E in Stab(T), iteration gives
+
+    x E y  iff  T^h(x) E T^h(y).
+
+Hence extension after restriction recovers E. Restricting an extension
+to P recovers F because T^h|P is a power of σ, which preserves F in
+both directions.
+
+Therefore restriction and extension are mutually inverse:
 
     Stab(T) ≅ Con(P,σ).
 
-This is the PB-CORE-004 eventual-permutation-core theorem.
+This is the PB-CORE-004 eventual-permutation-core theorem. The
+computational checks recorded for it remain verification evidence,
+not a substitute for the mathematical proof or a Lean build.
 
----
+## 5. Cycle decomposition
 
-# 4. Cycle decomposition
+Write the periodic core as a disjoint union of cycles:
 
-Write
+    P = C_1 ⊔ ... ⊔ C_r,
 
-    P = C_1 ⊔ ... ⊔ C_r
+with cycle lengths
 
-where σ acts as a cycle of length
+    m_1, ..., m_r.
 
-    m_1,...,m_r.
+An equivalence relation invariant under σ partitions the cycle-index
+set into connected groups. Here, two cycle indices are connected when
+their cycles belong to the same equivalence class of the induced
+connectivity relation generated by cross-cycle identifications.
 
-An invariant equivalence relation θ partitions the set of cycles into
-connected groups.
+We first count the invariant equivalences for one specified connected
+group S of k cycles.
 
-Fix one such group S of k cycles.
+## 6. One-cycle divisor classification
 
-Suppose all cycles in S are linked by θ.
+On a single cycle C_m, identify the points with Z/mZ and let σ act
+by addition of 1.
 
----
+Every σ-invariant equivalence relation on C_m is determined by a
+unique divisor d of m. Its equivalence classes are the residue
+classes modulo d:
 
-# 5. Local divisor classification
+    x ~ y  iff  x ≡ y (mod d).
 
-On one cycle C_m, every σ-invariant equivalence relation is determined
-by a divisor
+Thus the number of invariant equivalences on one cycle is
 
-    d | m.
+    τ(m),
 
-Its classes are residue classes modulo d.
+where τ(m) is the number of positive divisors of m.
 
-Equivalently,
+This is established cyclic/monounary structure, not a claim of
+discovery by AQARION.
 
-    x ~ y  iff  x ≡ y (mod d)
+## 7. Connected groups of cycles
 
-after choosing a cyclic coordinate.
-
-This is classical monounary-algebra structure.
-
----
-
-# 6. Cross-cycle compatibility
-
-Suppose cycles C_i and C_j are θ-linked.
-
-Their internal divisors must agree.
-
-Therefore there exists
-
-    d | gcd(m_i,m_j)
-
-and, after cyclic coordinates are chosen, a phase offset relating
-the two cycles.
-
-For a connected collection S of cycles, a common divisor
-
-    d | gcd(m_i : i in S)
-
-is therefore necessary.
-
----
-
-# 7. Phase representation
-
-Let
-
-    φ : S -> Z/dZ.
-
-Define
-
-    E_φ
-
-by
-
-    (i,x) E_φ (j,y)
-    iff
-    x + φ(i) ≡ y + φ(j) (mod d).
-
-Because d divides every cycle length in S, σ preserves this relation.
-
-Conversely every connected invariant equivalence relation on S has this
-form.
-
----
-
-# 8. Phase nonuniqueness
-
-Two phase vectors φ and ψ determine the same equivalence relation iff
-
-    exists t in Z/dZ
-    such that
-    ψ(i) = φ(i) + t
-
-for every i in S.
-
-Thus there is one redundant global phase.
-
-Normalize one reference cycle by
-
-    φ(i_0) = 0.
-
-Then exactly
-
-    d^(k-1)
-
-distinct connected invariant equivalences occur for the divisor d.
-
----
-
-# 9. Connected-component weight
-
-For a nonempty set S of k cycles define
+Let S be a nonempty set of k cycle indices, and let
 
     g(S) = gcd(m_i : i in S).
 
-The number of connected invariant equivalences on S is therefore
+For a connected invariant equivalence joining the cycles indexed by S,
+the induced quotient dynamics on that connected component is a cycle
+of some length d. Each original cycle maps equivariantly onto that
+quotient cycle. Therefore
 
-    W(S)
-      =
-    sum_{d | g(S)} d^(k-1).
+    d | m_i  for every i in S,
 
----
+equivalently,
 
-# 10. Global classification
+    d | g(S).
 
-An arbitrary invariant equivalence relation first chooses a partition
+For a fixed admissible d, choose cyclic coordinates on each cycle.
+An equivariant map from C_{m_i} onto C_d has the form
 
-    S_1 | ... | S_t
+    a |-> a + t_i (mod d),
 
-of the cycle-index set.
+where t_i belongs to Z/dZ.
 
-Each block S_j independently receives one connected invariant
-equivalence.
+Thus the phase data form a vector
 
-Therefore
+    (t_1,...,t_k) in (Z/dZ)^k.
+
+Changing the origin chosen on the common quotient adds the same
+element to every phase. Define the diagonal subgroup
+
+    Δ_d = {(s,...,s) : s in Z/dZ}.
+
+The intrinsic phase parameter is therefore the orbit
+
+    (Z/dZ)^k / Δ_d.
+
+The diagonal action is free, so the number of phase orbits is
+
+    d^k / d = d^(k-1).
+
+Consequently, the candidate connected-block weight is
+
+    W(S) = sum_{d | g(S)} d^(k-1).
+
+### Proof obligations still required for formal closure
+
+A complete general proof must establish all of the following:
+
+1. Extract the quotient cycle length d from an arbitrary connected
+   invariant equivalence.
+2. Prove d divides every cycle length in S.
+3. Extract phase data relative to cyclic coordinates.
+4. Prove the phase vector is unique up to a common diagonal shift.
+5. Reconstruct the equivalence from the divisor and phase orbit.
+6. Prove injectivity and surjectivity of the parameterization.
+7. Assemble the connected blocks over all partitions of the cycle set.
+
+The count d^(k-1) follows once the claimed bijection with the phase
+orbits has been proved. Until the extraction and reconstruction steps
+are closed, this general classification remains [P-CANDIDATE].
+
+## 8. Global cycle-assembly formula
+
+Let Part([r]) denote the set of set partitions of the cycle-index
+set [r] = {1,...,r}.
+
+An arbitrary invariant equivalence first determines a partition
+of the cycles into connected blocks. Each block S independently
+contributes W(S).
+
+The proposed global formula is
 
     |Con(P,σ)|
       =
-    sum_{𝒮 ∈ Part({1,...,r})}
-      product_{S ∈ 𝒮}
-        sum_{d | gcd(m_i:i∈S)}
-          d^(|S|-1).
+    sum_{π in Part([r])}
+      product_{S in π}
+        sum_{d | gcd(m_i : i in S)} d^(|S|-1).
 
-This is the PB-CORE-005 cycle-orbit formula.
+This formula is a consequence of the connected-block classification
+and the independent assembly of blocks. Its status remains
+[P-CANDIDATE] until the general classification and assembly proof
+obligations are formally closed.
 
----
+## 9. Exact examples and negative controls
 
-# 11. Important examples
-
-## One cycle
-
-For cycle length m,
+For one cycle of length m:
 
     |Con(C_m,σ)| = τ(m).
 
-## Two cycles
-
-For lengths m,n,
+For two cycles of lengths m and n:
 
     |Con(C_m ⊔ C_n,σ)|
-      =
-    τ(m)τ(n)
-    +
-    sum_{d | gcd(m,n)} d.
+      = τ(m)τ(n) + sum_{d | gcd(m,n)} d.
 
-Examples:
+The correct examples are:
 
-    (2,2) -> 7
-    (2,3) -> 5
-    (3,3) -> 8
-    (2,4) -> 9
-    (4,4) -> 16
+    (2,2): 2*2 + (1+2)       = 7
+    (2,3): 2*2 + 1           = 5
+    (3,3): 3*3 + (1+3)       = 13
+    (2,4): 2*3 + (1+2)       = 9
+    (4,4): 3*3 + (1+2+4)     = 16
 
-The value for (2,4) is 9, not 7.
+Important correction:
+The value for cycle lengths (2,4) is 9, not 8 and not 7.
 
-## Three fixed points
+For three fixed points, all cycle lengths are 1. Every connected
+block has weight 1, so the global formula gives the Bell number
 
-For
+    B_3 = 5,
 
-    (1,1,1),
+as required for the identity permutation on three points.
 
-the formula gives
+## 10. Computational verification
 
-    5,
+The repository contains scripts for exact finite verification of
+the cycle formula and the eventual-core restriction/extension result.
 
-the Bell number B_3.
+The recorded checkpoint reports:
 
----
+- 873 permutations in sizes n <= 6: zero formula mismatches.
+- 5,040 permutations of size 7: zero formula mismatches.
+- 500 sampled permutations each at sizes 8, 9, and 10: zero
+  mismatches.
+- All finite maps through size 6: zero recorded restriction and
+  extension failures.
 
-# 12. Critical scope distinction
+These are repository-recorded results. A new execution should be
+logged separately with the exact source revision, command, exit code,
+and output. Do not describe these historical records as a fresh run.
 
-The phase relation describes ONE connected group of cycles.
+The finite verification is [V] evidence only. It does not establish
+the general theorem by itself.
 
-It does NOT itself describe arbitrary global congruences.
+## 11. Literature boundary
 
-The global object is:
+The following subject matter is established:
 
-    set partition of cycles
-        +
-    one divisor per block
-        +
-    normalized phase data per block.
+- congruences of unary and monounary algebras;
+- cyclic and permutation actions;
+- divisor structure of invariant equivalences on a cycle;
+- finite dynamical decomposition into periodic cores and transient
+  trees;
+- gcd restrictions arising from equivariant maps between cycles.
 
-This distinction must remain explicit in the formalization.
+Relevant literature recorded for further comparison includes:
 
----
+- Joel Berman, "On the congruence lattices of unary algebras" (1972).
+- C. Ratanaprasert and K. Denecke, "Unary operations with long
+  pre-periods," Discrete Mathematics 308 (2008), 4998–5005.
+- D. Jakubíková-Studenovská and L. Janičková, "Congruence lattices
+  of connected monounary algebras," Algebra Universalis 81 (2020),
+  Article 54.
 
-# 13. AQARION claim boundary
+The existing literature search did not establish priority for the
+specific phase-orbit parameterization
 
-The following should NOT be claimed:
+    (Z/dZ)^k / Δ_d
 
+or for the resulting weighted set-partition assembly formula.
+
+This means only that priority remains unresolved. It does not imply
+novelty.
+
+Permitted wording:
+
+    "The current literature search did not locate an exact source
+    for this specific phase-orbit formulation."
+
+Prohibited wording:
+
+    "This is novel."
+    "No one has proved this before."
     "AQARION discovered congruences of unary algebras."
 
-That is false.
-
-The cycle/divisor/gcd structure belongs to established monounary
-algebra and G-set congruence theory.
-
-The defensible AQARION result is the exact pullback formulation and
-the finite dynamical decomposition:
-
-    finite T
-      -> pullback-fixed equivalences
-      -> eventual permutation core
-      -> explicit cycle-orbit phase classification
-      -> exact executable census
-      -> reproducible evidence ledger.
-
----
-
-# 14. Current theorem ladder
+## 12. Current theorem ladder
 
 PB-CORE-004:
-
-    Stab(T) ≅ Con(Per(T), T|Per(T))       [P]
+    Stab(T) ≅ Con(Per(T), T|Per(T))      [P]
 
 PB-CORE-005:
+    Connected phase-orbit classification [P-CANDIDATE]
+    Connected-block count                [P-CANDIDATE]
+    Global cycle-assembly formula        [P-CANDIDATE]
 
-    explicit cycle-orbit classification     [P]
-
-PB-CORE-005 computational verification:
-
-    permutations n <= 6 brute force         [V]
-    formula checks n <= 7                   [V]
-
-Full finite-map verification:
-
-    n <= 6 all maps                         [V]
-    n = 7 aggregate census                  [V]
+Computational evidence recorded:
+    Permutation checks through n = 6     [V]
+    Formula checks for n = 7             [V]
+    Finite-map restriction/extension
+    checks through n = 6                 [V]
 
 Lean:
-
-    local phase-setoid layer                [V]
-    phaseRel_invariant                      OPEN
-    global assembly                         OPEN
-    full theorem                            OPEN
-
-    AQ-PB-CORE-005 — CYCLE-ORBIT CLASSIFICATION
-
-Artifact ID: AQ-PB-CORE-005
-Title: Cycle-Orbit Classification of Invariant Equivalence Relations
-Status: "[P-CANDIDATE]" structural theorem · "[V]" computational support · "[L]" OPEN · "C4 BLOCKED"
-
----
-
-1. Purpose
-
-This artifact isolates the remaining structural problem after periodic-core reduction.
-
-PB-CORE-004 establishes
-
-[
-\operatorname{Stab}(T)
-\cong
-\operatorname{Con}(\operatorname{Per}(T),T|_{\operatorname{Per}(T)}).
-]
-
-Therefore the remaining problem is purely a finite permutation problem.
-
-Let the periodic core consist of r cycles with lengths
-
-[
-c_1,\ldots,c_r.
-]
-
-The objective is to classify all equivalence relations invariant under the permutation.
-
-The primary candidate theorem is a bijection between:
-
-1. invariant equivalence relations joining a specified connected collection of cycles; and
-2. a divisor d\mid\gcd(c_1,\ldots,c_k) together with a relative phase orbit in
-
-[
-(\mathbb Z/d)^k/\Delta_d.
-]
-
-The corresponding local count is
-
-[
-d^{k-1}.
-]
-
-This artifact deliberately treats that classification as a candidate theorem, not as a formally closed theorem.
-
----
-
-2. Cycle model
-
-For a cycle of length c, identify its points with
-
-[
-\mathbb Z/c\mathbb Z
-]
-
-and let the permutation act by
-
-[
-x\mapsto x+1.
-]
-
-For k cycles with lengths
-
-[
-c_1,\ldots,c_k,
-]
-
-write the points as
-
-[
-(i,a),
-\qquad
-1\le i\le k,
-\quad
-a\in\mathbb Z/c_i\mathbb Z.
-]
-
-The permutation is
-
-[
-\sigma(i,a)=(i,a+1).
-]
-
----
-
-3. Local connected-block classification candidate
-
-Consider an invariant equivalence relation \theta whose quotient identifies the k cycles into one connected component at the cycle-index level.
-
-The candidate classification is:
-
-[
-\boxed{
-\theta
-\longleftrightarrow
-\left(
-d,
-[\phi]
-\right)
-}
-]
-
-where
-
-[
-d\mid\gcd(c_1,\ldots,c_k)
-]
-
-and
-
-[
-[\phi]\in(\mathbb Z/d)^k/\Delta_d.
-]
-
-Here
-
-[
-\Delta_d
-
-{(a,\ldots,a):a\in\mathbb Z/d\mathbb Z}
-]
-
-is the diagonal subgroup.
-
----
-
-4. Why the divisor condition appears
-
-If a connected invariant equivalence relation identifies cycles of lengths
-
-[
-c_1,\ldots,c_k,
-]
-
-then the induced permutation on the common quotient component has some cycle length d.
-
-Every original cycle maps equivariantly onto that quotient cycle.
-
-Therefore
-
-[
-d\mid c_i
-]
-
-for every i.
-
-Hence
-
-[
-\boxed{
-d\mid\gcd(c_1,\ldots,c_k).
-}
-]
-
-Conversely, if
-
-[
-d\mid c_i
-]
-
-for every i, each cycle admits an equivariant quotient map onto C_d.
-
----
-
-5. Phase parameters
-
-For cycle i, choose an equivariant map
-
-[
-\phi_i:C_{c_i}\to C_d.
-]
-
-After identifying the cycles with additive cyclic groups, every such map has the form
-
-[
-\phi_i(a)=a+t_i\pmod d
-]
-
-for some
-
-[
-t_i\in\mathbb Z/d\mathbb Z.
-]
-
-Thus a connected system of k cycles has phase vector
-
-[
-(t_1,\ldots,t_k)\in(\mathbb Z/d)^k.
-]
-
-Changing the origin of the common quotient by s\in\mathbb Z/d\mathbb Z replaces every phase by
-
-[
-(t_1+s,\ldots,t_k+s).
-]
-
-Therefore the intrinsic parameter is the diagonal orbit
-
-[
-\boxed{
-[(t_1,\ldots,t_k)]
-\in
-(\mathbb Z/d)^k/\Delta_d.
-}
-]
-
----
-
-6. Candidate local count
-
-The diagonal action is free.
-
-Therefore
-
-[
-\left|
-(\mathbb Z/d)^k/\Delta_d
-\right|
-
-\frac{d^k}{d}
-
-d^{k-1}.
-]
-
-Thus the candidate number of invariant connected equivalence structures for fixed d is
-
-[
-\boxed{
-d^{k-1}.
-}
-]
-
-Summing over all admissible quotient cycle lengths gives
-
-[
-\boxed{
-\sum_{d\mid\gcd(c_1,\ldots,c_k)}
-d^{k-1}.
-}
-]
-
----
-
-7. Important sign convention
-
-The canonical phase convention is
-
-[
-\phi_i(a)=a+t_i\pmod d.
-]
-
-If the reference point on the quotient is 0, then
-
-[
-(i,a)\sim(1,0)
-]
-
-corresponds to
-
-[
-a+t_i\equiv0\pmod d,
-]
-
-so
-
-[
-t_i\equiv-a\pmod d.
-]
-
-Thus the inverse parameter extracted from an equivalence relation is
-
-[
-\boxed{
-t_i=-a_i.
-}
-]
-
-For d=2, this sign disappears because
-
-[
--a=a\pmod2.
-]
-
-The sign must not be silently omitted when generalizing to d\ge3.
-
----
-
-8. Candidate bijection theorem
-
-Candidate Theorem
-
-Let
-
-[
-c_1,\ldots,c_k\ge1.
-]
-
-For invariant equivalence relations that connect exactly these k cycles, there is a bijection
-
-[
-\boxed{
-\left{
-\text{connected invariant equivalence relations}
-\right}
-\cong
-\bigsqcup_{d\mid\gcd(c_1,\ldots,c_k)}
-(\mathbb Z/d)^k/\Delta_d.
-}
-]
-
-Consequently,
-
-[
-\boxed{
-#{\text{connected invariant relations}}
-
-\sum_{d\mid\gcd(c_1,\ldots,c_k)}
-d^{k-1}.
-}
-]
-
----
-
-9. Required proof obligations
-
-The candidate theorem is not promoted to "[P]" until all of the following are established.
-
-9.1 Extraction
-
-Given an invariant connected equivalence relation \theta, construct:
-
-[
-d
-]
-
-and
-
-[
-[(t_1,\ldots,t_k)].
-]
-
-9.2 Divisor condition
-
-Prove
-
-[
-d\mid c_i
-]
-
-for every i.
-
-9.3 Phase existence
-
-Prove that each cycle admits a phase parameter relative to a reference cycle.
-
-9.4 Phase uniqueness
-
-Prove that the phase is unique modulo the common diagonal shift.
-
-9.5 Reconstruction
-
-Show that the extracted d and phase orbit reconstruct the complete equivalence relation.
-
-9.6 Injectivity
-
-Two parameter pairs producing the same equivalence relation must differ only by the diagonal action.
-
-9.7 Surjectivity
-
-Every admissible parameter pair produces an invariant equivalence relation.
-
-9.8 Assembly
-
-Combine connected cycle blocks over set partitions of the cycle-index set.
-
----
-
-10. Small exact examples
-
-One cycle
-
-For one cycle of length m,
-
-[
-\boxed{
-|\operatorname{Con}(C_m)|=\tau(m).
-}
-]
-
-This is classical.
-
----
-
-Two cycles
-
-For cycles of lengths m,n,
-
-[
-\boxed{
-\tau(m)+\tau(n)+
-\sum_{d\mid\gcd(m,n)}d.
-}
-]
-
-The first two terms correspond to keeping the cycles separate.
-
-The final term counts connected identifications.
-
----
-
-Examples
-
-(2,2)
-
-[
-\tau(2)+\tau(2)+
-(1+2)
-
-2+2+3
-
-7. 
-
-]
-
-(2,3)
-
-[
-2+2+1=5.
-]
-
-(2,4)
-
-[
-2+3+(1+2)=8.
-]
-
-The value 9 previously considered for (2,4) is incorrect.
-
----
-
-11. General cycle-assembly formula
-
-Let the permutation have cycle lengths
-
-[
-c_1,\ldots,c_r.
-]
-
-For a set partition
-
-[
-\pi\in\Pi([r]),
-]
-
-each block B\in\pi represents a collection of cycles that are connected in the quotient.
-
-Define
-
-[
-g_B
-
-\gcd(c_i:i\in B).
-]
-
-The candidate number of structures associated with B is
-
-[
-\sum_{d\mid g_B}d^{|B|-1}.
-]
-
-Therefore the global candidate formula is
-
-[
-\boxed{
-N(c_1,\ldots,c_r)
-
-\sum_{\pi\in\Pi([r])}
-\prod_{B\in\pi}
-\left(
-\sum_{d\mid g_B}d^{|B|-1}
-\right).
-}
-]
-
-This formula is a candidate theorem until the local bijection and assembly are formally proved.
-
----
-
-12. Identity-core check
-
-If every cycle has length 1, then
-
-[
-g_B=1
-]
-
-for every block.
-
-Hence
-
-[
-\sum_{d\mid1}d^{|B|-1}=1.
-]
-
-Therefore
-
-[
-N(1,\ldots,1)
-
-|\Pi([r])|
-
-B_r,
-]
-
-the Bell number.
-
-This agrees with the fact that the identity permutation preserves every equivalence relation.
-
----
-
-13. Computational evidence
-
-Repository-reported exhaustive permutation verification supports the candidate formula.
-
-The cumulative number of permutations through n=6 is
-
-[
-1+2+6+24+120+720
-
-873. 
-
-]
-
-The recorded permutation verifier reports zero mismatches through n=6.
-
-The later cycle-type computations also report the corresponding formula checks through larger cycle-size bounds.
-
-These are evidence of computational agreement.
-
-They do not replace the missing general proof.
-
----
-
-14. Local Lean status
-
-A local d=2,k=2 relation has been constructed in the PB006 audit.
-
-The relation is
-
-[
-p\sim_t q
-\iff
-p_2+\operatorname{phase}_t(p_1)
-\equiv
-q_2+\operatorname{phase}_t(q_1)
-\pmod2.
-]
-
-The local construction establishes:
-
-- reflexivity;
-- symmetry;
-- transitivity;
-- Setoid construction;
-- distinction of t=0 and t=1.
-
-The next missing formal step is the converse:
-
-[
-\boxed{
-\text{every admissible invariant relation on }C_2\sqcup C_2
-\text{ is one of the two phase relations}.
-}
-]
-
----
-
-15. Required local staircase
-
-The formalization should proceed in this order:
-
-[
-\boxed{
-(2,2)
-\rightarrow
-(k,2)
-\rightarrow
-(2,d)
-\rightarrow
-(k,d)
-\rightarrow
-d^{k-1}.
-}
-]
-
-The first nontrivial boundary is:
-
-[
-\boxed{
-\mathcal C_{2,2}
-
-{
-\operatorname{phaseSetoid}_2(0),
-\operatorname{phaseSetoid}_2(1)
-}.
-}
-]
-
----
-
-16. Evidence status
-
-Claim| Status
-Single-cycle divisor classification| "[P]" classical
-Two-cycle gcd synchronization| "[P]" classical
-General phase-orbit parametrization| "[P-CANDIDATE]"
-Local d^{k-1} count| "[P-CANDIDATE]"
-Global weighted Bell formula| "[P-CANDIDATE]"
-Permutation enumeration through n=6| "[V]" repository-recorded
-Local d=2,k=2 construction| "[P-CANDIDATE]" until Lean compile
-General Lean theorem| "[O]"
-Literature priority| "[R] OPEN"
-C4| "BLOCKED"
-Publication| "BLOCKED"
-Promotion| "FALSE"
-
----
-
-17. Literature boundary
-
-The following surrounding ingredients are classical:
-
-- congruence lattices of unary algebras;
-- congruence relations of monounary algebras;
-- periodic/cyclic decomposition;
-- invariant equivalence relations of finite unary operations;
-- divisor structure on a cycle;
-- gcd synchronization between cycles.
-
-Relevant literature includes:
-
-Joel Berman, On the congruence lattices of unary algebras, 1972.
-
-C. Ratanaprasert and K. Denecke, Unary operations with long pre-periods, Discrete Mathematics 308 (2008), 4998–5005.
-
-D. Jakubíková-Studenovská and L. Janičková, Congruence lattices of connected monounary algebras, Algebra Universalis 81 (2020), Article 54.
-
-The current search did not establish priority for the exact multi-cycle phase-orbit formulation
-
-[
-(\mathbb Z/d)^k/\Delta_d
-]
-
-or for the exact weighted Bell assembly formula.
-
-Therefore the permitted wording is:
-
-«No exact source for the specific phase-orbit parametrization was located in the current search pass.»
-
-The following claims are prohibited:
-
-«“This is novel.”»
-
-«“No one has proved this before.”»
-
-«“AQARION discovered the phase classification.”»
-
----
-
-18. Final status
-
-[
-\boxed{
-\text{PB-CORE-005 = STRUCTURAL THEOREM CANDIDATE}
-}
-]
-
-It is not formally closed.
-
-It is not C4-certified.
-
-It is not publication-certified.
-
-It is not promoted beyond "[P-CANDIDATE]".
-
-The correct next proof target is the local converse/surjectivity theorem, beginning with k=d=2.
-
+    Local phase-setoid layer             USER-REPORTED / VERIFY
+    General phase invariance              OPEN
+    Extraction and reconstruction         OPEN
+    Global assembly                       OPEN
+    Full classification                   OPEN
+
+Governance:
+    C4                                   BLOCKED
+    Publication                          BLOCKED
+    Promotion                            NOT AUTHORIZED
+
+## 13. Next proof target
+
+The next target is not another numerical fit. It is the local
+classification theorem:
+
+    Every invariant equivalence joining exactly k specified cycles
+    corresponds to exactly one admissible divisor d and one phase
+    orbit in (Z/dZ)^k / Δ_d.
+
+Start with two cycles of length 2, then generalize the extraction,
+uniqueness, and reconstruction arguments. Keep computational
+verification, general mathematical proof, Lean compilation, and
+publication review as separate evidence gates.
