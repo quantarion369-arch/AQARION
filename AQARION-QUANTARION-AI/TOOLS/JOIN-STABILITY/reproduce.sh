@@ -1,40 +1,88 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -uo pipefail
 
 ROOT="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
-cd "$ROOT"
+cd "$ROOT" || exit 90
 
-echo "AQARION JOIN-STABILITY"
-echo "======================"
-echo "Package: $ROOT"
-echo
+mkdir -p receipts || exit 91
 
-command -v python3 >/dev/null 2>&1 || {
-    echo "ERROR: python3 is required" >&2
-    exit 2
-}
+STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
+LOG="receipts/reproduction-${STAMP}.log"
+STATUS="receipts/reproduction-${STAMP}.status"
 
-test -f manifest.json || {
-    echo "ERROR: manifest.json is missing" >&2
-    exit 2
-}
+{
+    echo "PACKAGE=JOIN-STABILITY"
+    echo "UTC_START=${STAMP}"
+    echo "PACKAGE_DIR=${ROOT}"
+    echo "AQ_EXPECTED_TESTED_REVISION=${AQ_EXPECTED_TESTED_REVISION:-UNSET}"
+    echo
 
-test -f claims.jsonl || {
-    echo "ERROR: claims.jsonl is missing" >&2
-    exit 2
-}
+    echo "=== Tested Git revision ==="
+    if git rev-parse HEAD; then
+        echo "GIT_REVISION_COMMAND=PASS"
+    else
+        echo "GIT_REVISION_COMMAND=FAIL"
+        exit 10
+    fi
 
-test -f evidence.jsonl || {
-    echo "ERROR: evidence.jsonl is missing" >&2
-    exit 2
-}
+    echo
+    echo "=== Structural verifier ==="
+    if python3 verify.py; then
+        echo "VERIFY_EXIT=0"
+    else
+        rc=$?
+        echo "VERIFY_EXIT=${rc}"
+        exit 11
+    fi
 
-test -f verify.py || {
-    echo "ERROR: verify.py is missing" >&2
-    exit 2
-}
+    echo
+    echo "=== Independent finite audit ==="
+    if python3 join_stability_independent_audit.py; then
+        echo "AUDIT_EXIT=0"
+    else
+        rc=$?
+        echo "AUDIT_EXIT=${rc}"
+        exit 12
+    fi
 
-echo "Running independent verifier..."
-echo
+    echo
+    echo "=== Negative-control self-tests ==="
+    if python3 verify.py --self-test-negative-controls; then
+        echo "NEGATIVE_CONTROLS_EXIT=0"
+    else
+        rc=$?
+        echo "NEGATIVE_CONTROLS_EXIT=${rc}"
+        exit 13
+    fi
 
-exec python3 verify.py
+    echo
+    echo "=== Lean status ==="
+    echo "Lean is not compiled by this script."
+    echo "LEAN_STATUS=OPEN"
+
+    echo
+    echo "RESULT=PACKAGE_AND_AUDIT_PASS"
+    echo "RESULT_SCOPE=STRUCTURAL_AND_FINITE_COMPUTATIONAL_CHECKS_ONLY"
+    exit 0
+} 2>&1 | tee "$LOG"
+
+RC=${PIPESTATUS[0]}
+
+{
+    echo "package=JOIN-STABILITY"
+    echo "utc_start=${STAMP}"
+    echo "exit_code=${RC}"
+    echo "log=${LOG}"
+    echo "tested_revision=${AQ_EXPECTED_TESTED_REVISION:-UNSET}"
+    if [ "$RC" -eq 0 ]; then
+        echo "result=PACKAGE_AND_AUDIT_PASS"
+        echo "scope=STRUCTURAL_AND_FINITE_COMPUTATIONAL_CHECKS_ONLY"
+    else
+        echo "result=FAIL"
+    fi
+} > "$STATUS"
+
+echo "REPRODUCTION_EXIT=${RC}"
+echo "REPRODUCTION_LOG=${LOG}"
+echo "REPRODUCTION_STATUS=${STATUS}"
+exit "$RC"
