@@ -1,3 +1,1506 @@
+### Exact repository change list
+
+The refactoring script above defines the complete contents or transformations for these target files:
+
+| Action   | Exact repository path                                                    |
+| -------- | ------------------------------------------------------------------------ |
+| Replace  | AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py                 |
+| Add      | AQARION-QUANTARION-AI/verification/SM/SM003/test_sm003.py                |
+| Update   | AQARION-QUANTARION-AI/verification/SM/SM003/manifest.json                |
+| Replace  | AQARION-QUANTARION-AI/verification/SM/SM003/README.md                    |
+| Add      | AQARION-QUANTARION-AI/verification/BRT/test_brt_validation.py            |
+| Replace  | AQARION-QUANTARION-AI/verification/BRT/brt_mutation.py                   |
+| Update   | AQARION-QUANTARION-AI/verification/BRT/README.md                         |
+| Generate | AQARION-QUANTARION-AI/verification/SM/SM003/sm003-mutation-report.json   |
+| Generate | AQARION-QUANTARION-AI/verification/SM/SM003/SM003-BRT-REFRACTOR-AUDIT.md |
+
+Verification boundary: The script and report are reproduced inline above. The SM003 replacement and five generated SM003 tests were checked in an isolated temporary directory; the bounded audit covered 3,984 map–partition pairs with zero baseline mismatches. The BRT regression suite has not been run against the repository's actual validator. The GitHub repository was not modified, and no commit, push, workflow run, or Lean certification is claimed.
+Worked for 5m 42s
+
+I inspected the requested source revision and built the refactoring script and audit report. The source-level defects are identified; the patch has not been applied to GitHub. The clone attempt failed because this environment could not resolve `github.com`, so I tested the generated replacement code in an isolated temporary directory instead of claiming a repository-wide pass.
+
+### Deliverables
+
+1\. Python refactoring script
+
+Destination: repository root, `aqarion_sm003_brt_refactor.py`
+
+Download the complete script
+
+It patches SM003's missing matrix alternatives, reconciles the manifest and README, adds SM003 and BRT tests, updates BRT alternative-result terminology, and generates a structured Markdown audit report.
+
+2\. Source audit report
+
+Destination after applying: `AQARION-QUANTARION-AI/verification/SM/SM003/SM003-BRT-REFRACTOR-AUDIT.md`
+
+Download the complete audit report
+
+Records the inspected file-level gaps, source identifiers, test results actually obtained, and outstanding verification requirements.
+
+### Concrete findings
+
+| Area                  | Finding and action                                                                                                                                                                                  |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SM003 manifest        | Commit placeholder remains; 3,975 is the subtotal, not the total. The corrected total is 3,984 map–partition pairs.                                                                                 |
+| SM003 mutations       | The inspected implementation has graph alternatives but omits the six declared D-level matrix alternatives. It uses NumPy's floating-point rank calculation rather than exact rational elimination. |
+| SM003 workflow        | .github/workflows/sm003-verify.yml was not found at the requested revision; the README's green-run claim is unsupported by that tree.                                                               |
+| BRT validator         | Already uses exact rational arithmetic. The refactor preserves it and adds tests for isolated vertices, noninjective maps, partition-label invariance, invalid inputs, and the case corpus.         |
+| BRT alternative test  | The replacement reports explicit DETECTED and NOT_DETECTED outcomes, with component-count comparison kept separate from the rank theorem.                                                           |
+| Duplicate alternative | R:c-only-variant is treated as INVALID_MUTANT until it has a distinct implementation; duplicate semantics must not inflate coverage.                                                                |
+
+### Checks performed on the generated replacement
+
+Python syntax check
+
+PASS
+
+Generated SM003 unit tests
+
+5 passed
+
+Exact SM003 audit,
+
+3,984 cases; 0 mismatches
+
+Generated BRT alternative smoke test
+
+2 witnesses detected
+
+These checks ran against generated replacement code in a temporary directory. The actual repository's BRT unit suite, clean-checkout replay, GitHub Actions, and Lean build have not been run.
+
+### Run against the repository
+
+After placing the script at the repository root and checking out the requested commit:
+
+```bash
+python3 aqarion_sm003_brt_refactor.py --repo . --apply
+```
+
+The script checks the expected revision, saves backups outside the checkout, applies the patch, runs the added tests and bounded audit, and writes the Markdown report. It does not commit or push.
+
+Recommended disposition: review the generated diff first. Then commit the changes and run the committed revision from a clean checkout before upgrading any evidence status.
+Worked for 29s
+
+### AQARION audit — concrete gaps found in the live tree
+
+I inspected the current `main` at commit `20e7447b93ae356fb8c3a937cce56573909b0a84`, including the actual SM003 files, BRT verifier, mutation script, and workflow directory.
+
+The next step is not another theorem or a new workflow. It is reconciling the SM003 evidence claims with the code that actually exists. I made no repository changes.
+
+### 1\. SM003: three reproducibility defects
+
+A. Manifest commit is still a placeholder
+
+`verification/SM/SM003/manifest.json` contains:
+
+`REPLACE_WITH_YOUR_COMMIT_HASH_AFTER_PUSH`
+
+This means the manifest does not yet bind its evidence to a specific tested commit. The current tree SHA is known, but that is not proof that the reported runs executed against it.
+
+[Open manifest](https://github.com/quantarion369-arch/AQARION/blob/main/AQARION-QUANTARION-AI/verification/SM/SM003/manifest.json)
+
+B. The claimed SM003 workflow is absent from the current workflow listing
+
+The SM003 README names `.github/workflows/sm003-verify.yml` and reports it green in 21 seconds. The live workflow directory lists `BRT-validation.yml`, `D22-validation.yml`, and `mobile-research-kit.yml`—not `sm003-verify.yml`.
+
+The README's workflow claim is therefore stale or unsupported by the current tree. I have not established whether the historical run occurred under a different workflow filename.
+
+[Open workflow directory](https://github.com/quantarion369-arch/AQARION/tree/main/.github/workflows)
+
+C. The claimed mutation coverage is not implemented by the inspected SM003 mutation script
+
+`mutations.py` implements rank-oracle graph variants. It does not implement the six named D-level matrix mutations (`Kᵀ`, `[K,P]`, `(I−P)K`, `PKP`, `(I−P)Kᵀ`, `KP(I−P)`) listed in the manifest and README.
+
+Nor does its `variants()` dictionary include the manifest's separately named `R:c-only-variant`. The declared eleven-mutant suite therefore cannot be reproduced from this script alone.
+
+[Open mutation script](https://github.com/quantarion369-arch/AQARION/blob/main/AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py)
+
+### 2\. What the current BRT code actually establishes
+
+The BRT implementation is more complete on this point:
+
+* `brt_validation.py` constructs the defect matrix and computes its rank over exact rationals.
+
+* `brt_mutation.py` explicitly tests the state-transition-graph substitution against the block co-occurrence graph.
+
+* Its two hard-coded mutation cases have different expected component counts, and the script fails if the mutation survives.
+
+* The GitHub Actions workflow invokes both the exact validator and mutation script.
+
+Sources: [BRT validator](https://github.com/quantarion369-arch/AQARION/blob/main/AQARION-QUANTARION-AI/verification/BRT/brt_validation.py), [BRT mutation suite](https://github.com/quantarion369-arch/AQARION/blob/main/AQARION-QUANTARION-AI/verification/BRT/brt_mutation.py), [BRT workflow](https://github.com/quantarion369-arch/AQARION/blob/main/.github/workflows/BRT-validation.yml).
+
+That establishes the intended execution path by source inspection. It does not establish a fresh passing run.
+
+Also, SM003's two-witness suite explicitly excludes the BRT incidence mutation. Those are distinct coverage claims; one cannot substitute for the other.
+
+### 3\. Mathematical status remains separate
+
+The two identities have concise mathematical proofs:
+
+\\operatorname{rank}(D_\\Pi)=k-c(H_\\Pi)
+
+and
+
+\\|D_\\Pi\\|_F^2
+=\\sum_{i,j}
+\\frac{m_{ij}(|B_i|-m_{ij})}{|B_i|\\,|B_j|}.
+
+The first follows from the kernel's component-wise equality constraints. The second follows by summing the squared residuals of normalized block indicators. Both can be classified \[P\] at the paper-proof level, independently of whether a particular implementation or CI run passes.
+
+The reported bounded computations remain \[V\] claims from the supplied records until the precise source revision and execution outputs are reproducibly bound. Lean remains open.
+
+### 4\. Exact next action
+
+* Repair SM003's provenance: replace the placeholder with a real tested revision and record hashes of the executed scripts.
+
+* Reconcile the workflow claim against the current tree—either restore the intended workflow or correct the stale README claim based on the actual run history.
+
+* Make the mutation inventory executable: each declared mutant needs an implementation, a stable ID, and an explicit kill result. Do not count six D-level mutations merely because their names appear in a manifest.
+
+* Run the actual SM003 and BRT commands on a clean checkout of the recorded revision, preserving stdout, stderr, exit codes, and environment.
+
+* Keep the theorem proof, bounded verification, mutation coverage, Lean status, and publication status as separate ledger fields.
+
+Disposition: mathematical proofs are available; current repository provenance and SM003 mutation-coverage claims need repair. No certification or promotion follows from this inspection.
+### AQARION SM003 — Inline Deliverables
+
+### 1\. `verification/SM/SM003/manifest.json`
+
+Replace the unresolved revision placeholder with the actual commit SHA only after the deliverables are committed. Do not label the package certified until the clean-checkout run passes.
+
+{
+  "schema": "AQ-SM003-VERIFICATION-1.0",
+  "claim": "rank(D_Pi) = k - c(H_Pi)",
+  "status": "SOURCE_AUDIT_REQUIRED",
+  "revision": {
+    "commit": "REPLACE_AFTER_COMMIT",
+    "tree": "RECORD_AFTER_COMMIT"
+  },
+  "mathematical_claim": {
+    "space": "Finite-dimensional real functions on a finite set X",
+    "map": "T : X -> X",
+    "partition": "Pi = {B_1,...,B_k}",
+    "operator": "K f = f o T",
+    "projector": "P_Pi is the blockwise averaging orthogonal projector",
+    "defect": "D_Pi = (I - P_Pi) K P_Pi",
+    "graph": "H_Pi has one vertex per partition block; each source block induces edges among all target blocks intersecting its image",
+    "rank_identity": "rank(D_Pi) = k - c(H_Pi)",
+    "components": "c(H_Pi) counts all graph components, including isolated vertices"
+  },
+  "evidence_policy": {
+    "P": "Proof from stated definitions",
+    "V": "Reproducible bounded computation with retained output and revision binding",
+    "L": "Lean proof accepted only after lake build succeeds with zero sorry in the claimed dependency closure",
+    "C": "Certification requires independent clean-checkout replay and complete provenance",
+    "F": "Frozen only when the claim registry explicitly records the frozen revision and evidence"
+  },
+  "required_checks": [
+    "independent graph-oracle versus exact matrix-rank comparison",
+    "isolated target-block regression",
+    "noninjective-map regression",
+    "partition-label permutation invariance",
+    "source-block image must include every target block hit by T",
+    "clean-checkout replay",
+    "record stdout, stderr, exit status, runtime, interpreter and dependency versions",
+    "record source and fixture SHA-256 hashes",
+    "bind outputs to the committed revision"
+  ],
+  "mutation_policy": {
+    "rule": "Every declared mutant must have a uniquely named executable implementation and a recorded test outcome.",
+    "required_outcomes": ["KILLED", "SURVIVED", "NOT_RUN", "INVALID_MUTANT"],
+    "prohibition": "Do not claim a mutation score for mutants not implemented and executed."
+  }
+}
+
+### 3\. `verification/SM/SM003/mutations.py`
+
+This replacement makes the declared operator mutations executable and records survivors instead of assuming every mutant is killed. It uses exact rational Gaussian elimination, not floating-point matrix-rank tolerances.
+
+#!/usr/bin/env python3
+"""SM003 exact-rational theorem and mutation audit.
+
+Usage:
+    python3 verification/SM/SM003/mutations.py
+
+Exhaustively checks all maps and set partitions for n <= 4.
+Every mutant is evaluated against the correct defect-rank oracle.
+This script is a test harness; its output must be retained as evidence.
+"""
+
+from fractions import Fraction as F
+from itertools import product
+import json
+import platform
+import sys
+
+def partitions(n):
+    """Generate each set partition of range(n) exactly once."""
+    if n == 0:
+        yield ()
+        return
+    for part in partitions(n - 1):
+        yield part + ((n - 1,),)
+        for i in range(len(part)):
+            yield part[:i] + (part[i] + (n - 1,),) + part[i + 1:]
+
+def mat_zero(n, m):
+    return [[F(0) for _ in range(m)] for _ in range(n)]
+
+def identity(n):
+    a = mat_zero(n, n)
+    for i in range(n):
+        a[i][i] = F(1)
+    return a
+
+def transpose(a):
+    return [list(row) for row in zip(*a)]
+
+def add(a, b):
+    return [[x + y for x, y in zip(ra, rb)] for ra, rb in zip(a, b)]
+
+def sub(a, b):
+    return [[x - y for x, y in zip(ra, rb)] for ra, rb in zip(a, b)]
+
+def mul(a, b):
+    if not a or not b or len(a[0]) != len(b):
+        raise ValueError("incompatible matrix dimensions")
+    bt = transpose(b)
+    return [
+        [sum((x * y for x, y in zip(row, col)), F(0)) for col in bt]
+        for row in a
+    ]
+
+def rank(a):
+    """Exact rank by rational row reduction."""
+    if not a:
+        return 0
+    a = [row[:] for row in a]
+    rows, cols = len(a), len(a[0])
+    r = 0
+    for col in range(cols):
+        pivot = next((i for i in range(r, rows) if a[i][col]), None)
+        if pivot is None:
+            continue
+        a[r], a[pivot] = a[pivot], a[r]
+        p = a[r][col]
+        a[r] = [x / p for x in a[r]]
+        for i in range(rows):
+            if i != r and a[i][col]:
+                q = a[i][col]
+                a[i] = [x - q * y for x, y in zip(a[i], a[r])]
+        r += 1
+        if r == rows:
+            break
+    return r
+
+def koopman(t):
+    n = len(t)
+    k = mat_zero(n, n)
+    for x, y in enumerate(t):
+        k[x][y] = F(1)
+    return k
+
+def projector(part, n):
+    p = mat_zero(n, n)
+    for block in part:
+        size = F(len(block))
+        for x in block:
+            for y in block:
+                p[x][y] = F(1) / size
+    return p
+
+def graph_component_count(t, part):
+    """Count components in the undirected target-block co-occurrence graph."""
+    nblocks = len(part)
+    block_of = {}
+    for j, block in enumerate(part):
+        for x in block:
+            block_of[x] = j
+
+    adj = [set() for _ in range(nblocks)]
+    for source in part:
+        targets = sorted({block_of[t[x]] for x in source})
+        for u in targets:
+            for v in targets:
+                if u != v:
+                    adj[u].add(v)
+                    adj[v].add(u)
+
+    seen = set()
+    components = 0
+    for start in range(nblocks):
+        if start in seen:
+            continue
+        components += 1
+        stack = [start]
+        seen.add(start)
+        while stack:
+            u = stack.pop()
+            for v in adj[u]:
+                if v not in seen:
+                    seen.add(v)
+                    stack.append(v)
+    return components
+
+def inspect_case(t, part):
+    n = len(t)
+    k_blocks = len(part)
+    K = koopman(t)
+    P = projector(part, n)
+    I = identity(n)
+    D = mul(sub(I, P), mul(K, P))
+    expected = k_blocks - graph_component_count(t, part)
+    actual = rank(D)
+
+    mutants = {
+        "M-K-transpose": transpose(K),
+        "M-commutator-KP-minus-PK": sub(mul(K, P), mul(P, K)),
+        "M-left-projection-I-minus-P-times-K": mul(sub(I, P), K),
+        "M-projected-K-PKP": mul(P, mul(K, P)),
+        "M-left-projection-times-K-transpose":
+            mul(sub(I, P), transpose(K)),
+        "M-KP-times-I-minus-P": mul(K, mul(P, sub(I, P))),
+    }
+    results = {
+        name: rank(matrix) != expected
+        for name, matrix in mutants.items()
+    }
+    # Deliberately wrong graph oracle: returns c instead of k-c.
+    results["M-R-c-only-variant"] = (
+        graph_component_count(t, part) != expected
+    )
+    return actual, expected, results
+
+def main():
+    max_n = 4
+    cases = 0
+    theorem_mismatches = []
+    mutant_kills = {}
+    mutant_first_kill = {}
+
+    for n in range(1, max_n + 1):
+        for t in product(range(n), repeat=n):
+            for part in partitions(n):
+                cases += 1
+                actual, expected, results = inspect_case(t, part)
+                if actual != expected:
+                    theorem_mismatches.append({
+                        "n": n, "map": t, "partition": part,
+                        "matrix_rank": actual, "graph_rank": expected,
+                    })
+                for name, killed in results.items():
+                    mutant_kills.setdefault(name, 0)
+                    if killed:
+                        mutant_kills[name] += 1
+                        mutant_first_kill.setdefault(
+                            name,
+                            {
+                                "n": n,
+                                "map": t,
+                                "partition": part,
+                                "correct_rank": expected,
+                            },
+                        )
+
+    report = {
+        "schema": "AQ-SM003-MUTATION-REPORT-1.0",
+        "status": "PASS" if not theorem_mismatches else "FAIL",
+        "scope": {
+            "maps_and_partitions": "exhaustive",
+            "n": f"1..{max_n}",
+            "cases": cases,
+            "arithmetic": "exact rational",
+        },
+        "environment": {
+            "python": sys.version,
+            "implementation": platform.python_implementation(),
+            "platform": platform.platform(),
+        },
+        "theorem_mismatch_count": len(theorem_mismatches),
+        "theorem_mismatch_examples": theorem_mismatches[:10],
+        "mutation_kill_counts": mutant_kills,
+        "mutation_survivors": [
+            name for name, count in mutant_kills.items() if count == 0
+        ],
+        "first_kill_witnesses": mutant_first_kill,
+        "warning": (
+            "This report covers only the mutations implemented here and "
+            "the enumerated finite scope. It does not establish Lean proof, "
+            "publication readiness, or certification."
+        ),
+    }
+    print(json.dumps(report, indent=2, sort_keys=True))
+    return 0 if not theorem_mismatches else 1
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+### 4\. Required replay commands
+
+Run from the repository root; retain the actual output rather than transcribing expected results.
+
+```bash
+set -eu
+git rev-parse HEAD
+git status --short
+python3 --version
+python3 verification/SM/SM003/mutations.py \
+  > sm003-mutation-report.json
+python3 -m json.tool sm003-mutation-report.json >/dev/null
+sha256sum \
+  verification/SM/SM003/README.md \
+  verification/SM/SM003/manifest.json \
+  verification/SM/SM003/mutations.py \
+  sm003-mutation-report.json
+```
+
+Acceptance conditions: theorem mismatch count is zero; all mutation outcomes are reported; any surviving mutant is explicitly recorded as `SURVIVED`, not silently counted as killed. The manifest’s revision and tree fields must then be bound to the committed sources, and the captured output must be generated from that same revision.
+
+These are inline replacement deliverables, not a claim that the repository has been changed or that this script has already passed.
+REMOVE ALL KILLED TERMINOLOGY AND REORODUCE DELIVERABLES
+
+## 1. `verification/SM/SM003/manifest.json`
+
+```json
+{
+  "schema": "AQ-SM003-VERIFICATION-1.0",
+  "claim": "rank(D_Pi) = k - c(H_Pi)",
+  "status": "SOURCE_AUDIT_REQUIRED",
+  "revision": {
+    "commit": "REPLACE_AFTER_COMMIT",
+    "tree": "RECORD_AFTER_COMMIT"
+  },
+  "mathematical_claim": {
+    "space": "Finite-dimensional real functions on a finite set X",
+    "map": "T : X -> X",
+    "partition": "Pi = {B_1,...,B_k}",
+    "operator": "K f = f o T",
+    "projector": "P_Pi is the blockwise averaging orthogonal projector",
+    "defect": "D_Pi = (I - P_Pi) K P_Pi",
+    "graph": "H_Pi has one vertex per partition block; each source block induces edges among all target blocks intersecting its image",
+    "rank_identity": "rank(D_Pi) = k - c(H_Pi)",
+    "components": "c(H_Pi) counts all graph components, including isolated vertices"
+  },
+  "evidence_policy": {
+    "P": "Proof from stated definitions",
+    "V": "Reproducible bounded computation with retained output and revision binding",
+    "L": "Lean proof accepted only after lake build succeeds with zero sorry in the claimed dependency closure",
+    "C": "Certification requires independent clean-checkout replay and complete provenance",
+    "F": "Frozen only when the claim registry explicitly records the frozen revision and evidence"
+  },
+  "required_checks": [
+    "independent graph-oracle versus exact matrix-rank comparison",
+    "isolated target-block regression",
+    "noninjective-map regression",
+    "partition-label permutation invariance",
+    "source-block image must include every target block hit by T",
+    "clean-checkout replay",
+    "record stdout, stderr, exit status, runtime, interpreter and dependency versions",
+    "record source and fixture SHA-256 hashes",
+    "bind outputs to the committed revision"
+  ],
+  "mutation_policy": {
+    "rule": "Every declared mutant must have a uniquely named executable implementation and a recorded test outcome.",
+    "required_outcomes": [
+      "DETECTED",
+      "NOT_DETECTED",
+      "NOT_RUN",
+      "INVALID_MUTANT"
+    ],
+    "prohibition": "Do not claim a mutation detection score for mutants not implemented and executed."
+  }
+}
+```
+
+***
+
+## 2. `verification/SM/SM003/README.md`
+
+````markdown
+# AQARION SM003 — Exact Defect-Rank Verification
+
+## Status
+
+SOURCE_AUDIT_REQUIRED.
+
+This package supplies an exact-rational verification harness for the
+partition defect-rank identity. It is not certified, Lean-proved, or
+frozen merely because the source files exist.
+
+Certification requires an independent clean-checkout replay with retained
+output and complete provenance.
+
+## Mathematical claim
+
+Let X be a finite set, let T : X -> X be a deterministic map, and let
+
+\[
+\Pi=\{B_1,\ldots,B_k\}
+\]
+
+be a partition into nonempty blocks.
+
+On the real function space \(\mathbb{R}^X\), define the pullback operator
+
+\[
+(Kf)(x)=f(T(x)).
+\]
+
+Let \(P_\Pi\) be the blockwise averaging orthogonal projector, and define
+
+\[
+D_\Pi=(I-P_\Pi)KP_\Pi.
+\]
+
+Construct the undirected graph \(H_\Pi\) as follows:
+
+- There is one vertex for each partition block.
+- For each source block \(B_i\), collect every target block intersecting
+  \(T(B_i)\).
+- Join every pair of distinct target-block vertices in that collection.
+- Retain all vertices, including isolated vertices.
+
+The claim is
+
+\[
+\boxed{\operatorname{rank}(D_\Pi)=k-c(H_\Pi),}
+\]
+
+where \(c(H_\Pi)\) counts all connected components, including isolated
+vertices.
+
+## Kernel interpretation
+
+Let \(V_\Pi\) be the subspace of block-constant functions.
+
+For
+
+\[
+f=\sum_{j=1}^{k}a_j1_{B_j}\in V_\Pi,
+\]
+
+the condition \(D_\Pi f=0\) means that \(Kf\) is constant on each source
+block.
+
+Equivalently, the coefficients \(a_j\) agree on all target blocks reached
+by any single source block. Taking transitive closure gives
+
+\[
+\ker(D_\Pi|_{V_\Pi})
+=
+\left\{
+\sum_{j=1}^{k}a_j1_{B_j}:
+a_j\text{ is constant on each component of }H_\Pi
+\right\}.
+\]
+
+Thus
+
+\[
+\dim\ker(D_\Pi|_{V_\Pi})=c(H_\Pi).
+\]
+
+Since \(D_\Pi=D_\Pi P_\Pi\), the ambient rank equals the rank of the
+restriction to \(V_\Pi\), yielding the stated rank identity.
+
+The ambient kernel must be distinguished from the restricted kernel:
+
+\[
+\ker D_\Pi
+=
+V_\Pi^\perp\oplus\ker(D_\Pi|_{V_\Pi}),
+\]
+
+so, with \(n=|X|\),
+
+\[
+\dim\ker D_\Pi=n-k+c(H_\Pi).
+\]
+
+## Package contents
+
+| File | Purpose |
+|---|---|
+| `README.md` | Mathematical definitions, execution instructions, and evidence boundaries |
+| `manifest.json` | Claim metadata, required checks, revision placeholders, and mutation policy |
+| `mutations.py` | Exact-rational matrix-rank comparison and executable mutations |
+
+The replay generates:
+
+| File | Purpose |
+|---|---|
+| `sm003-mutation-report.json` | Actual theorem-check and mutation results |
+
+The generated report is evidence only after its execution context and
+source revision have been recorded.
+
+## Verification scope
+
+The supplied harness enumerates every deterministic map and every set
+partition for
+
+\[
+1\le n\le4.
+\]
+
+For each case, it independently constructs:
+
+1. The pullback matrix \(K\).
+2. The blockwise averaging matrix \(P_\Pi\).
+3. The defect matrix \((I-P_\Pi)KP_\Pi\).
+4. The target-block co-occurrence graph.
+5. The exact matrix rank.
+6. The graph prediction \(k-c(H_\Pi)\).
+
+Matrix arithmetic and Gaussian elimination use `fractions.Fraction`.
+There are no floating-point rank tolerances.
+
+The matrix and graph implementations are separate, although both consume
+the same map and partition inputs.
+
+The bounded enumeration includes noninjective maps and isolated graph
+vertices. The current harness does not separately emit named regression
+results or explicitly test partition-label permutations. Those required
+checks must not be marked complete merely because they are listed in the
+manifest.
+
+## Executable mutations
+
+The supplied harness evaluates these named alternatives against the
+correct graph-based rank prediction:
+
+| Mutation | Implemented expression |
+|---|---|
+| `M-K-transpose` | \(K^\mathsf{T}\) |
+| `M-commutator-KP-minus-PK` | \(KP-PK\) |
+| `M-left-projection-I-minus-P-times-K` | \((I-P)K\) |
+| `M-projected-K-PKP` | \(PKP\) |
+| `M-left-projection-times-K-transpose` | \((I-P)K^\mathsf{T}\) |
+| `M-KP-times-I-minus-P` | \(KP(I-P)\) |
+| `M-R-c-only-variant` | \(c(H_\Pi)\) instead of \(k-c(H_\Pi)\) |
+
+These are the expressions actually implemented. For example,
+`M-K-transpose` evaluates \(K^\mathsf{T}\) itself, not the defect
+\((I-P)K^\mathsf{T}P\).
+
+A mutation is detected in a case when its resulting rank, or its
+alternative graph prediction, differs from the correct prediction.
+
+A mutation with no detection witness in the executed scope is reported
+as `NOT_DETECTED`. This does not establish equivalence for all finite
+systems.
+
+## Mutation reporting
+
+The manifest permits these outcome labels:
+
+- `DETECTED`
+- `NOT_DETECTED`
+- `NOT_RUN`
+- `INVALID_MUTANT`
+
+The supplied harness reports:
+
+- Per-mutant detection counts.
+- An explicit outcome for each executed mutant.
+- A list of mutations not detected in the executed scope.
+- The first detection witness for each detected mutation.
+
+All declared mutations in this harness are executed during a completed
+run. The labels `NOT_RUN` and `INVALID_MUTANT` remain available under the
+manifest policy but are not assigned by this harness during a normal,
+completed execution.
+
+A runtime exception is not automatically an `INVALID_MUTANT` result.
+An interrupted run does not constitute a completed mutation report.
+
+Do not claim a mutation detection score for mutants that were not
+implemented and executed.
+
+## Replay commands
+
+Run from the repository root:
+
+```bash
+set -eu
+git rev-parse HEAD
+git status --short
+python3 --version
+python3 verification/SM/SM003/mutations.py \
+  > sm003-mutation-report.json
+python3 -m json.tool sm003-mutation-report.json >/dev/null
+sha256sum \
+  verification/SM/SM003/README.md \
+  verification/SM/SM003/manifest.json \
+  verification/SM/SM003/mutations.py \
+  sm003-mutation-report.json
+```
+
+Retain actual output. Do not replace it with expected results.
+
+These commands do not themselves perform a clean checkout or retain all
+required provenance. The complete replay record must also include:
+
+- Stdout.
+- Stderr.
+- Exit status.
+- Runtime.
+- Interpreter and relevant dependency versions.
+- Source and fixture hashes, where applicable.
+- The exact committed source revision and tree.
+- Evidence that the independent replay used that revision.
+
+## Acceptance conditions
+
+Acceptance requires:
+
+1. Zero theorem mismatches in the declared executed scope.
+2. A recorded outcome for every declared mutant.
+3. Explicit retention of all `NOT_DETECTED` outcomes.
+4. Completion of the required checks listed in `manifest.json`.
+5. An independent clean-checkout replay.
+6. Output bound to the exact committed sources.
+7. Complete execution provenance.
+
+The report's `PASS` status means only that no theorem mismatch was found
+in its bounded enumeration. It does not mean every mutation was detected
+or that all certification requirements were completed.
+
+## Revision binding
+
+The manifest initially contains:
+
+```json
+{
+  "commit": "REPLACE_AFTER_COMMIT",
+  "tree": "RECORD_AFTER_COMMIT"
+}
+```
+
+Replace these placeholders only after the relevant source revision
+exists.
+
+Record the revision whose source bytes were actually executed. Do not
+bind an output to a different revision after modifying the checker.
+
+Updating a committed manifest creates another revision. Maintain a clear
+distinction between the source revision tested and any later revision
+containing its evidence record.
+
+## Evidence policy
+
+| Label | Meaning |
+|---|---|
+| `P` | Proof from stated definitions |
+| `V` | Reproducible bounded computation with retained output and revision binding |
+| `L` | Lean proof accepted only after a successful build and review of the claimed dependency closure |
+| `C` | Independent clean-checkout replay with complete provenance |
+| `F` | Claim registry explicitly records the frozen revision and evidence |
+
+A successful Lean build alone does not establish that the intended claim
+has no unproved project assumptions. No Lean proof artifact is supplied
+by this package.
+
+## Evidence boundary
+
+This package does not, by its existence, establish:
+
+- An executed verification result.
+- Independent replay.
+- Lean certification.
+- Publication readiness.
+- Literature priority.
+- A frozen claim.
+- Promotion.
+
+No package status should be upgraded without the evidence required for
+that status.
+````
+
+***
+
+## 3. `verification/SM/SM003/mutations.py`
+
+```python
+#!/usr/bin/env python3
+"""SM003 exact-rational theorem and mutation audit.
+
+Usage:
+    python3 verification/SM/SM003/mutations.py
+
+Exhaustively checks all maps and set partitions for n <= 4.
+Every mutant is evaluated against the correct defect-rank oracle.
+This script is a test harness; its output must be retained as evidence.
+"""
+
+from fractions import Fraction as F
+from itertools import product
+import json
+import platform
+import sys
+
+
+def partitions(n):
+    """Generate each set partition of range(n) exactly once."""
+    if n == 0:
+        yield ()
+        return
+    for part in partitions(n - 1):
+        yield part + ((n - 1,),)
+        for i in range(len(part)):
+            yield part[:i] + (part[i] + (n - 1,),) + part[i + 1:]
+
+
+def mat_zero(n, m):
+    return [[F(0) for _ in range(m)] for _ in range(n)]
+
+
+def identity(n):
+    a = mat_zero(n, n)
+    for i in range(n):
+        a[i][i] = F(1)
+    return a
+
+
+def transpose(a):
+    return [list(row) for row in zip(*a)]
+
+
+def add(a, b):
+    return [
+        [x + y for x, y in zip(ra, rb)]
+        for ra, rb in zip(a, b)
+    ]
+
+
+def sub(a, b):
+    return [
+        [x - y for x, y in zip(ra, rb)]
+        for ra, rb in zip(a, b)
+    ]
+
+
+def mul(a, b):
+    if not a or not b or len(a[0]) != len(b):
+        raise ValueError("incompatible matrix dimensions")
+    bt = transpose(b)
+    return [
+        [
+            sum((x * y for x, y in zip(row, col)), F(0))
+            for col in bt
+        ]
+        for row in a
+    ]
+
+
+def rank(a):
+    """Exact rank by rational row reduction."""
+    if not a:
+        return 0
+    a = [row[:] for row in a]
+    rows, cols = len(a), len(a[0])
+    r = 0
+    for col in range(cols):
+        pivot = next(
+            (i for i in range(r, rows) if a[i][col]),
+            None,
+        )
+        if pivot is None:
+            continue
+        a[r], a[pivot] = a[pivot], a[r]
+        p = a[r][col]
+        a[r] = [x / p for x in a[r]]
+        for i in range(rows):
+            if i != r and a[i][col]:
+                q = a[i][col]
+                a[i] = [
+                    x - q * y
+                    for x, y in zip(a[i], a[r])
+                ]
+        r += 1
+        if r == rows:
+            break
+    return r
+
+
+def koopman(t):
+    n = len(t)
+    k = mat_zero(n, n)
+    for x, y in enumerate(t):
+        k[x][y] = F(1)
+    return k
+
+
+def projector(part, n):
+    p = mat_zero(n, n)
+    for block in part:
+        size = F(len(block))
+        for x in block:
+            for y in block:
+                p[x][y] = F(1) / size
+    return p
+
+
+def graph_component_count(t, part):
+    """Count components in the undirected target-block co-occurrence graph."""
+    nblocks = len(part)
+    block_of = {}
+    for j, block in enumerate(part):
+        for x in block:
+            block_of[x] = j
+
+    adj = [set() for _ in range(nblocks)]
+    for source in part:
+        targets = sorted({block_of[t[x]] for x in source})
+        for u in targets:
+            for v in targets:
+                if u != v:
+                    adj[u].add(v)
+                    adj[v].add(u)
+
+    seen = set()
+    components = 0
+    for start in range(nblocks):
+        if start in seen:
+            continue
+        components += 1
+        stack = [start]
+        seen.add(start)
+        while stack:
+            u = stack.pop()
+            for v in adj[u]:
+                if v not in seen:
+                    seen.add(v)
+                    stack.append(v)
+    return components
+
+
+def inspect_case(t, part):
+    n = len(t)
+    k_blocks = len(part)
+    K = koopman(t)
+    P = projector(part, n)
+    I = identity(n)
+    D = mul(sub(I, P), mul(K, P))
+    expected = k_blocks - graph_component_count(t, part)
+    actual = rank(D)
+
+    mutants = {
+        "M-K-transpose": transpose(K),
+        "M-commutator-KP-minus-PK": sub(
+            mul(K, P),
+            mul(P, K),
+        ),
+        "M-left-projection-I-minus-P-times-K": mul(
+            sub(I, P),
+            K,
+        ),
+        "M-projected-K-PKP": mul(
+            P,
+            mul(K, P),
+        ),
+        "M-left-projection-times-K-transpose": mul(
+            sub(I, P),
+            transpose(K),
+        ),
+        "M-KP-times-I-minus-P": mul(
+            K,
+            mul(P, sub(I, P)),
+        ),
+    }
+
+    results = {
+        name: rank(matrix) != expected
+        for name, matrix in mutants.items()
+    }
+
+    # Deliberately wrong graph oracle: returns c instead of k-c.
+    results["M-R-c-only-variant"] = (
+        graph_component_count(t, part) != expected
+    )
+
+    return actual, expected, results
+
+
+def main():
+    max_n = 4
+    cases = 0
+    theorem_mismatches = []
+    mutation_detection_counts = {}
+    mutation_first_detection = {}
+
+    for n in range(1, max_n + 1):
+        for t in product(range(n), repeat=n):
+            for part in partitions(n):
+                cases += 1
+                actual, expected, results = inspect_case(t, part)
+
+                if actual != expected:
+                    theorem_mismatches.append({
+                        "n": n,
+                        "map": t,
+                        "partition": part,
+                        "matrix_rank": actual,
+                        "graph_rank": expected,
+                    })
+
+                for name, detected in results.items():
+                    mutation_detection_counts.setdefault(name, 0)
+
+                    if detected:
+                        mutation_detection_counts[name] += 1
+                        mutation_first_detection.setdefault(
+                            name,
+                            {
+                                "n": n,
+                                "map": t,
+                                "partition": part,
+                                "correct_rank": expected,
+                            },
+                        )
+
+    mutation_outcomes = {
+        name: "DETECTED" if count > 0 else "NOT_DETECTED"
+        for name, count in mutation_detection_counts.items()
+    }
+
+    report = {
+        "schema": "AQ-SM003-MUTATION-REPORT-1.0",
+        "status": "PASS" if not theorem_mismatches else "FAIL",
+        "scope": {
+            "maps_and_partitions": "exhaustive",
+            "n": f"1..{max_n}",
+            "cases": cases,
+            "arithmetic": "exact rational",
+        },
+        "environment": {
+            "python": sys.version,
+            "implementation": platform.python_implementation(),
+            "platform": platform.platform(),
+        },
+        "theorem_mismatch_count": len(theorem_mismatches),
+        "theorem_mismatch_examples": theorem_mismatches[:10],
+        "mutation_detection_counts": mutation_detection_counts,
+        "mutation_outcomes": mutation_outcomes,
+        "mutations_not_detected": [
+            name
+            for name, count in mutation_detection_counts.items()
+            if count == 0
+        ],
+        "first_detection_witnesses": mutation_first_detection,
+        "warning": (
+            "This report covers only the mutations implemented here and "
+            "the enumerated finite scope. It does not establish Lean proof, "
+            "publication readiness, or certification."
+        ),
+    }
+
+    print(json.dumps(report, indent=2, sort_keys=True))
+    return 0 if not theorem_mismatches else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+
+***
+
+## 4. Replay instructions
+
+### Required replay commands
+
+Run from the repository root; retain the actual output rather than transcribing expected results.
+
+```bash
+set -eu
+git rev-parse HEAD
+git status --short
+python3 --version
+python3 verification/SM/SM003/mutations.py \
+  > sm003-mutation-report.json
+python3 -m json.tool sm003-mutation-report.json >/dev/null
+sha256sum \
+  verification/SM/SM003/README.md \
+  verification/SM/SM003/manifest.json \
+  verification/SM/SM003/mutations.py \
+  sm003-mutation-report.json
+```
+
+### Acceptance conditions
+
+Theorem mismatch count is zero; all mutation outcomes are reported; any mutation without a detection witness is explicitly recorded as `NOT_DETECTED`, not silently counted as detected.
+
+The manifest’s revision and tree fields must be bound to the committed sources, and the captured output must be generated from that same source revision.
+
+The commands above do not themselves perform a clean-checkout replay or capture every required provenance field. Retain stdout, stderr, exit status, runtime, environment information, source hashes, and the revision binding separately.
+
+### Evidence boundary
+
+These are replacement deliverables, **not** a claim that the repository has been changed or that this script has already passed.
+
+Worked for 37s
+
+### Repository-wide audit: current findings
+
+The live tree SHA returned by GitHub is `20e7447b93ae356fb8c3a937cce56573909b0a84`.
+
+| Area                    | Finding                                                                                             | Disposition                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Mobile Research Kit     | Existing workflow; Python 3.13.13; runs the package regression entry point                          | Do not replace                                  |
+| JOIN-STABILITY          | manifest.json is present in the current tree                                                        | Earlier missing-manifest finding is stale       |
+| JOIN-STABILITY evidence | Current evidence.jsonl distinguishes written proofs from unexecuted structural/computational source | Better aligned; still requires an actual replay |
+| JOIN-STABILITY Lean     | Manifest explicitly says Lean is open                                                               | No formal-verification claim                    |
+| PB-001–PB-006           | Repository audit records C4/publication blocked and Lean open                                       | Keep PB-007 out of scope                        |
+
+The important correction is that the earlier audit document’s claim that JOIN-STABILITY’s manifest is missing no longer matches the live tree. The current manifest declares package version `0.1.1`, source revision `6ba13ec6bb764a2e822f75a3953967efdfaa6e34`, finite-audit expected counts through , and explicit non-promotion gates.
+
+### Execution result — honest limitation
+
+I attempted a fresh shallow clone to run JOIN-STABILITY’s verifier and finite audit, but the execution environment could not resolve `github.com`. No local replay ran, so I will not report a test pass or claim that the published package reproduces.
+
+The existing reproduction entry point is:
+
+```bash
+cd AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY
+
+AQ_EXPECTED_TESTED_REVISION="<full-tested-commit-sha>" \
+  bash reproduce.sh
+```
+
+That script is designed to run the structural verifier, finite census, and negative-control self-tests, and to record a receipt. Its own stated scope is structural and finite computational checks—not a Lean build or mathematical certification.
+
+### Inline deliverable: adversarial replay checklist
+
+Use this as the acceptance record for the next run; leave results blank until observed.
+
+```text
+AQARION — JOIN-STABILITY REPLAY
+
+Repository: https://github.com/quantarion369-arch/AQARION
+Package: AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY
+Expected tested revision: [record full SHA from tested checkout]
+Manifest source_revision: 6ba13ec6bb764a2e822f75a3953967efdfaa6e34
+
+[ ] Tested revision recorded independently
+[ ] Manifest source-revision policy checked against the tested revision
+[ ] Structural verifier exit code recorded
+[ ] Finite audit exit code recorded
+[ ] All expected counts n=1..6 matched
+[ ] Negative controls rejected deliberately corrupted package states
+[ ] Raw stdout/stderr and exit code preserved
+[ ] Receipt and log hashes recorded
+[ ] Lean build status reported separately
+[ ] Claim/evidence records reviewed against actual execution
+
+Disposition: NOT REPLAYED IN THIS ENVIRONMENT
+Promotion: BLOCKED pending observed evidence
+```
+
+Adversarial conclusion: the current public tree contains more than the Mobile Research Kit, and the existing workflow should remain untouched. The immediate evidence gap is a fresh, revision-bound JOIN-STABILITY replay. The mathematical novelty question and Lean status remain separate and unresolved. No PB expansion or certification claim is justified by the inspection alone.
+
+
+https://github.com/quantarion369-arch/AQARION
+
+COMPLETE ANALYSIS AND SUGGESTIONS PERPLEXITY WE HAVNT DONE ANYTHING ON OUR MOBILE RES4ARCH KIT IN AQHILE OR WECOUKD TRY OTHER AREAS
+
+My recommendation is to return to the **Mobile Research Kit**, but give it one concrete job: make the existing research checks easier to run, inspect, and preserve from your phone. Alongside that, finish the narrow SM003 reconciliation. You do not need another theorem, another large census, or another workflow to make meaningful progress.
+
+The material you pasted shows useful movement: JOIN-STABILITY’s earlier missing-manifest finding has reportedly been repaired, while SM003 still has a mismatch between its declared evidence and its executable inventory. Those are separate states—not evidence that the whole repository is broken.
+
+## 1. What I can establish in this response
+
+I inspected the source and replacement documents you pasted. I also attempted to retrieve the live repository, Mobile Research Kit workflow, and SM003 script; those requests failed.
+
+Therefore:
+
+- The repository findings below are attributed to your supplied audit.
+- The code observations below come directly from the pasted implementation.
+- I have not confirmed the current live files, executed this SM003 script, or modified GitHub.
+- The supplied commit and source-revision values remain recorded identifiers, not independently confirmed execution bindings.
+
+## 2. Current state: keep the tracks separate
+
+| Track | Current evidence | Best next action |
+|---|---|---|
+| Mobile Research Kit | Existing workflow and regression entrypoint reported | Re-establish its baseline, then improve phone-accessible result handling |
+| JOIN-STABILITY | Manifest reportedly present; evidence descriptions improved | Obtain one actual revision-bound replay |
+| SM003 | Exact-rational replacement supplied; historical coverage claims need reconciliation | Finalize the seven-alternative inventory and execute it |
+| BRT | Exact matrix validator and a targeted graph-substitution check reported | Preserve existing implementation; obtain actual run evidence |
+| Burnside M3 | Documentation/hash repair proposed; fresh execution pending | Run existing program before changing its mathematics |
+| Lean | Open | Keep separate from Python and CI passes |
+| New research | Several promising directions | Choose a small analytical problem after the immediate evidence repairs |
+
+The earlier missing JOIN-STABILITY manifest finding should now be marked historical and superseded by the newer inspection—not kept as a current defect.
+
+## 3. SM003 replacement: useful, but not finished
+
+The pasted replacement is a sensible bounded harness. It constructs the defect explicitly, computes rank using exact fractions, and compares that rank with a graph prediction.
+
+It also reports detected and not-detected alternatives without assuming every alternative must differ.
+
+There are five important remaining corrections.
+
+### A. Fix the replay paths
+
+Your supplied live-file links place SM003 under:
+
+```text
+AQARION-QUANTARION-AI/verification/SM/SM003/
+```
+
+But the replacement README says “run from the repository root” and uses:
+
+```text
+verification/SM/SM003/mutations.py
+```
+
+Those instructions are inconsistent.
+
+Choose one convention throughout. For example:
+
+```text
+Working directory:
+AQARION-QUANTARION-AI/
+
+Command:
+python3 verification/SM/SM003/mutations.py
+```
+
+Or use the full repository-root-relative path:
+
+```text
+python3 AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py
+```
+
+The same correction applies to the hash commands and deliverable destinations.
+
+### B. The replacement implements seven alternatives, not eleven
+
+The supplied replacement contains:
+
+- Six matrix alternatives.
+- One `c(H)`-instead-of-`k-c(H)` alternative.
+
+It does not preserve all the graph variants described in the historical audit.
+
+Before replacing the existing script, decide whether the intended package is:
+
+1. A seven-alternative suite, with README and manifest corrected accordingly; or
+2. The original eleven-alternative suite, with every retained graph alternative explicitly implemented.
+
+Do not silently replace an eleven-alternative claim with seven implementations while leaving historical coverage language unchanged.
+
+### C. `PASS` only checks the baseline theorem comparison
+
+The script returns success when no baseline matrix/graph mismatch occurs.
+
+That is appropriate for this theorem-checking contract. However, it does not enforce:
+
+- Every expected alternative being detected.
+- All manifest-required regression checks.
+- Independent replay.
+- Complete provenance.
+- Certification.
+
+The README already explains much of this correctly. Retain that distinction.
+
+If a particular regression is intended to distinguish a particular alternative, give that regression an explicit expectation and fail if the expectation is not met. Do not require every alternative to differ without first establishing that requirement.
+
+### D. Add explicit completion checks
+
+The enumerated domain should contain:
+
+| $$n$$ | Map–partition pairs |
+|---:|---:|
+| 1 | 1 |
+| 2 | 8 |
+| 3 | 135 |
+| 4 | 3,840 |
+| Total | 3,984 |
+
+The script records a total but does not compare it with these expected counts.
+
+Add:
+
+- Per-$$n$$ completed counts.
+- Expected counts.
+- A completion check.
+- A nonzero exit if the completed domain is wrong.
+
+This guards against an enumeration change that silently reduces the test domain.
+
+### E. Make distinguishing examples more informative
+
+The current first-detection witness records the correct rank but not the alternative’s rank or prediction.
+
+A useful witness should contain:
+
+```text
+Map
+Partition
+Alternative ID
+Correct rank
+Alternative rank or alternative prediction
+Observed disagreement
+```
+
+That makes the result inspectable without rerunning the entire census.
+
+## 4. Revision binding: avoid the self-reference trap
+
+Do not keep trying to place “the commit containing this manifest” inside that same manifest. Editing the manifest creates another commit.
+
+Use an explicit distinction:
+
+```text
+Tested source revision:
+The commit whose checker bytes were executed.
+
+Evidence-record revision:
+A later commit containing the output and receipt.
+```
+
+The receipt should bind the executed source files by digest as well as recording the tested commit.
+
+If the manifest is itself an executed input, its digest belongs in the receipt too.
+
+Your supplied README already recognizes this issue. Make the fields and actual procedure follow that explanation.
+
+## 5. The Mobile Research Kit is the right place for usability work
+
+You have spent considerable effort recovering results, checking claims, and asking which files belong where. The kit should reduce that burden rather than become another research track requiring its own elaborate infrastructure.
+
+I would work on it in this order.
+
+### First: establish what still works
+
+Using the existing kit and existing workflow, record:
+
+- Its current entrypoint.
+- What its regression command actually exercises.
+- Its dependencies.
+- The latest relevant run and source revision.
+- Whether a phone user can find the result without interpreting raw CI output.
+
+Do not replace the existing workflow merely because the kit has been quiet.
+
+### Second: improve result access
+
+A useful phone-facing result summary should show:
+
+```text
+CHECK: SM003
+EXECUTION: COMPLETE / INCOMPLETE
+BASELINE: PASS / FAIL
+ALTERNATIVES: per-ID outcomes
+TESTED REVISION: exact SHA
+SOURCE DIGESTS: recorded / missing
+RAW OUTPUT: available / missing
+LEAN: separate status
+```
+
+This is a proposed presentation contract—not a claim that those fields already exist.
+
+The purpose is to stop one green indicator from being mistaken for mathematical proof, independent replay, or formal verification.
+
+### Third: preserve actual outputs
+
+If the existing workflow supports manual dispatch, GitHub allows it to be run through the Actions interface. The “Run workflow” option requires a `workflow_dispatch` trigger in the default-branch workflow. I have not confirmed that your current workflow has it.[1]
+
+GitHub also supports retaining generated reports as workflow artifacts and downloading them from the run page. That is a practical way to preserve JSON results without copying expected output into a document.[2][3]
+
+Raw job logs can be viewed and downloaded separately. Keep them alongside the result record rather than replacing one with the other.[4]
+
+### Fourth: add one practical feature, not a new platform
+
+My preferred feature is a receipt comparison view inside the existing kit:
+
+```text
+SOURCE REVISION: SAME / DIFFERENT / MISSING
+SOURCE DIGEST: SAME / DIFFERENT / MISSING
+INPUT SCOPE: SAME / DIFFERENT / MISSING
+CASE COUNT: SAME / DIFFERENT / MISSING
+RESULT: SAME / DIFFERENT / MISSING
+```
+
+Its job would be comparison, not authentication.
+
+Two matching receipts do not prove either run occurred. The interface must say that plainly.
+
+This would directly address the recurring problems in this session: stale revisions, different scopes, missing results, and summaries detached from source.
+
+## 6. What not to do to the kit yet
+
+Avoid:
+
+- Replacing its working regression machinery without identifying a defect.
+- Adding another workflow just for the appearance of progress.
+- Building a universal runner before integrating one existing check.
+- Treating a receipt as an authorization or certification token.
+- Hardcoding project statuses into the interface.
+- Making a phone-only user depend on a local shell for every operation.
+
+The kit should make the existing evidence easier to use—not create another layer of claims that needs auditing.
+
+## 7. If you want mathematical work instead
+
+There are worthwhile alternatives. My ranking is:
+
+| Option | Why it is useful | Bounded next deliverable |
+|---|---|---|
+| Transport theorem fixtures | Tests the central formulas against explicit matrices | Small exact examples covering permutations and noninjective maps |
+| Rank-one classification | Structural result already available; counting remains open | A precisely defined counting problem and small verified table |
+| Maximum-rank attainment | Upper bound already derived | An explicit all-$$n$$ construction or a documented obstruction |
+| PBJ Lean | Converts a reviewed analytic route into a formal artifact | One pinned, compiled lemma at a time |
+| Burnside replay | Resolves an existing numerical evidence gap | Actual source-bound run, not a new recurrence |
+| Larger census | Potentially useful later | Defer until current source/data contracts are stable |
+
+My preferred mathematical task is maximum-rank attainment: it has a sharp target, does not require an expensive census, and can produce a compact result. But it should not displace the basic replay work indefinitely.
+
+## 8. Recommended immediate work order
+
+### First session: Mobile Research Kit baseline
+
+1. Recover its current files and entrypoint.
+2. Confirm the existing regression path.
+3. Obtain one actual run and preserved output.
+4. Identify the smallest phone-usability defect.
+5. Repair only that defect.
+
+### Second session: SM003 consolidation
+
+1. Fix canonical paths.
+2. Resolve seven versus eleven alternatives.
+3. Add completion checks.
+4. Add alternative values to witnesses.
+5. Run the finalized source.
+6. Preserve actual output and source binding.
+
+### Third session: JOIN-STABILITY or Burnside
+
+Choose one existing package and close its pending replay—not both at once and not a new research branch.
+
+## Bottom line
+
+Returning to the Mobile Research Kit is worthwhile. The strongest next improvement is to make existing research checks produce clear, accessible, revision-aware results from your phone. Meanwhile, SM003 needs a small, specific cleanup—not another architecture.
+
+For an exact kit patch, the necessary next input is its current entrypoint, regression file, and `mobile-research-kit.yml`. Those files will let us improve the existing system without guessing its paths or replacing working code.
+
+Citations:
+[1] Manually running a workflow - GitHub Docs https://docs.github.com/actions/managing-workflow-runs/manually-running-a-workflow
+[2] Downloading workflow artifacts - GitHub Docs https://docs.github.com/actions/managing-workflow-runs/downloading-workflow-artifacts
+[3] Workflow artifacts - GitHub Docs https://docs.github.com/en/actions/concepts/workflows-and-actions/workflow-artifacts
+[4] Using workflow run logs - GitHub Docs https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs
+[5] Events that trigger workflows - GitHub Docs https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+[6] Workflow syntax for GitHub Actions https://docs.github.com/actions/reference/workflow-syntax-for-github-actions
+[7] Removing workflow artifacts - GitHub Docs https://docs.github.com/actions/managing-workflow-runs/removing-workflow-artifacts
+[8] GitHub Actions: Manual triggers with workflow_dispatch https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/
+[9] GitHub Actions now supports uploading and downloading non ... https://github.blog/changelog/2026-02-26-github-actions-now-supports-uploading-and-downloading-non-zipped-artifacts/
+[10] Missing workflow_dispatch at the Action tab #25219 - GitHub https://github.com/orgs/community/discussions/25219
+[11] Can't trigger workflow manually · community · Discussion #25756 https://github.com/orgs/community/discussions/25756
+[12] Manual workflow triggers in Github Actions - Stack Overflow https://stackoverflow.com/questions/58933155/manual-workflow-triggers-in-github-actions
+[13] Demonstrate how to download workflow artifacts from the user ... https://www.linkedin.com/learning/github-actions-cert-prep-by-microsoft-press/demonstrate-how-to-download-workflow-artifacts-from-the-user-interface
+
 # ============================================================
 # AQARION FALSIFICATION SURFACE EXPERIMENT — AQ-001
 # ============================================================
