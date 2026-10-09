@@ -1,28 +1,94 @@
 {
-  "schema": "AQ-SM003-VERIFICATION-1.0",
+  "schema": "AQ-SM003-VERIFICATION-2.0",
   "claim": "rank(D_Pi) = k - c(H_Pi)",
+  "version": "2.1-audit-reconciled",
   "status": "SOURCE_AUDIT_REQUIRED",
-  "revision": {
-    "commit": "REPLACE_AFTER_COMMIT",
-    "tree": "RECORD_AFTER_COMMIT"
+  "commit": null,
+  "revision_binding": {
+    "tested_source_revision": null,
+    "evidence_record_revision": null,
+    "policy": "Populate from actual replay; do not self-reference a future commit."
   },
   "mathematical_claim": {
-    "space": "Finite-dimensional real functions on a finite set X",
+    "space": "Real functions on a finite state set X",
     "map": "T : X -> X",
-    "partition": "Pi = {B_1,...,B_k}",
+    "partition": "Pi = {B_1, ..., B_k}",
     "operator": "K f = f o T",
-    "projector": "P_Pi is the blockwise averaging orthogonal projector",
+    "projector": "P_Pi is the block-average orthogonal projector",
     "defect": "D_Pi = (I - P_Pi) K P_Pi",
-    "graph": "H_Pi has one vertex per partition block; each source block induces edges among all target blocks intersecting its image",
+    "graph": "H_Pi has one vertex per partition block; join pairs of target blocks hit from a common source block; retain isolated vertices",
     "rank_identity": "rank(D_Pi) = k - c(H_Pi)",
-    "components": "c(H_Pi) counts all graph components, including isolated vertices"
+    "components": "c(H_Pi) counts all components including isolated vertices"
   },
+  "domain_verified": {
+    "historical_n_3_4_cases": 3975,
+    "historical_n_3_4_5_cases": 166475,
+    "new_default_scope_n_1_4_cases": 3984,
+    "note": "Historical mutations.py covered graph-level alternatives only; new D-level alternatives require fresh execution."
+  },
+  "mutant_ids_explicit": [
+    "D:K^T",
+    "D:[K,P]",
+    "D:(I-P)K",
+    "D:PKP",
+    "D:(I-P)K^T",
+    "D:KP(I-P)",
+    "R:ignore+preimage_cluster",
+    "R:c",
+    "R:k-c-1",
+    "R:first",
+    "R:c-only-variant"
+  ],
+  "mutant_cluster_note": "R:c-only-variant currently duplicates R:c and is reported INVALID_MUTANT until a mathematically distinct definition is supplied. The ignore-isolated/preimage relationship remains bounded to observed cases.",
+  "witness_suite": {
+    "id": "W-SM003-MIN",
+    "instances": [
+      {
+        "w": "W1",
+        "f": [0, 0, 2],
+        "partition": [[0, 2], [1]],
+        "detects": [
+          "D:K^T", "D:[K,P]", "D:(I-P)K", "D:PKP",
+          "D:(I-P)K^T", "D:KP(I-P)", "R:ignore+preimage_cluster",
+          "R:c", "R:k-c-1"
+        ]
+      },
+      {
+        "w": "W2",
+        "f": [0, 0, 1],
+        "partition": [[0, 2], [1]],
+        "detects": [
+          "D:(I-P)K", "R:ignore+preimage_cluster",
+          "R:k-c-1", "R:first"
+        ]
+      }
+    ],
+    "requires": {
+      "non_injective_f": true,
+      "unreached_block": true,
+      "non_constant_f": true,
+      "non_singleton_block": true
+    },
+    "scope_note": "Historical witness declarations are not evidence that the revised implementation has been replayed."
+  },
+  "repro": {
+    "command": "python3 AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py --max-n 4 --report AQARION-QUANTARION-AI/verification/SM/SM003/sm003-mutation-report.json",
+    "environment": "Recorded by actual replay; not prefilled",
+    "hashes": "Generated from actual tested source files",
+    "historical_workflow_claim": "The documented .github/workflows/sm003-verify.yml was absent at the audited commit; not treated as current evidence."
+  },
+  "evidence_class": "SOURCE_AUDIT_REQUIRED; new mutation results pending replay",
   "evidence_policy": {
     "P": "Proof from stated definitions",
     "V": "Reproducible bounded computation with retained output and revision binding",
-    "L": "Lean proof accepted only after lake build succeeds with zero sorry in the claimed dependency closure",
-    "C": "Certification requires independent clean-checkout replay and complete provenance",
-    "F": "Frozen only when the claim registry explicitly records the frozen revision and evidence"
+    "L": "Lean proof accepted only after build with no sorry in the claimed dependency closure",
+    "C": "Independent clean-checkout replay with complete provenance",
+    "F": "Frozen only when the claim registry records the frozen revision and evidence"
+  },
+  "mutation_policy": {
+    "outcomes": ["DETECTED", "NOT_DETECTED", "NOT_RUN", "INVALID_MUTANT"],
+    "rule": "Every declared alternative has an explicit implementation and outcome; aliases do not count as distinct coverage.",
+    "prohibition": "Do not report coverage for alternatives not executed."
   },
   "required_checks": [
     "independent graph-oracle versus exact matrix-rank comparison",
@@ -34,15 +100,5 @@
     "record stdout, stderr, exit status, runtime, interpreter and dependency versions",
     "record source and fixture SHA-256 hashes",
     "bind outputs to the committed revision"
-  ],
-  "mutation_policy": {
-    "rule": "Every declared mutant must have a uniquely named executable implementation and a recorded test outcome.",
-    "required_outcomes": [
-      "DETECTED",
-      "NOT_DETECTED",
-      "NOT_RUN",
-      "INVALID_MUTANT"
-    ],
-    "prohibition": "Do not claim a mutation detection score for mutants not implemented and executed."
-  }
+  ]
 }
