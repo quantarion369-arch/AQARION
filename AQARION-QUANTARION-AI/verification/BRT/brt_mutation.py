@@ -28,8 +28,11 @@ n individual-state vertices, so reusing k for the mutant rank was
 semantically invalid.
 
 Mutation status:
-    PASS means the declared mutant was killed.
-    PASS is an executable mutation result, not a mathematical proof.
+    DETECTED means the declared mutant was distinguished from the correct
+    graph by the executed witness.
+    NOT_DETECTED means the mutant agreed with the correct graph on the
+    executed witness.
+    DETECTED is an executable mutation result, not a mathematical proof.
     NO PROMOTION AUTHORITY.
 """
 
@@ -186,7 +189,7 @@ def run_mutation_case(
     expected_mutant_components: int,
 ) -> dict[str, Any]:
     """
-    Execute one mutation-killing case under the component-only contract.
+    Execute one mutation-detection case under the component-only contract.
     """
     validate_inputs(transition, labels)
 
@@ -216,11 +219,11 @@ def run_mutation_case(
             f"actual={mutant_components}"
         )
 
-    killed = mutant_components != correct_components
+    detected = mutant_components != correct_components
 
-    if not killed:
+    if not detected:
         raise AssertionError(
-            f"{name}: mutant component count survived"
+            f"{name}: mutant component count NOT_DETECTED"
         )
 
     return {
@@ -229,7 +232,7 @@ def run_mutation_case(
         "block_count": block_count,
         "correct_components": correct_components,
         "mutant_state_components": mutant_components,
-        "killed": True,
+        "outcome": "DETECTED",
     }
 
 
@@ -262,14 +265,21 @@ def main() -> int:
                     "with the individual state-transition graph."
                 ),
                 "contract": "component_count_only",
-                "survived": False,
-                "killed": True,
+                "outcomes": [
+                    case["outcome"] for case in results
+                ],
             },
             "cases": results,
             "summary": {
                 "cases": len(results),
-                "killed": len(results),
-                "survived": 0,
+                "detected": sum(
+                    1 for c in results
+                    if c["outcome"] == "DETECTED"
+                ),
+                "not_detected": sum(
+                    1 for c in results
+                    if c["outcome"] == "NOT_DETECTED"
+                ),
             },
         }
 
