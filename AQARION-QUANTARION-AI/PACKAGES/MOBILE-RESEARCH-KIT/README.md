@@ -62,8 +62,8 @@ The package is not yet documented as a sealed, replay-verified release.
 The environment inspector, recorder, and viewer can be used separately.
 The workflow invokes them as separate Python processes.
 
-The saved quadratic-evidence verifier has an oracle-independence
-limitation described below.
+The saved quadratic-evidence verifier has an oracle-separation
+boundary described below.
 
 ## Connected workflow
 
@@ -324,48 +324,68 @@ whether `q` is prime or composite.
 
 ## Oracle separation
 
-The supplied audit reports that the quadratic generator independently
-computes:
+The inspected generator computes complete-residue acceptance, the exact
+algebraic criterion, and three-point acceptance through separate routes.
+
+The saved-evidence verifier independently recomputes those three results.
+Its algebraic check uses:
 
 ```text
-complete_acceptance
-exact_acceptance
-three_point_acceptance
-```
-
-It also reports that the saved-evidence verifier reconstructs the
-expected `exact_acceptance` flag from complete-residue acceptance,
-rather than independently implementing the algebraic criterion.
-
-Accordingly, the claims must remain separate:
-
-- The generator compares its complete-residue, exact-classifier, and three-point routes.
-- The saved-evidence verifier checks consistency of saved observations, three-point evidence, witnesses, controls, and summaries.
-- The verifier does not currently provide an independent algebraic oracle for the exact criterion.
-
-The supplied verifier audit has not been independently reproduced in
-this documentation update. It is an open finding to confirm against the
-frozen source revision.
-
-Planned hardening includes independently checking the exact criterion
-and adding mutation-sensitive regression evidence.
-
-The canonical proposed mutation replaces:
-
-```python
+b % q == 0
+(c + a - 2) % q == 0
 (2 * (c - 1)) % q == 0
 ```
 
-with:
+The verifier does not import or call the generator classifier. A regression
+test verifies an already-built report while the generator classifier is
+patched to raise an error.
 
-```python
-(c - 1) % q == 0
+This is implementation-path separation, not a guarantee against shared
+conceptual errors or a machine-checked proof of the mathematical criterion.
+
+### Mutation-sensitive checks
+
+Existing tests replace the exact classifier with an overly strict mutation
+that removes the factor of two from the third condition. The canonical
+mod-4 witness exposes disagreement between the mutated classifier and the
+complete-residue and three-point routes. The verifier rejects the mutated
+report, and the tests check restoration of the original classifier.
+
+The detection outcome is DETECTED for this specified mutation within the
+tested scope. This does not establish detection of every possible error.
+
+### Empty evidence
+
+For an empty input domain, the generator returns:
+
+```text
+accepted: None
+evidence_status: no_evidence
+inputs_checked: 0
+comparisons: []
+first_counterexample: None
 ```
 
-The mod-4 witness above must distinguish the correct criterion from this
-overly strict mutation.
+Tests cover both an empty list and an empty iterator. A separate test
+distinguishes acceptance observed at input zero from complete equivalence.
 
-No mutation execution is claimed here.
+### Top-level report consistency
+
+The verifier recomputes all_checks_passed from the validated summaries and
+requires the saved field to be the matching Boolean. Tests reject a false
+flag, non-Boolean flags, and a missing field on an otherwise valid report.
+
+### Targeted local execution evidence
+
+On 2026-10-09, the user supplied Termux output reporting 13 passing tests
+in 0.215 seconds across the oracle-separation, oracle-mutation, and
+empty-evidence modules after the top-level flag correction.
+
+Subsequent package verification reported 35 listed files checked, zero
+failed files, PACKAGE_VERIFICATION_OK, and exit code 0.
+
+This is user-reported local evidence for an edited working tree, not an
+independently executed audit, a post-edit full-suite result, or hosted CI.
 
 ## Verification and tests
 
@@ -456,7 +476,7 @@ Historical 25-test evidence is preserved in:
 
 ```text
 docs/history/CHECKPOINT-25tests.md
-docs/history/README-25tests.md
+docs/history/README-25-tests.md
 ```
 
 Those documents describe earlier states. Their counts and publication
@@ -469,9 +489,9 @@ the reported 91-test result.
 Current boundaries include:
 
 - No established sealed GitHub/archive equivalence.
-- No claimed independent exact-algebraic verification by the saved-evidence verifier.
-- No claimed execution of the proposed classifier mutations.
-- No claimed implementation of an empty-sample `no_evidence` policy.
+- Separate oracle implementations do not exclude shared conceptual errors.
+- Mutation detection evidence covers the specified tested mutation only.
+- Empty samples report `no_evidence`; nonempty samples do not imply complete equivalence.
 - No command sandbox.
 - No output-size limit in the supplied recorder.
 - No guaranteed recorder timeout after the recorder itself is killed.
@@ -505,7 +525,7 @@ Raw reports, generated HTML, caches, backups, and archives are outside
 the intended source transfer unless deliberately reviewed and selected.
 
 Repository publication does not by itself establish release integrity,
-test reproduction, or a software license. License selection has not
+test reproduction, or interpretation of the root LICENSE file. Its terms have not
 been established by the material supplied for this update.
 
 Ubuntu / Lean research and PB-006 remain separate from this Python
