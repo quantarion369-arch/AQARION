@@ -102,6 +102,7 @@ class ModularAtlasTests(unittest.TestCase):
 
     def test_counterexample_witnesses_are_valid(self):
         report = ATLAS.build_report([2, 4, 6], 3, 0)
+
         for row in report["results"]:
             witness = row["complete_observation"]["first_counterexample"]
             if witness is not None:
@@ -173,6 +174,7 @@ class ModularAtlasTests(unittest.TestCase):
                 result = self.invoke(*extra)
                 self.assertEqual(result.returncode, 2)
                 self.assertFalse(self.output.exists())
+
     def test_cli_returns_one_when_classifier_is_faulty(self):
         argv = [
             str(SOURCE),
