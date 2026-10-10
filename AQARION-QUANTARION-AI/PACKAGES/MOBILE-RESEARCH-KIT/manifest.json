@@ -79,13 +79,13 @@
     },
     {
       "path": "tests/test_modular_contract_atlas.py",
-      "bytes": 7135,
-      "sha256": "8846c619dc85eb18e555acb2bc62fd181f1cee1e9e4e2493b5bd14fc41816d43"
+      "bytes": 7137,
+      "sha256": "ad441397eec57e6af2619c028fda431b3b21e26f2603fa6dd88371eecd995f36"
     },
     {
       "path": "tests/test_quadratic_atlas_saved_evidence.py",
-      "bytes": 2714,
-      "sha256": "6e1cc24d7fa1f0dcd4c4109fae47cc6d33baa2fd18bf055b0f316149851e41aa"
+      "bytes": 3833,
+      "sha256": "ec6f8a81dd16fdce19d18990b4f1579e4928103cd2e2e1c527b4a65a4e0172e2"
     },
     {
       "path": "tests/test_quadratic_contract_atlas.py",
@@ -169,8 +169,8 @@
     },
     {
       "path": "tools/verify_quadratic_atlas.py",
-      "bytes": 6956,
-      "sha256": "62f265bc9cc76b23a32dab406f8c74a2e62f80a6b6a7cb166344dc56be63ca69"
+      "bytes": 7474,
+      "sha256": "8585605230331f36536469a2eaa5e274a6a5a4cf5095b6ff775f7c92fb5dc757"
     },
     {
       "path": "tools/view_report.py",
