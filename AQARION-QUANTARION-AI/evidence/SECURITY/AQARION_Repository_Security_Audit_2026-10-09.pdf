@@ -1,0 +1,154 @@
+AQARION_Repository_Security_Audit_2026-10-09.pdf
+9 pages · PDF · Reviewed repository snapshot: b44e6c6a18ddcaa8f23d69a7c886ce6408bc526b
+
+```
+===== Page 1 ====
+
+## AQARION  
+
+# Repository Security Audit  
+
+Code vulnerabilities \(\cdot\) secrets exposure \(\cdot\) dependencies \(\cdot\) CI/CD \(\cdot\) evidence architecture  
+
+
+<table>Repositoryquantarion369-arch/AQARIONReviewed snapshotmain at commit b44e6c6a18ddcaa8f23d69a7c886ce6408bc526bReview date2026-10-09 (system date)MethodGitHub API tree and source-file inspection; targeted code-search queries; static reasoningLocal cloneAttempted but blocked because this execution environment could not resolve github.com; review continued through GitHub connector access</table>  
+
+## Executive assessment  
+
+The reviewed repository shows several positive security practices: CI jobs explicitly set read- only repository contents permissions; workflows use bounded runtimes; the Mobile Research Kit validates manifest paths, rejects symlinks along listed paths, recomputes SHA- 256, escapes HTML output, and labels its output as process evidence rather than mathematical certification. Targeted secret- pattern searches returned no matches. No confirmed credential or direct remote- code- execution vulnerability was established in this review.  
+
+The most actionable issues are a CI result- integrity weakness in the D22 workflow, an execution- trust boundary in the external replay controller when a supplied archive/policy is not independently authenticated, and a resource- exhaustion risk in the quadratic evidence verifier when fed untrusted reports with extreme coefficient bounds. Mutable GitHub Action tags, unpinned dependencies, and command/device details in local receipts are additional hardening gaps.  
+
+Important limitation: this is a static remote- source audit, not a complete clone- based scan. No repository tests, dependency vulnerability database scan, Gitleaks/TruffleHog history scan, or dynamic exploit test was run here. Findings are therefore scoped to inspected source and metadata; absence of a finding is not proof of absence.
+
+===== Page 2 =====
+
+1  
+
+
+<table>IDFindingSeverityPrioritySEC-01D22 pipeline can mask validator failureMEDIUMP1SEC-02Replay execution trust depends on caller-supplied policy/archiveMEDIUMP1SEC-03Quadratic verifier can allocate cubic-size candidate setMEDIUMP1SEC-04GitHub Actions referenced by mutable version tagsLOWP2SEC-05Receipts may retain secrets and device/environment detailsLOWP2SEC-06Dependencies are not fully pinned or lockedLOWP2SEC-07Secret scanning/history review remains unverifiedINFOP2</table>  
+
+===== Page 3 =====
+
+1. Scope and methodologyThe GitHub API reported the repository as public, with default branch main. The reviewed tree snapshot was associated with commit b44e6c6a18ddcaa8f23d69a7c886ce6408bc526b. The recursive tree contained 285 entries and was not truncated. The review focused on executable Python, shell scripts, workflow YAML, dependency declarations, manifests, and the repository's replay and evidence-handling architecture.Reviewed areas included.github/workflows/BRT-validation.yml,D22-validation.yml,mobile-research-kit.yml,sm003-verify.yml); Mobile Research Kit tools for recording, verifying, and displaying runs; TOOLS/REPLAY/replay_controller.py and replay_policy.json; JOIN- STABILITY verifier/reproduction script; PB- CORE verification entry points; .gitignore; TOOLS/CORE/pyproject.toml; and the archived source requirements.txt.Targeted GitHub code- search queries for common key/token patterns (including private- key markers, GitHub token prefixes, AWS access- key prefix, password assignments, API- key/token terms) returned no matches. Search coverage is not equivalent to scanning every blob and historical commit. Large checked- in session/history files remain a particular candidate for dedicated secret and personal- data scanning.  
+
+## 2. Findings  
+
+## SEC-01-D22 workflow can mask a failed validator behind tee  
+
+Severity:MEDIUM Confidence:High  
+
+Evidence: 'github/workflows/D22- validation.yml', step "Run D22 direct projection audit", executes 'python .../D22_DIRECT_PROJECTION_AUDIT.py | tee ...' without enabling Bash 'pipefail' in that step.  
+
+Impact: With the default Bash pipeline semantics, the pipeline status is the status of 'tee'. If the Python validator exits nonzero but 'tee' succeeds, the step can report success. This can produce a false- green CI result and undermine the meaning of a published validation receipt.  
+
+Recommended remediation: Use 'shell bash' with 'set - eu0 pipefail' or explicitly capture \(\) (PIPESTATUS[0])\$ and exit with the validator's status. Add a regression test that runs a deliberately failing validator through the logging pipeline and asserts the workflow step fails.
+
+===== Page 4 =====
+
+2 - Replay execution trust is not cryptographically bound to an expected archive by default  
+
+Severity: MEDIUM Confidence: High  
+
+Evidence: AQARION- QUANTARION- AI/TOOLS/REPLAY/replay_controller.py' accepts --archive'; for a supplied archive it computes and records a SHA- 256 but does not compare that digest to a trusted expected archive digest. --policy- sha256 is optional. The current 'replay_policy.json' has 'null' SHA- 256 values for several required source files, and its unexpected- file policy is 'report'.  
+
+Impact: The controller has a useful two- condition execution gate ('policy.execution.allow_exec' and CLI '--allow- exec'). However, if an operator intentionally enables execution while using an untrusted or modified policy/archive, required- file identity checks may not detect altered executable code. The receipt can record what was run without proving it was the intended source archive.  
+
+Recommended remediation: For execution- enabled runs, require a trusted policy digest or signed policy; validate repository as owner/name' and commit as a full 40- hex SHA; bind the downloaded/supplied archive to a trusted expected commit/archive identity; populate hashes for executable required files; and default to 'unexpected_files: reject' where package completeness is a requirement. Keep execution disabled by default.  
+
+Scope note: The checked- in policy sets allow_exec' to false, so this is a conditional trust- boundary risk, not evidence that the current default run executes downloaded code.  
+
+## SEC-03 - Quadratic saved-evidence verifier can be driven into excessive memory/CPU use  
+
+Severity: MEDIUM Confidence: High  
+
+Evidence: AQARION- QUANTARION- AI/PACKAGES/MOBILE- RESEARCH- KIT/tools/verify_quadratic_atlas.py', _verify(), creates 'expected_triples' with three nested comprehensions over 'range(- bound, bound + 1)'. The allocation grows as \(2^{2}\) bound+1)3 before candidate- count validation limits the workload.  
+
+Impact: If the verifier is asked to process a malformed or untrusted JSON report with a very large 'coefficient_bound', it can consume excessive memory or CPU before rejecting the report. This is a denial- of- service risk for automated evidence intake.  
+
+Recommended remediation: Compute the expected candidate count arithmetically before allocation; impose an explicit, documented maximum coefficient bound/candidate count; reject reports above that limit; and consider streaming validation rather than materializing the entire expected set. Add tests for huge positive bounds and integer edge cases.  
+
+## SEC-04 - GitHub Actions are referenced by mutable major- version tags  
+
+Severity: LOW Confidence: High  
+
+Evidence: Inspected workflows use references including 'actions/checkout@v4', 'actions/setup- python@v5', and 'actions/upload- artifact@v4'.  
+
+Impact: A tag is not a cryptographic pin to one immutable action revision. If an action tag is moved or an upstream release is compromised, a future workflow run can execute different action code without a repository change.  
+
+Recommended remediation: Pin third- party actions to reviewed full commit SHAs and add a comment with the corresponding release version. Automate controlled update PRs and review permission changes. Prioritize artifact- upload actions and any action that handles repository contents or credentials.
+
+===== Page 5 =====
+
+**SEC-05 — Run receipts and HTML reports can expose command-line secrets or device metadata**  
+Severity: LOW  Confidence: High  
+
+**Evidence:** `PACKAGES/MOBILE-RESEARCH-KIT/tools/record_run.py` stores the complete command argument list and writes stdout/stderr files. `tools/view_report.py` renders the command and the raw receipt/inventory into an HTML report. `tools/inspect_environment.py` records the home-directory path, Android manufacturer/model/version, Termux version, memory/storage snapshots, and command locations.  
+
+**Impact:** If a caller supplies a token/password as a command-line argument or emits sensitive values to stdout/stderr, the receipt/report directory may preserve those values in plain text. Device and filesystem details can also identify the environment when shared publicly. HTML escaping prevents script injection in displayed fields but does not redact secrets.  
+
+**Recommended remediation:** Document output directories as sensitive by default; avoid passing credentials in argv; redact known secret patterns from report presentation while preserving original raw artifacts only when necessary; provide a sanitized export mode; and warn before sharing inventory/receipts. Do not claim redaction unless it is implemented and tested.  
+
+**SEC-06 — Dependency resolution is not fully pinned or locked**  
+Severity: LOW  Confidence: High  
+
+**Evidence:** `AQARION-QUANTARION-AI/source/AQ-2026-10-4/requirements.txt` contains unversioned `numpy` and `pytest`. `AQARION-QUANTARION-AI/TOOLS/CORE/pyproject.toml` declares `setuptools>=45`, `wheel`, and optional `pytest<=6.0`; no lockfile was present in the inspected tree.  
+
+**Impact:** Installing these declarations today can resolve to versions different from the versions used previously. This weakens repeatability and makes it harder to reproduce vulnerability exposure or establish a software bill of materials. No specific vulnerable installed version was established because resolved versions and a dependency advisory scan were unavailable.  
+
+**Recommended remediation:** Pin direct dependencies to reviewed versions, use a lockfile or constraints file for reproducible environments, generate an SBOM, and run a dependency audit against the resolved environment. Keep runtime dependencies minimal and separate development-only dependencies.  
+
+**SEC-07 — Repository-wide and historical secret scanning is not yet evidenced**  
+Severity: INFO  Confidence: High for the limitation; no secret confirmed  
+
+**Evidence:** Targeted GitHub code-search queries returned no matches for common credential patterns. The tree includes large historical/session files, including `TOOLS/CORE/Sessions_Subprocess_History.txt`, `TOOLS-PROOF-GYM/Sessions_Subprocess_History.txt`, and `verification/SM/SM003/HANDOFF.txt`.  
+
+**Impact:** No hardcoded secret was confirmed in the inspected search results. However, a narrow code search can miss encoded credentials, uncommon token formats, secrets in generated artifacts, or values present only in old commits. If a credential was ever committed, deleting it from the current tree does not revoke it.  
+
+**Recommended remediation:** Run Gitleaks or TruffleHog over the complete Git history in a controlled environment; review large logs for tokens, personal data, absolute home paths, and private operational details. Rotate/revoke any exposed credential first, then purge history only if warranted by the incident policy.
+
+===== Page 6 =====
+
+3. Positive controls observed  
+
+- Least privilege in inspected workflows: the four inspected GitHub Actions workflows declare permissions: contents: read; no repository write token permission was evident in these workflow files.- Execution gate in replay controller: downloaded code is not executed unless both the policy permits execution and the CLI explicitly supplies '-allow-exec'; the checked-in policy sets 'allow_exec' to false.- Archive extraction defenses: the replay controller rejects absolute paths and '..' traversal segments, rejects tar symbolic links/hard links/device entries, and applies archive byte/file limits.- Manifest verifier path checks: the Mobile Research Kit verifier rejects absolute/traversal/colon/backslash/control-character paths, duplicate entries, symbolic links along listed paths, missing files, and hash/size mismatches. It explicitly states that unlisted files are outside its verification scope.- HTML output escaping: 'tools/view_report.py' escapes dynamic values before placing them into HTML text contexts, reducing the risk of stored HTML/script injection in the generated viewer.- Process-evidence boundaries: the run recorder and viewer state that they record process evidence and do not themselves certify mathematical correctness or prove the receipt and inventory belong to the same execution.- Workflow guardrails: inspected workflows set job timeouts and use concurrency cancellation to avoid stale runs consuming resources indefinitely.  
+
+## 4. Dependency and secret exposure assessment  
+
+Secrets: no confirmed secret was found by the targeted remote searches. This result must not be described as a clean secret scan. A complete current- tree and history scan remains open. The 'gitignore' does ignore '.env', '.envrc', virtual environments, and '.pypirc', which is helpful but does not prevent a user from force- adding a secret or committing secrets in other filenames.  
+
+Dependencies: the Mobile Research Kit tooling inspected here largely uses the Python standard library. The archived source requirements and core package metadata contain unpinned third- party dependencies. This is primarily a reproducibility and supply- chain control gap; no CVE claim is made without resolved versions and an advisory scan.  
+
+CI/CD: the explicit read- only permissions are a strong baseline. Pinning actions by full SHA and fixing the D22 pipeline status handling are the most useful CI hardening steps from this review. The review did not inspect repository- level branch protection, rulesets, organization policies, environment secrets, or Dependabot/secret- scanning settings; these should be checked in GitHub settings separately.
+
+===== Page 7 =====
+
+5. Remediation plan   
+
+<table>OrderActionAcceptance evidence1Fix D22 pipeline failure propagation (&#x27;pipeline&#x27; or explicit PIPESTATUS).A negative-control run with a failing Python validator makes the workflow fail; a passing run remains green.2Harden replay policy/archive trust before any execution-enabled replay.Tampered policy/hash and modified executable source are rejected before execution; default remains no-exec.3Bound quadratic verifier workload before allocating candidate sets.Huge coefficient bounds fail quickly with a deterministic validation error and bounded memory use.4Pin GitHub Actions to reviewed commit SHA5.All third-party &#x27;uses&#x27; entries resolve to full SHA pins with release comments.5Add sanitized receipt/report export and explicit data-sharing guidance.Tests prove secret-like command arguments are omitted/redacted in sanitized output.6Pin dependencies and create a resolved dependency inventory/SBOM.Clean-environment install uses locked versions; dependency scan output is attached to a commit-specific receipt.7Run full-history secret scanning and inspect large log artifacts.Tool, version, commit range, result, and any remediation/rotation are recorded.</table>  
+
+===== Page 8 =====
+
+6. Coverage limits and audit integrityThis report records a static source review of a public repository snapshot. It does not claim that the repository is vulnerability- free, and it does not replace an execution- based security test.Not performed in this session:- A full 'git clone' or local checkout. The attempted clone failed because this environment could not resolve 'github.com'; the review proceeded using GitHub connector access to the recursive tree and selected source files.- Execution of repository tests, unit tests, fuzzing, dynamic analysis, or proof builds.- Gitlaks/TrueHog scanning over all current blobs and historical commits.- A resolved dependency installation and CVE/advisory scan; there are no fully pinned dependency versions from which to derive a reliable current SBOM.- Inspection of GitHub repository settings for branch protection, rulesets, secret- scanning configuration, Dependabot alerts, Actions secrets, environment protection rules, or collaborator permissions.- Independent verification of current GitHub Actions outcomes for every workflow.Interpretation rules- A confirmed finding is supported by the inspected source behavior described in the report.- A conditional architecture risk requires the stated preconditions; it is not evidence that exploitation has occurred.- No match in targeted code search is not equivalent to a clean full- history secret scan.- Manifest integrity proves only that listed files match expected digests. It does not establish that every relevant file is listed, that the expected digests are trustworthy, or that the code is mathematically correct.- A passing CI job is only as reliable as its command exit handling, pinned inputs, tested commit, and evidence scope.  
+
+## 7. File and control references  
+
+Primary source references in the reviewed snapshot:  
+
+7. File and control referencesPrimary source references in the reviewed snapshot:- `github/workflows/D22-validation.yml` — D22 Python audit piped to `tee`.- `github/workflows/sm003-verify.yml`, `github/workflows/BRT-validation.yml`, `github/workflows/mobile-research-kit.yml` — permissions, action references, timeouts, and execution structure.- `AQARION-QUANTARION-AI/TOOLS/REPLAY/replay_controller.py` — policy loading, optional policy hash, archive download/extraction, required-file manifest checks, and guarded test execution.- `AQARION-QUANTARION-AI/TOOLS/REPLAY/replay_policy.json` — current policy, `allow_exec: false`, null hashes for selected executable files, and `unexpected_files: report`.- `AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT/tools/verify_quadratic_atlas.py` — coefficient-bound expansion and candidate-set allocation.- `AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT/tools/record_run.py`, `tools/inspect_environment.py`, `tools/view_report.py` — receipt and environment data handling.- `AQARION-QUANTARION-AI/source/AQ-2026-10-4/requirements.txt` and `AQARION-QUANTARION-AI/TOOLS/CORE/pyproject.toml` — dependency declarations.- `gitignore` — environment and local credential-related ignore rules.
+
+===== Page 9 =====
+
+1  
+
+## Final conclusion  
+
+The review found no confirmed hardcoded credential and no confirmed direct code- execution exploit in the inspected paths. It did identify two correctness/security- boundary issues worth prioritizing (D22 pipeline status propagation and replay input trust) plus a verifier resource- exhaustion risk. The next defensible checkpoint is to fix and negatively test those behaviors, then run a full- history secret scan and dependency scan against a locally cloned, commit- pinned snapshot. Until those steps are completed, the appropriate status is STATIC REVIEW WITH OPEN VALIDATION ITEMS, not "clean" or "certified secure."  
+
+Audit scope and results are tied to the repository snapshot identified on the cover. Re- run the audit after material changes to workflow files, replay policy/controller code, dependency declarations, or evidence- processing tools.
+```
+
+---
+
+AQARION_Repository_Security_Audit_2026-10-09.pdf
+9 pages · PDF · Reviewed repository snapshot: b44e6c6a18ddcaa8f23d69a7c886ce6408bc526b
