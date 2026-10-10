@@ -461,3 +461,112 @@ deferred work, not part of the current closure claim.
 
 Current state: documented, not sealed.
 Next state requires execution evidence, not another appended claim.
+
+## 15. Published-commit execution addendum — 2026-10-09
+
+### Relationship to the historical checkpoint
+
+Sections 1–14 preserve the earlier checkpoint and its evidence boundary.
+This addendum records later user-reported execution. Earlier unchecked
+items must not be interpreted as the latest status where this addendum
+explicitly supplies newer evidence.
+
+### Tested source identity
+
+Repository: quantarion369-arch/AQARION
+Package: AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT
+Published commit:
+
+```text
+38dc4dc3960fcf592234bc92d2346be900c9d5f8
+```
+
+The user fetched main and extracted the package from the fetched commit
+using git archive into a separate local directory. Verification and
+execution were performed against that extracted snapshot, not against
+the edited development checkout.
+
+Execution location: local Android / Termux.
+Execution date: 2026-10-09, as reported in the session.
+An exact UTC execution timestamp is not reproduced in this addendum.
+
+### Published-snapshot integrity
+
+```text
+LISTED_FILES: 35
+FILES_HASHED: 35
+FAILED_FILES: 0
+PACKAGE_VERIFICATION_OK
+PUBLISHED_INTEGRITY_EXIT_CODE: 0
+```
+
+Scope: manifest-listed files only. Unlisted files are not verified.
+
+### Published-snapshot regression
+
+```text
+Ran 111 tests in 11.235s
+OK
+REGRESSION_OK
+SKIPPED_TESTS: 0
+REGRESSION_EXIT_CODE: 0
+```
+
+### Published quadratic fixture replay
+
+Fixture: tests/fixtures/quadratic_atlas_q2.json
+
+```text
+CASES_RECOMPUTED=343
+ACCEPTED_CASES=75
+REJECTION_WITNESSES_REPLAYED=268
+EQUIVALENCE_COMPARISONS_REPLAYED=27
+SAVED_QUADRATIC_EVIDENCE_REPLAY_OK
+FIXTURE_EXIT_CODE: 0
+PUBLISHED_EXECUTION_EXIT_CODE: 0
+```
+
+The equivalence-comparisons counter counts qualifying candidate
+certificates, not individual residue comparisons within certificates.
+
+### Oracle and regression scope
+
+The inspected verifier separately recomputes complete-residue, exact
+algebraic, and three-point acceptance without calling the generator
+classifier. This does not exclude shared conceptual errors.
+
+Existing mutation tests target the overly strict classifier that removes
+the factor of two. DETECTED applies to that specified mutation within
+the tested scope, not to every possible implementation error.
+
+Empty-domain tests distinguish no_evidence from nonempty observations.
+Added tests reject false, non-Boolean, and missing all_checks_passed
+fields. A separate targeted run reported 13 passing tests in 0.215s
+before the published-snapshot regression recorded above.
+
+### Evidence provenance and limitations
+
+These results are user-reported local execution evidence supplied through
+Termux output. They are not independently executed assistant results
+and are not hosted GitHub Actions results.
+
+The local execution log was saved as published-execution-sQsJin.log.
+It is not embedded or authenticated by this addendum.
+
+No persistent release archive, archive SHA-256, archive byte count,
+archive entry count, or sealed artifact-linked receipt is established
+by this addendum. The temporary git archive extraction does not close
+those release requirements.
+
+This addendum is a later documentation change. The execution results
+above apply to the named commit, which does not contain this addendum.
+Refreshing CHECKPOINT.md in the manifest does not extend the earlier
+execution result to a new revision.
+
+Lean, PB-006, C4, and publication promotion remain separate gates.
+
+### Updated next priority
+
+Preserve this commit-specific execution record. If a sealed release is
+chosen, create and identify its archive and perform the remaining
+artifact-linked closure steps deliberately.
