@@ -58,6 +58,37 @@ class ModularAtlasTests(unittest.TestCase):
         }
         self.assertEqual(counts, {2: 30, 3: 12, 4: 9, 5: 6, 6: 2})
 
+    def test_empty_domains_have_no_evidence(self):
+        for domain in ([], iter(())):
+            result = ATLAS.observe(0, 0, 5, domain)
+            self.assertIsNone(result["accepted_on_checked_domain"])
+            self.assertEqual(result["evidence_status"], "no_evidence")
+            self.assertEqual(result["inputs_checked"], 0)
+            self.assertEqual(result["residues_covered"], 0)
+            self.assertIs(result["complete_residue_coverage"], False)
+            self.assertIsNone(result["first_counterexample"])
+
+    def test_nonempty_observations_preserve_boolean_outcomes(self):
+        accepted = ATLAS.observe(0, 0, 5, [0])
+        rejected = ATLAS.observe(0, 0, 5, [1])
+        self.assertIs(accepted["accepted_on_checked_domain"], True)
+        self.assertIs(rejected["accepted_on_checked_domain"], False)
+        for result in (accepted, rejected):
+            self.assertEqual(result["evidence_status"], "observed")
+            self.assertEqual(result["inputs_checked"], 1)
+
+    def test_zero_radius_report_has_observed_nonempty_samples(self):
+        report = ATLAS.build_report([5], 1, 0)
+        self.assertTrue(report["all_routes_agree"])
+        for row in report["results"]:
+            sample = row["sample_observation"]
+            complete = row["complete_observation"]
+            self.assertEqual(sample["inputs_checked"], 1)
+            self.assertEqual(sample["evidence_status"], "observed")
+            self.assertIs(type(sample["accepted_on_checked_domain"]), bool)
+            self.assertEqual(complete["evidence_status"], "observed")
+            self.assertIs(type(complete["accepted_on_checked_domain"]), bool)
+
     def test_sample_at_zero_can_miss_slope_error(self):
         sampled = ATLAS.observe(0, 0, 5, [0])
         complete = ATLAS.observe(0, 0, 5, range(5))
@@ -71,7 +102,6 @@ class ModularAtlasTests(unittest.TestCase):
 
     def test_counterexample_witnesses_are_valid(self):
         report = ATLAS.build_report([2, 4, 6], 3, 0)
-
         for row in report["results"]:
             witness = row["complete_observation"]["first_counterexample"]
             if witness is not None:
@@ -143,7 +173,6 @@ class ModularAtlasTests(unittest.TestCase):
                 result = self.invoke(*extra)
                 self.assertEqual(result.returncode, 2)
                 self.assertFalse(self.output.exists())
-
     def test_cli_returns_one_when_classifier_is_faulty(self):
         argv = [
             str(SOURCE),
