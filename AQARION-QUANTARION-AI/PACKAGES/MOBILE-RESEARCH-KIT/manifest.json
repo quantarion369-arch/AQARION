@@ -39,8 +39,8 @@
     },
     {
       "path": "examples/modular_contract_atlas.py",
-      "bytes": 7250,
-      "sha256": "be1691f02319be759cc30a43adec3b688ad7d5e53751e21cb325aad547b43392"
+      "bytes": 7342,
+      "sha256": "008f63ec21f16c472bea94f6f83fa7f3bbc514a54eebf70d352bff2b3a5446d0"
     },
     {
       "path": "examples/quadratic_contract_atlas.py",
@@ -79,8 +79,8 @@
     },
     {
       "path": "tests/test_modular_contract_atlas.py",
-      "bytes": 5481,
-      "sha256": "7c89268f2a17876e52571c60c2c35160a5ad2852a6cffbb4f691b5ecb83b3836"
+      "bytes": 7137,
+      "sha256": "ad441397eec57e6af2619c028fda431b3b21e26f2603fa6dd88371eecd995f36"
     },
     {
       "path": "tests/test_quadratic_atlas_saved_evidence.py",
