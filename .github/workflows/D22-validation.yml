@@ -39,15 +39,46 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Compile D22 audit
+      - name: Check logging pipeline failure propagation
+        shell: bash
         run: |
+          set -euo pipefail
+
+          control_dir="$(mktemp -d)"
+          trap 'rm -rf "$control_dir"' EXIT
+
+          bash --noprofile --norc -e -o pipefail -c \
+            'python -c "import sys; sys.exit(0)" 2>&1 | tee "$1"' \
+            bash "$control_dir/pass.txt"
+          echo "PIPELINE_PASS_CONTROL_OK"
+
+          if bash --noprofile --norc -e -o pipefail -c \
+            'python -c "import sys; sys.exit(7)" 2>&1 | tee "$1"' \
+            bash "$control_dir/fail.txt"; then
+            echo "PIPELINE_CONTROL_FAILED: validator failure was masked"
+            exit 1
+          else
+            status=$?
+            if [ "$status" -ne 7 ]; then
+              echo "PIPELINE_CONTROL_FAILED: expected 7, got $status"
+              exit 1
+            fi
+            echo "PIPELINE_FAILURE_CONTROL_OK: exit 7 preserved"
+          fi
+
+      - name: Compile D22 audit
+        shell: bash
+        run: |
+          set -euo pipefail
           python -m py_compile \
             AQARION-QUANTARION-AI/verification/D22/D22_DIRECT_PROJECTION_AUDIT.py
 
       - name: Run D22 direct projection audit
+        shell: bash
         run: |
+          set -euo pipefail
           python AQARION-QUANTARION-AI/verification/D22/D22_DIRECT_PROJECTION_AUDIT.py \
-            | tee AQARION-QUANTARION-AI/verification/D22/D22-direct-projection-report.txt
+            2>&1 | tee AQARION-QUANTARION-AI/verification/D22/D22-direct-projection-report.txt
 
       - name: Upload D22 evidence
         if: always()
