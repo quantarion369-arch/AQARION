@@ -5,6 +5,9 @@ import argparse
 import json
 from pathlib import Path
 
+# Operational verifier limit; not a mathematical bound.
+MAX_COEFFICIENT_BOUND = 10
+
 
 def require(condition, message):
     if not condition:
@@ -32,6 +35,12 @@ def _verify(report):
         "invalid coefficient bound",
     )
 
+    require(
+        bound <= MAX_COEFFICIENT_BOUND,
+        "coefficient bound exceeds verifier limit",
+    )
+    expected_count = (2 * bound + 1) ** 3
+
     moduli = report["moduli"]
     require(
         isinstance(moduli, list) and bool(moduli),
@@ -51,6 +60,15 @@ def _verify(report):
         [group["modulus"] for group in groups] == moduli,
         "modulus groups mismatch",
     )
+
+    for group in groups:
+        q = group["modulus"]
+        rows = group["candidates"]
+        require(isinstance(rows, list), f'q={q}: invalid candidate list')
+        require(
+            len(rows) == expected_count,
+            f"q={q}: candidate count mismatch",
+        )
 
     expected_triples = {
         (c, a, b)
