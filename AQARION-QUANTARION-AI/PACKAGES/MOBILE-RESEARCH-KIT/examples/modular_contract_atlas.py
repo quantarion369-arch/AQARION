@@ -34,7 +34,8 @@ def observe(a, b, q, domain):
             }
 
     return {
-        "accepted_on_checked_domain": first_failure is None,
+        "accepted_on_checked_domain": (first_failure is None) if checked else None,
+        "evidence_status": "observed" if checked else "no_evidence",
         "inputs_checked": checked,
         "residues_covered": len(seen),
         "complete_residue_coverage": len(seen) == q,
