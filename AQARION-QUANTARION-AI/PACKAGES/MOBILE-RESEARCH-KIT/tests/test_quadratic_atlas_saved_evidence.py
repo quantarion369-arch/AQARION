@@ -30,6 +30,30 @@ class SavedEvidenceTests(unittest.TestCase):
                     return row
         self.fail("required fixture row is missing")
 
+    def test_excessive_bounds_fail_before_results_access(self):
+        for bound in (module.MAX_COEFFICIENT_BOUND + 1, 10 ** 100):
+            with self.subTest(bound=bound):
+                report = copy.deepcopy(self.original)
+                report["coefficient_bound"] = bound
+                del report["results"]
+                with self.assertRaisesRegex(
+                    ValueError, "coefficient bound exceeds verifier limit"
+                ):
+                    module.verify(report)
+
+    def test_invalid_bound_types_are_rejected(self):
+        for bound in (True, -1, 1.5, '3', None):
+            with self.subTest(bound=bound):
+                report = copy.deepcopy(self.original)
+                report["coefficient_bound"] = bound
+                with self.assertRaisesRegex(ValueError, "invalid coefficient bound"):
+                    module.verify(report)
+
+    def test_candidate_count_checked_before_row_access(self):
+        self.report["results"][0]["candidates"] = [None]
+        with self.assertRaisesRegex(ValueError, "candidate count mismatch"):
+            module.verify(self.report)
+
     def test_original_report_passes(self):
         self.assertEqual(module.verify(self.report), {
             "cases": 343,
