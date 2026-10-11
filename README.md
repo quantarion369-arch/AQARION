@@ -1,6 +1,6 @@
 Welcome 🤝 Im James A
 
-Mathematical Research Developer | AQARION
+Mathematical Research Developer 
 
 I develop AQARION, an open research project focused on finite dynamical systems, observable quotients, Koopman operators, and reproducible mathematical verification.
 
