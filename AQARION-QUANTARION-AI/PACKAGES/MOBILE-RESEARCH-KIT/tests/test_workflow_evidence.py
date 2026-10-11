@@ -26,9 +26,7 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
         self.root = Path(self.tempdir.name)
 
         self.workflow_dir = self.root / "workflow-test"
-        self.run_dir = (
-            self.workflow_dir / "runs" / "run-test"
-        )
+        self.run_dir = self.workflow_dir / "runs" / "run-test"
         self.run_dir.mkdir(parents=True)
 
         self.receipt_path = self.run_dir / "receipt.json"
@@ -42,10 +40,12 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
 
     def _write_valid_evidence(self):
         (self.run_dir / "stdout.txt").write_text(
-            "REGRESSION_OK\n", encoding="utf-8"
+            "REGRESSION_OK" + chr(10),
+            encoding="utf-8",
         )
         (self.run_dir / "stderr.txt").write_text(
-            "", encoding="utf-8"
+            "",
+            encoding="utf-8",
         )
 
         receipt = {
@@ -62,7 +62,8 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
         }
 
         self.receipt_path.write_text(
-            json.dumps(receipt), encoding="utf-8"
+            json.dumps(receipt),
+            encoding="utf-8",
         )
         self.viewer_path.write_text(
             "<!doctype html><title>Evidence</title>",
@@ -103,7 +104,9 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
         metadata_path = self.root / "run-metadata.json"
         self.assertTrue(metadata_path.is_file())
 
-        saved = json.loads(metadata_path.read_text(encoding="utf-8"))
+        saved = json.loads(
+            metadata_path.read_text(encoding="utf-8")
+        )
         self.assertTrue(saved["acceptance_passed"])
 
     def test_missing_receipt_fails(self):
@@ -140,7 +143,10 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
         ))
 
     def test_malformed_receipt_fails(self):
-        self.receipt_path.write_text("{bad json", encoding="utf-8")
+        self.receipt_path.write_text(
+            "{bad json",
+            encoding="utf-8",
+        )
 
         metadata = self._validate()
 
@@ -158,7 +164,8 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
         record.pop("ended_at_utc", None)
 
         self.receipt_path.write_text(
-            json.dumps(record), encoding="utf-8"
+            json.dumps(record),
+            encoding="utf-8",
         )
 
         metadata = self._validate()
@@ -185,7 +192,10 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
         ))
 
     def test_malformed_inventory_fails(self):
-        self.inventory_path.write_text("{bad json", encoding="utf-8")
+        self.inventory_path.write_text(
+            "{bad json",
+            encoding="utf-8",
+        )
 
         metadata = self._validate()
 
@@ -199,7 +209,10 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
         incomplete_environment = dict(TEST_ENVIRONMENT)
         incomplete_environment.pop("GITHUB_SHA")
 
-        metadata = validate_evidence(self.root, incomplete_environment)
+        metadata = validate_evidence(
+            self.root,
+            incomplete_environment,
+        )
 
         self.assertFalse(metadata["acceptance_passed"])
         self.assertTrue(any(
@@ -216,16 +229,17 @@ class WorkflowEvidenceAcceptanceTests(unittest.TestCase):
         record["child_returncode"] = 1
 
         self.receipt_path.write_text(
-            json.dumps(record), encoding="utf-8"
+            json.dumps(record),
+            encoding="utf-8",
         )
         (self.run_dir / "stdout.txt").write_text(
-            "REGRESSION_FAILED\n", encoding="utf-8"
+            "REGRESSION_FAILED" + chr(10),
+            encoding="utf-8",
         )
 
         metadata = self._validate()
 
-        # Evidence integrity passes; the regression step's own exit code
-        # is what keeps the GitHub job failed.
+        # The regression step's exit code preserves command failure.
         self.assertTrue(metadata["acceptance_passed"])
         self.assertEqual(metadata["recorder_exit"], 1)
 
