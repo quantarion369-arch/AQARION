@@ -45905,3 +45905,193 @@ And because run_regression.py is already the package's actual orchestration poin
 This is now a good next change. It is small, directly connected to the work you just completed, and it eliminates the exact manual replay step we're about to perform.
 
 If you want to proceed, I'll inspect the package's exact Python-version/environment requirements and then give you **one complete workflow YAML**, not a pile of CI machinery.
+
+### AQ-2026-10-11 handoff — full audit
+
+I inspected the live handoff file and the current Mobile Research Kit files in `quantarion369-arch/AQARION`.
+
+The most important finding: the handoff is a transparent session archive, not a clean, standalone handoff memo. It contains approximately 1.53 million characters across 45,908 lines, including mathematical derivations, code, historical reports, corrections, proposed files, audit results, and earlier assistant responses. The final sections even contain the previous recommendation to add a workflow that already exists in the live repository.
+
+The right approach is to preserve the archive for transparency, distinguish its historical claims from current evidence, and continue from the latest live repository state—not blindly execute every old instruction embedded in it.
+
+### 1\. Immediate correction: do not create another workflow
+
+The live repository already contains:
+
+[`/.github/workflows/mobile-research-kit.yml`](https://github.com/quantarion369-arch/AQARION/blob/main/.github/workflows/mobile-research-kit.yml)
+
+Its current Git blob SHA is `b9712200193b9be55d75435add047d5f6e5bc4ad`.
+
+It already implements the core workflow described in the handoff:
+
+* Pushes to `main` affecting the Mobile Research Kit package or workflow.
+
+* Pull requests targeting `main` affecting those paths.
+
+* Manual `workflow_dispatch`.
+
+* Read-only repository permissions.
+
+* Python `3.13.13`.
+
+* The canonical command `python tools/run_regression.py`.
+
+* A 15-minute job timeout.
+
+Therefore, the previous recommendation to add `.github/workflows/mobile-research-kit.yml` is stale or based on an earlier repository state. Do not create a duplicate or replace the current workflow merely to reproduce that recommendation.
+
+The existing workflow's main limitation is narrower: it does not upload a structured evidence artifact. Its logs are available through GitHub Actions, but the YAML itself does not preserve a standalone regression receipt as a workflow artifact. That is a possible improvement, not a reason to invent a second workflow.
+
+### 4\. Mathematical audit: what is strong, what is not closed
+
+### Burnside moments and random mappings
+
+The handoff records the first-moment identity
+
+\\frac{1}{k!}\\sum_{\\sigma\\in S_k} C(\\sigma)=p(k),
+
+where counts set partitions fixed by , and is the integer partition number. Burnside's lemma supports this identity: the orbits of set partitions under relabelling are classified by block-size multisets.
+
+The second moment
+
+p_2(k)=\\frac{1}{k!}\\sum_{\\sigma\\in S_k}C(\\sigma)^2
+
+counts orbits of ordered pairs of set partitions under simultaneous relabelling. The handoff's initial values are consistent with its listed calculations. The variance formula follows by applying the same conditional-uniformity and random-mapping decomposition used for the first moment.
+
+The important proof obligation is not to treat conditional uniformity as folklore: the handoff itself identifies the Cayley-forest count as the route for deriving it. That derivation should be written once in a clean theorem note and then reused.
+
+### Ewens generalization: the archive contradicts itself
+
+The handoff first labels the proposed formula incorrect, then derives
+
+p_\\theta(3)=\\frac{5\\theta+4}{\\theta+2},
+
+which is in fact the same formula that was proposed. The archive later recognizes this and narrows the correction.
+
+The actual boundary correction is that the long-cycle limit is
+
+\\lim_{\\theta\\to0^+}p_\\theta(k)=\\tau(k),
+
+where is the number of positive divisors of , not always 2. For , the limit is 3.
+
+This is a clear example of why the handoff must be read chronologically: an earlier incorrect audit verdict survives alongside its later correction. A curated index should point to the later adjudication and mark the earlier passage superseded.
+
+### Q54 forward-invariant partition count
+
+The archive preserves the reported count
+
+`1,587,974,166,577,462,510,560,323,119,250`
+
+and a decomposition involving root-containing forward-closed sets and boundary types.
+
+The evidence is explicitly historical. The earlier Monte Carlo estimates are marked superseded and withdrawn, and the archive says independent full-Q54 confirmation is absent. The root-class argument provides a useful structural restriction, but it does not by itself authenticate the enormous count.
+
+Disposition: retain the exact count as a historical reported result; do not present it as independently reproduced or formally proved without the actual implementation, exact state-space specification, source-bound output, and independent check.
+
+### A28 equal-block norm
+
+The archive derives the Frobenius-norm formula
+
+\\|D\\|_F^2=\\frac{2mr(k-r)}{k^2}.
+
+For the stated equal-block cyclic-shift model, the algebraic identity and the parity-dependent maximum are coherent. The archive also correctly identifies a potential ambiguity: a component count for a two-layer block-overlap graph is not automatically the component count of the transition-support graph.
+
+That distinction must remain explicit. A graph's component count is meaningless without the graph's vertices and edges being defined.
+
+Disposition: retain the formula and corrected derivation as a candidate mathematical result; keep the historically reported floating-point test separate from an exact-rational validation suite.
+
+### Finite dynamical systems, quotient structure, and Koopman defects
+
+Across the AQARION tracks, the handoff repeatedly distinguishes:
+
+* Forward-invariant and pullback-stable equivalence relations.
+
+* Defect-zero criteria from claims about broader operator structure.
+
+* Exact finite enumeration from general theorem proofs.
+
+* Analytic proofs from Lean formalization.
+
+* Mutation detection from proof that the oracle itself is correct.
+
+That is the correct architecture. A finite census can refute a universal claim by producing a counterexample, or establish a bounded result over its exhaustive domain. It does not prove an unrestricted theorem.
+
+The quotient-permutation and incidence-graph proof route in the later sections is recorded as an analytic candidate. Its own evidence ledger keeps independent mathematical review, Lean compilation, axiom auditing, and publication promotion open. That is the appropriate status until those tasks actually close.
+
+Worked for 1m 44s
+
+### 5\. Computational and repository defects recorded in the handoff
+
+These are the most important actionable findings outside the Mobile Research Kit.
+
+| Finding                  | Evidence recorded in the archive                                                                                                                                         | Correct disposition                                                                                                                                            |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| FPR adversarial baseline | An assertion expects weighted_block((2,2)) == 7, while the displayed block weight is 3                                                                                   | Failure recorded. Resolve whether the test confuses a block-level value with a whole-count value; don't weaken the assertion without resolving the definition. |
+| Scientific test import   | Test imports is_defect_zero, but the module exports is_zero_defect                                                                                                       | Import failure recorded. Reconcile the test and public API, then run the intended test framework.                                                              |
+| Lean formalization       | Multiple proof targets remain uncompiled or have outstanding sorry blockers in the recorded audits                                                                       | OPEN. Inspect the actual target files, compile the intended dependency closure, and audit axioms.                                                              |
+| PB-CORE-006 asymptotics  | The archive reports substantial computational support but does not establish independent reproduction of the full large sum or the complete asymptotic remainder theorem | OPEN. Separate exact aggregate identity, asymptotic hypotheses, numerical fitting, and remainder proof.                                                        |
+| SM003                    | The workflow exists, but the later audit says SM003 was not run end-to-end in that review                                                                                | Execution status must be tied to a specific run and commit. Workflow existence is not a pass.                                                                  |
+| Q54                      | A huge count is preserved as a historical exact report without independent full confirmation                                                                             | Reported, not independently reproduced.                                                                                                                        |
+| Package release closure  | Earlier checkpoint sections leave archive identity, fresh extraction, and artifact-linked receipt requirements open                                                      | Not automatically closed by a successful unit-test run.                                                                                                        |
+
+The workflow inventory is another example of stale material. One historical passage says the SM003 workflow is missing; a later correction says it exists. The current live `.github/workflows/` directory contains four workflow files: BRT, D22, Mobile Research Kit, and SM003.
+
+Useful live files to revisit:
+
+* [SM003 verification workflow](https://github.com/quantarion369-arch/AQARION/blob/main/.github/workflows/sm003-verify.yml)
+
+* [D22 validation workflow](https://github.com/quantarion369-arch/AQARION/blob/main/.github/workflows/D22-validation.yml)
+
+* [BRT validation workflow](https://github.com/quantarion369-arch/AQARION/blob/main/.github/workflows/BRT-validation.yml)
+
+### 6\. The archive's own integrity and transparency
+
+I checked the handoff for several common credential patterns: GitHub tokens, OpenAI-style API tokens, AWS access-key IDs, private-key headers, and common secret assignments. Those pattern checks returned no matches. This is a limited scan, not a comprehensive secret audit or guarantee that the public transcript contains no sensitive information.
+
+The larger issue is document integrity as a research record:
+
+* It starts with an earlier October 6 session and accumulates later material through October 11.
+
+* It contains repeated checkpoints, code, full draft deliverables, and earlier assistant responses.
+
+* Some status statements are explicitly superseded later in the same file.
+
+* Several proposed deliverables are presented in the transcript; their presence in the transcript alone does not establish that the corresponding file was committed.
+
+* It is difficult to locate the current authoritative decision without searching the entire archive.
+
+I would preserve this file as the transparent session record rather than rewrite it into a polished summary. Replacing it would destroy useful historical context and could erase evidence of how errors were found and corrected.
+
+Instead, give it a short, separate index that identifies the current state and links to the relevant sections or authoritative files. The index should distinguish `CURRENT`, `SUPERSEDED`, `HISTORICAL`, `OPEN`, and `BLOCKED` rather than trying to make the transcript itself read like a single coherent report.
+
+### 7\. Immediate next steps — in priority order
+
+* Run the existing Mobile Research Kit workflow on current `main`.
+
+    Open [Mobile Research Kit Actions](https://github.com/quantarion369-arch/AQARION/actions/workflows/mobile-research-kit.yml). Choose Run workflow, select `main`, and start it. This is the simplest way to check the current package revision from Android without a terminal.
+
+    The handoff was the subject of the latest commit, so its path alone would not trigger the package-specific push filter. A manual run is appropriate for checking the package at current `main`.
+
+* Capture the actual run identity and result.
+
+    Record the run URL, commit SHA, Python version, `LISTED_FILES`, `FILES_HASHED`, `FAILED_FILES`, discovered test count, skipped count, and exit result. Don't copy a historical count into the new record. If the workflow passes, the claim is that the tested package revision passed the stated checks—not that AQARION as a whole is certified.
+
+* Decide whether the workflow needs an evidence artifact.
+
+    The current workflow runs the canonical regression but does not upload a structured receipt. If a durable downloadable report is needed, make one targeted enhancement to the existing workflow after confirming which fields should be recorded. Do not create a second workflow.
+
+* Reconcile the high-priority mathematical and test defects.
+
+    Address the FPR baseline mismatch and the scientific test import failure. Keep their current failures visible until corrected and rerun. Then work through the Q54 source-binding requirements and the Lean proof gates separately.
+
+* Keep the transcript intact and add a current-state index.
+
+    Link to the actual source, tests, workflow runs, and current claim ledger. A statement that something passed should point to the exact revision and execution evidence, not just to the session transcript.
+
+### Final assessment
+
+The handoff is valuable because it preserves corrections, unsuccessful attempts, mathematical reasoning, and evidence boundaries. It is not reliable as a flat list of current instructions: it is too large, contains stale recommendations, and sometimes preserves both a claim and its later correction.
+
+The immediate Mobile Research Kit workflow is already present. Its source configuration is clear, and its canonical runner is appropriately fail-closed. The next step is to check it against current `main` and retain the actual run evidence—not to add another YAML file.
+
+The larger research program remains a collection of distinct mathematical and computational workstreams. Keep the analytic results, finite computational evidence, independent reproduction, Lean verification, literature priority, and publication status separate. That separation is what makes the transparent archive useful rather than merely enormous.
