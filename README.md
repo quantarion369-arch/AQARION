@@ -1,1285 +1,256 @@
-Welcome 🤝 Im James A
+# AQARION
 
-Mathematical Research Developer 
+> **Evidence-first mathematical research for finite dynamical systems, quotient structure, and reproducible verification.**
 
-I develop AQARION, an open research project focused on finite dynamical systems, observable quotients, Koopman operators, and reproducible mathematical verification.
+[![C3: Open](https://img.shields.io/badge/C3-OPEN-yellow?style=flat-square)](STATUS.md)
+[![C4: Blocked](https://img.shields.io/badge/C4-BLOCKED-red?style=flat-square)](STATUS.md)
+[![Lean: Open](https://img.shields.io/badge/Lean-OPEN-lightgrey?style=flat-square)](docs/FORMALIZATION.md)
+[![SDS-002: Quarantined](https://img.shields.io/badge/SDS--002-QUARANTINED-orange?style=flat-square)](docs/HISTORICAL-CORRECTIONS.md)
+[![Publication: Blocked](https://img.shields.io/badge/Publication-BLOCKED-red?style=flat-square)](STATUS.md)
+[![Promotable: False](https://img.shields.io/badge/Promotable-false-lightgrey?style=flat-square)](STATUS.md)
 
-My work connects mathematical structure with executable computation, emphasizing precise definitions, explicit proof obligations, and independently reviewable evidence.
+AQARION is an open research project by **James A**, a Mathematical Research Developer. It studies finite dynamical systems, invariant quotients, Koopman operators, observable subspaces, exact enumeration, and formalizable computational mathematics.
 
-🔬 Research Focus
+The project is maintained as an auditable research record. It separates mathematical claims, implementations, finite computation, provenance, independent reconstruction, and formal proof.
 
-- Finite Dynamical Systems — deterministic maps, permutation dynamics, and invariant partitions.
-- Operator Theory — Koopman operators, observable subspaces, and operator defects.
-- Quotient Systems — invariant equivalence relations, exact closure, and semiconjugacy.
-- Computational Mathematics — exact arithmetic, exhaustive finite checks, and counterexample-driven analysis.
-- Formal Verification — proof-oriented specifications, Lean formalization, and reproducible verification workflows.
-
-🧪 Current Research
-
-AQARION — Evidence-First Mathematical Research
-
-The project investigates the structure of invariant partitions and their relationship to observable quotients and operator defects.
-
-Research artifacts distinguish mathematical derivations, computational verification, conjectures, formal proof status, and provenance. Computational results are not presented as universal proofs without the corresponding justification.
-
-🛠️ Research Principles
-
-- Define the claim before testing it.
-- Prefer exact arithmetic where applicable.
-- Test boundary cases and negative controls.
-- Preserve counterexamples and corrections.
-- Report what remains open.
-- Never claim stronger evidence than the available record supports.
-
-📂 Explore the Work
-
-- "AQARION — Research Infrastructure" (https://github.com/quantarion369-arch/AQARION)
-  Verification workflows, evidence schemas, provenance, and research tooling.
-- "GitHub Repositories" (https://github.com/quantarion369-arch?tab=repositories)
-  Explore the broader AQARION research and development projects.
-
-🤝 Collaboration
-
-Interested in finite dynamical systems, mathematical computing, formal verification, or reproducible research? Issues and repository discussions are welcome.
-
-Prove first. Verify exhaustively. Predict second. No free parameters.
+> **Do not promote a result beyond what its evidence establishes.**
 
 ---
 
-AQARION — Evidence-First Research Intelligence
+## Start Here
 
-""C3" (https://img.shields.io/badge/C3-OPEN-yellow)"
-""C4" (https://img.shields.io/badge/C4-BLOCKED-red)"
-""Lean" (https://img.shields.io/badge/Lean-OPEN-lightgrey)"
-""SDS-002" (https://img.shields.io/badge/SDS--002-QUARANTINED-orange)"
-""Publication" (https://img.shields.io/badge/publication-BLOCKED-red)"
-""Promotable" (https://img.shields.io/badge/promotable-false-lightgrey)"
+| Resource | Purpose |
+|---|---|
+| [Research map](docs/RESEARCH-LINES.md) | Overview of the active mathematical research lines |
+| [Current status](STATUS.md) | Current governance, proof, verification, and promotion state |
+| [Evidence ledger](EVIDENCE-LEDGER.md) | Claim-by-claim evidence, domain, receipt, and proof status |
+| [Corrections and refutations](docs/HISTORICAL-CORRECTIONS.md) | Preserved counterexamples, retired claims, and corrected records |
+| [Formalization roadmap](docs/FORMALIZATION.md) | Lean targets, checked theorems, open obligations, and environment notes |
+| [Provenance policy](docs/PROVENANCE.md) | How claims, sources, code, executions, and receipts are connected |
+| [Verification artifacts](AQARION-QUANTARION-AI/verification/) | Research-side executable checks and evidence packages |
 
-AQARION is an evidence-first research and verification corpus for finite dynamical systems, invariant quotients, operator defects, permutation/block-structure mathematics, and formalizable computational mathematics.
+---
 
-The repository is governed as an auditable research record, not as an oracle of mathematical truth.
+## Research Focus
 
-Its central rule is:
+- **Finite dynamical systems** — deterministic maps, functional graphs, permutation dynamics, and invariant partitions
+- **Quotient systems** — invariant equivalence relations, quotient maps, semiconjugacy, and exact closure
+- **Operator theory** — Koopman pullbacks, observable subspaces, projections, and operator defects
+- **Computational mathematics** — exact arithmetic, finite exhaustive checks, algorithmic cross-checks, and negative controls
+- **Formal verification** — proof-oriented specifications, Lean formalization, and reproducible verification workflows
 
-[
+---
 
-\text{Do not promote a result beyond what its evidence establishes.}
+## Central Principle
 
-]
+AQARION distinguishes the following layers:
 
-A result may execute successfully and still test the wrong claim.
-
-A result may reproduce successfully and still use the wrong specification.
-
-A result may have a matching hash and still have incorrect provenance.
-
-A formal proof may compile and still prove a proposition different from the intended research claim.
-
-Therefore AQARION keeps the following layers separate:
-
-[
-
+\[
 \text{specification}
 \neq
+\text{implementation}
+\neq
 \text{execution}
+\neq
+\text{computation}
 \neq
 \text{inference}
 \neq
 \text{formal proof}
 \neq
-\text{provenance}
+\text{provenance}.
+\]
 
-]
+A computation can be exact yet answer the wrong question. A result can reproduce yet rely on the wrong specification. A formal theorem can compile while formalizing a proposition different from the intended research claim.
 
----
-
-Research Standard
-
-Every significant research claim should answer:
-
-· What exactly is being claimed?
-· Which definitions are frozen?
-· Which conventions are frozen?
-· What source artifact defines the claim?
-· What implementation was actually executed?
-· What domain was actually tested?
-· Was the computation independently reconstructed?
-· Is the second route genuinely independent?
-· Were negative controls used?
-· Were known mutations detected?
-· What remains unproved?
-· What remains open?
-· What is blocked from promotion?
-· What provenance connects the claim to the evidence?
-
-AQARION preserves corrections, failed approaches, counterexamples, incomplete formalizations, and superseded claims because those records explain how the present result was established.
-
-A killed claim is not erased.
-
-A failed computation is not hidden.
-
-An open proof obligation is not converted into a theorem by repetition.
+The project therefore records what is defined, what was run, what was compared, what is proved, what is refuted, and what remains open.
 
 ---
 
-Evidence Vocabulary
+## Evidence Labels
 
-AQARION uses explicit evidence classes.
+| Label | Meaning |
+|---|---|
+| `[D]` | Defined |
+| `[V]` | Verified computation over a declared domain |
+| `[P]` | Mathematical proof |
+| `[PV]` | Proved and computationally verified |
+| `[C]` | Conjecture |
+| `[R]` | Active research target |
+| `[F]` | Refuted or killed claim |
+| `[Q]` | Quarantined artifact or claim |
 
-Label| Meaning
-"[D]"| DEFINED
-"[V]"| VERIFIED COMPUTATION
-"[P]"| PROVED
-"[PV]"| PROVED + VERIFIED
-"[C]"| CONJECTURE
-"[R]"| RESEARCH
-"[F]"| REFUTED / KILLED
-"[Q]"| QUARANTINED
+These labels are deliberately non-interchangeable:
 
-These labels are not interchangeable.
-
-In particular:
-
-computed              ≠ verified
-verified              ≠ proved
-finite exhaustive     ≠ universal theorem
-different programs    ≠ automatic independence
-public artifact       ≠ certification
-policy PASS           ≠ mathematical truth
-Lean source           ≠ Lean proof
-matching output       ≠ provenance equivalence
-repository existence  ≠ reproduction
-
-The strongest permissible statement is determined by the actual evidence available.
+```text
+finite exhaustive check != universal theorem
+different programs      != independent reproduction
+repository artifact     != executed receipt
+Lean source file        != checked Lean proof
+matching output         != provenance equivalence
+policy PASS             != mathematical truth
+```
 
 ---
 
-Governance State
+## Current Snapshot
 
-Layer| Current state
-C3| OPEN
-C4| BLOCKED
-Lean| OPEN
-SDS-002| QUARANTINED
-Publication| BLOCKED
-Promotion| BLOCKED
-Promotable| false
+| Layer | State |
+|---|---|
+| C3 | OPEN |
+| C4 | BLOCKED |
+| Lean formalization | OPEN |
+| SDS-002 | QUARANTINED |
+| Publication | BLOCKED |
+| Promotion | BLOCKED |
+| Promotable | false |
 
-These states are governance states.
+These are governance states, not mathematical conclusions. A new receipt, source file, or successful local run does not automatically promote a claim.
 
-They are not mathematical conclusions.
-
-Adding a computation, receipt, repository file, or policy check does not automatically change them.
-
----
-
-Provenance Principle
-
-AQARION distinguishes the following objects:
-
-CLAIM
-SPECIFICATION
-SOURCE
-IMPLEMENTATION
-FIXTURE
-EXECUTION
-OUTPUT
-COMPARISON
-INDEPENDENCE
-FORMAL STATUS
-DRIFT
-
-A valid reproduction requires an explicit relationship between the claim, specification, implementation, execution, and output.
-
-An independent reproduction requires an independently justified basis.
-
-A second script that repeats the same semantic construction is not automatically independent.
-
-A copied file is not an independent implementation.
-
-A matching result is not proof of equivalence between sources.
-
-A repository path is not evidence that the claimed artifact was actually executed.
+See [STATUS.md](STATUS.md) for the live ledger.
 
 ---
 
-Verification Boundary
+## Representative Mathematics
 
-The current research verification surface is organized under:
+For a finite deterministic map \(T:X\to X\) and a partition \(\Pi\), AQARION studies the Koopman defect
 
-AQARION-QUANTARION-AI/
-└── verification/
+\[
+D_\Pi=(I-P_\Pi)K_TP_\Pi,
+\]
 
-This is the current canonical research-side verification namespace.
+where \(P_\Pi\) is block averaging and \(K_Tf=f\circ T\).
 
-Research verification artifacts must be referenced by their actual live paths.
+The defect records the failure of partition-constant observables to remain invariant under pullback:
 
-Documentation must not invent a second filesystem hierarchy merely because an older README described one.
-
-The repository therefore does not currently treat the historical top-level paths
-
-verification/manifest.json
-verification/run-all.py
-verification/replay-harness.py
-verification/provenance.py
-verification/repo_self_audit.py
-
-as a live canonical verification boundary.
-
-Their absence is not silently converted into PASS.
-
----
-
-Verification-Boundary Migration
-
-Earlier repository documentation described a top-level verification system under:
-
-verification/
-
-with a manifest, runner, replay harness, provenance tooling, mutation suite, and additional verification packages.
-
-The live research corpus subsequently developed its verification surface under:
-
-AQARION-QUANTARION-AI/verification/
-
-The older documentation is therefore treated as historical repository-boundary documentation, not as a declaration that those paths currently exist.
-
-This distinction is intentional.
-
-AQARION does not restore obsolete infrastructure merely to make a historical README appear internally consistent.
-
-The current rule is:
-
-[
-
-\text{live filesystem} >
-\text{stale path description}
-
-]
-
-when determining whether an executable artifact presently exists.
-
-Historical documentation may remain relevant for provenance, but it must not be cited as current execution evidence unless the corresponding artifact is recoverable and its revision is established.
-
----
-
-FPR Research Line
-
-The invariant-partition enumeration work is currently represented by:
-
-AQARION-QUANTARION-AI/
-└── verification/
-└── FPR/
-└── fpr_enumerator.py
-
-The principal artifact is:
-
-AQ-FPR-006
-Invariant Partition Enumerator under a Permutation
-
-The formula implemented is
-
-[
-W(B)
-
-\sum_{d\mid\gcd(c_i:i\in B)}
-d^{|B|-1},
-]
-
-and
-
-[
-N(\lambda)
-
-\sum_{\pi\in\Pi([r])}
-\prod_{B\in\pi}W(B).
-]
-
-Here the c_i are the cycle lengths of the permutation and B is a block of the partition of the cycle index set.
-
-The mathematical derivation and the computational implementation must remain separate evidence objects.
-
-The executable implementation also contains a direct invariant-partition enumeration route used as a computational oracle.
-
-That route provides useful independent algorithmic corroboration.
-
-It does not by itself establish external independent reproduction.
-
----
-
-FPR Evidence Status
-
-Current safe ledger:
-
-AQ-FPR-006
-
-Claim
-
----
-
-Invariant-partition count for a finite permutation cycle type.
-
-Formula
-
----
-
-N(λ)
-=
-Σ_{π ∈ Π([r])}
-Π_{B ∈ π}
-Σ_{d | gcd(c_i : i ∈ B)}
-d^(|B|-1)
-
-Mathematical status
-
----
-
-Analytically derived / proof candidate.
-
-Computational route
-
----
-
-Formula evaluation.
-
-Computational oracle
-
----
-
-Direct invariant-partition enumeration.
-
-Finite support
-
----
-
-Cycle types n ≤ 7.
-
-Independence
-
----
-
-Independent computational route within the artifact:
-YES.
-
-External independent reproduction
-
----
-
-NOT ESTABLISHED.
-
-Literature priority
-
----
-
-OPEN.
-
-Lean
-
----
-
-OPEN.
-
-C4
---
-BLOCKED.
-
-Publication
-
----
-
-BLOCKED.
-
-Promotion
-
----
-
-BLOCKED.
-
-The executable artifact must not print or be documented as having stronger evidence than this ledger supports.
-
----
-
-FPR Direct Enumeration
-
-The FPR implementation uses two conceptually different routes.
-
-Formula route
-
-The formula computes
-
-[
-N(\lambda)
-
-\sum_{\pi}
-\prod_{B\in\pi}
-\left(
-\sum_{d\mid g_B}d^{|B|-1}
-\right).
-]
-
-Direct enumeration route
-
-The oracle constructs a canonical permutation of the specified cycle type and enumerates set partitions using restricted-growth-string representation.
-
-A partition is counted exactly when its blocks are mapped to blocks by the permutation.
-
-Thus the computational comparison is:
-
-[
-\boxed{
-N_{\mathrm{formula}}(\lambda)
-
-N_{\mathrm{direct}}(\lambda)
-}
-]
-
-over the declared finite domain.
-
-This is computational evidence.
-
-It is not a substitute for the mathematical derivation.
-
----
-
-FPR Two-Power Family
-
-For the cycle type consisting of m cycles of length 2,
-
-[
-W_j=1+2^{j-1}.
-]
-
-The corresponding exponential generating function is
-
-[
-\boxed{
-\sum_{m\ge0}N_m\frac{z^m}{m!
-
-\exp\left(
-e^z+\frac12e^{2z}-\frac32
-\right).
-}
-]
-
-The initial values are
-
-[
-
-N_0=1,\quad
-N_1=2,\quad
-N_2=7,\quad
-N_3=31,\quad
-N_4=164,\quad
-N_5=999,\quad
-N_6=6841.
-
-]
-
-The earlier sequence
-
-[
-1,1,3,10,53,\ldots
-]
-
-is not the correct sequence for this family.
-
-That discrepancy is retained as a correction in the research record.
-
----
-
-PB Cycle-Orbit Classification
-
-The broader permutation/block line contains the cycle-orbit classification artifact:
-
-AQARION-QUANTARION-AI/
-└── verification/
-└── PB/
-└── PB-CORE/
-└── PB-CORE-005_CYCLE_ORBIT_CLASSIFICATION.md
-
-The classification uses the same structural formula:
-
-[
-N(m_1,\ldots,m_s)
-
-\sum_{\pi\in\Pi([s])}
-\prod_{B\in\pi}
-\left(
-\sum_{d\mid g_B}
-d^{|B|-1}
-\right),
-]
-
-where
-
-[
-g_B=\gcd{m_i:i\in B}.
-]
-
-The phase interpretation is:
-
-· choose a partition of the participating cycles;
-· choose a common quotient cycle length d;
-· require d\mid g_B;
-· choose phase labels in (\mathbb Z/d\mathbb Z)^{|B|};
-· quotient by the common diagonal phase;
-· obtain d^{|B|-1} phase choices.
-
-This gives the weighted Bell-type assembly formula.
-
----
-
-PB Corrections
-
-The PB research record explicitly preserves corrected values.
-
-In particular:
-
-[
-N(3,3)=8,
-]
-
-not 10, and
-
-[
-N(2,4)=9,
-]
-
-not 7.
-
-Additional corrected finite values include:
-
-[
-N(1,1,2)=7,
-]
-
-[
-N(1,1,3)=7,
-]
-
-[
-N(1,2,2)=12,
-]
-
-[
-N(1,2,3)=10.
-]
-
-These corrections are part of the audit trail.
-
-They are not to be silently removed from historical records.
-
----
-
-PB Sanity Anchors
-
-For a single cycle,
-
-[
-N(m)=\tau(m).
-]
-
-For the identity permutation on r points,
-
-[
-N(1^r)=B_r,
-]
-
-where B_r is the r-th Bell number.
-
-For two cycles,
-
-[
-N(m,n)
-
-\tau(m)\tau(n)
-
-· 
-
-\sigma(\gcd(m,n)),
-]
-
-where
-
-[
-\sigma(k)=\sum_{d\mid k}d.
-]
-
-These provide useful low-dimensional sanity checks for the general formula.
-
----
-
-FPR and PB Relationship
-
-AQ-FPR-006 should not be treated as an isolated enumeration script.
-
-Its formula is structurally connected to the PB cycle-orbit classification:
-
-finite permutation
-│
-▼
-cycle decomposition
-│
-▼
-cycle-index partition
-│
-▼
-common quotient modulus
-│
-▼
-phase degrees of freedom
-│
-▼
-weighted Bell assembly
-│
-▼
-invariant-partition count
-
-This relationship is evidence of mathematical coherence between the research artifacts.
-
-It is not, by itself, proof that every surrounding conjecture in the PB program is established.
-
----
-
-Defect and Quotient Research
-
-AQARION also studies finite deterministic dynamical systems through invariant partitions, quotient maps, and operator defects.
-
-A central operator object is
-
-[
-D_\Pi=(I-\Pi)K\Pi,
-]
-
-where \Pi is the orthogonal projection onto a partition-constant observable space and K is the Koopman pullback operator under the declared convention.
-
-The defect measures failure of the projected observable space to be invariant:
-
-[
+\[
 D_\Pi=0
 \quad\Longleftrightarrow\quad
-K(V_\Pi)\subseteq V_\Pi.
-]
+K_T(V_\Pi)\subseteq V_\Pi.
+\]
 
-This operator work must remain definition-sensitive.
+This program connects finite quotient structure with exact operator calculations. It does not treat finite computation as a replacement for proof.
 
-A computation under one convention does not establish equivalence to another convention unless the source definitions have been recovered and compared.
-
----
-
-D22 Provenance Firewall
-
-The D22 research line is deliberately separated into two claims:
-
-locked operator model
-│
-├── direct algebra
-├── exact computation
-└── operator consequences
-
-and
-
-canonical D22 source
-│
-└── source-equivalence question
-
-The first can be mathematically analyzed under its explicit convention.
-
-The second remains a provenance question.
-
-The locked convention is:
-
-[
-Ke_j=e_{j-1},
-]
-
-[
-u_d=e_0-e_d,
-]
-
-[
-P_d=I-\frac12u_du_d^T,
-]
-
-[
-Q_d=\frac12u_du_d^T,
-]
-
-[
-D_d=Q_dKP_d.
-]
-
-Under this explicit model,
-
-[
-D_d=\frac12u_da_d^T,
-]
-
-with
-
-[
-a_d^T=u_d^TKP_d.
-]
-
-Because
-
-[
-P_du_d=0,
-]
-
-one obtains
-
-[
-D_d^2=0.
-]
-
-The resulting Jordan and singular-value consequences are properties of this locked model.
-
-They do not establish equivalence with an unavailable canonical source.
+See [Defect and quotient research](docs/RESEARCH-LINES.md#defect-and-quotient-research).
 
 ---
 
-General Audit Principle
+## Active Research Lines
 
-AQARION treats the following as distinct failure modes.
+### Invariant-partition enumeration
 
-Specification failure
+AQARION studies invariant partitions of finite permutations using cycle decompositions, phase structure, weighted Bell-type formulas, and direct enumeration oracles.
 
-The program correctly executes a claim that was specified incorrectly.
+- Primary artifact: `AQ-FPR-006`
+- Status: analytically derived formula with bounded computational cross-checks
+- External independent reproduction: not established
+- Literature priority: open
+- Lean status: open
 
-Implementation failure
+See [FPR and permutation-block research](docs/RESEARCH-LINES.md#fpr-and-permutation-block-research).
 
-The specification is correct but the implementation is wrong.
+### Finite quotient defects
 
-Execution failure
+AQARION studies invariant quotient structure using block-constant observable spaces and operator defects.
 
-The implementation is correct but the intended computation did not actually run.
+- Exact finite checks are retained as finite evidence
+- Refuted rank claims are retained with explicit counterexamples
+- Transport-energy identities, projection conventions, and rank statements are tracked separately
+- Formalization and source-equivalence obligations remain distinct
 
-Comparison failure
+See [Defect and quotient research](docs/RESEARCH-LINES.md#defect-and-quotient-research).
 
-The computation ran, but the output was compared against an inappropriate oracle.
+### Formalization and provenance
 
-Independence failure
+AQARION treats formalization and provenance as independent research obligations.
 
-Two implementations agree because they share the same semantic or implementation error.
+- A Lean file is not a checked theorem merely because it exists
+- A theorem is not automatically the intended theorem merely because it compiles
+- A script is not automatically an independent reconstruction merely because it is separate
+- A repository path does not establish that the artifact was run
 
-Provenance failure
-
-The artifact cannot be established as the claimed source or version.
-
-Formalization failure
-
-A mathematical argument exists, but the formal proof obligation has not been checked.
-
-Promotion failure
-
-The evidence exists but does not satisfy the policy required for a stronger status.
-
-These failures must not be collapsed into one generic notion of “verification.”
+See [Formalization](docs/FORMALIZATION.md) and [Provenance](docs/PROVENANCE.md).
 
 ---
 
-Negative Controls
+## Research Workflow
 
-Negative controls are first-class research evidence.
-
-A useful verification system should contain deliberately altered claims or implementations for which failure is expected.
-
-Examples include:
-
-wrong sign
-wrong indexing convention
-wrong cyclic orientation
-wrong normalization
-wrong quotient relation
-wrong orbit depth
-wrong phase constraint
-wrong matrix projection
-wrong boundary condition
-
-A negative control that passes unexpectedly is itself an audit failure.
-
-A negative control that fails as expected does not prove the positive claim.
-
-It only demonstrates that the test is capable of detecting that particular mutation.
-
----
-
-Independence Standard
-
-AQARION distinguishes:
-
-same function
-↓
-different implementation
-↓
-different algorithmic route
-↓
-independent reconstruction
-↓
-independent source
-↓
-formal proof
-
-These are different evidence strengths.
-
-For example, comparing the FPR closed formula against direct invariant-partition enumeration is stronger than calling the same formula twice.
-
-It is still weaker than an independently developed implementation with separately established semantics.
-
-The repository therefore avoids the phrase “independently reproduced” unless the evidence actually establishes the required independence.
-
----
-
-Formalization Standard
-
-Lean status is reported separately from mathematical status.
-
-The following are not equivalent:
-
-Lean file exists
-Lean parses
-Lean elaborates
-Lean theorem compiles
-Lean theorem corresponds to intended claim
-
-A Lean artifact must not be called a proof merely because a ".lean" file exists.
-
-Formal certification is promoted only after the relevant proposition and proof have actually been checked by the intended formal system.
-
-Current Lean state:
-
-OPEN
-
----
-
-Computational Evidence Standard
-
-A computation establishes evidence over the domain it actually executed.
-
-For example,
-
-[
-\text{all cycle types }n\le7
-]
-
-means exactly that.
-
-It does not mean:
-
-[
-\text{all finite permutations}.
-]
-
-Likewise,
-
-[
-\text{1176 cases}
-]
-
-would establish evidence over those 1176 cases only.
-
-The phrase “verified” must therefore always be interpreted together with:
-
-· the specification;
-· the implementation;
-· the domain;
-· the execution;
-· the oracle;
-· the comparison;
-· and the independence status.
-
----
-
-Literature and Novelty
-
-AQARION distinguishes mathematical correctness from research novelty.
-
-A theorem can be correct and classical.
-
-A formula can be correct and already known.
-
-A computational implementation can be useful without being novel mathematics.
-
-Conversely, a potentially novel formulation still requires prior-art investigation.
-
-For the PB/FPR cycle-orbit formula, relevant mathematical territory includes:
-
-· congruences of monounary algebras;
-· invariant equivalence relations;
-· permutation group actions;
-· G-set congruence structures;
-· block systems;
-· functional-graph congruences;
-· cycle decompositions.
-
-The exact prior-art status of the closed weighted-Bell formula remains a research question.
-
-Therefore:
-
-correctness   = separate question
-prior art     = separate question
-novelty       = OPEN
-
-No novelty claim is promoted without literature support.
-
----
-
-Publication Gate
-
-Publication is deliberately separated from computational verification.
-
-Current state:
-
-PUBLICATION = BLOCKED
-
-A successful finite computation does not approve publication.
-
-A Lean proof of one proposition does not certify an entire research program.
-
-A policy gate does not establish mathematical truth.
-
-Publication promotion requires its own evidence review.
-
----
-
-C4 Gate
-
-Current state:
-
-C4 = BLOCKED
-
-This is intentional.
-
-The repository is designed to preserve uncertainty rather than conceal it.
-
-C4 should move only when the required evidence conditions are actually satisfied.
-
-Repeatedly executing the same computation does not automatically strengthen its logical status.
-
----
-
-Repository Drift
-
-Repository drift is itself an audit finding.
-
-Examples include:
-
-README path ≠ filesystem path
-manifest ≠ executable filename
-claim record ≠ implementation
-source revision ≠ cited revision
-receipt ≠ actual execution
-workflow description ≠ executed workflow
-
-AQARION treats such discrepancies as evidence-boundary defects.
-
-A documentation correction is therefore not cosmetic.
-
-It can change what a researcher is entitled to claim was actually verified.
-
----
-
-Historical Records
-
-Historical artifacts remain valuable.
-
-AQARION does not delete a failed claim merely because it was corrected.
-
-A historical record can document:
-
-· the original hypothesis;
-· the incorrect computation;
-· the counterexample;
-· the mutation;
-· the correction;
-· the revised specification;
-· the resulting status change.
-
-The objective is not to present a frictionless history.
-
-The objective is to preserve an auditable one.
-
----
-
-Current Research Direction
-
-The high-value mathematical direction is the connection between invariant-partition structure and quotient/operator defect geometry.
-
-For an invariant equivalence
-
-[
-E
-]
-
-one may associate structural data such as
-
-[
-E
-\longleftrightarrow
-\left(
-\pi_E,
-{d_B,\phi_B}_{B\in\pi_E}
-\right).
-]
-
-Important questions include:
-
-· How does refinement E\le F act on the cycle-index partition?
-· How do phase systems transform under refinement?
-· How are meets represented in phase coordinates?
-· How are joins represented?
-· What algebraic object controls the residual phase constraints?
-· Can invariant-partition counts be expressed directly through quotient data?
-· How does the cycle-orbit structure interact with the defect operator
-  [
-  D_\Pi=(I-\Pi)K\Pi?
-  ]
-· Can rank or defect invariants be characterized combinatorially?
-· Which statements admit Lean certification?
-
-These questions are research targets, not promoted theorems unless separately certified.
-
----
-
-AQARION Research Workflow
-
-The preferred workflow is:
-
+```text
 claim
-↓
-freeze specification
-↓
-identify conventions
-↓
-locate primary source
-↓
+  ↓
+freeze specification and conventions
+  ↓
+identify source and artifact boundary
+  ↓
 implement
-↓
-construct oracle
-↓
-construct negative control
-↓
-execute
-↓
-compare
-↓
+  ↓
+construct oracle and negative controls
+  ↓
+execute and preserve receipt
+  ↓
+compare against declared target
+  ↓
 attempt independent reconstruction
-↓
+  ↓
 audit provenance
-↓
+  ↓
 formalize
-↓
+  ↓
 review prior art
-↓
+  ↓
 assign evidence status
-↓
+  ↓
 promotion decision
+```
 
-The workflow is deliberately conservative.
-
-The purpose is not to maximize the number of green checks.
-
-The purpose is to maximize the reliability of the strongest statement that can honestly be made.
+The purpose is not to maximize green checks. The purpose is to make the strongest resulting claim reliable, inspectable, and properly scoped.
 
 ---
 
-What a Passing Run Means
+## What AQARION Preserves
 
-A passing run means:
+AQARION preserves:
 
-the executed program passed the executed checks
-under the executed specification
-over the executed domain
-at the executed repository revision.
+- Definitions and frozen conventions
+- Mathematical derivations
+- Exact finite computations
+- Execution receipts and domain declarations
+- Negative controls and mutation witnesses
+- Counterexamples and refuted claims
+- Open proof obligations
+- Formalization targets
+- Historical corrections
+- Provenance and repository-drift findings
 
-It does not automatically mean:
+A corrected result does not erase the record of the earlier error. A failed computation is not hidden. An unresolved proof obligation is not upgraded into a theorem by repetition.
 
-the theorem is true
-the implementation is correct
-the specification is correct
-the source is canonical
-the result is novel
-the result is independently reproduced
-the result is formally proved
-the research program is publication-ready
-
-Those are separate questions.
+See [Corrections and refutations](docs/HISTORICAL-CORRECTIONS.md).
 
 ---
 
-What AQARION Refuses to Do
+## Collaboration
 
-AQARION does not intentionally:
+Collaboration is welcome in:
 
-· convert finite computation into universal proof;
-· convert repeated computation into independence;
-· convert policy approval into mathematical truth;
-· convert repository presence into reproduction;
-· convert a source filename into source equivalence;
-· convert a Lean file into a Lean proof;
-· convert deterministic serialization into RFC compliance without evidence;
-· convert a corrected result into a historical deletion;
-· convert an open problem into a theorem;
-· silently replace canonical terminology;
-· fabricate receipts;
-· fabricate execution counts;
-· fabricate hashes;
-· fabricate source provenance;
-· promote a claim because it appears repeatedly in documentation.
+- Finite dynamical systems
+- Operator and Koopman theory
+- Quotient structures and congruences
+- Exact combinatorial enumeration
+- Reproducible mathematical computing
+- Formal verification and Lean
+- Research provenance and artifact engineering
+
+Please use [issues](https://github.com/quantarion369-arch/AQARION/issues) and repository discussions for questions, corrections, reproducibility reports, and literature pointers.
 
 ---
 
-Evidence-First Interpretation Rule
+## Guiding Rule
 
-The strongest permissible statement about a research result is the intersection of what its specification, execution, comparison, provenance, and formal evidence actually establish.
+> **Prove first. Verify exhaustively. Predict second. No free parameters.**
 
-A useful hierarchy is:
-
-[
-
-\text{CLAIMED}
-\rightarrow
-\text{AVAILABLE}
-\rightarrow
-\text{EXECUTED}
-\rightarrow
-\text{REPRODUCED}
-\rightarrow
-\text{INDEPENDENTLY REPRODUCED}
-\rightarrow
-\text{FORMALIZED}
-\rightarrow
-\text{PROVED}
-
-]
-
-Movement upward requires new evidence.
-
-Repetition is not automatically new evidence.
+> **Do not promote a result beyond what its evidence establishes.**
 
 ---
 
-Current Audit Position
-
-AQARION is presently maintained under:
-
-FROZEN AUDIT
-NO FABRICATION
-NO PROMOTION
-C4 BLOCKED
-PUBLICATION BLOCKED
-LEAN OPEN
-
-The current repository contains substantial mathematical and computational research artifacts.
-
-It also contains intentionally unresolved provenance, formalization, literature-priority, and verification-boundary questions.
-
-Those unresolved questions are part of the research record.
-
----
-
-Update — 8 October 2026
-
-This section records changes since the 5 October 2026 version.
-
-Quadratic Contract Criterion
-
-Contract:
-
-[
-f(x)=x^2+x,\qquad
-g(x)=cx^2+ax+b,
-]
-
-[
-g(x)\equiv f(x)\pmod q\quad\forall x\in\mathbb Z.
-]
-
-Exact criterion:
-
-[
-
-b\equiv0,\quad
-c+a-2\equiv0,\quad
-2(c-1)\equiv0\pmod q.
-
-]
-
-Status: [P], for this specific contract.
-
-Computational corroboration
-
-· q\in\{2,3,4,5,6,8\}, (c,a,b)\in[-3,3]^3: 2058 cases, 0 disagreements.
-· q\in[2,20], (c,a,b)\in[-5,5]^3: 25289 cases, 0 disagreements.
-
-Status: [V] over the declared finite domains only.
-
-Semantic mutation
-
-Mutant replaces
-
-2(c-1)\equiv0\pmod q
-
-with
-
-c-1\equiv0\pmod q.
-
-Witness:
-
-q=4,\quad c=3,\quad a=-1,\quad b=0.
-
-Correct classifier accepts; mutant rejects. Over the 2058-case domain, the mutant produces 33 false rejections.
-
-Status: [V].
-
-Oracle-independence limitation
-
-The saved-evidence verifier verify_quadratic_atlas.py derives exact_acceptance from the complete-residue route rather than independently re-deriving the algebraic criterion. It certifies internal consistency of saved evidence but does not independently detect corruption of the algebraic implementation. Recorded as OPEN.
-
-Mobile Research Kit packaging
-
-Working-tree test count advanced to 102. Archive-level reproduction not yet established. The following remain OPEN:
-
-· fresh archive extraction and manifest re-verification;
-· archive SHA256, byte size, and entry-count receipt;
-· public/GitHub byte identity with the working tree;
-· PB-006 Gate 2 (gcd → lcm semantic mutation).
-
----
-
-Final Principle
-
-A result can run, reproduce, and still test the wrong claim.
-
-A result can be formally checked and still formalize the wrong proposition.
-
-A repository can be internally consistent and still point to the wrong source.
-
-A computation can be exact and still answer the wrong question.
-
-Therefore:
-
-[
-
-\text{specification}
-\neq
-\text{execution}
-\neq
-\text{inference}
-\neq
-\text{formal proof}
-\neq
-\text{provenance}
-
-]
-
-And the governing rule remains:
-
-[
-
-\text{Do not promote a result beyond what its evidence establishes.}
-
-]
-
-AQARION — Evidence-First Research Intelligence
+**AQARION — Evidence-First Research Intelligence**
+```
