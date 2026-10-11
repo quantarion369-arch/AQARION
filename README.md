@@ -1,4 +1,4 @@
-Salutations 🤝 im James a
+Welcome 🤝 Im James A
 
 Mathematical Research Developer | AQARION
 
