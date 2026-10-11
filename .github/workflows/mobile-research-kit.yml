@@ -50,6 +50,34 @@ jobs:
           python --version
           python -c "import sys; print(sys.executable)"
 
-      - name: Run package regression
+      - name: Test evidence acceptance validator
         run: |
-          python tools/run_regression.py
+          python -m unittest discover \
+            -s tests \
+            -p "test_workflow_evidence.py" \
+            -v
+
+      - name: Run package regression and record evidence
+        env:
+          EVIDENCE_ROOT: ${{ runner.temp }}/mobile-research-kit-evidence
+        run: |
+          python tools/run_workflow.py \
+            --timeout 600 \
+            --output-root "$EVIDENCE_ROOT" \
+            -- python tools/run_regression.py
+
+      - name: Validate and bind execution evidence
+        if: always()
+        env:
+          EVIDENCE_ROOT: ${{ runner.temp }}/mobile-research-kit-evidence
+        run: |
+          python tools/validate_workflow_evidence.py
+
+      - name: Upload regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-research-kit-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/mobile-research-kit-evidence/
+          if-no-files-found: warn
+          retention-days: 30
