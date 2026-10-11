@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Mapping
 
+
 REQUIRED_ENV = (
     "GITHUB_REPOSITORY",
     "GITHUB_SHA",
@@ -189,7 +190,7 @@ def validate_evidence(
             failures.append("receipt kind is not command_execution")
 
         status = receipt.get("status")
-        if status not in TERMINAL_STATUSES:
+        if not isinstance(status, str) or status not in TERMINAL_STATUSES:
             failures.append("receipt was not finalized")
         metadata["receipt_status"] = status
 
@@ -204,14 +205,49 @@ def validate_evidence(
             except ValueError:
                 failures.append("receipt ended_at_utc is invalid")
 
+        timestamps = {}
+        for field in ("started_at_utc", "ended_at_utc"):
+            value = receipt.get(field)
+            if not isinstance(value, str) or not value.strip():
+                failures.append("receipt has no " + field)
+                continue
+            try:
+                parsed = datetime.fromisoformat(value)
+                if parsed.utcoffset() is None:
+                    raise ValueError("timezone is missing")
+                timestamps[field] = parsed.astimezone(timezone.utc)
+            except ValueError:
+                failures.append("receipt " + field + " is invalid")
+
+        if len(timestamps) == 2:
+            if timestamps["ended_at_utc"] < timestamps["started_at_utc"]:
+                failures.append("receipt ended before it started")
+
         exit_code = receipt.get("recorder_exit")
         if isinstance(exit_code, bool) or not isinstance(exit_code, int):
             failures.append("receipt recorder_exit must be an integer")
         else:
             metadata["recorder_exit"] = exit_code
-            metadata["child_command_succeeded"] = (
-                status == "completed" and exit_code == 0
-            )
+            metadata["child_command_succeeded"] = False
+
+        if status == "completed":
+            child_code = receipt.get("child_returncode")
+            if isinstance(child_code, bool) or not isinstance(child_code, int):
+                failures.append(
+                    "completed receipt child_returncode must be an integer"
+                )
+            elif isinstance(exit_code, int) and not isinstance(exit_code, bool):
+                normalized_child = (
+                    child_code if child_code >= 0 else 128 - child_code
+                )
+                if exit_code != normalized_child:
+                    failures.append(
+                        "receipt recorder_exit disagrees with child_returncode"
+                    )
+                else:
+                    metadata["child_command_succeeded"] = (
+                        child_code == 0 and exit_code == 0
+                    )
 
         command = receipt.get("command")
         if (
@@ -289,7 +325,10 @@ def main():
     try:
         metadata = validate_evidence(value, os.environ)
     except Exception as exc:
-        print("ERROR: evidence validation failed: " + str(exc), file=sys.stderr)
+        print(
+            "ERROR: evidence validation failed: " + str(exc),
+            file=sys.stderr,
+        )
         return 2
 
     print(json.dumps(metadata, indent=2, sort_keys=True))
