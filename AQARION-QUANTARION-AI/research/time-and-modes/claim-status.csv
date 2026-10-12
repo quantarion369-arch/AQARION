@@ -1,0 +1,11 @@
+claim_id,claim,status,evidence,limitation
+CE-001,"Centered differentiation leaks a future spike in the supplied example","REPRODUCED_EARLIER","Executed numerical comparison in this conversation","One demonstrated failure case"
+CE-002,"Trailing estimator avoids future influence in the tested spike example","REPRODUCED_EARLIER","Executed comparison of earlier implementation","Exact packaged tests not yet executed"
+CE-003,"Packaged estimator passes its complete automated suite","PENDING_EXECUTION","test_causal_estimator.py supplied inline","No package execution result yet"
+MO-001,"Earlier mechanical sweep agrees with analytical displacement response","EXECUTED_EARLIER","41-frequency numerical sweep","Known illustrative linear model"
+EL-001,"Earlier RLC sweep agrees with analytical current response","EXECUTED_EARLIER","41-frequency numerical sweep","Mapped oscillator model; no hardware measurement"
+PK-001,"This exact package reproduces earlier sweep results","PENDING_EXECUTION","timing_models.py supplied inline","Requires execution and comparison"
+VR-001,"Radius asymmetry improves held-out overtaking prediction","OPEN","No measured dataset supplied","Physical study not performed"
+PR-001,"The proposed evaluation protocol is novel","OPEN","Preliminary literature search","Closest full methods and supplements not fully reviewed"
+PH-001,"Fixed voltage amplitude guarantees fixed delivered energy","NOT_CLAIMED","Energy input depends on voltage times current","Requires energy accounting"
+PH-002,"This package establishes helicity or cosmic equivalence","NOT_CLAIMED","No relevant physical validation","Outside package scope"
