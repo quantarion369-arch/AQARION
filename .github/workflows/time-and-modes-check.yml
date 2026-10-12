@@ -1,0 +1,108 @@
+name: Time and Modes - Run Script Check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      PACKAGE_PATH: AQARION-QUANTARION-AI/research/time-and-modes
+      EVIDENCE_DIR: ${{ runner.temp }}/time-and-modes-check
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Record revision and verify required files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$EVIDENCE_DIR"
+
+          git rev-parse HEAD > "$EVIDENCE_DIR/commit.txt"
+          python --version > "$EVIDENCE_DIR/python-version.txt" 2>&1
+
+          cd "$GITHUB_WORKSPACE/$PACKAGE_PATH"
+
+          for file in \
+            run.sh \
+            causal_estimator.py \
+            test_causal_estimator.py \
+            timing_models.py
+          do
+            if [ ! -f "$file" ]; then
+              echo "Missing required file: $PACKAGE_PATH/$file"
+              exit 1
+            fi
+          done
+
+          sha256sum \
+            run.sh \
+            causal_estimator.py \
+            test_causal_estimator.py \
+            timing_models.py \
+            > "$EVIDENCE_DIR/source-sha256-before.txt"
+
+          cp run.sh "$EVIDENCE_DIR/run-script.txt"
+
+      - name: Run your actual run.sh
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/$PACKAGE_PATH"
+
+          python -m pip freeze > "$EVIDENCE_DIR/environment.txt"
+
+          set +e
+          bash -e -o pipefail run.sh 2>&1 \
+            | tee "$EVIDENCE_DIR/run.log"
+          run_status=${PIPESTATUS[0]}
+          set -e
+
+          printf '%s
+' "$run_status" \
+            > "$EVIDENCE_DIR/run-exit-code.txt"
+
+          sha256sum \
+            run.sh \
+            causal_estimator.py \
+            test_causal_estimator.py \
+            timing_models.py \
+            > "$EVIDENCE_DIR/source-sha256-after.txt"
+
+          if [ "$run_status" -eq 0 ]; then
+            echo "## PASS: all three run.sh commands completed successfully" \
+              >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "## FAIL: run.sh exited with code $run_status" \
+              >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "This checks execution, not all scientific claims." \
+            >> "$GITHUB_STEP_SUMMARY"
+
+          exit "$run_status"
+
+      - name: Upload check logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: time-and-modes-check-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.EVIDENCE_DIR }}/
+          if-no-files-found: warn
+          retention-days: 30
