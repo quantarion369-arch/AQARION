@@ -9,7 +9,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Check out repository
@@ -21,71 +21,39 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
+          cache-dependency-path: AQARION-QUANTARION-AI/research/time-and-modes/requirements.txt
 
-      - name: Prepare logs
+      - name: Install declared dependencies
+        working-directory: AQARION-QUANTARION-AI/research/time-and-modes
         shell: bash
         run: |
-          set -euo pipefail
-          LOG_DIR="$RUNNER_TEMP/time-and-modes-check"
-          mkdir -p "$LOG_DIR"
-          git rev-parse HEAD > "$LOG_DIR/commit.txt"
-          python --version > "$LOG_DIR/python-version.txt" 2>&1
+          set -eu
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -c 'import numpy, scipy; print("NumPy", numpy.__version__); print("SciPy", scipy.__version__)'
 
-      - name: Locate and verify package files
+      - name: Verify required files
+        working-directory: AQARION-QUANTARION-AI/research/time-and-modes
         shell: bash
         run: |
-          set -euo pipefail
-          LOG_DIR="$RUNNER_TEMP/time-and-modes-check"
-          PACKAGE="$GITHUB_WORKSPACE/AQARION-QUANTARION-AI/research/time-and-modes"
-
-          exec > >(tee "$LOG_DIR/file-check.log") 2>&1
-
-          echo "Checking this commit"
-          git rev-parse HEAD
-
-          echo "Looking for package files anywhere in this checkout"
-          find "$GITHUB_WORKSPACE" -type f ( -name run.sh -o -name causal_estimator.py -o -name test_causal_estimator.py -o -name timing_models.py ) -not -path '*/.git/*' -print
-
-          echo "Expected package directory"
-          echo "$PACKAGE"
-
-          if [ ! -d "$PACKAGE" ]; then
-            echo "ERROR - Expected package directory is missing."
-            exit 1
-          fi
-
-          echo "Files present in the expected directory"
-          ls -la "$PACKAGE"
-
-          missing=0
-
-          for file in run.sh causal_estimator.py test_causal_estimator.py timing_models.py
+          set -eu
+          for file in run.sh requirements.txt causal_estimator.py test_causal_estimator.py timing_models.py
           do
-            if [ -f "$PACKAGE/$file" ]; then
-              echo "FOUND - $file"
-            else
-              echo "MISSING - $file"
-              missing=1
-            fi
+            test -f "$file" || { echo "MISSING: $file"; exit 1; }
+            echo "FOUND: $file"
           done
-
-          if [ "$missing" -ne 0 ]; then
-            echo "ERROR - Required files are missing. Python checks were not run."
-            exit 1
-          fi
-
-          echo "All required files are present."
 
       - name: Run your script
         working-directory: AQARION-QUANTARION-AI/research/time-and-modes
         shell: bash
         run: |
-          set -euo pipefail
+          set -eu
           LOG_DIR="$RUNNER_TEMP/time-and-modes-check"
+          mkdir -p "$LOG_DIR"
 
           cp run.sh "$LOG_DIR/run-script.txt"
-          sha256sum run.sh causal_estimator.py test_causal_estimator.py timing_models.py > "$LOG_DIR/source-sha256-before.txt"
-          python -m pip freeze > "$LOG_DIR/environment.txt"
+          sha256sum run.sh causal_estimator.py test_causal_estimator.py timing_models.py > "$LOG_DIR/source-sha256.txt"
 
           set +e
           bash -ex -o pipefail run.sh 2>&1 | tee "$LOG_DIR/run.log"
@@ -93,8 +61,6 @@ jobs:
           set -e
 
           echo "$result" > "$LOG_DIR/exit-code.txt"
-          sha256sum run.sh causal_estimator.py test_causal_estimator.py timing_models.py > "$LOG_DIR/source-sha256-after.txt"
-
           echo "Script exit code = $result" >> "$GITHUB_STEP_SUMMARY"
 
           exit "$result"
