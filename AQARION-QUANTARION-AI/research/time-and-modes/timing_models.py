@@ -57,7 +57,9 @@ def run_sweep(kind):
         period = 2 * np.pi / omega_d
         end = TOTAL_CYCLES * period
         times = np.linspace(
-            end - MEASURE_CYCLES * period, end, MEASURE_SAMPLES,
+            end - MEASURE_CYCLES * period,
+            end,
+            MEASURE_SAMPLES,
         )
 
         rhs = mechanical_rhs if kind == "mechanical" else rlc_rhs
@@ -85,7 +87,8 @@ def run_sweep(kind):
         else:
             signal = solution.y[1]
             expected = V0 / np.hypot(
-                R, omega_d * L - 1 / (omega_d * C),
+                R,
+                omega_d * L - 1 / (omega_d * C),
             )
 
         measured = float(np.ptp(signal) / 2)
@@ -104,7 +107,10 @@ def run_sweep(kind):
 
 def write_csv(path, rows):
     with path.open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(
+            stream,
+            fieldnames=list(rows[0]),
+        )
         writer.writeheader()
         writer.writerows(rows)
 
@@ -114,8 +120,12 @@ def digest(path):
 
 
 def summarize(rows, unit):
-    peak = max(rows, key=lambda row: row["measured_amplitude"])
+    peak = max(
+        rows,
+        key=lambda row: row["measured_amplitude"],
+    )
     error = max(row["relative_error"] for row in rows)
+
     return {
         "observable_unit": unit,
         "sampled_peak": peak,
@@ -130,14 +140,22 @@ def main():
     electrical = run_sweep("rlc")
 
     summaries = {
-        "mechanical_displacement": summarize(mechanical, "model units"),
+        "mechanical_displacement": summarize(
+            mechanical,
+            "model units",
+        ),
         "rlc_current": summarize(electrical, "A"),
     }
-    passed = all(item["comparison_pass"] for item in summaries.values())
+    passed = all(
+        item["comparison_pass"] for item in summaries.values()
+    )
 
-    out = Path(tempfile.mkdtemp(
-        prefix="timing-models-", dir=str(Path.cwd()),
-    ))
+    out = Path(
+        tempfile.mkdtemp(
+            prefix="timing-models-",
+            dir=str(Path.cwd()),
+        )
+    )
     mechanical_path = out / "mechanical_sweep.csv"
     electrical_path = out / "rlc_current_sweep.csv"
 
@@ -148,7 +166,11 @@ def main():
     receipt = {
         "schema": "AQ-TIMING-MODELS/0.1",
         "created_utc": datetime.now(timezone.utc).isoformat(),
-        "status": "MODEL_COMPARISON_PASS" if passed else "MODEL_COMPARISON_FAIL",
+        "status": (
+            "MODEL_COMPARISON_PASS"
+            if passed
+            else "MODEL_COMPARISON_FAIL"
+        ),
         "source_sha256": digest(source),
         "environment": {
             "python": platform.python_version(),
@@ -185,10 +207,10 @@ def main():
         ],
     }
 
+    newline = chr(10)
     receipt_path = out / "run-receipt.json"
     receipt_path.write_text(
-        json.dumps(receipt, indent=2, sort_keys=True) + "
-",
+        json.dumps(receipt, indent=2, sort_keys=True) + newline,
         encoding="utf-8",
     )
 
@@ -198,9 +220,12 @@ def main():
         (receipt_path, receipt_path.name),
         (source, "SOURCE:timing_models.py"),
     ]
+    checksum_lines = [
+        f"{digest(path)}  {name}"
+        for path, name in entries
+    ]
     (out / "SHA256SUMS").write_text(
-        "".join(f"{digest(path)}  {name}
-" for path, name in entries),
+        newline.join(checksum_lines) + newline,
         encoding="utf-8",
     )
 
