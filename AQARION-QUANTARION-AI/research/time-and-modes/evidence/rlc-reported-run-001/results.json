@@ -1,0 +1,86 @@
+{
+  "parameters": {
+    "L_h": 0.01,
+    "C_f": 0.0001,
+    "R_ohm": 2.0,
+    "source_peak_v": 1.0,
+    "initial_charge_c": 0,
+    "initial_current_a": 0
+  },
+  "natural_frequency_hz": 159.15494309189535,
+  "damping_ratio": 0.1,
+  "sampled_peak": {
+    "frequency_ratio": 1.0,
+    "frequency_hz": 159.15494309189535,
+    "numerical_peak_current_a": 0.49999999848905785,
+    "analytic_peak_current_a": 0.5,
+    "relative_error": 3.0218842983487093e-09,
+    "mean_input_power_w": 0.24999999924453775,
+    "mean_resistive_power_w": 0.24999999848907561,
+    "charge_amplitude_c": 0.0004999999984515123
+  },
+  "max_relative_current_error": 3.0782224629048974e-09,
+  "selected_rows": [
+    {
+      "frequency_ratio": 0.5,
+      "frequency_hz": 79.57747154594767,
+      "numerical_peak_current_a": 0.06608186004825806,
+      "analytic_peak_current_a": 0.06608186004550898,
+      "relative_error": 4.16011102068307e-11,
+      "mean_input_power_w": 0.004366812247174282,
+      "mean_resistive_power_w": 0.004366812227437046,
+      "charge_amplitude_c": 0.00013216372008826205
+    },
+    {
+      "frequency_ratio": 0.8,
+      "frequency_hz": 127.32395447351627,
+      "numerical_peak_current_a": 0.2030692329613287,
+      "analytic_peak_current_a": 0.20306923302672383,
+      "relative_error": 3.2203368662933906e-10,
+      "mean_input_power_w": 0.041237113545372246,
+      "mean_resistive_power_w": 0.04123711337549773,
+      "charge_amplitude_c": 0.0002538365411792046
+    },
+    {
+      "frequency_ratio": 1.0,
+      "frequency_hz": 159.15494309189535,
+      "numerical_peak_current_a": 0.49999999848905785,
+      "analytic_peak_current_a": 0.5,
+      "relative_error": 3.0218842983487093e-09,
+      "mean_input_power_w": 0.24999999924453775,
+      "mean_resistive_power_w": 0.24999999848907561,
+      "charge_amplitude_c": 0.0004999999984515123
+    },
+    {
+      "frequency_ratio": 1.2,
+      "frequency_hz": 190.9859317102744,
+      "numerical_peak_current_a": 0.2394260650105131,
+      "analytic_peak_current_a": 0.2394260653402866,
+      "relative_error": 1.377349979950821e-09,
+      "mean_input_power_w": 0.05732484083940304,
+      "mean_resistive_power_w": 0.05732484060641646,
+      "charge_amplitude_c": 0.00019952172081717188
+    },
+    {
+      "frequency_ratio": 1.5,
+      "frequency_hz": 238.73241463784302,
+      "numerical_peak_current_a": 0.11668647616277074,
+      "analytic_peak_current_a": 0.11668647623766212,
+      "relative_error": 6.418171768922084e-10,
+      "mean_input_power_w": 0.013615733793854685,
+      "mean_resistive_power_w": 0.013615733719286415,
+      "charge_amplitude_c": 7.77909840918124e-05
+    },
+    {
+      "frequency_ratio": 2.0,
+      "frequency_hz": 318.3098861837907,
+      "numerical_peak_current_a": 0.06608186002772712,
+      "analytic_peak_current_a": 0.06608186004550898,
+      "relative_error": 2.690883595904726e-10,
+      "mean_input_power_w": 0.004366812253387159,
+      "mean_resistive_power_w": 0.004366812224729343,
+      "charge_amplitude_c": 3.304093000419105e-05
+    }
+  ],
+  "scope": "Ideal linear lumped series RLC simulation; not hardware measurements."
+}
