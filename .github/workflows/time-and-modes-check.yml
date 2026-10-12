@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
 
     steps:
@@ -26,9 +26,55 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/time-and-modes-check"
-          git rev-parse HEAD > "$RUNNER_TEMP/time-and-modes-check/commit.txt"
-          python --version > "$RUNNER_TEMP/time-and-modes-check/python-version.txt" 2>&1
+          LOG_DIR="$RUNNER_TEMP/time-and-modes-check"
+          mkdir -p "$LOG_DIR"
+          git rev-parse HEAD > "$LOG_DIR/commit.txt"
+          python --version > "$LOG_DIR/python-version.txt" 2>&1
+
+      - name: Locate and verify package files
+        shell: bash
+        run: |
+          set -euo pipefail
+          LOG_DIR="$RUNNER_TEMP/time-and-modes-check"
+          PACKAGE="$GITHUB_WORKSPACE/AQARION-QUANTARION-AI/research/time-and-modes"
+
+          exec > >(tee "$LOG_DIR/file-check.log") 2>&1
+
+          echo "Checking this commit"
+          git rev-parse HEAD
+
+          echo "Looking for package files anywhere in this checkout"
+          find "$GITHUB_WORKSPACE" -type f ( -name run.sh -o -name causal_estimator.py -o -name test_causal_estimator.py -o -name timing_models.py ) -not -path '*/.git/*' -print
+
+          echo "Expected package directory"
+          echo "$PACKAGE"
+
+          if [ ! -d "$PACKAGE" ]; then
+            echo "ERROR - Expected package directory is missing."
+            exit 1
+          fi
+
+          echo "Files present in the expected directory"
+          ls -la "$PACKAGE"
+
+          missing=0
+
+          for file in run.sh causal_estimator.py test_causal_estimator.py timing_models.py
+          do
+            if [ -f "$PACKAGE/$file" ]; then
+              echo "FOUND - $file"
+            else
+              echo "MISSING - $file"
+              missing=1
+            fi
+          done
+
+          if [ "$missing" -ne 0 ]; then
+            echo "ERROR - Required files are missing. Python checks were not run."
+            exit 1
+          fi
+
+          echo "All required files are present."
 
       - name: Run your script
         working-directory: AQARION-QUANTARION-AI/research/time-and-modes
@@ -37,17 +83,12 @@ jobs:
           set -euo pipefail
           LOG_DIR="$RUNNER_TEMP/time-and-modes-check"
 
-          test -f run.sh
-          test -f causal_estimator.py
-          test -f test_causal_estimator.py
-          test -f timing_models.py
-
           cp run.sh "$LOG_DIR/run-script.txt"
           sha256sum run.sh causal_estimator.py test_causal_estimator.py timing_models.py > "$LOG_DIR/source-sha256-before.txt"
           python -m pip freeze > "$LOG_DIR/environment.txt"
 
           set +e
-          bash -e -o pipefail run.sh 2>&1 | tee "$LOG_DIR/run.log"
+          bash -ex -o pipefail run.sh 2>&1 | tee "$LOG_DIR/run.log"
           result=${PIPESTATUS[0]}
           set -e
 
@@ -55,7 +96,6 @@ jobs:
           sha256sum run.sh causal_estimator.py test_causal_estimator.py timing_models.py > "$LOG_DIR/source-sha256-after.txt"
 
           echo "Script exit code = $result" >> "$GITHUB_STEP_SUMMARY"
-          echo "This checks execution, not all scientific claims." >> "$GITHUB_STEP_SUMMARY"
 
           exit "$result"
 
