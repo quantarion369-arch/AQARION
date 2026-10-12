@@ -1,0 +1,116 @@
+{
+  "schema": "AQ-VORTEX-PILOT/0.1",
+  "status": "DRAFT_FOR_APPARATUS_DEVELOPMENT",
+  "question": "Do past-only radius asymmetry features improve prediction of future ring overtaking beyond motion and size?",
+  "system": "Dyed water vortex rings, not air-filled bubble rings",
+  "safety_scope": {
+    "allowed": [
+      "Low-pressure manually generated water pulses",
+      "Water-based food coloring",
+      "Phone kept dry and outside the water"
+    ],
+    "excluded": [
+      "High-power ultrasound",
+      "Sealed pressure vessels",
+      "Combustible gases",
+      "Solvents",
+      "Underwater electrical equipment",
+      "Experiments in dangerous natural currents"
+    ]
+  },
+  "apparatus_candidates_not_validated": {
+    "tank_cm": [30, 20, 20],
+    "generator": "Syringe or piston with a measured circular outlet",
+    "record": [
+      "Actual displaced volume per pulse",
+      "Outlet diameter",
+      "Pulse duration",
+      "Water depth and temperature",
+      "Camera frame timestamps",
+      "Scale calibration",
+      "Distance from boundaries"
+    ],
+    "camera": "Fixed side view; target 60 fps or higher"
+  },
+  "development_phase": {
+    "initial_trials": 5,
+    "purpose": "Establish repeatable visible rings and reliable identities",
+    "evaluation_use": "Development trials are excluded from confirmation",
+    "freeze_requirement": "Finalize apparatus and analysis settings before evaluation data collection"
+  },
+  "pilot_candidates": {
+    "pulse_start_delays_s": [0.3, 0.6, 0.9],
+    "trials_per_delay": 10,
+    "order": "Randomized with saved assignments",
+    "settling": "Determine during development; do not assume 60 seconds is sufficient"
+  },
+  "identity_convention": {
+    "front": "First-emitted ring, even after passage",
+    "rear": "Second-emitted ring, even after passage"
+  },
+  "time_origin": "Start of second pulse",
+  "feature_settings_candidate": {
+    "prediction_time_s": 0.5,
+    "backward_window_s": 0.2,
+    "minimum_samples": 3,
+    "maximum_frame_age_s": 0.04,
+    "future_frames_allowed": false,
+    "centered_smoothing_allowed": false
+  },
+  "outcome_window": {
+    "start": "Strictly after prediction time",
+    "end_s": 2.0
+  },
+  "labels": {
+    "overtaking": "Second-emitted ring passes first-emitted ring in the future window with reliably maintained identities",
+    "no_overtaking": "Both rings remain trackable throughout the future window and no passage occurs",
+    "ambiguous": "Identity, visibility, breakdown, or marking uncertainty prevents reliable classification",
+    "already_overtaken": "Passage occurred at or before prediction time; reported separately",
+    "feature_unavailable": "Insufficient history, stale frame, or invalid tracking; reported separately"
+  },
+  "features": {
+    "s_cm": "x_front - x_rear",
+    "dU_cm_s": "U_rear - U_front, both past-only estimates",
+    "mean_radius_cm": "(R_front + R_rear)/2",
+    "Q": "(R_front - R_rear)/(R_front + R_rear)",
+    "dQ_per_s": "Past-only trailing slope of Q"
+  },
+  "model_comparisons": {
+    "A": ["s_cm", "dU_cm_s"],
+    "B": ["s_cm", "dU_cm_s", "mean_radius_cm"],
+    "C": ["s_cm", "dU_cm_s", "mean_radius_cm", "Q", "dQ_per_s"]
+  },
+  "evaluation_plan": {
+    "split_unit": "Entire trial",
+    "candidate_split": "20 development/training trials and 10 held-out trials if enough eligible trials exist",
+    "missing_trials": "Report realized counts; do not silently replace exclusions",
+    "preprocessing": "Fit only on training trials",
+    "model_selection": "No tuning on held-out outcomes",
+    "report": [
+      "Class counts",
+      "Majority-class baseline",
+      "Individual held-out predictions",
+      "Confusion matrices",
+      "Paired prediction differences",
+      "All exclusions and reasons"
+    ],
+    "permutation_control": "Specify the null, permutation scheme, statistic and repetitions before evaluation; no assumed 50 percent target",
+    "confirmation": "Later-session dataset with frozen method",
+    "sample_size_boundary": "Feasibility pilot, not a broadly validated predictor"
+  },
+  "measurement_uncertainty": {
+    "procedure": "Independently re-mark a prespecified frame subset without seeing prediction results",
+    "report": [
+      "Center-position disagreement",
+      "Radius disagreement",
+      "Sensitivity of features and predictions to marking changes"
+    ]
+  },
+  "claim_limits": [
+    "No reconnection claim from projected overlap",
+    "No measured helicity",
+    "No conserved-Q claim",
+    "No Mobius or Klein topology claim",
+    "No plasma or cosmological equivalence"
+  ]
+}
