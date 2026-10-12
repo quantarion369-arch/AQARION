@@ -9,3 +9,4 @@ VR-001,"Radius asymmetry improves held-out overtaking prediction","OPEN","No mea
 PR-001,"The proposed evaluation protocol is novel","OPEN","Preliminary literature search","Closest full methods and supplements not fully reviewed"
 PH-001,"Fixed voltage amplitude guarantees fixed delivered energy","NOT_CLAIMED","Energy input depends on voltage times current","Requires energy accounting"
 PH-002,"This package establishes helicity or cosmic equivalence","NOT_CLAIMED","No relevant physical validation","Outside package scope"
+EL-002,"User-supplied 10 mH / 100 uF / 2 ohm RLC run reports analytical agreement and power balance","REPORTED_NOT_REPLAYED","evidence/rlc-reported-run-001/results.json","Generating code and execution provenance pending"
