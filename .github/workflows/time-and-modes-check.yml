@@ -1,4 +1,4 @@
-name: Time and Modes - Run Script Check
+name: Time and Modes Check
 
 on:
   workflow_dispatch:
@@ -11,10 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
-    env:
-      PACKAGE_PATH: AQARION-QUANTARION-AI/research/time-and-modes
-      EVIDENCE_DIR: ${{ runner.temp }}/time-and-modes-check
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -26,83 +22,48 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Record revision and verify required files
+      - name: Prepare logs
         shell: bash
         run: |
           set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/time-and-modes-check"
+          git rev-parse HEAD > "$RUNNER_TEMP/time-and-modes-check/commit.txt"
+          python --version > "$RUNNER_TEMP/time-and-modes-check/python-version.txt" 2>&1
 
-          mkdir -p "$EVIDENCE_DIR"
-
-          git rev-parse HEAD > "$EVIDENCE_DIR/commit.txt"
-          python --version > "$EVIDENCE_DIR/python-version.txt" 2>&1
-
-          cd "$GITHUB_WORKSPACE/$PACKAGE_PATH"
-
-          for file in \
-            run.sh \
-            causal_estimator.py \
-            test_causal_estimator.py \
-            timing_models.py
-          do
-            if [ ! -f "$file" ]; then
-              echo "Missing required file: $PACKAGE_PATH/$file"
-              exit 1
-            fi
-          done
-
-          sha256sum \
-            run.sh \
-            causal_estimator.py \
-            test_causal_estimator.py \
-            timing_models.py \
-            > "$EVIDENCE_DIR/source-sha256-before.txt"
-
-          cp run.sh "$EVIDENCE_DIR/run-script.txt"
-
-      - name: Run your actual run.sh
+      - name: Run your script
+        working-directory: AQARION-QUANTARION-AI/research/time-and-modes
         shell: bash
         run: |
           set -euo pipefail
-          cd "$GITHUB_WORKSPACE/$PACKAGE_PATH"
+          LOG_DIR="$RUNNER_TEMP/time-and-modes-check"
 
-          python -m pip freeze > "$EVIDENCE_DIR/environment.txt"
+          test -f run.sh
+          test -f causal_estimator.py
+          test -f test_causal_estimator.py
+          test -f timing_models.py
+
+          cp run.sh "$LOG_DIR/run-script.txt"
+          sha256sum run.sh causal_estimator.py test_causal_estimator.py timing_models.py > "$LOG_DIR/source-sha256-before.txt"
+          python -m pip freeze > "$LOG_DIR/environment.txt"
 
           set +e
-          bash -e -o pipefail run.sh 2>&1 \
-            | tee "$EVIDENCE_DIR/run.log"
-          run_status=${PIPESTATUS[0]}
+          bash -e -o pipefail run.sh 2>&1 | tee "$LOG_DIR/run.log"
+          result=${PIPESTATUS[0]}
           set -e
 
-          printf '%s
-' "$run_status" \
-            > "$EVIDENCE_DIR/run-exit-code.txt"
+          echo "$result" > "$LOG_DIR/exit-code.txt"
+          sha256sum run.sh causal_estimator.py test_causal_estimator.py timing_models.py > "$LOG_DIR/source-sha256-after.txt"
 
-          sha256sum \
-            run.sh \
-            causal_estimator.py \
-            test_causal_estimator.py \
-            timing_models.py \
-            > "$EVIDENCE_DIR/source-sha256-after.txt"
+          echo "Script exit code = $result" >> "$GITHUB_STEP_SUMMARY"
+          echo "This checks execution, not all scientific claims." >> "$GITHUB_STEP_SUMMARY"
 
-          if [ "$run_status" -eq 0 ]; then
-            echo "## PASS: all three run.sh commands completed successfully" \
-              >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "## FAIL: run.sh exited with code $run_status" \
-              >> "$GITHUB_STEP_SUMMARY"
-          fi
+          exit "$result"
 
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "This checks execution, not all scientific claims." \
-            >> "$GITHUB_STEP_SUMMARY"
-
-          exit "$run_status"
-
-      - name: Upload check logs
+      - name: Upload logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: time-and-modes-check-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ env.EVIDENCE_DIR }}/
+          path: ${{ runner.temp }}/time-and-modes-check/
           if-no-files-found: warn
           retention-days: 30
