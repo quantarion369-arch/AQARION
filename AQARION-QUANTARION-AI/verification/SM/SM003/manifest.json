@@ -1,4 +1,3 @@
-
 {
   "schema": "AQ-SM003-VERIFICATION-3.0",
   "claim": "rank(D_Pi) = k - c(H_Pi)",
@@ -13,7 +12,7 @@
   "mathematical_claim": {
     "space": "Real-valued functions on a finite nonempty state set X",
     "map": "T : X -> X is total",
-    "partition": "Pi = {B_1, ..., B_k} is a partition into nonempty blocks",
+    "partition": "Pi = {B_1,..., B_k} is a partition into nonempty blocks",
     "koopman": "K[x,y] = 1 iff T(x) = y",
     "projector": "P is the orthogonal block-average projector",
     "defect": "D_Pi = (I-P) K P",
@@ -164,7 +163,7 @@
     "coverage_domain": "Exactly the named canonical mutant implementations in this manifest; not all possible implementations or mutants."
   },
   "repro": {
-    "mutation_command": "python3 AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py --max-n 4 --report AQARION-QUANTARION-AI/verification/SM/SM003/sm003-mutation-report.json",
+    "mutation_command": "python3 AQARION-QUANTARION-AI/verification/SM/SM003/mutations.py --max-n 4 --report [STRIPPED 65 bytes].json",
     "test_command": "python3 -m unittest discover -s AQARION-QUANTARION-AI/verification/SM/SM003 -p test_sm003.py -v",
     "environment": null,
     "source_hashes": null,
