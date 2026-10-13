@@ -2,8 +2,13 @@
 """Exact arithmetic verifier for the PB-CORE-006 candidate formula.
 
 Uses Python's standard library only.
-This verifies the arithmetic of the displayed formula; it does not
-prove the combinatorial identity represented by that formula.
+
+This verifies the arithmetic of the displayed formula against supplied
+reference values. It does not prove the combinatorial identity represented
+by that formula.
+
+A value with no stored reference is reported as UNREFERENCED. It is never
+counted as a successful reference comparison.
 """
 
 import json
@@ -40,6 +45,7 @@ def partition_numbers(limit):
 
 
 def aggregate_formula(n, p):
+    """Evaluate the PB-CORE-006 aggregate formula using exact integers."""
     if n < 1:
         raise ValueError("n must be >= 1")
 
@@ -76,46 +82,76 @@ def main(limit=12):
 
     p = partition_numbers(limit)
     results = {}
-    all_match = True
+
+    matched = 0
+    mismatched = 0
+    unreferenced = 0
 
     for n in range(1, limit + 1):
         value, terms = aggregate_formula(n, p)
         expected = REPORTED.get(n)
-        matches = expected is None or value == expected
-        all_match = all_match and matches
+
+        if expected is None:
+            status = "UNREFERENCED"
+            matches_reference = False
+            unreferenced += 1
+        elif value == expected:
+            status = "REFERENCE_MATCH"
+            matches_reference = True
+            matched += 1
+        else:
+            status = "REFERENCE_MISMATCH"
+            matches_reference = False
+            mismatched += 1
 
         results[str(n)] = {
             "computed": value,
             "reported_reference": expected,
-            "matches_reference": matches,
+            "matches_reference": matches_reference,
+            "status": status,
             "partition_number": p[n],
             "terms": terms,
         }
+
         print(
             f"n={n}: computed={value}, "
-            f"reference={expected}, match={matches}",
+            f"reference={expected}, status={status}",
             flush=True,
         )
 
+    if mismatched > 0:
+        reference_status = "FAIL_REFERENCE_COMPARISON"
+        exit_code = 1
+    elif matched > 0:
+        reference_status = "PASS_REFERENCE_COMPARISON"
+        exit_code = 0
+    else:
+        reference_status = "INCONCLUSIVE_NO_REFERENCES"
+        exit_code = 1
+
     output = {
         "artifact_id": "PB-CORE-006-ARITHMETIC-VERIFY",
-        "formula_arithmetic": "PASS" if all_match else "FAIL",
+        "reference_comparison": reference_status,
+        "formula_evaluation": "COMPLETED",
+        "reference_matched": matched,
+        "reference_mismatched": mismatched,
+        "unreferenced_values": unreferenced,
         "combinatorial_identity_proved": False,
         "lean_verified": False,
         "limit": limit,
         "partition_numbers": p,
         "results": results,
         "interpretation": (
-            "PASS means the displayed formula was evaluated with exact "
-            "integer arithmetic and matched every supplied reference "
-            "value in range. It does not establish the general formula."
+            "PASS_REFERENCE_COMPARISON means every supplied reference value "
+            "in range matched the exact integer evaluation of the displayed "
+            "formula. Values marked UNREFERENCED were computed but were not "
+            "independently checked against a stored reference. This script "
+            "does not establish the general combinatorial identity."
         ),
     }
 
     print(json.dumps(output, indent=2, sort_keys=True))
-    if not all_match:
-        return 1
-    return 0
+    return exit_code
 
 
 if __name__ == "__main__":
