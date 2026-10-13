@@ -1,67 +1,65 @@
-AQ-PB-CORE-006 — AGGREGATE ENUMERATION OF PULLBACK-FIXED EQUIVALENCES
+# AQ-PB-CORE-006 — Aggregate Enumeration of Pullback-Fixed Equivalences
 
-Artifact ID: AQ-PB-CORE-006
-Status: "[P-CANDIDATE]" until repository proof artifact and formal verification are closed
-Computational status: "[V]" repository-recorded exhaustive checks
-Lean: "[O]" OPEN
-C4: BLOCKED
-Publication: BLOCKED
-Promotion: FALSE
+**Artifact ID:** AQ-PB-CORE-006  
+**Date:** 2026-10-09  
+**Status:** `P-CANDIDATE` — repository proof artifact, independent review, and Lean formalization remain open  
+**Computational status:** `V-REPORTED` — repository-recorded exhaustive checks  
+**Lean:** `OPEN`  
+**C4:** `BLOCKED`  
+**Publication:** `BLOCKED`  
+**Promotion:** `FALSE`
 
 ---
 
-1. Statement
+## 1. Statement
 
-For a finite set X with
-
-[
-|X|=n,
-]
-
-let
+Let (X) be a finite set with (|X|=n), and let
 
 [
-\mathcal T_n
-
-{T:X\to X}.
+mathcal T_n={T:X\to X}
 ]
 
-For each T, define
+be the set of all labelled endofunctions on (X). There are (n^n) such maps.
+
+For (Tinmathcal T_n), define
 
 [
-\operatorname{Stab}(T)
-
-{E\in\operatorname{Eq}(X):T^*E=E}.
+operatorname{Stab}(T)
+=
+{Einoperatorname{Eq}(X):T^*E=E},
 ]
+
+the set of equivalence relations on (X) preserved by the pullback action of (T).
 
 Define the aggregate
 
 [
 A_n
-
-\sum_{T\in\mathcal T_n}
-|\operatorname{Stab}(T)|.
+=
+sum_{Tinmathcal T_n}
+|operatorname{Stab}(T)|.
 ]
 
-Let p(k) denote the number of integer partitions of k.
+Let (p(k)) denote the number of integer partitions of (k).
 
 The candidate closed formula is
 
 [
 \boxed{
 A_n
-
-\sum_{k=1}^{n}
-\binom nk
-k,n^{,n-k-1}
-k!,p(k),
+=
+sum_{k=1}^{n}
+\binom{n}{k}
+k!,p(k),k,n^{n-k-1}
 }
 ]
 
-with the k=n term interpreted as
+with the endpoint (k=n) interpreted as
 
 [
+\boxed{
 n!,p(n).
+}
 ]
 
 Equivalently,
@@ -69,34 +67,37 @@ Equivalently,
 [
 \boxed{
 A_n
-
+=
 n!
-\sum_{k=1}^{n}
-\frac{k,p(k),n^{,n-k-1}}
-{(n-k)!}.
+sum_{k=1}^{n}
+\frac{k,p(k),n^{n-k-1}}{(n-k)!}.
 }
 ]
 
+All intermediate factorial ratios must be evaluated using exact integer arithmetic.
+
 ---
 
-2. Critical dependency correction
+## 2. Dependency correction
 
-This aggregate theorem does not require the PB-CORE-005 phase-orbit classification.
+This aggregate theorem does **not** require the PB-CORE-005 phase-orbit classification.
 
-The proof requires only:
+Its proof requires only:
 
-1. periodic-core reduction;
-2. enumeration of permutation/equivalence pairs on the core;
-3. enumeration of rooted forests feeding the core.
+1. Periodic-core reduction.
+2. Enumeration of permutation/equivalence pairs on the periodic core.
+3. Enumeration of rooted forests feeding the core.
 
-Thus the dependency graph is
+The dependency graph is therefore:
 
 [
 \boxed{
 \text{PB-001}
-\rightarrow
+
+ightarrow
 \text{PB-004}
-\rightarrow
+
+ightarrow
 \text{PB-006 aggregate enumeration}.
 }
 ]
@@ -104,151 +105,133 @@ Thus the dependency graph is
 PB-CORE-005 is a separate structural refinement:
 
 [
+\boxed{
 \text{PB-004}
-\rightarrow
+
+ightarrow
 \text{PB-005 phase classification}.
+}
 ]
 
-The phase theorem is therefore not a prerequisite for the aggregate theorem.
+The phase theorem is not a prerequisite for the aggregate theorem.
 
 ---
 
-3. Periodic-core reduction
+## 3. Periodic-core reduction
 
 Let
 
 [
-P=\operatorname{Per}(T).
+P=operatorname{Per}(T)
 ]
+
+be the periodic core of (T), and let (|P|=k).
 
 By PB-CORE-004,
 
 [
 \boxed{
-\operatorname{Stab}(T)
-\cong
-\operatorname{Con}(P,T|_P).
+operatorname{Stab}(T)
+cong
+operatorname{Con}(P,T|_P).
 }
 ]
 
-Let
+Since (T|_P) is a permutation of (P),
 
 [
-|P|=k.
+|operatorname{Stab}(T)|
+=
+|operatorname{Con}(P,T|_P)|.
 ]
 
-Then T|_P is a permutation of P.
+Thus the contribution of (T) depends only on:
 
-Therefore
-
-[
-|\operatorname{Stab}(T)|
-
-|\operatorname{Con}(P,T|_P)|.
-]
-
-Thus the contribution of T depends only on:
-
-1. the size k of its periodic core;
-2. the permutation on that core.
+1. The size (k) of its periodic core.
+2. The permutation (T|_P) on that core.
+3. The rooted-forest structure of the transient vertices feeding the core.
 
 ---
 
-4. Counting permutation/equivalence pairs
+## 4. Permutation/equivalence aggregate
 
 Define
 
 [
 S_k
-
-\sum_{\sigma\in S_k}
-|\operatorname{Con}([k],\sigma)|.
+=
+sum_{sigmain S_k}
+|operatorname{Con}([k],sigma)|.
 ]
 
-We now derive S_k without using PB-CORE-005.
-
-Instead of fixing \sigma, count pairs
+Equivalently, (S_k) counts pairs
 
 [
-(\sigma,E)
+(sigma,E)
 ]
 
-where
-
-[
-E\in\operatorname{Eq}([k])
-]
-
-and
-
-[
-\sigma(E)=E.
-]
+where (sigmain S_k), (E) is an equivalence relation on ([k]), and (sigma(E)=E).
 
 ---
 
-5. Fix an equivalence relation
+## 5. Fix an equivalence relation
 
-Let E have block-size profile
-
-[
-1^{m_1}2^{m_2}\cdots.
-]
-
-Thus
+Let (E) have block-size profile
 
 [
-\sum_s s,m_s=k.
+1^{m_1}2^{m_2}cdots,
 ]
 
-The number of set partitions of [k] having this profile is
+so that
+
+[
+sum_{sge1}s,m_s=k.
+]
+
+The number of set partitions of ([k]) with this profile is
 
 [
 \boxed{
-\frac{k!}
-{\prod_s (s!)^{m_s}m_s!}.
+\frac{k!}{prod_{sge1}(s!)^{m_s}m_s!}.
 }
 ]
 
 ---
 
-6. Count permutations preserving that equivalence
+## 6. Count preserving permutations
 
-A permutation preserves E exactly when it permutes the E-blocks among blocks of equal size and independently permutes the points inside every block.
+A permutation preserves (E) exactly when it permutes blocks of equal size among themselves and permutes points independently within each block.
 
-For blocks of size s:
+For blocks of size (s):
 
-- the m_s blocks can be permuted in m_s! ways;
-- each block contributes s! internal permutations.
+- The (m_s) blocks may be permuted in (m_s!) ways.
+- Each block contributes (s!) internal permutations.
 
-Therefore the number of permutations preserving E is
+Therefore the number of permutations preserving (E) is
 
 [
 \boxed{
-\prod_s (s!)^{m_s}m_s!.
+prod_{sge1}(s!)^{m_s}m_s!.
 }
 ]
 
 ---
 
-7. Multiply
+## 7. Derive (S_k)
 
 For every fixed block-size profile,
 
 [
-\frac{k!}
-{\prod_s (s!)^{m_s}m_s!}
-\cdot
-\prod_s(s!)^{m_s}m_s!
-
+\frac{k!}{prod_s(s!)^{m_s}m_s!}
+cdot
+prod_s(s!)^{m_s}m_s!
+=
 k!.
 ]
 
-Therefore every integer partition of k contributes exactly k! pairs.
+Hence every integer partition of (k) contributes exactly (k!) permutation/equivalence pairs.
 
-The number of integer partitions of k is p(k).
-
-Hence
+Since there are (p(k)) integer partitions of (k),
 
 [
 \boxed{
@@ -256,225 +239,214 @@ S_k=k!,p(k).
 }
 ]
 
-This is the required permutation-core aggregate.
+This identity is independent of the finer cycle-phase classification of PB-CORE-005.
 
 ---
 
-8. Counting transient attachments
+## 8. Count transient attachments
 
-Fix a particular k-element periodic core P.
+Fix a particular (k)-element periodic core (Psubset[n]).
 
-The remaining
+The remaining (n-k) vertices are transient. Their functional graph is a directed rooted forest whose roots are the (k) prescribed periodic vertices.
 
-[
-n-k
-]
-
-vertices are transient.
-
-Their functional graph consists of directed rooted trees whose roots are the k prescribed periodic vertices.
-
-For k<n, the number of labeled rooted forests on [n] with prescribed root set P is
+For (k<n), the number of labelled rooted forests on ([n]) with prescribed root set (P) is
 
 [
 \boxed{
-k,n^{,n-k-1}.
+k,n^{n-k-1}.
 }
 ]
 
-For k=n, there are no transient vertices and the number is
+For (k=n), there are no transient vertices, and the count is
 
 [
-1.
+\boxed{1.}
 ]
 
-This is the classical fixed-root forest enumeration.
-
-No novelty claim is made for this enumeration.
+This is the classical fixed-root forest enumeration. No novelty claim is made for it.
 
 ---
 
-9. Contribution of a fixed core size
+## 9. Contribution by core size
 
 There are
 
 [
-\binom nk
+\binom{n}{k}
 ]
 
 choices for the periodic vertex set.
 
 For each such core:
 
-[
-k,n^{,n-k-1}
-]
+- There are (k,n^{n-k-1}) transient rooted forests when (k<n), and (1) when (k=n).
+- The permutation/equivalence aggregate on the core contributes (k!,p(k)).
 
-choices of transient rooted forest, for k<n.
-
-The sum over all permutation/equivalence pairs on the core contributes
-
-[
-k!p(k).
-]
-
-Therefore the total contribution from maps whose periodic core has size k is
+Therefore the total contribution from maps whose periodic core has size (k) is
 
 [
 \boxed{
-\binom nk
-k,n^{,n-k-1}
-k!p(k).
+\binom{n}{k}
+k!,p(k),k,n^{n-k-1}.
 }
 ]
 
 ---
 
-10. Summation
+## 10. Aggregate formula
 
-Summing over
-
-[
-1\le k\le n
-]
-
-gives
+Summing over (1le kle n),
 
 [
 \boxed{
 A_n
-
-\sum_{k=1}^{n}
-\binom nk
-k,n^{,n-k-1}
-k!p(k).
+=
+sum_{k=1}^{n}
+\binom{n}{k}
+k!,p(k),k,n^{n-k-1}.
 }
 ]
 
 Using
 
 [
-\binom nk k!
-
+\binom{n}{k}k!
+=
 \frac{n!}{(n-k)!},
 ]
 
-we obtain
+this becomes
 
 [
 \boxed{
 A_n
-
+=
 n!
-\sum_{k=1}^{n}
-\frac{k,p(k),n^{,n-k-1}}
-{(n-k)!}.
+sum_{k=1}^{n}
+\frac{k,p(k),n^{n-k-1}}{(n-k)!}.
 }
 ]
 
-This is the aggregate enumeration formula.
+---
+
+## 11. Generating-function form
+
+Let
+
+[
+P(z)=sum_{kge1}p(k)z^k
+]
+
+and let (T(z)) be the rooted-tree generating function satisfying
+
+[
+T(z)=ze^{T(z)}.
+]
+
+Then the corrected exponential generating function is
+
+[
+\boxed{
+sum_{nge1}\frac{A_n}{n!}z^n
+=
+P(T(z)).
+}
+]
+
+The coefficient extraction gives
+
+[
+[z^n]P(T(z))
+=
+sum_{k=1}^{n}
+p(k)
+\frac{k,n^{n-k-1}}{(n-k)!},
+]
+
+with the (k=n) endpoint contributing (p(n)). Multiplying by (n!) recovers the aggregate formula.
+
+**Correction record:** an earlier draft used (P(T(z))-1). That form is incorrect. The correct right-hand side is (P(T(z))).
 
 ---
 
-11. Small values
+## 12. Small values
 
 The first values are:
 
 [
-A_1=1,
+\begin{aligned}
+A_1&=1,\\
+A_2&=6,\\
+A_3&=51,\\
+A_4&=592,\\
+A_5&=8{,}565,\\
+A_6&=148{,}896,\\
+A_7&=3{,}018{,}127,\\
+A_8&=69{,}844{,}608,\\
+A_9&=1{,}816{,}084{,}233,\\
+A_{10}&=52{,}399{,}129{,}600,\\
+A_{11}&=1{,}660{,}832{,}066{,}091,\\
+A_{12}&=57{,}351{,}480{,}413{,}184.
+end{aligned}
 ]
 
+These are repository-reported reference values. Their inclusion here does not certify them; the arithmetic verifier must independently recompute them, and a direct finite-map census must independently corroborate them.
+
+For example, at (n=6), there are
+
 [
-A_2=6,
+6^6=46{,}656
 ]
 
-[
-A_3=51,
-]
+labelled maps, and the reported aggregate stable-equivalence count is
 
 [
-A_4=592,
-]
-
-[
-A_5=8565,
-]
-
-[
-A_6=148896.
-]
-
-These agree with the repository-recorded exhaustive map enumeration.
-
-The number of maps is
-
-[
-n^n.
-]
-
-For n=6,
-
-[
-6^6=46656.
-]
-
-The reported total stable-equivalence count is
-
-[
-\boxed{
-148896.
-}
+\boxed{148{,}896.}
 ]
 
 ---
 
-12. Independent permutation aggregate
+## 13. Independent permutation check
 
 The core identity
 
 [
-S_k=k!p(k)
+S_k=k!,p(k)
 ]
 
-can itself be checked independently.
+can be checked independently by enumerating permutations and their invariant equivalence relations.
 
-For k\le6,
+For (kle6), this checks
 
 [
-\sum_{k=1}^{6} k!
-
-1+2+6+24+120+720
-
-873
+1+2+6+24+120+720=873
 ]
 
-permutations are checked cumulatively.
+permutations cumulatively.
 
-The repository-recorded permutation verifier reports zero mismatches through k=6.
-
-This is "[V]", not a substitute for the analytic proof.
+The repository-recorded permutation verifier reports zero mismatches through (k=6). This is `V-REPORTED`, not a substitute for the analytic proof.
 
 ---
 
-13. Relationship to PB-CORE-005
+## 14. Relationship to PB-CORE-005
 
 PB-CORE-005 proposes the finer formula
 
 [
-N(c_1,\ldots,c_r)
+N(c_1,ldots,c_r)
+=
+sum_{piinPi([r])}
+prod_{Binpi}
+left(
+sum_{dmid g_B}d^{|B|-1}
 
-\sum_{\pi\in\Pi([r])}
-\prod_{B\in\pi}
-\left(
-\sum_{d\mid g_B}
-d^{|B|-1}
-\right),
+ight),
 ]
 
 where
 
 [
-g_B=\gcd(c_i:i\in B).
+g_B=gcd(c_i:iin B).
 ]
 
 That formula classifies individual permutation congruence structures by cycle lengths.
@@ -482,10 +454,10 @@ That formula classifies individual permutation congruence structures by cycle le
 It is not needed for the aggregate identity
 
 [
-S_k=k!p(k).
+S_k=k!,p(k).
 ]
 
-Therefore:
+Therefore,
 
 [
 \boxed{
@@ -495,255 +467,152 @@ Therefore:
 
 ---
 
-14. Why the aggregate identity is natural
+## 15. Evidence status
 
-There is a direct combinatorial explanation.
-
-For each equivalence relation E, the permutations preserving E are exactly the automorphisms of the corresponding set partition.
-
-For a block-size profile \lambda\vdash k,
-
-[
-#{\text{partitions of profile }\lambda}
-\times
-#{\text{permutations preserving one such partition}}
-
-k!.
-]
-
-Since there are p(k) possible integer-partition profiles,
-
-[
-S_k=k!p(k).
-]
-
-The identity is therefore independent of the finer cycle-phase classification.
+| Component | Status |
+|---|---|
+| Periodic-core reduction | `P` — analytic derivation presented |
+| Permutation-core pair count (S_k=k!p(k)) | `P` — analytic derivation presented |
+| Fixed-root forest count | `P` — classical combinatorial result |
+| Aggregate formula | `P-CANDIDATE` — pending independent review and repository-bound verification |
+| Exhaustive map enumeration (nle7) | `V-REPORTED` |
+| Permutation enumeration (kle6) | `V-REPORTED` |
+| Lean formalization | `OPEN` |
+| Independent external replay | `NOT ESTABLISHED HERE` |
+| C4 | `BLOCKED` |
+| Publication | `BLOCKED` |
+| Promotion | `FALSE` |
 
 ---
 
-15. Evidence status
-
-Component| Status
-Periodic-core reduction| "[P]"
-Permutation-core pair count S_k=k!p(k)| "[P]" analytic derivation
-Fixed-root forest count| "[P]" classical combinatorial result
-Aggregate formula| "[P-CANDIDATE]" until repository proof artifact is independently reviewed
-Exhaustive map enumeration n\le7| "[V-REPORTED]"
-Permutation enumeration| "[V-REPORTED]"
-Lean formalization| "[O]"
-Independent external replay| "NOT ESTABLISHED HERE"
-C4| "BLOCKED"
-Publication| "BLOCKED"
-Promotion| "FALSE"
-
----
-
-16. Literature boundary
+## 16. Literature boundary
 
 The ingredients used here are not claimed as novel.
 
-Classical literature establishes substantial parts of the surrounding theory of unary and monounary algebras, invariant equivalence relations, and cyclic structures.
-
-In particular:
-
-- Berman established foundational results on congruence lattices of unary algebras.
-- Ratanaprasert and Denecke studied invariant equivalence relations for finite unary operations with long pre-periods.
-- Jakubíková-Studenovská and Janičková studied congruence lattices of connected monounary algebras.
+Classical literature establishes substantial parts of the surrounding theory of unary and monounary algebras, invariant equivalence relations, and cyclic structures. Relevant work includes Berman’s results on congruence lattices of unary algebras, Ratanaprasert and Denecke’s study of invariant equivalence relations for finite unary operations, and Jakubíková-Studenovská and Janičková’s work on congruence lattices of connected monounary algebras.
 
 The exact AQARION aggregate synthesis
 
 [
 A_n
-
-\sum_{k=1}^{n}
-\binom nk
-k,n^{,n-k-1}
-k!p(k)
+=
+sum_{k=1}^{n}
+\binom{n}{k}
+k!,p(k),k,n^{n-k-1}
 ]
 
 was not located in the current literature search.
 
-That does not establish priority.
+**Permitted statement:**
 
-Permitted statement:
+> No exact source for this aggregate formula was located in the current search pass.
 
-«No exact source for this aggregate formula was located in the current search pass.»
+**Prohibited statement:**
 
-Prohibited statement:
-
-«This formula has never appeared before.»
+> This formula has never appeared before.
 
 ---
 
-17. Formalization target
+## 17. Formalization targets
 
-The Lean development should prove the following independently:
+The Lean development should prove the following independently.
 
-THEOREM PB006_PERMUTATION_AGGREGATE
-  :
-  ∑ σ : Equiv.Perm (Fin k),
-      card (InvariantEquiv σ)
-  =
-  k! * Nat.PartitionNumber k
+### Permutation aggregate
 
-The exact Lean encoding may differ.
+```lean
+theorem PB006_permutation_aggregate :
+    ∑ σ : Equiv.Perm (Fin k),
+      (InvariantEquiv σ).card
+    =
+    k! * Nat.PartitionNumber k := by
+  sorry
+```
 
-The theorem should not depend on the PB-CORE-005 phase parameterization.
+The exact Lean encoding may differ, but the theorem must not depend on the PB-CORE-005 phase parameterization.
 
-The second formal theorem should then establish the fixed-root forest factor.
+### Fixed-root forest factor
 
-Only after both are formalized should the final aggregate theorem be assembled.
+The second formal theorem should establish the fixed-root forest count:
+
+[
+k,n^{n-k-1}.
+]
+
+### Aggregate theorem
+
+Only after both preceding results are formalized should the final aggregate theorem be assembled.
 
 ---
 
-18. Certification boundary
+## 18. Certification boundary
 
-This document does not claim a Lean proof.
+This document does **not** claim:
 
-This document does not claim an independently executed current-branch verifier run.
-
-This document does not claim C4 certification.
+- A Lean proof.
+- An independently executed current-branch verifier run.
+- C4 certification.
+- Publication readiness.
+- Promotion eligibility.
 
 Current status:
 
 [
 \boxed{
-[P\text{-candidate}]
-\quad
-[V\text{-reported}]
-\quad
-[L\text{-open}]
-\quad
-C4\text{ BLOCKED}.
+\text{P-candidate}
+quad
+\text{V-reported}
+quad
+\text{Lean open}
+quad
+\text{C4 blocked}.
 }
 ]
 
 ---
 
-19. Final research consequence
+## 19. Research lanes
 
-The research program should now be split into two independent theorem lanes:
+The research program should now be split into two independent theorem lanes.
 
-Lane A — Aggregate enumeration
+### Lane A — Aggregate enumeration
 
 [
 \boxed{
 \text{PB-004}
-\rightarrow
+
+ightarrow
 S_k=k!p(k)
-\rightarrow
+
+ightarrow
 \text{rooted forests}
-\rightarrow
+
+ightarrow
 A_n.
 }
 ]
 
-Lane B — Structural cycle classification
+This is the shortest route to a closed aggregate theorem.
+
+### Lane B — Structural cycle classification
 
 [
 \boxed{
 \text{PB-004}
-\rightarrow
+
+ightarrow
 \text{cycle decomposition}
-\rightarrow
+
+ightarrow
 \text{phase torsors}
-\rightarrow
+
+ightarrow
 d^{k-1}
-\rightarrow
+
+ightarrow
 \text{weighted Bell formula}.
 }
 ]
 
-Lane A is the shortest route to a new closed mathematical theorem.
+This is the deeper structural theorem.
 
-Lane B is the deeper structural theorem.
-
-Neither should be allowed to masquerade as formally complete until its own proof obligations close.
-
-PB-CORE-006 — Aggregate Enumeration of Pullback-Fixed Equivalences
-
-Date: 2026-10-09
-Status: CANDIDATE FORMULA — independent derivation and Lean formalization remain OPEN
-C4: BLOCKED
-Publication: BLOCKED
-Promotion: FALSE
-
-1. Definitions
-
-For (n\geq1), let (X_n={0,\ldots,n-1}). For a map (T:X_n\to X_n), let (F(T)) be the number of equivalence relations (E) on (X_n) satisfying
-
-[
-E(x,y)\iff E(Tx,Ty).
-]
-
-Define the aggregate
-
-[
-A_n=\sum_{T:X_n\to X_n}F(T).
-]
-
-There are (n^n) labelled maps in this sum. Let (p(k)) denote the number of integer partitions of (k).
-
-2. Candidate formula
-
-The candidate identity is
-
-[
-\boxed{
-A_n=
-\sum_{k=1}^{n-1}
-\frac{n!,k,p(k),n^{,n-k-1}}{(n-k)!}
-+n!,p(n)
-}.
-]
-
-The formula is interpreted as an exact rational expression whose total summands are integers. In an implementation, compute the factorial ratio as
-
-[
-\frac{n!}{(n-k)!}
-]
-
-using exact integer arithmetic before multiplying by (k,p(k)n^{n-k-1}).
-
-3. Reported values
-
-(n)| Reported (A_n)
-1| 1
-2| 6
-3| 51
-4| 592
-5| 8,565
-6| 148,896
-7| 3,018,127
-8| 69,844,608
-9| 1,816,084,233
-10| 52,399,129,600
-11| 1,660,832,066,091
-12| 57,351,480,413,184
-
-These are reference values reported in the research record. They are not certified by their inclusion in this document; the arithmetic verifier must independently recompute them.
-
-4. Required proof obligations
-
-A complete proof of the candidate formula must establish all of the following:
-
-1. A precise classification of pullback-fixed equivalences by the periodic core.
-2. A correct count of admissible core equivalences for each permutation cycle structure.
-3. A correct enumeration of labelled maps with the required periodic-core structure.
-4. The aggregation over integer-partition profiles without omissions or double counting.
-5. The boundary cases (n=1) and (n=2).
-6. Agreement between the resulting formula and independently implemented exact arithmetic.
-
-A computation matching the formula for finitely many (n) does not prove the identity for all (n). Likewise, proving a fixed-core factor such as (k!p(k)) does not by itself establish the aggregate formula: the map-counting and aggregation steps must also be justified.
-
-5. Evidence boundary
-
-- Formula arithmetic: independently testable by the companion script.
-- Direct map census: independently testable by the PB-CORE-004 audit script.
-- General combinatorial identity: OPEN until a complete derivation is reviewed.
-- Lean: OPEN until the formalization compiles with zero unresolved proof obligations.
-- C4: BLOCKED.
-- Publication: BLOCKED.
-- Promotion: FALSE.
-
-The reported finite census is supporting evidence, not a substitute for the general proof.
+Neither lane should be treated as formally complete until its own proof obligations close.
