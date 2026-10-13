@@ -1,0 +1,228 @@
+{
+  "environment": {
+    "implementation": "CPython",
+    "platform": "Linux-6.17.0-PRoot-Distro-aarch64-with-glibc2.43",
+    "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]"
+  },
+  "first_detection_witnesses": {
+    "D:(I-P)K": {
+      "n": 2,
+      "partition": [
+        [
+          0,
+          1
+        ]
+      ],
+      "transition": [
+        0,
+        1
+      ]
+    },
+    "D:(I-P)K^T": {
+      "n": 2,
+      "partition": [
+        [
+          0,
+          1
+        ]
+      ],
+      "transition": [
+        0,
+        0
+      ]
+    },
+    "D:KP(I-P)": {
+      "n": 3,
+      "partition": [
+        [
+          0,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "transition": [
+        0,
+        0,
+        1
+      ]
+    },
+    "D:K^T": {
+      "n": 2,
+      "partition": [
+        [
+          0,
+          1
+        ]
+      ],
+      "transition": [
+        0,
+        0
+      ]
+    },
+    "D:PKP": {
+      "n": 1,
+      "partition": [
+        [
+          0
+        ]
+      ],
+      "transition": [
+        0
+      ]
+    },
+    "D:[K,P]": {
+      "n": 2,
+      "partition": [
+        [
+          0,
+          1
+        ]
+      ],
+      "transition": [
+        0,
+        0
+      ]
+    },
+    "R:c": {
+      "n": 1,
+      "partition": [
+        [
+          0
+        ]
+      ],
+      "transition": [
+        0
+      ]
+    },
+    "R:first": {
+      "n": 3,
+      "partition": [
+        [
+          0,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "transition": [
+        0,
+        0,
+        1
+      ]
+    },
+    "R:ignore-isolated": {
+      "n": 2,
+      "partition": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "transition": [
+        0,
+        0
+      ]
+    },
+    "R:k-c-1": {
+      "n": 1,
+      "partition": [
+        [
+          0
+        ]
+      ],
+      "transition": [
+        0
+      ]
+    },
+    "R:preimage": {
+      "n": 2,
+      "partition": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "transition": [
+        0,
+        0
+      ]
+    }
+  },
+  "interpretation": "PASS certifies only agreement between exact matrix rank and the graph prediction over this finite scope. It does not certify all mutation claims, a Lean proof, or a release.",
+  "mutation_detection_counts": {
+    "D:(I-P)K": 1016,
+    "D:(I-P)K^T": 1541,
+    "D:KP(I-P)": 2148,
+    "D:K^T": 1383,
+    "D:PKP": 1836,
+    "D:[K,P]": 1335,
+    "R:c": 2796,
+    "R:first": 2148,
+    "R:ignore-isolated": 1666,
+    "R:k-c-1": 3984,
+    "R:preimage": 1666
+  },
+  "mutation_outcomes": {
+    "D:(I-P)K": "DETECTED",
+    "D:(I-P)K^T": "DETECTED",
+    "D:KP(I-P)": "DETECTED",
+    "D:K^T": "DETECTED",
+    "D:PKP": "DETECTED",
+    "D:[K,P]": "DETECTED",
+    "R:c": "DETECTED",
+    "R:c-only-variant": "INVALID_MUTANT",
+    "R:first": "DETECTED",
+    "R:ignore-isolated": "DETECTED",
+    "R:k-c-1": "DETECTED",
+    "R:preimage": "DETECTED"
+  },
+  "mutation_semantics": {
+    "D-level": "Kill iff zero-test verdict differs from closure truth.",
+    "R-level": "Kill iff predicted rank differs from exact rank(D).",
+    "invalid": {
+      "R:c-only-variant": "Duplicates R:c; not a distinct mutant."
+    }
+  },
+  "per_n": {
+    "1": {
+      "expected_partition_map_pairs": 1,
+      "map_count": 1,
+      "partition_map_pairs": 1,
+      "theorem_mismatches": 0
+    },
+    "2": {
+      "expected_partition_map_pairs": 8,
+      "map_count": 4,
+      "partition_map_pairs": 8,
+      "theorem_mismatches": 0
+    },
+    "3": {
+      "expected_partition_map_pairs": 135,
+      "map_count": 27,
+      "partition_map_pairs": 135,
+      "theorem_mismatches": 0
+    },
+    "4": {
+      "expected_partition_map_pairs": 3840,
+      "map_count": 256,
+      "partition_map_pairs": 3840,
+      "theorem_mismatches": 0
+    }
+  },
+  "schema": "AQ-SM003-MUTATION-AUDIT/3",
+  "scope": {
+    "cases": 3984,
+    "expected_cases": 3984,
+    "n_max": 4,
+    "n_min": 1
+  },
+  "status": "PASS",
+  "theorem_mismatch_count": 0
+}
