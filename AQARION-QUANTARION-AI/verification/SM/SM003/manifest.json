@@ -1,3 +1,4 @@
+
 {
   "schema": "AQ-SM003-VERIFICATION-3.0",
   "claim": "rank(D_Pi) = k - c(H_Pi)",
@@ -105,7 +106,8 @@
     "R:first": {
       "kind": "rank_prediction",
       "definition": "k minus the component count obtained by retaining only the first target hit per source block",
-      "kill_rule": "Predicted rank differs from exact rank(D)."
+      "kill_rule": "Predicted rank differs from exact rank(D).",
+      "warning": "The implementation retains one target per source block and passes only singleton groups to component_count. Singleton groups create no edges, and all k vertices are retained, so the prediction is always zero. By the rank identity in RANK_IDENTITY.md, this mutant has exactly the same detection set over the full finite domain as D:KP(I-P), whose zero-test always accepts because P(I-P)=0. Both are detected precisely when the partition is not invariant."
     },
     "R:c-only-variant": {
       "kind": "invalid",
