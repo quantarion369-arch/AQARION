@@ -24,14 +24,20 @@ def load_at_sha(path, sha):
     result = subprocess.run(["git", "show", f"{sha}:{path}"], capture_output=True, text=True, check=True)
     return result.stdout
 
+def stem(w):
+    for suf in "ization ational fulness ized ing ers ed s".split():
+        if w.endswith(suf) and len(w) > len(suf) + 2:
+            return w[:len(w) - len(suf)]
+    return w
+
 def retrieve(query, top_k=3):
     """Keyword-overlap retrieval against pinned snapshots."""
-    q = set(WORD.findall(query.lower()))
+    q = set(stem(w) for w in WORD.findall(query.lower()))
     results = []
     for entry in load_manifest():
         text = load_at_sha(entry["path"], entry["sha"])
         for para in text.split(PARA_BREAK):
-            words = set(WORD.findall(para.lower()))
+            words = set(stem(w) for w in WORD.findall(para.lower()))
             score = len(q & words)
             if score > 0:
                 results.append((score, entry["doc"], entry["sha"], para.strip()))
