@@ -42,7 +42,6 @@ jobs:
           python-version: "3.12"
 
       - name: Run SM003 tests and exact census
-        id: sm003
         shell: bash
         env:
           TESTED_COMMIT: ${{ github.sha }}
@@ -105,6 +104,7 @@ jobs:
               sm_dir / "manifest.json",
               sm_dir / "mutations.py",
               sm_dir / "test_sm003.py",
+              sm_dir / "detection_signatures.py",
           ]
 
           def sha256(path):
@@ -123,7 +123,11 @@ jobs:
 
           receipt = {
               "schema": "AQ-SM003-CI-RECEIPT/1",
-              "status": "PASS" if mutation_rc == 0 and test_rc == 0 else "FAIL",
+              "status": (
+                  "PASS"
+                  if mutation_rc == 0 and test_rc == 0
+                  else "FAIL"
+              ),
               "tested_commit": os.environ["TESTED_COMMIT"],
               "checked_out_commit": subprocess.check_output(
                   ["git", "rev-parse", "HEAD"], text=True
@@ -158,7 +162,9 @@ jobs:
                           '-p "test_sm003.py" -v'
                       ),
                       "exit_code": test_rc,
-                      "runtime_seconds": int(os.environ["SM003_TEST_SECONDS"]),
+                      "runtime_seconds": int(
+                          os.environ["SM003_TEST_SECONDS"]
+                      ),
                       "stdout_sha256": output_hash("tests.stdout.txt"),
                       "stderr_sha256": output_hash("tests.stderr.txt"),
                   },
@@ -167,7 +173,9 @@ jobs:
                   str(path.relative_to(repo)): sha256(path)
                   for path in tracked
               },
-              "mutation_report_sha256": output_hash("sm003-mutation-report.json"),
+              "mutation_report_sha256": output_hash(
+                  "sm003-mutation-report.json"
+              ),
               "scope": {
                   "max_n": 4,
                   "expected_cases": 3984,
@@ -186,6 +194,34 @@ jobs:
               encoding="utf-8",
           )
           PY
+          receipt_rc=$?
+
+          if [ "$receipt_rc" -ne 0 ]; then
+            echo "SM003 receipt generation failed."
+            exit 1
+          fi
+
+          if [ ! -s "$OUT/sm003-ci-receipt.json" ]; then
+            echo "SM003 receipt is missing or empty."
+            exit 1
+          fi
+
+          if ! python -m json.tool \
+            "$OUT/sm003-ci-receipt.json" > /dev/null; then
+            echo "SM003 receipt is not valid JSON."
+            exit 1
+          fi
+
+          if [ ! -s "$OUT/sm003-mutation-report.json" ]; then
+            echo "SM003 mutation report is missing or empty."
+            exit 1
+          fi
+
+          if ! python -m json.tool \
+            "$OUT/sm003-mutation-report.json" > /dev/null; then
+            echo "SM003 mutation report is not valid JSON."
+            exit 1
+          fi
 
           if [ "$mutation_rc" -ne 0 ] || [ "$test_rc" -ne 0 ]; then
             echo "SM003 verification failed: mutation=$mutation_rc tests=$test_rc"
