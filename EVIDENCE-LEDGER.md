@@ -144,3 +144,22 @@ The corrected all-k equality checker passed locally on both seeds. Both runs rep
 3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.
 
 **Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.
+
+## Provenance cleanup — prof.py copies and oc_n10_verify relocation
+
+The repository previously contained four copies of `prof.py`:
+
+- `dt_check/prof.py` — canonical oracle/census implementation, imported by
+  `dt_check/xcheck.py`.
+- `extensions/closure-cost-equality/replay/prof.py` — distinct documented
+  reconstruction, imported by `extensions/closure-cost-equality/replay/equality_check.py`.
+- Root `prof.py` and
+  `extensions/closure-cost-equality/local-dependency/prof.py` — exact
+  duplicates of the oracle variant, referenced by no importer.
+
+The two unreferenced duplicates were removed. The oracle variant remains
+canonical at `dt_check/prof.py`; the replay reconstruction remains at
+`extensions/closure-cost-equality/replay/prof.py`.
+
+`oc_n10_verify.py` was an unreferenced root-level experiment and was
+relocated to `research/experiments/oc_n10_verify.py`.
