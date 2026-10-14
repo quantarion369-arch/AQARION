@@ -35,11 +35,14 @@ The upper bound is attained exactly when every block at each refinement stage sp
 
 Equivalently, the itinerary-prefix set has the full Cartesian-product size dictated by its coordinate alphabets.
 
-## Structural theorem boundary
+## Structural theorem
 
-The stronger nested-alphabet and common-coordinate feedback characterization belongs to the binary all-ones-profile theorem as currently documented.
+The nested-alphabet and common-coordinate feedback characterization is proved
+for the general all-\(k\), all-profile case in
+`research/closure-cost/GENERAL-FEEDBACK.md`.
 
-Do not promote that characterization to an unrestricted all-(k), all-profile theorem without a separate proof.
+The binary all-ones-profile special case remains in
+`research/closure-cost/THEOREM.md`.
 
 ## Replay evidence
 
