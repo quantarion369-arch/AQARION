@@ -2,12 +2,18 @@
 
 **Evidence-First Mathematical Research for Finite Dynamical Systems, Quotient Structure, and Reproducible Verification**
 
-[![C3: Open](https://img.shields.io/badge/C3-OPEN-yellow?style=flat-square)](#current-governance-snapshot)
-[![C4: Blocked](https://img.shields.io/badge/C4-BLOCKED-red?style=flat-square)](#current-governance-snapshot)
-[![Lean: Open](https://img.shields.io/badge/Lean-OPEN-lightgrey?style=flat-square)](#formal-verification)
-[![SDS-002: Quarantined](https://img.shields.io/badge/SDS--002-QUARANTINED-orange?style=flat-square)](#corrections-and-historical-provenance)
-[![Publication: Blocked](https://img.shields.io/badge/Publication-BLOCKED-red?style=flat-square)](#publication-and-collaboration)
-[![Promotable: False](https://img.shields.io/badge/Promotable-false-lightgrey?style=flat-square)](#current-governance-snapshot)
+[![SM003 Verify](https://github.com/quantarion369-arch/AQARION/actions/workflows/sm003-verify.yml/badge.svg?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION/actions/workflows/sm003-verify.yml)
+[![Mobile Research Kit](https://github.com/quantarion369-arch/AQARION/actions/workflows/mobile-research-kit.yml/badge.svg?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION/actions/workflows/mobile-research-kit.yml)
+[![D22 Validation](https://github.com/quantarion369-arch/AQARION/actions/workflows/D22-validation.yml/badge.svg?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION/actions/workflows/D22-validation.yml)
+[![Time and Modes](https://github.com/quantarion369-arch/AQARION/actions/workflows/time-and-modes-check.yml/badge.svg?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION/actions/workflows/time-and-modes-check.yml)
+
+[![C3: Open](https://img.shields.io/badge/C3-OPEN-yellow?style=for-the-badge)](#current-governance-snapshot)
+[![C4: Blocked](https://img.shields.io/badge/C4-BLOCKED-red?style=for-the-badge)](#current-governance-snapshot)
+[![Lean: Open](https://img.shields.io/badge/Lean-OPEN-lightgrey?style=for-the-badge)](#formal-verification)
+[![SDS-002: Quarantined](https://img.shields.io/badge/SDS--002-QUARANTINED-orange?style=for-the-badge)](#corrections-and-historical-provenance)
+[![Publication: Blocked](https://img.shields.io/badge/Publication-BLOCKED-red?style=for-the-badge)](#publication-and-collaboration)
+[![Promotable: False](https://img.shields.io/badge/Promotable-false-lightgrey?style=for-the-badge)](#current-governance-snapshot)
+
 
 AQARION is an open mathematical research project maintained by James A. It investigates finite dynamical systems, invariant quotients, Koopman operators, observable subspaces, exact enumeration, and formalizable computational mathematics.
 
