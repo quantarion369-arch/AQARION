@@ -1,69 +1,71 @@
-✨️ WELCOME TO AQARION ✨️
+# ✨️ WELCOME TO AQARION ✨️
 
-Evidence-First Mathematical Research for Finite Dynamical Systems, Quotient Structure, and Reproducible Verification
+**Evidence-First Mathematical Research for Finite Dynamical Systems, Quotient Structure, and Reproducible Verification**
 
-""C3: Open" (https://img.shields.io/badge/C3-OPEN-yellow?style=flat-square)" (#current-governance-snapshot)
-""C4: Blocked" (https://img.shields.io/badge/C4-BLOCKED-red?style=flat-square)" (#current-governance-snapshot)
-""Lean: Open" (https://img.shields.io/badge/Lean-OPEN-lightgrey?style=flat-square)" (docs/FORMALIZATION.md)
-""SDS-002: Quarantined" (https://img.shields.io/badge/SDS--002-QUARANTINED-orange?style=flat-square)" (docs/HISTORICAL-CORRECTIONS.md)
-""Publication: Blocked" (https://img.shields.io/badge/Publication-BLOCKED-red?style=flat-square)" (#current-governance-snapshot)
-""Promotable: False" (https://img.shields.io/badge/Promotable-false-lightgrey?style=flat-square)" (#current-governance-snapshot)
+[![C3: Open](https://img.shields.io/badge/C3-OPEN-yellow?style=flat-square)](#current-governance-snapshot)
+[![C4: Blocked](https://img.shields.io/badge/C4-BLOCKED-red?style=flat-square)](#current-governance-snapshot)
+[![Lean: Open](https://img.shields.io/badge/Lean-OPEN-lightgrey?style=flat-square)](#formal-verification)
+[![SDS-002: Quarantined](https://img.shields.io/badge/SDS--002-QUARANTINED-orange?style=flat-square)](#corrections-and-historical-provenance)
+[![Publication: Blocked](https://img.shields.io/badge/Publication-BLOCKED-red?style=flat-square)](#publication-and-collaboration)
+[![Promotable: False](https://img.shields.io/badge/Promotable-false-lightgrey?style=flat-square)](#current-governance-snapshot)
 
 AQARION is an open mathematical research project maintained by James A. It investigates finite dynamical systems, invariant quotients, Koopman operators, observable subspaces, exact enumeration, and formalizable computational mathematics.
 
 The repository is maintained as an auditable research record. It distinguishes mathematical statements, implementations, finite computations, independent reconstruction, formal proof, provenance, and publication decisions.
 
-«Do not promote a result beyond what its evidence establishes.»
+> Do not promote a result beyond what its evidence establishes.
 
 ---
 
-Contents
+## Contents
 
-- "Start here" (#start-here)
-- "Current governance snapshot" (#current-governance-snapshot)
-- "Research scope" (#research-scope)
-- "Central mathematical framework" (#central-mathematical-framework)
-- "Evidence and claim status" (#evidence-and-claim-status)
-- "Research workflow" (#research-workflow)
-- "Active research lines" (#active-research-lines)
-- "Verification and reproducibility" (#verification-and-reproducibility)
-- "Repository architecture" (#repository-architecture)
-- "Formal verification" (#formal-verification)
-- "Corrections and historical provenance" (#corrections-and-historical-provenance)
-- "Publication and collaboration" (#publication-and-collaboration)
-- "Development and contribution standards" (#development-and-contribution-standards)
+- [Start here](#start-here)
+- [Current governance snapshot](#current-governance-snapshot)
+- [Research scope](#research-scope)
+- [Central mathematical framework](#central-mathematical-framework)
+- [Evidence and claim status](#evidence-and-claim-status)
+- [Research workflow](#research-workflow)
+- [Active research lines](#active-research-lines)
+- [Verification and reproducibility](#verification-and-reproducibility)
+- [Repository architecture](#repository-architecture)
+- [Formal verification](#formal-verification)
+- [Corrections and historical provenance](#corrections-and-historical-provenance)
+- [Publication and collaboration](#publication-and-collaboration)
+- [Development and contribution standards](#development-and-contribution-standards)
 
 ---
 
-Start here
+## Start here
 
-Resource| Purpose
-"Research map" (docs/RESEARCH-LINES.md)| Overview of the research lines documented in this repository
-"Evidence ledger" (EVIDENCE-LEDGER.md)| Claim-level evidence, scope, receipts, and proof status
-"Corrections and refutations" (docs/HISTORICAL-CORRECTIONS.md)| Historical corrections, counterexamples, quarantined material, and retired claims
-"Formalization roadmap" (docs/FORMALIZATION.md)| Lean targets, formalization obligations, and environment notes
-"Provenance policy" (docs/PROVENANCE.md)| Relationship between claims, source code, execution, and evidence artifacts
-"PB-001 research document" (AQARION-QUANTARION-AI/PB_001.md)| Finite-quotient pullback rigidity and binary join closure
-"Tools architecture" (AQARION-QUANTARION-AI/TOOLS/README.md)| Documented architecture for reusable research and verification tools
-"Master file tree" (FILETREE.md)| Architectural file and directory index
-"Issues" (https://github.com/quantarion369-arch/AQARION/issues)| Corrections, reproducibility reports, questions, and research discussion
+| Resource | Purpose |
+|---|---|
+| [PB-001 research document](AQARION-QUANTARION-AI/PB_001.md) | Finite-quotient pullback rigidity and binary join closure |
+| [Tools architecture](AQARION-QUANTARION-AI/TOOLS/README.md) | Documented architecture for reusable research and verification tools |
+| [Master file tree](FILETREE.md) | Architectural file and directory index |
+| Research map (`docs/RESEARCH-LINES.md`) | Overview of the research lines documented in this repository (pending) |
+| Evidence ledger (`EVIDENCE-LEDGER.md`) | Claim-level evidence, scope, receipts, and proof status (pending) |
+| Corrections and refutations (`docs/HISTORICAL-CORRECTIONS.md`) | Historical corrections, counterexamples, quarantined material, and retired claims (pending) |
+| Formalization roadmap (`docs/FORMALIZATION.md`) | Lean targets, formalization obligations, and environment notes (pending) |
+| Provenance policy (`docs/PROVENANCE.md`) | Relationship between claims, source code, execution, and evidence artifacts (pending) |
+| [Issues](https://github.com/quantarion369-arch/AQARION/issues) | Corrections, reproducibility reports, questions, and research discussion |
 
 A listed resource is a navigation target, not independent evidence that its contents are current, executable, or formally verified. File existence, implementation, and test status must be established from the actual artifact and its execution record.
 
 ---
 
-Current governance snapshot
+## Current governance snapshot
 
 The repository README has published the following governance labels. They are reproduced here to keep the project state visible without requiring a separate root status file.
 
-Gate or research item| Recorded state
-C3| OPEN
-C4| BLOCKED
-Lean formalization| OPEN
-SDS-002| QUARANTINED
-Publication| BLOCKED
-Promotion| BLOCKED
-Promotable| false
+| Gate or research item | Recorded state |
+|---|---|
+| C3 | OPEN |
+| C4 | BLOCKED |
+| Lean formalization | OPEN |
+| SDS-002 | QUARANTINED |
+| Publication | BLOCKED |
+| Promotion | BLOCKED |
+| Promotable | false |
 
 These are governance dispositions, not mathematical conclusions.
 
@@ -78,31 +80,31 @@ These labels must change only when the corresponding evidence and governance rec
 
 ---
 
-Research scope
+## Research scope
 
 AQARION concentrates on the following mathematical and computational areas.
 
-Finite dynamical systems
+### Finite dynamical systems
 
 Deterministic maps, functional graphs, cycles, transient structure, finite state spaces, and invariant partitions.
 
-Quotient systems
+### Quotient systems
 
 Invariant equivalence relations, quotient maps, semiconjugacy, finite quotient structure, and closure properties.
 
-Koopman operators and observable defects
+### Koopman operators and observable defects
 
 Pullback operators, block-constant observable spaces, projections, invariance, and the operator measuring failure of an observable subspace to remain invariant.
 
-Exact computational mathematics
+### Exact computational mathematics
 
 Finite exhaustive checks, rational and integer arithmetic, independent algorithms, structured witnesses, counterexample search, and negative controls.
 
-Formal verification
+### Formal verification
 
 Lean formalization, theorem-to-code correspondence, pinned builds, proof dependency audits, and explicit treatment of unresolved proof obligations.
 
-Research provenance
+### Research provenance
 
 Claim records, source revisions, execution records, artifact hashes, reproduction instructions, corrections, and historical status transitions.
 
@@ -110,20 +112,20 @@ The project does not treat computational agreement, formal compilation, or publi
 
 ---
 
-Central mathematical framework
+## Central mathematical framework
 
-Let (X) be a finite set, let (T:X\to X) be a deterministic map, and let (\Pi) be a partition of (X).
+Let (X) be a finite set, let (T:X\to X) be a deterministic map, and let (Pi) be a partition of (X).
 
-Let (V_\Pi) denote the vector space of functions that are constant on each block of (\Pi). Let (P_\Pi) be the orthogonal projection onto (V_\Pi), under the specified inner product, and define the Koopman pullback operator by
+Let (V_Pi) denote the vector space of functions that are constant on each block of (Pi). Let (P_Pi) be the orthogonal projection onto (V_Pi), under the specified inner product, and define the Koopman pullback operator by
 
 [
-K_T f=f\circ T.
+K_T f=fcirc T.
 ]
 
 The observable defect is
 
 [
-D_\Pi=(I-P_\Pi)K_TP_\Pi.
+D_Pi=(I-P_Pi)K_TP_Pi.
 ]
 
 It measures the component of the pulled-back block-constant observables that lies outside the block-constant subspace.
@@ -131,12 +133,12 @@ It measures the component of the pulled-back block-constant observables that lie
 For this finite-dimensional setting,
 
 [
-D_\Pi=0
-\quad\Longleftrightarrow\quad
-K_T(V_\Pi)\subseteq V_\Pi.
+D_Pi=0
+quadLongleftrightarrowquad
+K_T(V_Pi)subseteq V_Pi.
 ]
 
-The equivalence follows from the definition of the projection: (D_\Pi=0) precisely when applying (K_T) to any vector in the range of (P_\Pi) produces a vector in that same range.
+The equivalence follows from the definition of the projection: (D_Pi=0) precisely when applying (K_T) to any vector in the range of (P_Pi) produces a vector in that same range.
 
 For partitions of a finite state space, this invariance condition is connected to congruence and quotient dynamics. Exact hypotheses and conventions matter; conclusions must be stated for the operator, partition, and domain actually defined.
 
@@ -144,53 +146,64 @@ This framework is a research foundation, not a blanket certification of every pr
 
 ---
 
-Evidence and claim status
+## Evidence and claim status
 
 AQARION keeps evidence type separate from claim disposition.
 
-Evidence labels
+### Evidence labels
 
-Label| Meaning
-"[D]"| Definition
-"[P]"| Mathematical proof
-"[V]"| Verification over a declared computational domain
-"[PV]"| Mathematical proof and computational verification
-"[C]"| Conjecture
-"[R]"| Active research or investigation
-"[F]"| Refuted claim or claim with a counterexample
-"[Q]"| Quarantined artifact or claim
+| Label | Meaning |
+|---|---|
+| [D] | Definition |
+| [P] | Mathematical proof |
+| [V] | Verification over a declared computational domain |
+| [PV] | Mathematical proof and computational verification |
+| [C] | Conjecture |
+| [R] | Active research or investigation |
+| [F] | Refuted claim or claim with a counterexample |
+| [Q] | Quarantined artifact or claim |
 
 These labels are not interchangeable.
 
 In particular:
 
-definition              != theorem
-finite exhaustive check != universal proof
-reported execution      != independent reproduction
-source file             != executed artifact
-Lean source             != checked Lean theorem
-successful build        != intended theorem proved
-artifact hash           != mathematical correctness
-policy PASS             != mathematical truth
-public availability     != publication readiness
+- definition (
+eq) theorem
+- finite exhaustive check (
+eq) universal proof
+- reported execution (
+eq) independent reproduction
+- source file (
+eq) executed artifact
+- Lean source (
+eq) checked Lean theorem
+- successful build (
+eq) intended theorem proved
+- artifact hash (
+eq) mathematical correctness
+- policy PASS (
+eq) mathematical truth
+- public availability (
+eq) publication readiness
 
-Claim dispositions
+### Claim dispositions
 
 Where used in claim records, the following terms distinguish different situations:
 
-Disposition| Meaning
-"OPEN"| Unresolved or active
-"FROZEN"| A specified artifact or version is locked for audit
-"BLOCKED"| A required gate prevents promotion
-"QUARANTINED"| Preserved but excluded from promotion pending resolution
-"DEPRECATED"| An obsolete representation or artifact retained for provenance
-"SUPERSEDED"| Replaced by a successor
-"RETRACTED"| Withdrawn and no longer to be relied on as stated
-"REFUTED"| The stated claim is contradicted by a valid counterexample or argument
+| Disposition | Meaning |
+|---|---|
+| OPEN | Unresolved or active |
+| FROZEN | A specified artifact or version is locked for audit |
+| BLOCKED | A required gate prevents promotion |
+| QUARANTINED | Preserved but excluded from promotion pending resolution |
+| DEPRECATED | An obsolete representation or artifact retained for provenance |
+| SUPERSEDED | Replaced by a successor |
+| RETRACTED | Withdrawn and no longer to be relied on as stated |
+| REFUTED | The stated claim is contradicted by a valid counterexample or argument |
 
 A claim may have computational evidence while its proof remains open. A proof candidate may be mathematically promising while its formalization remains incomplete. A refuted statement must not be silently rewritten as if the original statement had been correct.
 
-Promotion principle
+### Promotion principle
 
 No evidence class or disposition upgrades automatically.
 
@@ -209,10 +222,11 @@ Promotion requires an auditable relationship between:
 
 ---
 
-Research workflow
+## Research workflow
 
 AQARION uses an evidence-first workflow:
 
+```text
 Research question
         |
         v
@@ -247,6 +261,7 @@ Literature review and scope review
         |
         v
 Evidence classification and promotion decision
+```
 
 The order may be adapted to the research problem, but the evidence distinctions must remain intact.
 
@@ -254,15 +269,15 @@ A failed check is retained as evidence. A counterexample is not hidden. A correc
 
 ---
 
-Active research lines
+## Active research lines
 
-1. Invariant-partition enumeration
+### 1. Invariant-partition enumeration
 
 Research into invariant partitions of finite permutations, including cycle decompositions, phase structure, weighted Bell-type formulas, and direct enumeration oracles.
 
-The repository describes "AQ-FPR-006" as an analytical formula with bounded computational cross-checks. External independent reproduction and literature priority remain separate questions. Consult the "research map" (docs/RESEARCH-LINES.md) and "evidence ledger" (EVIDENCE-LEDGER.md) for the recorded scope and evidence.
+The repository describes AQ-FPR-006 as an analytical formula with bounded computational cross-checks. External independent reproduction and literature priority remain separate questions. The detailed research map and evidence ledger are pending.
 
-2. Finite quotient defects
+### 2. Finite quotient defects
 
 Research into invariant quotient structure through block-constant observable spaces and operator defects.
 
@@ -270,21 +285,21 @@ The work tracks definitions, projection conventions, transport-energy identities
 
 No rank formula or refinement law should be generalized beyond the domain actually established by its proof.
 
-3. Finite-quotient pullback rigidity
+### 3. Finite-quotient pullback rigidity
 
 The PB-001 research line studies a function (T:X\to X), equivalence relations on (X), and the pullback relation
 
 [
-T^*E={(x,y)\in X^2:(Tx,Ty)\in E}.
+T^*E={(x,y)in X^2:(Tx,Ty)in E}.
 ]
 
-Its central finite-quotient statement is that, if (X/E) is finite and (T^*E\subseteq E), then (T^*E=E).
+Its central finite-quotient statement is that, if (X/E) is finite and (T^*Esubseteq E), then (T^*E=E).
 
 The associated binary join-closure argument uses finite quotient permutations and a bipartite incidence graph.
 
-The research document records an analytic proof candidate and reported finite computational evidence. Independent proof review, execution-artifact reconstruction, Lean formalization, axiom audit, and literature-priority review remain distinct obligations. Consult "PB-001" (AQARION-QUANTARION-AI/PB_001.md) for the detailed statement and current caveats.
+The research document records an analytic proof candidate and reported finite computational evidence. Independent proof review, execution-artifact reconstruction, Lean formalization, axiom audit, and literature-priority review remain distinct obligations. Consult [PB-001](AQARION-QUANTARION-AI/PB_001.md) for the detailed statement and current caveats.
 
-4. Formalization and provenance
+### 4. Formalization and provenance
 
 This research line concerns the connection between mathematical claims, source artifacts, execution, and formal proof.
 
@@ -298,11 +313,11 @@ The requirements include:
 - Artifact hashes and execution records.
 - Preservation of open and failed obligations.
 
-See the "formalization roadmap" (docs/FORMALIZATION.md) and "provenance policy" (docs/PROVENANCE.md).
+The formalization roadmap and provenance policy documents are pending.
 
 ---
 
-Verification and reproducibility
+## Verification and reproducibility
 
 A reliable computational result requires more than a displayed output.
 
@@ -330,39 +345,40 @@ The existence of verification directories in the repository architecture does no
 
 ---
 
-Repository architecture
+## Repository architecture
 
 The repository contains mathematical research records and documented tooling architecture. The architecture is intended to keep mathematical content separate from reusable infrastructure.
 
-Research records
+### Research records
 
 The research-side directories preserve theorem statements, derivations, experiments, finite computation, formalization targets, and historical corrections.
 
-Reusable tooling
+### Reusable tooling
 
-The documented tooling architecture under "AQARION-QUANTARION-AI/TOOLS/" separates the following responsibilities:
+The documented tooling architecture under `AQARION-QUANTARION-AI/TOOLS/` separates the following responsibilities:
 
-Component| Intended responsibility
-ClaimLock| Claim records, evidence classifications, dependencies, and promotion history
-ProofGym| Executable mathematical verification workflows and adversarial fixtures
-JOIN-STABILITY| Research and verification concerning pullback-stable equivalence relations and join closure
-Replay| Deterministic computational reproduction and execution records
-Verification| Exact checks, independent reconstruction, adversarial tests, and certificates
-Provenance| Artifact hashes, environments, execution logs, and research-object metadata
-Schemas| Shared machine-readable contracts
-Skills| Documented, repeatable research workflows
-CLI| Consistent interfaces to established tools
-Exact| Reusable exact finite-mathematics utilities
-Lean| Formalization targets, build records, and audits
-Archive| Preserved historical, superseded, refuted, and quarantined material
+| Component | Intended responsibility |
+|---|---|
+| ClaimLock | Claim records, evidence classifications, dependencies, and promotion history |
+| ProofGym | Executable mathematical verification workflows and adversarial fixtures |
+| JOIN-STABILITY | Research and verification concerning pullback-stable equivalence relations and join closure |
+| Replay | Deterministic computational reproduction and execution records |
+| Verification | Exact checks, independent reconstruction, adversarial tests, and certificates |
+| Provenance | Artifact hashes, environments, execution logs, and research-object metadata |
+| Schemas | Shared machine-readable contracts |
+| Skills | Documented, repeatable research workflows |
+| CLI | Consistent interfaces to established tools |
+| Exact | Reusable exact finite-mathematics utilities |
+| Lean | Formalization targets, build records, and audits |
+| Archive | Preserved historical, superseded, refuted, and quarantined material |
 
 This is a description of the intended architecture, not a guarantee that every listed component is implemented, complete, or stable.
 
-Use the relevant source files, tests, workflow definitions, and execution records to determine the actual implementation state. See the "tools README" (AQARION-QUANTARION-AI/TOOLS/README.md) and "master file tree" (FILETREE.md).
+Use the relevant source files, tests, workflow definitions, and execution records to determine the actual implementation state. See the [tools README](AQARION-QUANTARION-AI/TOOLS/README.md) and [master file tree](FILETREE.md).
 
 ---
 
-Formal verification
+## Formal verification
 
 Lean formalization is an independent research obligation.
 
@@ -378,11 +394,11 @@ For a formalized result to support promotion, the audit must establish that:
 
 A successful build is valuable evidence about the formal artifact. It is not, by itself, evidence that every related computational result is reproducible or that the intended research claim has been formalized correctly.
 
-The current recorded Lean status remains OPEN. See "FORMALIZATION.md" (docs/FORMALIZATION.md) for targets and outstanding obligations.
+The current recorded Lean status remains OPEN. The formalization roadmap document is pending.
 
 ---
 
-Corrections and historical provenance
+## Corrections and historical provenance
 
 AQARION preserves mistakes, counterexamples, retractions, and superseded claims so that later work can identify exactly what changed and why.
 
@@ -400,11 +416,11 @@ Historical artifacts must not be silently rewritten to make the research record 
 
 A refuted claim remains distinguishable from a claim that has merely been superseded. A quarantined artifact remains distinguishable from a proven-false statement.
 
-See "HISTORICAL-CORRECTIONS.md" (docs/HISTORICAL-CORRECTIONS.md).
+The corrections and historical provenance document is pending.
 
 ---
 
-Publication and collaboration
+## Publication and collaboration
 
 Publication readiness is assessed separately from computational success, repository completeness, and formalization progress.
 
@@ -424,11 +440,11 @@ The current recorded publication gate is BLOCKED. This does not assert that all 
 
 Collaboration is welcome in finite dynamical systems, Koopman theory, quotient structures, exact combinatorial enumeration, reproducible mathematical computing, Lean formalization, and research provenance.
 
-Use "GitHub Issues" (https://github.com/quantarion369-arch/AQARION/issues) for questions, proposed corrections, reproducibility reports, and literature pointers.
+Use [GitHub Issues](https://github.com/quantarion369-arch/AQARION/issues) for questions, proposed corrections, reproducibility reports, and literature pointers.
 
 ---
 
-Development and contribution standards
+## Development and contribution standards
 
 Contributions should make the research record more inspectable and reliable.
 
@@ -449,7 +465,7 @@ Prefer extending established components to creating duplicate tools with overlap
 
 Do not add empty speculative directories merely because they appear in an architectural tree. Do not mark a feature as implemented merely because its planned path is documented.
 
-Quality gate
+### Quality gate
 
 Before a tool is described as stable, establish that its source exists, its tests execute, its failure cases are meaningful, its reproduction instructions work, its documentation matches the implementation, and its CI actually runs.
 
@@ -457,14 +473,14 @@ Before a mathematical claim is promoted, establish the corresponding mathematica
 
 ---
 
-Guiding principles
+## Guiding principles
 
-«Prove first. Verify exhaustively. Predict second. No free parameters.»
+> Prove first. Verify exhaustively. Predict second. No free parameters.
 
-«Ideas may come from anywhere. Confidence comes from verification.»
+> Ideas may come from anywhere. Confidence comes from verification.
 
-«Do not promote a result beyond what its evidence establishes.»
+> Do not promote a result beyond what its evidence establishes.
 
 ---
 
-AQARION — Evidence-First Mathematical Research
+**AQARION — Evidence-First Mathematical Research**
