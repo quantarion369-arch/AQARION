@@ -8,6 +8,8 @@ import re, subprocess
 from pathlib import Path
 
 MANIFEST = Path(__file__).parent / "corpus" / "MANIFEST.md"
+WORD = re.compile(r"[A-Za-z0-9_]+")
+PARA_BREAK = chr(10) * 2
 
 def load_manifest():
     rows = []
@@ -23,15 +25,13 @@ def load_at_sha(path, sha):
     return result.stdout
 
 def retrieve(query, top_k=3):
-    """Keyword-overlap retrieval against pinned snapshots. Returns list of (score, doc, sha, passage)."""
-    q = set(re.findall(r"w+", query.lower()))
+    """Keyword-overlap retrieval against pinned snapshots."""
+    q = set(WORD.findall(query.lower()))
     results = []
     for entry in load_manifest():
         text = load_at_sha(entry["path"], entry["sha"])
-        for para in text.split("
-
-"):
-            words = set(re.findall(r"w+", para.lower()))
+        for para in text.split(PARA_BREAK):
+            words = set(WORD.findall(para.lower()))
             score = len(q & words)
             if score > 0:
                 results.append((score, entry["doc"], entry["sha"], para.strip()))
@@ -41,6 +41,6 @@ def retrieve(query, top_k=3):
 if __name__ == "__main__":
     import sys
     for score, doc, sha, passage in retrieve(" ".join(sys.argv[1:])):
-        print(f"[{score}] {doc} @ {sha[:8]}
-{passage}
-")
+        print(f"[{score}] {doc} @ {sha[:8]}")
+        print(passage)
+        print()
