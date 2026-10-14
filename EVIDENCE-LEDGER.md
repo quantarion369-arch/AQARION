@@ -85,3 +85,14 @@ thread; the original numerical results remain unchanged.
 - Scope: finite-domain agreement for the identified production source.
   Not a general correctness proof, a replay of larger reported searches,
   or machine-checked theorem verification.
+
+## Closure-cost proof and audit artifacts
+
+See research/closure-cost/:
+- THEOREM.md: general bound, equality criterion, binary characterization.
+- AUDIT.md: evidence attribution, counts, witnesses, and limitations.
+- check_actual_source.py: production-source replay harness.
+- actual-source-n4.txt: captured local replay output.
+
+Paper proof is not machine-checked; novelty is not established.
+Claude's complete extended-search artifacts remain pending export.
