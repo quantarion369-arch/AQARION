@@ -94,7 +94,6 @@ def coarsest_stable_partition(T, partition):
 
     while True:
         signatures = {}
-
         new_labels = {}
 
         for state in range(n):
@@ -156,6 +155,39 @@ def block_constant_basis(T, partition):
         )
 
     return basis
+
+
+def shift_register_map(word_length):
+    """Return T for the shift-and-append-zero map on binary words.
+
+    A word (b0, b1, ..., b_{d-1}) maps to
+    (b1, ..., b_{d-1}, 0).
+    """
+    if word_length < 1:
+        raise ValueError("word_length must be positive")
+
+    state_count = 2 ** word_length
+    transition = []
+
+    for state in range(state_count):
+        remaining = state & ((1 << (word_length - 1)) - 1)
+        transition.append(remaining << 1)
+
+    return transition
+
+
+def first_bit_partition(word_length):
+    """Return the partition of binary words by their first bit."""
+    if word_length < 1:
+        raise ValueError("word_length must be positive")
+
+    state_count = 2 ** word_length
+    half = state_count // 2
+
+    return [
+        list(range(half)),
+        list(range(half, state_count)),
+    ]
 
 
 def closure_gap(T, partition):
