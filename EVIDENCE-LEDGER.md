@@ -96,3 +96,25 @@ See research/closure-cost/:
 
 Paper proof is not machine-checked; novelty is not established.
 Claude's complete extended-search artifacts remain pending export.
+
+## Closure-cost equality extension — local replay complete
+
+**Status:** Local semantic replay complete on seeds 0 and 1; pushed in commit `1dfd095`.
+
+The corrected all-k equality checker passed locally on both seeds. Both runs reproduced the reported counts exactly: 166,484 exhaustive n<=5 cases per seed, 43,488 attained per seed, matching random, construction, and empty-profile results, with all assertions passing.
+
+**Dependency qualification:** local `prof.py` is a compatible reconstruction, not the Claude-reported dependency (`829be3fc…`). This is a semantic replay, not a hash-verified byte-for-byte replay.
+
+**Theorem status:** paper-level proof complete; exact exhaustive n<=5, sampled n in {8,9}, construction, and empty-profile checks passed locally. Not Lean-formalized and not independently formally reviewed.
+
+**Artifacts:** `extensions/closure-cost-equality/replay/` and `extensions/closure-cost-equality/local-dependency/`.
+
+## Stability-notions clarification — accepted
+
+**Status:** Accepted as a framework correction and case verification.
+
+1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.
+2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.
+3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.
+
+**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.
