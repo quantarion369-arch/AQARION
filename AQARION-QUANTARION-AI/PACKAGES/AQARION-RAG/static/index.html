@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AQARION-RAG</title>
+<style>
+body{font-family:monospace;max-width:720px;margin:2rem auto;padding:0 1rem}
+.claim{border:1px solid #444;padding:.75rem;margin:.5rem 0}
+.status{color:#7ec97e}
+.artifact{color:#e0b050}
+input{width:100%;padding:.5rem;font-family:monospace}
+</style>
+</head>
+<body>
+<h1>AQARION-RAG</h1>
+<input id="q" placeholder="search claims...">
+<div id="out"></div>
+<script>
+async function load(q) {
+  const url = "/api/claims/search?q=" + encodeURIComponent(q);
+  const r = await fetch(url);
+  const d = await r.json();
+  const out = document.getElementById("out");
+  out.innerHTML = "";
+  for (const c of d.claims) {
+    const div = document.createElement("div");
+    div.className = "claim";
+    const art = c.artifacts.length
+      ? '<div class="artifact">artifact: ' + c.artifacts[0].slice(0,16) + '...</div>'
+      : "";
+    div.innerHTML = "<b>" + c.section + "</b>" +
+      (c.status ? '<div class="status">' + c.status + '</div>' : "") +
+      art + "<div>" + c.text.slice(0, 200) + "...</div>";
+    out.appendChild(div);
+  }
+}
+document.getElementById("q").addEventListener("input", e => load(e.target.value));
+load("");
+</script>
+</body>
+</html>
