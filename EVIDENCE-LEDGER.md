@@ -1,6 +1,6 @@
 # AQARION Evidence Ledger
 
-Status: PLACEHOLDER — navigation stub. Content pending.
+Status: PARTIAL LEDGER — active evidence entries are recorded below. A complete claim-level schema, artifact-hash coverage, and completeness audit remain pending.
 
 ## Purpose
 
@@ -96,6 +96,32 @@ See research/closure-cost/:
 
 Paper proof is not machine-checked; novelty is not established.
 Claude's complete extended-search artifacts remain pending export.
+
+## Closure-cost equality extension — general feedback characterization
+
+**Status:** Paper-level proof present; precision review pending.
+
+`research/closure-cost/GENERAL-FEEDBACK.md` proves that upper equality in the
+closure-cost product bound implies the full Cartesian-product itinerary-prefix
+structure, nested coordinate alphabets, and a common-coordinate feedback
+determination of the next itinerary letter.
+
+This entry records the direction actually proved:
+
+upper equality implies the nested-alphabet and common-coordinate feedback
+structure.
+
+It does not establish that nested alphabets and common-coordinate feedback
+alone, without the full-product and cardinality hypotheses, are sufficient for
+upper equality.
+
+The binary all-ones-profile special case remains in
+`research/closure-cost/THEOREM.md`. The extension overview was synchronized in
+commit `cd77063`.
+
+**Open follow-up:** tighten the proof presentation—explicit quotient maps,
+shift-index wording, the Boolean rectangle contradiction, and the precise
+hypotheses required for each implication.
 
 ## Closure-cost equality extension — local replay complete
 
