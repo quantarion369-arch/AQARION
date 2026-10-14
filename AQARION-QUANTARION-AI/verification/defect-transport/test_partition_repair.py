@@ -7,31 +7,10 @@ from partition_repair import (
     block_constant_basis,
     closure_gap,
     coarsest_stable_partition,
+    first_bit_partition,
     partition_repair_cost,
+    shift_register_map,
 )
-
-
-def shift_register_map(word_length):
-    """Return T for the left-shift-and-append-zero map on binary words."""
-    state_count = 2 ** word_length
-    transition = []
-
-    for state in range(state_count):
-        first_bit = (state >> (word_length - 1)) & 1
-        remaining = state & ((1 << (word_length - 1)) - 1)
-        transition.append((remaining << 1) | first_bit)
-
-    return transition
-
-
-def first_bit_partition(word_length):
-    state_count = 2 ** word_length
-    half = state_count // 2
-
-    return [
-        list(range(half)),
-        list(range(half, state_count)),
-    ]
 
 
 class StableRefinementTests(unittest.TestCase):
