@@ -9,32 +9,31 @@ Date: October 14, 2026
 | Closure-cost upper bound | Paper-level proof reviewed | Not machine-checked |
 | General upper-equality criterion | Paper-level proof reviewed | Maximal splitting at every stage |
 | Binary all-ones-profile characterization | Paper-level proof reviewed | Full binary itinerary cube plus feedback condition |
+| General nested-alphabet and feedback characterization | Paper-level proof present; precision review pending | Structural consequences of upper equality |
 | Replay | Local semantic replay passed on seeds 0 and 1 | Reconstructed dependency; not hash-verified |
 | Lean formalization | Deferred | Separate gate |
 | Publication / C4 | Blocked | By policy |
 
 ## General bound
 
-Let (T:X\to X) be a finite map and (pi) a partition into (k) nonempty blocks. Let (Kf=fcirc T), let (V_pi) be the space of block-constant functions, and define
+Let \(T:X\to X\) be a finite map and \(\pi\) a partition into \(k\) nonempty blocks. Let \(Kf=f\circ T\), let \(V_\pi\) be the space of block-constant functions, and define
 
-[
-W_j=V_pi+KV_pi+cdots+K^jV_pi,
-qquad
-delta_j=dim W_j-dim W_{j-1}.
-]
+\[
+W_j=V_\pi+KV_\pi+\cdots+K^jV_\pi,
+\qquad
+\delta_j=\dim W_j-\dim W_{j-1}.
+\]
 
-Let (s) be the number of stabilized itinerary classes and let (C=sum_{jge1}delta_j). Then
+Let \(s\) be the number of stabilized itinerary classes and let \(C=\sum_{j\ge1}\delta_j\). Then
 
-[
-Cle s-kle
-kleft(prod_{jge1}(1+delta_j)-1
-ight).
-]
+\[
+C\le s-k\le
+k\left(\prod_{j\ge1}(1+\delta_j)-1\right).
+\]
 
-The upper bound is attained exactly when every block at each refinement stage splits into the maximum permitted number, (1+delta_j), of children.
+The upper bound is attained exactly when every block at each refinement stage splits into the maximum permitted number, \(1+\delta_j\), of children.
 
 Equivalently, the itinerary-prefix set has the full Cartesian-product size dictated by its coordinate alphabets.
-
 ## Structural theorem
 
 The nested-alphabet and common-coordinate feedback characterization is proved
