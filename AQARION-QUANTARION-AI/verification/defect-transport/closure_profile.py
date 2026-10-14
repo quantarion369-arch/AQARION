@@ -1,23 +1,22 @@
 #!/usr/bin/env python3
 """Exact iterated Koopman closure-profile auditor.
 
-This module computes the closure sequence
+Computes the closure sequence
 
     W_{j+1} = W_j + K(W_j)
 
 for a finite deterministic map T and an arbitrary initial observable
-basis. It uses exact rational arithmetic only.
+basis. Uses exact rational arithmetic only.
 
-The Koopman convention is the pullback convention:
+Koopman convention:
 
     (K f)(x) = f(T(x)).
 
-The stage-wise defect operator is
+Stage defect operator:
 
     D_j = (I - P_j) K P_j,
 
-where P_j is the orthogonal projection onto W_j. Its rank equals the
-dimension increment
+where P_j is the orthogonal projection onto W_j. Its rank equals
 
     delta_j = dim(W_{j+1}) - dim(W_j).
 
@@ -30,7 +29,6 @@ from fractions import Fraction
 
 
 def validate_transition(T):
-    """Validate that T is a total map on {0,...,n-1}."""
     T = list(T)
     n = len(T)
 
@@ -47,26 +45,29 @@ def validate_transition(T):
 
 
 def validate_basis(T, initial_basis):
-    """Validate an initial observable basis given as column vectors."""
     n = len(T)
 
     if not initial_basis:
         raise ValueError("initial_basis must be nonempty")
 
     columns = []
+
     for column in initial_basis:
         if len(column) != n:
             raise ValueError(
                 "each observable column must have length n"
             )
-        columns.append([Fraction(value) for value in column])
+
+        columns.append(
+            [Fraction(value) for value in column]
+        )
 
     return columns
 
 
 def koopman_matrix(T):
-    """Construct the pullback Koopman matrix for T."""
     n = len(T)
+
     return [
         [
             Fraction(int(T[x] == y))
@@ -77,19 +78,22 @@ def koopman_matrix(T):
 
 
 def koopman_apply_column(T, column):
-    """Apply the pullback Koopman operator to one observable column."""
-    return [column[T[x]] for x in range(len(T))]
+    return [
+        column[T[x]]
+        for x in range(len(T))
+    ]
 
 
 def columns_to_matrix(columns):
-    """Convert a list of column vectors into a row-major matrix."""
     if not columns:
         return []
 
     n = len(columns[0])
 
     if any(len(column) != n for column in columns):
-        raise ValueError("all observable columns must have equal length")
+        raise ValueError(
+            "all observable columns must have equal length"
+        )
 
     return [
         [column[x] for column in columns]
@@ -98,7 +102,6 @@ def columns_to_matrix(columns):
 
 
 def matmul(A, B):
-    """Exact matrix multiplication."""
     return [
         [
             sum(A[i][r] * B[r][j] for r in range(len(B)))
@@ -109,7 +112,6 @@ def matmul(A, B):
 
 
 def rank_q(matrix):
-    """Exact rank over Q by Gauss-Jordan elimination."""
     A = [
         [Fraction(value) for value in row]
         for row in matrix
@@ -136,6 +138,7 @@ def rank_q(matrix):
         A[pivot_row], A[pivot] = A[pivot], A[pivot_row]
 
         pivot_value = A[pivot_row][col]
+
         A[pivot_row] = [
             value / pivot_value
             for value in A[pivot_row]
@@ -146,9 +149,10 @@ def rank_q(matrix):
                 continue
 
             factor = A[row][col]
+
             A[row] = [
-                value - factor * pivot_value2
-                for value, pivot_value2 in zip(
+                value - factor * pivot_value
+                for value, pivot_value in zip(
                     A[row],
                     A[pivot_row],
                 )
@@ -163,7 +167,7 @@ def rank_q(matrix):
 
 
 def orthogonal_projection_from_columns(columns):
-    """Exact orthogonal projection onto the span of column vectors."""
+    """Exact orthogonal projection onto span(columns)."""
     n = len(columns[0])
 
     projection = [
@@ -181,8 +185,16 @@ def orthogonal_projection_from_columns(columns):
                 left * right
                 for left, right in zip(vector, basis_vector)
             )
+
+            basis_norm_squared = sum(
+                value * value
+                for value in basis_vector
+            )
+
+            coefficient = dot_product / basis_norm_squared
+
             vector = [
-                left - dot_product * right
+                left - coefficient * right
                 for left, right in zip(vector, basis_vector)
             ]
 
@@ -206,20 +218,7 @@ def orthogonal_projection_from_columns(columns):
 
 
 def closure_profile(T, initial_basis):
-    """Compute the exact iterated Koopman closure profile.
-
-    Parameters
-    ----------
-    T : sequence of int
-        Total map on {0,...,n-1}.
-    initial_basis : sequence of sequences
-        Initial observable basis, supplied as column vectors.
-
-    Returns
-    -------
-    dict
-        Exact closure profile, defect ranks, checks, and total cost.
-    """
+    """Compute the exact iterated Koopman closure profile."""
     T = validate_transition(T)
     columns = validate_basis(T, initial_basis)
 
@@ -253,6 +252,7 @@ def closure_profile(T, initial_basis):
         ]
 
         enlarged_columns = columns + image_columns
+
         enlarged_dimension = rank_q(
             columns_to_matrix(enlarged_columns)
         )
@@ -303,7 +303,8 @@ def closure_profile(T, initial_basis):
 
 
 def main():
-    """Minimal demonstration using the four-state leakage fixture."""
+    import json
+
     T = [1, 2, 3, 3]
     initial_basis = [
         [1, 1, 1, 1],
@@ -312,9 +313,13 @@ def main():
 
     result = closure_profile(T, initial_basis)
 
-    import json
-
-    print(json.dumps(result, indent=2, sort_keys=True))
+    print(
+        json.dumps(
+            result,
+            indent=2,
+            sort_keys=True,
+        )
+    )
 
     if result["result"] != "PASS":
         raise SystemExit(1)
