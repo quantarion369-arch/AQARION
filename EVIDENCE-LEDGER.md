@@ -57,3 +57,31 @@ not yet run — non-blocking.
 - Claude/GPT defect-transport blocker fixes
 - Product bound test integration into main repo test suite
 - Split-signature invariant research
+
+## Provenance correction and actual-source check (2026-10-14)
+
+This entry supersedes the provenance wording in the earlier verification
+thread; the original numerical results remain unchanged.
+
+### Corrections
+- "Three independent checks" overstated independence: some checks share
+  implementations and oracle components.
+- The original xcheck.py run tested a reconstructed implementation,
+  not the production source.
+- The unittest suite used the reconstructed implementation and shared
+  components; it was not a third independent implementation.
+
+### Actual production-source cross-check
+- Execution: user ran the path-specific loader in the local Termux checkout.
+- Source:
+  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py
+- Source SHA-256:
+  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1
+- Method: explicitly load the source above, then run dt_check/xcheck.py
+  against the independent prof.profile oracle.
+- Domain: every map and set partition for 1 <= n <= 4.
+- Result: 3,984 cases; zero profile/linear-cost mismatches;
+  zero implementation self-check failures; reported runtime 9 seconds.
+- Scope: finite-domain agreement for the identified production source.
+  Not a general correctness proof, a replay of larger reported searches,
+  or machine-checked theorem verification.
