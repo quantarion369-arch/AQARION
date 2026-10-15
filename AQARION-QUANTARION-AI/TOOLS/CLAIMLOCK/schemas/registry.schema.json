@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/quantarion369-arch/AQARION/blob/main/AQARION-QUANTARION-AI/TOOLS/CLAIMLOCK/schemas/registry.schema.json",
+  "title": "AQARION Claim Registry",
+  "description": "Schema for the AQARION claim registry array. Status tracks evidence strength; governance tracks publication disposition separately.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "title", "status", "governance", "evidence", "cases", "violations", "note"],
+    "properties": {
+      "id": {"type": "string", "pattern": "^[A-Z0-9-]+$"},
+      "title": {"type": "string"},
+      "status": {"enum": ["proved", "verified", "conjecture", "open", "deprecated", "blocked"]},
+      "governance": {"enum": ["active", "deprecated", "blocked"]},
+      "evidence": {"type": "string"},
+      "cases": {"type": "integer", "minimum": 0},
+      "violations": {"type": "integer", "minimum": 0},
+      "note": {"type": "string"}
+    }
+  }
+}
