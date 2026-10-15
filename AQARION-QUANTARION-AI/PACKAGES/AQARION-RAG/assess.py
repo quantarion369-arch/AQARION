@@ -2,24 +2,31 @@
 """
 Independent assessment layer + mutation harness for the EC fixtures.
 
-Verdict rule:
+Verdict rule (the one in the checkpoint report):
     REFUTED  iff  exists witness w with  D(w) and H(w) and not C(w)
-    OPEN     otherwise
+    OPEN     otherwise (finite witnesses can never establish a universal claim)
 
-C(w) is RECOMPUTED from the witness parameter c -- never read from the
-witness's own label. Stdlib only.
+Key design points
+  * C(w) is RECOMPUTED from the witness parameter c -- never read from the
+    witness's own label (that was the rejected circularity flaw).
+  * "stable" is not defined in the fixtures, so it is an explicit parameter.
+    Two readings are implemented; results are reported under both.
+Stdlib only.
 """
 import json, sys
 
+# ---------------------------------------------------------------- stability
 def stable_bounded_orbit(c, iters=500):
+    """x -> x^2 + c on the reals, start x=0; stable iff orbit stays bounded."""
     x = 0.0
     for _ in range(iters):
         x = x * x + c
-        if abs(x) > 2.0:
+        if abs(x) > 2.0:          # once |x|>2 (and |c|<=2) it provably escapes
             return False
     return True
 
 def stable_attracting_fixed_point(c):
+    """stable iff a real fixed point x* of x^2+c exists with |2x*| < 1."""
     disc = 1.0 - 4.0 * c
     if disc < 0:
         return False
@@ -32,20 +39,23 @@ def stable_attracting_fixed_point(c):
 READINGS = {"bounded_orbit": stable_bounded_orbit,
             "attracting_fixed_point": stable_attracting_fixed_point}
 
+# ------------------------------------------------------------------ claims
 def make_claim(name, H, stable):
     return {"name": name,
-            "D": lambda w: w.get("family") == "quadratic",
-            "H": H,
-            "C": lambda w: stable(w["c"])}
+            "D": lambda w: w.get("family") == "quadratic",   # domain
+            "H": H,                                          # hypothesis
+            "C": lambda w: stable(w["c"])}                   # conclusion (recomputed)
 
+# ---------------------------------------------------------------- assessor
 def assess(claim, witnesses, trust_labels=False, ignore_H=False,
            flip_C=False, ignore_D=False):
+    """Returns (verdict, decisive_ids). The flags are deliberate MUTANTS."""
     decisive = []
     for w in witnesses:
         in_D = True if ignore_D else claim["D"](w)
         in_H = True if ignore_H else claim["H"](w)
         if trust_labels:
-            c_holds = (w["label"] == "stable")
+            c_holds = (w["label"] == "stable")      # MUTANT: believes the label
         else:
             c_holds = claim["C"](w)
         if flip_C:
@@ -54,13 +64,15 @@ def assess(claim, witnesses, trust_labels=False, ignore_H=False,
             decisive.append(w["id"])
     return ("REFUTED" if decisive else "OPEN"), decisive
 
+# --------------------------------------------------------------- fixtures
 def W(i, c, label): return {"id": i, "family": "quadratic", "c": c, "label": label}
 
 def fixtures(stable, reading):
     univ = make_claim("EC-04 universal", lambda w: True, stable)
     lt1  = make_claim("EC-05 |c|<1",    lambda w: abs(w["c"]) < 1, stable)
     cubic = {"id": "E-010", "family": "cubic", "c": 1.5, "label": "unstable"}
-    sens = "OPEN" if reading == "bounded_orbit" else "REFUTED"
+    # expected verdicts are decided by hand, independent of assess():
+    sens = "OPEN" if reading == "bounded_orbit" else "REFUTED"   # c=-1: definition-sensitive
     return [
         ("EC-04  c=0.5 vs universal",        univ, [W("E-003", 0.5, "unstable")], "REFUTED"),
         ("EC-05  c=1.5 out of scope",        lt1,  [W("E-003", 1.5, "unstable")], "OPEN"),
@@ -81,8 +93,7 @@ MUTANTS = {
 def run(reading):
     stable = READINGS[reading]
     fx = fixtures(stable, reading)
-    print(f"
-=== reading: {reading} ===")
+    print(f"\n=== reading: {reading} ===")
     base_ok = True
     for name, claim, ws, expected in fx:
         v, ids = assess(claim, ws)
@@ -104,3 +115,4 @@ if __name__ == "__main__":
         print(f"  c={c:5}: " + ", ".join(f"{r}={f(c)}" for r, f in READINGS.items()))
     results = [run(r) for r in READINGS]
     sys.exit(0 if all(results) else 1)
+
