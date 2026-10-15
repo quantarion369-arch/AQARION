@@ -1,0 +1,83 @@
+
+name: Receipt validation counterexample
+description: Report a reproducible inconsistency or incorrect acceptance/rejection in an AQARION execution receipt.
+title: "[Receipt validation] "
+labels:
+  - receipt-validation
+  - needs-reproduction
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report the smallest reproducible case possible.
+        Do not include secrets, credentials, private logs, or sensitive environment data.
+
+  - type: input
+    id: revision
+    attributes:
+      label: Repository revision
+      description: Full Git commit SHA tested.
+      placeholder: 40-character commit SHA
+    validations:
+      required: true
+
+  - type: input
+    id: command
+    attributes:
+      label: Exact validation command
+      placeholder: python3 verification/verify.py ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: expected
+    attributes:
+      label: Expected validator outcome
+      options:
+        - Accept the receipt
+        - Reject the receipt
+        - Return a documented validation error
+        - Other / uncertain
+    validations:
+      required: true
+
+  - type: textarea
+    id: fixture
+    attributes:
+      label: Minimal receipt or fixture
+      description: Include a sanitized, self-contained example.
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: rule
+    attributes:
+      label: Rule or invariant
+      description: Explain why this input should be accepted or rejected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: observed
+    attributes:
+      label: Actual result
+      description: Include the observed decision, exception, exit code, and relevant output.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: List the commands and environment details needed to reproduce the result.
+    validations:
+      required: true
+
+  - type: textarea
+    id: regression
+    attributes:
+      label: Proposed regression test
+      description: Optional test code or a description of the assertion that should be added.
+    validations:
+      required: false
