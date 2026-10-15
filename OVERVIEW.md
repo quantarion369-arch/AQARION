@@ -1,6 +1,6 @@
 # AQARION: Public Research Artifact Overview and Verification Checkpoint
 
-Checkpoint date: October 9, 2026  
+Checkpoint date: October 14, 2026  
 Canonical repository: quantarion369-arch/AQARION  
 Document type: public research article, artifact overview, and evidence checkpoint
 
@@ -10,15 +10,16 @@ AQARION maintains research implementations, verification scripts, regression
 tests, and workflow artifacts for investigating exact structural relationships
 and the reliability of their computational evidence.
 
-This checkpoint brings together three strands:
+This checkpoint brings together four strands:
 
 1. SM003 exact matrix-rank and graph-rank comparison.
 2. D22 direct-projection validation.
 3. Mobile Research Kit integrity and regression verification.
+4. AQARION-RAG provenance-aware retrieval and evidence navigation.
 
 The evidence described here includes reported hosted workflow results,
-artifact inspections described in a supplied audit, and directly supplied
-Termux regression output.
+artifact inspections described in a supplied audit, directly supplied
+Termux regression output, and AQARION-RAG evaluation results.
 
 These evidence classes are kept distinct. A successful workflow establishes
 that its configured checks completed successfully at a particular revision.
@@ -68,6 +69,9 @@ The hosted SM003, D22, and final Mobile Research Kit details were described
 in a supplied repository audit. This document records those details with that
 attribution; its preparation did not independently reproduce every hosted
 artifact inspection.
+
+AQARION-RAG evaluation results were directly supplied as local terminal
+output from the package evaluation harness.
 
 ## 2. SM003: Exact Rank and Mutation Evidence
 
@@ -442,7 +446,81 @@ to every failed run.
 The completed revision, rather than an intermediate delivery revision, is
 the relevant publication checkpoint.
 
-## 5. Consolidated Status
+## 5. AQARION-RAG: Retrieval and Evidence Navigation
+
+Package directory:
+
+    AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/
+
+### Scope
+
+AQARION-RAG is a provenance-aware retrieval service for navigating the
+AQARION research corpus. Its function is evidence navigation, not claim
+certification: retrieval results identify and rank corpus material but do
+not alter the governance status of any claim.
+
+### Implemented capabilities
+
+- Morphological normalization of query and document terms via a stemming
+  module.
+- BM25 relevance ranking over the pinned corpus.
+- Content-addressed source references using SHA-256 identifiers.
+- Claim and supersession relationships maintained through the evidence
+  graph.
+- An HTTP service interface exposing retrieval and graph-query operations.
+
+### Retrieval pipeline
+
+```text
+Query
+  |
+  v
+Tokenization and stemming
+  |
+  v
+BM25 scoring over pinned corpus
+  |
+  v
+Ranked result set
+  |
+  v
+Evidence-graph navigation and cited output
+```
+
+### Directly supplied evaluation results
+
+The package evaluation harness was executed locally and reported:
+
+| Measure | Result |
+| --- | ---: |
+| Retrieval hard cases passed | 3 |
+| BM25 ranking case passed | 1 |
+| Total harness result | 4 passed, 0 failed |
+
+The BM25 ranking case verifies that a document with higher term frequency
+for a queried term is ranked above a document with lower frequency, under
+the implemented scoring function.
+
+### Recorded revision
+
+    11c4920
+
+Commit message:
+
+    Add BM25 ranking to retrieval; ranking harness green (4/4)
+
+### Interpretation and limitations
+
+The evaluation harness establishes behavior of the implemented retrieval
+and ranking functions over its declared test cases. It does not establish
+retrieval quality over the full corpus, semantic matching beyond lexical
+overlap, or the correctness of any mathematical claim surfaced by retrieval.
+
+Retrieval outputs are navigation aids. They do not constitute mathematical
+proof, computational verification, formal certification, or a promotion
+decision under the governance framework described in this document.
+
+## 6. Consolidated Status
 
 | Item | Checkpoint status | Boundary |
 | --- | --- | --- |
@@ -453,12 +531,13 @@ the relevant publication checkpoint.
 | Mobile kit local regression | Directly supplied successful output | Local execution, not hosted execution |
 | Mobile kit hosted regression | Reported successful at 7ea0d79 | Attributed to supplied live audit |
 | Package integrity | 35 listed files verified | Unlisted files outside integrity scope |
+| AQARION-RAG evaluation | Directly supplied 4/4 harness result | Retrieval navigation, not claim certification |
 | Lean certification | Not established by the evidence here | No promotion to formal verification |
 | Novelty or priority | Not established | Requires targeted literature review |
 | D22 wording review | Outstanding source-review item | No undocumented edit claimed |
 | SM003 provenance reconciliation | Outstanding source-review item | No status update claimed |
 
-## 6. Publication and Maintenance Policy
+## 7. Publication and Maintenance Policy
 
 Future coordinated software changes should be delivered as one complete
 review set.
@@ -482,7 +561,7 @@ their causes be guessed.
 A final successful workflow should be preserved as evidence for that exact
 revision, without rewriting the meaning of earlier runs.
 
-## 7. Outstanding Work
+## 8. Outstanding Work
 
 The completed Mobile Research Kit delivery does not require another
 whitespace restoration or speculative workflow replacement.
@@ -498,28 +577,32 @@ The remaining evidence-maintenance priorities are:
 5. Locate canonical status-ledger and receipt paths before updating them.
 6. Keep general derivations, bounded computations, regression results, and
    formal certification as separate evidence categories.
+7. Establish AQARION-RAG retrieval-quality evaluation over the full corpus
+   before describing its ranking as corpus-wide.
 
 No completion of these outstanding tasks is claimed by this document.
 
 ## Conclusion
 
-AQARION's current checkpoint combines reported hosted artifact evidence with
-a directly supplied, successful 117-test Mobile Research Kit regression.
+AQARION's current checkpoint combines reported hosted artifact evidence, a
+directly supplied successful 117-test Mobile Research Kit regression, and a
+directly supplied 4/4 AQARION-RAG evaluation result.
 
 The value of the checkpoint is not merely that workflows are green. It is
 that revisions, test scopes, artifact identities, mutation accounting, and
 claim limitations are recorded separately.
 
 The Mobile Research Kit delivery is complete at the reported passing
-publication checkpoint. D22 and SM003 retain explicit boundaries between
-computational support, mathematical derivation, provenance maintenance,
-and formal verification.
+publication checkpoint. AQARION-RAG is recorded as a retrieval-navigation
+capability with bounded evaluation evidence. D22 and SM003 retain explicit
+boundaries between computational support, mathematical derivation,
+provenance maintenance, and formal verification.
 
 ### Deliverable — Mobile Research Kit: Exact Python/Environment Requirements
 
 Repository: `quantarion369-arch/AQARION` Package: `AQARION-QUANTARION-AI/PACKAGES/MOBILE-RESEARCH-KIT` Branch inspected: `main`
 
-### 1\. Confirmed requirements
+### 1. Confirmed requirements
 
 | Item                      | Finding                                         |
 | ------------------------- | ----------------------------------------------- |
@@ -532,7 +615,7 @@ Repository: `quantarion369-arch/AQARION` Package: `AQARION-QUANTARION-AI/PACKAGE
 
 The regression runner uses Python’s standard-library modules, including `pathlib`, `subprocess`, `sys`, and `unittest`. The package verifier uses `argparse`, `hashlib`, `json`, `pathlib`, and `re`. `Path.is_relative_to()` requires Python 3.9 or later, but the manifest’s explicit environment declaration is the more specific target: Python 3.13.13.
 
-### 2\. Existing regression command
+### 2. Existing regression command
 
 Run from the package directory:
 
@@ -542,7 +625,7 @@ python tools/run_regression.py
 
 The runner first checks the package’s listed-file sizes and SHA-256 hashes, then discovers and executes the package’s `unittest` tests. A package-integrity failure stops the regression before the test suite runs.
 
-### 3\. Audit qualification
+### 3. Audit qualification
 
 The exact declared Python version is confirmed from the live manifest. I have not established that Python 3.13.13 is the only supported version, nor that every file in the package is dependency-free. Those require inspection of the remaining source and environment documentation.
 
