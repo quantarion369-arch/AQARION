@@ -164,3 +164,7 @@ Scope boundary
 AQARION-RAG is a research prototype. It is not a general-purpose semantic search engine, an answer-generating agent, a proof system, or a certification service.
 
 The goal is narrower and more useful: make AQARION's existing research evidence easier to find, trace, compare, and reproduce without weakening the distinction between a claim and the evidence supporting it.
+
+## Status update — 2026-10-15
+
+Retrieval plus fixture-bound assessment is wired through `wire_assess.py` and was verified in Termux on 2026-10-14. Witness parameters remain fixture-defined. Corpus-derived witness extraction, general automatic refutation from retrieved documents, and broader end-to-end validation remain open.

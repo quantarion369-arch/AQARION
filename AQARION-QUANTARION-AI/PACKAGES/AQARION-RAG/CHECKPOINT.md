@@ -3331,3 +3331,7 @@ Citations:
 [14] Is there a formula for the number of labeled forests with - MathOverflow https://mathoverflow.net/questions/182797/is-there-a-formula-for-the-number-of-labeled-forests-with-k-components-on-n
 [15] A Visual Telling of Joyal's Proof Of Cayley's Formula https://golem.ph.utexas.edu/category/2019/12/a_visual_telling_of_joyals_pro.html
 [16] GAP3 Manual: 47 Combinatorics https://webusers.imj-prg.fr/~jean.michel/gap3/htm/chap047.html
+
+## Correction — 2026-10-15
+
+The Burnside M3 evidence record exists at `AQARION-QUANTARION-AI/evidence/BURNSIDE/M3/burnside-partition-moments-evidence-record-2026-10-07.json`. Earlier statements that the Burnside M3 directory was absent are outdated. Current status: computation reported, formalization open, repository authentication unestablished, publication blocked.
