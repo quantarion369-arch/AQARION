@@ -1,40 +1,38 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
 SCRIPT="cycle_congruence.py"
 OUTPUT="cycle_congruence.output.txt"
 RECEIPT="cycle_congruence.receipt.txt"
 HASH_RECEIPT="cycle_congruence.receipt.sha256"
+BUNDLE_HASHES="cycle_congruence.bundle.sha256"
 
-STAMP="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-HOST="$(hostname)"
-GIT_COMMIT="$(git rev-parse HEAD 2>/dev/null || echo 'not-a-git-repo')"
+for file in "$SCRIPT" "make_receipt.sh"; do
+  [[ -f "$file" ]] || { echo "MISSING_REQUIRED_FILE: $file" >&2; exit 2; }
+done
 
-python3 "$SCRIPT" > "$OUTPUT"
+set +e
+bash ./make_receipt.sh "$SCRIPT" "RESULT: ALL PASS"
+status=$?
+set -e
 
-SCRIPT_SHA="$(sha256sum "$SCRIPT" | awk '{print $1}')"
-OUTPUT_SHA="$(sha256sum "$OUTPUT" | awk '{print $1}')"
-
-{
-  echo "AQARION-RAG VERIFICATION RECEIPT"
-  echo "================================"
-  echo "Suite:           cycle_congruence"
-  echo "Status:          PASS"
-  echo "Exit code:       0"
-  echo "Generated (UTC): ${STAMP}"
-  echo "Host:            ${HOST}"
-  echo "Git commit:      ${GIT_COMMIT}"
-  echo
-  echo "Artifact integrity"
-  echo "------------------"
-  printf 'script  sha256  %s  %s
-' "$SCRIPT_SHA" "$SCRIPT"
-  printf 'output  sha256  %s  %s
-' "$OUTPUT_SHA" "$OUTPUT"
-} > "$RECEIPT"
+[[ -f "$RECEIPT" ]] || { echo "RECEIPT_NOT_CREATED" >&2; exit 5; }
 
 sha256sum "$SCRIPT" "$OUTPUT" > "$HASH_RECEIPT"
+sha256sum "$SCRIPT" "$OUTPUT" "$RECEIPT" > "$BUNDLE_HASHES"
 
-cat "$RECEIPT"
-echo
-cat "$HASH_RECEIPT"
+sha256sum -c "$HASH_RECEIPT" || { echo "SOURCE_OUTPUT_HASH_CHECK_FAILED" >&2; exit 3; }
+sha256sum -c "$BUNDLE_HASHES" || { echo "BUNDLE_HASH_CHECK_FAILED" >&2; exit 4; }
+
+if (( status != 0 )); then
+  echo "CYCLE_CONGRUENCE_VALIDATION_FAILED" >&2
+  exit "$status"
+fi
+
+echo "CYCLE_CONGRUENCE_VALIDATION=PASS"
+echo "RECEIPT=$RECEIPT"
+echo "SOURCE_OUTPUT_HASHES=$HASH_RECEIPT"
+echo "BUNDLE_HASHES=$BUNDLE_HASHES"
