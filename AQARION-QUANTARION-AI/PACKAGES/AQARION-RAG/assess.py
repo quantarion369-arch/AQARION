@@ -17,11 +17,23 @@ import json, sys
 
 # ---------------------------------------------------------------- stability
 def stable_bounded_orbit(c, iters=500):
-    """x -> x^2 + c on the reals, start x=0; stable iff orbit stays bounded."""
+    """Return whether the critical orbit stayed within the tested bound.
+
+    For real c outside [-2, 2], escape is immediate to certify:
+      c > 2: x_1 = c > 2;
+      c < -2: x_2 = c^2 + c > 2.
+    Inside [-2, 2], once |x| > 2, the next iterates escape.
+    A True result means only that no escape was detected within iters;
+    it is not a proof that the orbit is bounded.
+    """
+    if iters < 0:
+        raise ValueError("iters must be nonnegative")
+
+
     x = 0.0
     for _ in range(iters):
         x = x * x + c
-        if abs(x) > 2.0:          # once |x|>2 (and |c|<=2) it provably escapes
+        if abs(x) > 2.0:
             return False
     return True
 
@@ -116,3 +128,19 @@ if __name__ == "__main__":
     results = [run(r) for r in READINGS]
     sys.exit(0 if all(results) else 1)
 
+
+
+def escape_certified(c, iters=500):
+    "Return whether escape is certified within iters iterations."
+    if iters < 0:
+        raise ValueError("iters must be nonnegative")
+    if c > 2:
+        return False
+    if c < -2:
+        return False
+    x = 0.0
+    for _ in range(iters):
+        x = x * x + c
+        if abs(x) > 2.0:
+            return False
+    return True
