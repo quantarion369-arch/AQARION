@@ -15,20 +15,19 @@ def main():
     query = " ".join(sys.argv[1:]).strip() or "quadratic map c unstable"
     result = extract_run(query, top_k=5)
     candidates = result["candidates"]
-    reading = "bounded_orbit"
-    claim = make_claim(
-        "corpus universal bounded-orbit stability",
-        lambda w: True,
-        READINGS[reading],
-    )
     witnesses = [to_assess_witness(c) for c in candidates]
-    verdict, decisive = assess(claim, witnesses)
+    assessments = {}
+    for reading in READINGS:
+        claim = make_claim("universal " + reading + " stability", lambda w: True, READINGS[reading])
+        verdict, decisive = assess(claim, witnesses)
+        assessments[reading] = {
+            "verdict": verdict,
+            "decisive_candidate_ids": decisive,
+        }
     output = {
         "search_completed": result["search_completed"],
-        "reading": reading,
         "candidate_count": len(candidates),
-        "verdict": verdict,
-        "decisive_candidate_ids": decisive,
+        "assessments": assessments,
         "candidates": candidates,
         "limitations": [
             "Assessment recomputes the conclusion from c; reported labels are not trusted.",
