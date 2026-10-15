@@ -3,13 +3,7 @@ import unittest
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 
-PATH = (
-    Path(__file__).resolve().parents[1]
-    / "AQARION-QUANTARION-AI"
-    / "PACKAGES"
-    / "AQARION-RAG"
-    / "assess.py"
-)
+PATH = Path(__file__).resolve().parents[1] / "assess.py"
 SPEC = spec_from_file_location("aqarion_assess", PATH)
 ASSESS = module_from_spec(SPEC)
 SPEC.loader.exec_module(ASSESS)
