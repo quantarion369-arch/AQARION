@@ -13,7 +13,13 @@ def to_assess_witness(candidate):
 
 def main():
     query = " ".join(sys.argv[1:]).strip() or "quadratic map c stable unstable"
-    result = extract_run(query, top_k=5)
+    args = sys.argv[1:]
+    top_k = 5
+    if '--top-k' in args:
+        top_k = int(args[args.index('--top-k') + 1])
+        args = args[:args.index('--top-k')] + args[args.index('--top-k') + 2:]
+    query = " ".join(args).strip() or "quadratic map c stable unstable"
+    result = extract_run(query, top_k=top_k)
     candidates = result["candidates"]
     witnesses = [to_assess_witness(c) for c in candidates]
 
@@ -51,6 +57,8 @@ def main():
     output = {
         "search_completed": result["search_completed"],
         "candidate_count": len(candidates),
+        "retrieved_count": result["retrieved_count"],
+        "top_k": top_k,
         "assessments": assessments,
         "candidates": candidates,
         "limitations": [
