@@ -1,3 +1,4 @@
+import itertools
 #!/usr/bin/env python3
 import unittest
 from extract_witness import extract_diagnostic
