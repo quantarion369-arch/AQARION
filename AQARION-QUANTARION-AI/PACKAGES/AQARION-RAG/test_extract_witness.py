@@ -85,3 +85,43 @@ class DualReadingTests(unittest.TestCase):
             verdict, decisive = assess(claim, [witness])
             self.assertEqual(verdict, "REFUTED")
             self.assertEqual(decisive, ["D1"])
+
+class ScopedClaimTests(unittest.TestCase):
+    def witnesses(self):
+        from wire_corpus_assessment import to_assess_witness
+        return [
+            to_assess_witness({
+                "id": "S1", "family": "quadratic", "c": -2.0,
+                "reported_label": "stable",
+            }),
+            to_assess_witness({
+                "id": "S2", "family": "quadratic", "c": 0.2,
+                "reported_label": "unstable",
+            }),
+        ]
+
+    def claim(self):
+        from assess import READINGS
+        return make_claim(
+            "bounded-orbit stability for -2 <= c <= 0.25",
+            lambda w: -2 <= w["c"] <= 0.25,
+            READINGS["bounded_orbit"],
+        )
+
+    def attracting_claim(self):
+        from assess import READINGS
+        return make_claim(
+            "attracting-fixed-point stability for -2 <= c <= 0.25",
+            lambda w: -2 <= w["c"] <= 0.25,
+            READINGS["attracting_fixed_point"],
+        )
+
+    def test_bounded_orbit_scoped_claim_is_open(self):
+        verdict, decisive = assess(self.claim(), self.witnesses())
+        self.assertEqual(verdict, "OPEN")
+        self.assertEqual(decisive, [])
+
+    def test_attracting_reading_refutes_scoped_claim(self):
+        verdict, decisive = assess(self.attracting_claim(), self.witnesses())
+        self.assertEqual(verdict, "REFUTED")
+        self.assertEqual(decisive, ["S1"])
