@@ -142,3 +142,76 @@ class GeneratorDeterminismTests(unittest.TestCase):
         current = Path("corpus/quadratic-stability-witnesses.md").read_text()
         self.assertEqual(regenerated.stdout.count("The quadratic map with c ="), 10)
         self.assertEqual(current, committed)
+
+class IsomorphismBijectionTests(unittest.TestCase):
+    """Fix(T*) ~= Con(T|_P): full bijection, not just cardinality match."""
+    def _partitions(self, n):
+        def helper(rem, cur):
+            if not rem:
+                yield [b[:] for b in cur]; return
+            x, rest = rem[0], rem[1:]
+            for i, b in enumerate(cur):
+                nxt = [bb[:] for bb in cur]; nxt[i].append(x)
+                yield from helper(rest, nxt)
+            yield from helper(rest, cur + [[x]])
+        yield from helper(list(range(1, n)), [[0]])
+
+    def _fix(self, T, n):
+        out = []
+        for P in self._partitions(n):
+            b = {x: i for i, bl in enumerate(P) for x in bl}
+            if any(len({b[T[x]] for x in bl}) > 1 for bl in P): continue
+            if any(b[T[x]] == b[T[y]] and b[x] != b[y]
+                   for x in range(n) for y in range(n)): continue
+            out.append(P)
+        return out
+
+    def _core(self, T, n):
+        X = set(range(n))
+        for _ in range(n): X = {T[x] for x in X}
+        return sorted(X)
+
+    def _con(self, T, P):
+        out = []
+        for parts in self._partitions(len(P)):
+            orig = [[P[i] for i in bl] for bl in parts]
+            b = {x: i for i, bl in enumerate(orig) for x in bl}
+            if any(len({b[T[p]] for p in bl}) > 1 for bl in orig): continue
+            if any(b[T[x]] == b[T[y]] and b[x] != b[y] for x in P for y in P): continue
+            out.append(orig)
+        return out
+
+    def _canon(self, blocks):
+        return str(sorted(sorted(b) for b in blocks))
+
+    def _phi(self, E, P):
+        b = {x: i for i, bl in enumerate(E) for x in bl}
+        comps = {}
+        for p in P: comps.setdefault(b[p], []).append(p)
+        return sorted(sorted(v) for v in comps.values())
+
+    def _psi(self, F, T, n, P):
+        def Tn(x):
+            for _ in range(n): x = T[x]
+            return x
+        bF = {x: i for i, bl in enumerate(F) for x in bl}
+        sig = {x: bF[Tn(x)] for x in range(n)}
+        comps = {}
+        for x in range(n): comps.setdefault(sig[x], []).append(x)
+        return sorted(sorted(v) for v in comps.values())
+
+    def test_phi_psi_bijection_n2_to_5(self):
+        for n in range(2, 6):
+            for T in itertools.product(range(n), repeat=n):
+                T = list(T)
+                P = self._core(T, n)
+                if not all(T[p] in P for p in P): continue
+                fix = self._fix(T, n)
+                con = self._con(T, P)
+                images = [self._canon(self._phi(E, P)) for E in fix]
+                self.assertEqual(len(set(images)), len(fix), f"phi not injective n={n} T={T}")
+                self.assertEqual(set(images), {self._canon(c) for c in con},
+                                 f"phi not surjective n={n} T={T}")
+                for E in fix:
+                    self.assertEqual(self._canon(self._psi(self._phi(E, P), T, n, P)),
+                                     self._canon(E), f"roundtrip fail n={n} T={T}")
