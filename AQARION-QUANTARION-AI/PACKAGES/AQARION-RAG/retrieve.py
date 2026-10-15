@@ -50,3 +50,32 @@ if __name__ == "__main__":
         print(f"[{score}] {doc} @ {sha[:8]}")
         print(passage)
         print()
+
+
+def bm25_search(query, docs, k1=1.5, b=0.75):
+    """Rank docs by BM25 relevance to query. Returns [(doc_id, score)] desc."""
+    from collections import Counter
+    import math
+
+    stemmed_query = [stem(t) for t in query.lower().split()]
+    doc_tokens = {did: [stem(t) for t in text.lower().split()]
+                  for did, text in docs.items()}
+    doc_lens = {did: len(toks) for did, toks in doc_tokens.items()}
+    avgdl = sum(doc_lens.values()) / len(doc_lens) if doc_lens else 1
+    n_docs = len(docs)
+
+    scores = {}
+    for did, toks in doc_tokens.items():
+        tf = Counter(toks)
+        score = 0.0
+        for term in set(stemmed_query):
+            f = tf.get(term, 0)
+            if f == 0:
+                continue
+            df = sum(1 for t in doc_tokens.values() if term in t)
+            idf = math.log((n_docs - df + 0.5) / (df + 0.5) + 1)
+            denom = f + k1 * (1 - b + b * doc_lens[did] / avgdl)
+            score += idf * (f * (k1 + 1)) / denom
+        scores[did] = score
+
+    return sorted(scores.items(), key=lambda x: -x[1])

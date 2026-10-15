@@ -1,3 +1,4 @@
+from retrieve import bm25_search
 """Near-miss eval cases for AQARION-RAG retrieval."""
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -43,5 +44,23 @@ def run_hard():
     print(str(passed) + " passed, " + str(failed) + " failed of " + str(len(HARD_CASES)))
     return failed == 0
 
+
+
+def test_bm25_ranks_relevant_doc_first():
+    docs = {
+        "d1": "the quick brown fox jumps over the lazy dog",
+        "d2": "quick quick quick fox",
+        "d3": "lazy dog sleeps",
+    }
+    ranked = bm25_search("quick fox", docs)
+    assert ranked[0][0] == "d2", f"expected d2 first, got {ranked[0][0]}"
+    assert ranked[1][0] == "d1", f"expected d1 second, got {ranked[1][0]}"
 if __name__ == "__main__":
-    sys.exit(0 if run_hard() else 1)
+    ok = run_hard()
+    try:
+        test_bm25_ranks_relevant_doc_first()
+        print("PASS  bm25-ranks-relevant-first")
+    except AssertionError as e:
+        ok = False
+        print("FAIL  bm25-ranks-relevant-first (" + str(e) + ")")
+    sys.exit(0 if ok else 1)
