@@ -1,0 +1,6 @@
+seed=0
+exhaustive n<=5: cases=166484 attained=43488 (nonempty profile 2352) empty-profile=41136  all assertions passed
+random n in (8,9), k in (2,3,4): cases=34017 attained=1531 (nonempty profile 542) empty-profile=989  all assertions passed
+constructions: 300/300 nested-product shift systems attain the bound with profile (|A_j|-1); distinct (k,profile) classes=51  all assertions passed
+empty-profile constructions: 2000 cases, all attain equality (s==k)  all assertions passed
+ALL CHECKS PASSED

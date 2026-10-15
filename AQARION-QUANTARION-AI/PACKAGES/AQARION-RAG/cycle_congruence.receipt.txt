@@ -1,0 +1,9 @@
+Status: PASS
+Exit code: 0
+Output bytes: 1605
+Marker lines: 1
+Python: Python 3.13.13
+Git HEAD: c6606e97cc0950421cca538b6f7ae07b963053a1
+Script git state: tracked+clean
+Script sha256: a89207cd98b84f858ff0be1a09fd49c227cda9d4c88b9adf163072951c44fda2
+Output sha256: a2c00c3cc33ea5992d1c9fec4faf544e30aa506d8d2000d478450b581b0fb54f

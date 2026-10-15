@@ -1,0 +1,20 @@
+[
+  [
+    9,
+    "Evidence ledger",
+    "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+    "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), \u03a0={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_\u03a0)KP_\u03a0, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 \u2014 defect vanishes on V_\u03a0\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness."
+  ],
+  [
+    3,
+    "Evidence ledger",
+    "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+    "## Verification thread \u2014 oc(T) witness, product bound, repo cross-check (2026-10-14)"
+  ],
+  [
+    3,
+    "Evidence ledger",
+    "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+    "### Scope qualifier\nAll results are exhaustive for n\u22644 (and witness-level for oc(T) at n=3).\nFull oc(T) claim for all (T,\u03a0) still requires the general argument or\nbroader census. n=5 deep test (162,500 cases) available via AQ_DEEP=1,\nnot yet run \u2014 non-blocking."
+  ]
+]

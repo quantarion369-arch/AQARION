@@ -1,0 +1,5 @@
+Actual source: AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py
+SHA-256: e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1
+Loaded implementation: /data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py
+n<=4: cases=3984 repo-vs-independent profile mismatches=0 repo self-check FAIL=0 (9s)
+[]
