@@ -24,3 +24,12 @@
 [ ] fallback OPEN/NOT_ASSESSED, never SUPPORTED
 [ ] mutations executed, raw logs saved
 [ ] Termux real run + Claude sandbox agree, James adjudicates
+
+- wire_assess.py: END-TO-END VERIFIED in Termux (2026-10-14)
+  retrieve() [real corpus, b1642c33...] -> assess() [bounded_orbit]
+  EC-04-WIRED: gate PASS (score 9) -> REFUTED — overall PASS
+  EC-05-WIRED: gate PASS (score 9) -> OPEN — overall PASS
+  Namespaced IDs: EC04:E-003 / EC05:E-003
+  SCOPE: witness parameters are fixture-defined, not corpus-parsed.
+  Corpus-parsed witness extraction = next milestone.
+  AQARION-RAG is now a retrieval + assessment system.
