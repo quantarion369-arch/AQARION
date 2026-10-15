@@ -34,10 +34,12 @@ The repository is maintained as an auditable research record. It distinguishes m
 - [Active research lines](#active-research-lines)
 - [Verification and reproducibility](#verification-and-reproducibility)
 - [Repository architecture](#repository-architecture)
+- [AQARION-RAG](#aqarion-rag)
 - [Formal verification](#formal-verification)
 - [Corrections and historical provenance](#corrections-and-historical-provenance)
 - [Publication and collaboration](#publication-and-collaboration)
 - [Development and contribution standards](#development-and-contribution-standards)
+- [Related resources](#related-resources)
 
 ---
 
@@ -45,6 +47,7 @@ The repository is maintained as an auditable research record. It distinguishes m
 
 | Resource | Purpose |
 |---|---|
+| [AQARION-RAG](AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/) | Provenance-aware retrieval and evidence navigation over the research corpus |
 | [PB-001 research document](AQARION-QUANTARION-AI/PB_001.md) | Finite-quotient pullback rigidity and binary join closure |
 | [Tools architecture](AQARION-QUANTARION-AI/TOOLS/README.md) | Documented architecture for reusable research and verification tools |
 | [Master file tree](FILETREE.md) | Architectural file and directory index |
@@ -384,6 +387,27 @@ Use the relevant source files, tests, workflow definitions, and execution record
 
 ---
 
+## AQARION-RAG
+
+[AQARION-RAG](AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/) is a provenance-aware retrieval service for navigating the AQARION research corpus.
+
+```text
+Query → BM25-ranked retrieval → Evidence graph → Cited, traceable result
+```
+
+Its responsibilities include:
+
+- BM25 relevance ranking over the pinned corpus.
+- Content-addressed (SHA-256) source references.
+- Claim and supersession relationships via the evidence graph.
+- An HTTP service interface for programmatic access.
+
+Retrieval results are navigation aids, not certification of the underlying claims. Claim status remains governed by the evidence and promotion records described above.
+
+See the [AQARION-RAG package](AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/) for implementation details, evaluation status, and usage.
+
+---
+
 ## Formal verification
 
 Lean formalization is an independent research obligation.
@@ -476,6 +500,16 @@ Do not add empty speculative directories merely because they appear in an archit
 Before a tool is described as stable, establish that its source exists, its tests execute, its failure cases are meaningful, its reproduction instructions work, its documentation matches the implementation, and its CI actually runs.
 
 Before a mathematical claim is promoted, establish the corresponding mathematical and evidentiary obligations independently.
+
+---
+
+## Related resources
+
+- [AQARION-RAG](AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/) — provenance-aware retrieval and evidence navigation
+- [AQARION-QUANTARION-AI](https://github.com/JASKSG9/Aqarions-Quantarion-AI) — research corpus layout and CLAIMLOCK promotion policy
+- [AQARION-ARITHMETIC-FDS](https://github.com/JASKSG9/AQARION-ARITHMETIC-FDS-FINITE-DYNAMICAL-SYSTEMS-) — finite dynamical systems, observable quotients, and certified computation
+- [AQARION on Hugging Face](https://huggingface.co/Aqarion) — research spaces, models, and datasets
+- [AQARION-TB13 on Hugging Face](https://huggingface.co/Aqarion-TB13) — training and evaluation workspaces
 
 ---
 
