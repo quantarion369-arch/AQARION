@@ -1,0 +1,20 @@
+[
+  [
+    3,
+    "Evidence ledger",
+    "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+    "### 2. Product bound C \u2264 s-k \u2264 k(\u220f(1+\u03b4_j)-1)\n- Method: independent oracle (prof.py), exhaustive over all maps and\n  restricted-growth partitions, n\u22644\n- Result: 3984 cases, 0 violations\n- Tightness: bound attained at T=(0,0,1,1), \u03a0={{0,2},{1,3}} (s-k = k(2-1) = 2)\n- Negative control: off-by-one bound correctly rejected\n- Cross-check: unittest file (test_profile_partition_bound.py) independently\n  re-derives same result \u2014 4 tests ok, 1 skipped (n=5 deep test, optional)"
+  ],
+  [
+    2,
+    "Evidence ledger",
+    "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+    "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), \u03a0={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_\u03a0)KP_\u03a0, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 \u2014 defect vanishes on V_\u03a0\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness."
+  ],
+  [
+    1,
+    "Evidence ledger",
+    "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+    "### 3. Repo-vs-oracle cross-check\n- Method: xcheck.py comparing closure_profile_repo.closure_profile against\n  independent prof.profile oracle, exhaustive n\u22644\n- Result: 3984 cases, 0 profile mismatches, 0 repo self-check failures\n  (increment identity, monotonicity, telescoping sum all hold)\n- Conclusion: repo implementation validated against independent oracle."
+  ]
+]
