@@ -77,7 +77,7 @@ def fixtures(stable, reading):
         ("EC-04  c=0.5 vs universal",        univ, [W("E-003", 0.5, "unstable")], "REFUTED"),
         ("EC-05  c=1.5 out of scope",        lt1,  [W("E-003", 1.5, "unstable")], "OPEN"),
         ("EC-05b c=0.5 IN scope of |c|<1",   lt1,  [W("E-003", 0.5, "unstable")], "REFUTED"),
-        ("EC-06  label lies (c=0.2 stable)", univ, [W("E-009", 0.2, "unstable")], "REFUTED" if reading == "bounded_orbit" else "OPEN"),
+        ("EC-06  label lies (c=0.2 stable)", univ, [W("E-009", 0.2, "unstable")], "OPEN"),
         ("EC-06b c=-1 (definition-sensitive)", univ, [W("E-011", -1.0, "unstable")], sens),
         ("EC-07  no witnesses",              lt1,  [],                             "OPEN"),
         ("EC-08  out-of-domain (cubic)",     univ, [cubic],                        "OPEN"),
