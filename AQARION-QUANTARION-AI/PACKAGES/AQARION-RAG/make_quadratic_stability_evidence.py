@@ -44,6 +44,16 @@ lines += [
     "Method: deterministic recomputation, standard library only, fixed iteration count.",
     "Witness rule: a row with bounded_orbit = false is a counterexample witness against any universal bounded-orbit stability claim over the reals.",
 ]
+lines += [
+    "",
+    "## Witness statements (bounded_orbit reading)",
+    "",
+]
+for c in CS:
+    label = "stable" if bounded(c) else "unstable"
+    lines.append("The quadratic map with c = " + repr(c) + " is " + label + " under the bounded_orbit reading.")
+    lines.append("")
+
 text = chr(10).join(lines) + chr(10)
 out = Path("corpus/quadratic-stability-witnesses.md")
 out.write_text(text)
