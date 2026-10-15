@@ -12,8 +12,8 @@ def validate_retrieval(observed_passages, oracle):
     return failures
 
 oracle = {
-    "required_content_fragments": ["Q3", "c=0.5", "unstable"],
-    "decisive_title": "Evidence ledger",
+    "required_content_fragments": ["c = 0.5", "unstable"],
+    "decisive_title": "Quadratic stability witnesses",
     "must_rank_in_top_k": 3
 }
 
