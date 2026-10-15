@@ -65,3 +65,23 @@ class AssessmentTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class DualReadingTests(unittest.TestCase):
+    def test_both_readings_refute_c_half(self):
+        from assess import READINGS, make_claim, assess
+        from wire_corpus_assessment import to_assess_witness
+        witness = to_assess_witness({
+            "id": "D1",
+            "family": "quadratic",
+            "c": 0.5,
+            "reported_label": "stable",
+        })
+        for reading in READINGS:
+            claim = make_claim(
+                "universal " + reading + " stability",
+                lambda w: True,
+                READINGS[reading],
+            )
+            verdict, decisive = assess(claim, [witness])
+            self.assertEqual(verdict, "REFUTED")
+            self.assertEqual(decisive, ["D1"])
