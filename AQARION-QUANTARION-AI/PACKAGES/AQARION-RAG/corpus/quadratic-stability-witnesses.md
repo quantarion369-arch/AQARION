@@ -27,12 +27,22 @@ Witness rule: a row with bounded_orbit = false is a counterexample witness again
 ## Witness statements (bounded_orbit reading)
 
 The quadratic map with c = -2.0 is stable under the bounded_orbit reading.
+
 The quadratic map with c = -1.0 is stable under the bounded_orbit reading.
+
 The quadratic map with c = -0.5 is stable under the bounded_orbit reading.
+
 The quadratic map with c = 0.0 is stable under the bounded_orbit reading.
+
 The quadratic map with c = 0.2 is stable under the bounded_orbit reading.
+
 The quadratic map with c = 0.25 is stable under the bounded_orbit reading.
+
 The quadratic map with c = 0.3 is unstable under the bounded_orbit reading.
+
 The quadratic map with c = 0.5 is unstable under the bounded_orbit reading.
+
 The quadratic map with c = 1.0 is unstable under the bounded_orbit reading.
+
 The quadratic map with c = 1.5 is unstable under the bounded_orbit reading.
+
