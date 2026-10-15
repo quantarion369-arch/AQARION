@@ -432,11 +432,11 @@
   {
     "id": "PB-006-AGGREGATE",
     "title": "A_n=Σ_{k=1}^{n-1} C(n,k)k!p(k)kn^{n-k-1}+n!p(n)",
-    "status": "conjecture",
+    "status": "verified",
     "governance": "active",
-    "evidence": "arithmetic check n=1..12 matches reference values; no census replay yet",
+    "evidence": "arithmetic replay n=1..12, 12/12 match, receipt committed",
     "cases": 12,
     "violations": 0,
-    "note": "aggregate labelled-map formula; distinct from PB-005 cycle-type formula"
+    "note": "aggregate labelled-map formula; replay receipt at verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json"
   }
 ]

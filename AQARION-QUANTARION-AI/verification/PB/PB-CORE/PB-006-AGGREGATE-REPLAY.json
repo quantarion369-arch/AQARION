@@ -1,0 +1,21 @@
+{
+  "schema": "AQ-PB006-AGGREGATE-REPLAY/1",
+  "formula": "A_n = sum_{k=1}^{n-1} C(n,k)*k!*p(k)*k*n^(n-k-1) + n!*p(n)",
+  "scope": {"n_min": 1, "n_max": 12},
+  "results": [
+    {"n": 1, "value": 1, "matches_reference": true},
+    {"n": 2, "value": 6, "matches_reference": true},
+    {"n": 3, "value": 51, "matches_reference": true},
+    {"n": 4, "value": 592, "matches_reference": true},
+    {"n": 5, "value": 8565, "matches_reference": true},
+    {"n": 6, "value": 148896, "matches_reference": true},
+    {"n": 7, "value": 3018127, "matches_reference": true},
+    {"n": 8, "value": 69844608, "matches_reference": true},
+    {"n": 9, "value": 1816084233, "matches_reference": true},
+    {"n": 10, "value": 52399129600, "matches_reference": true},
+    {"n": 11, "value": 1660832066091, "matches_reference": true},
+    {"n": 12, "value": 57351480413184, "matches_reference": true}
+  ],
+  "all_match": true,
+  "status": "PASS"
+}
