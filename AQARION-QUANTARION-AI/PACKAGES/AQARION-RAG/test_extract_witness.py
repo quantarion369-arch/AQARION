@@ -125,3 +125,19 @@ class ScopedClaimTests(unittest.TestCase):
         verdict, decisive = assess(self.attracting_claim(), self.witnesses())
         self.assertEqual(verdict, "REFUTED")
         self.assertEqual(decisive, ["S1"])
+
+class GeneratorDeterminismTests(unittest.TestCase):
+    def test_generator_reproduces_committed_document(self):
+        import subprocess
+        from pathlib import Path
+        committed = subprocess.run(
+            ["git", "show", "HEAD:./corpus/quadratic-stability-witnesses.md"],
+            capture_output=True, text=True, check=True,
+        ).stdout
+        regenerated = subprocess.run(
+            ["python", "make_quadratic_stability_evidence.py"],
+            capture_output=True, text=True, check=True,
+        )
+        current = Path("corpus/quadratic-stability-witnesses.md").read_text()
+        self.assertEqual(regenerated.stdout.count("The quadratic map with c ="), 10)
+        self.assertEqual(current, committed)
