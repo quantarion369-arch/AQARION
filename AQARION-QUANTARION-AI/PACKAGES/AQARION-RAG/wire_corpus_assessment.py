@@ -12,18 +12,42 @@ def to_assess_witness(candidate):
     }
 
 def main():
-    query = " ".join(sys.argv[1:]).strip() or "quadratic map c unstable"
+    query = " ".join(sys.argv[1:]).strip() or "quadratic map c stable unstable"
     result = extract_run(query, top_k=5)
     candidates = result["candidates"]
     witnesses = [to_assess_witness(c) for c in candidates]
+
+    claims = {
+        "universal_bounded_orbit": make_claim(
+            "universal bounded-orbit stability",
+            lambda w: True,
+            READINGS["bounded_orbit"],
+        ),
+        "universal_attracting_fixed_point": make_claim(
+            "universal attracting-fixed-point stability",
+            lambda w: True,
+            READINGS["attracting_fixed_point"],
+        ),
+        "scoped_bounded_orbit": make_claim(
+            "bounded-orbit stability for -2 <= c <= 0.25",
+            lambda w: -2 <= w["c"] <= 0.25,
+            READINGS["bounded_orbit"],
+        ),
+        "scoped_attracting_fixed_point": make_claim(
+            "attracting-fixed-point stability for -2 <= c <= 0.25",
+            lambda w: -2 <= w["c"] <= 0.25,
+            READINGS["attracting_fixed_point"],
+        ),
+    }
+
     assessments = {}
-    for reading in READINGS:
-        claim = make_claim("universal " + reading + " stability", lambda w: True, READINGS[reading])
+    for name, claim in claims.items():
         verdict, decisive = assess(claim, witnesses)
-        assessments[reading] = {
+        assessments[name] = {
             "verdict": verdict,
             "decisive_candidate_ids": decisive,
         }
+
     output = {
         "search_completed": result["search_completed"],
         "candidate_count": len(candidates),
@@ -32,7 +56,7 @@ def main():
         "limitations": [
             "Assessment recomputes the conclusion from c; reported labels are not trusted.",
             "Extraction remains syntactic; semantic binding is a known limitation.",
-            "A REFUTED verdict depends only on recomputed counterexamples, not corpus labels.",
+            "Finite witnesses cannot establish a universal or scoped universal claim.",
         ],
     }
     print(json.dumps(output, indent=2))
