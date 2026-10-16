@@ -1,21 +1,79 @@
 {
-  "schema": "AQ-PB006-AGGREGATE-REPLAY/1",
+  "schema": "AQ-PB006-AGGREGATE-REPLAY/2",
   "formula": "A_n = sum_{k=1}^{n-1} C(n,k)*k!*p(k)*k*n^(n-k-1) + n!*p(n)",
-  "scope": {"n_min": 1, "n_max": 12},
+  "scope": {
+    "n_min": 1,
+    "n_max": 12
+  },
   "results": [
-    {"n": 1, "value": 1, "matches_reference": true},
-    {"n": 2, "value": 6, "matches_reference": true},
-    {"n": 3, "value": 51, "matches_reference": true},
-    {"n": 4, "value": 592, "matches_reference": true},
-    {"n": 5, "value": 8565, "matches_reference": true},
-    {"n": 6, "value": 148896, "matches_reference": true},
-    {"n": 7, "value": 3018127, "matches_reference": true},
-    {"n": 8, "value": 69844608, "matches_reference": true},
-    {"n": 9, "value": 1816084233, "matches_reference": true},
-    {"n": 10, "value": 52399129600, "matches_reference": true},
-    {"n": 11, "value": 1660832066091, "matches_reference": true},
-    {"n": 12, "value": 57351480413184, "matches_reference": true}
+    {
+      "n": 1,
+      "value": 1,
+      "matches_reference": true
+    },
+    {
+      "n": 2,
+      "value": 6,
+      "matches_reference": true
+    },
+    {
+      "n": 3,
+      "value": 51,
+      "matches_reference": true
+    },
+    {
+      "n": 4,
+      "value": 592,
+      "matches_reference": true
+    },
+    {
+      "n": 5,
+      "value": 8565,
+      "matches_reference": true
+    },
+    {
+      "n": 6,
+      "value": 148896,
+      "matches_reference": true
+    },
+    {
+      "n": 7,
+      "value": 3018127,
+      "matches_reference": true
+    },
+    {
+      "n": 8,
+      "value": 69844608,
+      "matches_reference": true
+    },
+    {
+      "n": 9,
+      "value": 1816084233,
+      "matches_reference": true
+    },
+    {
+      "n": 10,
+      "value": 52399129600,
+      "matches_reference": true
+    },
+    {
+      "n": 11,
+      "value": 1660832066091,
+      "matches_reference": true
+    },
+    {
+      "n": 12,
+      "value": 57351480413184,
+      "matches_reference": true
+    }
   ],
   "all_match": true,
-  "status": "PASS"
+  "status": "PASS",
+  "provenance": {
+    "source_commit": "67144314efe0d115cd05cac5a8f04808ded02eb4",
+    "verifier_hash": "647dc4e4fa42892b3317ea2d02ba479c9c65d80736651683899fdd18e3e4d098",
+    "command": "python3 /data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/verification/PB/PB-CORE/replay_pb006_aggregate.py",
+    "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+    "receipt_path": "AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json"
+  }
 }
