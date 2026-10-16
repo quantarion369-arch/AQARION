@@ -485,12 +485,12 @@
     "id": "CG-MAX-CENSUS",
     "status": "verified",
     "governance": "active",
-    "note": "Cyclic 2-block max-gap census n=3..8: [0,1,0,2,0,3], achieved by half-half words at even n; odd n gives 0. Reproduced exactly by two independent computations."
+    "note": "Cyclic 2-block max-gap census, exact replay: n=3..11 = [0,1,0,2,0,3,2,4,0]; numpy-rank evaluator (agrees with exact on 6,984 cases) extends to n=14 = [0,1,0,2,0,3,2,4,0,5,0,6]. Even n: max = n/2-1 (n=4..14), achieved by half-half words (exact, k=2..8). Odd n gives 0 for n=3,5,7,11,13 but NOT n=9: max gap 2, e.g. word 000000111."
   },
   {
     "id": "CG-GENERAL-MAX",
     "status": "verified",
     "governance": "active",
-    "note": "General (non-cyclic) systems can exceed cyclic max at same n: gap-4 example at n=7 (T=[1,5,5,1,2,6,6]). Found by Claude independent sample; GPT sample maxed at 3. Tight general upper bound OPEN."
+    "note": "General (non-cyclic) systems exceed the cyclic max at the same n. Exact examples: gap 1 at n=5 (T=[0,0,0,1,1], partition 01001; exhaustive general max at n=5 is 1 vs cyclic 0), gap 3 at n=7 (T=[1,5,5,1,2,6,6], partition 0011001), gap 4 at n=8 (T=[5,6,6,5,0,2,0,2], partition 00110011). The earlier 'gap-4 at n=7' is NOT replicated: for T=[1,5,5,1,2,6,6] the max over all 877 partitions is 3 (also under 1-based indexing); random+hill-climb search (k=2) found max 3 at n=7. Absence of gap 4 at n=7 is not proved. Tight general upper bound OPEN."
   }
 ]
