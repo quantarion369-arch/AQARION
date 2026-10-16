@@ -51,5 +51,24 @@
       "stable_blocks": 4
     }
   ],
-  "status": "PENDING_REPLAY"
+  "status": "REPLAYED",
+  "replay": {
+    "date": "2026-10-15",
+    "method": "independent implementation from definitions",
+    "witness_A": "MATCH",
+    "witness_B": "MATCH",
+    "enumeration": {
+      "maps": 256,
+      "partitions": 7,
+      "pairs": 1792,
+      "gap0": 1720,
+      "gap1": 72,
+      "violations": 0,
+      "gap_range": [
+        0,
+        1
+      ]
+    },
+    "conclusion": "c_lin <= c_part holds; witnesses validated; 4 states minimal for positive gap"
+  }
 }

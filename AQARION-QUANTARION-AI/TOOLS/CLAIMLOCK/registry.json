@@ -444,5 +444,17 @@
     "status": "blocked",
     "governance": "blocked",
     "note": "Derivable corollary of classical endofunction enumeration (Fripertinger-Schoepf 1999 cycle-type methods; Lagrange inversion gives EGF P(T(z))). No exact prior publication of the weighted sequence identified; OEIS match not found but absence unverified. Status remains blocked: do not promote novelty without direct OEIS confirmation and exhaustive literature check. OEIS direct search (2026-10-15, 400340 sequences): terms 6,51,592,8565,148896 return no match."
+  },
+  {
+    "id": "CG-INEQUALITY",
+    "status": "verified",
+    "governance": "active",
+    "note": "c_lin <= c_part for finite deterministic systems: W_inf subseteq V_Pi*, so dim W_inf <= |Pi*|. Confirmed by analytical argument and exhaustive 4-state enumeration (1792 pairs, 0 violations)."
+  },
+  {
+    "id": "CG-WITNESS-PAIR",
+    "status": "verified",
+    "governance": "active",
+    "note": "Two 4-state witnesses with identical c_lin=1 but c_part=1 vs 2 (gap 0 vs 1). Independently replayed; aggregate linear closure cost does not determine partition-repair cost. 72 positive-gap cases exist; 4 states minimal."
   }
 ]
