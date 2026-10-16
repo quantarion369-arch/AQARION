@@ -510,5 +510,14 @@
     "cases": 166340,
     "violations": 0,
     "note": "ND>=2 (at least two split blocks) is not sufficient for positive closure gap: at n=5 it misses 480 positive-gap pairs with ND degree exactly 1, and admits 120 gap-0 false positives at n=4 and 22,320 at n=5. No tested graph or partition invariant separates positive-gap from gap-0 with zero false positives at n=4,5; the exact separator remains gap = m - rank_Q(M). This is a finite computational census result, not a general theorem; no novelty claim."
+  },
+  {
+    "id": "CG-BALANCED-RECTANGLE",
+    "status": "verified",
+    "governance": "active",
+    "evidence": "Proved general sufficient condition: four distinct itinerary words u,v,w,z with r(u)+r(v)=r(w)+r(z) (balanced rectangle in the one-hot itinerary matrix) imply a nonzero row dependence, hence rank<m and gap>0, for any finite system. Exact census n=5 ND-degree-1: 93,200 pairs enumerated, 480 positives all satisfy the condition (480/480 coverage), all 92,720 gap-0 pairs have full row rank (0 false positives). All 480 positives share the universal primitive relation r0+r4=r1+r3 (null vector [1,-1,0,-1,1]). Converse (every positive gap has a balanced rectangle) NOT proved in general; exact separation is census-scoped to n=5 ND-degree-1.",
+    "cases": 93200,
+    "violations": 0,
+    "note": "Balanced four-itinerary rectangle is a proved general sufficient condition for positive closure gap, and an exact separator on the full n=5 ND-degree-1 census (480/480 coverage, 0 false positives). Sufficiency proof is general (any n, any ND degree); completeness of the separator beyond the enumerated domain remains open. Equal-feed and mirrored-pair conditions refuted as separators."
   }
 ]
