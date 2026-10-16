@@ -449,12 +449,24 @@
     "id": "CG-INEQUALITY",
     "status": "verified",
     "governance": "active",
-    "note": "c_lin <= c_part for finite deterministic systems: W_inf subseteq V_Pi*, so dim W_inf <= |Pi*|. Analytical proof; independently enumerated at n=4 (3840 pairs) and n=5 (162500 pairs), 0 violations, gap in {0,1}."
+    "note": "c_lin <= c_part for finite deterministic systems: W_inf subseteq V_Pi*, so dim W_inf <= |Pi*|. Analytical proof; independently enumerated at n=4 (3840 pairs) and n=5 (162500 pairs), 0 violations, gap observed in {0,1} at n=4,5; gap 2 exists at n=6 (see CG-GAP2-COUNTEREXAMPLE); no universal upper bound established."
   },
   {
     "id": "CG-WITNESS-PAIR",
     "status": "verified",
     "governance": "active",
-    "note": "Two 4-state witnesses, two-block initial partitions, identical c_lin=1 but c_part=1 vs 2 (gap 0 vs 1). Independently replayed. 72 positive-gap cases among 3840 full-partition pairs at n=4; 8160 among 162500 at n=5; 4 states minimal for positive gap."
+    "note": "Two 4-state witnesses, two-block initial partitions, identical c_lin=1 but c_part=1 vs 2 (gap 0 vs 1). Independently replayed. 72 positive-gap cases among 3840 full-partition pairs at n=4; 8160 among 162500 at n=5; 4 states minimal for positive gap; gap is not bounded by 1 in general."
+  },
+  {
+    "id": "CG-ITINERARY-CRITERION",
+    "status": "verified",
+    "governance": "active",
+    "note": "gap = m - rank_Q(M), where m = distinct future block-itineraries and M = itinerary-label matrix. Proven via Cayley-Hamilton reduction and W_inf evaluation on stable classes. Verified: 3840 + 162500 census pairs, 100000-pair stratified n=6 sample, 137400 lifted systems; 0 discrepancies."
+  },
+  {
+    "id": "CG-GAP2-COUNTEREXAMPLE",
+    "status": "verified",
+    "governance": "active",
+    "note": "Gap 2 exists: n=6 six-cycle T=(1,2,3,4,5,0), partition {{0,1,2},{3,4,5}}. m=6, rank=4, gap=2. Refutes gap<=1 conjecture; mechanism: label word 111000 has cyclic polynomial 1+z+z^2, divisible by z^2+z+1, so circulant rank is 4."
   }
 ]

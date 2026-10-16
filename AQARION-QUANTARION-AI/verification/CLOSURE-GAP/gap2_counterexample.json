@@ -1,0 +1,31 @@
+{
+  "schema": "AQ-CLOSURE-GAP-GAP2/1",
+  "n": 6,
+  "T": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    0
+  ],
+  "initial_blocks": [
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      4,
+      5
+    ]
+  ],
+  "m": 6,
+  "rank": 4,
+  "c_lin": 2,
+  "c_part": 4,
+  "gap": 2,
+  "mechanism": "label word 111000; cyclic polynomial 1+z+z^2 divisible by z^2+z+1; circulant rank 4",
+  "status": "PENDING_REPLAY"
+}
