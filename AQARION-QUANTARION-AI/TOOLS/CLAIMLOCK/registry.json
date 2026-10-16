@@ -501,5 +501,14 @@
     "cases": 203840,
     "violations": 0,
     "note": "Positive closure gap requires a non-deterministic quotient. If every block maps into one block, the partition is stable, the coarsest stable refinement has k blocks, and W_inf is the k-dimensional block-constant space, so gap=k-k=0. Hence gap>0 implies at least one block has image-label set of size at least 2. ND is necessary but not sufficient. Balanced-relation formulation: positive gap is equivalent to a nonzero rational left-kernel vector of the itinerary-label matrix; integer bases always exist."
+  },
+  {
+    "id": "CG-ND2-NOT-SUFFICIENT",
+    "status": "verified",
+    "governance": "active",
+    "evidence": "Exact rational census, n=4 exhaustive (3,840 pairs) and n=5 exhaustive (162,500 pairs), independently replayed in-repo: n=5 positive-gap pairs = 8,160, of which 480 have ND degree exactly 1 and 7,680 have ND degree >=2. Minimal ND-degree-1 witness T=(0,0,1,2,2), lab=(0,1,0,0,1): m=5, rank=4, gap=1, verified exactly.",
+    "cases": 166340,
+    "violations": 0,
+    "note": "ND>=2 (at least two split blocks) is not sufficient for positive closure gap: at n=5 it misses 480 positive-gap pairs with ND degree exactly 1, and admits 120 gap-0 false positives at n=4 and 22,320 at n=5. No tested graph or partition invariant separates positive-gap from gap-0 with zero false positives at n=4,5; the exact separator remains gap = m - rank_Q(M). This is a finite computational census result, not a general theorem; no novelty claim."
   }
 ]
