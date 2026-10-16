@@ -437,12 +437,12 @@
     "evidence": "arithmetic replay n=1..12, 12/12 match, receipt committed",
     "cases": 12,
     "violations": 0,
-    "note": "Aggregate labelled-map formula; arithmetic receipt: AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json; novelty unresolved—see PB-006-AGGREGATE-NOVELTY."
+    "note": "A_n = sum over labelled endofunctions f of p(|Cyc(f)|): pairs (endofunction, partition of its cyclic points). Brute-force verified n=1..6; closed form A_n = sum_k C(n,k) k! k n^(n-k-1) p(k); EGF = P(T(z)) with T(z)=z e^{T(z)}. Arithmetic receipt: AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json. Novelty unresolved—see PB-006-AGGREGATE-NOVELTY."
   },
   {
     "id": "PB-006-AGGREGATE-NOVELTY",
     "status": "blocked",
     "governance": "blocked",
-    "note": "Novelty of aggregate formula unestablished. Comparison target: Constantineau & Labelle 1996, \"Une généralisation automorphe des nombres de Stirling\", DOI 10.1016/S0012-365X(96)83006-8. Comparison incomplete; wider literature search pending."
+    "note": "Derivable corollary of classical endofunction enumeration (Fripertinger-Schoepf 1999 cycle-type methods; Lagrange inversion gives EGF P(T(z))). No exact prior publication of the weighted sequence identified; OEIS match not found but absence unverified. Status remains blocked: do not promote novelty without direct OEIS confirmation and exhaustive literature check."
   }
 ]
