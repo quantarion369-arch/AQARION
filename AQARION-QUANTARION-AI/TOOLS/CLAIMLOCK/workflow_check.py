@@ -2,6 +2,14 @@
 """Gate D: automated registry consistency check. Run before every push. Exit 1 on failure."""
 import json, sys, os, re
 
+# AQARION REPLAY HOOK
+import subprocess as _sp
+from pathlib import Path as _Path
+_REPLAY = _Path(__file__).resolve().parents[2] / 'verification/CLOSURE-GAP/closure_gap_replay.py'
+_r = _sp.run([sys.executable, str(_REPLAY), '11'])
+if _r.returncode != 0:
+    raise SystemExit(_r.returncode)
+
 REG = 'AQARION-QUANTARION-AI/TOOLS/CLAIMLOCK/registry.json'
 d = json.load(open(REG))
 errors = []
