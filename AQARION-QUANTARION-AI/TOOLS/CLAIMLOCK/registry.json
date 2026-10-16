@@ -518,6 +518,15 @@
     "evidence": "Proved general sufficient condition: four distinct itinerary words u,v,w,z with r(u)+r(v)=r(w)+r(z) (balanced rectangle in the one-hot itinerary matrix) imply a nonzero row dependence, hence rank<m and gap>0, for any finite system. Exact census n=5 ND-degree-1: 93,200 pairs enumerated, 480 positives all satisfy the condition (480/480 coverage), all 92,720 gap-0 pairs have full row rank (0 false positives). All 480 positives share the universal primitive relation r0+r4=r1+r3 (null vector [1,-1,0,-1,1]). Converse (every positive gap has a balanced rectangle) NOT proved in general; exact separation is census-scoped to n=5 ND-degree-1.",
     "cases": 93200,
     "violations": 0,
-    "note": "Balanced four-itinerary rectangle is a proved general sufficient condition for positive closure gap, and an exact separator on the full n=5 ND-degree-1 census (480/480 coverage, 0 false positives). Sufficiency proof is general (any n, any ND degree); completeness of the separator beyond the enumerated domain remains open. Equal-feed and mirrored-pair conditions refuted as separators."
+    "note": "Balanced four-itinerary rectangle is a proved general sufficient condition for positive closure gap. Rectangle NECESSITY is FALSE: 120 positive-gap cases at n=5 (support-5 null vectors, ND degree >=2) have no four-row rectangle; their minimal dependence is five-row with coefficient multiset {2,1,1,1,1}. The right general object is the space of balanced rational dependencies among itinerary rows; rectangles are one witness type. Exact separator on n=5 ND-degree-1 census only (480/480 coverage, 0 false positives there)."
+  },
+  {
+    "id": "CG-RECTANGLE-NOT-NECESSARY",
+    "status": "verified",
+    "governance": "active",
+    "evidence": "Exact exhaustive n=5 census (all maps x all 52 partitions): 8,160 positive-gap pairs; 8,040 contain a balanced four-itinerary rectangle, 120 do not. The 120 exceptions all have support-5 primitive null vectors with coefficient multiset {2,1,1,1,1}, ND degree >=2, and exactly two complementary itinerary-set types (one up to label swap). Representative: words {00000,00100,01001,10010,11111}, relation 2r0-r1-r2-r3+r4=0. No four-row subset is dependent in any of the 120. n=6 gap-2 witness contains rectangles but has additional rank deficiency beyond them.",
+    "cases": 8160,
+    "violations": 0,
+    "note": "Balanced four-itinerary rectangle is sufficient but NOT necessary for positive closure gap. Minimal positive-gap dependences include five-row types with coefficient multiset {2,1,1,1,1}. The general classification object is the balanced rational dependency space of the itinerary matrix, not rectangles alone. Scoped exact census at n=5; general necessity classification open."
   }
 ]
