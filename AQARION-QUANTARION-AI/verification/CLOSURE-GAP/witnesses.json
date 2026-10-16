@@ -1,0 +1,55 @@
+{
+  "schema": "AQ-CLOSURE-GAP-WITNESS/1",
+  "description": "Two 4-state deterministic systems, same linear closure cost, different partition-repair cost",
+  "witnesses": [
+    {
+      "id": "A",
+      "states": 4,
+      "T": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "initial_blocks": [
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          1
+        ]
+      ],
+      "c_lin": 1,
+      "c_part": 1,
+      "gap": 0,
+      "stable_blocks": 3
+    },
+    {
+      "id": "B",
+      "states": 4,
+      "T": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "initial_blocks": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "c_lin": 1,
+      "c_part": 2,
+      "gap": 1,
+      "stable_blocks": 4
+    }
+  ],
+  "status": "PENDING_REPLAY"
+}

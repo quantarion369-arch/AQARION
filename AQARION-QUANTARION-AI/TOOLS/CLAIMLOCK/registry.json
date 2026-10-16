@@ -31,7 +31,7 @@
   },
   {
     "id": "AQ-C04",
-    "title": "Refinement: Δrank=1-Δc",
+    "title": "Refinement: \u0394rank=1-\u0394c",
     "status": "verified",
     "governance": "active",
     "evidence": "7218 cases, 0 viol",
@@ -51,7 +51,7 @@
   },
   {
     "id": "AQ-C05",
-    "title": "Coarsening: Δrank=-1-Δc",
+    "title": "Coarsening: \u0394rank=-1-\u0394c",
     "status": "verified",
     "governance": "active",
     "evidence": "8101 cases, 0 viol",
@@ -221,7 +221,7 @@
   },
   {
     "id": "KAP-IMAGE-CHAIN",
-    "title": "54→20→14→10→7→4→1",
+    "title": "54\u219220\u219214\u219210\u21927\u21924\u21921",
     "status": "verified",
     "governance": "active",
     "evidence": "computed exactly",
@@ -311,10 +311,10 @@
   },
   {
     "id": "PB-005-FORMULA",
-    "title": "N(λ)=Σπ Πb(Σd|gcd d^(|B|-1)) [cycle-type]",
+    "title": "N(\u03bb)=\u03a3\u03c0 \u03a0b(\u03a3d|gcd d^(|B|-1)) [cycle-type]",
     "status": "verified",
     "governance": "deprecated",
-    "evidence": "138 cycle types n≤10, 5.6M cases, 0 mismatches",
+    "evidence": "138 cycle types n\u226410, 5.6M cases, 0 mismatches",
     "cases": 5612287,
     "violations": 0,
     "note": "Mathematically correct but equivalent to Constantineau-Labelle 1991, Prop 6.3 eq(18); rediscovery, not novel."
@@ -354,14 +354,14 @@
     "title": "diff=999g1+90g2",
     "status": "conjecture",
     "governance": "active",
-    "evidence": "algebraic proof",
+    "evidence": "algebraic derivation (proof status unconfirmed)",
     "cases": 0,
     "violations": 0,
     "note": ""
   },
   {
     "id": "T2-SEMICONJUGACY",
-    "title": "pi∘K=K_G∘pi (OP-19)",
+    "title": "pi\u2218K=K_G\u2218pi (OP-19)",
     "status": "conjecture",
     "governance": "active",
     "evidence": "corollary of T1",
@@ -394,7 +394,7 @@
     "title": "Borrow sig=(1,1,[g2=0])",
     "status": "conjecture",
     "governance": "active",
-    "evidence": "proved symbolically",
+    "evidence": "symbolic derivation (proof status unconfirmed)",
     "cases": 0,
     "violations": 0,
     "note": ""
@@ -414,7 +414,7 @@
     "title": "|Q_b|=C(b+1,2)-1",
     "status": "conjecture",
     "governance": "active",
-    "evidence": "combinatorial proof",
+    "evidence": "combinatorial derivation (proof status unconfirmed)",
     "cases": 0,
     "violations": 0,
     "note": ""
@@ -431,13 +431,13 @@
   },
   {
     "id": "PB-006-AGGREGATE",
-    "title": "A_n=Σ_{k=1}^{n-1} C(n,k)k!p(k)kn^{n-k-1}+n!p(n)",
+    "title": "A_n=\u03a3_{k=1}^{n-1} C(n,k)k!p(k)kn^{n-k-1}+n!p(n)",
     "status": "verified",
     "governance": "active",
     "evidence": "arithmetic replay n=1..12, 12/12 match, receipt committed",
     "cases": 12,
     "violations": 0,
-    "note": "A_n = sum over labelled endofunctions f of p(|Cyc(f)|): pairs (endofunction, partition of its cyclic points). Brute-force verified n=1..6; closed form A_n = sum_k C(n,k) k! k n^(n-k-1) p(k); EGF = P(T(z)) with T(z)=z e^{T(z)}. Arithmetic receipt: AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json. Novelty unresolved—see PB-006-AGGREGATE-NOVELTY."
+    "note": "A_n = sum over labelled endofunctions f of p(|Cyc(f)|): pairs (endofunction, partition of its cyclic points). Brute-force verified n=1..6; closed form A_n = sum_k C(n,k) k! k n^(n-k-1) p(k); EGF = P(T(z)) with T(z)=z e^{T(z)}. Arithmetic receipt: AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json. Novelty unresolved\u2014see PB-006-AGGREGATE-NOVELTY."
   },
   {
     "id": "PB-006-AGGREGATE-NOVELTY",
