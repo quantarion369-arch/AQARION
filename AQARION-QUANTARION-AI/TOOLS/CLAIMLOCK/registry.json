@@ -443,6 +443,6 @@
     "id": "PB-006-AGGREGATE-NOVELTY",
     "status": "blocked",
     "governance": "blocked",
-    "note": "Derivable corollary of classical endofunction enumeration (Fripertinger-Schoepf 1999 cycle-type methods; Lagrange inversion gives EGF P(T(z))). No exact prior publication of the weighted sequence identified; OEIS match not found but absence unverified. Status remains blocked: do not promote novelty without direct OEIS confirmation and exhaustive literature check."
+    "note": "Derivable corollary of classical endofunction enumeration (Fripertinger-Schoepf 1999 cycle-type methods; Lagrange inversion gives EGF P(T(z))). No exact prior publication of the weighted sequence identified; OEIS match not found but absence unverified. Status remains blocked: do not promote novelty without direct OEIS confirmation and exhaustive literature check. OEIS direct search (2026-10-15, 400340 sequences): terms 6,51,592,8565,148896 return no match."
   }
 ]
