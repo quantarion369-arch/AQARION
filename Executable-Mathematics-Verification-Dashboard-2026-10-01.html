@@ -452,7 +452,7 @@
           <button class="active" data-claim="quotient">Finite quotient theorem</button>
           <button data-claim="defect">Defect operator</button>
           <button data-claim="congruence">Cycle congruence count</button>
-          <button data-claim="agent">Paper-to-agent tool</button>
+          <button data-claim="agent">Paper-to-agent tool</button><button data-claim="closuregap">Closure-gap chain</button><button data-claim="closuregap">Closure-gap chain</button>
         </div>
 
         <div id="claimDisplay" class="claim-list" style="margin-top:14px;"></div>
@@ -594,6 +594,9 @@
             <td>Lean target source specified; no current clean build receipt</td>
             <td><span class="status blocked">[BLOCKED]</span></td>
           </tr>
+          <tr><td><code>gap = m - rank_Q(M)</code></td><td>All finite deterministic systems</td><td>Proved analytically; exact census n=4,5 zero violations</td><td><span class="status proof">[P]</span></td></tr>
+          <tr><td><code>Cyclic gap = missing Fourier modes</code></td><td>Cyclic systems, n = 3..9</td><td>1,002 label words, exact arithmetic, zero violations</td><td><span class="status cv">[CV]</span></td></tr>
+          <tr><td><code>Half-half gap k-1 at n = 2k</code></td><td>Cyclic systems, k = 2..8</td><td>Exact construction; tight general upper bound open</td><td><span class="status open">[OPEN]</span></td></tr>
         </tbody>
       </table>
     </section>
@@ -706,6 +709,7 @@ end Aqarion</pre>
           desc: "Extraction and reconstruction are the correct certificate architecture. A canonical representation becomes stronger evidence only after round-trip validation and independent implementation."
         }
       ],
+      closuregap: [ { id: "CG-ITINERARY-CRITERION", title: "Itinerary-rank criterion", status: "[P]", className: "proof", desc: "gap = m - rank_Q(M), proved for all finite deterministic systems." }, { id: "CG-CYCLIC-GAP-FORMULA", title: "Cyclic Fourier formula", status: "[CV]", className: "cv", desc: "gap equals missing Fourier modes; verified exactly n = 3..9 (1,002 words)." }, { id: "CG-GAP-UNBOUNDED", title: "Unbounded growth", status: "[CV]", className: "cv", desc: "half-half family 1^k 0^k achieves gap k-1 at n = 2k; tight general upper bound open." }, { id: "CG-ND-NECESSARY", title: "ND necessity", status: "[P]", className: "proof", desc: "deterministic quotient implies gap = 0; positive gap requires non-deterministic quotient." } ],
       agent: [
         {
           id: "AQ-AGENT-001",
