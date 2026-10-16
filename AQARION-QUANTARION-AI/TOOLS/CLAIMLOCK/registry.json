@@ -479,7 +479,7 @@
     "id": "CG-GAP-UNBOUNDED",
     "status": "verified",
     "governance": "active",
-    "note": "Gap unbounded: family n=2k, cyclic T, word 1^k0^k gives gap = k-1 = n/2-1 = Theta(n). Independently proved by two models; exact verification k=2..8."
+    "note": "Cyclic 2-block systems: the word 1^k 0^k at n=2k has gap k-1=n/2-1, so the closure gap is unbounded with at least linear growth in this family. Exact replay: k=2..8. A tight general growth rate and general upper bound remain open."
   },
   {
     "id": "CG-MAX-CENSUS",
