@@ -492,5 +492,14 @@
     "status": "verified",
     "governance": "active",
     "note": "General (non-cyclic) systems exceed the cyclic max at the same n. Exact examples: gap 1 at n=5 (T=[0,0,0,1,1], partition 01001; exhaustive general max at n=5 is 1 vs cyclic 0), gap 3 at n=7 (T=[1,5,5,1,2,6,6], partition 0011001), gap 4 at n=8 (T=[5,6,6,5,0,2,0,2], partition 00110011). The earlier 'gap-4 at n=7' is NOT replicated: for T=[1,5,5,1,2,6,6] the max over all 877 partitions is 3 (also under 1-based indexing); random+hill-climb search (k=2) found max 3 at n=7. Absence of gap 4 at n=7 is not proved. Tight general upper bound OPEN."
+  },
+  {
+    "id": "CG-ND-NECESSARY",
+    "status": "verified",
+    "governance": "active",
+    "evidence": "Proved for all finite deterministic systems: deterministic quotient implies gap=0. Exact exhaustive n=4 (3,840 pairs) and n=5 (162,500 pairs); n=5,6 200k-pair exact sample; zero counterexamples.",
+    "cases": 203840,
+    "violations": 0,
+    "note": "Positive closure gap requires a non-deterministic quotient. If every block maps into one block, the partition is stable, the coarsest stable refinement has k blocks, and W_inf is the k-dimensional block-constant space, so gap=k-k=0. Hence gap>0 implies at least one block has image-label set of size at least 2. ND is necessary but not sufficient. Balanced-relation formulation: positive gap is equivalent to a nonzero rational left-kernel vector of the itinerary-label matrix; integer bases always exist."
   }
 ]
