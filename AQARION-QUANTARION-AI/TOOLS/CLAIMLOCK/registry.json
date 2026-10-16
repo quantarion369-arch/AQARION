@@ -449,12 +449,12 @@
     "id": "CG-INEQUALITY",
     "status": "verified",
     "governance": "active",
-    "note": "c_lin <= c_part for finite deterministic systems: W_inf subseteq V_Pi*, so dim W_inf <= |Pi*|. Confirmed by analytical argument and exhaustive 4-state enumeration (1792 pairs, 0 violations)."
+    "note": "c_lin <= c_part for finite deterministic systems: W_inf subseteq V_Pi*, so dim W_inf <= |Pi*|. Analytical proof; independently enumerated at n=4 (3840 pairs) and n=5 (162500 pairs), 0 violations, gap in {0,1}."
   },
   {
     "id": "CG-WITNESS-PAIR",
     "status": "verified",
     "governance": "active",
-    "note": "Two 4-state witnesses with identical c_lin=1 but c_part=1 vs 2 (gap 0 vs 1). Independently replayed; aggregate linear closure cost does not determine partition-repair cost. 72 positive-gap cases exist; 4 states minimal."
+    "note": "Two 4-state witnesses, two-block initial partitions, identical c_lin=1 but c_part=1 vs 2 (gap 0 vs 1). Independently replayed. 72 positive-gap cases among 3840 full-partition pairs at n=4; 8160 among 162500 at n=5; 4 states minimal for positive gap."
   }
 ]

@@ -58,6 +58,7 @@
     "witness_A": "MATCH",
     "witness_B": "MATCH",
     "enumeration": {
+      "scope": "two-block initial partitions only",
       "maps": 256,
       "partitions": 7,
       "pairs": 1792,
@@ -70,5 +71,24 @@
       ]
     },
     "conclusion": "c_lin <= c_part holds; witnesses validated; 4 states minimal for positive gap"
+  },
+  "full_census": {
+    "n4": {
+      "maps": 256,
+      "partitions": 15,
+      "pairs": 3840,
+      "gap0": 3768,
+      "gap1": 72,
+      "violations": 0
+    },
+    "n5": {
+      "maps": 3125,
+      "partitions": 52,
+      "pairs": 162500,
+      "gap0": 154340,
+      "gap1": 8160,
+      "violations": 0
+    },
+    "note": "independent audit 2026-10-15; gap in {0,1} throughout; no violations"
   }
 }
