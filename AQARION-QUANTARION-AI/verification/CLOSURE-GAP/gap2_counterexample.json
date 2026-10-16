@@ -27,5 +27,6 @@
   "c_part": 4,
   "gap": 2,
   "mechanism": "label word 111000; cyclic polynomial 1+z+z^2 divisible by z^2+z+1; circulant rank 4",
-  "status": "PENDING_REPLAY"
+  "status": "REPLAYED",
+  "replayed_at": "2026-10-16"
 }
