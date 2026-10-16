@@ -6,16 +6,115 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["id", "title", "status", "governance", "evidence", "cases", "violations", "note"],
+    "required": [
+      "id",
+      "title",
+      "status",
+      "governance",
+      "evidence",
+      "cases",
+      "violations",
+      "note"
+    ],
     "properties": {
-      "id": {"type": "string", "pattern": "^[A-Z0-9-]+$"},
-      "title": {"type": "string"},
-      "status": {"enum": ["proved", "verified", "conjecture", "open", "deprecated", "blocked"]},
-      "governance": {"enum": ["active", "deprecated", "blocked"]},
-      "evidence": {"type": "string"},
-      "cases": {"type": "integer", "minimum": 0},
-      "violations": {"type": "integer", "minimum": 0},
-      "note": {"type": "string"}
-    }
+      "id": {
+        "type": "string",
+        "pattern": "^[A-Z0-9-]+$"
+      },
+      "title": {
+        "type": "string"
+      },
+      "status": {
+        "enum": [
+          "proved",
+          "verified",
+          "conjecture",
+          "open",
+          "deprecated",
+          "blocked"
+        ]
+      },
+      "governance": {
+        "enum": [
+          "active",
+          "deprecated",
+          "blocked"
+        ]
+      },
+      "evidence": {
+        "type": "string"
+      },
+      "cases": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 0,
+        "description": "Nonnegative recorded count; null means count scope is not established. Null is restricted to explicitly identified legacy records and requires count_provenance."
+      },
+      "violations": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 0,
+        "description": "Nonnegative recorded count; null means count scope is not established. Null is restricted to explicitly identified legacy records and requires count_provenance."
+      },
+      "note": {
+        "type": "string"
+      },
+      "count_provenance": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "anyOf": [
+            {
+              "properties": {
+                "cases": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "cases"
+              ]
+            },
+            {
+              "properties": {
+                "violations": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "violations"
+              ]
+            }
+          ]
+        },
+        "then": {
+          "required": [
+            "count_provenance"
+          ],
+          "properties": {
+            "id": {
+              "enum": [
+                "PB-006-AGGREGATE-NOVELTY",
+                "CG-INEQUALITY",
+                "CG-WITNESS-PAIR",
+                "CG-ITINERARY-CRITERION",
+                "CG-GAP2-COUNTEREXAMPLE",
+                "CG-CYCLIC-GAP-FORMULA",
+                "CG-GAP-UNBOUNDED",
+                "CG-MAX-CENSUS",
+                "CG-GENERAL-MAX"
+              ]
+            }
+          }
+        }
+      }
+    ]
   }
 }

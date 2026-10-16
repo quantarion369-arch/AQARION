@@ -74,6 +74,10 @@ if __name__ == "__main__":
             if n <= 9: viol += g != formula(list(w))
             neg += g < 0; best = max(best, g)
         census[n] = best
+    expected_census = dict(zip(range(3, 12), [0,1,0,2,0,3,2,4,0]))
+    for size, expected in expected_census.items():
+        if size in census and census[size] != expected:
+            raise AssertionError(('cyclic maximum', size, census[size], expected))
     print(f"CG-CYCLIC-GAP-FORMULA: formula checked on n=3..9; violations={viol}; negative gaps (all n<={nmax})={neg}")
     print("CG-GAP-UNBOUNDED  half-half 1^k0^k gaps k=2..8:", [(k, gap(cyc(2*k), tuple([1]*k + [0]*k))) for k in range(2, 9)])
     print(f"CG-MAX-CENSUS     cyclic max gap n=3..{nmax}:", [census[n] for n in range(3, nmax + 1)])
@@ -81,6 +85,8 @@ if __name__ == "__main__":
     T7 = (1, 5, 5, 1, 2, 6, 6)
     res = {}
     for lab in rgs(7): res[gap(T7, lab)] = res.get(gap(T7, lab), 0) + 1
+    if sum(res.values()) != 877 or max(res) != 3 or min(res) < 0:
+        raise AssertionError(('seven-state fixed-map distribution', res))
     print("CG-GENERAL-MAX    registry T, gap distribution over all 877 partitions:", dict(sorted(res.items())))
     for name, T, lab in (("n=5", (0,0,0,1,1), (0,1,0,0,1)), ("n=7", T7, (0,0,1,1,0,0,1)), ("n=8", (5,6,6,5,0,2,0,2), (0,0,1,1,0,0,1,1))):
         print(f"  general example {name}: T={T} partition={lab} gap={gap(T, lab)}")

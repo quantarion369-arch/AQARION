@@ -443,55 +443,100 @@
     "id": "PB-006-AGGREGATE-NOVELTY",
     "status": "blocked",
     "governance": "blocked",
-    "note": "Derivable corollary of classical endofunction enumeration (Fripertinger-Schoepf 1999 cycle-type methods; Lagrange inversion gives EGF P(T(z))). No exact prior publication of the weighted sequence identified; OEIS match not found but absence unverified. Status remains blocked: do not promote novelty without direct OEIS confirmation and exhaustive literature check. OEIS direct search (2026-10-15, 400340 sequences): terms 6,51,592,8565,148896 return no match."
+    "note": "Derivable corollary of classical endofunction enumeration (Fripertinger-Schoepf 1999 cycle-type methods; Lagrange inversion gives EGF P(T(z))). No exact prior publication of the weighted sequence identified; OEIS match not found but absence unverified. Status remains blocked: do not promote novelty without direct OEIS confirmation and exhaustive literature check. OEIS direct search (2026-10-15, 400340 sequences): terms 6,51,592,8565,148896 return no match.",
+    "title": "Novelty assessment of the aggregate enumeration",
+    "evidence": "Historical literature/OEIS assessment is recorded in note; not independently audited by this repair. Novelty remains blocked.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-INEQUALITY",
     "status": "verified",
     "governance": "active",
-    "note": "c_lin <= c_part for finite deterministic systems: W_inf subseteq V_Pi*, so dim W_inf <= |Pi*|. Analytical proof; independently enumerated at n=4 (3840 pairs) and n=5 (162500 pairs), 0 violations, gap observed in {0,1} at n=4,5; gap 2 exists at n=6 (see CG-GAP2-COUNTEREXAMPLE); no universal upper bound established."
+    "note": "c_lin <= c_part for finite deterministic systems: W_inf subseteq V_Pi*, so dim W_inf <= |Pi*|. Analytical proof; independently enumerated at n=4 (3840 pairs) and n=5 (162500 pairs), 0 violations, gap observed in {0,1} at n=4,5; gap 2 exists at n=6 (see CG-GAP2-COUNTEREXAMPLE); no universal upper bound established.",
+    "title": "Linear closure dimension does not exceed stable partition size",
+    "evidence": "Historical analytical argument and census reports are recorded in note; the current replay does not reproduce those general censuses.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-WITNESS-PAIR",
     "status": "verified",
     "governance": "active",
-    "note": "Two 4-state witnesses, two-block initial partitions, identical c_lin=1 but c_part=1 vs 2 (gap 0 vs 1). Independently replayed. 72 positive-gap cases among 3840 full-partition pairs at n=4; 8160 among 162500 at n=5; 4 states minimal for positive gap; gap is not bounded by 1 in general."
+    "note": "Two 4-state witnesses, two-block initial partitions, identical c_lin=1 but c_part=1 vs 2 (gap 0 vs 1). Independently replayed. 72 positive-gap cases among 3840 full-partition pairs at n=4; 8160 among 162500 at n=5; 4 states minimal for positive gap; gap is not bounded by 1 in general.",
+    "title": "Four-state witnesses with equal linear closure and different partition closure",
+    "evidence": "Historical witness-pair and census reports are recorded in note; the current replay does not directly check the stated four-state pair.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-ITINERARY-CRITERION",
     "status": "verified",
     "governance": "active",
-    "note": "gap = m - rank_Q(M), where m = distinct future block-itineraries and M = itinerary-label matrix. Proven via Cayley-Hamilton reduction and W_inf evaluation on stable classes. Verified: 3840 + 162500 census pairs, 100000-pair stratified n=6 sample, 137400 lifted systems; 0 discrepancies."
+    "note": "gap = m - rank_Q(M), where m = distinct future block-itineraries and M = itinerary-label matrix. Proven via Cayley-Hamilton reduction and W_inf evaluation on stable classes. Verified: 3840 + 162500 census pairs, 100000-pair stratified n=6 sample, 137400 lifted systems; 0 discrepancies.",
+    "title": "Closure gap from the itinerary-label matrix rank",
+    "evidence": "Historical proof and verification reports are recorded in note; the current replay does not reproduce the stated census/sample totals.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-GAP2-COUNTEREXAMPLE",
     "status": "verified",
     "governance": "active",
-    "note": "Gap 2 exists: n=6 six-cycle T=(1,2,3,4,5,0), partition {{0,1,2},{3,4,5}}. m=6, rank=4, gap=2. Refutes gap<=1 conjecture; mechanism: label word 111000 has cyclic polynomial 1+z+z^2, divisible by z^2+z+1, so circulant rank is 4."
+    "note": "Gap 2 exists: n=6 six-cycle T=(1,2,3,4,5,0), partition {{0,1,2},{3,4,5}}. m=6, rank=4, gap=2. Refutes gap<=1 conjecture; mechanism: label word 111000 has cyclic polynomial 1+z+z^2, divisible by z^2+z+1, so circulant rank is 4.",
+    "title": "Six-cycle witness with closure gap two",
+    "evidence": "Current closure_gap_replay.py contains an enforced six-cycle gap-two fixture. A successful checker run rechecks that fixture.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-CYCLIC-GAP-FORMULA",
     "status": "verified",
     "governance": "active",
-    "note": "Cyclic 2-block: gap = #missing Fourier modes - (n - m) = m - n + deg gcd(w(z), z^n-1). Independently proved by two models (gcd form and circulant-eigenvalue form); verified 1002 words n=3..9, 0 violations."
+    "note": "Cyclic 2-block: gap = #missing Fourier modes - (n - m) = m - n + deg gcd(w(z), z^n-1). Independently proved by two models (gcd form and circulant-eigenvalue form); verified 1002 words n=3..9, 0 violations.",
+    "title": "Polynomial gcd formula for cyclic two-block closure gap",
+    "evidence": "Current closure_gap_replay.py compares rationally computed gaps with the polynomial-gcd formula for nonconstant binary words n=3..9.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-GAP-UNBOUNDED",
     "status": "verified",
     "governance": "active",
-    "note": "Cyclic 2-block systems: the word 1^k 0^k at n=2k has gap k-1=n/2-1, so the closure gap is unbounded with at least linear growth in this family. Exact replay: k=2..8. A tight general growth rate and general upper bound remain open."
+    "note": "Cyclic 2-block systems: the word 1^k 0^k at n=2k has gap k-1=n/2-1, so the closure gap is unbounded with at least linear growth in this family. Exact replay: k=2..8. A tight general growth rate and general upper bound remain open.",
+    "title": "Unbounded closure gaps in the half-half cyclic family",
+    "evidence": "Current closure_gap_replay.py enforces half-half fixtures k=2..8. These finite tests do not independently prove the infinite family.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-MAX-CENSUS",
     "status": "verified",
     "governance": "active",
-    "note": "Cyclic 2-block max-gap census, exact replay: n=3..11 = [0,1,0,2,0,3,2,4,0]; numpy-rank evaluator (agrees with exact on 6,984 cases) extends to n=14 = [0,1,0,2,0,3,2,4,0,5,0,6]. Even n: max = n/2-1 (n=4..14), achieved by half-half words (exact, k=2..8). Odd n gives 0 for n=3,5,7,11,13 but NOT n=9: max gap 2, e.g. word 000000111."
+    "note": "Cyclic 2-block max-gap census, exact replay: n=3..11 = [0,1,0,2,0,3,2,4,0]; numpy-rank evaluator (agrees with exact on 6,984 cases) extends to n=14 = [0,1,0,2,0,3,2,4,0,5,0,6]. Even n: max = n/2-1 (n=4..14), achieved by half-half words (exact, k=2..8). Odd n gives 0 for n=3,5,7,11,13 but NOT n=9: max gap 2, e.g. word 000000111.",
+    "title": "Finite census of cyclic two-block maximum closure gaps",
+    "evidence": "Current closure_gap_replay.py enumerates nonconstant binary words and enforces the recorded cyclic maxima through n=11. The historical extension through n=14 is not reproduced.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-GENERAL-MAX",
     "status": "verified",
     "governance": "active",
-    "note": "General (non-cyclic) systems exceed the cyclic max at the same n. Exact examples: gap 1 at n=5 (T=[0,0,0,1,1], partition 01001; exhaustive general max at n=5 is 1 vs cyclic 0), gap 3 at n=7 (T=[1,5,5,1,2,6,6], partition 0011001), gap 4 at n=8 (T=[5,6,6,5,0,2,0,2], partition 00110011). The earlier 'gap-4 at n=7' is NOT replicated: for T=[1,5,5,1,2,6,6] the max over all 877 partitions is 3 (also under 1-based indexing); random+hill-climb search (k=2) found max 3 at n=7. Absence of gap 4 at n=7 is not proved. Tight general upper bound OPEN."
+    "note": "General (non-cyclic) systems exceed the cyclic max at the same n. Exact examples: gap 1 at n=5 (T=[0,0,0,1,1], partition 01001; exhaustive general max at n=5 is 1 vs cyclic 0), gap 3 at n=7 (T=[1,5,5,1,2,6,6], partition 0011001), gap 4 at n=8 (T=[5,6,6,5,0,2,0,2], partition 00110011). The earlier 'gap-4 at n=7' is NOT replicated: for T=[1,5,5,1,2,6,6] the max over all 877 partitions is 3 (also under 1-based indexing); random+hill-climb search (k=2) found max 3 at n=7. Absence of gap 4 at n=7 is not proved. Tight general upper bound OPEN.",
+    "title": "General-system gap witnesses and unresolved maximum bounds",
+    "evidence": "Current closure_gap_replay.py enforces the n=5,7,8 fixed witnesses and maximum three for the specified seven-state map over its partitions. This is not a maximum over all seven-state maps.",
+    "cases": null,
+    "violations": null,
+    "count_provenance": "Unknown consolidated count scope. Existing numerical reports remain in note. No zero, summed total, or comprehensive verification count is inferred by this repair."
   },
   {
     "id": "CG-ND-NECESSARY",
@@ -500,7 +545,8 @@
     "evidence": "Proved for all finite deterministic systems: deterministic quotient implies gap=0. Exact exhaustive n=4 (3,840 pairs) and n=5 (162,500 pairs); n=5,6 200k-pair exact sample; zero counterexamples.",
     "cases": 203840,
     "violations": 0,
-    "note": "Positive closure gap requires a non-deterministic quotient. If every block maps into one block, the partition is stable, the coarsest stable refinement has k blocks, and W_inf is the k-dimensional block-constant space, so gap=k-k=0. Hence gap>0 implies at least one block has image-label set of size at least 2. ND is necessary but not sufficient. Balanced-relation formulation: positive gap is equivalent to a nonzero rational left-kernel vector of the itinerary-label matrix; integer bases always exist."
+    "note": "Positive closure gap requires a non-deterministic quotient. If every block maps into one block, the partition is stable, the coarsest stable refinement has k blocks, and W_inf is the k-dimensional block-constant space, so gap=k-k=0. Hence gap>0 implies at least one block has image-label set of size at least 2. ND is necessary but not sufficient. Balanced-relation formulation: positive gap is equivalent to a nonzero rational left-kernel vector of the itinerary-label matrix; integer bases always exist.",
+    "title": "Quotient nondeterminism is necessary for positive closure gap"
   },
   {
     "id": "CG-ND2-NOT-SUFFICIENT",
@@ -509,7 +555,8 @@
     "evidence": "Exact rational census, n=4 exhaustive (3,840 pairs) and n=5 exhaustive (162,500 pairs), independently replayed in-repo: n=5 positive-gap pairs = 8,160, of which 480 have ND degree exactly 1 and 7,680 have ND degree >=2. Minimal ND-degree-1 witness T=(0,0,1,2,2), lab=(0,1,0,0,1): m=5, rank=4, gap=1, verified exactly.",
     "cases": 166340,
     "violations": 0,
-    "note": "ND>=2 (at least two split blocks) is not sufficient for positive closure gap: at n=5 it misses 480 positive-gap pairs with ND degree exactly 1, and admits 120 gap-0 false positives at n=4 and 22,320 at n=5. No tested graph or partition invariant separates positive-gap from gap-0 with zero false positives at n=4,5; the exact separator remains gap = m - rank_Q(M). This is a finite computational census result, not a general theorem; no novelty claim."
+    "note": "ND>=2 (at least two split blocks) is not sufficient for positive closure gap: at n=5 it misses 480 positive-gap pairs with ND degree exactly 1, and admits 120 gap-0 false positives at n=4 and 22,320 at n=5. No tested graph or partition invariant separates positive-gap from gap-0 with zero false positives at n=4,5; the exact separator remains gap = m - rank_Q(M). This is a finite computational census result, not a general theorem; no novelty claim.",
+    "title": "Two split blocks are neither necessary nor sufficient for positive gap in the reported censuses"
   },
   {
     "id": "CG-BALANCED-RECTANGLE",
@@ -518,7 +565,8 @@
     "evidence": "Proved general sufficient condition: four distinct itinerary words u,v,w,z with r(u)+r(v)=r(w)+r(z) (balanced rectangle in the one-hot itinerary matrix) imply a nonzero row dependence, hence rank<m and gap>0, for any finite system. Exact census n=5 ND-degree-1: 93,200 pairs enumerated, 480 positives all satisfy the condition (480/480 coverage), all 92,720 gap-0 pairs have full row rank (0 false positives). All 480 positives share the universal primitive relation r0+r4=r1+r3 (null vector [1,-1,0,-1,1]). Converse (every positive gap has a balanced rectangle) NOT proved in general; exact separation is census-scoped to n=5 ND-degree-1.",
     "cases": 93200,
     "violations": 0,
-    "note": "Balanced four-itinerary rectangle is a proved general sufficient condition for positive closure gap. Rectangle NECESSITY is FALSE: 120 positive-gap cases at n=5 (support-5 null vectors, ND degree >=2) have no four-row rectangle; their minimal dependence is five-row with coefficient multiset {2,1,1,1,1}. The right general object is the space of balanced rational dependencies among itinerary rows; rectangles are one witness type. Exact separator on n=5 ND-degree-1 census only (480/480 coverage, 0 false positives there)."
+    "note": "Balanced four-itinerary rectangle is a proved general sufficient condition for positive closure gap. Rectangle NECESSITY is FALSE: 120 positive-gap cases at n=5 (support-5 null vectors, ND degree >=2) have no four-row rectangle; their minimal dependence is five-row with coefficient multiset {2,1,1,1,1}. The right general object is the space of balanced rational dependencies among itinerary rows; rectangles are one witness type. Exact separator on n=5 ND-degree-1 census only (480/480 coverage, 0 false positives there).",
+    "title": "Balanced itinerary rectangles are sufficient for positive closure gap"
   },
   {
     "id": "CG-RECTANGLE-NOT-NECESSARY",
@@ -527,6 +575,7 @@
     "evidence": "Exact exhaustive n=5 census (all maps x all 52 partitions): 8,160 positive-gap pairs; 8,040 contain a balanced four-itinerary rectangle, 120 do not. The 120 exceptions all have support-5 primitive null vectors with coefficient multiset {2,1,1,1,1}, ND degree >=2, and exactly two complementary itinerary-set types (one up to label swap). Representative: words {00000,00100,01001,10010,11111}, relation 2r0-r1-r2-r3+r4=0. No four-row subset is dependent in any of the 120. n=6 gap-2 witness contains rectangles but has additional rank deficiency beyond them.",
     "cases": 8160,
     "violations": 0,
-    "note": "Balanced four-itinerary rectangle is sufficient but NOT necessary for positive closure gap. Minimal positive-gap dependences include five-row types with coefficient multiset {2,1,1,1,1}. The general classification object is the balanced rational dependency space of the itinerary matrix, not rectangles alone. Scoped exact census at n=5; general necessity classification open."
+    "note": "Balanced four-itinerary rectangle is sufficient but NOT necessary for positive closure gap. Minimal positive-gap dependences include five-row types with coefficient multiset {2,1,1,1,1}. The general classification object is the balanced rational dependency space of the itinerary matrix, not rectangles alone. Scoped exact census at n=5; general necessity classification open.",
+    "title": "Positive closure gap without a balanced itinerary rectangle"
   }
 ]
