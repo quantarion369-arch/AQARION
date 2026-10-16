@@ -44,7 +44,26 @@ def formula(w):
     g = sp.gcd(sp.Poly(sum(c * z**i for i, c in enumerate(w)), z), sp.Poly(z**n - 1, z))
     return p - n + g.degree()
 
+
+def check_regression_witnesses():
+    fixtures = [
+        ("six-cycle gap 2", cyc(6), (0,0,0,1,1,1), 2),
+        ("general n=5", (0,0,0,1,1), (0,1,0,0,1), 1),
+        ("general n=7", (1,5,5,1,2,6,6), (0,0,1,1,0,0,1), 3),
+        ("general n=8", (5,6,6,5,0,2,0,2), (0,0,1,1,0,0,1,1), 4),
+    ]
+    for name, T, lab, expected in fixtures:
+        observed = gap(T, lab)
+        if observed != expected:
+            raise AssertionError((name, observed, expected))
+    for k in range(2, 9):
+        observed = gap(cyc(2*k), tuple([1]*k + [0]*k))
+        if observed != k - 1:
+            raise AssertionError(("half-half", k, observed, k - 1))
+    print("PASS: 4 fixed witnesses and 7 half-half fixtures")
+
 if __name__ == "__main__":
+    check_regression_witnesses()
     nmax = int(sys.argv[1]) if len(sys.argv) > 1 else 11; t0 = time.time()
     tot = viol = neg = 0; census = {}
     for n in range(3, nmax + 1):
