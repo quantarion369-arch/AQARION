@@ -468,5 +468,29 @@
     "status": "verified",
     "governance": "active",
     "note": "Gap 2 exists: n=6 six-cycle T=(1,2,3,4,5,0), partition {{0,1,2},{3,4,5}}. m=6, rank=4, gap=2. Refutes gap<=1 conjecture; mechanism: label word 111000 has cyclic polynomial 1+z+z^2, divisible by z^2+z+1, so circulant rank is 4."
+  },
+  {
+    "id": "CG-CYCLIC-GAP-FORMULA",
+    "status": "verified",
+    "governance": "active",
+    "note": "Cyclic 2-block: gap = #missing Fourier modes - (n - m) = m - n + deg gcd(w(z), z^n-1). Independently proved by two models (gcd form and circulant-eigenvalue form); verified 1002 words n=3..9, 0 violations."
+  },
+  {
+    "id": "CG-GAP-UNBOUNDED",
+    "status": "verified",
+    "governance": "active",
+    "note": "Gap unbounded: family n=2k, cyclic T, word 1^k0^k gives gap = k-1 = n/2-1 = Theta(n). Independently proved by two models; exact verification k=2..8."
+  },
+  {
+    "id": "CG-MAX-CENSUS",
+    "status": "verified",
+    "governance": "active",
+    "note": "Cyclic 2-block max-gap census n=3..8: [0,1,0,2,0,3], achieved by half-half words at even n; odd n gives 0. Reproduced exactly by two independent computations."
+  },
+  {
+    "id": "CG-GENERAL-MAX",
+    "status": "verified",
+    "governance": "active",
+    "note": "General (non-cyclic) systems can exceed cyclic max at same n: gap-4 example at n=7 (T=[1,5,5,1,2,6,6]). Found by Claude independent sample; GPT sample maxed at 3. Tight general upper bound OPEN."
   }
 ]
