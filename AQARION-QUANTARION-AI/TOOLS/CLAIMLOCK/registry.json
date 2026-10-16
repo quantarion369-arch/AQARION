@@ -437,7 +437,7 @@
     "evidence": "arithmetic replay n=1..12, 12/12 match, receipt committed",
     "cases": 12,
     "violations": 0,
-    "note": "A_n = sum over labelled endofunctions f of p(|Cyc(f)|): pairs (endofunction, partition of its cyclic points). Brute-force verified n=1..6; closed form A_n = sum_k C(n,k) k! k n^(n-k-1) p(k); EGF = P(T(z)) with T(z)=z e^{T(z)}. Arithmetic receipt: AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json. Novelty unresolved\u2014see PB-006-AGGREGATE-NOVELTY."
+    "note": "A_n = sum over labelled endofunctions f of p(|Cyc(f)|): pairs (endofunction, partition of its cyclic points). Brute-force verified n=1..6; closed form A_n = sum_k C(n,k) k! k n^(n-k-1) p(k); EGF = P(T(z)) with T(z)=z e^{T(z)}. Arithmetic receipt: AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json. Novelty unresolved\u2014see PB-006-AGGREGATE-NOVELTY. | Lean status: COMPILED, not certified. PBCore006.lean built successfully on ARM64/Termux (785 jobs, Mathlib cache), artifact at AQARION-LEAN repo commit 6ee406a. Proof content not yet independently audited; certification remains separate from compilation."
   },
   {
     "id": "PB-006-AGGREGATE-NOVELTY",
