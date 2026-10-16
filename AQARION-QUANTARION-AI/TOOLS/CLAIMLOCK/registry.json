@@ -313,21 +313,21 @@
     "id": "PB-005-FORMULA",
     "title": "N(λ)=Σπ Πb(Σd|gcd d^(|B|-1)) [cycle-type]",
     "status": "verified",
-    "governance": "active",
+    "governance": "deprecated",
     "evidence": "138 cycle types n≤10, 5.6M cases, 0 mismatches",
     "cases": 5612287,
     "violations": 0,
-    "note": "PB-005 cycle-orbit classification; novelty blocked on Constantineau-Labelle 1991"
+    "note": "Mathematically correct but equivalent to Constantineau-Labelle 1991, Prop 6.3 eq(18); rediscovery, not novel."
   },
   {
     "id": "PB-006-NOVELTY",
     "title": "PB-006 formula is novel",
-    "status": "blocked",
-    "governance": "blocked",
+    "status": "deprecated",
+    "governance": "deprecated",
     "evidence": "Constantineau-Labelle 1991 unresolved",
     "cases": 0,
     "violations": 0,
-    "note": ""
+    "note": "Comparison complete: PB-005 formula is eq(18) of Constantineau-Labelle 1991; not novel."
   },
   {
     "id": "T-IM",
@@ -437,6 +437,12 @@
     "evidence": "arithmetic replay n=1..12, 12/12 match, receipt committed",
     "cases": 12,
     "violations": 0,
-    "note": "aggregate labelled-map formula; replay receipt at verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json"
+    "note": "Aggregate labelled-map formula; arithmetic receipt: AQARION-QUANTARION-AI/verification/PB/PB-CORE/PB-006-AGGREGATE-REPLAY.json; novelty unresolved—see PB-006-AGGREGATE-NOVELTY."
+  },
+  {
+    "id": "PB-006-AGGREGATE-NOVELTY",
+    "status": "blocked",
+    "governance": "blocked",
+    "note": "Novelty of aggregate formula unestablished. Comparison target: Constantineau & Labelle 1996, \"Une généralisation automorphe des nombres de Stirling\", DOI 10.1016/S0012-365X(96)83006-8. Comparison incomplete; wider literature search pending."
   }
 ]

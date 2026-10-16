@@ -573,7 +573,7 @@ formula:
 
 These are recorded reference values, not a claim that the verifier was
 rerun for this document revision. The receipt currently states that the
-arithmetic replay was not performed and that source and manifest hashes
+arithmetic replay reports PASS (12/12 match) but source and manifest hashes
 are absent. The values must not be represented as newly reproduced or
 cryptographically bound to the current source.
 
@@ -650,7 +650,7 @@ Their identities and evidence records must remain separate.
 **Current status:**
 
 - Aggregate formula: candidate pending independent review.
-- Arithmetic replay: not established by the current receipt.
+- Arithmetic replay: receipt reports PASS (12/12 match); not yet cryptographically bound to a specific source revision.
 - Source-bound provenance: incomplete.
 - Lean: open.
 - C4: blocked.
