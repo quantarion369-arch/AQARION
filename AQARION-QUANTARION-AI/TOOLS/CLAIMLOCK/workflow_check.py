@@ -37,7 +37,7 @@ for c in d:
 
 # 4. Receipt paths exist
 for c in d:
-    for m in re.findall(r'[w/.-]+.(?:json|md)', (c.get('note','') or '') + (c.get('evidence','') or '')):
+    for m in re.findall(r'[\w/.-]+\.(?:json|md)', (c.get('note','') or '') + (c.get('evidence','') or '')):
         if m.startswith('AQARION') and not os.path.exists(m):
             errors.append(f"{c['id']}: referenced artifact missing: {m}")
 
