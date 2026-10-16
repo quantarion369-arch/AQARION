@@ -1,6 +1,6 @@
 # AQARION: Public Research Artifact Overview and Verification Checkpoint
 
-Checkpoint date: October 14, 2026  
+Checkpoint date: October 16, 2026  
 Canonical repository: quantarion369-arch/AQARION  
 Document type: public research article, artifact overview, and evidence checkpoint
 
@@ -10,12 +10,14 @@ AQARION maintains research implementations, verification scripts, regression
 tests, and workflow artifacts for investigating exact structural relationships
 and the reliability of their computational evidence.
 
-This checkpoint brings together four strands:
+This checkpoint brings together five strands:
 
 1. SM003 exact matrix-rank and graph-rank comparison.
 2. D22 direct-projection validation.
 3. Mobile Research Kit integrity and regression verification.
 4. AQARION-RAG provenance-aware retrieval and evidence navigation.
+5. Closure-gap structural theory: proved theorems on linear-observable
+   versus partition-refinement rank deficiency.
 
 The evidence described here includes reported hosted workflow results,
 artifact inspections described in a supplied audit, directly supplied
@@ -520,7 +522,57 @@ Retrieval outputs are navigation aids. They do not constitute mathematical
 proof, computational verification, formal certification, or a promotion
 decision under the governance framework described in this document.
 
-## 6. Consolidated Status
+## 6. Closure-Gap Structural Theory
+
+### Research relationship
+
+For a finite deterministic system with partition, the closure gap is
+
+    gap = m - rank_Q(M),
+
+where m is the number of distinct future block-itineraries and M is the
+itinerary-label matrix. Positive gap means the linear (Koopman) observable
+space has a rank deficiency relative to partition refinement.
+
+### Proved theorems
+
+1. Itinerary-rank criterion: gap = m - rank_Q(M), proved for all finite
+   deterministic systems.
+2. Cyclic Fourier formula: for cyclic two-block systems, the gap equals the
+   number of missing Fourier modes of the label word; verified exactly for
+   n = 3..9.
+3. Unbounded growth: the half-half family 1^k 0^k achieves gap k-1 at
+   n = 2k, establishing at least linear growth. A matching general upper
+   bound remains open.
+4. ND necessity: a deterministic quotient implies gap = 0; hence positive
+   gap requires a non-deterministic quotient. Proved for all finite systems.
+5. Balanced-rectangle sufficiency: four distinct itinerary words satisfying
+   r(u)+r(v)=r(w)+r(z) imply positive gap, for any finite system.
+6. Rectangle non-necessity: 120 positive-gap cases at n=5 have no four-row
+   rectangle; their minimal dependence is five-row with coefficient
+   multiset {2,1,1,1,1}.
+
+### Exact census evidence
+
+| Scope | Pairs | Positive gap | Violations |
+| --- | ---: | ---: | ---: |
+| n=4, all 15 partitions | 3,840 | 72 | 0 |
+| n=5, all 52 partitions | 162,500 | 8,160 | 0 |
+| n=5, ND-degree-1 subset | 93,200 | 480 | 0 |
+
+All computations use exact rational arithmetic. The balanced-rectangle
+condition is an exact separator on the n=5 ND-degree-1 census (480/480
+coverage, 0 false positives), but rectangle necessity is false in general.
+
+### Outstanding questions
+
+- Classify minimal balanced dependency circuits beyond rectangles and
+  five-row types.
+- Determine whether non-cyclic systems can exceed the cyclic n/2-1 gap.
+- Settle novelty of the closure-gap framing against the observability and
+  lumpability literature.
+
+## 7. Consolidated Status
 
 | Item | Checkpoint status | Boundary |
 | --- | --- | --- |
@@ -532,12 +584,13 @@ decision under the governance framework described in this document.
 | Mobile kit hosted regression | Reported successful at 7ea0d79 | Attributed to supplied live audit |
 | Package integrity | 35 listed files verified | Unlisted files outside integrity scope |
 | AQARION-RAG evaluation | Directly supplied 4/4 harness result | Retrieval navigation, not claim certification |
+| Closure-gap theorems | Proved analytically + exact census replay | Theorem chain recorded in CLAIMLOCK registry (57 claims) |
 | Lean certification | Not established by the evidence here | No promotion to formal verification |
 | Novelty or priority | Not established | Requires targeted literature review |
 | D22 wording review | Outstanding source-review item | No undocumented edit claimed |
 | SM003 provenance reconciliation | Outstanding source-review item | No status update claimed |
 
-## 7. Publication and Maintenance Policy
+## 8. Publication and Maintenance Policy
 
 Future coordinated software changes should be delivered as one complete
 review set.
@@ -561,7 +614,7 @@ their causes be guessed.
 A final successful workflow should be preserved as evidence for that exact
 revision, without rewriting the meaning of earlier runs.
 
-## 8. Outstanding Work
+## 9. Outstanding Work
 
 The completed Mobile Research Kit delivery does not require another
 whitespace restoration or speculative workflow replacement.
