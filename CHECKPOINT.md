@@ -1,3 +1,33 @@
+# AQARION Checkpoint — October 16, 2026
+
+## Closure-Gap Structural Theory Update
+
+The closure-gap research program has produced a proved theorem chain,
+recorded in the CLAIMLOCK registry (57 claims, Gate D passing):
+
+1. Itinerary-rank criterion: gap = m - rank_Q(M), proved for all finite
+   deterministic systems.
+2. Cyclic Fourier formula: gap equals missing Fourier modes of the label
+   word; verified exactly for n = 3..9.
+3. Unbounded growth: half-half family 1^k 0^k achieves gap k-1 at n = 2k
+   (at least linear growth); tight general upper bound open.
+4. ND necessity: deterministic quotient implies gap = 0; positive gap
+   requires a non-deterministic quotient. Proved for all finite systems.
+5. Balanced-rectangle sufficiency: four itineraries with r(u)+r(v)=r(w)+r(z)
+   imply positive gap, for any finite system.
+6. Rectangle non-necessity: 120 positive-gap cases at n=5 have no four-row
+   rectangle; minimal dependence is five-row, coefficients {2,1,1,1,1}.
+
+Exact census evidence: n=4 (3,840 pairs), n=5 (162,500 pairs),
+n=5 ND-degree-1 subset (93,200 pairs) — all exact rational arithmetic,
+zero violations.
+
+Open frontier: classify minimal balanced dependency circuits beyond
+rectangles and five-row types; determine whether non-cyclic systems can
+exceed the cyclic n/2-1 gap.
+
+---
+
 AQ-PB asymptotic theorem — analytic closure
 
 Recall
