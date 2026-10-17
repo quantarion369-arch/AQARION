@@ -2,7 +2,6 @@
 """Exact replay of closure-gap registry claims. Exit 0 = all checks pass."""
 import itertools, sys, time
 from fractions import Fraction as F
-import sympy as sp
 
 def rgs(n):
     def rec(i, lab, m):
@@ -38,8 +37,9 @@ def gap(T, lab):
     return stable_size(T, lab) - rank_q(rows)
 
 cyc = lambda n: tuple((x + 1) % n for x in range(n))
-z = sp.symbols("z")
 def formula(w):
+    import sympy as sp
+    z = sp.symbols("z")
     n = len(w); p = len({tuple(w[i:] + w[:i]) for i in range(n)})
     g = sp.gcd(sp.Poly(sum(c * z**i for i, c in enumerate(w)), z), sp.Poly(z**n - 1, z))
     return p - n + g.degree()
