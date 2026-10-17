@@ -1,0 +1,153 @@
+{
+  "status": "PASS",
+  "encoding": "all block indicators at times 0..n-1; distinct state rows",
+  "arithmetic": "fractions.Fraction over Q",
+  "exhaustive": [
+    {
+      "n": 1,
+      "partitions": 1,
+      "pairs": 1,
+      "maximum_gap": 0
+    },
+    {
+      "n": 2,
+      "partitions": 2,
+      "pairs": 8,
+      "maximum_gap": 0
+    },
+    {
+      "n": 3,
+      "partitions": 5,
+      "pairs": 135,
+      "maximum_gap": 0
+    },
+    {
+      "n": 4,
+      "partitions": 15,
+      "pairs": 3840,
+      "maximum_gap": 1
+    }
+  ],
+  "total_exhaustive_pairs": 3984,
+  "witnesses": [
+    {
+      "n": 5,
+      "blocks": 2,
+      "m": 4,
+      "r": 3,
+      "gap": 1,
+      "class_bound": 1,
+      "state_bound": 1,
+      "T": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "labels": [
+        0,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "n": 6,
+      "blocks": 2,
+      "m": 6,
+      "r": 4,
+      "gap": 2,
+      "class_bound": 2,
+      "state_bound": 2,
+      "T": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        0
+      ],
+      "labels": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "n": 7,
+      "blocks": 2,
+      "m": 7,
+      "r": 4,
+      "gap": 3,
+      "class_bound": 3,
+      "state_bound": 3,
+      "T": [
+        1,
+        5,
+        5,
+        1,
+        2,
+        6,
+        6
+      ],
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "n": 8,
+      "blocks": 2,
+      "m": 8,
+      "r": 4,
+      "gap": 4,
+      "class_bound": 4,
+      "state_bound": 4,
+      "T": [
+        5,
+        6,
+        6,
+        5,
+        0,
+        2,
+        0,
+        2
+      ],
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  ],
+  "checks": [
+    "stable-class identity",
+    "constant-column rank identity",
+    "nonnegative gap",
+    "binary-row bound",
+    "class and state bounds",
+    "expected enumeration counts",
+    "attainment fixtures"
+  ],
+  "scope": "Finite replay, not a universal proof, novelty search, or Lean certification",
+  "source_sha256": "085c9c776640182316fe9ac0b32dfc8cd78777a39fba613db9d8b3b5a76dcfc2",
+  "environment": {
+    "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+    "platform": "android"
+  }
+}
