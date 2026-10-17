@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "range": "k=0..6",
+  "results": [
+    {
+      "k": 0,
+      "set_partitions": 1,
+      "permutations": 1,
+      "integer_partitions": 1,
+      "pairs_examined": 1,
+      "invariant_pairs": 1,
+      "factorial_times_p": 1
+    },
+    {
+      "k": 1,
+      "set_partitions": 1,
+      "permutations": 1,
+      "integer_partitions": 1,
+      "pairs_examined": 1,
+      "invariant_pairs": 1,
+      "factorial_times_p": 1
+    },
+    {
+      "k": 2,
+      "set_partitions": 2,
+      "permutations": 2,
+      "integer_partitions": 2,
+      "pairs_examined": 4,
+      "invariant_pairs": 4,
+      "factorial_times_p": 4
+    },
+    {
+      "k": 3,
+      "set_partitions": 5,
+      "permutations": 6,
+      "integer_partitions": 3,
+      "pairs_examined": 30,
+      "invariant_pairs": 18,
+      "factorial_times_p": 18
+    },
+    {
+      "k": 4,
+      "set_partitions": 15,
+      "permutations": 24,
+      "integer_partitions": 5,
+      "pairs_examined": 360,
+      "invariant_pairs": 120,
+      "factorial_times_p": 120
+    },
+    {
+      "k": 5,
+      "set_partitions": 52,
+      "permutations": 120,
+      "integer_partitions": 7,
+      "pairs_examined": 6240,
+      "invariant_pairs": 840,
+      "factorial_times_p": 840
+    },
+    {
+      "k": 6,
+      "set_partitions": 203,
+      "permutations": 720,
+      "integer_partitions": 11,
+      "pairs_examined": 146160,
+      "invariant_pairs": 7920,
+      "factorial_times_p": 7920
+    }
+  ],
+  "pairs_examined": 152796,
+  "scope": "Finite abstract permutation-core check; not Lean execution, historical source audit, or endofunction aggregate verification",
+  "controls": [
+    "identity invariant",
+    "known non-invariant permutation rejected"
+  ],
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "android",
+  "source_sha256": "12cc8caa7a4bec902b5ddf03a75054f521725967f18ed8f7e7623ff61ab614d7"
+}
