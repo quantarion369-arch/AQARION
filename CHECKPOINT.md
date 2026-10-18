@@ -1,4 +1,43 @@
-# AQARION Checkpoint — October 16, 2026
+# AQARION Checkpoint — October 18, 2026
+
+## Published binary closure-gap formula contract update
+
+Publication:
+- Repository: `quantarion369-arch/AQARION`
+- Branch: `main`
+- Commit: `1eb1c98bfced7011cd9593d07646817783504b33`
+- Push confirmed by terminal output: `7a6febb..1eb1c98 main -> main`
+
+Changed files:
+- `AQARION-QUANTARION-AI/verification/CLOSURE-GAP/closure_gap_replay.py`
+- `AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py`
+
+Contract coverage:
+- All 1,022 nonempty binary words of lengths 1 through 9.
+- Both list and tuple inputs compared with the replay gap calculation.
+- All-zero and all-one boundary cases.
+- Rejection of empty and nonbinary inputs.
+- Six-cycle witness `[0, 0, 0, 1, 1, 1]` with expected gap 2.
+- Existing regression witnesses.
+
+Replay from the repository root:
+
+```bash
+python3 -B AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py
+```
+
+Evidence boundary:
+- The coverage above describes the committed test suite.
+- This documentation entry does not record a fresh test execution.
+- Finite regression coverage is not a general mathematical proof.
+- No Lean verification or claim-status promotion is asserted.
+- PR #2, the separate PB core direct-enumeration audit, was not
+  merged by this push.
+- Earlier checkpoint material below is preserved as historical
+  context; this entry does not re-adjudicate its claims.
+
+---
+
 
 ## Closure-Gap Structural Theory Update
 
