@@ -1,4 +1,5 @@
-# ✨️ WELCOME TO AQARION ✨️
+ ✨️ WELCOME TO AQARION 
+& QUANTARION AI ✨️ 
 
 **Evidence-First Mathematical Research for Finite Dynamical Systems, Quotient Structure, and Reproducible Verification**
 
@@ -11,6 +12,39 @@ formally established statements are identified separately.
 
 Open publication does not imply that every claim is proved, peer-reviewed,
 or ready for unrestricted promotion.
+
+---
+
+## Published update — October 18, 2026
+
+The binary observable closure-gap formula boundary fix and its regression
+contract tests are published on `main` in commit
+`1eb1c98bfced7011cd9593d07646817783504b33`.
+
+Implementation and tests:
+
+- [Closure-gap replay](AQARION-QUANTARION-AI/verification/CLOSURE-GAP/closure_gap_replay.py)
+- [Formula contract tests](AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py)
+
+The contract suite covers all 1,022 nonempty binary words of lengths
+1 through 9, checking both list and tuple inputs against the replay
+gap calculation. It also checks constant-word boundaries, rejection
+of empty and nonbinary inputs, the six-cycle gap-two witness, and
+the existing regression fixtures.
+
+Replay from the repository root:
+
+```bash
+python3 -B AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py
+```
+
+This is finite regression coverage, not a general proof or Lean
+verification. It does not change claim-promotion gates.
+
+The separate PB core direct-enumeration audit in PR #2 is not part
+of this closure-gap commit.
+
+---
 
 [![Lean Build: PASS](https://img.shields.io/badge/Lean_Build-PASS-2ea44f?style=for-the-badge&logo=lean&logoColor=white)](https://github.com/quantarion369-arch/AQARION-LEAN)
 [![Build Evidence: Published](https://img.shields.io/badge/Build_Evidence-PUBLISHED-0969da?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION-LEAN/blob/main/RECEIPTS/PBCore006-build-result-20261017.md)
