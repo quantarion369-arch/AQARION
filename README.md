@@ -2,18 +2,29 @@
 
 **Evidence-First Mathematical Research for Finite Dynamical Systems, Quotient Structure, and Reproducible Verification**
 
-[![SM003 Verify](https://github.com/quantarion369-arch/AQARION/actions/workflows/sm003-verify.yml/badge.svg?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION/actions/workflows/sm003-verify.yml)
-[![Mobile Research Kit](https://github.com/quantarion369-arch/AQARION/actions/workflows/mobile-research-kit.yml/badge.svg?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION/actions/workflows/mobile-research-kit.yml)
-[![D22 Validation](https://github.com/quantarion369-arch/AQARION/actions/workflows/D22-validation.yml/badge.svg?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION/actions/workflows/D22-validation.yml)
-[![Time and Modes](https://github.com/quantarion369-arch/AQARION/actions/workflows/time-and-modes-check.yml/badge.svg?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION/actions/workflows/time-and-modes-check.yml)
+AQARION is open for public sharing, technical feedback, independent
+reproduction, and collaboration.
 
-[![C3: Open](https://img.shields.io/badge/C3-OPEN-yellow?style=for-the-badge)](#current-governance-snapshot)
-[![C4: Blocked](https://img.shields.io/badge/C4-BLOCKED-red?style=for-the-badge)](#current-governance-snapshot)
-[![Lean: Open](https://img.shields.io/badge/Lean-OPEN-lightgrey?style=for-the-badge)](#formal-verification)
+Released artifacts should be read according to their recorded scope:
+research proposals, computational results, Lean build records, and
+formally established statements are identified separately.
+
+Open publication does not imply that every claim is proved, peer-reviewed,
+or ready for unrestricted promotion.
+
+[![Lean Build: PASS](https://img.shields.io/badge/Lean_Build-PASS-2ea44f?style=for-the-badge&logo=lean&logoColor=white)](https://github.com/quantarion369-arch/AQARION-LEAN)
+[![Build Evidence: Published](https://img.shields.io/badge/Build_Evidence-PUBLISHED-0969da?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION-LEAN/blob/main/RECEIPTS/PBCore006-build-result-20261017.md)
+[![Publication: Open](https://img.shields.io/badge/Publication-OPEN-00897b?style=for-the-badge)](#publication-and-collaboration)
+[![Collaboration: Welcome](https://img.shields.io/badge/Collaboration-WELCOME-8250df?style=for-the-badge)](#publication-and-collaboration)
+[![Verification: Claim-Specific](https://img.shields.io/badge/Verification-CLAIM--SPECIFIC-57606a?style=for-the-badge)](#formal-verification)
 [![SDS-002: Quarantined](https://img.shields.io/badge/SDS--002-QUARANTINED-orange?style=for-the-badge)](#corrections-and-historical-provenance)
-[![Publication: Blocked](https://img.shields.io/badge/Publication-BLOCKED-red?style=for-the-badge)](#publication-and-collaboration)
-[![Promotable: False](https://img.shields.io/badge/Promotable-false-lightgrey?style=for-the-badge)](#current-governance-snapshot)
 
+PBCore006 has a recorded successful Lean build with published console
+evidence. Publication is open for sharing research artifacts, receiving
+feedback, and collaboration. Mathematical verification and promotion
+remain specific to each claim and its supporting evidence.
+
+---
 
 AQARION is an open mathematical research project maintained by James A. It investigates finite dynamical systems, invariant quotients, Koopman operators, observable subspaces, exact enumeration, and formalizable computational mathematics.
 
