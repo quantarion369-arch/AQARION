@@ -38,6 +38,12 @@ def gap(T, lab):
 
 cyc = lambda n: tuple((x + 1) % n for x in range(n))
 def formula(w):
+    # Observable closure gap for nonempty binary cyclic words.
+    if len(w) == 0 or any(c not in (0, 1) for c in w):
+        raise ValueError("formula requires a nonempty binary word")
+    # Zero labeling still has a rank-one constant indicator.
+    if not any(w):
+        return 0
     import sympy as sp
     z = sp.symbols("z")
     n = len(w); p = len({tuple(w[i:] + w[:i]) for i in range(n)})
