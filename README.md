@@ -513,6 +513,368 @@ Before a mathematical claim is promoted, establish the corresponding mathematica
 
 ---
 
+# AQARION Ecosystem
+## Research, Lean Formalization, FASTAPI Development
+
+AQARION is an independent research program developing mathematical ideas,
+formalization artifacts, computational implementations, and inspectable
+evidence records.
+
+Its work is organized across three complementary repositories: the main
+research repository, a dedicated Lean formalization repository, and a
+Python/FastAPI development repository.
+
+The project has moved beyond an important infrastructure obstacle:
+PBCore006’s Lean build is complete. The successful result, actual console
+log, and corrected public records are now published. For this project and
+the documented execution, waiting for the initial build is no longer the
+bottleneck.
+
+The next stage is to build on that working foundation: make theorem
+coverage easier to inspect, strengthen tests and evidence traceability,
+and develop clearly specified connections between research, formalization,
+and software interfaces.
+
+## The Three-Repository Structure
+
+```text
+                              AQARION
+                     Research and evidence hub
+                                 │
+                 ┌───────────────┴───────────────┐
+                 │                               │
+                 ▼                               ▼
+           AQARION-LEAN                   Aqarion-Fastapi
+        Formalization projects           API implementation
+        Lean source and builds           Python service code
+        Receipts and console logs        Tests and tooling
+                 │                               │
+                 └───────────────┬───────────────┘
+                                 ▼
+                    Inspectable research artifacts
+```
+
+This diagram describes the repositories’ complementary roles. It does
+not claim that an automated cross-repository integration is already
+implemented.
+
+| Repository | Role | Where to look |
+|---|---|---|
+| AQARION | Research context, mathematical development, and evidence organization | This repository |
+| [AQARION-LEAN](https://github.com/quantarion369-arch/AQARION-LEAN) | Lean formalization projects and recorded build evidence | Source projects, README, status records, and receipts |
+| [Aqarion-Fastapi](https://github.com/quantarion369-arch/Aqarion-Fastapi) | Python/FastAPI implementation and service development | README, application source, tests, and workflow configuration |
+
+## A Completed Milestone: PBCore006 Builds Successfully
+
+PBCore006 completed its configured Lean build in an Android/Termux
+environment using Ubuntu through proot-distro on ARM64 hardware.
+
+The final recorded output is:
+
+```text
+=== RESUME 2026-10-17T22:15:00-04:00 ===
+
+⚠ [784/785] Built PBCore006 (118s)
+
+Build completed successfully (785 jobs).
+
+LAKE_EXIT=0
+LOG_EXIT=0
+BUILD FINISHED SUCCESSFULLY
+```
+
+**The initial PBCore006 build obstacle is resolved.**
+
+This was not merely a proposed setup or an unexecuted command. The
+project reported successful completion, the build command returned zero,
+and the logging command returned zero.
+
+The displayed warnings were non-fatal. The 118-second figure belongs to
+the PBCore006 target, not the entire dependency build. The 785-job count
+is a build-work count, not a count of mathematical theorems.
+
+### From Build Execution to Published Evidence
+
+```text
+Configured Lean project
+          │
+          ▼
+Dependency compilation across resumed sessions
+          │
+          ▼
+PBCore006 target built successfully
+          │
+          ▼
+Build and logging exit statuses captured
+          │
+          ▼
+Original console log copied into the repository
+          │
+          ▼
+Original and copied log checksums matched
+          │
+          ▼
+README, receipt, and status documents published
+          │
+          ▼
+Fetched remote files checked directly
+          │
+          ▼
+All 11 publication checks passed
+```
+
+### Evidence You Can Inspect
+
+- [AQARION-LEAN repository](https://github.com/quantarion369-arch/AQARION-LEAN)
+- [Successful build receipt](https://github.com/quantarion369-arch/AQARION-LEAN/blob/main/RECEIPTS/PBCore006-build-result-20261017.md)
+- [Actual console log](https://github.com/quantarion369-arch/AQARION-LEAN/blob/main/RECEIPTS/PBCore006-20261017-console.log)
+- [Build status](https://github.com/quantarion369-arch/AQARION-LEAN/blob/main/STATUS.md)
+- [Consolidated checkpoint](https://github.com/quantarion369-arch/AQARION-LEAN/blob/main/CONSOLIDATED/CHECKPOINT.md)
+
+The preserved device log was 30,496 bytes. Its repository copy matched
+the original SHA-256:
+
+```text
+0ef92b13e35a1785831ede359280b373f8f2dd9043f8e77afd43aa1616d824a1
+```
+
+A subsequent check of fetched remote `main` confirmed that the published
+log also matched that checksum.
+
+The integrity check establishes content identity between the preserved
+log and the published artifact. It does not independently establish an
+unrecorded runtime version or source revision.
+
+## Public Checkpoint Verification
+
+The documentation and console-evidence publication was committed in
+`fdf8388`. A subsequent verification checked the repository at:
+
+```text
+cfd22c61b2074a0af31d54bdd1b1780c22994878
+```
+
+That revision includes the later organizational change grouping Lean
+projects under `PROJECTS`.
+
+The supplied verification output recorded:
+
+```text
+PASS | STATUS.md records BUILD PASS / 785 jobs / zero exits
+PASS | CHECKPOINT.md records BUILD PASS / 785 jobs / zero exits
+PASS | STATUS.md has no stale unknown-count or blanket-blocker wording
+PASS | CHECKPOINT.md has no stale unknown-count or blanket-blocker wording
+PASS | README announces successful build
+PASS | README links receipt and console log
+PASS | Successful receipt records completion
+PASS | Published console log matches preserved SHA-256
+PASS | Misleading recovery receipt absent
+PASS | Local HEAD matches fetched remote main
+PASS | Working tree clean
+
+RESULT: ALL CHECKS PASS
+```
+
+These checks establish the state of that published checkpoint. They are
+not a new Lean build, a theorem-assumption audit, or a permanent guarantee
+about future repository revisions.
+
+The successful execution did not require a build-recovery operation.
+The public record now presents it directly as a successful build.
+
+## What Has Changed for the Research Workflow
+
+The completed build changes the immediate task.
+
+Before this milestone, substantial attention was required simply to
+bring the configured project and its dependencies through compilation
+on the available device.
+
+Now there is a working, recorded foundation on which further work can
+proceed.
+
+```text
+PREVIOUS INFRASTRUCTURE TASK
+───────────────────────────
+Establish environment
+        ↓
+Compile required dependencies
+        ↓
+Complete the PBCore006 build
+
+
+CURRENT DEVELOPMENT DIRECTION
+─────────────────────────────
+Inspect exact formal statements
+        ↓
+Map claims to declarations and evidence
+        ↓
+Extend focused tests and formalization
+        ↓
+Specify software interfaces
+        ↓
+Publish the next evidence-backed checkpoint
+```
+
+This does not mean that all future Lean work will be effortless, that
+every project has been rebuilt at the same revision, or that every
+research target is proved.
+
+It means the documented PBCore006 build is a completed achievement,
+not a standing blocker that must be repeatedly reopened.
+
+## AQARION-LEAN: Building on a Working Formalization Environment
+
+[Explore AQARION-LEAN →](https://github.com/quantarion369-arch/AQARION-LEAN)
+
+AQARION-LEAN provides a dedicated home for Lean projects and their
+execution records. The published status documents also contain recorded
+AQFPR006 and PB006Audit checkpoints alongside PBCore006.
+
+The repository makes it possible to distinguish:
+
+- Mathematical definitions and theorem statements.
+- Lean source implementing particular formalization targets.
+- Configured project builds.
+- Recorded finite tests and negative controls.
+- Receipts and raw console evidence.
+- Research questions that remain outside the demonstrated result.
+
+The next formalization work can therefore focus on specific declarations,
+assumptions, and proof obligations rather than treating the already
+completed PBCore006 build as unfinished.
+
+A successful build is meaningful evidence. The scope of the mathematical
+claims attached to it should remain explicit and inspectable.
+
+## Aqarion-Fastapi: Developing the Software Interface
+
+[Explore Aqarion-Fastapi →](https://github.com/quantarion369-arch/Aqarion-Fastapi)
+
+Aqarion-Fastapi is the companion Python/FastAPI development repository.
+
+Its role is distinct from the Lean repository: it provides a place to
+develop application behavior, computational routes, service interfaces,
+tests, and supporting software tooling.
+
+Consult that repository’s README, source, and workflow records for the
+implemented endpoints, recorded checks, and current limitations. This
+checkpoint does not assign a new API test result or deployment status.
+
+The intended relationship between the repositories is evidence-aware:
+
+```text
+Research claim
+      │
+      ▼
+Precisely identified mathematical statement
+      │
+      ├────────► Computational implementation and tests
+      │
+      └────────► Formalization target and Lean declarations
+                              │
+                              ▼
+                   Explicit verification records
+                              │
+                              ▼
+                 Software presents the recorded status
+```
+
+This is a development direction, not a claim that the full pipeline is
+already automated.
+
+An API response should identify what it computed or retrieved. A build
+receipt should identify what execution it records. Neither should
+silently become a claim that a different theorem was proved.
+
+## Independent Research on Accessible Hardware
+
+This checkpoint was developed through a phone-centered workflow on a
+maintainer-reported Samsung Galaxy A15 5G, model SM-A156U.
+
+The work combined accessible development tools with AI assistance and
+direct human execution. It involved learning unfamiliar tooling,
+continuing across interrupted sessions, inspecting console output,
+and preserving the evidence behind the final result.
+
+```text
+Available hardware
+       +
+Accessible development tools
+       +
+Mathematical investigation
+       +
+AI-assisted explanation and drafting
+       +
+Human review and actual execution
+       │
+       ▼
+A completed, inspectable research milestone
+```
+
+The significance is not that hardware limitations disappeared.
+It is that a concrete formalization-build milestone was completed
+within those limitations and documented publicly.
+
+AI was useful as an assistant, not an authority on what happened.
+Commands, source files, logs, checksums, tests, and repository history
+remain the basis for the project’s technical claims.
+
+## Next Development Priorities
+
+With this build checkpoint complete, the proposed next priorities are
+more focused:
+
+1. Map important research claims to exact source files and declarations.
+2. Make theorem scope and assumptions easier to inspect.
+3. Extend targeted tests and preserve meaningful negative controls.
+4. Keep claim versions, source revisions, and evidence identities distinct.
+5. Define cross-repository interfaces before automating status exchange.
+6. Preserve future execution records without reopening completed
+   milestones merely because an older summary is stale.
+
+These are forward development priorities, not retroactive conditions
+on the successful build.
+
+## Checkpoint at a Glance
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│                     AQARION PROGRESS                         │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  PBCore006 build                      SUCCESSFUL              │
+│  Reported build jobs                  785                     │
+│  Build exit status                    0                       │
+│  Logging exit status                  0                       │
+│                                                              │
+│  Actual console evidence              PRESERVED               │
+│  Published log checksum               VERIFIED                │
+│  Successful-build receipt             PUBLISHED               │
+│  README and status correction         PUBLISHED               │
+│  Publication checks                   11 / 11 PASS            │
+│                                                              │
+│  Immediate PBCore006 build obstacle   RESOLVED                 │
+│  Next focus                           TARGETED DEVELOPMENT    │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+```
+
+## Explore the Work
+
+- [AQARION-LEAN — formalization projects and build evidence](https://github.com/quantarion369-arch/AQARION-LEAN)
+- [Aqarion-Fastapi — Python/FastAPI development](https://github.com/quantarion369-arch/Aqarion-Fastapi)
+
+This checkpoint records completed progress, not a promise of universal
+correctness or finished integration. Its strength is that the result,
+the evidence, and the remaining work are distinguishable.
+
+AQARION is moving forward from a working build foundation toward more
+precise formalization, stronger software tests, and clearer connections
+between mathematical research and executable artifacts.
+
+---
+
 ## Guiding principles
 
 > Prove first. Verify exhaustively. Predict second. No free parameters.
@@ -523,4 +885,4 @@ Before a mathematical claim is promoted, establish the corresponding mathematica
 
 ---
 
-**AQARION — Evidence-First Mathematical Research**
+**AQARION — Evidence-First Mathematical Research
