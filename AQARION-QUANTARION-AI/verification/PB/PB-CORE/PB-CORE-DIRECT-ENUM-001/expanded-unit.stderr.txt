@@ -1,0 +1,26 @@
+test_biconditional_not_just_forward_preservation (test_pb_core_audit.DirectPredicateTests.test_biconditional_not_just_forward_preservation) ... ok
+test_constant_map_only_universal_relation_survives (test_pb_core_audit.DirectPredicateTests.test_constant_map_only_universal_relation_survives) ... ok
+test_identity_fixes_every_equivalence (test_pb_core_audit.DirectPredicateTests.test_identity_fixes_every_equivalence) ... ok
+test_known_aggregate_totals (test_pb_core_audit.FormulaTests.test_known_aggregate_totals) ... ok
+test_partition_numbers (test_pb_core_audit.FormulaTests.test_partition_numbers) ... ok
+test_bell_counts_through_six (test_pb_core_audit.PartitionTests.test_bell_counts_through_six) ... ok
+test_empty_partition (test_pb_core_audit.PartitionTests.test_empty_partition) ... ok
+test_rejects_negative (test_pb_core_audit.PartitionTests.test_rejects_negative) ... ok
+test_chosen_retraction_fixes_core_and_commutes (test_pb_core_audit.RetractionTests.test_chosen_retraction_fixes_core_and_commutes) ... ok
+test_direct_and_constructed_relation_sets_on_shapes (test_pb_core_audit.RetractionTests.test_direct_and_constructed_relation_sets_on_shapes) ... ok
+test_mismatch_diagnostic_identifies_relations_in_each_difference (test_pb_core_audit.RetractionTests.test_mismatch_diagnostic_identifies_relations_in_each_difference) ... ok
+test_two_cycle_reaches_core_without_fixing_it_at_exponent_one (test_pb_core_audit.RetractionTests.test_two_cycle_reaches_core_without_fixing_it_at_exponent_one) ... ok
+test_normalization_is_idempotent (test_pb_core_audit_extra.CanonicalPartitionTests.test_normalization_is_idempotent) ... ok
+test_restricted_growth_labels_through_six (test_pb_core_audit_extra.CanonicalPartitionTests.test_restricted_growth_labels_through_six) ... ok
+test_census_detects_injected_relation_mismatch (test_pb_core_audit_extra.InputAndFailureTests.test_census_detects_injected_relation_mismatch) ... ok
+test_census_rejects_out_of_range_bounds (test_pb_core_audit_extra.InputAndFailureTests.test_census_rejects_out_of_range_bounds) ... ok
+test_cli_invalid_bound_returns_nonzero (test_pb_core_audit_extra.InputAndFailureTests.test_cli_invalid_bound_returns_nonzero) ... ok
+test_empty_map_is_rejected (test_pb_core_audit_extra.InputAndFailureTests.test_empty_map_is_rejected) ... ok
+test_formula_rejects_nonpositive_size (test_pb_core_audit_extra.InputAndFailureTests.test_formula_rejects_nonpositive_size) ... ok
+test_injected_census_failure_returns_nonzero_process_exit (test_pb_core_audit_extra.InputAndFailureTests.test_injected_census_failure_returns_nonzero_process_exit) ... ok
+test_restriction_extension_round_trips_through_three (test_pb_core_audit_extra.RoundTripTests.test_restriction_extension_round_trips_through_three) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.619s
+
+OK

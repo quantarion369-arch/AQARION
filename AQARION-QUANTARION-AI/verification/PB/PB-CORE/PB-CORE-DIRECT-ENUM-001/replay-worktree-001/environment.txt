@@ -1,0 +1,15 @@
+audit_id=PB-CORE-DIRECT-ENUM-001
+base_commit=91076fe640a259c96417867c5b84cac96b691dc5
+branch=audit/pb-core-direct-enum-001
+started_utc=2026-10-12T06:14:04Z
+
+=== Python ===
+Python 3.13.13
+
+=== OS and architecture ===
+Linux localhost 5.15.189-android13-8-33641424 #1 SMP PREEMPT Wed Jul 15 07:18:36 UTC 2026 aarch64 Android
+
+=== Working-tree status before replay ===
+?? ./
+
+Sources are uncommitted additions to the base commit.
