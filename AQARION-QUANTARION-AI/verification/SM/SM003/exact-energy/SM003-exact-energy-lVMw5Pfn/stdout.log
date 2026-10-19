@@ -1,0 +1,6 @@
+{'n': 1, 'cases': 1, 'expected_cases': 1, 'energy_mismatches': 0, 'floor_mutant_detections': 0}
+{'n': 2, 'cases': 8, 'expected_cases': 8, 'energy_mismatches': 0, 'floor_mutant_detections': 0}
+{'n': 3, 'cases': 135, 'expected_cases': 135, 'energy_mismatches': 0, 'floor_mutant_detections': 36}
+{'n': 4, 'cases': 3840, 'expected_cases': 3840, 'energy_mismatches': 0, 'floor_mutant_detections': 2112}
+EXACT_ENERGY_STATUS: PASS
+REPORT: /data/data/com.termux/files/home/SM003-exact-energy-lVMw5Pfn/report.json

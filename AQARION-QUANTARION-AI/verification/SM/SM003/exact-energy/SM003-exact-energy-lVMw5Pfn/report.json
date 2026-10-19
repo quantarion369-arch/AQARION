@@ -1,0 +1,58 @@
+{
+  "claim": "SM003 exact Frobenius-energy cross-check",
+  "tested_commit": "e9c86c5c6ebd87cc82ce7dc8f052a0e503ef2638",
+  "arithmetic": "integer-scaled matrix plus Fraction",
+  "production_imports": false,
+  "rows": [
+    {
+      "n": 1,
+      "cases": 1,
+      "expected_cases": 1,
+      "energy_mismatches": 0,
+      "floor_mutant_detections": 0
+    },
+    {
+      "n": 2,
+      "cases": 8,
+      "expected_cases": 8,
+      "energy_mismatches": 0,
+      "floor_mutant_detections": 0
+    },
+    {
+      "n": 3,
+      "cases": 135,
+      "expected_cases": 135,
+      "energy_mismatches": 0,
+      "floor_mutant_detections": 36
+    },
+    {
+      "n": 4,
+      "cases": 3840,
+      "expected_cases": 3840,
+      "energy_mismatches": 0,
+      "floor_mutant_detections": 2112
+    }
+  ],
+  "failures": [],
+  "first_floor_mutant_detection": {
+    "n": 3,
+    "T": [
+      0,
+      2,
+      0
+    ],
+    "blocks": [
+      [
+        0,
+        1
+      ],
+      [
+        2
+      ]
+    ],
+    "exact_energy": "3/4",
+    "floor_mutant": 0
+  },
+  "script_sha256": "8529af1e5c0c2b95cf253a27c48b505557e9ba0acbf09721ae022208585e24e5",
+  "status": "PASS"
+}
