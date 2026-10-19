@@ -42,6 +42,44 @@ def load_manifest():
 
 class SM003RegressionTests(unittest.TestCase):
 
+    def test_five_state_energy_rejects_positive_floor_mutant(self):
+        from fractions import Fraction as F
+
+        transition = [4, 4, 0, 1, 0]
+        blocks = [[0, 1, 2, 3], [4]]
+        n = len(transition)
+
+        K = sm.koopman(transition)
+        P = sm.projector(blocks, n)
+        Q = sm.sub(sm.eye(n), P)
+        D = sm.mul(Q, sm.mul(K, P))
+        matrix_energy = sum(
+            (entry * entry for row in D for entry in row),
+            F(0),
+        )
+
+        terms = []
+        for source in blocks:
+            for target in blocks:
+                m = sum(transition[x] in target for x in source)
+                terms.append(
+                    F(
+                        m * (len(source) - m),
+                        len(source) * len(target),
+                    )
+                )
+
+        formula_energy = sum(terms, F(0))
+        floor_mutant = sum(
+            term.numerator // term.denominator for term in terms
+        )
+
+        self.assertEqual(matrix_energy, F(5, 4))
+        self.assertEqual(formula_energy, matrix_energy)
+        self.assertEqual(floor_mutant, 1)
+        self.assertGreater(floor_mutant, 0)
+        self.assertNotEqual(floor_mutant, matrix_energy)
+
     def test_partition_counts(self):
 
         self.assertEqual(
