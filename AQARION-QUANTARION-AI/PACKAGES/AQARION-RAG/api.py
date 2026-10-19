@@ -2,7 +2,7 @@ import json
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 from claims import parse_claims, retrieve_claims
-from retrieve import retrieve
+from retrieve import retrieve, retrieve_cited
 
 class Handler(BaseHTTPRequestHandler):
     def _send(self, data, code=200):
@@ -29,6 +29,10 @@ class Handler(BaseHTTPRequestHandler):
             self._send({"query": q, "results": [
                 {"score": s, "doc": d, "sha": h, "passage": p}
                 for s, d, h, p in results]})
+        elif url.path == "/api/search/cited":
+            q = qs.get("q", [""])[0]
+            results = retrieve_cited(q, top_k=3)
+            self._send({"query": q, "results": results})
         elif url.path == "/api/claims/search":
             q = qs.get("q", [""])[0]
             ha = qs.get("has_artifact", ["false"])[0] == "true"
