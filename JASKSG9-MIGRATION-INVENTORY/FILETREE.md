@@ -87,3 +87,103 @@ JASKSG9-MIGRATION-INVENTORY/
     ├── undeclared dependencies
     ├── declared-but-unused dependencies
     └── provenance mismatches
+
+
+    AQARION
+│
+├── I. CORE MATHEMATICS
+│   ├── Finite Dynamical Systems
+│   ├── Kaprekar Dynamics
+│   ├── Observable Quotients
+│   ├── Partition / Refinement Theory
+│   ├── Koopman Operators
+│   ├── Defect Operators
+│   ├── Pullback Stability
+│   ├── Obstruction Theory
+│   └── Spectral / Representation Geometry
+│
+├── II. KAPREKAR SPECTRAL GEOMETRY
+│   └── KAPREKAR-SPECTRAL-GEOMETRY
+│       ├── hypergraph representations
+│       ├── Laplacian spectra
+│       ├── effective resistance
+│       ├── τ-basin dynamics
+│       ├── μ₁ invariants
+│       ├── coarsening / reduction
+│       ├── KSG API
+│       ├── data lake
+│       ├── maps
+│       ├── models
+│       ├── tests
+│       └── theorem / truth registries
+│
+├── III. AQARION-ARITHMETIC
+│   └── AQARION-ARITHMETIC-FDS-FINITE-DYNAMICAL-SYSTEMS-
+│       ├── exact computation
+│       ├── Kaprekar quotient geometry
+│       ├── FDS
+│       ├── BPD
+│       ├── defect operators
+│       ├── obstruction calculus
+│       ├── verification
+│       ├── Lean
+│       ├── artifacts
+│       ├── research atlas
+│       ├── AI
+│       ├── API
+│       ├── applications
+│       └── AQARION skills
+│
+├── IV. CERTIFICATION / GOVERNANCE
+│   └── Aqarion-Quantarion-AI
+│       ├── IDEA
+│       ├── COMPUTATION
+│       ├── REPLAY
+│       ├── FORMALIZATION
+│       ├── CERTIFICATION
+│       ├── receipts
+│       ├── fixtures
+│       ├── semantic firewall
+│       ├── ProofLedger
+│       └── reproducibility contracts
+│
+├── V. REPLAY / EVIDENCE INFRASTRUCTURE
+│   └── AQARION Replay Lab
+│       ├── ENGINES
+│       ├── FIXTURES
+│       ├── POLICY
+│       ├── PYTHON
+│       ├── RECEIPTS
+│       ├── SCHEMAS
+│       └── WEB
+│
+├── VI. FORMAL MATHEMATICS
+│   ├── Lean 4
+│   ├── mathlib
+│   ├── AqarionLean
+│   ├── Pullback
+│   ├── FiberAveraging
+│   ├── ProjectionOperator
+│   ├── Observable Quotient
+│   └── AQARION-GAP
+│
+├── VII. RO-CRATE / RESEARCH OBJECTS
+│   ├── Aqarion-Ro_crate
+│   └── Aqrion-Ro_Crate-py
+│
+├── VIII. EDUCATION / AI / AGENTS
+│   ├── AQARION Academy
+│   ├── AI_TEAM
+│   ├── GPT contribution structure
+│   ├── agent/bot concepts
+│   ├── CYOA
+│   └── research ingestion / RAG
+│
+└── IX. HISTORICAL / ADJACENT RESEARCH
+    ├── QUANTARION
+    ├── hardware / APSO
+    ├── SNN experiments
+    ├── Fibonacci spectral dynamics
+    ├── affine semigroup dynamics
+    ├── representation experiments
+    └── earlier physics / resonance investigations
