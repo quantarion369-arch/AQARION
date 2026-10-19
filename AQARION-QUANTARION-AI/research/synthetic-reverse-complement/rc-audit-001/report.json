@@ -1,0 +1,16 @@
+{
+  "experiment": "RC synthetic audit 001 - saved rerun",
+  "domain": "all ACGT sequences of lengths 1 through 6",
+  "sequences_checked": 5460,
+  "property_checks": 16380,
+  "property_failures": 0,
+  "failure_examples": [],
+  "negative_control": {
+    "sequence": "A",
+    "reverse_complement": "T",
+    "original_A_count": 1,
+    "transformed_A_count": 0
+  },
+  "status": "PASS",
+  "scope": "bounded synthetic software check; no biological inference"
+}

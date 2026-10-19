@@ -1,0 +1,164 @@
+{
+  "experiment": "quotient follow-up 002",
+  "status": "PASS",
+  "baseline_source_sha256": "d3c5e971c63db8b37ec7f987b1d7c02d05bea186150849319b1439c806bc0708",
+  "source_sha256": "b6efc415ba01e0696c5a16fba2b3ba1b9eb856ff1b2143d746b57ad0099bf7b5",
+  "python_version": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "nontrivial_quotient_fixture": {
+    "passed": true,
+    "T": [
+      2,
+      3,
+      0,
+      1
+    ],
+    "labels": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "witness": null,
+    "quotient": [
+      1,
+      0
+    ],
+    "D": [
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "mutation_domain": "all maps and partitions for n=1..3",
+  "cases": 144,
+  "baseline_disagreements": 0,
+  "mutations": {
+    "representative_only": {
+      "detected": true,
+      "disagreements": 36,
+      "witness": {
+        "expected_compatible": false,
+        "mutant_accepts": true,
+        "T": [
+          0,
+          0,
+          1
+        ],
+        "labels": [
+          0,
+          1,
+          0
+        ],
+        "witness": {
+          "x": 0,
+          "y": 2,
+          "Tx": 0,
+          "Ty": 1,
+          "input_block": 0,
+          "Tx_block": 0,
+          "Ty_block": 1
+        },
+        "quotient": null,
+        "D": [
+          [
+            "1/4",
+            "-1/2",
+            "1/4"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-1/4",
+            "1/2",
+            "-1/4"
+          ]
+        ]
+      }
+    },
+    "transposed_koopman": {
+      "detected": true,
+      "disagreements": 59,
+      "witness": {
+        "expected_compatible": true,
+        "mutant_accepts": false,
+        "T": [
+          0,
+          0
+        ],
+        "labels": [
+          0,
+          0
+        ],
+        "witness": null,
+        "quotient": [
+          0
+        ],
+        "D": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      }
+    },
+    "unnormalized_projection": {
+      "detected": true,
+      "disagreements": 76,
+      "witness": {
+        "expected_compatible": true,
+        "mutant_accepts": false,
+        "T": [
+          0,
+          0
+        ],
+        "labels": [
+          0,
+          0
+        ],
+        "witness": null,
+        "quotient": [
+          0
+        ],
+        "D": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      }
+    }
+  },
+  "scope": "selected mutation detection; not completeness or a universal proof"
+}

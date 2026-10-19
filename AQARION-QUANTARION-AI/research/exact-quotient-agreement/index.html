@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AQARION | Quotients and Observable Closure</title>
+<style>
+:root{color-scheme:light dark}
+*{box-sizing:border-box}
+body{margin:0;background:#101820;color:#eef4f7;font:17px/1.65 system-ui,sans-serif}
+main{max-width:1060px;margin:auto;padding:36px 20px 60px}
+h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.12}
+h2{font-size:1.25rem}
+a{color:#99ded9;text-underline-offset:4px}
+a:focus-visible{outline:3px solid #ffd98e;outline-offset:5px}
+.label{font-size:.78rem;letter-spacing:.12em;color:#b1c6d1}
+.intro{max-width:760px;color:#c7d6de}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:18px;margin:30px 0}
+article{padding:23px;border:1px solid #3a505d;border-radius:16px;background:#192630}
+nav{line-height:2.1}
+.notice{border-left:4px solid #ffd98e;padding:12px 20px;background:#202c35}
+footer{margin-top:35px;color:#c7d6de}
+</style>
+</head>
+<body>
+<main>
+<p class="label">AQARION / RESEARCH ARTIFACTS / OCTOBER 18, 2026</p>
+<h1>Quotients and<br>observable closure.</h1>
+<p class="intro">When does a smaller description preserve finite dynamics?
+Inspect bounded exact tests, concrete failure witnesses, and an
+instance-specific minimal-closure certificate.</p>
+<nav>
+<a href="README.md">Research overview</a> ·
+<a href="TEST-INVENTORY.md">Complete session inventory</a>
+</nav>
+<p class="notice">Static artifact landing page. Recorded results, not a
+live test runner. No novelty, universal correctness, or Lean certification
+is claimed. Deployment has not been established by creating this file.</p>
+<section class="grid" aria-label="Recorded experiments">
+<article><p class=label>RECORDED RUN</p><h2>001 / Quotient agreement</h2><p>3,984 map-partition cases; zero disagreements.</p><nav><a href="quotient-audit-001/quotient_audit.py">Source</a> · <a href="quotient-audit-001/report.json">Report</a> · <a href="quotient-audit-001/SHA256SUMS">Checksums</a> · <a href="quotient-audit-001/exit-status.txt">Exit</a></nav></article><article><p class=label>RECORDED RUN</p><h2>002 / Mutation detection</h2><p>144 cases; three selected implementation mistakes detected.</p><nav><a href="quotient-followup-002/mutation_audit.py">Source</a> · <a href="quotient-followup-002/report.json">Report</a> · <a href="quotient-followup-002/SHA256SUMS">Checksums</a> · <a href="quotient-followup-002/exit-status.txt">Exit</a></nav></article><article><p class=label>RECORDED RUN</p><h2>003 / Semantic checks</h2><p>144 entrywise and relabeling cases, plus projection and iteration checks.</p><nav><a href="quotient-semantic-003/semantic_audit.py">Source</a> · <a href="quotient-semantic-003/report.json">Report</a> · <a href="quotient-semantic-003/SHA256SUMS">Checksums</a> · <a href="quotient-semantic-003/exit-status.txt">Exit</a></nav></article><article><p class=label>RECORDED RUN</p><h2>004 / Closure certificate</h2><p>One exact minimal-dimension certificate; four selected corruptions rejected.</p><nav><a href="closure-certificate-004/closure_certificate.py">Source</a> · <a href="closure-certificate-004/report.json">Report</a> · <a href="closure-certificate-004/SHA256SUMS">Checksums</a> · <a href="closure-certificate-004/exit-status.txt">Exit</a></nav></article><article><p class=label>RECORDED RUN</p><h2>Synthetic DNA / Separate domain</h2><p>5,460 synthetic sequences; 16,380 property checks. No biological inference.</p><nav><a href="../synthetic-reverse-complement/rc-audit-001/audit.py">Source</a> · <a href="../synthetic-reverse-complement/rc-audit-001/report.json">Report</a> · <a href="../synthetic-reverse-complement/rc-audit-001/SHA256SUMS">Checksums</a> · <a href="../synthetic-reverse-complement/rc-audit-001/exit-status.txt">Exit</a></nav></article>
+</section>
+<h2>Two questions, kept distinct</h2>
+<p>Quotient compatibility asks whether a partition supports well-defined
+dynamics. Linear closure asks for an invariant observable space. Their
+dimensions and refinement measures are not interchangeable.</p>
+<h2>Existing repository tests</h2>
+<p>
+<a href="../../verification/defect-transport/test_closure_profile.py">
+Production closure test source</a>: five tests passed in the session
+transcript.
+<a href="../../verification/defect-transport/closure_profile.py">
+Production implementation</a>.
+</p>
+<h2>What is not bundled yet?</h2>
+<p>The local clip-library tests and personal note store are not copied.
+The production-to-certificate comparison remains terminal-only.
+A browser workbench is future development, not a capability of this page.</p>
+<footer>Evidence-first research. Source, scope, witnesses, and limitations
+remain visible.</footer>
+</main>
+</body>
+</html>

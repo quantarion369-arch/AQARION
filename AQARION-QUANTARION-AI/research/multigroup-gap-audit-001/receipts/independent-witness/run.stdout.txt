@@ -1,0 +1,7 @@
+PASS: binary classes= 8 rank= 4 gap= 4
+  ranks by horizon: [2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+PASS: three_group classes= 8 rank= 5 gap= 3
+  ranks by horizon: [3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+PASS: four_group classes= 8 rank= 5 gap= 3
+  ranks by horizon: [4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+PASS: all three witnesses independently matched.

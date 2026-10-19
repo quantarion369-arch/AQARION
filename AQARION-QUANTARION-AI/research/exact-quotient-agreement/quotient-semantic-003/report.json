@@ -1,0 +1,18 @@
+{
+  "experiment": "quotient semantic audit 003",
+  "status": "PASS",
+  "domain": "all maps and partitions for n=1..3; one reversal per case",
+  "coverage": {
+    "projection_checks": 24,
+    "entry_formula_cases": 144,
+    "relabeling_cases": 144,
+    "constant_checks": 144,
+    "multistep_cases": 108
+  },
+  "failed_checks": 0,
+  "failure_examples": [],
+  "scope": "bounded semantic checks; not independent proof or novelty",
+  "baseline_source_sha256": "d3c5e971c63db8b37ec7f987b1d7c02d05bea186150849319b1439c806bc0708",
+  "source_sha256": "a2a2cc6bbf1f94fab53667cc5f3bacdcc52596695e5309ce6b2b0599d7681a0b",
+  "python_version": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]"
+}

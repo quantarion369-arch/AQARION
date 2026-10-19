@@ -1,0 +1,121 @@
+{
+  "binary_words_checked": 1022,
+  "certificate_corruptions_rejected": 3,
+  "invalid_inputs_rejected": 5,
+  "length18_supports": [
+    {
+      "active": [
+        1,
+        2,
+        9
+      ],
+      "rank": 8,
+      "weight_multiple": 3
+    },
+    {
+      "active": [
+        1,
+        18
+      ],
+      "rank": 7,
+      "weight_multiple": 18
+    },
+    {
+      "active": [
+        1,
+        2,
+        18
+      ],
+      "rank": 8,
+      "weight_multiple": 9
+    }
+  ],
+  "list_tuple_comparisons": 2044,
+  "prime_power_checks": [
+    {
+      "gap": 0,
+      "n": 2
+    },
+    {
+      "gap": 0,
+      "n": 3
+    },
+    {
+      "gap": 1,
+      "n": 4
+    },
+    {
+      "gap": 0,
+      "n": 5
+    },
+    {
+      "gap": 0,
+      "n": 7
+    },
+    {
+      "gap": 3,
+      "n": 8
+    },
+    {
+      "gap": 2,
+      "n": 9
+    },
+    {
+      "gap": 0,
+      "n": 11
+    },
+    {
+      "gap": 0,
+      "n": 13
+    },
+    {
+      "gap": 7,
+      "n": 16
+    },
+    {
+      "gap": 0,
+      "n": 17
+    },
+    {
+      "gap": 0,
+      "n": 19
+    },
+    {
+      "gap": 0,
+      "n": 23
+    },
+    {
+      "gap": 4,
+      "n": 25
+    },
+    {
+      "gap": 8,
+      "n": 27
+    },
+    {
+      "gap": 0,
+      "n": 29
+    },
+    {
+      "gap": 0,
+      "n": 31
+    },
+    {
+      "gap": 15,
+      "n": 32
+    }
+  ],
+  "python": "3.14.4",
+  "result": "PASS",
+  "scope": "standalone arithmetic; not production replay or formal proof",
+  "sympy": "1.14.0",
+  "witness": {
+    "circulant_gap": 10,
+    "kernel_rank": 10,
+    "minor_determinant": -1,
+    "observable_gap": 10,
+    "period": 18,
+    "rank": 8,
+    "word": "101111111010000000"
+  }
+}

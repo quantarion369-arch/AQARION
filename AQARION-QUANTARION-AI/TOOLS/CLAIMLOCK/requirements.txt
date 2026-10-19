@@ -1,0 +1,4 @@
+# CLAIMLOCK gate and required closure-gap replay
+# Direct dependencies; not a transitive lockfile
+jsonschema==4.26.0
+sympy==1.14.0

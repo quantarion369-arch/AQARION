@@ -1,0 +1,186 @@
+{
+  "experiment": "exact quotient agreement 001",
+  "status": "PASS",
+  "arithmetic": "exact rational; no floating-point tolerance",
+  "operator_convention": "column f; K[i,j]=1 iff j=T[i]; D=KP-PKP",
+  "domain": "all maps and set partitions on labeled states for n=1..4",
+  "cases": 3984,
+  "compatible": 1836,
+  "incompatible": 2148,
+  "disagreement_count": 0,
+  "disagreement_examples": [],
+  "expected_case_counts_pass": true,
+  "by_size": [
+    {
+      "states": 1,
+      "maps": 1,
+      "partitions": 1,
+      "cases": 1,
+      "compatible": 1,
+      "incompatible": 0
+    },
+    {
+      "states": 2,
+      "maps": 4,
+      "partitions": 2,
+      "cases": 8,
+      "compatible": 8,
+      "incompatible": 0
+    },
+    {
+      "states": 3,
+      "maps": 27,
+      "partitions": 5,
+      "cases": 135,
+      "compatible": 99,
+      "incompatible": 36
+    },
+    {
+      "states": 4,
+      "maps": 256,
+      "partitions": 15,
+      "cases": 3840,
+      "compatible": 1728,
+      "incompatible": 2112
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "proper_quotient",
+      "passed": true,
+      "expected_compatible": true,
+      "T": [
+        1,
+        2,
+        2
+      ],
+      "labels": [
+        0,
+        0,
+        0
+      ],
+      "witness": null,
+      "quotient": [
+        0
+      ],
+      "D": [
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "name": "incompatible_partition",
+      "passed": true,
+      "expected_compatible": false,
+      "T": [
+        1,
+        2,
+        2
+      ],
+      "labels": [
+        0,
+        0,
+        1
+      ],
+      "witness": {
+        "x": 0,
+        "y": 1,
+        "Tx": 1,
+        "Ty": 2,
+        "input_block": 0,
+        "Tx_block": 0,
+        "Ty_block": 1
+      },
+      "quotient": null,
+      "D": [
+        [
+          "1/4",
+          "1/4",
+          "-1/2"
+        ],
+        [
+          "-1/4",
+          "-1/4",
+          "1/2"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    }
+  ],
+  "first_compatible": {
+    "T": [
+      0
+    ],
+    "labels": [
+      0
+    ],
+    "witness": null,
+    "quotient": [
+      0
+    ],
+    "D": [
+      [
+        "0"
+      ]
+    ]
+  },
+  "first_incompatible": {
+    "T": [
+      0,
+      0,
+      1
+    ],
+    "labels": [
+      0,
+      1,
+      0
+    ],
+    "witness": {
+      "x": 0,
+      "y": 2,
+      "Tx": 0,
+      "Ty": 1,
+      "input_block": 0,
+      "Tx_block": 0,
+      "Ty_block": 1
+    },
+    "quotient": null,
+    "D": [
+      [
+        "1/4",
+        "-1/2",
+        "1/4"
+      ],
+      [
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "-1/4",
+        "1/2",
+        "-1/4"
+      ]
+    ]
+  },
+  "source_sha256": "d3c5e971c63db8b37ec7f987b1d7c02d05bea186150849319b1439c806bc0708",
+  "python_version": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "scope": "bounded implementation cross-check; not a universal or Lean proof"
+}

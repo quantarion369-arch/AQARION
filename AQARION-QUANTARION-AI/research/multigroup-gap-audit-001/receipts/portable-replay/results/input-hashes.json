@@ -1,0 +1,6 @@
+{
+  "prior_artifact_manifest_sha256": "a353fa72228da13fd0782a0addda5f68738a289ac16a236761785aadf6da8dfb",
+  "production_csv_sha256": "716ceaa88682fd61775c58276a31c67e58f02fb1da46d25c2baa19a4030172c0",
+  "production_report_sha256": "540072099649a7b83ca7e8c211037784ace6038ec7eff8891570d663b02f0177",
+  "source_receipt": "/root/AQARION/AQARION-QUANTARION-AI/research/multigroup-gap-audit-001/receipts/production"
+}
