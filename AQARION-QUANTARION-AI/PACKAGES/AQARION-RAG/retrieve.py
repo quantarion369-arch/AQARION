@@ -36,19 +36,50 @@ def stem(w):
             return w[:len(w) - len(suf)]
     return w
 
-def retrieve(query, top_k=3):
-    """Keyword-overlap retrieval against pinned snapshots."""
+def retrieve_cited(query, top_k=3):
+    """Retrieve passages with reconstructible source citations.
+
+    Records contain score, doc, path, commit_sha, passage,
+    char_start, char_end, and one-based rank.
+
+    Character offsets are half-open positions in the decoded text
+    returned by load_at_sha, not byte offsets. Scores and stable
+    ordering preserve the legacy keyword-overlap algorithm.
+    """
     q = set(stem(w) for w in WORD.findall(query.lower()))
     results = []
     for entry in load_manifest():
         text = load_at_sha(entry["path"], entry["sha"])
+        offset = 0
         for para in text.split(PARA_BREAK):
             words = set(stem(w) for w in WORD.findall(para.lower()))
             score = len(q & words)
             if score > 0:
-                results.append((score, entry["doc"], entry["sha"], para.strip()))
-    results.sort(reverse=True, key=lambda r: r[0])
-    return results[:top_k]
+                passage = para.strip()
+                start = offset + len(para) - len(para.lstrip())
+                results.append({
+                    "score": score,
+                    "doc": entry["doc"],
+                    "path": entry["path"],
+                    "commit_sha": entry["sha"],
+                    "passage": passage,
+                    "char_start": start,
+                    "char_end": start + len(passage),
+                })
+            offset += len(para) + len(PARA_BREAK)
+    results.sort(reverse=True, key=lambda item: item["score"])
+    selected = results[:top_k]
+    for rank, item in enumerate(selected, start=1):
+        item["rank"] = rank
+    return selected
+
+
+def retrieve(query, top_k=3):
+    """Preserve the legacy four-element retrieval results."""
+    return [
+        (item["score"], item["doc"], item["commit_sha"], item["passage"])
+        for item in retrieve_cited(query, top_k=top_k)
+    ]
 
 if __name__ == "__main__":
     import sys
