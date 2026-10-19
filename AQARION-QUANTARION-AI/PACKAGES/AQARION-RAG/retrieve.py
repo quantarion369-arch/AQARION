@@ -21,7 +21,13 @@ def load_manifest():
     return rows
 
 def load_at_sha(path, sha):
-    result = subprocess.run(["git", "show", f"{sha}:{path}"], capture_output=True, text=True, check=True)
+    result = subprocess.run(
+        ["git", "show", f"{sha}:{path}"],
+        cwd=Path(__file__).resolve().parent,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
     return result.stdout
 
 def stem(w):
