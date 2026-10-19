@@ -1,0 +1,44 @@
+[
+  {
+    "groups": 1,
+    "max_gap": 0,
+    "partitions": 1,
+    "positive_gap_partitions": 0
+  },
+  {
+    "groups": 2,
+    "max_gap": 3,
+    "partitions": 63,
+    "positive_gap_partitions": 38
+  },
+  {
+    "groups": 3,
+    "max_gap": 2,
+    "partitions": 301,
+    "positive_gap_partitions": 164
+  },
+  {
+    "groups": 4,
+    "max_gap": 2,
+    "partitions": 350,
+    "positive_gap_partitions": 70
+  },
+  {
+    "groups": 5,
+    "max_gap": 1,
+    "partitions": 140,
+    "positive_gap_partitions": 6
+  },
+  {
+    "groups": 6,
+    "max_gap": 0,
+    "partitions": 21,
+    "positive_gap_partitions": 0
+  },
+  {
+    "groups": 7,
+    "max_gap": 0,
+    "partitions": 1,
+    "positive_gap_partitions": 0
+  }
+]

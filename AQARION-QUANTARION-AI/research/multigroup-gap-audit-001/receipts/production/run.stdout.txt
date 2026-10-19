@@ -1,0 +1,34 @@
+RUN DIRECTORY: /root/aqarionz-sandbox/eight-state-multigroup-jla1t1yp
+PROGRESS: 500 / 4140
+PROGRESS: 1000 / 4140
+PROGRESS: 1500 / 4140
+PROGRESS: 2000 / 4140
+PROGRESS: 2500 / 4140
+PROGRESS: 3000 / 4140
+PROGRESS: 3500 / 4140
+PROGRESS: 4000 / 4140
+=== SEVEN-STATE RESULTS BY GROUP COUNT ===
+{'groups': 1, 'partitions': 1, 'max_gap': 0, 'positive_gap_partitions': 0}
+{'groups': 2, 'partitions': 63, 'max_gap': 3, 'positive_gap_partitions': 38}
+{'groups': 3, 'partitions': 301, 'max_gap': 2, 'positive_gap_partitions': 164}
+{'groups': 4, 'partitions': 350, 'max_gap': 2, 'positive_gap_partitions': 70}
+{'groups': 5, 'partitions': 140, 'max_gap': 1, 'positive_gap_partitions': 6}
+{'groups': 6, 'partitions': 21, 'max_gap': 0, 'positive_gap_partitions': 0}
+{'groups': 7, 'partitions': 1, 'max_gap': 0, 'positive_gap_partitions': 0}
+=== EIGHT-STATE RESULTS BY GROUP COUNT ===
+{'groups': 1, 'gap': 0, 'labels': (0, 0, 0, 0, 0, 0, 0, 0), 'stable_classes': 1, 'observable_rank': 1, 'partitions': 1, 'maximizers': 1, 'positive_gap_partitions': 0}
+{'groups': 2, 'gap': 4, 'labels': (0, 0, 1, 1, 0, 0, 1, 1), 'stable_classes': 8, 'observable_rank': 4, 'partitions': 127, 'maximizers': 2, 'positive_gap_partitions': 85}
+{'groups': 3, 'gap': 3, 'labels': (0, 0, 1, 1, 0, 0, 1, 2), 'stable_classes': 8, 'observable_rank': 5, 'partitions': 966, 'maximizers': 30, 'positive_gap_partitions': 672}
+{'groups': 4, 'gap': 3, 'labels': (0, 1, 2, 3, 1, 0, 2, 3), 'stable_classes': 8, 'observable_rank': 5, 'partitions': 1701, 'maximizers': 2, 'positive_gap_partitions': 919}
+{'groups': 5, 'gap': 2, 'labels': (0, 1, 2, 3, 1, 0, 2, 4), 'stable_classes': 8, 'observable_rank': 6, 'partitions': 1050, 'maximizers': 4, 'positive_gap_partitions': 222}
+{'groups': 6, 'gap': 1, 'labels': (0, 0, 1, 1, 2, 3, 4, 5), 'stable_classes': 8, 'observable_rank': 7, 'partitions': 266, 'maximizers': 14, 'positive_gap_partitions': 14}
+{'groups': 7, 'gap': 0, 'labels': (0, 0, 1, 2, 3, 4, 5, 6), 'stable_classes': 8, 'observable_rank': 8, 'partitions': 28, 'maximizers': 28, 'positive_gap_partitions': 0}
+{'groups': 8, 'gap': 0, 'labels': (0, 1, 2, 3, 4, 5, 6, 7), 'stable_classes': 8, 'observable_rank': 8, 'partitions': 1, 'maximizers': 1, 'positive_gap_partitions': 0}
+EIGHT-STATE GAP DISTRIBUTION: {0: 2228, 1: 1517, 2: 349, 3: 44, 4: 2}
+BEST TWO-GROUP GAP: 4
+BEST THREE-OR-MORE-GROUP GAP: 3
+FINDING: MULTIGROUP BELOW BINARY
+PASS: all 4140 partitions evaluated; bounds and fixture checked.
+TEST EXIT: 0
+RECEIPT: /root/aqarionz-sandbox/eight-state-multigroup-jla1t1yp
+NO REPOSITORY EDITS. NO COMMIT OR PUSH.

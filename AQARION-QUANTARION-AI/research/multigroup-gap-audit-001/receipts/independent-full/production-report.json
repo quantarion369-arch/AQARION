@@ -1,0 +1,185 @@
+{
+  "best_binary_gap": 4,
+  "best_multigroup_gap": 3,
+  "by_group_count": [
+    {
+      "gap": 0,
+      "groups": 1,
+      "labels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "maximizers": 1,
+      "observable_rank": 1,
+      "partitions": 1,
+      "positive_gap_partitions": 0,
+      "stable_classes": 1
+    },
+    {
+      "gap": 4,
+      "groups": 2,
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "maximizers": 2,
+      "observable_rank": 4,
+      "partitions": 127,
+      "positive_gap_partitions": 85,
+      "stable_classes": 8
+    },
+    {
+      "gap": 3,
+      "groups": 3,
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        2
+      ],
+      "maximizers": 30,
+      "observable_rank": 5,
+      "partitions": 966,
+      "positive_gap_partitions": 672,
+      "stable_classes": 8
+    },
+    {
+      "gap": 3,
+      "groups": 4,
+      "labels": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        0,
+        2,
+        3
+      ],
+      "maximizers": 2,
+      "observable_rank": 5,
+      "partitions": 1701,
+      "positive_gap_partitions": 919,
+      "stable_classes": 8
+    },
+    {
+      "gap": 2,
+      "groups": 5,
+      "labels": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        0,
+        2,
+        4
+      ],
+      "maximizers": 4,
+      "observable_rank": 6,
+      "partitions": 1050,
+      "positive_gap_partitions": 222,
+      "stable_classes": 8
+    },
+    {
+      "gap": 1,
+      "groups": 6,
+      "labels": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "maximizers": 14,
+      "observable_rank": 7,
+      "partitions": 266,
+      "positive_gap_partitions": 14,
+      "stable_classes": 8
+    },
+    {
+      "gap": 0,
+      "groups": 7,
+      "labels": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "maximizers": 28,
+      "observable_rank": 8,
+      "partitions": 28,
+      "positive_gap_partitions": 0,
+      "stable_classes": 8
+    },
+    {
+      "gap": 0,
+      "groups": 8,
+      "labels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "maximizers": 1,
+      "observable_rank": 8,
+      "partitions": 1,
+      "positive_gap_partitions": 0,
+      "stable_classes": 8
+    }
+  ],
+  "comparison": "MULTIGROUP BELOW BINARY",
+  "distribution": {
+    "0": 2228,
+    "1": 1517,
+    "2": 349,
+    "3": 44,
+    "4": 2
+  },
+  "elapsed_seconds": 5.01,
+  "general_maximum_over_transition_maps_claim": false,
+  "independent_behavioral_validation": false,
+  "independent_rank_validation": false,
+  "partitions_checked": 4140,
+  "python": "3.14.4",
+  "rank_note": "Derived from production stable_size minus gap.",
+  "result": "PASS",
+  "scope": "all partitions of one fixed eight-state transition map",
+  "transition_map": [
+    5,
+    6,
+    6,
+    5,
+    0,
+    2,
+    0,
+    2
+  ]
+}
