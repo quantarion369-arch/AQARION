@@ -19,11 +19,6 @@ jobs:
   verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
-    env:
-      PYTHONDONTWRITEBYTECODE: "1"
-      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
-      EVIDENCE_DIR: ${{ runner.temp }}/aqarion-rag-evidence
-
     steps:
       - name: Check out tested revision with full history
         uses: actions/checkout@v4
@@ -33,7 +28,7 @@ jobs:
 
       - name: Prepare evidence directory
         shell: bash
-        run: mkdir -p "$EVIDENCE_DIR"
+        run: mkdir -p "$RUNNER_TEMP/aqarion-rag-evidence"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -45,6 +40,10 @@ jobs:
 
       - name: Verify pinned sources and run tests
         shell: bash
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+          EVIDENCE_DIR: ${{ runner.temp }}/aqarion-rag-evidence
         run: |
           python - <<'PY'
           import hashlib
@@ -234,6 +233,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: aqarion-rag-evidence-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ env.EVIDENCE_DIR }}/
+          path: ${{ runner.temp }}/aqarion-rag-evidence/
           if-no-files-found: warn
           retention-days: 14
