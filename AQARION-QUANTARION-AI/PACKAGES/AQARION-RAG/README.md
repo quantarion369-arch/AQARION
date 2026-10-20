@@ -1,310 +1,264 @@
-AQARION-RAG
+# AQARION-RAG
 
-Evidence-preserving retrieval and navigation for AQARION research.
+[![AQARION RAG Verification](https://github.com/quantarion369-arch/AQARION/actions/workflows/aqarion-rag-verify.yml/badge.svg?branch=main)](https://github.com/quantarion369-arch/AQARION/actions/workflows/aqarion-rag-verify.yml)
 
-AQARION-RAG is a small research package for locating passages in pinned AQARION source documents and navigating claim and artifact references. It is an evidence-navigation tool, not a mathematical verification authority.
+A local evidence workbench for inspecting pinned research passages, nearby context, and explicitly registered corrections.
 
-Current status
+AQARION-RAG helps you locate and trace evidence. It does not prove mathematical claims, independently validate reported experiments, or guarantee that retrieved material answers a question.
 
-Prototype — implementation and evaluation are in progress.
+## Start here
 
-Implemented in the current source:
+You can:
 
-- A Markdown corpus manifest with a pinned Git commit for each source document.
-- Passage retrieval using lexical term overlap and a simple stemming function.
-- An experimental BM25 ranking helper.
-- Section-based extraction of status labels and artifact hashes.
-- Basic supersession-reference detection and evidence-chain traversal.
-- A local HTTP API for passage search, cited passage search, and claim search.
-- A small known-answer and near-miss evaluation harness.
+- Search passages from Git-revision-pinned source documents.
+- Inspect source paths, commits, exact character offsets, and lexical scores.
+- View immediate neighboring paragraphs separately from ranked results.
+- Discover registered corrections outside the retrieved neighborhood.
+- Inspect reported follow-up evidence with its original limitations.
+- Search preliminary claim records and artifact references.
+- Use the browser interface or the local JSON API.
 
-Not yet established:
+The implementation is a research prototype with tested contracts and a small development corpus, not a complete repository index.
 
-- BM25 as the ranking function used by the main retrieval/API path.
-- A canonical structured claim schema.
-- Complete revision history across multiple source snapshots.
-- Validated graph semantics for all supersession and dependency cases.
-- Broad retrieval-quality measurements over a curated benchmark.
-- Independent reproduction of the RAG execution and evidence receipts.
-- Public deployment or production readiness.
+## Run the browser application
 
-Governing principle
+Requirements: Python 3, Git, and a checkout containing the source revisions named in the corpus manifest. The local HTTP server uses the Python standard library.
 
-Retrieval establishes what a source says.
+For the existing Termux checkout:
 
-Replay establishes what an execution produced.
+```bash
+cd "$HOME/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG"
+python3 -B api.py
+```
 
-Mathematical proof establishes what follows from stated assumptions.
+Leave that terminal running. Open this address in the browser on the same device:
 
-Formal verification establishes what a proof assistant checked.
+```text
+http://127.0.0.1:8765/
+```
 
-AQARION-RAG must never silently convert one category of evidence into another.
+Stop the server with Ctrl+C. If port 8765 is occupied, inspect the existing server instead of starting duplicate instances.
 
-A retrieved passage is not a proof. A test result is not a universal theorem. A source hash is not mathematical validation. A claim's status must be read from the governing evidence record, not inferred from retrieval rank.
+The server binds locally. This is not a public deployment.
 
-Current corpus
+## Try correction-aware evidence search
 
-The corpus manifest is:
+Choose “Passages + context” and search:
 
-"corpus/MANIFEST.md"
+```text
+ALL VERIFIED — three independent checks, all clean.
+```
 
-Each entry identifies a document path and a pinned Git commit. Retrieval loads the document from that commit rather than silently substituting the current working-tree version.
+The registered example preserves the historical statement while exposing:
 
-The manifest currently contains a small corpus. It is not a complete index of the AQARION repository.
+1. Its documented independence/provenance correction.
+2. A separately reported production-source follow-up.
+3. Pinned citations, exact offsets, and expected passage hashes.
+4. The relationship's pending-review status and scope note.
 
-Source-reference terminology
+The correction qualifies provenance; it is not automatically a numerical refutation. The search displays a reported follow-up, rather than executing that experiment.
 
-Use "commit_sha" for the Git commit identifier. If the implementation also records a SHA-256 digest of the document bytes, store it separately as "document_sha256".
+This is explicit relationship tracing, not automatic detection of every correction.
 
-A commit identifier and a document-byte digest are different fields and must not be described interchangeably.
+## Understand the evidence layers
 
-Retrieval behavior
+| Layer | What it provides | What it does not establish |
+|---|---|---|
+| Ranked passages | Lexically matched source text | Sufficient support or truth |
+| Supplementary context | Immediate neighboring paragraphs | That proximity implies support |
+| Related evidence | Explicit registry relationships | Independent approval of interpretation |
+| Reported follow-up | A source's account of an execution | A fresh replay |
+| Tests and CI | Checks of declared implementation contracts | General research correctness |
 
-The current "retrieve()" function:
+Retrieval, recorded execution, mathematical proof, formal verification, and independent reproduction remain separate evidence categories.
 
-1. Tokenizes the query and document passages.
-2. Applies a lightweight suffix-based normalization.
-3. Scores each passage by unique-term overlap.
-4. Returns the highest-scoring passages with a source label, pinned commit identifier, and passage text.
+## Citation contract
 
-The current score is a lexical overlap count. It is not a BM25 score.
+Structured citations identify:
 
-The separate "bm25_search()" helper implements a BM25-style document-ranking function, but the main "retrieve()" function and HTTP search endpoint do not yet use it.
+```text
+path
+commit_sha
+char_start
+char_end
+passage
+rank
+score
+```
 
-The additive retrieve_cited() interface returns path, commit_sha, char_start, char_end, rank, score, passage, and a source label. Character offsets are half-open positions in the decoded snapshot text returned by the loader, not raw-file byte offsets. The reconstruction rule is source_text[char_start:char_end] == passage. Legacy retrieve() behavior is preserved.
+Offsets are half-open positions in decoded snapshot text, not raw-file byte offsets:
 
-Claim and evidence navigation
+```python
+source_text[char_start:char_end] == passage
+```
 
-The current claim parser treats Markdown sections as records and extracts status labels and artifact hashes from text. This is a preliminary parser, not a canonical claim schema.
+A reconstructible citation establishes location, not relevance or claim truth. A Git commit identifier and a SHA-256 file or passage digest are different identifiers.
 
-The graph utilities provide initial support for:
+## HTTP endpoints
 
-- Finding explicit supersession references.
-- Following a supersession chain.
-- Finding records that directly reference an artifact hash.
+All listed routes use GET. Query-string values should be URL-encoded.
 
-These functions are navigation aids. Their outputs must not authorize claim promotion or replace ClaimLock's governing records.
+| Route | Parameters | Purpose |
+|---|---|---|
+| `/` | None | Browser page served from `static/index.html` |
+| `/api/search` | `q` | Legacy top-three passage response |
+| `/api/search/cited` | `q` | Top-three structured passage citations |
+| `/api/search/context` | `q` | Existing context response |
+| `/api/search/evidence` | `q` | Context, related evidence, and diagnostics |
+| `/api/claims` | Optional `status` | Parsed claim listing and count |
+| `/api/claims/search` | `q`, optional `has_artifact=true` | Claim search |
 
-Before graph results are used for governance decisions, the implementation needs stable claim identifiers, validated reference targets, explicit dependency semantics, cycle handling, and adversarial regression tests.
+The claims status filter is a case-insensitive substring filter. The artifact filter is enabled by the literal value `true`.
 
-HTTP API
+The browser uses the evidence route for passage searches. Its response separates:
 
-The current local API is implemented in "api.py" and binds to "127.0.0.1:8765" when run directly.
+```text
+retrieval_context
+related_evidence
+relationship_diagnostics
+```
 
-Available endpoints:
+The context endpoint preserves its existing response contract. Unknown routes return a JSON error with HTTP 404.
 
-- "GET /api/claims"
-- "GET /api/search?q=..."
-- "GET /api/search/cited?q=..."
-- "GET /api/claims/search?q=..."
+## Python context interface
 
-The current server implements API routes only. The file "static/index.html" is a separate browser page and is not served by the current API handler.
+From the package directory:
 
-The interface must render corpus-derived text safely. Endpoint regression tests now cover legacy search compatibility and cited search. Before any external deployment, broaden input validation, establish explicit serving configuration, and perform an appropriate security review.
+```python
+from context import retrieve_with_context
 
-Evaluation
+result = retrieve_with_context("your research question")
+seeds = result["seed_results"]
+neighbors = result["supplementary_context"]
+metadata = result["expansion_metadata"]
+```
 
-The current evaluation harness includes known-answer retrieval cases, near-miss cases, a retrieval abstention case, and a small synthetic BM25 ranking test.
+The function:
 
-These tests are smoke/regression checks. They do not establish corpus-wide retrieval quality, semantic retrieval capability, or the correctness of claims surfaced by search.
+- Preserves the original top-three cited results.
+- Adds the preceding and following nonempty paragraphs in each seed's pinned document.
+- Does not expand recursively.
+- Deduplicates supplementary passages while retaining seed links.
+- Excludes passages already present as seeds.
+- Caps supplementary output at six passages.
+- Reports seed and supplementary character costs.
 
-The next evaluation stage should use a manually labelled query set and report:
+It enforces a passage cap, not a character cap. Character-cap selection was evaluated separately and was not installed as a production default.
 
-- Recall@k.
-- Precision@k.
-- Mean reciprocal rank.
-- Correct source and passage identification.
-- Status-preservation accuracy.
-- Stale/superseded-source handling.
-- Abstention behavior.
-- Conflict detection.
-- Mutation-test detection.
+## Explicit relationships
 
-Retrieval-only tests should remain deterministic wherever possible. Evaluation of generated answers, if added later, must be a separate layer measuring answer support and citation faithfulness.
+`relationships.json` stores revision-bound records. `relationships.py` checks manifest membership, integer offsets, bounds, complete paragraph identity, and expected passage hashes.
 
-Relationship to AQARION tooling
+The current relationship type is `qualifies_provenance`, based on an explicit documented correction. General contradiction detection and definition-distinction relationships are not implemented by that schema.
 
-AQARION-RAG consumes and navigates evidence. It does not replace:
+Locator validation is not interpretation approval. Pending relationships remain candidates. Invalid or unavailable enrichment produces diagnostics rather than being displayed as valid.
 
-- ClaimLock — claim records, evidence classification, dependencies, and promotion governance.
-- Replay — reproducible execution and runtime evidence.
-- ProofGym / verification tools — executable checks and adversarial tests.
-- Lean formalization — proof-assistant checking and axiom/dependency audits.
+Base retrieval is preserved when relationship enrichment reports a failure. No displayed relationship does not establish that no correction exists.
 
-A retrieval result may point to any of these artifacts, but it cannot change their status.
+The browser renders source text using `textContent`, rather than treating it as trusted HTML or Markdown. That is a specific safety measure, not a complete deployment security audit.
 
-Development priorities
+## Corpus and evaluation
 
-1. Reconcile documentation with the actual retrieval implementation.
-2. Integrate the intended ranking function and revise its evaluation.
-3. Strengthen source citations and pinned-source validation.
-4. Replace fragile section parsing with stable structured claim records.
-5. Validate supersession and dependency graph semantics.
-6. Test the HTTP API and browser interface.
-7. Maintain the dedicated RAG CI workflow and inspect its revision-bound receipts.
-8. Expand the corpus only after the source and citation contract is stable.
+The manifest currently pins two source documents:
 
-Reproducibility
+- The evidence ledger.
+- The quadratic-stability witness document.
 
-A reproducible retrieval result should record:
+Referenced production code, receipts, and proof artifacts are not comprehensively indexed. A ledger summary is not a substitute for inspecting the underlying artifact.
 
-- Query and retrieval parameters.
-- Corpus manifest revision.
-- Source commit and path.
-- Stable passage locator.
-- Ranking method and implementation revision.
-- Python/runtime environment.
-- Exact evaluation command and exit code.
-- Expected and observed results.
-- Known limitations.
+The reviewed 24-case development benchmark measures selected supporting passages, not exhaustive relevance judgments or held-out performance.
 
-The presence of a manifest, test file, or receipt does not by itself establish that the current source was executed successfully.
+| Historical policy | Single support | Complete multi-passage support | Evidence groups |
+|---|---:|---:|---:|
+| Original top three | 12/16 | 1/4 | 4/8 |
+| Immediate-neighbor context | 12/16 | 3/4 | 6/8 |
+| Deeper ranking at tested passage allowances | 14/16 | 2/4 | 5/8 |
 
-Scope boundary
+The passage comparison had one allowance shortfall, and character consumption did not match. Adjacency and deeper ranking recovered different evidence; neither was a universal winner.
 
-AQARION-RAG is a research prototype. It is not a general-purpose semantic search engine, an answer-generating agent, a proof system, or a certification service.
+Separate experiments tested supplementary character caps of 0, 500, 1000, and 2000 using whole-passage accept-or-skip selection. They did not select a production default.
 
-The goal is narrower and more useful: make AQARION's existing research evidence easier to find, trace, compare, and reproduce without weakening the distinction between a claim and the evidence supporting it.
+Stop-word and IDF experiments did not replace production ranking. The main retriever remains lexical overlap with lightweight stemming.
 
-## Status update — 2026-10-15
+The M02 label correction is preserved separately from the original baseline report; no retrieval improvement is claimed for relabeling.
 
-Retrieval plus fixture-bound assessment is wired through `wire_assess.py` and was verified in Termux on 2026-10-14. Witness parameters remain fixture-defined. Corpus-derived witness extraction, general automatic refutation from retrieved documents, and broader end-to-end validation remain open.
+- [Development evidence and limitations](benchmarks/evidence/2026-10-19/README.md)
+- [Reviewed benchmark cases](benchmarks/cases.json)
+- [Historical evidence checksums](benchmarks/SHA256SUMS)
 
-## Measured development checkpoint — 2026-10-19
+Historical scripts retain their original environment assumptions. Reliable semantic abstention, generated-answer evaluation, and independent held-out validation remain unestablished.
 
-The dedicated AQARION RAG Verification workflow succeeded on GitHub for
-commit a77f3dcc46eb89150e3e617f6648c6a49e147fae, run 39346847689.
-The execution uploaded an evidence artifact. This does not establish
-independent reproduction, branch-protection enforcement, or deployment.
+## Tests and CI
 
-The 24-case development benchmark uses the existing two pinned documents.
-Its labels identify selected supporting passages, not exhaustive relevance
-judgments. No corpus-wide precision or recall claim is made.
+[AQARION RAG Verification workflow](../../../.github/workflows/aqarion-rag-verify.yml)
 
-| Variant | Single hit@3 | MRR@3 | Complete multi-passage | Evidence groups |
-|---|---:|---:|---:|---:|
-| Reviewed baseline | 12/16 | 0.6771 | 1/4 | 4/8 |
-| Stop-word experiment | 14/16 | 0.8438 | 0/4 | 3/8 |
-| IDF overlap experiment | 12/16 | 0.7500 | 1/4 | 4/8 |
+The workflow runs on qualifying pushes to main, matching pull requests, and manual dispatch. A feature-branch push alone is not a configured push trigger.
 
-The original baseline reported 0/4 complete multi-passage cases and 3/8
-evidence groups. Review found that M02 omitted a valid alternative supporting
-paragraph. Rescoring the saved results corrected those counts to 1/4 and 4/8.
-No retrieval rerun or ranking change produced that correction.
+The suite covers citation reconstruction, legacy/API compatibility, context boundaries and saved replay, browser-source contracts, relationship validation, and enrichment failure behavior.
 
-Neither experimental ranker replaced production behavior. Citation slices
-reconstructed in the recorded executions, but evidence completeness remains
-weak. Unsupported questions returning passages do not establish answerability.
+Static browser-source checks are not equivalent to comprehensive automated browser testing. Test counts should come from the receipt for the tested revision, not a permanently copied README number.
 
-Preserved reports and experimental scripts are under
-benchmarks/evidence/2026-10-19/. These are historical development receipts.
-They include original local paths. Historical experiment scripts retain their
-original environment assumptions and are not portable entry points.
+With pytest installed, run from the package directory:
 
-The maintained baseline runner reads benchmarks/cases.json and verifies the
-baseline retrieval module and corpus manifest hashes. It does not require
-documentation-only commits to retain the original repository HEAD.
+```bash
+package_dir="$PWD"
+run_dir=$(mktemp -d "$HOME/AQARION-RAG-tests-XXXXXXXX")
 
-Run from any directory, with a fresh output directory outside the checkout:
+(
+  cd "$run_dir" || exit 1
+  PYTHONPATH="$package_dir"   PYTHONDONTWRITEBYTECODE=1   PYTEST_DISABLE_PLUGIN_AUTOLOAD=1     python3 -B -m pytest       -o addopts= -p no:cacheprovider       --junitxml="$run_dir/tests.xml"       "$package_dir/tests"
+)
+```
 
-    python3 -B /path/to/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/benchmarks/retrieval_baseline.py --output-dir /path/outside/checkout/new-results
+The badge reports changing workflow status. It is not a certification of every historical research claim or experiment.
 
-A completed benchmark is not a retrieval-quality pass. No quality threshold
-has been adopted. Generated-answer evaluation and independent held-out
-evaluation remain separate, unperformed tasks.
+## Separate research replay harness
 
-## Immediate-neighbor context experiment
+`research/closure-cost/check_actual_source.py` is a separate mathematical cross-check harness, not a search operation.
 
-At implementation commit 482af5384b280c647f976aa89602c0d99411d56d,
-a local 24-case experiment reproduced every baseline top-three result and
-added the immediately preceding and following nonempty paragraphs from each
-seed's pinned document. Expansion was nonrecursive, deduplicated per query,
-and capped at six supplementary passages.
+At the inspected implementation checkpoint, its repository-root/path construction requires repair and regression coverage. Application CI success does not establish that this standalone harness runs correctly.
 
-Single-passage support remained 12/16. Complete multi-passage support increased
-from 1/4 to 3/4; required evidence-group coverage increased from 4/8 to 6/8.
-M01 and M03 became complete. M04 and the four single-passage misses remained
-unresolved.
+The archived `actual-source-n4.txt` reports 3,984 cases over every map and set partition for 1 <= n <= 4. Reading that receipt is not a fresh execution, general correctness proof, or machine-checked theorem verification.
 
-The experiment added 112 supplementary passage occurrences and 15,983
-characters to 69 seed occurrences and 21,810 seed characters. These are
-per-query totals, not globally unique passage counts. The expanded budget
-must not be presented as an equal-budget ranking improvement.
+## Project layout
 
-All returned citation slices reconstructed. Supplementary passages remain
-context-only, not adjudicated supporting evidence. Unsupported queries also
-received additional context. No answer-generation or abstention validation
-was performed.
+```text
+api.py                 Local HTTP routes and browser serving
+static/index.html      Browser research interface
+retrieve.py            Pinned lexical retrieval and citations
+context.py             Optional immediate-neighbor context
+relationships.json     Explicit relationship registry
+relationships.py       Locator validation and relationship lookup
+claims.py              Preliminary claim parsing/search
+graph.py               Initial graph navigation helpers
+supersedes.py          Prose-derived supersession detection
+corpus/MANIFEST.md     Pinned source inventory
+tests/                 Regression and contract tests
+benchmarks/            Development cases and preserved evidence
+research/              Separate research artifacts and harnesses
+```
 
-The experiment is preserved under benchmarks/evidence/2026-10-19/adjacency/.
-It was executed locally, not by the existing CI benchmark runner.
-No production ranker, legacy API, or deployed endpoint was changed.
+Prose-derived graph navigation is separate from the explicit relationship registry. General graph target-resolution correctness is not established by the correction-tracing feature.
 
-## Optional context module and passage-budget comparison
+## Next work and boundaries
 
-context.retrieve_with_context(query) preserves the original top-three cited
-results and returns immediate paragraph neighbors separately. Expansion is
-nonrecursive, pinned-source-local, deduplicated, and capped at six supplements.
-Each supplementary record retains exact offsets and seed links. Context is
-not adjudicated support. No HTTP context endpoint has been added.
+- Independently review pending relationship interpretations.
+- Add distinct relationships only when their sources justify the type and scope.
+- Repair and test the standalone replay harness before a fresh research replay.
+- Evaluate actual research tasks, not only benchmark scores.
+- Keep AQARION-LEAN proof work and ClaimLock governance separate from RAG.
+- Review authentication, input handling, serving configuration, and security before external deployment.
 
-Tests cover boundaries, repeated text, shared neighbors, seed deduplication,
-document/revision isolation, input preservation, invalid spans, the cap, and
-exact replay of all 24 saved adjacency cases.
+No comprehensive correction coverage, general claim verification, independent reproduction, or public-production readiness is asserted.
 
-The preserved local passage-budget comparison found:
+## Documentation checkpoint and history
 
-| Method | Single supported | Complete multi-passage | Evidence groups | Characters |
-|---|---:|---:|---:|---:|
-| Top three | 12/16 | 1/4 | 4/8 | 21810 |
-| Adjacent context | 12/16 | 3/4 | 6/8 | 37793 |
-| Deeper ranked retrieval | 14/16 | 2/4 | 5/8 | 50051 |
+This README was reconciled against implementation commit:
 
-Deeper retrieval received each query's adjacency passage allowance. L07 had
-two fewer positive-scoring results than its allowance. Character budgets
-were not matched. Counts aggregate passage occurrences across queries.
+```text
+40680eb1bce791dc872c98869552d538f8b20ee3
+```
 
-Adjacency uniquely recovered M03 in this comparison; deeper retrieval
-recovered L06 and Q03. Neither resolved M04. The methods are complementary
-on this development set, not independently validated universal improvements.
+The [previous README](docs/README-HISTORY-before-2026-10-20.md) is preserved verbatim as historical documentation. It contains superseded statements and is not the current operating guide.
 
-Comparison receipts are under benchmarks/evidence/2026-10-19/budget-comparison/.
-Production ranking and existing HTTP response contracts remain unchanged.
-
-## Whole-passage supplementary character-cap experiment
-
-The local experiment replayed all 24 maintained context outputs.
-It compared immediate-neighbor candidates with deeper-ranked candidates
-under supplementary caps of 0, 500, 1000, and 2000 decoded characters.
-Seeds remained unchanged and were excluded from the supplementary cap.
-
-Passages were considered in existing order: accept a whole passage if
-it fits; otherwise skip it and continue. No truncation was performed.
-The maximum allowance matched, but actual consumption did not.
-This is not an optimal-packing, equal-token-cost, or held-out evaluation.
-
-| Cap | Method | Single support | Complete multi | Evidence groups | Extra characters |
-|---:|---|---:|---:|---:|---:|
-| 0 | adjacency | 12/16 | 1/4 | 4/8 | 0 |
-| 0 | deeper | 12/16 | 1/4 | 4/8 | 0 |
-| 500 | adjacency | 12/16 | 2/4 | 5/8 | 8899 |
-| 500 | deeper | 13/16 | 1/4 | 4/8 | 11070 |
-| 1000 | adjacency | 12/16 | 3/4 | 6/8 | 14733 |
-| 1000 | deeper | 14/16 | 2/4 | 5/8 | 22559 |
-| 2000 | adjacency | 12/16 | 3/4 | 6/8 | 15983 |
-| 2000 | deeper | 15/16 | 2/4 | 5/8 | 44670 |
-
-Adjacency recovered M03 at the 500-character cap; deeper ranking did
-not complete M03 at any tested cap. Deeper ranking recovered Q03 at
-500, L06 at 1000, and Q01 at 2000. Q05 and M04 remained unresolved.
-
-Both methods added context to unsupported questions. Added text is not
-adjudicated support, and no generated-answer evaluation was performed.
-No production default was selected and no general superiority is claimed.
-
-The maintained context module is unchanged: it has a six-supplement
-passage cap, not a character cap. Character selection occurred only in
-this experiment. No HTTP context endpoint or hybrid policy was added.
-
-All cap results and selection decisions are preserved under
-benchmarks/evidence/2026-10-19/character-budget/.
+The workbench helps inspect what is recorded, where it came from, and what qualifies it. It does not silently promote retrieved text into a verified conclusion.
