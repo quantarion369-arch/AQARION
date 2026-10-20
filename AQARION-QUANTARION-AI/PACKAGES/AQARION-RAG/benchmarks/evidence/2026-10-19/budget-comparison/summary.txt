@@ -1,0 +1,37 @@
+EXECUTION_STATUS=COMPLETED
+QUALITY_GATE=NOT_DEFINED_DEVELOPMENT_COMPARISON
+SEED_REPLAY_CASES_MATCHED=24
+CHARACTER_BUDGET_MATCHED=False
+SEED_METRICS
+{"multi_cases": 4, "multi_complete": 1, "multi_groups_covered": 4, "multi_groups_required": 8, "single_cases": 16, "single_supported": 12}
+ADJACENCY_METRICS
+{"multi_cases": 4, "multi_complete": 3, "multi_groups_covered": 6, "multi_groups_required": 8, "single_cases": 16, "single_supported": 12}
+DEEPER_METRICS
+{"multi_cases": 4, "multi_complete": 2, "multi_groups_covered": 5, "multi_groups_required": 8, "single_cases": 16, "single_supported": 14}
+BUDGETS
+{"adjacency": {"total_characters": 37793, "total_passage_occurrences": 181}, "deeper": {"total_characters": 50051, "total_passage_occurrences": 179}, "seed": {"total_characters": 21810, "total_passage_occurrences": 69}}
+QUERIES_WITH_DEEPER_SHORTFALL=1
+L01 seed=[True] adjacent=[True] deeper=[True] allowance=8 shortfall=0 chars(adj/deep)=1021/1666
+L02 seed=[True] adjacent=[True] deeper=[True] allowance=7 shortfall=0 chars(adj/deep)=1805/2632
+L03 seed=[True] adjacent=[True] deeper=[True] allowance=6 shortfall=0 chars(adj/deep)=1519/2034
+L04 seed=[True] adjacent=[True] deeper=[True] allowance=7 shortfall=0 chars(adj/deep)=1704/2693
+L05 seed=[True] adjacent=[True] deeper=[True] allowance=9 shortfall=0 chars(adj/deep)=2516/2753
+L06 seed=[False] adjacent=[False] deeper=[True] allowance=9 shortfall=0 chars(adj/deep)=1349/2427
+L07 seed=[True] adjacent=[True] deeper=[True] allowance=9 shortfall=2 chars(adj/deep)=2091/2380
+L08 seed=[True] adjacent=[True] deeper=[True] allowance=8 shortfall=0 chars(adj/deep)=2262/3176
+L09 seed=[True] adjacent=[True] deeper=[True] allowance=7 shortfall=0 chars(adj/deep)=1967/2364
+L10 seed=[True] adjacent=[True] deeper=[True] allowance=9 shortfall=0 chars(adj/deep)=2315/2461
+Q01 seed=[False] adjacent=[False] deeper=[False] allowance=6 shortfall=0 chars(adj/deep)=834/1226
+Q02 seed=[True] adjacent=[True] deeper=[True] allowance=7 shortfall=0 chars(adj/deep)=491/517
+Q03 seed=[False] adjacent=[False] deeper=[True] allowance=9 shortfall=0 chars(adj/deep)=1138/1365
+Q04 seed=[True] adjacent=[True] deeper=[True] allowance=9 shortfall=0 chars(adj/deep)=2017/2644
+Q05 seed=[False] adjacent=[False] deeper=[False] allowance=9 shortfall=0 chars(adj/deep)=2068/2659
+Q06 seed=[True] adjacent=[True] deeper=[True] allowance=9 shortfall=0 chars(adj/deep)=1820/1080
+M01 seed=[True, False] adjacent=[True, True] deeper=[True, True] allowance=8 shortfall=0 chars(adj/deep)=2134/2666
+M02 seed=[True, True] adjacent=[True, True] deeper=[True, True] allowance=7 shortfall=0 chars(adj/deep)=977/2170
+M03 seed=[True, False] adjacent=[True, True] deeper=[True, False] allowance=9 shortfall=0 chars(adj/deep)=1264/2158
+M04 seed=[False, False] adjacent=[False, False] deeper=[False, False] allowance=7 shortfall=0 chars(adj/deep)=1194/2470
+N01 seed=[] adjacent=[] deeper=[] allowance=7 shortfall=0 chars(adj/deep)=2192/2439
+N02 seed=[] adjacent=[] deeper=[] allowance=7 shortfall=0 chars(adj/deep)=1249/2134
+N03 seed=[] adjacent=[] deeper=[] allowance=8 shortfall=0 chars(adj/deep)=1866/1937
+N04 seed=[] adjacent=[] deeper=[] allowance=0 shortfall=0 chars(adj/deep)=0/0

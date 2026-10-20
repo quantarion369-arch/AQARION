@@ -39,3 +39,34 @@ was performed.
 The experiment is preserved under benchmarks/evidence/2026-10-19/adjacency/.
 It was executed locally, not by the existing CI benchmark runner.
 No production ranker, legacy API, or deployed endpoint was changed.
+
+## Optional context module and passage-budget comparison
+
+context.retrieve_with_context(query) preserves the original top-three cited
+results and returns immediate paragraph neighbors separately. Expansion is
+nonrecursive, pinned-source-local, deduplicated, and capped at six supplements.
+Each supplementary record retains exact offsets and seed links. Context is
+not adjudicated support. No HTTP context endpoint has been added.
+
+Tests cover boundaries, repeated text, shared neighbors, seed deduplication,
+document/revision isolation, input preservation, invalid spans, the cap, and
+exact replay of all 24 saved adjacency cases.
+
+The preserved local passage-budget comparison found:
+
+| Method | Single supported | Complete multi-passage | Evidence groups | Characters |
+|---|---:|---:|---:|---:|
+| Top three | 12/16 | 1/4 | 4/8 | 21810 |
+| Adjacent context | 12/16 | 3/4 | 6/8 | 37793 |
+| Deeper ranked retrieval | 14/16 | 2/4 | 5/8 | 50051 |
+
+Deeper retrieval received each query's adjacency passage allowance. L07 had
+two fewer positive-scoring results than its allowance. Character budgets
+were not matched. Counts aggregate passage occurrences across queries.
+
+Adjacency uniquely recovered M03 in this comparison; deeper retrieval
+recovered L06 and Q03. Neither resolved M04. The methods are complementary
+on this development set, not independently validated universal improvements.
+
+Comparison receipts are under benchmarks/evidence/2026-10-19/budget-comparison/.
+Production ranking and existing HTTP response contracts remain unchanged.
