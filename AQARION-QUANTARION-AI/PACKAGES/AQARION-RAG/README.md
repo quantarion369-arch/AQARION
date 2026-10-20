@@ -216,7 +216,7 @@ The badge reports changing workflow status. It is not a certification of every h
 
 `research/closure-cost/check_actual_source.py` is a separate mathematical cross-check harness, not a search operation.
 
-At the inspected implementation checkpoint, its repository-root/path construction requires repair and regression coverage. Application CI success does not establish that this standalone harness runs correctly.
+The harness resolves the production implementation from Git's repository root and the checker/oracle from this package. It validates those files before loading, prints all three SHA-256 identities, and returns failure when checker mismatch or self-check counters are nonzero. Regression tests include an n=1 smoke execution; they do not replay the full historical n<=4 census.
 
 The archived `actual-source-n4.txt` reports 3,984 cases over every map and set partition for 1 <= n <= 4. Reading that receipt is not a fresh execution, general correctness proof, or machine-checked theorem verification.
 
