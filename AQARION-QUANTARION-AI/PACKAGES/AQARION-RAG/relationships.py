@@ -1,5 +1,6 @@
 """Revision-pinned relationship lookup; validation is not review approval."""
 import hashlib
+import subprocess
 import json
 from pathlib import Path
 
@@ -85,9 +86,37 @@ def resolve_related(passages, records=None):
     wanted = {identity(item) for item in passages}
     related, diagnostics = [], []
     if records is None:
-        records = load_relationships()
+        try:
+            records = load_relationships()
+        except (RelationshipError, OSError, ValueError, TypeError,
+                subprocess.SubprocessError) as error:
+            return {
+                "related_evidence": [],
+                "relationship_diagnostics": [{
+                    "relationship_id": "registry",
+                    "status": "unavailable_or_invalid",
+                    "reason": type(error).__name__ + ": " + str(error),
+                }],
+            }
+
+    if not isinstance(records, list):
+        return {
+            "related_evidence": [],
+            "relationship_diagnostics": [{
+                "relationship_id": "registry",
+                "status": "invalid",
+                "reason": "Relationships must be a list",
+            }],
+        }
 
     for record in records:
+        if not isinstance(record, dict):
+            diagnostics.append({
+                "relationship_id": "unknown",
+                "status": "invalid",
+                "reason": "Relationship record must be an object",
+            })
+            continue
         try:
             if record.get("relation") != "qualifies_provenance":
                 raise RelationshipError("Unsupported relationship type")
@@ -130,7 +159,8 @@ def resolve_related(passages, records=None):
                 "supporting_evidence": supporting,
                 "scope_note": record.get("scope_note", ""),
             })
-        except (RelationshipError, KeyError, TypeError, ValueError) as error:
+        except (RelationshipError, KeyError, TypeError, ValueError,
+                OSError, subprocess.SubprocessError) as error:
             diagnostics.append({
                 "relationship_id": record.get("id", "unknown"),
                 "status": "invalid",

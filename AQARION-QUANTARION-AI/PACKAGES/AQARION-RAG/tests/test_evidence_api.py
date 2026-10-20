@@ -97,3 +97,29 @@ def test_enriched_page_uses_safe_text_and_explicit_review_labels():
         "This does not establish that no correction exists.",
     ):
         assert text in page
+
+@pytest.mark.parametrize("failure", ["missing_registry", "invalid_json"])
+def test_registry_failure_preserves_http_retrieval(
+    evidence_get, monkeypatch, failure
+):
+    query = "ALL VERIFIED — three independent checks, all clean."
+    expected = context.retrieve_with_context(query)
+
+    def fail():
+        if failure == "missing_registry":
+            raise FileNotFoundError("injected missing registry")
+        raise json.JSONDecodeError("injected invalid JSON", "{", 1)
+
+    monkeypatch.setattr(relationships, "load_relationships", fail)
+    status, data = evidence_get(
+        "/api/search/evidence?" + urlencode({"q": query})
+    )
+
+    assert status == 200
+    assert data["retrieval_context"] == expected
+    assert data["retrieval_context"]["seed_results"]
+    assert data["related_evidence"] == []
+    assert len(data["relationship_diagnostics"]) == 1
+    diagnostic = data["relationship_diagnostics"][0]
+    assert diagnostic["relationship_id"] == "registry"
+    assert diagnostic["status"] == "unavailable_or_invalid"
