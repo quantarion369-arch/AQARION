@@ -1,0 +1,3387 @@
+{
+  "execution_status": "COMPLETED",
+  "experiment": "immediate_paragraph_neighbors_v1",
+  "rule": {
+    "seed_top_k": 3,
+    "previous_nonempty_paragraphs": 1,
+    "following_nonempty_paragraphs": 1,
+    "recursive": false,
+    "maximum_supplements_per_query": 6,
+    "same_pinned_document_only": true
+  },
+  "quality_gate": "NOT_DEFINED_DEVELOPMENT_EXPERIMENT",
+  "cases": [
+    {
+      "id": "L01",
+      "kind": "single",
+      "query": "Is the evidence ledger a complete claim-level record?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 27,
+            "char_end": 189,
+            "passage": "Status: PARTIAL LEDGER — active evidence entries are recorded below. A complete claim-level schema, artifact-hash coverage, and completeness audit remain pending.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "Status: PARTIAL LEDGER"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 7,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "Status: PARTIAL LEDGER — active evidence entries are recorded below. A complete claim-level schema, artifact-hash coverage, and completeness audit remain pending.",
+          "char_start": 27,
+          "char_end": 189,
+          "rank": 1
+        },
+        {
+          "score": 6,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "This stub is not itself a complete evidence record. Full per-claim entries\nwith hashes, receipts, and scope statements are pending.",
+          "char_start": 818,
+          "char_end": 949,
+          "rank": 2
+        },
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "This ledger will record claim-level evidence: exact statement, hypotheses,\ndeclared domain, evidence type, execution records, artifact hashes,\nindependent reconstruction status, and disposition.",
+          "char_start": 203,
+          "char_end": 397,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 0,
+          "char_end": 25,
+          "passage": "# AQARION Evidence Ledger",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 27,
+              "seed_char_end": 189,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 191,
+          "char_end": 201,
+          "passage": "## Purpose",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 27,
+              "seed_char_end": 189,
+              "direction": "following"
+            },
+            {
+              "seed_rank": 3,
+              "seed_char_start": 203,
+              "seed_char_end": 397,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 448,
+          "char_end": 816,
+          "passage": "| Claim | Evidence type | Test artifact |\n|---|---|---|\n| rank((I-P_j)KP_j) = dim W_{j+1} - dim W_j | [V] | test_closure_profile.py |\n| c_lin <= c_part | [V] | test_partition_repair.py |\n| Defect-rank profile does not determine c_part | [V] + hand verification | test_profile_separation.py |\n| SM003 bounded census replay | [V], clean-checkout | SM003 replay receipt |",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 818,
+              "seed_char_end": 949,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 951,
+          "char_end": 1035,
+          "passage": "## Verification thread — oc(T) witness, product bound, repo cross-check (2026-10-14)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 818,
+              "seed_char_end": 949,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 399,
+          "char_end": 446,
+          "passage": "## Currently verified claims (repository-level)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 203,
+              "seed_char_end": 397,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 487,
+      "supplementary_characters": 534
+    },
+    {
+      "id": "L02",
+      "kind": "single",
+      "query": "Were the original three checks independent implementations?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 2912,
+            "char_end": 3268,
+            "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "\"Three independent checks\" overstated independence"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 6,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "char_start": 2912,
+          "char_end": 3268,
+          "rank": 1
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "char_start": 3270,
+          "char_end": 4047,
+          "rank": 2
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "**Status:** ALL VERIFIED — three independent checks, all clean.",
+          "char_start": 1037,
+          "char_end": 1100,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2781,
+          "char_end": 2910,
+          "passage": "This entry supersedes the provenance wording in the earlier verification\nthread; the original numerical results remain unchanged.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 2912,
+              "seed_char_end": 3268,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 951,
+          "char_end": 1035,
+          "passage": "## Verification thread — oc(T) witness, product bound, repo cross-check (2026-10-14)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 1037,
+              "seed_char_end": 1100,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1102,
+          "char_end": 1457,
+          "passage": "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), Π={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_Π)KP_Π, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 — defect vanishes on V_Π\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 1037,
+              "seed_char_end": 1100,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1196,
+      "supplementary_characters": 609
+    },
+    {
+      "id": "L03",
+      "kind": "single",
+      "query": "What did the actual production-source cross-check execute?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 3270,
+            "char_end": 4047,
+            "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "Execution: user ran the path-specific loader"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 6,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "char_start": 3270,
+          "char_end": 4047,
+          "rank": 1
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "char_start": 2912,
+          "char_end": 3268,
+          "rank": 2
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "## Provenance correction and actual-source check (2026-10-14)",
+          "char_start": 2718,
+          "char_end": 2779,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2781,
+          "char_end": 2910,
+          "passage": "This entry supersedes the provenance wording in the earlier verification\nthread; the original numerical results remain unchanged.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 2912,
+              "seed_char_end": 3268,
+              "direction": "previous"
+            },
+            {
+              "seed_rank": 3,
+              "seed_char_start": 2718,
+              "seed_char_end": 2779,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2561,
+          "char_end": 2716,
+          "passage": "### Next (held)\n- Claude/GPT defect-transport blocker fixes\n- Product bound test integration into main repo test suite\n- Split-signature invariant research",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 2718,
+              "seed_char_end": 2779,
+              "direction": "previous"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1194,
+      "supplementary_characters": 325
+    },
+    {
+      "id": "L04",
+      "kind": "single",
+      "query": "Does the production cross-check establish general correctness?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 3270,
+            "char_end": 4047,
+            "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "Scope: finite-domain agreement"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 6,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "char_start": 3270,
+          "char_end": 4047,
+          "rank": 1
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "char_start": 2912,
+          "char_end": 3268,
+          "rank": 2
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "It does not establish that nested alphabets and common-coordinate feedback\nalone, without the full-product and cardinality hypotheses, are sufficient for\nupper equality.",
+          "char_start": 5061,
+          "char_end": 5230,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2781,
+          "char_end": 2910,
+          "passage": "This entry supersedes the provenance wording in the earlier verification\nthread; the original numerical results remain unchanged.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 2912,
+              "seed_char_end": 3268,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4975,
+          "char_end": 5059,
+          "passage": "upper equality implies the nested-alphabet and common-coordinate feedback\nstructure.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 5061,
+              "seed_char_end": 5230,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 5232,
+          "char_end": 5380,
+          "passage": "The binary all-ones-profile special case remains in\n`research/closure-cost/THEOREM.md`. The extension overview was synchronized in\ncommit `cd77063`.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 5061,
+              "seed_char_end": 5230,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1302,
+      "supplementary_characters": 402
+    },
+    {
+      "id": "L05",
+      "kind": "single",
+      "query": "Was the equality replay byte-for-byte identical to the reported dependency?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 5995,
+            "char_end": 6191,
+            "passage": "**Dependency qualification:** local `prof.py` is a compatible reconstruction, not the Claude-reported dependency (`829be3fc…`). This is a semantic replay, not a hash-verified byte-for-byte replay.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "**Dependency qualification:**"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 6,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "**Dependency qualification:** local `prof.py` is a compatible reconstruction, not the Claude-reported dependency (`829be3fc…`). This is a semantic replay, not a hash-verified byte-for-byte replay.",
+          "char_start": 5995,
+          "char_end": 6191,
+          "rank": 1
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "char_start": 3270,
+          "char_end": 4047,
+          "rank": 2
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "- `dt_check/prof.py` — canonical oracle/census implementation, imported by\n  `dt_check/xcheck.py`.\n- `extensions/closure-cost-equality/replay/prof.py` — distinct documented\n  reconstruction, imported by `extensions/closure-cost-equality/replay/equality_check.py`.\n- Root `prof.py` and\n  `extensions/closure-cost-equality/local-dependency/prof.py` — exact\n  duplicates of the oracle variant, referenced by no importer.",
+          "char_start": 7359,
+          "char_end": 7776,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 5724,
+          "char_end": 5993,
+          "passage": "The corrected all-k equality checker passed locally on both seeds. Both runs reproduced the reported counts exactly: 166,484 exhaustive n<=5 cases per seed, 43,488 attained per seed, matching random, construction, and empty-profile results, with all assertions passing.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 5995,
+              "seed_char_end": 6191,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6193,
+          "char_end": 6399,
+          "passage": "**Theorem status:** paper-level proof complete; exact exhaustive n<=5, sampled n in {8,9}, construction, and empty-profile checks passed locally. Not Lean-formalized and not independently formally reviewed.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 5995,
+              "seed_char_end": 6191,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2912,
+          "char_end": 3268,
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7296,
+          "char_end": 7357,
+          "passage": "The repository previously contained four copies of `prof.py`:",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 7359,
+              "seed_char_end": 7776,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7778,
+          "char_end": 7971,
+          "passage": "The two unreferenced duplicates were removed. The oracle variant remains\ncanonical at `dt_check/prof.py`; the replay reconstruction remains at\n`extensions/closure-cost-equality/replay/prof.py`.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 7359,
+              "seed_char_end": 7776,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1390,
+      "supplementary_characters": 1126
+    },
+    {
+      "id": "L06",
+      "kind": "single",
+      "query": "Was the closure-cost equality theorem Lean-formalized?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 6193,
+            "char_end": 6399,
+            "passage": "**Theorem status:** paper-level proof complete; exact exhaustive n<=5, sampled n in {8,9}, construction, and empty-profile checks passed locally. Not Lean-formalized and not independently formally reviewed.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "**Theorem status:**"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "The binary all-ones-profile special case remains in\n`research/closure-cost/THEOREM.md`. The extension overview was synchronized in\ncommit `cd77063`.",
+          "char_start": 5232,
+          "char_end": 5380,
+          "rank": 1
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output.",
+          "char_start": 4092,
+          "char_end": 4377,
+          "rank": 2
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "`research/closure-cost/GENERAL-FEEDBACK.md` proves that upper equality in the\nclosure-cost product bound implies the full Cartesian-product itinerary-prefix\nstructure, nested coordinate alphabets, and a common-coordinate feedback\ndetermination of the next itinerary letter.",
+          "char_start": 4649,
+          "char_end": 4922,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 5061,
+          "char_end": 5230,
+          "passage": "It does not establish that nested alphabets and common-coordinate feedback\nalone, without the full-product and cardinality hypotheses, are sufficient for\nupper equality.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 5232,
+              "seed_char_end": 5380,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 5382,
+          "char_end": 5572,
+          "passage": "**Open follow-up:** tighten the proof presentation—explicit quotient maps,\nshift-index wording, the Boolean rectangle contradiction, and the precise\nhypotheses required for each implication.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 5232,
+              "seed_char_end": 5380,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 4092,
+              "seed_char_end": 4377,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4379,
+          "char_end": 4509,
+          "passage": "Paper proof is not machine-checked; novelty is not established.\nClaude's complete extended-search artifacts remain pending export.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 4092,
+              "seed_char_end": 4377,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4583,
+          "char_end": 4647,
+          "passage": "**Status:** Paper-level proof present; precision review pending.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 4649,
+              "seed_char_end": 4922,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4924,
+          "char_end": 4973,
+          "passage": "This entry records the direction actually proved:",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 4649,
+              "seed_char_end": 4922,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        false
+      ],
+      "expanded_support": [
+        false
+      ],
+      "seed_characters": 706,
+      "supplementary_characters": 643
+    },
+    {
+      "id": "L07",
+      "kind": "single",
+      "query": "Does zero forward defect imply commutation?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 6636,
+            "char_end": 7108,
+            "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "is forward stability, not commutation"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+          "char_start": 6636,
+          "char_end": 7108,
+          "rank": 1
+        },
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "| Claim | Evidence type | Test artifact |\n|---|---|---|\n| rank((I-P_j)KP_j) = dim W_{j+1} - dim W_j | [V] | test_closure_profile.py |\n| c_lin <= c_part | [V] | test_partition_repair.py |\n| Defect-rank profile does not determine c_part | [V] + hand verification | test_profile_separation.py |\n| SM003 bounded census replay | [V], clean-checkout | SM003 replay receipt |",
+          "char_start": 448,
+          "char_end": 816,
+          "rank": 2
+        },
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), Π={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_Π)KP_Π, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 — defect vanishes on V_Π\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness.",
+          "char_start": 1102,
+          "char_end": 1457,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6565,
+          "char_end": 6634,
+          "passage": "**Status:** Accepted as a framework correction and case verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7110,
+          "char_end": 7225,
+          "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 399,
+          "char_end": 446,
+          "passage": "## Currently verified claims (repository-level)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 448,
+              "seed_char_end": 816,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 818,
+          "char_end": 949,
+          "passage": "This stub is not itself a complete evidence record. Full per-claim entries\nwith hashes, receipts, and scope statements are pending.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 448,
+              "seed_char_end": 816,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1037,
+          "char_end": 1100,
+          "passage": "**Status:** ALL VERIFIED — three independent checks, all clean.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 1102,
+              "seed_char_end": 1457,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1459,
+          "char_end": 1930,
+          "passage": "### 2. Product bound C ≤ s-k ≤ k(∏(1+δ_j)-1)\n- Method: independent oracle (prof.py), exhaustive over all maps and\n  restricted-growth partitions, n≤4\n- Result: 3984 cases, 0 violations\n- Tightness: bound attained at T=(0,0,1,1), Π={{0,2},{1,3}} (s-k = k(2-1) = 2)\n- Negative control: off-by-one bound correctly rejected\n- Cross-check: unittest file (test_profile_partition_bound.py) independently\n  re-derives same result — 4 tests ok, 1 skipped (n=5 deep test, optional)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 1102,
+              "seed_char_end": 1457,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1195,
+      "supplementary_characters": 896
+    },
+    {
+      "id": "L08",
+      "kind": "single",
+      "query": "Were the 18,737 non-bijective checks exhaustive?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 6636,
+            "char_end": 7108,
+            "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "18,737 random non-bijective"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 7,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+          "char_start": 6636,
+          "char_end": 7108,
+          "rank": 1
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Scope qualifier\nAll results are exhaustive for n≤4 (and witness-level for oc(T) at n=3).\nFull oc(T) claim for all (T,Π) still requires the general argument or\nbroader census. n=5 deep test (162,500 cases) available via AQ_DEEP=1,\nnot yet run — non-blocking.",
+          "char_start": 2298,
+          "char_end": 2559,
+          "rank": 2
+        },
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### 2. Product bound C ≤ s-k ≤ k(∏(1+δ_j)-1)\n- Method: independent oracle (prof.py), exhaustive over all maps and\n  restricted-growth partitions, n≤4\n- Result: 3984 cases, 0 violations\n- Tightness: bound attained at T=(0,0,1,1), Π={{0,2},{1,3}} (s-k = k(2-1) = 2)\n- Negative control: off-by-one bound correctly rejected\n- Cross-check: unittest file (test_profile_partition_bound.py) independently\n  re-derives same result — 4 tests ok, 1 skipped (n=5 deep test, optional)",
+          "char_start": 1459,
+          "char_end": 1930,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6565,
+          "char_end": 6634,
+          "passage": "**Status:** Accepted as a framework correction and case verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7110,
+          "char_end": 7225,
+          "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1932,
+          "char_end": 2296,
+          "passage": "### 3. Repo-vs-oracle cross-check\n- Method: xcheck.py comparing closure_profile_repo.closure_profile against\n  independent prof.profile oracle, exhaustive n≤4\n- Result: 3984 cases, 0 profile mismatches, 0 repo self-check failures\n  (increment identity, monotonicity, telescoping sum all hold)\n- Conclusion: repo implementation validated against independent oracle.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 2298,
+              "seed_char_end": 2559,
+              "direction": "previous"
+            },
+            {
+              "seed_rank": 3,
+              "seed_char_start": 1459,
+              "seed_char_end": 1930,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2561,
+          "char_end": 2716,
+          "passage": "### Next (held)\n- Claude/GPT defect-transport blocker fixes\n- Product bound test integration into main repo test suite\n- Split-signature invariant research",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 2298,
+              "seed_char_end": 2559,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1102,
+          "char_end": 1457,
+          "passage": "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), Π={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_Π)KP_Π, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 — defect vanishes on V_Π\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 1459,
+              "seed_char_end": 1930,
+              "direction": "previous"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1204,
+      "supplementary_characters": 1058
+    },
+    {
+      "id": "L09",
+      "kind": "single",
+      "query": "Where is the canonical oracle implementation of prof.py?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 7359,
+            "char_end": 7776,
+            "passage": "- `dt_check/prof.py` — canonical oracle/census implementation, imported by\n  `dt_check/xcheck.py`.\n- `extensions/closure-cost-equality/replay/prof.py` — distinct documented\n  reconstruction, imported by `extensions/closure-cost-equality/replay/equality_check.py`.\n- Root `prof.py` and\n  `extensions/closure-cost-equality/local-dependency/prof.py` — exact\n  duplicates of the oracle variant, referenced by no importer.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "canonical oracle/census implementation"
+          },
+          {
+            "char_start": 7778,
+            "char_end": 7971,
+            "passage": "The two unreferenced duplicates were removed. The oracle variant remains\ncanonical at `dt_check/prof.py`; the replay reconstruction remains at\n`extensions/closure-cost-equality/replay/prof.py`.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "The two unreferenced duplicates were removed."
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 7,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "- `dt_check/prof.py` — canonical oracle/census implementation, imported by\n  `dt_check/xcheck.py`.\n- `extensions/closure-cost-equality/replay/prof.py` — distinct documented\n  reconstruction, imported by `extensions/closure-cost-equality/replay/equality_check.py`.\n- Root `prof.py` and\n  `extensions/closure-cost-equality/local-dependency/prof.py` — exact\n  duplicates of the oracle variant, referenced by no importer.",
+          "char_start": 7359,
+          "char_end": 7776,
+          "rank": 1
+        },
+        {
+          "score": 6,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "char_start": 3270,
+          "char_end": 4047,
+          "rank": 2
+        },
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "The two unreferenced duplicates were removed. The oracle variant remains\ncanonical at `dt_check/prof.py`; the replay reconstruction remains at\n`extensions/closure-cost-equality/replay/prof.py`.",
+          "char_start": 7778,
+          "char_end": 7971,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7296,
+          "char_end": 7357,
+          "passage": "The repository previously contained four copies of `prof.py`:",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 7359,
+              "seed_char_end": 7776,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2912,
+          "char_end": 3268,
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7973,
+          "char_end": 8095,
+          "passage": "`oc_n10_verify.py` was an unreferenced root-level experiment and was\nrelocated to `research/experiments/oc_n10_verify.py`.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 7778,
+              "seed_char_end": 7971,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1387,
+      "supplementary_characters": 580
+    },
+    {
+      "id": "L10",
+      "kind": "single",
+      "query": "Does the ledger establish novelty or machine-checked proof for the closure-cost paper?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 4379,
+            "char_end": 4509,
+            "passage": "Paper proof is not machine-checked; novelty is not established.\nClaude's complete extended-search artifacts remain pending export.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "Paper proof is not machine-checked; novelty is not established."
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 7,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "char_start": 3270,
+          "char_end": 4047,
+          "rank": 1
+        },
+        {
+          "score": 6,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "Paper proof is not machine-checked; novelty is not established.\nClaude's complete extended-search artifacts remain pending export.",
+          "char_start": 4379,
+          "char_end": 4509,
+          "rank": 2
+        },
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+          "char_start": 6636,
+          "char_end": 7108,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2912,
+          "char_end": 3268,
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4092,
+          "char_end": 4377,
+          "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 4379,
+              "seed_char_end": 4509,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4511,
+          "char_end": 4581,
+          "passage": "## Closure-cost equality extension — general feedback characterization",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 4379,
+              "seed_char_end": 4509,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6565,
+          "char_end": 6634,
+          "passage": "**Status:** Accepted as a framework correction and case verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7110,
+          "char_end": 7225,
+          "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1379,
+      "supplementary_characters": 936
+    },
+    {
+      "id": "Q01",
+      "kind": "single",
+      "query": "How does this fixture define bounded_orbit?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 112,
+            "char_end": 264,
+            "passage": "Definitions:\n- bounded_orbit: the orbit remains with |x| <= 2 for 500 iterations.\n- attracting_fixed_point: a real fixed point x* exists with |2x*| < 1.",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "Definitions:"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 1,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "This ledger will record claim-level evidence: exact statement, hypotheses,\ndeclared domain, evidence type, execution records, artifact hashes,\nindependent reconstruction status, and disposition.",
+          "char_start": 203,
+          "char_end": 397,
+          "rank": 1
+        },
+        {
+          "score": 1,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "| Claim | Evidence type | Test artifact |\n|---|---|---|\n| rank((I-P_j)KP_j) = dim W_{j+1} - dim W_j | [V] | test_closure_profile.py |\n| c_lin <= c_part | [V] | test_partition_repair.py |\n| Defect-rank profile does not determine c_part | [V] + hand verification | test_profile_separation.py |\n| SM003 bounded census replay | [V], clean-checkout | SM003 replay receipt |",
+          "char_start": 448,
+          "char_end": 816,
+          "rank": 2
+        },
+        {
+          "score": 1,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "This stub is not itself a complete evidence record. Full per-claim entries\nwith hashes, receipts, and scope statements are pending.",
+          "char_start": 818,
+          "char_end": 949,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 191,
+          "char_end": 201,
+          "passage": "## Purpose",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 203,
+              "seed_char_end": 397,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 399,
+          "char_end": 446,
+          "passage": "## Currently verified claims (repository-level)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 203,
+              "seed_char_end": 397,
+              "direction": "following"
+            },
+            {
+              "seed_rank": 2,
+              "seed_char_start": 448,
+              "seed_char_end": 816,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 951,
+          "char_end": 1035,
+          "passage": "## Verification thread — oc(T) witness, product bound, repo cross-check (2026-10-14)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 818,
+              "seed_char_end": 949,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        false
+      ],
+      "expanded_support": [
+        false
+      ],
+      "seed_characters": 693,
+      "supplementary_characters": 141
+    },
+    {
+      "id": "Q02",
+      "kind": "single",
+      "query": "How is c = 0.3 classified under the bounded-orbit reading?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 1377,
+            "char_end": 1452,
+            "passage": "The quadratic map with c = 0.3 is unstable under the bounded_orbit reading.",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "The quadratic map with c = 0.3 is unstable"
+          },
+          {
+            "char_start": 352,
+            "char_end": 647,
+            "passage": "| c | bounded_orbit | attracting_fixed_point |\n|---|---|---|\n| -2.0 | true | false |\n| -1.0 | true | false |\n| -0.5 | true | true |\n| 0.0 | true | true |\n| 0.2 | true | true |\n| 0.25 | true | false |\n| 0.3 | false | false |\n| 0.5 | false | false |\n| 1.0 | false | false |\n| 1.5 | false | false |",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "| 0.3 | false | false |"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 7,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "The quadratic map with c = 0.3 is unstable under the bounded_orbit reading.",
+          "char_start": 1377,
+          "char_end": 1452,
+          "rank": 1
+        },
+        {
+          "score": 6,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "The quadratic map with c = -2.0 is stable under the bounded_orbit reading.",
+          "char_start": 923,
+          "char_end": 997,
+          "rank": 2
+        },
+        {
+          "score": 6,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "The quadratic map with c = -1.0 is stable under the bounded_orbit reading.",
+          "char_start": 999,
+          "char_end": 1073,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 1301,
+          "char_end": 1375,
+          "passage": "The quadratic map with c = 0.25 is stable under the bounded_orbit reading.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1377,
+              "seed_char_end": 1452,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 1454,
+          "char_end": 1529,
+          "passage": "The quadratic map with c = 0.5 is unstable under the bounded_orbit reading.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1377,
+              "seed_char_end": 1452,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 876,
+          "char_end": 921,
+          "passage": "## Witness statements (bounded_orbit reading)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 923,
+              "seed_char_end": 997,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 1075,
+          "char_end": 1149,
+          "passage": "The quadratic map with c = -0.5 is stable under the bounded_orbit reading.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 999,
+              "seed_char_end": 1073,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 223,
+      "supplementary_characters": 268
+    },
+    {
+      "id": "Q03",
+      "kind": "single",
+      "query": "Does c = 0.25 have an attracting fixed point according to the fixture?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 352,
+            "char_end": 647,
+            "passage": "| c | bounded_orbit | attracting_fixed_point |\n|---|---|---|\n| -2.0 | true | false |\n| -1.0 | true | false |\n| -0.5 | true | true |\n| 0.0 | true | true |\n| 0.2 | true | true |\n| 0.25 | true | false |\n| 0.3 | false | false |\n| 0.5 | false | false |\n| 1.0 | false | false |\n| 1.5 | false | false |",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "| 0.25 | true | false |"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 4,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "The quadratic map with c = 0.25 is stable under the bounded_orbit reading.",
+          "char_start": 1301,
+          "char_end": 1375,
+          "rank": 1
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+          "char_start": 6636,
+          "char_end": 7108,
+          "rank": 2
+        },
+        {
+          "score": 3,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "Computed evidence for the real quadratic map x -> x^2 + c, starting at x = 0.",
+          "char_start": 33,
+          "char_end": 110,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 1226,
+          "char_end": 1299,
+          "passage": "The quadratic map with c = 0.2 is stable under the bounded_orbit reading.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1301,
+              "seed_char_end": 1375,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 1377,
+          "char_end": 1452,
+          "passage": "The quadratic map with c = 0.3 is unstable under the bounded_orbit reading.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1301,
+              "seed_char_end": 1375,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6565,
+          "char_end": 6634,
+          "passage": "**Status:** Accepted as a framework correction and case verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7110,
+          "char_end": 7225,
+          "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 0,
+          "char_end": 31,
+          "passage": "# Quadratic stability witnesses",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 33,
+              "seed_char_end": 110,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 112,
+          "char_end": 264,
+          "passage": "Definitions:\n- bounded_orbit: the orbit remains with |x| <= 2 for 500 iterations.\n- attracting_fixed_point: a real fixed point x* exists with |2x*| < 1.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 33,
+              "seed_char_end": 110,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        false
+      ],
+      "expanded_support": [
+        false
+      ],
+      "seed_characters": 623,
+      "supplementary_characters": 515
+    },
+    {
+      "id": "Q04",
+      "kind": "single",
+      "query": "What constitutes a witness against universal bounded-orbit stability?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 649,
+            "char_end": 874,
+            "passage": "Method: deterministic recomputation, standard library only, fixed iteration count.\nWitness rule: a row with bounded_orbit = false is a counterexample witness against any universal bounded-orbit stability claim over the reals.",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "Witness rule:"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 7,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "Method: deterministic recomputation, standard library only, fixed iteration count.\nWitness rule: a row with bounded_orbit = false is a counterexample witness against any universal bounded-orbit stability claim over the reals.",
+          "char_start": 649,
+          "char_end": 874,
+          "rank": 1
+        },
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "## Verification thread — oc(T) witness, product bound, repo cross-check (2026-10-14)",
+          "char_start": 951,
+          "char_end": 1035,
+          "rank": 2
+        },
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "char_start": 3270,
+          "char_end": 4047,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 352,
+          "char_end": 647,
+          "passage": "| c | bounded_orbit | attracting_fixed_point |\n|---|---|---|\n| -2.0 | true | false |\n| -1.0 | true | false |\n| -0.5 | true | true |\n| 0.0 | true | true |\n| 0.2 | true | true |\n| 0.25 | true | false |\n| 0.3 | false | false |\n| 0.5 | false | false |\n| 1.0 | false | false |\n| 1.5 | false | false |",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 649,
+              "seed_char_end": 874,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 876,
+          "char_end": 921,
+          "passage": "## Witness statements (bounded_orbit reading)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 649,
+              "seed_char_end": 874,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 818,
+          "char_end": 949,
+          "passage": "This stub is not itself a complete evidence record. Full per-claim entries\nwith hashes, receipts, and scope statements are pending.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 951,
+              "seed_char_end": 1035,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1037,
+          "char_end": 1100,
+          "passage": "**Status:** ALL VERIFIED — three independent checks, all clean.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 951,
+              "seed_char_end": 1035,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2912,
+          "char_end": 3268,
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 1086,
+      "supplementary_characters": 931
+    },
+    {
+      "id": "Q05",
+      "kind": "single",
+      "query": "Is c = -1.0 both bounded and attracting in the fixture?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 352,
+            "char_end": 647,
+            "passage": "| c | bounded_orbit | attracting_fixed_point |\n|---|---|---|\n| -2.0 | true | false |\n| -1.0 | true | false |\n| -0.5 | true | true |\n| 0.0 | true | true |\n| 0.2 | true | true |\n| 0.25 | true | false |\n| 0.3 | false | false |\n| 0.5 | false | false |\n| 1.0 | false | false |\n| 1.5 | false | false |",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "| -1.0 | true | false |"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### 2. Product bound C ≤ s-k ≤ k(∏(1+δ_j)-1)\n- Method: independent oracle (prof.py), exhaustive over all maps and\n  restricted-growth partitions, n≤4\n- Result: 3984 cases, 0 violations\n- Tightness: bound attained at T=(0,0,1,1), Π={{0,2},{1,3}} (s-k = k(2-1) = 2)\n- Negative control: off-by-one bound correctly rejected\n- Cross-check: unittest file (test_profile_partition_bound.py) independently\n  re-derives same result — 4 tests ok, 1 skipped (n=5 deep test, optional)",
+          "char_start": 1459,
+          "char_end": 1930,
+          "rank": 1
+        },
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+          "char_start": 6636,
+          "char_end": 7108,
+          "rank": 2
+        },
+        {
+          "score": 5,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "The quadratic map with c = -1.0 is stable under the bounded_orbit reading.",
+          "char_start": 999,
+          "char_end": 1073,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1102,
+          "char_end": 1457,
+          "passage": "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), Π={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_Π)KP_Π, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 — defect vanishes on V_Π\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1459,
+              "seed_char_end": 1930,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1932,
+          "char_end": 2296,
+          "passage": "### 3. Repo-vs-oracle cross-check\n- Method: xcheck.py comparing closure_profile_repo.closure_profile against\n  independent prof.profile oracle, exhaustive n≤4\n- Result: 3984 cases, 0 profile mismatches, 0 repo self-check failures\n  (increment identity, monotonicity, telescoping sum all hold)\n- Conclusion: repo implementation validated against independent oracle.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1459,
+              "seed_char_end": 1930,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6565,
+          "char_end": 6634,
+          "passage": "**Status:** Accepted as a framework correction and case verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7110,
+          "char_end": 7225,
+          "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 923,
+          "char_end": 997,
+          "passage": "The quadratic map with c = -2.0 is stable under the bounded_orbit reading.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 999,
+              "seed_char_end": 1073,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 1075,
+          "char_end": 1149,
+          "passage": "The quadratic map with c = -0.5 is stable under the bounded_orbit reading.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 999,
+              "seed_char_end": 1073,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        false
+      ],
+      "expanded_support": [
+        false
+      ],
+      "seed_characters": 1017,
+      "supplementary_characters": 1051
+    },
+    {
+      "id": "Q06",
+      "kind": "single",
+      "query": "What initial state is used for these quadratic computations?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 33,
+            "char_end": 110,
+            "passage": "Computed evidence for the real quadratic map x -> x^2 + c, starting at x = 0.",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "starting at x = 0."
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), Π={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_Π)KP_Π, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 — defect vanishes on V_Π\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness.",
+          "char_start": 1102,
+          "char_end": 1457,
+          "rank": 1
+        },
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "**Dependency qualification:** local `prof.py` is a compatible reconstruction, not the Claude-reported dependency (`829be3fc…`). This is a semantic replay, not a hash-verified byte-for-byte replay.",
+          "char_start": 5995,
+          "char_end": 6191,
+          "rank": 2
+        },
+        {
+          "score": 2,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "Computed evidence for the real quadratic map x -> x^2 + c, starting at x = 0.",
+          "char_start": 33,
+          "char_end": 110,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1037,
+          "char_end": 1100,
+          "passage": "**Status:** ALL VERIFIED — three independent checks, all clean.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1102,
+              "seed_char_end": 1457,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1459,
+          "char_end": 1930,
+          "passage": "### 2. Product bound C ≤ s-k ≤ k(∏(1+δ_j)-1)\n- Method: independent oracle (prof.py), exhaustive over all maps and\n  restricted-growth partitions, n≤4\n- Result: 3984 cases, 0 violations\n- Tightness: bound attained at T=(0,0,1,1), Π={{0,2},{1,3}} (s-k = k(2-1) = 2)\n- Negative control: off-by-one bound correctly rejected\n- Cross-check: unittest file (test_profile_partition_bound.py) independently\n  re-derives same result — 4 tests ok, 1 skipped (n=5 deep test, optional)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1102,
+              "seed_char_end": 1457,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 5724,
+          "char_end": 5993,
+          "passage": "The corrected all-k equality checker passed locally on both seeds. Both runs reproduced the reported counts exactly: 166,484 exhaustive n<=5 cases per seed, 43,488 attained per seed, matching random, construction, and empty-profile results, with all assertions passing.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 5995,
+              "seed_char_end": 6191,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6193,
+          "char_end": 6399,
+          "passage": "**Theorem status:** paper-level proof complete; exact exhaustive n<=5, sampled n in {8,9}, construction, and empty-profile checks passed locally. Not Lean-formalized and not independently formally reviewed.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 5995,
+              "seed_char_end": 6191,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 0,
+          "char_end": 31,
+          "passage": "# Quadratic stability witnesses",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 33,
+              "seed_char_end": 110,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 112,
+          "char_end": 264,
+          "passage": "Definitions:\n- bounded_orbit: the orbit remains with |x| <= 2 for 500 iterations.\n- attracting_fixed_point: a real fixed point x* exists with |2x*| < 1.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 33,
+              "seed_char_end": 110,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true
+      ],
+      "expanded_support": [
+        true
+      ],
+      "seed_characters": 628,
+      "supplementary_characters": 1192
+    },
+    {
+      "id": "M01",
+      "kind": "multi",
+      "query": "What was wrong with the original provenance description, and what was actually checked afterward?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 2912,
+            "char_end": 3268,
+            "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "\"Three independent checks\" overstated independence"
+          }
+        ],
+        [
+          {
+            "char_start": 3270,
+            "char_end": 4047,
+            "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "Execution: user ran the path-specific loader"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "char_start": 2912,
+          "char_end": 3268,
+          "rank": 1
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar’s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+          "char_start": 6636,
+          "char_end": 7108,
+          "rank": 2
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "## Provenance correction and actual-source check (2026-10-14)",
+          "char_start": 2718,
+          "char_end": 2779,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2781,
+          "char_end": 2910,
+          "passage": "This entry supersedes the provenance wording in the earlier verification\nthread; the original numerical results remain unchanged.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 2912,
+              "seed_char_end": 3268,
+              "direction": "previous"
+            },
+            {
+              "seed_rank": 3,
+              "seed_char_start": 2718,
+              "seed_char_end": 2779,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 3270,
+          "char_end": 4047,
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 2912,
+              "seed_char_end": 3268,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6565,
+          "char_end": 6634,
+          "passage": "**Status:** Accepted as a framework correction and case verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7110,
+          "char_end": 7225,
+          "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2561,
+          "char_end": 2716,
+          "passage": "### Next (held)\n- Claude/GPT defect-transport blocker fixes\n- Product bound test integration into main repo test suite\n- Split-signature invariant research",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 2718,
+              "seed_char_end": 2779,
+              "direction": "previous"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true,
+        false
+      ],
+      "expanded_support": [
+        true,
+        true
+      ],
+      "seed_characters": 889,
+      "supplementary_characters": 1245
+    },
+    {
+      "id": "M02",
+      "kind": "multi",
+      "query": "Does the feedback extension prove an equivalence, or only one implication?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 4975,
+            "char_end": 5059,
+            "passage": "upper equality implies the nested-alphabet and common-coordinate feedback\nstructure.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "upper equality implies the nested-alphabet"
+          },
+          {
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "char_start": 4649,
+            "char_end": 4922,
+            "passage": "`research/closure-cost/GENERAL-FEEDBACK.md` proves that upper equality in the\nclosure-cost product bound implies the full Cartesian-product itinerary-prefix\nstructure, nested coordinate alphabets, and a common-coordinate feedback\ndetermination of the next itinerary letter.",
+            "anchor": "`research/closure-cost/GENERAL-FEEDBACK.md` proves"
+          }
+        ],
+        [
+          {
+            "char_start": 5061,
+            "char_end": 5230,
+            "passage": "It does not establish that nested alphabets and common-coordinate feedback\nalone, without the full-product and cardinality hypotheses, are sufficient for\nupper equality.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "It does not establish that nested alphabets"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "`research/closure-cost/GENERAL-FEEDBACK.md` proves that upper equality in the\nclosure-cost product bound implies the full Cartesian-product itinerary-prefix\nstructure, nested coordinate alphabets, and a common-coordinate feedback\ndetermination of the next itinerary letter.",
+          "char_start": 4649,
+          "char_end": 4922,
+          "rank": 1
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "It does not establish that nested alphabets and common-coordinate feedback\nalone, without the full-product and cardinality hypotheses, are sufficient for\nupper equality.",
+          "char_start": 5061,
+          "char_end": 5230,
+          "rank": 2
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "The binary all-ones-profile special case remains in\n`research/closure-cost/THEOREM.md`. The extension overview was synchronized in\ncommit `cd77063`.",
+          "char_start": 5232,
+          "char_end": 5380,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4583,
+          "char_end": 4647,
+          "passage": "**Status:** Paper-level proof present; precision review pending.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 4649,
+              "seed_char_end": 4922,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4924,
+          "char_end": 4973,
+          "passage": "This entry records the direction actually proved:",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 4649,
+              "seed_char_end": 4922,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4975,
+          "char_end": 5059,
+          "passage": "upper equality implies the nested-alphabet and common-coordinate feedback\nstructure.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 5061,
+              "seed_char_end": 5230,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 5382,
+          "char_end": 5572,
+          "passage": "**Open follow-up:** tighten the proof presentation—explicit quotient maps,\nshift-index wording, the Boolean rectangle contradiction, and the precise\nhypotheses required for each implication.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 5232,
+              "seed_char_end": 5380,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true,
+        true
+      ],
+      "expanded_support": [
+        true,
+        true
+      ],
+      "seed_characters": 590,
+      "supplementary_characters": 387
+    },
+    {
+      "id": "M03",
+      "kind": "multi",
+      "query": "Can the fixture classify an orbit as bounded without an attracting fixed point?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 112,
+            "char_end": 264,
+            "passage": "Definitions:\n- bounded_orbit: the orbit remains with |x| <= 2 for 500 iterations.\n- attracting_fixed_point: a real fixed point x* exists with |2x*| < 1.",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "Definitions:"
+          }
+        ],
+        [
+          {
+            "char_start": 352,
+            "char_end": 647,
+            "passage": "| c | bounded_orbit | attracting_fixed_point |\n|---|---|---|\n| -2.0 | true | false |\n| -1.0 | true | false |\n| -0.5 | true | true |\n| 0.0 | true | true |\n| 0.2 | true | true |\n| 0.25 | true | false |\n| 0.3 | false | false |\n| 0.5 | false | false |\n| 1.0 | false | false |\n| 1.5 | false | false |",
+            "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+            "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+            "anchor": "| -2.0 | true | false |"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 4,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "Definitions:\n- bounded_orbit: the orbit remains with |x| <= 2 for 500 iterations.\n- attracting_fixed_point: a real fixed point x* exists with |2x*| < 1.",
+          "char_start": 112,
+          "char_end": 264,
+          "rank": 1
+        },
+        {
+          "score": 4,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "Method: deterministic recomputation, standard library only, fixed iteration count.\nWitness rule: a row with bounded_orbit = false is a counterexample witness against any universal bounded-orbit stability claim over the reals.",
+          "char_start": 649,
+          "char_end": 874,
+          "rank": 2
+        },
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "`research/closure-cost/GENERAL-FEEDBACK.md` proves that upper equality in the\nclosure-cost product bound implies the full Cartesian-product itinerary-prefix\nstructure, nested coordinate alphabets, and a common-coordinate feedback\ndetermination of the next itinerary letter.",
+          "char_start": 4649,
+          "char_end": 4922,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 33,
+          "char_end": 110,
+          "passage": "Computed evidence for the real quadratic map x -> x^2 + c, starting at x = 0.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 112,
+              "seed_char_end": 264,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 266,
+          "char_end": 350,
+          "passage": "These are two distinct readings of stability. Neither is assumed to imply the other.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 112,
+              "seed_char_end": 264,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 352,
+          "char_end": 647,
+          "passage": "| c | bounded_orbit | attracting_fixed_point |\n|---|---|---|\n| -2.0 | true | false |\n| -1.0 | true | false |\n| -0.5 | true | true |\n| 0.0 | true | true |\n| 0.2 | true | true |\n| 0.25 | true | false |\n| 0.3 | false | false |\n| 0.5 | false | false |\n| 1.0 | false | false |\n| 1.5 | false | false |",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 649,
+              "seed_char_end": 874,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 876,
+          "char_end": 921,
+          "passage": "## Witness statements (bounded_orbit reading)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 649,
+              "seed_char_end": 874,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4583,
+          "char_end": 4647,
+          "passage": "**Status:** Paper-level proof present; precision review pending.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 4649,
+              "seed_char_end": 4922,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4924,
+          "char_end": 4973,
+          "passage": "This entry records the direction actually proved:",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 4649,
+              "seed_char_end": 4922,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        true,
+        false
+      ],
+      "expanded_support": [
+        true,
+        true
+      ],
+      "seed_characters": 650,
+      "supplementary_characters": 614
+    },
+    {
+      "id": "M04",
+      "kind": "multi",
+      "query": "What was established by the equality replay, and what remains unverified?",
+      "accepted_groups": [
+        [
+          {
+            "char_start": 5995,
+            "char_end": 6191,
+            "passage": "**Dependency qualification:** local `prof.py` is a compatible reconstruction, not the Claude-reported dependency (`829be3fc…`). This is a semantic replay, not a hash-verified byte-for-byte replay.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "**Dependency qualification:**"
+          }
+        ],
+        [
+          {
+            "char_start": 6193,
+            "char_end": 6399,
+            "passage": "**Theorem status:** paper-level proof complete; exact exhaustive n<=5, sampled n in {8,9}, construction, and empty-profile checks passed locally. Not Lean-formalized and not independently formally reviewed.",
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "anchor": "**Theorem status:**"
+          }
+        ]
+      ],
+      "seed_results": [
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "- `dt_check/prof.py` — canonical oracle/census implementation, imported by\n  `dt_check/xcheck.py`.\n- `extensions/closure-cost-equality/replay/prof.py` — distinct documented\n  reconstruction, imported by `extensions/closure-cost-equality/replay/equality_check.py`.\n- Root `prof.py` and\n  `extensions/closure-cost-equality/local-dependency/prof.py` — exact\n  duplicates of the oracle variant, referenced by no importer.",
+          "char_start": 7359,
+          "char_end": 7776,
+          "rank": 1
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "It does not establish that nested alphabets and common-coordinate feedback\nalone, without the full-product and cardinality hypotheses, are sufficient for\nupper equality.",
+          "char_start": 5061,
+          "char_end": 5230,
+          "rank": 2
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "The two unreferenced duplicates were removed. The oracle variant remains\ncanonical at `dt_check/prof.py`; the replay reconstruction remains at\n`extensions/closure-cost-equality/replay/prof.py`.",
+          "char_start": 7778,
+          "char_end": 7971,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7296,
+          "char_end": 7357,
+          "passage": "The repository previously contained four copies of `prof.py`:",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 7359,
+              "seed_char_end": 7776,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4975,
+          "char_end": 5059,
+          "passage": "upper equality implies the nested-alphabet and common-coordinate feedback\nstructure.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 5061,
+              "seed_char_end": 5230,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 5232,
+          "char_end": 5380,
+          "passage": "The binary all-ones-profile special case remains in\n`research/closure-cost/THEOREM.md`. The extension overview was synchronized in\ncommit `cd77063`.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 5061,
+              "seed_char_end": 5230,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7973,
+          "char_end": 8095,
+          "passage": "`oc_n10_verify.py` was an unreferenced root-level experiment and was\nrelocated to `research/experiments/oc_n10_verify.py`.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 7778,
+              "seed_char_end": 7971,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [
+        false,
+        false
+      ],
+      "expanded_support": [
+        false,
+        false
+      ],
+      "seed_characters": 779,
+      "supplementary_characters": 415
+    },
+    {
+      "id": "N01",
+      "kind": "unsupported",
+      "query": "What was the conclusion of GitHub Actions run 39346847689?",
+      "accepted_groups": [],
+      "seed_results": [
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Corrections\n- \"Three independent checks\" overstated independence: some checks share\n  implementations and oracle components.\n- The original xcheck.py run tested a reconstructed implementation,\n  not the production source.\n- The unittest suite used the reconstructed implementation and shared\n  components; it was not a third independent implementation.",
+          "char_start": 2912,
+          "char_end": 3268,
+          "rank": 1
+        },
+        {
+          "score": 3,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "char_start": 3270,
+          "char_end": 4047,
+          "rank": 2
+        },
+        {
+          "score": 2,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), Π={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_Π)KP_Π, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 — defect vanishes on V_Π\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness.",
+          "char_start": 1102,
+          "char_end": 1457,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2781,
+          "char_end": 2910,
+          "passage": "This entry supersedes the provenance wording in the earlier verification\nthread; the original numerical results remain unchanged.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 2912,
+              "seed_char_end": 3268,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 3270,
+              "seed_char_end": 4047,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1037,
+          "char_end": 1100,
+          "passage": "**Status:** ALL VERIFIED — three independent checks, all clean.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 1102,
+              "seed_char_end": 1457,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1459,
+          "char_end": 1930,
+          "passage": "### 2. Product bound C ≤ s-k ≤ k(∏(1+δ_j)-1)\n- Method: independent oracle (prof.py), exhaustive over all maps and\n  restricted-growth partitions, n≤4\n- Result: 3984 cases, 0 violations\n- Tightness: bound attained at T=(0,0,1,1), Π={{0,2},{1,3}} (s-k = k(2-1) = 2)\n- Negative control: off-by-one bound correctly rejected\n- Cross-check: unittest file (test_profile_partition_bound.py) independently\n  re-derives same result — 4 tests ok, 1 skipped (n=5 deep test, optional)",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 1102,
+              "seed_char_end": 1457,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [],
+      "expanded_support": [],
+      "seed_characters": 1488,
+      "supplementary_characters": 704
+    },
+    {
+      "id": "N02",
+      "kind": "unsupported",
+      "query": "Which Lean axioms were reported by the closure-cost equality theorem's formal axiom audit?",
+      "accepted_groups": [],
+      "seed_results": [
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output.",
+          "char_start": 4092,
+          "char_end": 4377,
+          "rank": 1
+        },
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "- `dt_check/prof.py` — canonical oracle/census implementation, imported by\n  `dt_check/xcheck.py`.\n- `extensions/closure-cost-equality/replay/prof.py` — distinct documented\n  reconstruction, imported by `extensions/closure-cost-equality/replay/equality_check.py`.\n- Root `prof.py` and\n  `extensions/closure-cost-equality/local-dependency/prof.py` — exact\n  duplicates of the oracle variant, referenced by no importer.",
+          "char_start": 7359,
+          "char_end": 7776,
+          "rank": 2
+        },
+        {
+          "score": 5,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "The two unreferenced duplicates were removed. The oracle variant remains\ncanonical at `dt_check/prof.py`; the replay reconstruction remains at\n`extensions/closure-cost-equality/replay/prof.py`.",
+          "char_start": 7778,
+          "char_end": 7971,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4049,
+          "char_end": 4090,
+          "passage": "## Closure-cost proof and audit artifacts",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 4092,
+              "seed_char_end": 4377,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4379,
+          "char_end": 4509,
+          "passage": "Paper proof is not machine-checked; novelty is not established.\nClaude's complete extended-search artifacts remain pending export.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 4092,
+              "seed_char_end": 4377,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7296,
+          "char_end": 7357,
+          "passage": "The repository previously contained four copies of `prof.py`:",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 7359,
+              "seed_char_end": 7776,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7973,
+          "char_end": 8095,
+          "passage": "`oc_n10_verify.py` was an unreferenced root-level experiment and was\nrelocated to `research/experiments/oc_n10_verify.py`.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 7778,
+              "seed_char_end": 7971,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [],
+      "expanded_support": [],
+      "seed_characters": 895,
+      "supplementary_characters": 354
+    },
+    {
+      "id": "N03",
+      "kind": "unsupported",
+      "query": "What exact numerical value does the c = 0.5 orbit have at iteration 500?",
+      "accepted_groups": [],
+      "seed_results": [
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### 2. Product bound C ≤ s-k ≤ k(∏(1+δ_j)-1)\n- Method: independent oracle (prof.py), exhaustive over all maps and\n  restricted-growth partitions, n≤4\n- Result: 3984 cases, 0 violations\n- Tightness: bound attained at T=(0,0,1,1), Π={{0,2},{1,3}} (s-k = k(2-1) = 2)\n- Negative control: off-by-one bound correctly rejected\n- Cross-check: unittest file (test_profile_partition_bound.py) independently\n  re-derives same result — 4 tests ok, 1 skipped (n=5 deep test, optional)",
+          "char_start": 1459,
+          "char_end": 1930,
+          "rank": 1
+        },
+        {
+          "score": 4,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "### Scope qualifier\nAll results are exhaustive for n≤4 (and witness-level for oc(T) at n=3).\nFull oc(T) claim for all (T,Π) still requires the general argument or\nbroader census. n=5 deep test (162,500 cases) available via AQ_DEEP=1,\nnot yet run — non-blocking.",
+          "char_start": 2298,
+          "char_end": 2559,
+          "rank": 2
+        },
+        {
+          "score": 4,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "Computed evidence for the real quadratic map x -> x^2 + c, starting at x = 0.",
+          "char_start": 33,
+          "char_end": 110,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1102,
+          "char_end": 1457,
+          "passage": "### 1. oc(T) witness rank check\n- Witness: T=(0,1,0), Π={{0,1},{2}}, n=3\n- Method: exact rational computation of D=(I-P_Π)KP_Π, pure Python (no sympy)\n- Result: D = zero matrix, rank 0 — defect vanishes on V_Π\n- Conclusion: \"counterexample\" in independent_exhaustive_check.py is invalid;\n  Claude's rank-0 audit confirmed. oc(T) unrefuted at this witness.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1459,
+              "seed_char_end": 1930,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 1932,
+          "char_end": 2296,
+          "passage": "### 3. Repo-vs-oracle cross-check\n- Method: xcheck.py comparing closure_profile_repo.closure_profile against\n  independent prof.profile oracle, exhaustive n≤4\n- Result: 3984 cases, 0 profile mismatches, 0 repo self-check failures\n  (increment identity, monotonicity, telescoping sum all hold)\n- Conclusion: repo implementation validated against independent oracle.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 1459,
+              "seed_char_end": 1930,
+              "direction": "following"
+            },
+            {
+              "seed_rank": 2,
+              "seed_char_start": 2298,
+              "seed_char_end": 2559,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 2561,
+          "char_end": 2716,
+          "passage": "### Next (held)\n- Claude/GPT defect-transport blocker fixes\n- Product bound test integration into main repo test suite\n- Split-signature invariant research",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 2298,
+              "seed_char_end": 2559,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 0,
+          "char_end": 31,
+          "passage": "# Quadratic stability witnesses",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 33,
+              "seed_char_end": 110,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 112,
+          "char_end": 264,
+          "passage": "Definitions:\n- bounded_orbit: the orbit remains with |x| <= 2 for 500 iterations.\n- attracting_fixed_point: a real fixed point x* exists with |2x*| < 1.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 33,
+              "seed_char_end": 110,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "seed_support": [],
+      "expanded_support": [],
+      "seed_characters": 809,
+      "supplementary_characters": 1057
+    },
+    {
+      "id": "N04",
+      "kind": "lexical_no_match",
+      "query": "zzqxv_unindexed_7f3b91",
+      "accepted_groups": [],
+      "seed_results": [],
+      "supplementary_context": [],
+      "seed_support": [],
+      "expanded_support": [],
+      "seed_characters": 0,
+      "supplementary_characters": 0
+    }
+  ],
+  "tested_commit": "482af5384b280c647f976aa89602c0d99411d56d",
+  "reviewed_report_sha256": "431ceaef079b0f80e593e4ff3d34a6a6c7bf3f0c0c1654d68a9c77e5d02b4b71",
+  "input_hashes": {
+    "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py": "f7183bd115ef16dd4b389eed395a18527f8a4dbe8460cc770a81c779682e0502",
+    "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/MANIFEST.md": "a5058360a8a5139ddd129800cb44dd129aa3970517867f029216385b4d9c33a9",
+    "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/benchmarks/cases.json": "c953e374c64ac19605758439a8804575d1fcb30bb9a314c1ca95d47f7ea073f7",
+    "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/benchmarks/evidence/2026-10-19/label-review/reviewed-report.json": "431ceaef079b0f80e593e4ff3d34a6a6c7bf3f0c0c1654d68a9c77e5d02b4b71",
+    "/data/data/com.termux/files/home/AQARION-RAG-adjacency-experiment-zO8PbiZ6/experiment.py": "6d3f2c04be8cd6fc3020a74a614a637bc353e2282c289ae07303adacdb45e16a"
+  },
+  "baseline_replay_cases_matched": 24,
+  "seed_metrics": {
+    "single_supported": 12,
+    "single_cases": 16,
+    "multi_complete": 1,
+    "multi_cases": 4,
+    "multi_groups_covered": 4,
+    "multi_groups_required": 8
+  },
+  "expanded_metrics": {
+    "single_supported": 12,
+    "single_cases": 16,
+    "multi_complete": 3,
+    "multi_cases": 4,
+    "multi_groups_covered": 6,
+    "multi_groups_required": 8
+  },
+  "seed_citations_checked": 69,
+  "supplement_citations_checked": 112,
+  "citation_reconstruction_failures": 0,
+  "budget": {
+    "total_seed_passages": 69,
+    "total_supplementary_passages": 112,
+    "maximum_supplements_for_one_query": 6,
+    "total_seed_characters": 21810,
+    "total_supplementary_characters": 15983
+  }
+}

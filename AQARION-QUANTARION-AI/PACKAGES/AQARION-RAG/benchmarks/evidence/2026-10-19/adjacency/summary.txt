@@ -1,0 +1,48 @@
+EXECUTION_STATUS=COMPLETED
+QUALITY_GATE=NOT_DEFINED_DEVELOPMENT_EXPERIMENT
+BASELINE_REPLAY_CASES_MATCHED=24
+SEED_METRICS
+  single_supported=12
+  single_cases=16
+  multi_complete=1
+  multi_cases=4
+  multi_groups_covered=4
+  multi_groups_required=8
+EXPANDED_METRICS
+  single_supported=12
+  single_cases=16
+  multi_complete=3
+  multi_cases=4
+  multi_groups_covered=6
+  multi_groups_required=8
+BUDGET
+  total_seed_passages=69
+  total_supplementary_passages=112
+  maximum_supplements_for_one_query=6
+  total_seed_characters=21810
+  total_supplementary_characters=15983
+L01 support=[True]->[True] seeds=3 extras=5 extra_chars=534
+L02 support=[True]->[True] seeds=3 extras=4 extra_chars=609
+L03 support=[True]->[True] seeds=3 extras=3 extra_chars=325
+L04 support=[True]->[True] seeds=3 extras=4 extra_chars=402
+L05 support=[True]->[True] seeds=3 extras=6 extra_chars=1126
+L06 support=[False]->[False] seeds=3 extras=6 extra_chars=643
+L07 support=[True]->[True] seeds=3 extras=6 extra_chars=896
+L08 support=[True]->[True] seeds=3 extras=5 extra_chars=1058
+L09 support=[True]->[True] seeds=3 extras=4 extra_chars=580
+L10 support=[True]->[True] seeds=3 extras=6 extra_chars=936
+Q01 support=[False]->[False] seeds=3 extras=3 extra_chars=141
+Q02 support=[True]->[True] seeds=3 extras=4 extra_chars=268
+Q03 support=[False]->[False] seeds=3 extras=6 extra_chars=515
+Q04 support=[True]->[True] seeds=3 extras=6 extra_chars=931
+Q05 support=[False]->[False] seeds=3 extras=6 extra_chars=1051
+Q06 support=[True]->[True] seeds=3 extras=6 extra_chars=1192
+M01 support=[True, False]->[True, True] seeds=3 extras=5 extra_chars=1245
+M02 support=[True, True]->[True, True] seeds=3 extras=4 extra_chars=387
+M03 support=[True, False]->[True, True] seeds=3 extras=6 extra_chars=614
+M04 support=[False, False]->[False, False] seeds=3 extras=4 extra_chars=415
+N01 support=[]->[] seeds=3 extras=4 extra_chars=704
+N02 support=[]->[] seeds=3 extras=4 extra_chars=354
+N03 support=[]->[] seeds=3 extras=5 extra_chars=1057
+N04 support=[]->[] seeds=0 extras=0 extra_chars=0
+CITATION_FAILURES=0

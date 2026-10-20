@@ -212,3 +212,30 @@ Run from any directory, with a fresh output directory outside the checkout:
 A completed benchmark is not a retrieval-quality pass. No quality threshold
 has been adopted. Generated-answer evaluation and independent held-out
 evaluation remain separate, unperformed tasks.
+
+## Immediate-neighbor context experiment
+
+At implementation commit 482af5384b280c647f976aa89602c0d99411d56d,
+a local 24-case experiment reproduced every baseline top-three result and
+added the immediately preceding and following nonempty paragraphs from each
+seed's pinned document. Expansion was nonrecursive, deduplicated per query,
+and capped at six supplementary passages.
+
+Single-passage support remained 12/16. Complete multi-passage support increased
+from 1/4 to 3/4; required evidence-group coverage increased from 4/8 to 6/8.
+M01 and M03 became complete. M04 and the four single-passage misses remained
+unresolved.
+
+The experiment added 112 supplementary passage occurrences and 15,983
+characters to 69 seed occurrences and 21,810 seed characters. These are
+per-query totals, not globally unique passage counts. The expanded budget
+must not be presented as an equal-budget ranking improvement.
+
+All returned citation slices reconstructed. Supplementary passages remain
+context-only, not adjudicated supporting evidence. Unsupported queries also
+received additional context. No answer-generation or abstention validation
+was performed.
+
+The experiment is preserved under benchmarks/evidence/2026-10-19/adjacency/.
+It was executed locally, not by the existing CI benchmark runner.
+No production ranker, legacy API, or deployed endpoint was changed.
