@@ -5,6 +5,7 @@ from claims import parse_claims, retrieve_claims
 from retrieve import retrieve, retrieve_cited
 from pathlib import Path
 import context
+import relationships
 
 class Handler(BaseHTTPRequestHandler):
     def _send(self, data, code=200):
@@ -27,6 +28,18 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("X-Content-Type-Options", "nosniff")
             self.end_headers()
             self.wfile.write(body)
+        elif url.path == "/api/search/evidence":
+            q = qs.get("q", [""])[0]
+            retrieval_context = context.retrieve_with_context(q)
+            passages = (
+                retrieval_context["seed_results"]
+                + retrieval_context["supplementary_context"]
+            )
+            enrichment = relationships.resolve_related(passages)
+            self._send({
+                "retrieval_context": retrieval_context,
+                **enrichment,
+            })
         elif url.path == "/api/search/context":
             q = qs.get("q", [""])[0]
             self._send(context.retrieve_with_context(q))

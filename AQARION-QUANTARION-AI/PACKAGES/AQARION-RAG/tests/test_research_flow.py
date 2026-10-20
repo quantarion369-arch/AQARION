@@ -202,7 +202,7 @@ class ResearchFlowTests(unittest.TestCase):
             "id !== requestId",
             "controller.abort()",
             "Context only - support not adjudicated.",
-            "/api/search/context",
+            "/api/search/evidence",
             "/api/claims/search",
             "encodeURIComponent",
         ):

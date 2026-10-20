@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "relationships": [
+    {
+      "id": "CORR-INDEPENDENCE-001",
+      "relation": "qualifies_provenance",
+      "source_basis": "explicit_documented_correction",
+      "review_status": "pending",
+      "review_note": "Locator record and interpretation await independent review.",
+      "subject": {
+        "path": "EVIDENCE-LEDGER.md",
+        "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "char_start": 2912,
+        "char_end": 3268,
+        "passage_sha256": "98c0b7dbaadc94f271fe2068b2b6b5506c0c7946a7686a93d3a1e5f756604449"
+      },
+      "object": {
+        "path": "EVIDENCE-LEDGER.md",
+        "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "char_start": 1037,
+        "char_end": 1100,
+        "passage_sha256": "67366adb87b3ee5248e84512f9ca9ed7f66fd90f5efe282c0ccd6872a86f8d29"
+      },
+      "supporting_evidence": [
+        {
+          "role": "reported_follow_up_check",
+          "anchor": {
+            "path": "EVIDENCE-LEDGER.md",
+            "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+            "char_start": 3270,
+            "char_end": 4047,
+            "passage_sha256": "b3c6aa67f0a3c226eac6c8a18c1c1b1de16ae8180287cb203e35b36ddeb07a3b"
+          }
+        }
+      ],
+      "scope_note": "Qualifies independence/provenance wording, not a numerical refutation. The ledger states that the original numerical results remain unchanged. The follow-up passage reports a check for 1 <= n <= 4; it is not a fresh execution or a general correctness proof."
+    }
+  ]
+}

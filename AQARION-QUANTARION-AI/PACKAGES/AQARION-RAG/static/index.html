@@ -153,6 +153,80 @@ function renderClaims(data) {
   }
 }
 
+function relatedCitation(item, heading) {
+  const card = node("article");
+  card.append(node("h3", heading));
+  card.append(node("div", "Source: " + item.path, "metadata"));
+  card.append(node("div", "Pinned commit: " + item.commit_sha, "metadata"));
+  card.append(node("div",
+    "Character offsets [" + item.char_start + ", " + item.char_end +
+    ") - decoded text, end exclusive", "metadata"));
+  card.append(node("div",
+    "Passage SHA-256: " + item.passage_sha256, "metadata"));
+
+  const url = sourceURL(item);
+  if (url) {
+    const link = node("a", "Open source at pinned revision");
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    card.append(link);
+  }
+  card.append(node("p", item.passage, "passage"));
+  return card;
+}
+
+function renderEvidence(data) {
+  renderPassages(data.retrieval_context);
+  out.append(node("h2", "Related corrections / qualifications"));
+  out.append(node("p",
+    "Explicit registry links, separate from ranking and immediate neighbors. " +
+    "Locator validation does not establish interpretation or claim truth.",
+    "muted"));
+
+  const items = data.related_evidence || [];
+  if (!items.length) {
+    out.append(node("p",
+      "No validated registry links matched these returned passages. " +
+      "This does not establish that no correction exists."));
+  }
+
+  for (const item of items) {
+    const group = node("section");
+    group.append(node("h3", item.id));
+    const label = item.review_status === "approved" ?
+      "Review recorded in registry - not independent verification by this interface." :
+      "Documented correction - review pending. Candidate relationship.";
+    group.append(node("p", label, "warning"));
+    group.append(node("div",
+      "Relation: " + item.relation +
+      " | Locator validation: " + item.locator_validation, "metadata"));
+    if (item.review_note) {
+      group.append(node("p", item.review_note, "muted"));
+    }
+    group.append(relatedCitation(item.object, "Original statement - historical wording"));
+    group.append(relatedCitation(item.subject, "Documented correction / qualification"));
+    for (const evidence of item.supporting_evidence || []) {
+      group.append(relatedCitation(
+        evidence.citation, "Reported follow-up - not executed by this search"
+      ));
+      group.append(node("div", "Evidence role: " + evidence.role, "metadata"));
+    }
+    group.append(node("p", item.scope_note, "warning"));
+    out.append(group);
+  }
+
+  const diagnostics = data.relationship_diagnostics || [];
+  if (diagnostics.length) {
+    out.append(node("h3", "Relationship validation warnings"));
+    for (const diagnostic of diagnostics) {
+      out.append(node("p",
+        diagnostic.relationship_id + ": " + diagnostic.reason +
+        ". This relationship was not displayed as valid.", "error"));
+    }
+  }
+}
+
 async function search() {
   const id = ++requestId;
   if (controller) controller.abort();
@@ -169,7 +243,7 @@ async function search() {
 
   status.textContent = "Searching...";
   const endpoint = selectedMode === "claims" ?
-    "/api/claims/search" : "/api/search/context";
+    "/api/claims/search" : "/api/search/evidence";
 
   try {
     const response = await fetch(endpoint + "?q=" + encodeURIComponent(query),
@@ -180,7 +254,7 @@ async function search() {
     if (id !== requestId) return;
     out.replaceChildren();
     if (selectedMode === "claims") renderClaims(data);
-    else renderPassages(data);
+    else renderEvidence(data);
     status.textContent = "Search complete.";
   } catch (error) {
     if (id !== requestId || error.name === "AbortError") return;
