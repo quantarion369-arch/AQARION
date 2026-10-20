@@ -1,0 +1,48 @@
+EXECUTION_STATUS=COMPLETED
+QUALITY_GATE=NOT_DEFINED_DEVELOPMENT_COMPARISON
+CONTEXT_REPLAY_CASES_MATCHED=24
+EXACT_CONSUMPTION_MATCHED=False
+SUPPLEMENTARY_CAP=0
+ADJACENCY {"multi_cases": 4, "multi_complete": 1, "multi_groups_covered": 4, "multi_groups_required": 8, "single_cases": 16, "single_supported": 12, "supplementary_characters": 0, "supplementary_passage_occurrences": 0, "unsupported_query_supplementary_characters": 0}
+DEEPER {"multi_cases": 4, "multi_complete": 1, "multi_groups_covered": 4, "multi_groups_required": 8, "single_cases": 16, "single_supported": 12, "supplementary_characters": 0, "supplementary_passage_occurrences": 0, "unsupported_query_supplementary_characters": 0}
+L06 seed=[False] adj=[False] deep=[False] extra_chars=0/0
+Q01 seed=[False] adj=[False] deep=[False] extra_chars=0/0
+Q03 seed=[False] adj=[False] deep=[False] extra_chars=0/0
+Q05 seed=[False] adj=[False] deep=[False] extra_chars=0/0
+M01 seed=[True, False] adj=[True, False] deep=[True, False] extra_chars=0/0
+M02 seed=[True, True] adj=[True, True] deep=[True, True] extra_chars=0/0
+M03 seed=[True, False] adj=[True, False] deep=[True, False] extra_chars=0/0
+M04 seed=[False, False] adj=[False, False] deep=[False, False] extra_chars=0/0
+SUPPLEMENTARY_CAP=500
+ADJACENCY {"multi_cases": 4, "multi_complete": 2, "multi_groups_covered": 5, "multi_groups_required": 8, "single_cases": 16, "single_supported": 12, "supplementary_characters": 8899, "supplementary_passage_occurrences": 79, "unsupported_query_supplementary_characters": 973}
+DEEPER {"multi_cases": 4, "multi_complete": 1, "multi_groups_covered": 4, "multi_groups_required": 8, "single_cases": 16, "single_supported": 13, "supplementary_characters": 11070, "supplementary_passage_occurrences": 76, "unsupported_query_supplementary_characters": 1430}
+L06 seed=[False] adj=[False] deep=[False] extra_chars=464/487
+Q01 seed=[False] adj=[False] deep=[False] extra_chars=141/484
+Q03 seed=[False] adj=[False] deep=[True] extra_chars=363/496
+Q05 seed=[False] adj=[False] deep=[False] extra_chars=498/491
+M01 seed=[True, False] adj=[True, False] deep=[True, False] extra_chars=468/488
+M02 seed=[True, True] adj=[True, True] deep=[True, True] extra_chars=387/472
+M03 seed=[True, False] adj=[True, True] deep=[True, False] extra_chars=456/457
+M04 seed=[False, False] adj=[False, False] deep=[False, False] extra_chars=415/498
+SUPPLEMENTARY_CAP=1000
+ADJACENCY {"multi_cases": 4, "multi_complete": 3, "multi_groups_covered": 6, "multi_groups_required": 8, "single_cases": 16, "single_supported": 12, "supplementary_characters": 14733, "supplementary_passage_occurrences": 105, "unsupported_query_supplementary_characters": 1963}
+DEEPER {"multi_cases": 4, "multi_complete": 2, "multi_groups_covered": 5, "multi_groups_required": 8, "single_cases": 16, "single_supported": 14, "supplementary_characters": 22559, "supplementary_passage_occurrences": 130, "unsupported_query_supplementary_characters": 2966}
+L06 seed=[False] adj=[False] deep=[True] extra_chars=643/985
+Q01 seed=[False] adj=[False] deep=[False] extra_chars=141/943
+Q03 seed=[False] adj=[False] deep=[True] extra_chars=515/965
+Q05 seed=[False] adj=[False] deep=[False] extra_chars=977/1000
+M01 seed=[True, False] adj=[True, True] deep=[True, True] extra_chars=975/996
+M02 seed=[True, True] adj=[True, True] deep=[True, True] extra_chars=387/994
+M03 seed=[True, False] adj=[True, True] deep=[True, False] extra_chars=614/1000
+M04 seed=[False, False] adj=[False, False] deep=[False, False] extra_chars=415/998
+SUPPLEMENTARY_CAP=2000
+ADJACENCY {"multi_cases": 4, "multi_complete": 3, "multi_groups_covered": 6, "multi_groups_required": 8, "single_cases": 16, "single_supported": 12, "supplementary_characters": 15983, "supplementary_passage_occurrences": 112, "unsupported_query_supplementary_characters": 2115}
+DEEPER {"multi_cases": 4, "multi_complete": 2, "multi_groups_covered": 5, "multi_groups_required": 8, "single_cases": 16, "single_supported": 15, "supplementary_characters": 44670, "supplementary_passage_occurrences": 211, "unsupported_query_supplementary_characters": 5948}
+L06 seed=[False] adj=[False] deep=[True] extra_chars=643/1961
+Q01 seed=[False] adj=[False] deep=[True] extra_chars=141/1936
+Q03 seed=[False] adj=[False] deep=[True] extra_chars=515/1961
+Q05 seed=[False] adj=[False] deep=[False] extra_chars=1051/1997
+M01 seed=[True, False] adj=[True, True] deep=[True, True] extra_chars=1245/1977
+M02 seed=[True, True] adj=[True, True] deep=[True, True] extra_chars=387/1983
+M03 seed=[True, False] adj=[True, True] deep=[True, False] extra_chars=614/1993
+M04 seed=[False, False] adj=[False, False] deep=[False, False] extra_chars=415/1981

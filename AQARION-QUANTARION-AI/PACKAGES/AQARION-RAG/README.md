@@ -270,3 +270,41 @@ on this development set, not independently validated universal improvements.
 
 Comparison receipts are under benchmarks/evidence/2026-10-19/budget-comparison/.
 Production ranking and existing HTTP response contracts remain unchanged.
+
+## Whole-passage supplementary character-cap experiment
+
+The local experiment replayed all 24 maintained context outputs.
+It compared immediate-neighbor candidates with deeper-ranked candidates
+under supplementary caps of 0, 500, 1000, and 2000 decoded characters.
+Seeds remained unchanged and were excluded from the supplementary cap.
+
+Passages were considered in existing order: accept a whole passage if
+it fits; otherwise skip it and continue. No truncation was performed.
+The maximum allowance matched, but actual consumption did not.
+This is not an optimal-packing, equal-token-cost, or held-out evaluation.
+
+| Cap | Method | Single support | Complete multi | Evidence groups | Extra characters |
+|---:|---|---:|---:|---:|---:|
+| 0 | adjacency | 12/16 | 1/4 | 4/8 | 0 |
+| 0 | deeper | 12/16 | 1/4 | 4/8 | 0 |
+| 500 | adjacency | 12/16 | 2/4 | 5/8 | 8899 |
+| 500 | deeper | 13/16 | 1/4 | 4/8 | 11070 |
+| 1000 | adjacency | 12/16 | 3/4 | 6/8 | 14733 |
+| 1000 | deeper | 14/16 | 2/4 | 5/8 | 22559 |
+| 2000 | adjacency | 12/16 | 3/4 | 6/8 | 15983 |
+| 2000 | deeper | 15/16 | 2/4 | 5/8 | 44670 |
+
+Adjacency recovered M03 at the 500-character cap; deeper ranking did
+not complete M03 at any tested cap. Deeper ranking recovered Q03 at
+500, L06 at 1000, and Q01 at 2000. Q05 and M04 remained unresolved.
+
+Both methods added context to unsupported questions. Added text is not
+adjudicated support, and no generated-answer evaluation was performed.
+No production default was selected and no general superiority is claimed.
+
+The maintained context module is unchanged: it has a six-supplement
+passage cap, not a character cap. Character selection occurred only in
+this experiment. No HTTP context endpoint or hybrid policy was added.
+
+All cap results and selection decisions are preserved under
+benchmarks/evidence/2026-10-19/character-budget/.
