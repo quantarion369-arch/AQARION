@@ -3,55 +3,207 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AQARION-RAG — Claim Search</title>
+<title>AQARION-RAG Research Search</title>
 <style>
-:root{--bg:#faf6f0;--panel:#fff;--border:#e2d9cb;--text:#2b2118;--muted:#8a7a66;--accent:#b45309;--accent2:#0e7490;--ok:#15803d;--mono:'SF Mono',Menlo,Consolas,monospace}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 20px}
-.wrap{width:100%;max-width:680px}
-h1{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
-h1 span{color:var(--accent)}
-.sub{color:var(--muted);font-size:.85rem;margin-bottom:24px}
-.search-box{position:relative;margin-bottom:24px}
-input{width:100%;padding:14px 16px 14px 44px;border:1px solid var(--border);border-radius:12px;font-size:1rem;background:var(--panel);color:var(--text);outline:none;transition:border-color .2s}
-input:focus{border-color:var(--accent2)}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1.1rem}
-.claim{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;transition:box-shadow .2s}
-.claim:hover{box-shadow:0 4px 12px rgba(0,0,0,.06)}
-.claim-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
-.section{font-weight:700;font-size:.95rem}
-.status{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.7rem;font-weight:600;font-family:var(--mono);background:rgba(21,128,61,.1);color:var(--ok);border:1px solid rgba(21,128,61,.25)}
-.artifact{color:var(--accent);font-size:.75rem;font-family:var(--mono);margin-bottom:6px}
-.text{color:var(--muted);font-size:.85rem;line-height:1.55}
-.empty{color:var(--muted);text-align:center;padding:40px 0;font-size:.9rem}
-footer{margin-top:auto;padding-top:32px;color:var(--muted);font-size:.75rem;text-align:center}
+*{box-sizing:border-box}
+body{margin:0;background:#faf6f0;color:#2b2118;font:16px/1.6 system-ui,sans-serif}
+main{max-width:900px;margin:auto;padding:24px 16px}
+h1{margin-bottom:0}
+.muted{color:#65594b}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+input{flex:1;min-width:180px}
+input,select,button{font:inherit;padding:10px;border:1px solid #b7aa98;border-radius:8px}
+button{cursor:pointer}
+article{background:white;border:1px solid #d8cdbd;border-radius:10px;padding:16px;margin:12px 0}
+.passage{white-space:pre-wrap;overflow-wrap:anywhere}
+.metadata{font:13px/1.6 monospace;overflow-wrap:anywhere}
+.warning{padding:12px;background:#fff0cc;border-left:4px solid #9b6200}
+a{color:#075d7b}
+.error{color:#a01818}
+#status{min-height:1.6em}
 </style>
 </head>
 <body>
-<div class="wrap">
-<h1>AQARION<span>-RAG</span></h1>
-<div class="sub">Search the claim registry — evidence-aware retrieval</div>
-<div class="search-box">
-<span class="search-icon">⌕</span>
-<input id="q" placeholder="Search claims, theorems, artifacts..." autofocus>
-</div>
-<div id="out"><div class="empty">Loading claims…</div></div>
-</div>
-<footer>AQARION-RAG · Separate from the mathematics verification dashboard</footer>
+<main>
+<h1>AQARION-RAG</h1>
+<p class="muted">Inspect ranked passages and nearby qualifications, or search the claim registry.</p>
+<form id="search" class="controls">
+<label for="mode">Search</label>
+<select id="mode">
+<option value="passages">Passages + context</option>
+<option value="claims">Claims</option>
+</select>
+<label for="q" hidden>Research question</label>
+<input id="q" placeholder="Enter a research question..." autofocus>
+<button type="submit">Search</button>
+</form>
+<p id="status" role="status" aria-live="polite"></p>
+<div id="out"></div>
+<footer class="muted">Retrieval does not establish answerability or claim truth.</footer>
+</main>
 <script>
-async function load(q){
-const url="/api/claims/search?q="+encodeURIComponent(q);
-const r=await fetch(url);const d=await r.json();
-const out=document.getElementById("out");
-out.innerHTML="";
-if(!d.claims||!d.claims.length){out.innerHTML='<div class="empty">No claims found'+(q?' for "'+q+'"':'')+'.</div>';return}
-for(const c of d.claims){
-const div=document.createElement("div");div.className="claim";
-const art=c.artifacts.length?'<div class="artifact">artifact: '+c.artifacts[0].slice(0,16)+'…</div>':"";
-div.innerHTML='<div class="claim-header"><span class="section">'+c.section+'</span>'+(c.status?'<span class="status">'+c.status+'</span>':"")+'</div>'+art+'<div class="text">'+c.text.slice(0,200)+'…</div>';
-out.appendChild(div)}}
-document.getElementById("q").addEventListener("input",e=>load(e.target.value));
-load("");
+"use strict";
+
+const out = document.getElementById("out");
+const status = document.getElementById("status");
+const input = document.getElementById("q");
+const mode = document.getElementById("mode");
+let requestId = 0;
+let controller = null;
+
+function node(tag, text, className) {
+  const element = document.createElement(tag);
+  if (text !== undefined && text !== null) {
+    element.textContent = String(text);
+  }
+  if (className) element.className = className;
+  return element;
+}
+
+function sourceURL(item) {
+  const sha = String(item.commit_sha || "");
+  const path = String(item.path || "");
+  if (!/^[0-9a-f]{40}$/i.test(sha)) return null;
+  if (!path || path.startsWith("/")) return null;
+  if (path.split("/").some(part => !part || part === "." || part === "..")) {
+    return null;
+  }
+  return "https://github.com/quantarion369-arch/AQARION/blob/" +
+    sha + "/" + path.split("/").map(encodeURIComponent).join("/");
+}
+
+function passage(item, supplementary, index) {
+  const card = node("article");
+  if (!supplementary) card.id = "seed-" + item.rank;
+
+  card.append(node("h3", supplementary ?
+    "Supplementary context " + (index + 1) : "Rank " + item.rank));
+
+  if (supplementary) {
+    card.append(node("p", "Context only - support not adjudicated.", "warning"));
+  }
+
+  card.append(node("div", "Source: " + item.path, "metadata"));
+  card.append(node("div", "Pinned commit: " + item.commit_sha, "metadata"));
+  card.append(node("div",
+    "Character offsets [" + item.char_start + ", " + item.char_end +
+    ") - decoded text, end exclusive", "metadata"));
+
+  if (item.score !== undefined) {
+    card.append(node("div", "Retrieval score: " + item.score, "metadata"));
+  }
+
+  const url = sourceURL(item);
+  if (url) {
+    const link = node("a", "Open source at pinned revision");
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    card.append(link);
+  }
+
+  card.append(node("p", item.passage, "passage"));
+
+  for (const seed of item.seed_links || []) {
+    const line = node("div", null, "metadata");
+    const link = node("a", "Seed rank " + seed.seed_rank);
+    link.href = "#seed-" + encodeURIComponent(String(seed.seed_rank));
+    line.append(link, node("span",
+      " | " + seed.direction + " neighbor | seed offsets [" +
+      seed.seed_char_start + ", " + seed.seed_char_end + ")"));
+    card.append(line);
+  }
+  return card;
+}
+
+function renderPassages(data) {
+  out.append(node("h2", "Ranked passages"));
+  out.append(node("p",
+    "Original ranked results. Retrieved text is not independently verified support.",
+    "muted"));
+
+  const seeds = data.seed_results || [];
+  if (!seeds.length) out.append(node("p", "No ranked passages found."));
+  seeds.forEach((item, index) => out.append(passage(item, false, index)));
+
+  out.append(node("h2", "Supplementary context"));
+  out.append(node("p",
+    "Immediate neighbors only. Context only - support not adjudicated.",
+    "warning"));
+
+  const extras = data.supplementary_context || [];
+  if (!extras.length) out.append(node("p", "No supplementary context found."));
+  extras.forEach((item, index) => out.append(passage(item, true, index)));
+}
+
+function renderClaims(data) {
+  const claims = data.claims || [];
+  out.append(node("h2", "Claim search"));
+  if (!claims.length) out.append(node("p", "No claims found."));
+
+  for (const claim of claims) {
+    const card = node("article");
+    card.append(node("h3", claim.section || "Claim"));
+    if (claim.status) card.append(node("p", claim.status, "metadata"));
+    for (const artifact of claim.artifacts || []) {
+      card.append(node("div", "Artifact: " + artifact, "metadata"));
+    }
+    card.append(node("p", claim.text || "", "passage"));
+    out.append(card);
+  }
+}
+
+async function search() {
+  const id = ++requestId;
+  if (controller) controller.abort();
+  controller = new AbortController();
+
+  const selectedMode = mode.value;
+  const query = input.value;
+  out.replaceChildren();
+
+  if (selectedMode === "passages" && !query.trim()) {
+    status.textContent = "Enter a research question to search passages.";
+    return;
+  }
+
+  status.textContent = "Searching...";
+  const endpoint = selectedMode === "claims" ?
+    "/api/claims/search" : "/api/search/context";
+
+  try {
+    const response = await fetch(endpoint + "?q=" + encodeURIComponent(query),
+      {signal: controller.signal});
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    const data = await response.json();
+
+    if (id !== requestId) return;
+    out.replaceChildren();
+    if (selectedMode === "claims") renderClaims(data);
+    else renderPassages(data);
+    status.textContent = "Search complete.";
+  } catch (error) {
+    if (id !== requestId || error.name === "AbortError") return;
+    status.textContent = "Search failed: " + error.message;
+    out.replaceChildren(node("p", "No results displayed. Retry the search.", "error"));
+  }
+}
+
+document.getElementById("search").addEventListener("submit", event => {
+  event.preventDefault();
+  search();
+});
+
+mode.addEventListener("change", search);
+
+input.addEventListener("input", () => {
+  ++requestId;
+  if (controller) controller.abort();
+  out.replaceChildren();
+  status.textContent = "Query changed. Press Search or Enter.";
+});
+
+search();
 </script>
 </body>
 </html>

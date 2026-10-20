@@ -3,6 +3,8 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 from claims import parse_claims, retrieve_claims
 from retrieve import retrieve, retrieve_cited
+from pathlib import Path
+import context
 
 class Handler(BaseHTTPRequestHandler):
     def _send(self, data, code=200):
@@ -16,7 +18,19 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         url = urlparse(self.path)
         qs = parse_qs(url.query)
-        if url.path == "/api/claims":
+        if url.path == "/":
+            page = Path(__file__).resolve().parent / "static" / "index.html"
+            body = page.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.end_headers()
+            self.wfile.write(body)
+        elif url.path == "/api/search/context":
+            q = qs.get("q", [""])[0]
+            self._send(context.retrieve_with_context(q))
+        elif url.path == "/api/claims":
             claims = parse_claims()
             status = qs.get("status", [None])[0]
             if status:
@@ -45,5 +59,9 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
 if __name__ == "__main__":
-    print("AQARION-RAG API on http://localhost:8765")
-    HTTPServer(("127.0.0.1", 8765), Handler).serve_forever()
+    with HTTPServer(("127.0.0.1", 8765), Handler) as server:
+        print("AQARION-RAG API on http://localhost:8765")
+        try:
+            server.serve_forever()
+        except KeyboardInterrupt:
+            print("AQARION-RAG API stopped.")
