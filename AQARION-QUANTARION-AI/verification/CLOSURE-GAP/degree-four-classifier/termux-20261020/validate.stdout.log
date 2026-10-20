@@ -1,0 +1,2 @@
+n=24 degree>=3: patterns 7 max r 10  realizing words: 48  distinct (active, degree): [((1, 2, 3, 6, 8), 3)]
+n=72 degree>=4: patterns 7 max r 18  realizing words: 432  with active (1,2,8,9,18): 432  degrees: [4]

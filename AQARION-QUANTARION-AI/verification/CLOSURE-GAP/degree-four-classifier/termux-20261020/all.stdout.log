@@ -1,0 +1,8 @@
+n= 30: abstract patterns surviving (full period, no primitive, degree>=4):   2   max r =  7   binary words realizing: 0
+n= 36: abstract patterns surviving (full period, no primitive, degree>=4):   1   max r =  9   binary words realizing: 0
+n= 42: abstract patterns surviving (full period, no primitive, degree>=4):   2   max r =  9   binary words realizing: 0
+n= 60: abstract patterns surviving (full period, no primitive, degree>=4):  16   max r = 15   binary words realizing: 0
+n= 66: abstract patterns surviving (full period, no primitive, degree>=4):   2   max r = 13   binary words realizing: 0
+n= 70: abstract patterns surviving (full period, no primitive, degree>=4):   2   max r = 11   binary words realizing: 0
+TOTAL abstract patterns: 25  TOTAL realizing binary words for n<72: 0
+RESULT: NO DEGREE>=4 WORD BELOW 72
