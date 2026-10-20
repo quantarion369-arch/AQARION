@@ -1,0 +1,39 @@
+EXECUTION_STATUS=COMPLETED
+QUALITY_GATE=NOT_DEFINED_BASELINE_ONLY
+single_passage_hits_at_3=12
+single_passage_cases=16
+supporting_passage_hit_at_3=0.75
+mrr_at_3=0.6770833333333334
+multi_complete_at_3=0
+multi_cases=4
+complete_support_rate_at_3=0.0
+multi_groups_covered_at_3=3
+multi_groups_required=8
+micro_evidence_group_coverage_at_3=0.375
+citations_checked=69
+citation_reconstruction_failures=0
+lexical_no_match_control_empty=True
+L01 kind=single group_ranks=[1] returned=3
+L02 kind=single group_ranks=[1] returned=3
+L03 kind=single group_ranks=[1] returned=3
+L04 kind=single group_ranks=[1] returned=3
+L05 kind=single group_ranks=[1] returned=3
+L06 kind=single group_ranks=[None] returned=3
+L07 kind=single group_ranks=[1] returned=3
+L08 kind=single group_ranks=[1] returned=3
+L09 kind=single group_ranks=[1] returned=3
+L10 kind=single group_ranks=[2] returned=3
+Q01 kind=single group_ranks=[None] returned=3
+Q02 kind=single group_ranks=[1] returned=3
+Q03 kind=single group_ranks=[None] returned=3
+Q04 kind=single group_ranks=[1] returned=3
+Q05 kind=single group_ranks=[None] returned=3
+Q06 kind=single group_ranks=[3] returned=3
+M01 kind=multi group_ranks=[1, None] returned=3
+M02 kind=multi group_ranks=[None, 2] returned=3
+M03 kind=multi group_ranks=[1, None] returned=3
+M04 kind=multi group_ranks=[None, None] returned=3
+N01 kind=unsupported group_ranks=[] returned=3
+N02 kind=unsupported group_ranks=[] returned=3
+N03 kind=unsupported group_ranks=[] returned=3
+N04 kind=lexical_no_match group_ranks=[] returned=0

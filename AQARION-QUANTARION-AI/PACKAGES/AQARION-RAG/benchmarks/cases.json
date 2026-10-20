@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "label_version": 2,
+  "scope": "Selected supporting passages; not exhaustive relevance judgments.",
+  "reviewed_report_sha256": "431ceaef079b0f80e593e4ff3d34a6a6c7bf3f0c0c1654d68a9c77e5d02b4b71",
+  "label_correction": "M02 accepts the fuller forward-implication paragraph as an alternative.",
+  "implementation_hashes": {
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py": "f7183bd115ef16dd4b389eed395a18527f8a4dbe8460cc770a81c779682e0502",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/MANIFEST.md": "a5058360a8a5139ddd129800cb44dd129aa3970517867f029216385b4d9c33a9"
+  },
+  "cases": [
+    {
+      "id": "L01",
+      "kind": "single",
+      "query": "Is the evidence ledger a complete claim-level record?",
+      "groups": [
+        [
+          "L",
+          [
+            "Status: PARTIAL LEDGER"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L02",
+      "kind": "single",
+      "query": "Were the original three checks independent implementations?",
+      "groups": [
+        [
+          "L",
+          [
+            "\"Three independent checks\" overstated independence"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L03",
+      "kind": "single",
+      "query": "What did the actual production-source cross-check execute?",
+      "groups": [
+        [
+          "L",
+          [
+            "Execution: user ran the path-specific loader"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L04",
+      "kind": "single",
+      "query": "Does the production cross-check establish general correctness?",
+      "groups": [
+        [
+          "L",
+          [
+            "Scope: finite-domain agreement"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L05",
+      "kind": "single",
+      "query": "Was the equality replay byte-for-byte identical to the reported dependency?",
+      "groups": [
+        [
+          "L",
+          [
+            "**Dependency qualification:**"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L06",
+      "kind": "single",
+      "query": "Was the closure-cost equality theorem Lean-formalized?",
+      "groups": [
+        [
+          "L",
+          [
+            "**Theorem status:**"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L07",
+      "kind": "single",
+      "query": "Does zero forward defect imply commutation?",
+      "groups": [
+        [
+          "L",
+          [
+            "is forward stability, not commutation"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L08",
+      "kind": "single",
+      "query": "Were the 18,737 non-bijective checks exhaustive?",
+      "groups": [
+        [
+          "L",
+          [
+            "18,737 random non-bijective"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L09",
+      "kind": "single",
+      "query": "Where is the canonical oracle implementation of prof.py?",
+      "groups": [
+        [
+          "L",
+          [
+            "canonical oracle/census implementation",
+            "The two unreferenced duplicates were removed."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "L10",
+      "kind": "single",
+      "query": "Does the ledger establish novelty or machine-checked proof for the closure-cost paper?",
+      "groups": [
+        [
+          "L",
+          [
+            "Paper proof is not machine-checked; novelty is not established."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "Q01",
+      "kind": "single",
+      "query": "How does this fixture define bounded_orbit?",
+      "groups": [
+        [
+          "Q",
+          [
+            "Definitions:"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "Q02",
+      "kind": "single",
+      "query": "How is c = 0.3 classified under the bounded-orbit reading?",
+      "groups": [
+        [
+          "Q",
+          [
+            "The quadratic map with c = 0.3 is unstable",
+            "| 0.3 | false | false |"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "Q03",
+      "kind": "single",
+      "query": "Does c = 0.25 have an attracting fixed point according to the fixture?",
+      "groups": [
+        [
+          "Q",
+          [
+            "| 0.25 | true | false |"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "Q04",
+      "kind": "single",
+      "query": "What constitutes a witness against universal bounded-orbit stability?",
+      "groups": [
+        [
+          "Q",
+          [
+            "Witness rule:"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "Q05",
+      "kind": "single",
+      "query": "Is c = -1.0 both bounded and attracting in the fixture?",
+      "groups": [
+        [
+          "Q",
+          [
+            "| -1.0 | true | false |"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "Q06",
+      "kind": "single",
+      "query": "What initial state is used for these quadratic computations?",
+      "groups": [
+        [
+          "Q",
+          [
+            "starting at x = 0."
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "M01",
+      "kind": "multi",
+      "query": "What was wrong with the original provenance description, and what was actually checked afterward?",
+      "groups": [
+        [
+          "L",
+          [
+            "\"Three independent checks\" overstated independence"
+          ]
+        ],
+        [
+          "L",
+          [
+            "Execution: user ran the path-specific loader"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "M02",
+      "kind": "multi",
+      "query": "Does the feedback extension prove an equivalence, or only one implication?",
+      "groups": [
+        [
+          "L",
+          [
+            "upper equality implies the nested-alphabet",
+            "`research/closure-cost/GENERAL-FEEDBACK.md` proves"
+          ]
+        ],
+        [
+          "L",
+          [
+            "It does not establish that nested alphabets"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "M03",
+      "kind": "multi",
+      "query": "Can the fixture classify an orbit as bounded without an attracting fixed point?",
+      "groups": [
+        [
+          "Q",
+          [
+            "Definitions:"
+          ]
+        ],
+        [
+          "Q",
+          [
+            "| -2.0 | true | false |"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "M04",
+      "kind": "multi",
+      "query": "What was established by the equality replay, and what remains unverified?",
+      "groups": [
+        [
+          "L",
+          [
+            "**Dependency qualification:**"
+          ]
+        ],
+        [
+          "L",
+          [
+            "**Theorem status:**"
+          ]
+        ]
+      ]
+    },
+    {
+      "id": "N01",
+      "kind": "unsupported",
+      "query": "What was the conclusion of GitHub Actions run 39346847689?",
+      "groups": []
+    },
+    {
+      "id": "N02",
+      "kind": "unsupported",
+      "query": "Which Lean axioms were reported by the closure-cost equality theorem's formal axiom audit?",
+      "groups": []
+    },
+    {
+      "id": "N03",
+      "kind": "unsupported",
+      "query": "What exact numerical value does the c = 0.5 orbit have at iteration 500?",
+      "groups": []
+    },
+    {
+      "id": "N04",
+      "kind": "lexical_no_match",
+      "query": "zzqxv_unindexed_7f3b91",
+      "groups": []
+    }
+  ]
+}

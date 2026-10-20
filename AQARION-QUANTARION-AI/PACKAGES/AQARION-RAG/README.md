@@ -15,7 +15,7 @@ Implemented in the current source:
 - An experimental BM25 ranking helper.
 - Section-based extraction of status labels and artifact hashes.
 - Basic supersession-reference detection and evidence-chain traversal.
-- A local HTTP API for passage search and claim search.
+- A local HTTP API for passage search, cited passage search, and claim search.
 - A small known-answer and near-miss evaluation harness.
 
 Not yet established:
@@ -25,7 +25,7 @@ Not yet established:
 - Complete revision history across multiple source snapshots.
 - Validated graph semantics for all supersession and dependency cases.
 - Broad retrieval-quality measurements over a curated benchmark.
-- RAG-specific automated CI and revision-bound execution receipts.
+- Independent reproduction of the RAG execution and evidence receipts.
 - Public deployment or production readiness.
 
 Governing principle
@@ -71,7 +71,7 @@ The current score is a lexical overlap count. It is not a BM25 score.
 
 The separate "bm25_search()" helper implements a BM25-style document-ranking function, but the main "retrieve()" function and HTTP search endpoint do not yet use it.
 
-The current result structure is a prototype. A stable citation contract should include a source path, commit identifier, stable passage locator, rank/score, and optional document-byte digest.
+The additive retrieve_cited() interface returns path, commit_sha, char_start, char_end, rank, score, passage, and a source label. Character offsets are half-open positions in the decoded snapshot text returned by the loader, not raw-file byte offsets. The reconstruction rule is source_text[char_start:char_end] == passage. Legacy retrieve() behavior is preserved.
 
 Claim and evidence navigation
 
@@ -95,11 +95,12 @@ Available endpoints:
 
 - "GET /api/claims"
 - "GET /api/search?q=..."
+- "GET /api/search/cited?q=..."
 - "GET /api/claims/search?q=..."
 
 The current server implements API routes only. The file "static/index.html" is a separate browser page and is not served by the current API handler.
 
-The interface must render corpus-derived text safely. Before any external deployment, add endpoint tests, input validation, explicit serving configuration, and an appropriate security review.
+The interface must render corpus-derived text safely. Endpoint regression tests now cover legacy search compatibility and cited search. Before any external deployment, broaden input validation, establish explicit serving configuration, and perform an appropriate security review.
 
 Evaluation
 
@@ -140,7 +141,7 @@ Development priorities
 4. Replace fragile section parsing with stable structured claim records.
 5. Validate supersession and dependency graph semantics.
 6. Test the HTTP API and browser interface.
-7. Add a dedicated RAG CI workflow with revision-bound receipts.
+7. Maintain the dedicated RAG CI workflow and inspect its revision-bound receipts.
 8. Expand the corpus only after the source and citation contract is stable.
 
 Reproducibility
@@ -168,3 +169,46 @@ The goal is narrower and more useful: make AQARION's existing research evidence 
 ## Status update — 2026-10-15
 
 Retrieval plus fixture-bound assessment is wired through `wire_assess.py` and was verified in Termux on 2026-10-14. Witness parameters remain fixture-defined. Corpus-derived witness extraction, general automatic refutation from retrieved documents, and broader end-to-end validation remain open.
+
+## Measured development checkpoint — 2026-10-19
+
+The dedicated AQARION RAG Verification workflow succeeded on GitHub for
+commit a77f3dcc46eb89150e3e617f6648c6a49e147fae, run 39346847689.
+The execution uploaded an evidence artifact. This does not establish
+independent reproduction, branch-protection enforcement, or deployment.
+
+The 24-case development benchmark uses the existing two pinned documents.
+Its labels identify selected supporting passages, not exhaustive relevance
+judgments. No corpus-wide precision or recall claim is made.
+
+| Variant | Single hit@3 | MRR@3 | Complete multi-passage | Evidence groups |
+|---|---:|---:|---:|---:|
+| Reviewed baseline | 12/16 | 0.6771 | 1/4 | 4/8 |
+| Stop-word experiment | 14/16 | 0.8438 | 0/4 | 3/8 |
+| IDF overlap experiment | 12/16 | 0.7500 | 1/4 | 4/8 |
+
+The original baseline reported 0/4 complete multi-passage cases and 3/8
+evidence groups. Review found that M02 omitted a valid alternative supporting
+paragraph. Rescoring the saved results corrected those counts to 1/4 and 4/8.
+No retrieval rerun or ranking change produced that correction.
+
+Neither experimental ranker replaced production behavior. Citation slices
+reconstructed in the recorded executions, but evidence completeness remains
+weak. Unsupported questions returning passages do not establish answerability.
+
+Preserved reports and experimental scripts are under
+benchmarks/evidence/2026-10-19/. These are historical development receipts.
+They include original local paths. Historical experiment scripts retain their
+original environment assumptions and are not portable entry points.
+
+The maintained baseline runner reads benchmarks/cases.json and verifies the
+baseline retrieval module and corpus manifest hashes. It does not require
+documentation-only commits to retain the original repository HEAD.
+
+Run from any directory, with a fresh output directory outside the checkout:
+
+    python3 -B /path/to/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/benchmarks/retrieval_baseline.py --output-dir /path/outside/checkout/new-results
+
+A completed benchmark is not a retrieval-quality pass. No quality threshold
+has been adopted. Generated-answer evaluation and independent held-out
+evaluation remain separate, unperformed tasks.

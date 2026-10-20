@@ -1,0 +1,50 @@
+EXECUTION_STATUS=COMPLETED
+QUALITY_GATE=NOT_DEFINED_COMPARISON_ONLY
+BASELINE_REPLAY_CASES_MATCHED=24
+BASELINE_METRICS
+  single_hits_at_3=12
+  single_cases=16
+  hit_at_3=0.75
+  mrr_at_3=0.6770833333333334
+  multi_complete_at_3=1
+  multi_cases=4
+  multi_complete_rate=0.25
+  multi_groups_covered=4
+  multi_groups_required=8
+  multi_group_coverage=0.5
+CANDIDATE_METRICS
+  single_hits_at_3=14
+  single_cases=16
+  hit_at_3=0.875
+  mrr_at_3=0.84375
+  multi_complete_at_3=0
+  multi_cases=4
+  multi_complete_rate=0.0
+  multi_groups_covered=3
+  multi_groups_required=8
+  multi_group_coverage=0.375
+CANDIDATE_CITATIONS_CHECKED=69
+L01 UNCHANGED ranks=[1]->[1] returned=3->3
+L02 UNCHANGED ranks=[1]->[1] returned=3->3
+L03 UNCHANGED ranks=[1]->[1] returned=3->3
+L04 UNCHANGED ranks=[1]->[1] returned=3->3
+L05 UNCHANGED ranks=[1]->[1] returned=3->3
+L06 UNCHANGED ranks=[None]->[None] returned=3->3
+L07 UNCHANGED ranks=[1]->[1] returned=3->3
+L08 UNCHANGED ranks=[1]->[1] returned=3->3
+L09 UNCHANGED ranks=[1]->[1] returned=3->3
+L10 CHANGED ranks=[2]->[1] returned=3->3
+Q01 CHANGED ranks=[None]->[1] returned=3->3
+Q02 UNCHANGED ranks=[1]->[1] returned=3->3
+Q03 CHANGED ranks=[None]->[1] returned=3->3
+Q04 UNCHANGED ranks=[1]->[1] returned=3->3
+Q05 CHANGED ranks=[None]->[2] returned=3->3
+Q06 CHANGED ranks=[3]->[None] returned=3->3
+M01 CHANGED ranks=[1, None]->[3, None] returned=3->3
+M02 CHANGED ranks=[1, 2]->[2, None] returned=3->3
+M03 UNCHANGED ranks=[1, None]->[1, None] returned=3->3
+M04 UNCHANGED ranks=[None, None]->[None, None] returned=3->3
+N01 UNCHANGED ranks=[]->[] returned=3->3
+N02 UNCHANGED ranks=[]->[] returned=3->3
+N03 UNCHANGED ranks=[]->[] returned=3->3
+N04 UNCHANGED ranks=[]->[] returned=0->0
