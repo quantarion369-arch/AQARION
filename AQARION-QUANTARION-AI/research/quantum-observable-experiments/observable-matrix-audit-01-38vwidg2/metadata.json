@@ -1,0 +1,9 @@
+{
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "source_sha256": "b9d88169815ba1a07c85c1a18b12b53eaefa528a776d165a8046a6c9e36b63c0",
+  "published_baseline_reference": "e2a1fdbf2aced6b35b5f9498bdf87c5eb3bb1512",
+  "source": "https://arxiv.org/html/2412.05102v3",
+  "scope": "Explicit matrix commutators versus declared Pauli-coordinate rule",
+  "limitations": "Does not import or automatically audit all published experiment functions"
+}

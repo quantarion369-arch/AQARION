@@ -1,6 +1,6 @@
 # Quantum observable experiments
 
-Exact two-level model experiments using Python standard-library rational
+Exact two- and three-level model experiments using Python standard-library rational
 arithmetic. This is a computational research collection, not a neutrino
 simulation, experimental tomography result, or Lean-certified theorem.
 
@@ -13,8 +13,11 @@ simulation, experimental tomography result, or Lean-certified theorem.
 | generator-closure-02 | 125 integer axes; classification; determinant; generator recurrence |
 | sampling-aliasing-01-oqp1w92w | Three exact schedules; periodic indistinguishability witness; constructive good-schedule reconstruction |
 | sampling-classification-01-gx4ryktu | 26 rational unit axes times 6 exact rotations; classification, determinant, invariance, rotation recurrence |
+| observable-matrix-audit-01-38vwidg2 | 125 axes; 500 explicit matrix-generator comparisons; trace reconstruction; cubic; sign and scale controls |
+| switched-generator-01-zfd5_qx8 | Individual versus common closure; two pulse orders; 12 picture comparisons; physical witnesses |
+| qutrit-observability-01-iavq0kwu | Observable dimensions 8,9,6,7; diagonal and coherence blind spots; positive witnesses; Jordan extension |
 
-## Conventions
+## Qubit conventions
 
 H = (h_x X + h_y Y + h_z Z)/2, with hbar = 1.
 The Heisenberg generator is L*(O) = i[H,O].
@@ -70,6 +73,37 @@ The finite regression checks 156 exact axis-rotation pairs.
 - Original source hashes and execution records are preserved unchanged.
 - Environment records differ in detail; missing historical details are not invented.
 
+## Follow-up scope and conventions
+
+The matrix audit uses H=(h dot sigma)/2 and i[H,O]. Its 124 sign and
+scale detections count nonzero axes with a differing basis image, not
+124 independently mutated source programs. The zero axis is insensitive.
+It does not import or automatically audit the earlier published functions.
+
+The switching fixture uses X/2 and Y/2, each applied for pi/2.
+Density matrices evolve chronologically; observable maps compose in
+reverse chronological order. There is no intermediate measurement.
+Individual observable dimensions are 3; the common dimension is 4.
+These dimensions include I and are not Hilbert-space dimensions.
+
+The qutrit fixture uses diagonal energies (-1,0,2) and (-1,0,1), with
+L*(O)[i,j]=i*(E[i]-E[j])*O[i,j]. The first Hamiltonian is not multiplied
+by the qubit convention's factor 1/2. P is a rank-one projector;
+Q=diag(0,1,-1) is an additional Hermitian observable, not a projector.
+The dimensions for seeds I,P and I,P,Q are respectively 8,9 and 6,7.
+
+All-time witness claims use stationarity or orthogonality to a checked
+invariant observable space. Positive mixed witnesses are checked using
+exact Sylvester minors. Adjoining Jordan products expands the eight-
+dimensional linear span to nine Hermitian directions. This is a failure
+of Jordan closure, not a constructed reduced quantum subsystem.
+
+All three follow-ups have saved local exit-zero records. No experiments
+are rerun while extending this publication. Arithmetic replay CI does not
+certify these quantum follow-ups; no remote quantum CI success is claimed until its run is checked.
+Minimal-projector repair, Fourier decoding, and noise studies discussed
+separately are not artifacts in this selected follow-up batch.
+
 ## Literature context
 
 - Exact Model Reduction for Continuous-Time Open Quantum Dynamics:
@@ -79,8 +113,30 @@ The finite regression checks 156 exact axis-rotation pairs.
 
 These references provide context, not certification of these implementations.
 
+Additional control-observability context:
+https://arxiv.org/pdf/quant-ph/0307127.pdf
+
 ## Reproduction
 
 Run an included experiment.py with Python 3.
 All computation dependencies are in the Python standard library.
 EVIDENCE_MANIFEST.json hashes the original included artifacts.
+
+## Quantum evidence verifier
+
+The scoped workflow is .github/workflows/quantum-observable-ci.yml.
+It checks hashes and saved records, then replays eight experiments on
+Python 3.11 and 3.13. A remote pass must be verified separately.
+
+Manifest check without experiment execution, from this directory:
+
+    python3 -I -B verify_evidence.py --manifest-only
+
+Full replay:
+
+    python3 -I -B -u verify_evidence.py
+
+Only verified, manifest-listed artifacts are copied to temporary replay
+folders. Original evidence must remain unchanged. This is not a security
+sandbox or formal verification. No personal email or secret is required
+by the verifier, and it does not change Git identity.

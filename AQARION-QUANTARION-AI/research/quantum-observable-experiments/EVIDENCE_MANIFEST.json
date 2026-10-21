@@ -23,10 +23,22 @@
     "sampling-classification-01-gx4ryktu/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
     "sampling-classification-01-gx4ryktu/experiment.py": "02ac8acf08090a851e0329d247bbfd2f0a0e3dcb5e0ff95c4693483fdf2ea372",
     "sampling-classification-01-gx4ryktu/metadata.json": "6616a606b15af1fde90c09128755385720a7f3ba53080111e2895d45e1a53bbd",
-    "sampling-classification-01-gx4ryktu/output.log": "5cdce31a1d46062cbd52f9a6112b87ce298b1ba67cc730e9796242aa7e5d3d0b"
+    "sampling-classification-01-gx4ryktu/output.log": "5cdce31a1d46062cbd52f9a6112b87ce298b1ba67cc730e9796242aa7e5d3d0b",
+    "observable-matrix-audit-01-38vwidg2/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "observable-matrix-audit-01-38vwidg2/experiment.py": "b9d88169815ba1a07c85c1a18b12b53eaefa528a776d165a8046a6c9e36b63c0",
+    "observable-matrix-audit-01-38vwidg2/metadata.json": "abf1d17ee7a6102980d44720e87a322c2c716adf08a4f65b38870c6f1e33badc",
+    "observable-matrix-audit-01-38vwidg2/output.log": "8ca3e40ed3dff2cc1f30cb8df0016ef64de23d690f9ab94114e98ff5618a7366",
+    "switched-generator-01-zfd5_qx8/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "switched-generator-01-zfd5_qx8/experiment.py": "1c10e2d95d728c30a9e286a2b73f10b2b741df6338fa1738c36b58895222d4ff",
+    "switched-generator-01-zfd5_qx8/metadata.json": "c5496d4d37edd16b75fbbd8356d8a7057b1193c66c68449682c6380d82836aab",
+    "switched-generator-01-zfd5_qx8/output.log": "136e716cd3c767c0fab436ae05e1fc4afd5b8747ac4d5adc6cfece00de69d298",
+    "qutrit-observability-01-iavq0kwu/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "qutrit-observability-01-iavq0kwu/experiment.py": "9bd88b9e7f99a6512170af6205f230d19de68908298d526ff546ad380c00efac",
+    "qutrit-observability-01-iavq0kwu/metadata.json": "c244c78ba188aca3297ae3cc67b1c062e26ac506cc88f541df38dfd665aab727",
+    "qutrit-observability-01-iavq0kwu/output.log": "268d3a4df3cdd5980343e2ce8b3c141415c12edbbe58de68e338e427be32ee14"
   },
   "documentation": {
-    "README.md": "1e62efd839f00b6564cbfc2366befc28eb044094e0329b82e9b0b796145d0414"
+    "README.md": "4e6efba0bcf152eed45e13c8d3b5cf23f87fb352e95288f0b0b511fc64a764b9"
   },
   "experiments": [
     {
@@ -53,8 +65,44 @@
       "directory": "sampling-classification-01-gx4ryktu",
       "recorded_exit": 0,
       "source_sha256": "02ac8acf08090a851e0329d247bbfd2f0a0e3dcb5e0ff95c4693483fdf2ea372"
+    },
+    {
+      "directory": "observable-matrix-audit-01-38vwidg2",
+      "recorded_exit": 0,
+      "source_sha256": "b9d88169815ba1a07c85c1a18b12b53eaefa528a776d165a8046a6c9e36b63c0"
+    },
+    {
+      "directory": "switched-generator-01-zfd5_qx8",
+      "recorded_exit": 0,
+      "source_sha256": "1c10e2d95d728c30a9e286a2b73f10b2b741df6338fa1738c36b58895222d4ff"
+    },
+    {
+      "directory": "qutrit-observability-01-iavq0kwu",
+      "recorded_exit": 0,
+      "source_sha256": "9bd88b9e7f99a6512170af6205f230d19de68908298d526ff546ad380c00efac"
     }
   ],
   "limitations": "Hashes establish file consistency, not proof or independent replay.",
-  "schema": "aqarion.quantum-observable-evidence.v1"
+  "schema": "aqarion.quantum-observable-evidence.v1",
+  "follow_up_review": {
+    "base_commit": "0e925aa2ea63943ae48fe2adea9137d753b83d87",
+    "basis": "Hash-identified source text and saved receipts reviewed in conversation",
+    "experiments_rerun_during_preparation": false,
+    "formal_verification_claimed": false,
+    "independent_team_reproduction_claimed": false,
+    "quantum_follow_up_ci_claimed": false,
+    "staged_content": "Verified separately by index comparison; not self-certified"
+  },
+  "verification_assets": {
+    "AQARION-QUANTARION-AI/research/quantum-observable-experiments/verify_evidence.py": "96ca1ea630bf42c9be57ef6cb4001f4f747b4fa65b4ee14849cdce88ca1a617e",
+    ".github/workflows/quantum-observable-ci.yml": "39869aa1c0947ba9c05d406763d140be5de55780a80f5d2a783cc94af0304c66"
+  },
+  "quantum_ci_configuration": {
+    "python_versions": [
+      "3.11",
+      "3.13"
+    ],
+    "status_at_preparation": "configured_not_yet_run_on_GitHub",
+    "email_configuration_changed": false
+  }
 }

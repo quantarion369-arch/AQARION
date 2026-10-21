@@ -1,0 +1,16 @@
+{
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "source_sha256": "1c10e2d95d728c30a9e286a2b73f10b2b741df6338fa1738c36b58895222d4ff",
+  "sources": {
+    "controlled_quantum_observability": "https://arxiv.org/pdf/quant-ph/0307127.pdf",
+    "observable_model_reduction": "https://arxiv.org/html/2412.05102v3"
+  },
+  "hamiltonians": [
+    "X/2",
+    "Y/2"
+  ],
+  "pulse_duration": "pi/2 each",
+  "scope": "Known controls and final-time expectation values",
+  "limitations": "No intermediate measurement; no neutrino simulation"
+}

@@ -1,0 +1,31 @@
+name: Quantum observable verification
+"on":
+  push:
+    branches: [main]
+    paths:
+      - 'AQARION-QUANTARION-AI/research/quantum-observable-experiments/**'
+      - '.github/workflows/quantum-observable-ci.yml'
+  pull_request:
+    paths:
+      - 'AQARION-QUANTARION-AI/research/quantum-observable-experiments/**'
+      - '.github/workflows/quantum-observable-ci.yml'
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Verify evidence and replay eight quantum experiments
+        run: python -I -B -u AQARION-QUANTARION-AI/research/quantum-observable-experiments/verify_evidence.py

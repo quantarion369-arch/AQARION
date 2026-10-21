@@ -1,0 +1,15 @@
+{
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "source_sha256": "9bd88b9e7f99a6512170af6205f230d19de68908298d526ff546ad380c00efac",
+  "sources": {
+    "observable_krylov_criterion": "https://arxiv.org/html/1504.01326v1",
+    "linear_versus_algebraic_reduction": "https://arxiv.org/html/2412.05102v3"
+  },
+  "hamiltonians": [
+    "diag(-1,0,2)",
+    "diag(-1,0,1)"
+  ],
+  "scope": "Exact three-level observable spaces and physical indistinguishability witnesses",
+  "limitations": "No experimental data, neutrino parameters, or intermediate measurements"
+}
