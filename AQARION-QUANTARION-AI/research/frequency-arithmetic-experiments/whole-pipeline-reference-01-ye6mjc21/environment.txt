@@ -1,0 +1,2 @@
+3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0
+Android-16-aarch64-64bit-ELF

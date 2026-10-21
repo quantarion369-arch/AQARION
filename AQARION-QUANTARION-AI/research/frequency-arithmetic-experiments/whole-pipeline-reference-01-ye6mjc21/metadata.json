@@ -1,0 +1,38 @@
+{
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "source_sha256": "b5ce621a65de6bc917c959033a632743296b961d5dc52e2392469f763cad8823",
+  "random_seed": 20261021,
+  "moduli": [
+    97,
+    193,
+    257
+  ],
+  "roots_order_32": {
+    "97": 19,
+    "193": 8,
+    "257": 15
+  },
+  "montgomery_radices": {
+    "97": 128,
+    "193": 256,
+    "257": 512
+  },
+  "rings": [
+    "Zero-padded linear convolution using cyclic length 32",
+    "Negacyclic multiplication modulo X^16+1"
+  ],
+  "scope": "Self-contained exact reference integration; historical scripts not imported",
+  "sources": {
+    "montgomery": "https://www.nayuki.io/page/montgomery-reduction-algorithm",
+    "barrett": "https://www.nayuki.io/page/barrett-reduction-algorithm",
+    "crt": "https://dlmf.nist.gov/27.15"
+  },
+  "nonclaims": [
+    "ML-KEM quadratic-component integration",
+    "Fixed-width implementation correctness",
+    "NIST conformance",
+    "Constant-time execution",
+    "Performance or timing"
+  ]
+}

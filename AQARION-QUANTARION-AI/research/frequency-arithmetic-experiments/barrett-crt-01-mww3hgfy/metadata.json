@@ -1,0 +1,19 @@
+{
+  "source_sha256": "ddbd561913dc8ac849a350ebee49823f4af5051d821ed5f64da9eb34d51fd002",
+  "random_seed": 20261021,
+  "sources": {
+    "barrett": "https://www.nayuki.io/page/barrett-reduction-algorithm",
+    "crt": "https://dlmf.nist.gov/27.15"
+  },
+  "barrett_unsigned_range": "0 <= T < q*q",
+  "barrett_signed_wrapper_range": "-q*q < T < q*q",
+  "signed_crt_contract": "Q > 2*C and reconstructed absolute value <= C",
+  "scope": "Generic reduction and signed linear-convolution reconstruction",
+  "nonclaims": [
+    "NTT integration",
+    "NIST conformance",
+    "fixed-width overflow safety",
+    "constant-time execution",
+    "timing or performance"
+  ]
+}

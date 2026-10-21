@@ -1,0 +1,223 @@
+{
+  "schema_version": "AQARION-ARITHMETIC-EVIDENCE-1",
+  "repository": "https://github.com/quantarion369-arch/AQARION",
+  "base_commit": "e2a1fdbf2aced6b35b5f9498bdf87c5eb3bb1512",
+  "created_at_utc": "2026-10-21T05:41:05.709677+00:00",
+  "selection": [
+    "ntt-boundary-inline-01",
+    "montgomery-reduction-01-lrPAGMfw",
+    "barrett-crt-01-mww3hgfy",
+    "whole-pipeline-reference-01-ye6mjc21"
+  ],
+  "files": [
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/environment.txt",
+      "bytes": 119,
+      "sha256": "a54d1158c4d33cd669ffba99f8038de7e576a4198d504fa264d685a7c5622508"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/experiment.py",
+      "bytes": 5449,
+      "sha256": "4da2320cb78bae509c62779493becbeb959b914157af8de3e9f06d14bd763299"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/output.log",
+      "bytes": 483,
+      "sha256": "15b7496d5f518bb7343bd221937f2b3e0b3f42aa26e9faf7c49477a362abbd36"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/source.sha256",
+      "bytes": 80,
+      "sha256": "cb31396a71dd81863815666452a157796bfdb6432e692b948c342028aaab8230"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/SHA256SUMS",
+      "bytes": 394,
+      "sha256": "05fa7c7ab5269c7345ff734cd138f3ecfb91ea312eb0e953d75e4c7d97736b56"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/environment.txt",
+      "bytes": 231,
+      "sha256": "04ec6f9e279e1767ef56f705070bbf5b9b258415dcace5933764ec5fb53fcc73"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/experiment.py",
+      "bytes": 6430,
+      "sha256": "8e7349003a519a9242e5da2918100ff3449b9817bfcea12c645cd4b26b1475ed"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/output.log",
+      "bytes": 802,
+      "sha256": "651dc60ab9dd4a0ea1882e063760c96f586eed71c144a3f8dc0c8a9af45bd81e"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/source.sha256",
+      "bytes": 80,
+      "sha256": "0b606512f89cc02b3ae7b1a50c7b9a36c42f17acdbd1924dbf671f3a8c315151"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/checksums.sha256",
+      "bytes": 474,
+      "sha256": "4c3d814fa4a6fbd28635ffde1cf4f6ae8ccb9d3584f06ca037a01a5f5f00b96b"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/environment.txt",
+      "bytes": 213,
+      "sha256": "343ea4b4874154158497928ab0321d8b9e8619ccfffe2c1ac82c536835837448"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/experiment.py",
+      "bytes": 9153,
+      "sha256": "ddbd561913dc8ac849a350ebee49823f4af5051d821ed5f64da9eb34d51fd002"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/metadata.json",
+      "bytes": 660,
+      "sha256": "f26063e0621f005a53913cd433a0e3da92de21f6cbd991aa02b38cc1c65a6c3f"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/output.log",
+      "bytes": 1007,
+      "sha256": "69b9788f42a90ba1d165bfc14bd0a57f96d72b57f872dad01ae7c5b81af12e6d"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/source.sha256",
+      "bytes": 80,
+      "sha256": "5bc784a0afbbf1a3c77a95942cbed9a0d90cd537d636f143669e4e49525d4d1f"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/checksums.sha256",
+      "bytes": 474,
+      "sha256": "7e27a125bbb07aa09306c2b26f4efe780be8a64588d72610e80bf2ee0a680faf"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/environment.txt",
+      "bytes": 147,
+      "sha256": "f351eb50a9f99d8d992884f0b3cf79fba980f2766567dcf04fbb8ac247b3002d"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/exit.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/experiment.py",
+      "bytes": 10510,
+      "sha256": "b5ce621a65de6bc917c959033a632743296b961d5dc52e2392469f763cad8823"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/metadata.json",
+      "bytes": 1111,
+      "sha256": "cc7fde9dad890aa71ab0b3d026ab02578a7112d31efe9ca83c5da3784e00ef8f"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/output.log",
+      "bytes": 1207,
+      "sha256": "8a23561afaa0af56ae58d27486f8784927821603921bfb806767e5e44c56f515"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/source.sha256",
+      "bytes": 80,
+      "sha256": "1db0f79ebb82e4809b0ecff614812f600e721b11963498c1e6bcebdb5c35d49c"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/README.md",
+      "bytes": 6223,
+      "sha256": "ea757c7581c0fcc03f2736eb6849abcfd63b74e720696aa2c91c0edb2a4abbe9"
+    }
+  ],
+  "execution_records": [
+    {
+      "unit": "ntt-boundary-inline-01",
+      "scope": "Transform ring mechanics, including scalar and quadratic-component cases",
+      "source": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/experiment.py",
+      "source_sha256": "4da2320cb78bae509c62779493becbeb959b914157af8de3e9f06d14bd763299",
+      "environment": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/environment.txt",
+      "saved_exit": 0,
+      "output": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/ntt-boundary-inline-01/output.log",
+      "success_marker": "NTT_INLINE_BOUNDARY_AUDIT=PASS",
+      "interpretation": "Existing recorded execution, not rerun during preparation"
+    },
+    {
+      "unit": "montgomery-reduction-01-lrPAGMfw",
+      "scope": "Generic REDC, representation conversion, ranges, and multiplication",
+      "source": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/experiment.py",
+      "source_sha256": "8e7349003a519a9242e5da2918100ff3449b9817bfcea12c645cd4b26b1475ed",
+      "environment": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/environment.txt",
+      "saved_exit": 0,
+      "output": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/montgomery-reduction-01-lrPAGMfw/output.log",
+      "success_marker": "MONTGOMERY_REDUCTION_AUDIT=PASS",
+      "interpretation": "Existing recorded execution, not rerun during preparation"
+    },
+    {
+      "unit": "barrett-crt-01-mww3hgfy",
+      "scope": "Generic Barrett reduction and bounded signed linear-convolution CRT",
+      "source": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/experiment.py",
+      "source_sha256": "ddbd561913dc8ac849a350ebee49823f4af5051d821ed5f64da9eb34d51fd002",
+      "environment": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/environment.txt",
+      "saved_exit": 0,
+      "output": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/barrett-crt-01-mww3hgfy/output.log",
+      "success_marker": "BARRETT_CRT_AUDIT=PASS",
+      "interpretation": "Existing recorded execution, not rerun during preparation"
+    },
+    {
+      "unit": "whole-pipeline-reference-01-ye6mjc21",
+      "scope": "Self-contained scalar reference integration; historical scripts not imported",
+      "source": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/experiment.py",
+      "source_sha256": "b5ce621a65de6bc917c959033a632743296b961d5dc52e2392469f763cad8823",
+      "environment": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/environment.txt",
+      "saved_exit": 0,
+      "output": "AQARION-QUANTARION-AI/research/frequency-arithmetic-experiments/whole-pipeline-reference-01-ye6mjc21/output.log",
+      "success_marker": "WHOLE_PIPELINE_REFERENCE_INTEGRATION=PASS",
+      "interpretation": "Existing recorded execution, not rerun during preparation"
+    }
+  ],
+  "review_status": {
+    "source_hashes_checked": true,
+    "syntax_checked": true,
+    "existing_checksums_checked": true,
+    "recorded_exits_and_success_markers_checked": true,
+    "experiments_rerun_during_preparation": false,
+    "full_independent_semantic_source_audit_claimed": false,
+    "formal_verification_claimed": false,
+    "staged_content_review": "Not self-certified; checked separately against Git index",
+    "remote_publication": "not performed by this preparation"
+  },
+  "manifest_self_hash": "Intentionally omitted; manifest does not hash itself",
+  "exclusions": [
+    "Additional arithmetic fuzz runner and report pending source/control review",
+    "Quantum follow-up experiments",
+    "Graph experiments",
+    "ClaimLock backup and unrelated verification files",
+    "Generated Python caches"
+  ],
+  "source_review_notes": {
+    "review_basis": "Hash-matched source text supplied in the conversation",
+    "ntt": "Direct scalar DFT coverage and combined inverse-mode control clarified",
+    "montgomery": "REDC, encoding, multiplication, decoding, bounds, and control categories reviewed",
+    "original_experiment_artifacts_modified": false,
+    "experiments_rerun": false,
+    "formal_or_exhaustive_semantic_verification_claimed": false
+  },
+  "documentation_refined_at_utc": "2026-10-21T05:44:59.691370+00:00"
+}
