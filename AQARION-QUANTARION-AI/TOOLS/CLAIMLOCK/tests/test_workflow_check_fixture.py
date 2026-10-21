@@ -33,7 +33,7 @@ def main():
     validator.check_schema(validator.schema)
 
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
-    evidence = Path("/root/aqarionz-sandbox") / (
+    evidence = Path(tempfile.gettempdir()) / (
         "claimlock-fixtures-" + stamp
     )
     evidence.mkdir(parents=True, exist_ok=False)

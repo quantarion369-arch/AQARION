@@ -51,11 +51,16 @@ for c in d:
         if m.startswith('AQARION') and not (_ROOT / m).exists():
             errors.append(f"{c['id']}: referenced artifact missing: {m}")
 
+formal_count = sum(c.get('record_type') == 'formal' for c in d)
+if formal_count:
+    from formal_binding import validate_formal_bindings
+    errors.extend(validate_formal_bindings(d, _ROOT, os.environ.get('AQARION_FORMAL_LEAN_ROOT')))
+print(f'FORMAL BINDING SCOPE: {formal_count} formal records; no automatic promotion.')
 if errors:
     print('WORKFLOW CHECK FAILED:'); [print(' -', e) for e in errors]; sys.exit(1)
 _r = _sp.run([sys.executable, str(_REPLAY), '11'], cwd=_ROOT)
 if _r.returncode != 0:
     raise SystemExit(_r.returncode)
-unknown_counts = sum(c['cases'] is None or c['violations'] is None for c in d)
+unknown_counts = sum(c['cases'] is None or c['violations'] is None for c in d if c.get('record_type') != 'formal')
 print(f'WORKFLOW CHECK PASSED: {len(d)} claims; consistency and replay checks passed.')
 print(f'NOTICE: {unknown_counts} records retain explicitly unknown count scope; historical claims are not comprehensively certified.')

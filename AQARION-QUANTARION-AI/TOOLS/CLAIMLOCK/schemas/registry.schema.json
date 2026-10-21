@@ -12,8 +12,6 @@
       "status",
       "governance",
       "evidence",
-      "cases",
-      "violations",
       "note"
     ],
     "properties": {
@@ -66,53 +64,213 @@
       "count_provenance": {
         "type": "string",
         "minLength": 1
+      },
+      "record_type": {
+        "const": "formal"
+      },
+      "claim_text": {
+        "type": "string",
+        "minLength": 1
+      },
+      "formal_evidence": {
+        "type": "object",
+        "required": [
+          "repo",
+          "revision",
+          "source_path",
+          "source_file_sha256",
+          "declaration",
+          "statement_sha256",
+          "receipt_path",
+          "receipt_sha256",
+          "correspondence_review"
+        ],
+        "properties": {
+          "repo": {
+            "const": "https://github.com/quantarion369-arch/AQARION-LEAN"
+          },
+          "revision": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_file_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "declaration": {
+            "type": "string",
+            "minLength": 1
+          },
+          "statement_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "receipt_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "receipt_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "correspondence_review": {
+            "type": "object",
+            "required": [
+              "state",
+              "reviewer"
+            ],
+            "properties": {
+              "state": {
+                "enum": [
+                  "pending",
+                  "approved"
+                ]
+              },
+              "reviewer": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "claim_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "revision": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}$"
+              },
+              "declaration": {
+                "type": "string",
+                "minLength": 1
+              },
+              "statement_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "reviewed_at": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "allowed_axioms": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "propext",
+                "Classical.choice",
+                "Quot.sound"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
       }
     },
     "allOf": [
       {
         "if": {
-          "anyOf": [
-            {
-              "properties": {
-                "cases": {
-                  "type": "null"
-                }
-              },
-              "required": [
-                "cases"
-              ]
-            },
-            {
-              "properties": {
-                "violations": {
-                  "type": "null"
-                }
-              },
-              "required": [
-                "violations"
-              ]
+          "properties": {
+            "record_type": {
+              "const": "formal"
             }
+          },
+          "required": [
+            "record_type"
           ]
         },
         "then": {
           "required": [
-            "count_provenance"
+            "claim_text",
+            "formal_evidence"
           ],
-          "properties": {
-            "id": {
-              "enum": [
-                "PB-006-AGGREGATE-NOVELTY",
-                "CG-INEQUALITY",
-                "CG-WITNESS-PAIR",
-                "CG-ITINERARY-CRITERION",
-                "CG-GAP2-COUNTEREXAMPLE",
-                "CG-CYCLIC-GAP-FORMULA",
-                "CG-GAP-UNBOUNDED",
-                "CG-MAX-CENSUS",
-                "CG-GENERAL-MAX"
-              ]
-            }
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "cases"
+                ]
+              },
+              {
+                "required": [
+                  "violations"
+                ]
+              }
+            ]
           }
+        },
+        "else": {
+          "required": [
+            "cases",
+            "violations"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "anyOf": [
+                  {
+                    "properties": {
+                      "cases": {
+                        "type": "null"
+                      }
+                    },
+                    "required": [
+                      "cases"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "violations": {
+                        "type": "null"
+                      }
+                    },
+                    "required": [
+                      "violations"
+                    ]
+                  }
+                ]
+              },
+              "then": {
+                "required": [
+                  "count_provenance"
+                ],
+                "properties": {
+                  "id": {
+                    "enum": [
+                      "PB-006-AGGREGATE-NOVELTY",
+                      "CG-INEQUALITY",
+                      "CG-WITNESS-PAIR",
+                      "CG-ITINERARY-CRITERION",
+                      "CG-GAP2-COUNTEREXAMPLE",
+                      "CG-CYCLIC-GAP-FORMULA",
+                      "CG-GAP-UNBOUNDED",
+                      "CG-MAX-CENSUS",
+                      "CG-GENERAL-MAX"
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "if": {
+          "required": [
+            "formal_evidence"
+          ]
+        },
+        "then": {
+          "required": [
+            "record_type"
+          ]
         }
       }
     ]
