@@ -1,0 +1,11 @@
+{
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "source_sha256": "c88ee3c9dfddc08eade070186d0299a4adfe250cad32e4ad41d65d35bbb36ac1",
+  "sources": {
+    "exact_quantum_reduction": "https://arxiv.org/html/2412.05102v3",
+    "stroboscopic_tomography": "https://arxiv.org/html/1504.01326v1",
+    "quantum_observability_2003": "https://arxiv.org/pdf/quant-ph/0307127.pdf"
+  },
+  "scope": "Exact qubit sampling fixture; not neutrino simulation"
+}

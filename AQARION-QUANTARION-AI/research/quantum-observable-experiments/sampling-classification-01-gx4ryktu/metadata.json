@@ -1,0 +1,12 @@
+{
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "source_sha256": "02ac8acf08090a851e0329d247bbfd2f0a0e3dcb5e0ff95c4693483fdf2ea372",
+  "sources": {
+    "stroboscopic_tomography": "https://arxiv.org/html/1504.01326v1",
+    "exact_quantum_reduction": "https://arxiv.org/html/2412.05102v3"
+  },
+  "theorem_scope": "All real fixed qubit axes and uniform sampling intervals",
+  "regression_scope": "26 rational unit axes and 6 exact rotations",
+  "limitations": "Not sequential measurement, experimental tomography, or neutrino simulation"
+}

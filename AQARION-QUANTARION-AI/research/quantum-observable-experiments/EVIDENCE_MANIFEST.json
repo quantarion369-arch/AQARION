@@ -1,0 +1,60 @@
+{
+  "artifacts": {
+    "coherence-02/environment.txt": "61b06a8816290aba1e59a081475f27f7397757b6d6068c61f7f2618917851b06",
+    "coherence-02/exit.txt": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+    "coherence-02/experiment.py": "d548dfa8956501f037bad6d481ecaf0e2683a7753cba77d5bf261a78e7cd9d7c",
+    "coherence-02/output.log": "3a3f1c51d50f75b288adf6ca1f3c0cad18dd475180692418f97804c832577fd2",
+    "coherence-02/source.sha256": "f10a052d48bc77ad89db769e881472c37df1d7b25b0c7bb8d05f47e925430c27",
+    "coherence-02/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "generator-closure-01/environment.txt": "6b64edf0fc8f22e798fb64873acba6b4106df290f0bf458b507e8cb409b63e49",
+    "generator-closure-01/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "generator-closure-01/experiment.py": "9596a0b1e1e30aa51236869727b15ce484f247596915ed8fa6f0469e96077d87",
+    "generator-closure-01/output.log": "e370f81ff76c79b1b87027602caacc22830b80c1db5884f983b8eddbd36f753c",
+    "generator-closure-01/source.sha256": "e0a93a8e1a4c53ef125050b5541624482ec3fa27a0287a3bd434448d97d00477",
+    "generator-closure-02/environment.txt": "6b64edf0fc8f22e798fb64873acba6b4106df290f0bf458b507e8cb409b63e49",
+    "generator-closure-02/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "generator-closure-02/experiment.py": "a925bec62d2b33c554ad37ea64b4254c4aab4f514b801c6b822be509da9df47b",
+    "generator-closure-02/output.log": "7e5912b6783068817f701229d5678e4333d81f7f30510a9f2f0d25d152e8e524",
+    "generator-closure-02/source.sha256": "717102dc4ac0439886cc9c17628cd2552135d3599e9fdd0104760785dd604056",
+    "sampling-aliasing-01-oqp1w92w/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "sampling-aliasing-01-oqp1w92w/experiment.py": "c88ee3c9dfddc08eade070186d0299a4adfe250cad32e4ad41d65d35bbb36ac1",
+    "sampling-aliasing-01-oqp1w92w/metadata.json": "c8ab073270db57e60cbba94425e9923bf0eb3ebaf399e4edd78d7a38cd1d49da",
+    "sampling-aliasing-01-oqp1w92w/output.log": "331e8bfb1c8b1997e1c6650df80418e7bbb9380e96d44b08496374d196649bdc",
+    "sampling-classification-01-gx4ryktu/exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "sampling-classification-01-gx4ryktu/experiment.py": "02ac8acf08090a851e0329d247bbfd2f0a0e3dcb5e0ff95c4693483fdf2ea372",
+    "sampling-classification-01-gx4ryktu/metadata.json": "6616a606b15af1fde90c09128755385720a7f3ba53080111e2895d45e1a53bbd",
+    "sampling-classification-01-gx4ryktu/output.log": "5cdce31a1d46062cbd52f9a6112b87ce298b1ba67cc730e9796242aa7e5d3d0b"
+  },
+  "documentation": {
+    "README.md": "1e62efd839f00b6564cbfc2366befc28eb044094e0329b82e9b0b796145d0414"
+  },
+  "experiments": [
+    {
+      "directory": "coherence-02",
+      "recorded_exit": 0,
+      "source_sha256": "d548dfa8956501f037bad6d481ecaf0e2683a7753cba77d5bf261a78e7cd9d7c"
+    },
+    {
+      "directory": "generator-closure-01",
+      "recorded_exit": 0,
+      "source_sha256": "9596a0b1e1e30aa51236869727b15ce484f247596915ed8fa6f0469e96077d87"
+    },
+    {
+      "directory": "generator-closure-02",
+      "recorded_exit": 0,
+      "source_sha256": "a925bec62d2b33c554ad37ea64b4254c4aab4f514b801c6b822be509da9df47b"
+    },
+    {
+      "directory": "sampling-aliasing-01-oqp1w92w",
+      "recorded_exit": 0,
+      "source_sha256": "c88ee3c9dfddc08eade070186d0299a4adfe250cad32e4ad41d65d35bbb36ac1"
+    },
+    {
+      "directory": "sampling-classification-01-gx4ryktu",
+      "recorded_exit": 0,
+      "source_sha256": "02ac8acf08090a851e0329d247bbfd2f0a0e3dcb5e0ff95c4693483fdf2ea372"
+    }
+  ],
+  "limitations": "Hashes establish file consistency, not proof or independent replay.",
+  "schema": "aqarion.quantum-observable-evidence.v1"
+}
