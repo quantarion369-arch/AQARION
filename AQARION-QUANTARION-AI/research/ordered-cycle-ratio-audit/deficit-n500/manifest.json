@@ -1,0 +1,30 @@
+{
+  "base_commit": "05d36993dd104fed2803919c2dfe1bdbb97bce00",
+  "experiments_rerun": false,
+  "files": {
+    "README.md": {
+      "bytes": 3626,
+      "sha256": "14bdc4379fad2e10155143ed72796a84c2623fc1feea8d155c7365c99aa92ab5"
+    },
+    "optimized/audit.py": {
+      "bytes": 4524,
+      "sha256": "50237ca65743b1a0baea7eb82988a42d078b891ae6df87d2494c4af00d4a51ff"
+    },
+    "optimized/receipt.json": {
+      "bytes": 875,
+      "sha256": "5fa34fe67dd348f93d28ced796f60a57382b1ce597b1b5602ef483c1fafe613e"
+    },
+    "original/audit.py": {
+      "bytes": 4207,
+      "sha256": "9e2eb390aefc7ffc6a3377277885fff0e28db9323cbed43f74a3e2db235286ca"
+    },
+    "original/receipt.json": {
+      "bytes": 22107,
+      "sha256": "4c1f67e926e82e1ded262c8216101d682e1712f98f9542039e78b58b698e270f"
+    }
+  },
+  "packaged_at_utc": "2026-10-22T10:48:22.273708+00:00",
+  "parent_manifest_sha256": "3e1fbf09008071ed9f49d6847a850d0ce4d86165b0aac67dd1536628c90e8a9e",
+  "schema": "ordered-cycle-deficit-supplement-v1",
+  "validation": "source bindings, receipt counts, and equality lists PASS"
+}

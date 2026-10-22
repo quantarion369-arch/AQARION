@@ -1,0 +1,29 @@
+{
+  "audit": "exact_integer_deficit_difference",
+  "status": "PASS",
+  "maximum_n": 500,
+  "python": "3.13.13",
+  "completed_at_utc": "2026-10-22T10:46:31.152608+00:00",
+  "script_sha256": "50237ca65743b1a0baea7eb82988a42d078b891ae6df87d2494c4af00d4a51ff",
+  "pairs_checked": 125250,
+  "partition_deficit_bijection_mismatches": [],
+  "delta_positive_pairs": 114930,
+  "delta_negative_pairs": 9819,
+  "zero_difference_count": 501,
+  "expected_zero_rule": "m=n, or (n,m)=(3,2)",
+  "unexpected_zeros_n_m_d": [],
+  "missing_expected_zeros_n_m_d": [],
+  "special_formula_mismatches_n_m_d": [],
+  "d_ge_3_pairs": 123753,
+  "d_ge_3_positive": 113938,
+  "d_ge_3_negative": 9815,
+  "minimum_absolute_delta_d_ge_3": 18,
+  "minimum_witness_n_m_d_delta": [
+    4,
+    1,
+    3,
+    -18
+  ],
+  "scope": "Finite exact recurrence audit; not a global equality proof",
+  "git_operations": 0
+}

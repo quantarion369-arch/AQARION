@@ -1,0 +1,31 @@
+{
+  "base_commit": "05d36993dd104fed2803919c2dfe1bdbb97bce00",
+  "evidence_status": "existing Termux results; enumeration not rerun",
+  "files": {
+    "README.md": {
+      "bytes": 5437,
+      "sha256": "3b92ea58654cc4c32e06a5ebc2995de1fbb47096a61c2ee9db9fde24a20db0e4"
+    },
+    "audit.py": {
+      "bytes": 7665,
+      "sha256": "7dca4b9d26b16e8807fd10aeaab2c09a71d5947af79d30c995a78c130dd80d10"
+    },
+    "results/cycle_length_distributions.csv": {
+      "bytes": 7785,
+      "sha256": "a40cdd77f9f126a93185338f28c611f205026b64e2e37d2b35d074e05d4e8060"
+    },
+    "results/ratios.csv": {
+      "bytes": 2247,
+      "sha256": "c0b30905707feb6ccb57377cd276c8b8dcc3ebc4b410096f92471aa8538efe7a"
+    },
+    "results/receipt.json": {
+      "bytes": 697,
+      "sha256": "b036af9d3c9d40028cebe7052f418a8f1e49c943c4ba207372df7c739aa2120a"
+    }
+  },
+  "packaged_at_utc": "2026-10-22T10:35:16.572939+00:00",
+  "packaging_python": "3.13.13",
+  "schema": "ordered-cycle-ratio-package-v1",
+  "source_binding": "packaging-time binding; absent from original execution receipt",
+  "validation": "input hashes and complete table consistency PASS"
+}
