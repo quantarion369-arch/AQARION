@@ -1,0 +1,39 @@
+{
+  "base_commit": "ee15449cbee65b7760b1914e061eb2e171afdd3d",
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "audit.py": {
+      "bytes": 10909,
+      "sha256": "77b7b0626a3a499907ff52576ddd9309618021ac1a6e33cf419437a6c0606a69"
+    },
+    "direct_checks.csv": {
+      "bytes": 711,
+      "sha256": "35c323ab5aeaa3130a2cbbdf5e416cfb27a52746dcc35779882b5512a03d8663"
+    },
+    "enumeration.csv": {
+      "bytes": 1461,
+      "sha256": "c1c3ffe08f92ef78fe4e8e6ae70535a525341773749096603aae7a01c709de57"
+    },
+    "moments.csv": {
+      "bytes": 2219,
+      "sha256": "edc536dd9de5c98f0447933a25fa557ebd9a4b492a1b81d7fb66f1e43095638f"
+    },
+    "polynomials.csv": {
+      "bytes": 5235,
+      "sha256": "9f62b378c3e88b5a3939933ee735dcfdd26b9e9dda3229dcf1edf6e2e8350953"
+    },
+    "proof.md": {
+      "bytes": 3672,
+      "sha256": "20c00ee74766b58a06be068d9e422a3e4f2fa2825db1e6ebc5aca067a33c3a07"
+    },
+    "receipt.json": {
+      "bytes": 1727,
+      "sha256": "b0844b32fd959047060a886fbd5b9be578a60f9a0372dc9c56d94abc1168245b"
+    }
+  },
+  "global_ratio_classification": "OPEN",
+  "packaged_at_utc": "2026-10-22T13:07:09.555725+00:00",
+  "proof_provenance": "proof.md authored at packaging time",
+  "schema": "ordered-cycle-dual-thread-package-v1",
+  "validation": "source binding, artifact hashes, and saved table arithmetic PASS"
+}

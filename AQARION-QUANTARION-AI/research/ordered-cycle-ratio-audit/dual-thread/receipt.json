@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "enumeration_max_n": 13,
+  "polynomial_max_n": 10,
+  "polynomial_pairs": 55,
+  "profiles": 138,
+  "exact_moment_checks": 55,
+  "broken_generator_failures": 25,
+  "broken_generator_examples": [
+    [
+      2,
+      2,
+      4,
+      2
+    ],
+    [
+      3,
+      3,
+      24,
+      6
+    ],
+    [
+      4,
+      2,
+      72,
+      48
+    ]
+  ],
+  "direct_max_n": 6,
+  "direct_distribution_checks": 21,
+  "direct_permutations": 873,
+  "homology_distribution_matches": [
+    [
+      1,
+      1
+    ]
+  ],
+  "selected_polynomials": {
+    "(3, 2)": [
+      0,
+      0,
+      3,
+      3
+    ],
+    "(4, 2)": [
+      0,
+      6,
+      17,
+      18,
+      7
+    ],
+    "(4, 3)": [
+      0,
+      0,
+      6,
+      12,
+      6
+    ],
+    "(5, 3)": [
+      0,
+      0,
+      50,
+      95,
+      70,
+      25
+    ]
+  },
+  "homology_model": "ordinary integral homology; permutation graph keeps loops and distinct edges",
+  "global_ratio_classification": "OPEN",
+  "git_operations": 0,
+  "python": "3.13.13",
+  "completed_at_utc": "2026-10-22T13:05:17.933694+00:00",
+  "source_sha256": "77b7b0626a3a499907ff52576ddd9309618021ac1a6e33cf419437a6c0606a69",
+  "artifacts": {
+    "enumeration.csv": {
+      "bytes": 1461,
+      "sha256": "c1c3ffe08f92ef78fe4e8e6ae70535a525341773749096603aae7a01c709de57"
+    },
+    "polynomials.csv": {
+      "bytes": 5235,
+      "sha256": "9f62b378c3e88b5a3939933ee735dcfdd26b9e9dda3229dcf1edf6e2e8350953"
+    },
+    "moments.csv": {
+      "bytes": 2219,
+      "sha256": "edc536dd9de5c98f0447933a25fa557ebd9a4b492a1b81d7fb66f1e43095638f"
+    },
+    "direct_checks.csv": {
+      "bytes": 711,
+      "sha256": "35c323ab5aeaa3130a2cbbdf5e416cfb27a52746dcc35779882b5512a03d8663"
+    }
+  }
+}
