@@ -1,0 +1,52 @@
+[
+  {
+    "reason": "receipt declaration mismatch",
+    "result": "rejected",
+    "test": "wrong-declaration"
+  },
+  {
+    "reason": "source hash mismatch",
+    "result": "rejected",
+    "test": "wrong-source-hash"
+  },
+  {
+    "reason": "statement digest mismatch",
+    "result": "rejected",
+    "test": "wrong-statement-hash"
+  },
+  {
+    "reason": "not a Lean build receipt",
+    "result": "rejected",
+    "test": "wrong-kind"
+  },
+  {
+    "reason": "unapproved or duplicated axiom",
+    "result": "rejected",
+    "test": "sorryAx"
+  },
+  {
+    "reason": "build did not record integer exit zero",
+    "result": "rejected",
+    "test": "failed-exit"
+  },
+  {
+    "reason": "build did not record integer exit zero",
+    "result": "rejected",
+    "test": "boolean-exit"
+  },
+  {
+    "reason": "build did not record integer exit zero",
+    "result": "rejected",
+    "test": "string-exit"
+  },
+  {
+    "reason": "unsupported declaration type format",
+    "result": "rejected",
+    "test": "wrong-format"
+  },
+  {
+    "reason": "missing fields: ['axioms']",
+    "result": "rejected",
+    "test": "missing-axioms"
+  }
+]

@@ -1,0 +1,474 @@
+from pathlib import Path
+import copy
+import hashlib
+import importlib.util
+import json
+import os
+import subprocess
+from jsonschema import Draft202012Validator
+
+HOME = Path.home()
+ROOT = HOME / "AQARION"
+LEAN = HOME / "AQARION-LEAN"
+BASE = ROOT / "AQARION-QUANTARION-AI/TOOLS/CLAIMLOCK"
+CANDIDATE = HOME / "AQARION-local-evidence/fqpr-binding-candidate-2vafu8wd/candidate.json"
+INSPECT = HOME / "AQARION-local-evidence/fqpr-explicit-export-q_5z6d1s/inspection.json"
+OUT = Path(__file__).resolve().parent
+os.environ["GIT_OPTIONAL_LOCKS"] = "0"
+
+def need(ok, message):
+    if not ok:
+        raise ValueError(message)
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+def packed(obj):
+    return (
+        json.dumps(obj, sort_keys=True, indent=2, ensure_ascii=True)
+        + chr(10)
+    ).encode()
+
+def git(repo, *args):
+    return subprocess.check_output(
+        ["git", "-C", str(repo), *args],
+        stderr=subprocess.PIPE,
+        timeout=20,
+    )
+
+def snapshot():
+    result = {}
+    for repo in (ROOT, LEAN):
+        index = Path(
+            git(repo, "rev-parse", "--git-path", "index").decode().strip()
+        )
+        if not index.is_absolute():
+            index = repo / index
+        result[str(repo)] = [
+            git(repo, "rev-parse", "HEAD").decode().strip(),
+            sha(index.read_bytes()),
+            git(
+                repo, "status", "--porcelain", "--untracked-files=all"
+            ).decode(),
+        ]
+    for relative in (
+        "registry.json",
+        "formal_binding.py",
+        "workflow_check.py",
+        "schemas/registry.schema.json",
+    ):
+        result[relative] = sha((BASE / relative).read_bytes())
+    result["inspection"] = sha(INSPECT.read_bytes())
+    result["candidate"] = sha(CANDIDATE.read_bytes())
+    return result
+
+def load_pinned(path, expected):
+    data = path.read_bytes()
+    need(sha(data) == expected, "record digest changed: " + str(path))
+    return json.loads(data)
+
+def phase_exit(folder, label):
+    suffixes = (
+        ".exit", ".exitcode", ".exit_code", ".returncode",
+        ".exit.txt", ".exitcode.txt", ".returncode.txt",
+        "-exit.txt", "-exit-code.txt",
+    )
+    paths = [
+        folder / (label + suffix)
+        for suffix in suffixes
+        if (folder / (label + suffix)).is_file()
+    ]
+    need(
+        bool(paths),
+        "No persisted exit-code artifact for " + label
+        + "; no code will be inferred from console markers",
+    )
+    for path in paths:
+        need(not path.is_symlink(), "symlinked exit artifact")
+        need(
+            path.read_text().strip() == "0",
+            "nonzero or malformed phase exit: " + path.name,
+        )
+    return {path.name: sha(path.read_bytes()) for path in paths}
+
+def main():
+    before = snapshot()
+    c = load_pinned(
+        CANDIDATE,
+        "10fe7f3d658a2ab8e42a03f3dc410244059a70eb2c1fef0117231454cc370c6b",
+    )
+    i = load_pinned(
+        INSPECT,
+        "a896d143d3c1022807ad818396e35b95e36c05ecb5a88683017465e2050665f7",
+    )
+
+    need(c["kind"] == "formal_binding_candidate", "wrong historical record kind")
+    need(
+        i["kind"] == "lean_declaration_inspection_candidate",
+        "wrong inspection kind",
+    )
+    need(c["pinned_publication_revision"] == i["revision"], "revision disagreement")
+    need(c["declaration"] == i["declaration"], "declaration disagreement")
+    need(
+        sha(c["claim_text"].encode()) == c["claim_text_sha256"],
+        "claim text digest mismatch",
+    )
+    need(
+        sha(i["declaration_type"].encode()) == i["statement_sha256"],
+        "statement digest mismatch",
+    )
+    need(
+        i["type_format_proposal"] == "lean-pp-explicit-v1",
+        "unsupported proposed format",
+    )
+    need(
+        i["compiler_commit"] == "c29b6dda4f7c20e3eeaa717c4e565663c5cfa364",
+        "compiler revision differs",
+    )
+    need(
+        i["compiler_binary_sha256"]
+        == "72d674b469a5732f69b4d6408c215040c227cc25b4c6b7c7826c16fe19e088b3",
+        "recorded compiler binary digest differs",
+    )
+    need(
+        i["compiler_commit"] in i["compiler_version_measured_at_recovery"],
+        "compiler version disagreement",
+    )
+    need(
+        set(i["axioms"]) == {"propext", "Classical.choice", "Quot.sound"}
+        and len(i["axioms"]) == 3,
+        "unexpected axioms",
+    )
+
+    folder = INSPECT.parent
+    files = {}
+    for path in folder.iterdir():
+        if path.is_file() and not path.is_symlink():
+            need(
+                path.stat().st_size <= 64000000,
+                "inspection artifact exceeds size limit",
+            )
+            files[path.name] = path.read_bytes()
+
+    expected_inputs = {
+        "AqarionAnchorBase.lean": c["source_file_sha256"],
+        "ExportType.lean":
+            "e5b5a93e334d391a423e3ace31e90955e95c2ab5d267be207b4a4fc9a9aa778f",
+        "InspectAxioms.lean":
+            "175091763be0b09e9d46bb211674542a4c0a453d74316827164b61b87c09b359",
+        "ExportType.attempt1.lean":
+            "c994076a6b5855783a988eb507fdaad54cbc0bc2ef773f00b647278b02b3dda5",
+    }
+    for name, expected in expected_inputs.items():
+        need(
+            name in files and sha(files[name]) == expected,
+            "saved input differs: " + name,
+        )
+
+    statement_files = [
+        name for name, data in files.items()
+        if sha(data) == i["statement_sha256"]
+    ]
+    need(
+        bool(statement_files),
+        "No saved raw stdout matches the declaration digest",
+    )
+
+    axiom_files = []
+    prefix = "'" + i["declaration"] + "' depends on axioms: ["
+    for name, data in files.items():
+        if len(data) > 1000000:
+            continue
+        try:
+            text = " ".join(data.decode("utf-8").split())
+        except UnicodeDecodeError:
+            continue
+        if text.startswith(prefix) and text.endswith("]"):
+            reported = [
+                value.strip()
+                for value in text[len(prefix):-1].split(",")
+                if value.strip()
+            ]
+            if (
+                len(reported) == len(set(reported))
+                and set(reported) == set(i["axioms"])
+            ):
+                axiom_files.append(name)
+    need(
+        bool(axiom_files),
+        "No saved target axiom stdout matches the inspection",
+    )
+
+    module_files = [
+        name for name, data in files.items()
+        if name.endswith(".olean")
+        and sha(data) == i["compiled_module_sha256"]
+    ]
+    need(
+        bool(module_files),
+        "No saved compiled module matches the inspection digest",
+    )
+
+    for label, query in (
+        ("declaration-type", "ExportType.lean"),
+        ("axioms", "InspectAxioms.lean"),
+    ):
+        commands = [
+            command for command in i["commands"]
+            if command.get("label") == label
+        ]
+        need(len(commands) == 1, "missing or ambiguous recorded command")
+        command = commands[0]
+        need(
+            command["argv"][1:]
+            == ["-j1", "-M768", "-DElab.async=false", query],
+            "inspection command changed",
+        )
+        need(
+            Path(command["cwd"]).resolve() == folder.resolve(),
+            "unexpected command directory",
+        )
+        need(
+            Path(command["LEAN_PATH"]).resolve() == folder.resolve(),
+            "unexpected recorded module path",
+        )
+
+    exits = {
+        label: phase_exit(folder, label)
+        for label in ("anchor-build", "declaration-type", "axioms")
+    }
+
+    spec = importlib.util.spec_from_file_location(
+        "adapter_formal_binding",
+        BASE / "formal_binding.py",
+    )
+    fb = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(fb)
+    need(
+        not fb.APPROVED_RECEIPTS and not fb.APPROVED_REVIEWS,
+        "production trust policy is no longer empty",
+    )
+
+    revision = i["revision"]
+    source = c["source_path"]
+    toolchain = str(Path(source).parent / "lean-toolchain")
+    inputs = {
+        name: sha(git(LEAN, "show", revision + ":" + name))
+        for name in (source, toolchain)
+    }
+    need(
+        inputs[source] == c["source_file_sha256"],
+        "pinned source mismatch",
+    )
+
+    receipt = {
+        "kind": "lean_build",
+        "repo": c["formal_repository"],
+        "revision": revision,
+        "declaration": i["declaration"],
+        "declaration_type": i["declaration_type"],
+        "type_format": i["type_format_proposal"],
+        "exit_code": 0,
+        "axioms": i["axioms"],
+        "source_files": inputs,
+        "toolchain_path": toolchain,
+        "lean_toolchain": git(
+            LEAN, "show", revision + ":" + toolchain
+        ).decode().strip(),
+        "compiler_commit": i["compiler_commit"],
+        "acceptance": "PROPOSED_NOT_ENROLLED",
+        "origin": "New derived summary, not the original historical build receipt",
+        "inspection_record_sha256": sha(INSPECT.read_bytes()),
+        "candidate_record_sha256": sha(CANDIDATE.read_bytes()),
+        "phase_exit_artifacts": exits,
+        "raw_statement_artifacts": statement_files,
+        "compiled_module_artifacts": module_files,
+        "raw_axiom_artifacts": axiom_files,
+        "inspection_artifacts": {
+            name: sha(data) for name, data in files.items()
+        },
+        "compiler_binary_sha256_as_recorded": i["compiler_binary_sha256"],
+        "compiler_binary_remeasured_by_adapter": False,
+        "format_state": "proposed; authorization not granted by adaptation",
+        "format_definition": i["format_boundary"],
+        "original_build_argv": None,
+        "original_build_timestamp": None,
+        "input_scope":
+            "Pinned proof source and toolchain only; generated query fingerprints "
+            "separate; full stdlib closure not certified",
+        "review": {"state": "pending", "reviewer": None},
+    }
+
+    record = {
+        "id": c["candidate_id"],
+        "record_type": "formal",
+        "title": "FQPR binding proposal: pending acceptance",
+        "claim_text": c["claim_text"],
+        "status": "open",
+        "governance": "blocked",
+        "evidence": "Derived proposal; not enrolled",
+        "note":
+            "Underlying theorem checkpoint remains complete; this binding is pending",
+        "formal_evidence": {
+            "repo": receipt["repo"],
+            "revision": revision,
+            "source_path": source,
+            "source_file_sha256": inputs[source],
+            "declaration": i["declaration"],
+            "statement_sha256": i["statement_sha256"],
+            "receipt_path": "receipt.proposed.json",
+            "receipt_sha256": sha(packed(receipt)),
+            "correspondence_review": {"state": "pending", "reviewer": None},
+        },
+    }
+
+    Draft202012Validator(
+        json.loads((BASE / "schemas/registry.schema.json").read_text())
+    ).validate([record])
+
+    (OUT / "receipt.proposed.json").write_bytes(packed(receipt))
+    (OUT / "binding.proposed.json").write_bytes(packed(record))
+
+    boundary = "receipt provenance not enrolled in trusted policy"
+    try:
+        fb.check_binding(record, OUT, LEAN)
+    except ValueError as error:
+        need(
+            str(error) == boundary,
+            "unexpected live validation failure: " + str(error),
+        )
+    else:
+        raise ValueError("Unexpected acceptance under empty production policy")
+
+    mutations = [
+        (
+            "wrong-declaration", "record", "declaration", "Fixture.other",
+            "receipt declaration mismatch",
+        ),
+        (
+            "wrong-source-hash", "record", "source_file_sha256", "0" * 64,
+            "source hash mismatch",
+        ),
+        (
+            "wrong-statement-hash", "record", "statement_sha256", "0" * 64,
+            "statement digest mismatch",
+        ),
+        (
+            "wrong-kind", "receipt", "kind", "python_census",
+            "not a Lean build receipt",
+        ),
+        (
+            "sorryAx", "receipt", "axioms", ["sorryAx"],
+            "unapproved or duplicated axiom",
+        ),
+        (
+            "failed-exit", "receipt", "exit_code", 1,
+            "build did not record integer exit zero",
+        ),
+        (
+            "boolean-exit", "receipt", "exit_code", False,
+            "build did not record integer exit zero",
+        ),
+        (
+            "string-exit", "receipt", "exit_code", "0",
+            "build did not record integer exit zero",
+        ),
+        (
+            "wrong-format", "receipt", "type_format", "default-pretty-print",
+            "unsupported declaration type format",
+        ),
+        (
+            "missing-axioms", "receipt", "axioms", None,
+            "missing fields",
+        ),
+    ]
+
+    results = []
+    for name, where, key, value, expected in mutations:
+        changed_record = copy.deepcopy(record)
+        changed_receipt = copy.deepcopy(receipt)
+        if where == "record":
+            changed_record["formal_evidence"][key] = value
+        elif name == "missing-axioms":
+            del changed_receipt[key]
+        else:
+            changed_receipt[key] = value
+
+        testdir = OUT / "negative-controls" / name
+        testdir.mkdir(parents=True)
+        data = packed(changed_receipt)
+        (testdir / "receipt.proposed.json").write_bytes(data)
+        changed_record["formal_evidence"]["receipt_sha256"] = sha(data)
+
+        try:
+            fb.check_binding(changed_record, testdir, LEAN)
+        except ValueError as error:
+            need(
+                expected in str(error),
+                "negative control failed for wrong reason: "
+                + name + ": " + str(error),
+            )
+            results.append({
+                "test": name,
+                "result": "rejected",
+                "reason": str(error),
+            })
+        else:
+            raise ValueError("Negative control unexpectedly accepted: " + name)
+
+    (OUT / "negative-controls.json").write_bytes(packed(results))
+    need(
+        snapshot() == before,
+        "fingerprinted repository or input state changed",
+    )
+
+    result = {
+        "kind": "formal_binding_adapter_dry_run",
+        "acceptance": "NOT_ENROLLED",
+        "real_validator_boundary": boundary,
+        "negative_controls": len(results),
+        "inspection_sha256": sha(INSPECT.read_bytes()),
+        "receipt_proposed_sha256": sha(packed(receipt)),
+        "binding_proposed_sha256": sha(packed(record)),
+        "adapter_sha256": sha(Path(__file__).read_bytes()),
+        "production_inputs_unchanged": True,
+    }
+    (OUT / "adapter-result.json").write_bytes(packed(result))
+
+    print("ACTUAL_INSPECTION_FIELDS_AND_ARTIFACTS=PASS")
+    print("PERSISTED_PHASE_EXIT_RECORDS=PASS")
+    print("FORMAL_RECORD_SCHEMA=PASS")
+    print("REAL_VALIDATOR_STOPPED_AT_UNCHANGED_ENROLLMENT_GATE=PASS")
+    print(
+        "NEW_ADAPTER_NEGATIVE_CONTROLS="
+        + str(len(results)) + "/" + str(len(results)) + " PASS"
+    )
+    print("PRODUCTION_INPUTS_HEADS_AND_INDEXES_UNCHANGED=PASS")
+    print("RECEIPT_AND_BINDING=PROPOSED_NOT_ENROLLED")
+    print("EVIDENCE_DIRECTORY=" + str(OUT))
+    print(
+        "ADAPTER_RESULT_SHA256="
+        + sha((OUT / "adapter-result.json").read_bytes())
+    )
+    print("NO_LEAN_BUILD_REPLAY_DOWNLOAD_STAGE_COMMIT_PUSH_OR_PROMOTION")
+
+try:
+    main()
+except Exception as error:
+    inventory = []
+    if INSPECT.parent.is_dir():
+        inventory = [
+            {"name": path.name, "bytes": path.stat().st_size}
+            for path in sorted(INSPECT.parent.iterdir())
+            if path.is_file()
+        ]
+    (OUT / "ADAPTER_BLOCKED.json").write_bytes(packed({
+        "kind": "adapter_blocked",
+        "reason": str(error),
+        "inspection_inventory": inventory,
+        "receipt_enrollment": "unchanged",
+    }))
+    print("ADAPTER_BLOCKED=" + str(error))
+    print("BLOCKER_REPORT=" + str(OUT / "ADAPTER_BLOCKED.json"))
+    print("No exit code or build history was invented. Do not rerun blindly.")
+    raise SystemExit(1)

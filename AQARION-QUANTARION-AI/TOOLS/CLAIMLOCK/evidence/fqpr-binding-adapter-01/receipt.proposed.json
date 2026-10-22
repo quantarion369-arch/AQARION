@@ -1,0 +1,79 @@
+{
+  "acceptance": "PROPOSED_NOT_ENROLLED",
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "candidate_record_sha256": "10fe7f3d658a2ab8e42a03f3dc410244059a70eb2c1fef0117231454cc370c6b",
+  "compiled_module_artifacts": [
+    "AqarionAnchorBase.olean"
+  ],
+  "compiler_binary_remeasured_by_adapter": false,
+  "compiler_binary_sha256_as_recorded": "72d674b469a5732f69b4d6408c215040c227cc25b4c6b7c7826c16fe19e088b3",
+  "compiler_commit": "c29b6dda4f7c20e3eeaa717c4e565663c5cfa364",
+  "declaration": "AqarionFiniteBridge.finite_quotient_pullback_rigidity",
+  "declaration_type": "@AqarionFiniteBridge.finite_quotient_pullback_rigidity.{u_1} : \u2200 {X : Type u_1} (T : X \u2192 X) (E : Setoid.{u_1 + 1} X)\n  (n : Nat) (enc : @Quotient.{u_1 + 1} X E \u2192 Fin n) (dec : Fin n \u2192 @Quotient.{u_1 + 1} X E)\n  (hleft : \u2200 (a : @Quotient.{u_1 + 1} X E), @Eq.{u_1 + 1} (@Quotient.{u_1 + 1} X E) (dec (enc a)) a)\n  (hright : \u2200 (i : Fin n), @Eq.{1} (Fin n) (enc (dec i)) i)\n  (hback : \u2200 (x y : X), @Setoid.r.{u_1 + 1} X E (T x) (T y) \u2192 @Setoid.r.{u_1 + 1} X E x y) (x y : X),\n  Iff (@Setoid.r.{u_1 + 1} X E x y) (@Setoid.r.{u_1 + 1} X E (T x) (T y))\n",
+  "exit_code": 0,
+  "format_definition": "Exact UTF-8 ExportType.lean stdout, no normalization; saved query defines options; default layout width",
+  "format_state": "proposed; authorization not granted by adaptation",
+  "input_scope": "Pinned proof source and toolchain only; generated query fingerprints separate; full stdlib closure not certified",
+  "inspection_artifacts": {
+    "AqarionAnchorBase.lean": "4c6ba80ea776a8ffc60702f567b24e878cec455ab594a539cefb5cd2a1b0c83b",
+    "AqarionAnchorBase.olean": "9259e5051c6ecbfb3840b9d1ee7ed71da14292f03d69c651871510e33b3b0dd5",
+    "ExportType.attempt1.lean": "c994076a6b5855783a988eb507fdaad54cbc0bc2ef773f00b647278b02b3dda5",
+    "ExportType.lean": "e5b5a93e334d391a423e3ace31e90955e95c2ab5d267be207b4a4fc9a9aa778f",
+    "InspectAxioms.lean": "175091763be0b09e9d46bb211674542a4c0a453d74316827164b61b87c09b359",
+    "SHA256SUMS": "36ebb72999b8fb7389d4e0eea59860521247e145d1b388c57eb736991007f977",
+    "anchor-build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "anchor-build.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "anchor-build.stdout": "be5673295b1c898306fcbc41e9bb016dde72ecb36e3825ed1b5bd88af0d1ed4f",
+    "axioms.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "axioms.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "axioms.stdout": "77990ed5b0860ba56abe8fd1cbdbbd50856ef022962990c5dcd0f0f4c1224fef",
+    "declaration-type.attempt1.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "declaration-type.attempt1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "declaration-type.attempt1.stdout": "fbb442c2e601e2f289b6addd4c03470b398a083df1211b1210175feefd7e9ec9",
+    "declaration-type.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "declaration-type.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "declaration-type.stdout": "0d504fd30ea695b0e8808be7855e281f2e005acd2ded412a260fd403f646e7c8",
+    "inspection.json": "a896d143d3c1022807ad818396e35b95e36c05ecb5a88683017465e2050665f7",
+    "lean-toolchain": "8f89aa44fccdb1a0b6cc768c7c9f54b94cd40e47a08d582f82d1235f13075cf7",
+    "recover_export.py": "e322aa841ae543092a423b9e7f815b8ffeb085d06e4b14b1be63cc4622408695"
+  },
+  "inspection_record_sha256": "a896d143d3c1022807ad818396e35b95e36c05ecb5a88683017465e2050665f7",
+  "kind": "lean_build",
+  "lean_toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "origin": "New derived summary, not the original historical build receipt",
+  "original_build_argv": null,
+  "original_build_timestamp": null,
+  "phase_exit_artifacts": {
+    "anchor-build": {
+      "anchor-build.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "axioms": {
+      "axioms.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "declaration-type": {
+      "declaration-type.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  },
+  "raw_axiom_artifacts": [
+    "axioms.stdout"
+  ],
+  "raw_statement_artifacts": [
+    "declaration-type.stdout"
+  ],
+  "repo": "https://github.com/quantarion369-arch/AQARION-LEAN",
+  "review": {
+    "reviewer": null,
+    "state": "pending"
+  },
+  "revision": "e8b4c12b932df5164101dd365bb16bad0e72973f",
+  "source_files": {
+    "PROJECTS/FiniteAnchorJoinRigidity/AqarionAnchorBase.lean": "4c6ba80ea776a8ffc60702f567b24e878cec455ab594a539cefb5cd2a1b0c83b",
+    "PROJECTS/FiniteAnchorJoinRigidity/lean-toolchain": "8f89aa44fccdb1a0b6cc768c7c9f54b94cd40e47a08d582f82d1235f13075cf7"
+  },
+  "toolchain_path": "PROJECTS/FiniteAnchorJoinRigidity/lean-toolchain",
+  "type_format": "lean-pp-explicit-v1"
+}

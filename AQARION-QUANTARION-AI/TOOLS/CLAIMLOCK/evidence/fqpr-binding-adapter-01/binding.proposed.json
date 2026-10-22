@@ -1,0 +1,24 @@
+{
+  "claim_text": "Let X be a type, T : X -> X, and E an equivalence relation. Given a bijection between X/E and Fin n, represented by enc and dec with both inverse laws, and reflection E(T(x),T(y)) implies E(x,y), then E(x,y) iff E(T(x),T(y)) for every x,y.",
+  "evidence": "Derived proposal; not enrolled",
+  "formal_evidence": {
+    "correspondence_review": {
+      "reviewer": null,
+      "state": "pending"
+    },
+    "declaration": "AqarionFiniteBridge.finite_quotient_pullback_rigidity",
+    "receipt_path": "receipt.proposed.json",
+    "receipt_sha256": "144469618b8b7e8525c3a29836302a431ddec3e119869bc1c544202bcb6626fa",
+    "repo": "https://github.com/quantarion369-arch/AQARION-LEAN",
+    "revision": "e8b4c12b932df5164101dd365bb16bad0e72973f",
+    "source_file_sha256": "4c6ba80ea776a8ffc60702f567b24e878cec455ab594a539cefb5cd2a1b0c83b",
+    "source_path": "PROJECTS/FiniteAnchorJoinRigidity/AqarionAnchorBase.lean",
+    "statement_sha256": "0d504fd30ea695b0e8808be7855e281f2e005acd2ded412a260fd403f646e7c8"
+  },
+  "governance": "blocked",
+  "id": "PB-FQPR-FORMAL-001",
+  "note": "Underlying theorem checkpoint remains complete; this binding is pending",
+  "record_type": "formal",
+  "status": "open",
+  "title": "FQPR binding proposal: pending acceptance"
+}

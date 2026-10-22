@@ -1,0 +1,11 @@
+{
+  "acceptance": "NOT_ENROLLED",
+  "adapter_sha256": "fbcfcee432e8e2f852c54b59636afe6b45d05b442ee957879e4ddac50bdd4282",
+  "binding_proposed_sha256": "5d0d40fa9b6ca6c8afa6e03ac5bd04aa41bd765cfe32bc8c3627dae1ccdf8ee1",
+  "inspection_sha256": "a896d143d3c1022807ad818396e35b95e36c05ecb5a88683017465e2050665f7",
+  "kind": "formal_binding_adapter_dry_run",
+  "negative_controls": 10,
+  "production_inputs_unchanged": true,
+  "real_validator_boundary": "receipt provenance not enrolled in trusted policy",
+  "receipt_proposed_sha256": "144469618b8b7e8525c3a29836302a431ddec3e119869bc1c544202bcb6626fa"
+}
