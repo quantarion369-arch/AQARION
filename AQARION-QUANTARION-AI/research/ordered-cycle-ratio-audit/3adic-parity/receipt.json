@@ -1,0 +1,117 @@
+{
+  "audit": "3adic_same_parity_valuation_gap",
+  "status": "PASS",
+  "python": "3.13.13",
+  "executable": "/data/data/com.termux/files/usr/bin/python",
+  "termux_executable_path_detected": true,
+  "completed_at_utc": "2026-10-22T23:33:15.807975+00:00",
+  "elapsed_seconds": 2.186,
+  "source_sha256": "8f2e34bd5d5d6221c527e9010a09db78ab3a035c847ece1951ff54daed5d954b",
+  "table_sha256": "5385ca83be27ba76c1cab9e011d25a2f48ebd273ee9f364b67828e98a0289a8c",
+  "source_theorem": {
+    "authors": [
+      "Min Qiu",
+      "Yulu Feng",
+      "Shaofang Hong"
+    ],
+    "identifier": "arXiv:2109.13458v1",
+    "theorem": "Theorem 1.1, even-offset case",
+    "elementary_boundary": "a=1,m=1 checked directly using c(N,1)=(N-1)!"
+  },
+  "maximum_r": 6,
+  "maximum_N": 1458,
+  "comparisons": 1629,
+  "case_B_comparisons": 816,
+  "elementary_boundary_comparisons": 6,
+  "failures": 0,
+  "summaries": [
+    {
+      "a": 1,
+      "r": 1,
+      "N": 3,
+      "comparisons": 1,
+      "minimum_gap": 1
+    },
+    {
+      "a": 2,
+      "r": 1,
+      "N": 6,
+      "comparisons": 2,
+      "minimum_gap": 1
+    },
+    {
+      "a": 1,
+      "r": 2,
+      "N": 9,
+      "comparisons": 4,
+      "minimum_gap": 1
+    },
+    {
+      "a": 2,
+      "r": 2,
+      "N": 18,
+      "comparisons": 8,
+      "minimum_gap": 1
+    },
+    {
+      "a": 1,
+      "r": 3,
+      "N": 27,
+      "comparisons": 13,
+      "minimum_gap": 1
+    },
+    {
+      "a": 2,
+      "r": 3,
+      "N": 54,
+      "comparisons": 26,
+      "minimum_gap": 1
+    },
+    {
+      "a": 1,
+      "r": 4,
+      "N": 81,
+      "comparisons": 40,
+      "minimum_gap": 1
+    },
+    {
+      "a": 2,
+      "r": 4,
+      "N": 162,
+      "comparisons": 80,
+      "minimum_gap": 1
+    },
+    {
+      "a": 1,
+      "r": 5,
+      "N": 243,
+      "comparisons": 121,
+      "minimum_gap": 1
+    },
+    {
+      "a": 2,
+      "r": 5,
+      "N": 486,
+      "comparisons": 242,
+      "minimum_gap": 1
+    },
+    {
+      "a": 1,
+      "r": 6,
+      "N": 729,
+      "comparisons": 364,
+      "minimum_gap": 1
+    },
+    {
+      "a": 2,
+      "r": 6,
+      "N": 1458,
+      "comparisons": 728,
+      "minimum_gap": 1
+    }
+  ],
+  "gap_identity": "1+(r-ell)*m+v3(k!)",
+  "scope": "Finite verification of a literature-dependent infinite same-parity exclusion theorem",
+  "global_ratio_classification": "OPEN",
+  "git_operations": 0
+}

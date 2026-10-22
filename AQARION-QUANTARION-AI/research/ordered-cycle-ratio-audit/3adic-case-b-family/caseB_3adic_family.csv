@@ -1,0 +1,6 @@
+r,n,m,deficit,v3_stirling_direct,v3_stirling_formula,v3_factorial_ratio,valuation_gap,case,status
+2,9,1,8,2,2,4,2,B,PASS
+3,27,7,20,3,3,11,8,B,PASS
+4,81,25,56,4,4,30,26,B,PASS
+5,243,79,164,5,5,85,80,B,PASS
+6,729,241,488,6,6,248,242,B,PASS

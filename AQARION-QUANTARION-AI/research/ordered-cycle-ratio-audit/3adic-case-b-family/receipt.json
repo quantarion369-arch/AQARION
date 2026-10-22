@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "completed_at_utc": "2026-10-22T23:29:08.818413+00:00",
+  "source_sha256": "6c7e69e1357f31b3e6de938694670e9ef5c5643df2c9e0c919ec573868afb4ee",
+  "table_sha256": "007282b371f06617ed71fdd81732351b0dcae2773570bb2543982f36c3ca181b",
+  "cases": 5,
+  "direct_stirling_valuations": "PASS",
+  "legendre_factorial_valuations": "PASS",
+  "all_pairs_in_case_B": true,
+  "global_ratio_classification": "OPEN",
+  "git_operations": 0,
+  "publication": "NOT PERFORMED"
+}

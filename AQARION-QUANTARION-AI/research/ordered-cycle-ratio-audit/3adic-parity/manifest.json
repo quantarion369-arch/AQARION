@@ -1,0 +1,29 @@
+{
+  "base_commit": "160d233dfdc2fa6cbce3fbc8be8113263d8b7e07",
+  "experiments_rerun_during_packaging": false,
+  "external_dependency": "arXiv:2109.13458v1, Theorem 1.1; elementary exception separate",
+  "files": {
+    "audit.py": {
+      "bytes": 7695,
+      "sha256": "8f2e34bd5d5d6221c527e9010a09db78ab3a035c847ece1951ff54daed5d954b"
+    },
+    "proof.md": {
+      "bytes": 2430,
+      "sha256": "299bd0428b189fc685aa62caca01e6399b6f4e91a7d25c350827994bfaa4bd0d"
+    },
+    "receipt.json": {
+      "bytes": 2349,
+      "sha256": "4a0ae4ce34b3c23716a691bd8fe7a25d56759249129998d2e7cc6915566865f8"
+    },
+    "valuation_certificates.csv": {
+      "bytes": 83138,
+      "sha256": "5385ca83be27ba76c1cab9e011d25a2f48ebd273ee9f364b67828e98a0289a8c"
+    }
+  },
+  "global_ratio_classification": "OPEN",
+  "label": "3adic-parity",
+  "packaged_at_utc": "2026-10-22T23:35:11.008430+00:00",
+  "proof_provenance": "proof.md authored at packaging time",
+  "schema": "ordered-cycle-3adic-addendum-v1",
+  "validation": "source/table/receipt hashes and saved certificate arithmetic PASS"
+}
