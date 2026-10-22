@@ -1,0 +1,23 @@
+{
+  "base_commit": "69f222b96a6d966825953faeff084b518616c9be",
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "README.md": {
+      "bytes": 2405,
+      "sha256": "dbec7c87f0fbfc4fa11e03db069db50aa20583bb7eb217f306dbd2de36c49497"
+    },
+    "audit.py": {
+      "bytes": 11202,
+      "sha256": "4404aa88977af4132d101b6e7439bbd14fb264d9d3f74ec1dc74dedca2acf043"
+    },
+    "receipt.json": {
+      "bytes": 1556,
+      "sha256": "05c81788b1af8821181058110f4f70d310f2435b7e3a76515d0f48906b415d3a"
+    }
+  },
+  "global_ratio_classification": "OPEN",
+  "note_provenance": "README authored at packaging time",
+  "packaged_at_utc": "2026-10-22T15:21:54.276273+00:00",
+  "schema": "ordered-cycle-correction-audit-v1",
+  "validation": "source binding and saved receipt consistency PASS"
+}

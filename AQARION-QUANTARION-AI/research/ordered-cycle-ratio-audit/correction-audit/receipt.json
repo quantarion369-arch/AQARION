@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "six_cases": [
+    {
+      "n": 3,
+      "m": 1,
+      "pairs": 6,
+      "mean": "11/6",
+      "variance": "17/36"
+    },
+    {
+      "n": 3,
+      "m": 2,
+      "pairs": 6,
+      "mean": "5/2",
+      "variance": "1/4"
+    },
+    {
+      "n": 4,
+      "m": 1,
+      "pairs": 24,
+      "mean": "25/12",
+      "variance": "95/144"
+    },
+    {
+      "n": 4,
+      "m": 2,
+      "pairs": 48,
+      "mean": "61/24",
+      "variance": "455/576"
+    },
+    {
+      "n": 5,
+      "m": 1,
+      "pairs": 120,
+      "mean": "137/60",
+      "variance": "2951/3600"
+    },
+    {
+      "n": 5,
+      "m": 2,
+      "pairs": 240,
+      "mean": "77/24",
+      "variance": "407/576"
+    }
+  ],
+  "polynomial_pairs": 55,
+  "exact_derivative_checks": 220,
+  "derivative_orders": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "direct_case_checks": 6,
+  "harmonic_checks": 10,
+  "falling_profile_checks": 176,
+  "root_comparisons": 176,
+  "roots": {
+    "1": [
+      3
+    ],
+    "2": [],
+    "3": [],
+    "4": [],
+    "5": [],
+    "6": [],
+    "7": [],
+    "8": []
+  },
+  "negative_controls": {
+    "defective_deficit3_n6": "4",
+    "correct_R_6_3": "5/8",
+    "false_cutoff_R_4_2": "11/24"
+  },
+  "global_ratio_classification": "OPEN",
+  "case_a_reopened": false,
+  "git_operations": 0,
+  "python": "3.13.13",
+  "executable": "/data/data/com.termux/files/usr/bin/python",
+  "termux_executable_path_detected": true,
+  "completed_at_utc": "2026-10-22T15:20:04.153796+00:00",
+  "source_sha256": "4404aa88977af4132d101b6e7439bbd14fb264d9d3f74ec1dc74dedca2acf043"
+}
