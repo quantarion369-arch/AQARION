@@ -1,0 +1,22 @@
+{
+  "base_commit": "26d6725d711bd002c104bc0eba0d3062eb42ff5e",
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "audit.py": {
+      "bytes": 7257,
+      "sha256": "21d15c8a46b85f7d4f92b86b022bba030683eb9b78215629ac061643eb0b1db3"
+    },
+    "proof.md": {
+      "bytes": 1846,
+      "sha256": "bb26594bf8017bf727cb645c3af8ee4476b180f18e1e3625ae905bf583c7ebca"
+    },
+    "receipt.json": {
+      "bytes": 357773,
+      "sha256": "3ad397daba297f9a3dbc86944b40199a3a8db2e66e9224c22ef1392b6943fe49"
+    }
+  },
+  "global_classification": "OPEN",
+  "packaged_at_utc": "2026-10-22T12:02:44.459300+00:00",
+  "schema": "ordered-cycle-research-addendum-v1",
+  "scope": "Case B equality excluded for every n>2m, 1<=m<=10"
+}
