@@ -1,0 +1,5 @@
+theorem AqarionFiniteBridge.finite_quotient_pullback_rigidity.{u} : ∀ {X : Type u} (T : X → X) (E : Setoid X) (n : Nat)
+  (enc : Quotient E → Fin n) (dec : Fin n → Quotient E),
+  (∀ (a : Quotient E), dec (enc a) = a) →
+    (∀ (i : Fin n), enc (dec i) = i) →
+      (∀ (x y : X), Setoid.r (T x) (T y) → Setoid.r x y) → ∀ (x y : X), Setoid.r x y ↔ Setoid.r (T x) (T y)

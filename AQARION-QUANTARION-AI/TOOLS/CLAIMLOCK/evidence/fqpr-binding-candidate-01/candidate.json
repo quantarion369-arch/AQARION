@@ -1,0 +1,73 @@
+{
+  "kind": "formal_binding_candidate",
+  "candidate_id": "PB-FQPR-FORMAL-001",
+  "created_at": "2026-10-22T00:26:29.482656+00:00",
+  "preparation_mode": "offline adaptation of pinned historical evidence",
+  "claim_text": "Let X be a type, T : X -> X, and E an equivalence relation. Given a bijection between X/E and Fin n, represented by enc and dec with both inverse laws, and reflection E(T(x),T(y)) implies E(x,y), then E(x,y) iff E(T(x),T(y)) for every x,y.",
+  "claim_text_sha256": "72bfcf1e615552915a7f7c851b7c8314b8e556306b891639777e67fda0529165",
+  "formal_repository": "https://github.com/quantarion369-arch/AQARION-LEAN",
+  "pinned_publication_revision": "e8b4c12b932df5164101dd365bb16bad0e72973f",
+  "declaration": "AqarionFiniteBridge.finite_quotient_pullback_rigidity",
+  "source_path": "PROJECTS/FiniteAnchorJoinRigidity/AqarionAnchorBase.lean",
+  "source_file_sha256": "4c6ba80ea776a8ffc60702f567b24e878cec455ab594a539cefb5cd2a1b0c83b",
+  "pinned_project_files": {
+    "PROJECTS/FiniteAnchorJoinRigidity/AqarionAnchorBase.lean": "4c6ba80ea776a8ffc60702f567b24e878cec455ab594a539cefb5cd2a1b0c83b",
+    "PROJECTS/FiniteAnchorJoinRigidity/AqarionJoin.lean": "aee4d8d821de4cc46a94be4d027c0c9970e9c76104a87fca4135084313a6b09b",
+    "PROJECTS/FiniteAnchorJoinRigidity/AxiomAudit.lean": "fc25223f9777232ba7d99ba8fe0a5ef1d16c2601ab754e4412726a7a86ef7e17",
+    "PROJECTS/FiniteAnchorJoinRigidity/lean-toolchain": "8f89aa44fccdb1a0b6cc768c7c9f54b94cd40e47a08d582f82d1235f13075cf7",
+    "PROJECTS/FiniteAnchorJoinRigidity/verify.sh": "bec3597cfc0050e4fa2b090d60cc9a55e19eabf1409ec362010156d029318bef",
+    ".github/workflows/finite-anchor-join.yml": "0a884c9aa7128bf407771ac6a219f96dfbc7b05798fec01c829c586d80253326"
+  },
+  "historical_archive": {
+    "path": "PROJECTS/FiniteAnchorJoinRigidity/evidence/finite-anchor-verify-nF7qHifJ",
+    "manifest_sha256": "76fb7290a8659d0b5daa0dccd94297df5459289f3a9257af553c6ede43c0ff22",
+    "verified_files": {
+      "AqarionAnchorBase.lean": "4c6ba80ea776a8ffc60702f567b24e878cec455ab594a539cefb5cd2a1b0c83b",
+      "AqarionJoin.lean": "aee4d8d821de4cc46a94be4d027c0c9970e9c76104a87fca4135084313a6b09b",
+      "AxiomAudit.lean": "fc25223f9777232ba7d99ba8fe0a5ef1d16c2601ab754e4412726a7a86ef7e17",
+      "context.txt": "5fb05f85c28d5b39fc465cee375860c2a9bbbaf739ce67f9b43d1d7ed818374c",
+      "AqarionAnchorBase.log": "be5673295b1c898306fcbc41e9bb016dde72ecb36e3825ed1b5bd88af0d1ed4f",
+      "AqarionJoin.log": "6a1e1c6adce11cc57c58166b2c44f2c2dd4f14ca44c2663520e9c65d937eba63",
+      "axioms.log": "afbc8549f3fdc05d6d74f0508a4daffec4802f04cdb1e54634b72a65e505350f",
+      "expected-axioms.log": "afbc8549f3fdc05d6d74f0508a4daffec4802f04cdb1e54634b72a65e505350f",
+      "verifier.log": "2b825c23fd12328bacc7924ecc3ab1d06cffb51222b459d96deab48a206cc5f8"
+    },
+    "compiler_context": "Lean (version 4.35.0-rc4, aarch64-unknown-linux-gnu, commit c29b6dda4f7c20e3eeaa717c4e565663c5cfa364, Release)",
+    "execution_revision": null,
+    "execution_revision_note": "The local context does not record a Git execution revision.",
+    "observed_success_markers": [
+      "BUILD_PASS=AqarionAnchorBase",
+      "BUILD_PASS=AqarionJoin",
+      "FINITE_ANCHOR_VERIFICATION=PASS"
+    ]
+  },
+  "historical_statement": {
+    "format": "historical Lean print excerpt; not relabeled as lean-pp-explicit-v1",
+    "text": "theorem AqarionFiniteBridge.finite_quotient_pullback_rigidity.{u} : \u2200 {X : Type u} (T : X \u2192 X) (E : Setoid X) (n : Nat)\n  (enc : Quotient E \u2192 Fin n) (dec : Fin n \u2192 Quotient E),\n  (\u2200 (a : Quotient E), dec (enc a) = a) \u2192\n    (\u2200 (i : Fin n), enc (dec i) = i) \u2192\n      (\u2200 (x y : X), Setoid.r (T x) (T y) \u2192 Setoid.r x y) \u2192 \u2200 (x y : X), Setoid.r x y \u2194 Setoid.r (T x) (T y)\n",
+    "sha256": "36f0a920a8931568ca88aca40fee6fa42ff7cb3d213cef27f8db3de3531171be"
+  },
+  "observed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "hosted_run_reference": {
+    "run_id": 39578496457,
+    "head_revision": "e8b4c12b932df5164101dd365bb16bad0e72973f",
+    "verification_in_this_adapter": "not performed"
+  },
+  "project_manifest_scope": "Pinned project/publication files, not a proven complete historical build closure.",
+  "correspondence_review": {
+    "state": "pending",
+    "reviewer": null
+  },
+  "production_enrollment": "not requested; unchanged",
+  "acceptance_state": "review required; not submitted as a lean_build receipt",
+  "outstanding_obligations": [
+    "Define and validate the accepted declaration-type export format.",
+    "Review historical execution provenance and the hosted-run evidence.",
+    "Review compiler/stdlib identity and build-input completeness.",
+    "Approve the exact written/formal statement correspondence separately.",
+    "Authorize receipt and review enrollment explicitly, if warranted."
+  ]
+}
