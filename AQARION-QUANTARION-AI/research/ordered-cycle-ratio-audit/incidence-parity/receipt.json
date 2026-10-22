@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "python": "3.13.13",
+  "executable": "/data/data/com.termux/files/usr/bin/python",
+  "completed_at_utc": "2026-10-22T23:20:11.558001+00:00",
+  "source_sha256": "cefbbe9c88a356e706598e7c8e3e2447ce493119eaeb0297b453740dce865105",
+  "input_receipt_sha256": "9ba116540c801153d70f34c12ed360ef21a670298e2f6b859d6d0f16d856ad20",
+  "input_coefficient_sha256": "c677aa2a3e592d58823f6a97e95b1abe32193a3aec347d3a7eb552e924c219ee",
+  "off_diagonal_factorizations": 45,
+  "fixed_Q_factorizations": 137,
+  "strict_variance_checks_deficit_ge_2": 36,
+  "negative_controls_detected": 2,
+  "artifacts": {
+    "factorizations.csv": {
+      "rows": 182,
+      "bytes": 10827,
+      "sha256": "bf7107f42eb4132a74bf19999ad52205c7c22579df1d72313f64bfc7e2a7310c"
+    },
+    "statistics.csv": {
+      "rows": 45,
+      "bytes": 1922,
+      "sha256": "abc659f75cdbee294ef4bbf61547340c81238aed6e9c8baf01fa2a893a8c8fdf"
+    }
+  },
+  "scope": "Finite verification of positive 1+s factorization and incidence-variance classification against preserved joint data",
+  "direct_involution_enumeration_performed_here": false,
+  "joint_audit_rerun": false,
+  "global_ratio_classification": "OPEN",
+  "git_operations": 0
+}

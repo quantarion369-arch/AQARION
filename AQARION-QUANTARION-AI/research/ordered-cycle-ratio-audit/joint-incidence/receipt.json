@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "joint_max_n": 10,
+  "direct_max_n": 6,
+  "K_orders": [
+    0,
+    3
+  ],
+  "Q_orders": [
+    0,
+    2
+  ],
+  "joint_polynomial_pairs": 55,
+  "mixed_factorial_comparisons": 660,
+  "direct_joint_distribution_checks": 21,
+  "direct_valid_pairs": 8903,
+  "direct_permutations": 873,
+  "boundary_rank_field_computations": 17806,
+  "boundary_rank_failures": 0,
+  "recurrence_failures": 0,
+  "reference_table_checks": 6,
+  "incidence_covariance_checks": 55,
+  "counterexample_family_checks": 9,
+  "fields": [
+    2,
+    3
+  ],
+  "integral_Smith_normal_form_computed": false,
+  "source_independence": "different representations; shared exact local Stirling table",
+  "global_ratio_classification": "OPEN",
+  "git_operations": 0,
+  "python": "3.13.13",
+  "executable": "/data/data/com.termux/files/usr/bin/python",
+  "termux_executable_path_detected": true,
+  "completed_at_utc": "2026-10-22T23:11:23.448616+00:00",
+  "elapsed_seconds": 1.06,
+  "source_sha256": "9eb24246c9d4e7e801b7b0013285626b2cc843d3a197f691e7651c3418f0151c",
+  "artifacts": {
+    "joint_coefficients.csv": {
+      "rows": 582,
+      "bytes": 10874,
+      "sha256": "c677aa2a3e592d58823f6a97e95b1abe32193a3aec347d3a7eb552e924c219ee"
+    },
+    "mixed_checks.csv": {
+      "rows": 660,
+      "bytes": 18260,
+      "sha256": "6b73865a216f939a05ffea7edd12cf6b44724e8fc9de56aac8e487af24fcda35"
+    },
+    "moments.csv": {
+      "rows": 55,
+      "bytes": 3899,
+      "sha256": "c4563b351df0cf08d772b846776f13e8c85b3a38d919a4530059f7765c07c286"
+    },
+    "direct_checks.csv": {
+      "rows": 21,
+      "bytes": 543,
+      "sha256": "a65f30f1b3f0dcb94b67b91a87a8f26344d80cbb968c551479d609ae33ba2f6a"
+    },
+    "counterexamples.csv": {
+      "rows": 9,
+      "bytes": 255,
+      "sha256": "87438cd17ecd5f9c442a82181dadba6c6c120a0dc18790f1a3f50f7506d231bc"
+    }
+  },
+  "scope": "exact finite joint-statistic and incidence graph checks; no global ratio theorem"
+}

@@ -1,0 +1,44 @@
+{
+  "base_commit": "e824c73da7c10372d312f9d1fe2fb524445c4f20",
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "audit.py": {
+      "bytes": 15743,
+      "sha256": "9eb24246c9d4e7e801b7b0013285626b2cc843d3a197f691e7651c3418f0151c"
+    },
+    "counterexamples.csv": {
+      "bytes": 255,
+      "sha256": "87438cd17ecd5f9c442a82181dadba6c6c120a0dc18790f1a3f50f7506d231bc"
+    },
+    "direct_checks.csv": {
+      "bytes": 543,
+      "sha256": "a65f30f1b3f0dcb94b67b91a87a8f26344d80cbb968c551479d609ae33ba2f6a"
+    },
+    "joint_coefficients.csv": {
+      "bytes": 10874,
+      "sha256": "c677aa2a3e592d58823f6a97e95b1abe32193a3aec347d3a7eb552e924c219ee"
+    },
+    "mixed_checks.csv": {
+      "bytes": 18260,
+      "sha256": "6b73865a216f939a05ffea7edd12cf6b44724e8fc9de56aac8e487af24fcda35"
+    },
+    "moments.csv": {
+      "bytes": 3899,
+      "sha256": "c4563b351df0cf08d772b846776f13e8c85b3a38d919a4530059f7765c07c286"
+    },
+    "proof.md": {
+      "bytes": 2625,
+      "sha256": "65b25f89c1d332507dadc64ce0e5922c5860a5efdfb8324a7b279759e76b3ac0"
+    },
+    "receipt.json": {
+      "bytes": 1943,
+      "sha256": "9ba116540c801153d70f34c12ed360ef21a670298e2f6b859d6d0f16d856ad20"
+    }
+  },
+  "global_ratio_classification": "OPEN",
+  "label": "joint-incidence",
+  "packaged_at_utc": "2026-10-22T23:21:55.870605+00:00",
+  "proof_provenance": "proof.md authored at packaging time",
+  "schema": "ordered-cycle-incidence-addendum-v1",
+  "validation": "saved hashes, source bindings and artifact consistency PASS"
+}

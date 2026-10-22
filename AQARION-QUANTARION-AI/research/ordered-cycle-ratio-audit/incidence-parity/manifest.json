@@ -1,0 +1,32 @@
+{
+  "base_commit": "e824c73da7c10372d312f9d1fe2fb524445c4f20",
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "audit.py": {
+      "bytes": 7875,
+      "sha256": "cefbbe9c88a356e706598e7c8e3e2447ce493119eaeb0297b453740dce865105"
+    },
+    "factorizations.csv": {
+      "bytes": 10827,
+      "sha256": "bf7107f42eb4132a74bf19999ad52205c7c22579df1d72313f64bfc7e2a7310c"
+    },
+    "proof.md": {
+      "bytes": 2432,
+      "sha256": "39d4736611d8b4c156ee93083abbfa4d38decfd2f4c9f4386ef8dfb34d5b90ab"
+    },
+    "receipt.json": {
+      "bytes": 1209,
+      "sha256": "579798cfa147cc8cc5657e6c858f226e93d0a93dbe98b07ef6a5345a24832d39"
+    },
+    "statistics.csv": {
+      "bytes": 1922,
+      "sha256": "abc659f75cdbee294ef4bbf61547340c81238aed6e9c8baf01fa2a893a8c8fdf"
+    }
+  },
+  "global_ratio_classification": "OPEN",
+  "label": "incidence-parity",
+  "packaged_at_utc": "2026-10-22T23:21:55.871233+00:00",
+  "proof_provenance": "proof.md authored at packaging time",
+  "schema": "ordered-cycle-incidence-addendum-v1",
+  "validation": "saved hashes, source bindings and artifact consistency PASS"
+}
