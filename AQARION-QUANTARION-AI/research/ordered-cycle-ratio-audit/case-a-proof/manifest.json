@@ -1,0 +1,23 @@
+{
+  "base_commit": "d9a8edcfa0e64e5c4283ea8094209d37c7a6c884",
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "audit.py": {
+      "bytes": 4952,
+      "sha256": "4a5f66050eea0e0664b377a0f0bac7ff5b5f501ed1af0a6c824cdefabe90b628"
+    },
+    "proof.md": {
+      "bytes": 1838,
+      "sha256": "c900d4c10c88213e21244680059145beb9d55e89542a3951e24abca73f6767ab"
+    },
+    "receipt.json": {
+      "bytes": 157806,
+      "sha256": "679cee5f75c81fec38647febd2e88eb1ed24a24956bf59947e0926a3bdc88456"
+    }
+  },
+  "formal_proof_assistant_certification": false,
+  "packaged_at_utc": "2026-10-22T11:08:53.130726+00:00",
+  "remaining_case": "m<d remains open",
+  "schema": "ordered-cycle-case-a-proof-v1",
+  "scope": "Computer-assisted equality classification for m>=d"
+}
