@@ -1,0 +1,21 @@
+{
+  "archive_partition_lossless": true,
+  "archived_tail_bytes": 31561,
+  "archived_tail_sha256": "01471d49897919b8798008611e2a07da6dc96a66933f7a80a1ee0638e2beed2b",
+  "base_commit": "d56fd7b510700125373965b680225f3944edaed3",
+  "changes": [
+    "Archive drafting conversation and embedded replacement",
+    "Clarify publication scope without unblocking the gate",
+    "Link published finite audit evidence"
+  ],
+  "created_at_utc": "2026-10-23T02:20:02.694535+00:00",
+  "global_classification": "OPEN",
+  "mathematical_computations_rerun": false,
+  "mathematical_sources_changed": false,
+  "original_prefix_bytes": 38652,
+  "original_readme_sha256": "2dae50d50a4e71a5fd44feb6e05acaf90c94bd27581a10c86de39c1a1ec3e0d2",
+  "promotion": false,
+  "proof_added": false,
+  "schema": "readme-conversation-cleanup-v1",
+  "updated_readme_sha256": "0606afa590936e4a649cdaa3e2937c4299ecf3ebcc13cd82528ec5076a2407c1"
+}
