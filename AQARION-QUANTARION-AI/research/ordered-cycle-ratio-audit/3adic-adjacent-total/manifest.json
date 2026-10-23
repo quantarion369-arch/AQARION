@@ -1,0 +1,36 @@
+{
+  "base_commit": "c9a20e9e599b1c2c3296276a1cbd0abc64a3f311",
+  "complementary_case_B_rows": 810,
+  "exception": [
+    7,
+    2,
+    0
+  ],
+  "experiments_recomputed_to_save_prior_print_only_results": true,
+  "files": {
+    "audit.py": {
+      "bytes": 6935,
+      "sha256": "bc044442c5e218e05215842eb6a4f814ab9d367502a8cc370bf00c9d4fa9ddd8"
+    },
+    "complementary_case_B_certificates.csv": {
+      "bytes": 32557,
+      "sha256": "df93789476bb4bfe61a1165caff841a4caf06d12e280078fd5eb2c56ba41c8e5"
+    },
+    "receipt.json": {
+      "bytes": 1189,
+      "sha256": "bd694d0aa98c79a76717e37e4af8ca0e567e943c91c3410a02d8f06f1aa2ad26"
+    },
+    "same_parity_certificates.csv": {
+      "bytes": 71959,
+      "sha256": "305e777100e5e8b1c2335d038ce3fc45479be96bb9add5f321404ee2c806ba54"
+    }
+  },
+  "formal_certification": "OPEN",
+  "full_transfer_checks": 1641,
+  "global_classification": "OPEN",
+  "promotion": false,
+  "same_parity_rows": 1629,
+  "schema": "ordered-cycle-adjacent-total-evidence-v1",
+  "scope": "Finite exact adjacent-total audit; no proof or novelty claim",
+  "valuation_step_checks": 1629
+}

@@ -1,0 +1,34 @@
+{
+  "M_equals_1_boundary_in_csv_tables": false,
+  "complementary_case_B_rows": 810,
+  "completed_at_utc": "2026-10-23T01:39:15.529932+00:00",
+  "exception_full_gap": 1,
+  "exception_partition_count": 3,
+  "exception_partition_valuation": 1,
+  "executable": "/data/data/com.termux/files/usr/bin/python",
+  "formal_certification": "OPEN",
+  "full_complementary_transfer_checks": 1641,
+  "git_operations_by_audit": 0,
+  "global_classification": "OPEN",
+  "nonpositive_complementary_case_B_gaps": [
+    [
+      7,
+      2,
+      0
+    ]
+  ],
+  "novelty_clearance": "OPEN",
+  "prior_print_only_diagnostics_recomputed_for_preservation": true,
+  "promotion": false,
+  "proof_included": false,
+  "python": "3.13.13",
+  "same_parity_rows": 1629,
+  "scope": "Finite exact diagnostics for n=a*3^r+1, a=1,2, r=1,...,6",
+  "source_sha256": "bc044442c5e218e05215842eb6a4f814ab9d367502a8cc370bf00c9d4fa9ddd8",
+  "status": "PASS",
+  "table_sha256": {
+    "complementary_case_B_certificates.csv": "df93789476bb4bfe61a1165caff841a4caf06d12e280078fd5eb2c56ba41c8e5",
+    "same_parity_certificates.csv": "305e777100e5e8b1c2335d038ce3fc45479be96bb9add5f321404ee2c806ba54"
+  },
+  "valuation_step_checks": 1629
+}
