@@ -1,0 +1,41 @@
+{
+  "cancellation_depth_profile": {
+    "1": 1441,
+    "2": 451,
+    "3": 165,
+    "4": 79,
+    "5": 54,
+    "6": 15,
+    "7": 4,
+    "8": 3
+  },
+  "canonical_ratio_certificates_added": false,
+  "completed_at_utc": "2026-10-23T04:03:26.977264+00:00",
+  "depth_ten_precision_control": true,
+  "evaluated_precision": 9,
+  "exact_rational_arithmetic_used": false,
+  "failures": [],
+  "formal_certification": "OPEN",
+  "git_operations_by_audit": 0,
+  "global_classification": "OPEN",
+  "lifted_rows": 2212,
+  "novelty_clearance": "OPEN",
+  "parent_hashes": {
+    "audit.py": "57e6634d46c1059ca0f5e7ce4c5ff16b621344f2ef62529d77e528cfafa38588",
+    "polynomial_certificates.csv": "ec8a4a1723877364e8919bb208640093ee0a6bf82b09490f5019295bc0b1873c",
+    "receipt.json": "d7b602fdd2ce26d609985dcc9f2f8f5f5699caf004cd40b58728e3673ab560f3"
+  },
+  "promotion": false,
+  "python": "3.13.13",
+  "reference_valuations_used_to_choose_precision": false,
+  "resolved_rows": 2212,
+  "scope": "Finite modular lifting plus telescoping closed-form checks",
+  "source_sha256": "f2183c83034ad7a2cf7e093060300bf9e2ebf0bfc6244e1f5ebeaa3b9562479d",
+  "status": "PASS",
+  "table_sha256": {
+    "lifted_tied_zero_cases.csv": "15154a2df583e27afcc6a272f1e92264667bc90fc3498a060e9ffe2f52ab9ed2",
+    "telescoping_structural_checks.csv": "9dedf5ef4855996d729eaec17c5ffaa48da464bd0c2b278ba431c42227f498e5"
+  },
+  "telescoping_checks": 320,
+  "universal_finite_depth_bound_claimed": false
+}

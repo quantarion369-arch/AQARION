@@ -1,0 +1,35 @@
+{
+  "base_commit": "37a3d6a475dec27e3644ef100cb47b000a1f763b",
+  "canonical_ratio_certificates_added": false,
+  "files": {
+    "SCOPE.md": {
+      "bytes": 1327,
+      "sha256": "3046d84bd787b55439097ec2de3faf38050c3567e45b3a17f7e6ddd28a135474"
+    },
+    "audit.py": {
+      "bytes": 8819,
+      "sha256": "f2183c83034ad7a2cf7e093060300bf9e2ebf0bfc6244e1f5ebeaa3b9562479d"
+    },
+    "lifted_tied_zero_cases.csv": {
+      "bytes": 94834,
+      "sha256": "15154a2df583e27afcc6a272f1e92264667bc90fc3498a060e9ffe2f52ab9ed2"
+    },
+    "receipt.json": {
+      "bytes": 1455,
+      "sha256": "352dbd57c4961a73f490e1cb0bebecfef5c39954a6adb4aee2036528e5765410"
+    },
+    "telescoping_structural_checks.csv": {
+      "bytes": 11593,
+      "sha256": "9dedf5ef4855996d729eaec17c5ffaa48da464bd0c2b278ba431c42227f498e5"
+    }
+  },
+  "formal_certification": "OPEN",
+  "global_classification": "OPEN",
+  "modular_replay_performed_to_preserve_prior_print_only_results": true,
+  "novelty_clearance": "OPEN",
+  "original_polynomial_and_second_kind_audits_rerun": false,
+  "packaged_at_utc": "2026-10-23T04:03:27.025071+00:00",
+  "promotion": false,
+  "schema": "modular-cancellation-lift-v1",
+  "scope_note_authored_during_packaging": true
+}
