@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "python": "3.13.13",
+  "executable": "/data/data/com.termux/files/usr/bin/python",
+  "completed_at_utc": "2026-10-22T23:43:21.311282+00:00",
+  "source_sha256": "91992d7af1a0119cbc9be5742fb7e75496587fbe1a00ae5231c10ffa1b6a69b9",
+  "table_sha256": "bd4f2892109d46dcaffbe1f8872295d9938e838658ebd323be573112cd0814b8",
+  "input_receipt_sha256": "4a0ae4ce34b3c23716a691bd8fe7a25d56759249129998d2e7cc6915566865f8",
+  "input_table_sha256": "5385ca83be27ba76c1cab9e011d25a2f48ebd273ee9f364b67828e98a0289a8c",
+  "source_theorem": "Qiu-Feng-Hong, arXiv:2109.13458v1, Theorem 1.1",
+  "new_opposite_parity_checks": 813,
+  "reused_same_parity_case_B_certificates": 816,
+  "combined_case_B_pairs": 1629,
+  "nonpositive_basic_gaps": [
+    [
+      9,
+      4,
+      0
+    ]
+  ],
+  "exceptional_partition_count": 6,
+  "all_checked_equalities_excluded": true,
+  "scope": "Finite validation of the source-dependent Case B classification for totals a*3^r; not arbitrary totals",
+  "same_parity_audit_rerun": false,
+  "global_ratio_classification": "OPEN",
+  "git_operations": 0
+}

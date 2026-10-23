@@ -1,0 +1,32 @@
+{
+  "adjacent_total_diagnostics_included": false,
+  "base_commit": "1d06da4e32cd4bc720b9dbf9ddb8f7453d6297df",
+  "combined_pairs": 1629,
+  "exception": [
+    9,
+    4,
+    0
+  ],
+  "experiments_rerun": false,
+  "files": {
+    "audit.py": {
+      "bytes": 8376,
+      "sha256": "91992d7af1a0119cbc9be5742fb7e75496587fbe1a00ae5231c10ffa1b6a69b9"
+    },
+    "opposite_parity_certificates.csv": {
+      "bytes": 36281,
+      "sha256": "bd4f2892109d46dcaffbe1f8872295d9938e838658ebd323be573112cd0814b8"
+    },
+    "receipt.json": {
+      "bytes": 1082,
+      "sha256": "4ac52bf2470364689d408f09464315d9812c5b36639dcac78691b168ae8e31f5"
+    }
+  },
+  "formal_certification": "OPEN",
+  "global_classification": "OPEN",
+  "new_comparisons": 813,
+  "promotion": false,
+  "reused_certificates": 816,
+  "schema": "ordered-cycle-case-b-evidence-v1",
+  "scope": "Preserve the completed finite Case B audit only"
+}
