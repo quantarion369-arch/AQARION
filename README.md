@@ -982,4 +982,4 @@ certification, novelty clearance, and global classification remain
 separate obligations. No claim promotion is implied.
 
 Historical drafting material removed from this front page is preserved
-in [the conversation archive](docs/archive/main-readme-conversation-20261022.txt).
+in [the conversation archive](AQARION-QUANTARION-AI/docs/archive/main-readme-conversation-20261022.txt).
