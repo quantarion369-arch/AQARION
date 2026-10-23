@@ -1,0 +1,44 @@
+{
+  "certificate_pair_domain": "5<=n<=160, 2<=m<n/2",
+  "completed_at_utc": "2026-10-23T02:34:03.261688+00:00",
+  "executable": "/data/data/com.termux/files/usr/bin/python",
+  "failures": [],
+  "false_stride_two_extension_rejected": true,
+  "general_step_conjecture": "UNPROVED",
+  "git_operations": 0,
+  "global_classification": "OPEN",
+  "individual_witness_checks": 4568,
+  "negative_controls_rejected": 5,
+  "negative_controls_total": 5,
+  "novelty_clearance": "OPEN",
+  "pairs_examined": 6162,
+  "pairs_with_witness": 1800,
+  "promotion": false,
+  "proof_formally_certified": false,
+  "python": "3.13.13",
+  "source_sha256": "be36141ea1f15dcbf7bf04c7842df6de2c55b01ec1ead826acac2f552cfbe988",
+  "status": "PASS",
+  "step_comparisons": 2894,
+  "step_counterexamples": [],
+  "step_search_domain": {
+    "N": "a*p^r",
+    "N_limit": 600,
+    "a": "1<=a<=p-1",
+    "primes": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19
+    ],
+    "r": "r>=1",
+    "u": "u congruent to a modulo p-1"
+  },
+  "table_sha256": {
+    "generalized_step_search.csv": "ac0243047176f92eb5632ec9f39f8751359880fb453ebd9a3b7ea77020e6f597",
+    "prime_power_certificates.csv": "aac84d4550bd4bcf5349d5bf57e449bc02bec2b427925b509ae1b739be662bc8"
+  }
+}

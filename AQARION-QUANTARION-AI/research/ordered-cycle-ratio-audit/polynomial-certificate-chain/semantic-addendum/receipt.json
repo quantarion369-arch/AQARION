@@ -1,0 +1,78 @@
+{
+  "completed_at_utc": "2026-10-23T03:02:48.400520+00:00",
+  "exact_inclusion_exclusion_checks": 414,
+  "failures": [],
+  "formal_certification": "OPEN",
+  "git_operations": 0,
+  "lifted_modulus_recovery_checks": 2070,
+  "negative_controls": [
+    {
+      "label": "wrong_nonzero_leading_unit",
+      "rejected": true
+    },
+    {
+      "label": "wrong_top_weight",
+      "rejected": true
+    },
+    {
+      "label": "wrong_polynomial_valuation",
+      "rejected": true
+    },
+    {
+      "label": "false_tie_nonintegrality",
+      "rejected": true
+    },
+    {
+      "label": "wrong_polynomial_status",
+      "rejected": true
+    },
+    {
+      "label": "wrong_modulus",
+      "rejected": true
+    },
+    {
+      "label": "wrong_second_kind_residue",
+      "rejected": true
+    },
+    {
+      "label": "wrong_second_kind_valuation",
+      "rejected": true
+    },
+    {
+      "label": "wrong_period_flag",
+      "rejected": true
+    },
+    {
+      "label": "wrong_second_kind_status",
+      "rejected": true
+    },
+    {
+      "label": "missing_polynomial_row",
+      "rejected": true
+    },
+    {
+      "label": "duplicate_replaces_polynomial_row",
+      "rejected": true
+    }
+  ],
+  "novelty_clearance": "OPEN",
+  "parent_hashes": {
+    "audit.py": "57e6634d46c1059ca0f5e7ce4c5ff16b621344f2ef62529d77e528cfafa38588",
+    "polynomial_certificates.csv": "ec8a4a1723877364e8919bb208640093ee0a6bf82b09490f5019295bc0b1873c",
+    "receipt.json": "d7b602fdd2ce26d609985dcc9f2f8f5f5699caf004cd40b58728e3673ab560f3",
+    "second_kind_certificates.csv": "8b21dc05f3d753e802625cc30535aafb4c6108f09b6ebcb4adbf7b5ea0405262"
+  },
+  "periodicity_target": "factorial(k)*S(n,k), not minimum periods of S",
+  "polynomial_nonintegrality_target": "reciprocal symmetric sums, not canonical ratio",
+  "polynomial_rows_verified": 6300,
+  "promotion": false,
+  "python": "3.13.13",
+  "recurrence_period_comparisons": 6190,
+  "scope": "Finite semantic checks of existing saved certificates",
+  "second_kind_rows_verified": 2070,
+  "source_sha256": "ddd57d450646209097b62d7a99264cec76349c626a65bba86bf395397b5683f3",
+  "status": "PASS",
+  "table_sha256": {
+    "semantic_checks.csv": "9760355025e52926c9f3915d12fb7be3137d7efd408db6c6c36edc382a011a5b"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "base_commit": "a0a17023e2a26e24a402f9289b0cdadb6d8fd300",
+  "bundles": {
+    "polynomial-second-kind": {
+      "receipt_sha256": "d7b602fdd2ce26d609985dcc9f2f8f5f5699caf004cd40b58728e3673ab560f3",
+      "source_sha256": "57e6634d46c1059ca0f5e7ce4c5ff16b621344f2ef62529d77e528cfafa38588"
+    },
+    "prime-power-baseline": {
+      "receipt_sha256": "83fa9e2ff4ec3061d33141063ca883ec2d4c3e2cadca1d61444debc37041073b",
+      "source_sha256": "be36141ea1f15dcbf7bf04c7842df6de2c55b01ec1ead826acac2f552cfbe988"
+    },
+    "semantic-addendum": {
+      "receipt_sha256": "47b53547c397f50060ea81bbdfbde7e9e55b0505ca83251a1ea8ea3838c5b647",
+      "source_sha256": "ddd57d450646209097b62d7a99264cec76349c626a65bba86bf395397b5683f3"
+    }
+  },
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/SCOPE.md": {
+      "bytes": 1314,
+      "sha256": "64ff5dc26609e3ddbfbdba992e5dd0cf15b160256f72c230a21fffbf040e327f"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/polynomial-second-kind/audit.py": {
+      "bytes": 7276,
+      "sha256": "57e6634d46c1059ca0f5e7ce4c5ff16b621344f2ef62529d77e528cfafa38588"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/polynomial-second-kind/polynomial_certificates.csv": {
+      "bytes": 291583,
+      "sha256": "ec8a4a1723877364e8919bb208640093ee0a6bf82b09490f5019295bc0b1873c"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/polynomial-second-kind/receipt.json": {
+      "bytes": 928,
+      "sha256": "d7b602fdd2ce26d609985dcc9f2f8f5f5699caf004cd40b58728e3673ab560f3"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/polynomial-second-kind/second_kind_certificates.csv": {
+      "bytes": 55604,
+      "sha256": "8b21dc05f3d753e802625cc30535aafb4c6108f09b6ebcb4adbf7b5ea0405262"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/prime-power-baseline/audit.py": {
+      "bytes": 7345,
+      "sha256": "be36141ea1f15dcbf7bf04c7842df6de2c55b01ec1ead826acac2f552cfbe988"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/prime-power-baseline/generalized_step_search.csv": {
+      "bytes": 105932,
+      "sha256": "ac0243047176f92eb5632ec9f39f8751359880fb453ebd9a3b7ea77020e6f597"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/prime-power-baseline/prime_power_certificates.csv": {
+      "bytes": 46749,
+      "sha256": "aac84d4550bd4bcf5349d5bf57e449bc02bec2b427925b509ae1b739be662bc8"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/prime-power-baseline/receipt.json": {
+      "bytes": 1252,
+      "sha256": "83fa9e2ff4ec3061d33141063ca883ec2d4c3e2cadca1d61444debc37041073b"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/semantic-addendum/audit.py": {
+      "bytes": 12390,
+      "sha256": "ddd57d450646209097b62d7a99264cec76349c626a65bba86bf395397b5683f3"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/semantic-addendum/receipt.json": {
+      "bytes": 2234,
+      "sha256": "47b53547c397f50060ea81bbdfbde7e9e55b0505ca83251a1ea8ea3838c5b647"
+    },
+    "AQARION-QUANTARION-AI/research/ordered-cycle-ratio-audit/polynomial-certificate-chain/semantic-addendum/semantic_checks.csv": {
+      "bytes": 463931,
+      "sha256": "9760355025e52926c9f3915d12fb7be3137d7efd408db6c6c36edc382a011a5b"
+    }
+  },
+  "formal_certification": "OPEN",
+  "global_classification": "OPEN",
+  "negative_controls_rejected": 12,
+  "novelty_clearance": "OPEN",
+  "packaged_at_utc": "2026-10-23T03:04:31.219545+00:00",
+  "promotion": false,
+  "proof_added": false,
+  "schema": "polynomial-certificate-chain-v1",
+  "scope_note_authored_during_packaging": true
+}

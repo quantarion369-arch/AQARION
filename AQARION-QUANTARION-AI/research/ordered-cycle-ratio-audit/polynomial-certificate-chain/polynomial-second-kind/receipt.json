@@ -1,0 +1,26 @@
+{
+  "completed_at_utc": "2026-10-23T02:43:45.140750+00:00",
+  "failures": [],
+  "formal_certification": "OPEN",
+  "general_step_conjecture": "UNPROVED",
+  "git_operations": 0,
+  "modular_periodicity_checks": 6190,
+  "novelty_clearance": "OPEN",
+  "polynomial_checks": 6300,
+  "polynomial_modes": {
+    "strict": 1158,
+    "tied_nonzero": 2930,
+    "tied_zero": 2212
+  },
+  "prior_receipt_sha256": "83fa9e2ff4ec3061d33141063ca883ec2d4c3e2cadca1d61444debc37041073b",
+  "promotion": false,
+  "python": "3.13.13",
+  "second_kind_checks": 2070,
+  "source_sha256": "57e6634d46c1059ca0f5e7ce4c5ff16b621344f2ef62529d77e528cfafa38588",
+  "status": "PASS",
+  "table_sha256": {
+    "polynomial_certificates.csv": "ec8a4a1723877364e8919bb208640093ee0a6bf82b09490f5019295bc0b1873c",
+    "second_kind_certificates.csv": "8b21dc05f3d753e802625cc30535aafb4c6108f09b6ebcb4adbf7b5ea0405262"
+  },
+  "tie_cancellation_control": "E_2(1,1/2,1/3)=1"
+}
