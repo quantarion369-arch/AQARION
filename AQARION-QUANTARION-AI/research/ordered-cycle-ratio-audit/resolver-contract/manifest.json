@@ -1,0 +1,47 @@
+{
+  "base_commit": "b47080b2befe3c0d2c3f904089be1599d06431b4",
+  "domain": {
+    "degree": "0<=k<=number of terms",
+    "denominators": "positive integers, at most 64 bits",
+    "maximum_terms": 64,
+    "precision_range": "1<=precision or cap<=32",
+    "prime_range": "2<=p<=97"
+  },
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "SPEC.md": {
+      "bytes": 819,
+      "sha256": "f583d1e2e1d650a5cd88f055f112e3f5c81532d44d4969540d17f2eec5406e81"
+    },
+    "audit.py": {
+      "bytes": 12501,
+      "sha256": "a8a8188143099b7060b9b1f03b52afa8ab2bc74a80759a7ea568419e713a5d84"
+    },
+    "receipt.json": {
+      "bytes": 1284,
+      "sha256": "8384f5bce432d6548f6f8925d2ab5278b06dc9c62ef773c6d895a14fe8775563"
+    },
+    "resolver_contract_tests.csv": {
+      "bytes": 6124,
+      "sha256": "acdb0d9227ed7769c542424403bd9b33a686d856084b9b43c943c201bee4f944"
+    }
+  },
+  "formal_certification": "OPEN",
+  "global_classification": "OPEN",
+  "invalid_meaning": "Unsupported API input, invariant failure, or certificate mismatch",
+  "kernel_use": "Unchanged function definitions extracted from pinned source",
+  "novelty_clearance": "OPEN",
+  "original_top_level_audit_executed": false,
+  "outcomes": [
+    "RESOLVED",
+    "UNRESOLVED_AT_CAP",
+    "INVALID"
+  ],
+  "packaged_at_utc": "2026-10-23T04:41:01.895189+00:00",
+  "production_integration": false,
+  "promotion": false,
+  "remote_runtime_authentication_established": false,
+  "schema": "bounded-modular-resolver-contract-v1",
+  "scope": "Preserve the completed 38-test local research adapter checkpoint",
+  "source_retains_original_local_dependency_paths": true
+}

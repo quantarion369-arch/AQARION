@@ -1,0 +1,34 @@
+{
+  "completed_at_utc": "2026-10-23T04:39:52.306583+00:00",
+  "corrupted_claim_tests": 10,
+  "extraction_mode": "unchanged function AST definitions only",
+  "failures": [],
+  "files": {
+    "SPEC.md": "f583d1e2e1d650a5cd88f055f112e3f5c81532d44d4969540d17f2eec5406e81",
+    "resolver_contract_tests.csv": "acdb0d9227ed7769c542424403bd9b33a686d856084b9b43c943c201bee4f944"
+  },
+  "formal_certification": "OPEN",
+  "git_operations": 0,
+  "invalid_input_tests": 15,
+  "kernel_functions": [
+    "need",
+    "vp",
+    "scaled"
+  ],
+  "kernel_parent_hashes": {
+    "audit.py": "f2183c83034ad7a2cf7e093060300bf9e2ebf0bfc6244e1f5ebeaa3b9562479d",
+    "lifted_tied_zero_cases.csv": "15154a2df583e27afcc6a272f1e92264667bc90fc3498a060e9ffe2f52ab9ed2",
+    "receipt.json": "352dbd57c4961a73f490e1cb0bebecfef5c39954a6adb4aee2036528e5765410",
+    "telescoping_structural_checks.csv": "9dedf5ef4855996d729eaec17c5ffaa48da464bd0c2b278ba431c42227f498e5"
+  },
+  "novelty_clearance": "OPEN",
+  "original_top_level_audit_executed": false,
+  "production_integration": false,
+  "promotion": false,
+  "python": "3.13.13",
+  "resolver_behavior_tests": 11,
+  "source_sha256": "a8a8188143099b7060b9b1f03b52afa8ab2bc74a80759a7ea568419e713a5d84",
+  "status": "PASS",
+  "test_count": 38,
+  "valid_claim_tests": 2
+}
