@@ -1,0 +1,61 @@
+{
+  "base_commit": "6dd5288369cfe8e4760dd434a2cb5fd7f9bcc993",
+  "bound_mode_avoids_partition_evaluation_in_decision_path": true,
+  "canonical_ratio": "m!*c(n,m)/(n!*P(n,m))",
+  "composition_bound": "P(n,m)<=binomial(n-1,m-1)",
+  "decision_rules": {
+    "EQUALITY_EXCLUDED_POSITIVE": "lower bound on vp(R) is positive",
+    "INCONCLUSIVE": "available interval does not exclude zero",
+    "INVALID": "unsupported input or inconsistent bounds",
+    "NONINTEGRAL": "finite upper bound on vp(R) is negative"
+  },
+  "early_decisions_are_overlapping_prime_pair_checks": true,
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "audit.py": {
+      "bytes": 12244,
+      "sha256": "79b143136ff778001603c805bd006d87ef2c8f7af5f04e650802e3f9a1e3b4d1"
+    },
+    "ratio_interval_decisions.csv": {
+      "bytes": 396762,
+      "sha256": "d0c940861beb160825ca3c549d1c746dbc0527b30c2569e9129be2f266c3a332"
+    },
+    "receipt.json": {
+      "bytes": 7634,
+      "sha256": "c8ed537c602dac71ad16f3b668a5f2466446804b1ad6251a418024e0cd933724"
+    }
+  },
+  "formal_certification": "OPEN",
+  "global_classification": "OPEN",
+  "novelty_clearance": "OPEN",
+  "packaged_at_utc": "2026-10-23T04:52:06.035078+00:00",
+  "production_integration": false,
+  "promotion": false,
+  "reference_validation_uses_saved_exact_data": true,
+  "runtime_speedup_measured": false,
+  "schema": "canonical-ratio-interval-decision-evidence-v1",
+  "scope": {
+    "decision_comparisons": 5700,
+    "distinct_pairs": 190,
+    "m": "2<=m<n",
+    "n": "3<=n<=21",
+    "partition_modes": [
+      "exact_partition",
+      "composition_bound"
+    ],
+    "precision_caps": [
+      1,
+      2,
+      4
+    ],
+    "prime_pair_references": 950,
+    "primes": [
+      2,
+      3,
+      5,
+      7,
+      11
+    ]
+  },
+  "source_retains_original_local_dependency_paths": true
+}

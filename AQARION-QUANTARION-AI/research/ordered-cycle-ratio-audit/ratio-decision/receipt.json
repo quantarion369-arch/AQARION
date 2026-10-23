@@ -1,0 +1,278 @@
+{
+  "bound_mode_evaluates_partition_count": false,
+  "comparison_count": 5700,
+  "completed_at_utc": "2026-10-23T04:50:30.250324+00:00",
+  "early_decisions": {
+    "(1, 'composition_bound')": 3,
+    "(1, 'exact_partition')": 44,
+    "(2, 'composition_bound')": 5,
+    "(2, 'exact_partition')": 43,
+    "(4, 'exact_partition')": 5
+  },
+  "failures": [],
+  "formal_certification": "OPEN",
+  "git_operations": 0,
+  "global_classification": "OPEN",
+  "interval_controls": [
+    {
+      "actual": "NONINTEGRAL",
+      "expected": "NONINTEGRAL",
+      "lower": -2,
+      "passed": true,
+      "upper": -1
+    },
+    {
+      "actual": "INCONCLUSIVE",
+      "expected": "INCONCLUSIVE",
+      "lower": -1,
+      "passed": true,
+      "upper": 1
+    },
+    {
+      "actual": "INCONCLUSIVE",
+      "expected": "INCONCLUSIVE",
+      "lower": 0,
+      "passed": true,
+      "upper": 0
+    },
+    {
+      "actual": "EQUALITY_EXCLUDED_POSITIVE",
+      "expected": "EQUALITY_EXCLUDED_POSITIVE",
+      "lower": 1,
+      "passed": true,
+      "upper": 1
+    },
+    {
+      "actual": "EQUALITY_EXCLUDED_POSITIVE",
+      "expected": "EQUALITY_EXCLUDED_POSITIVE",
+      "lower": 1,
+      "passed": true,
+      "upper": null
+    },
+    {
+      "actual": "INCONCLUSIVE",
+      "expected": "INCONCLUSIVE",
+      "lower": 0,
+      "passed": true,
+      "upper": null
+    },
+    {
+      "actual": "INCONCLUSIVE",
+      "expected": "INCONCLUSIVE",
+      "lower": -1,
+      "passed": true,
+      "upper": null
+    },
+    {
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "lower": 1,
+      "passed": true,
+      "upper": 0
+    },
+    {
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "lower": true,
+      "passed": true,
+      "upper": null
+    },
+    {
+      "actual": "INVALID",
+      "expected": "INVALID",
+      "lower": 0,
+      "passed": true,
+      "upper": false
+    }
+  ],
+  "normalization_fixtures": [
+    {
+      "actual": {
+        "arithmetic": {
+          "cancellation_depth": null,
+          "first_nonzero_precision": null,
+          "lower_bound": 1,
+          "max_weight_W": 0,
+          "normalized_residue": 0,
+          "precision": 1,
+          "status": "UNRESOLVED_AT_CAP",
+          "valuation": null
+        },
+        "arithmetic_status": "UNRESOLVED_AT_CAP",
+        "decision": "INCONCLUSIVE",
+        "partition_evaluated": true,
+        "ratio_lower_bound": 0,
+        "ratio_upper_bound": null
+      },
+      "cap": 1,
+      "m": 2,
+      "mode": "exact_partition",
+      "n": 5,
+      "p": 5,
+      "passed": true
+    },
+    {
+      "actual": {
+        "arithmetic": {
+          "cancellation_depth": null,
+          "first_nonzero_precision": null,
+          "lower_bound": 2,
+          "max_weight_W": 0,
+          "normalized_residue": 0,
+          "precision": 2,
+          "status": "UNRESOLVED_AT_CAP",
+          "valuation": null
+        },
+        "arithmetic_status": "UNRESOLVED_AT_CAP",
+        "decision": "EQUALITY_EXCLUDED_POSITIVE",
+        "partition_evaluated": true,
+        "ratio_lower_bound": 1,
+        "ratio_upper_bound": null
+      },
+      "cap": 2,
+      "m": 2,
+      "mode": "exact_partition",
+      "n": 5,
+      "p": 5,
+      "passed": true
+    },
+    {
+      "actual": {
+        "arithmetic": {
+          "cancellation_depth": null,
+          "first_nonzero_precision": null,
+          "lower_bound": 2,
+          "max_weight_W": 0,
+          "normalized_residue": 0,
+          "precision": 2,
+          "status": "UNRESOLVED_AT_CAP",
+          "valuation": null
+        },
+        "arithmetic_status": "UNRESOLVED_AT_CAP",
+        "decision": "EQUALITY_EXCLUDED_POSITIVE",
+        "partition_evaluated": false,
+        "ratio_lower_bound": 1,
+        "ratio_upper_bound": null
+      },
+      "cap": 2,
+      "m": 2,
+      "mode": "composition_bound",
+      "n": 5,
+      "p": 5,
+      "passed": true
+    },
+    {
+      "actual": {
+        "arithmetic": {
+          "cancellation_depth": 0,
+          "first_nonzero_precision": 1,
+          "lower_bound": null,
+          "max_weight_W": 1,
+          "normalized_residue": 1,
+          "precision": 1,
+          "status": "RESOLVED",
+          "valuation": -1
+        },
+        "arithmetic_status": "RESOLVED",
+        "decision": "INCONCLUSIVE",
+        "partition_evaluated": true,
+        "ratio_lower_bound": 0,
+        "ratio_upper_bound": 0
+      },
+      "cap": 1,
+      "m": 2,
+      "mode": "exact_partition",
+      "n": 3,
+      "p": 2,
+      "passed": true
+    },
+    {
+      "actual": {
+        "arithmetic": {
+          "cancellation_depth": 0,
+          "first_nonzero_precision": 1,
+          "lower_bound": null,
+          "max_weight_W": 2,
+          "normalized_residue": 1,
+          "precision": 1,
+          "status": "RESOLVED",
+          "valuation": -2
+        },
+        "arithmetic_status": "RESOLVED",
+        "decision": "NONINTEGRAL",
+        "partition_evaluated": false,
+        "ratio_lower_bound": -3,
+        "ratio_upper_bound": -1
+      },
+      "cap": 1,
+      "m": 2,
+      "mode": "composition_bound",
+      "n": 5,
+      "p": 2,
+      "passed": true
+    }
+  ],
+  "novelty_clearance": "OPEN",
+  "original_parent_top_level_audits_executed": false,
+  "parent_hashes": {
+    "canonical-ratio-bridge": {
+      "audit.py": "18dcc25d80132b1480f5f5d9c94f7645567196a3e41c42bce83640fb2f63274c",
+      "canonical_ratio_bridge.csv": "a32c8f4acefa90824373e54c88430045c39bfe4e47fbf157bcfc982f0d23fe24",
+      "receipt.json": "686a851bccb7c433a7bd659e4feb89fee2927c74ca702dfa5bece7df939134ab"
+    },
+    "modular-cancellation-lift": {
+      "audit.py": "f2183c83034ad7a2cf7e093060300bf9e2ebf0bfc6244e1f5ebeaa3b9562479d",
+      "lifted_tied_zero_cases.csv": "15154a2df583e27afcc6a272f1e92264667bc90fc3498a060e9ffe2f52ab9ed2",
+      "receipt.json": "352dbd57c4961a73f490e1cb0bebecfef5c39954a6adb4aee2036528e5765410",
+      "telescoping_structural_checks.csv": "9dedf5ef4855996d729eaec17c5ffaa48da464bd0c2b278ba431c42227f498e5"
+    },
+    "resolver-contract": {
+      "SPEC.md": "f583d1e2e1d650a5cd88f055f112e3f5c81532d44d4969540d17f2eec5406e81",
+      "audit.py": "a8a8188143099b7060b9b1f03b52afa8ab2bc74a80759a7ea568419e713a5d84",
+      "receipt.json": "8384f5bce432d6548f6f8925d2ab5278b06dc9c62ef773c6d895a14fe8775563",
+      "resolver_contract_tests.csv": "acdb0d9227ed7769c542424403bd9b33a686d856084b9b43c943c201bee4f944"
+    }
+  },
+  "production_integration": false,
+  "profiles": {
+    "(1, 'composition_bound')": {
+      "EQUALITY_EXCLUDED_POSITIVE": 3,
+      "INCONCLUSIVE": 563,
+      "NONINTEGRAL": 384
+    },
+    "(1, 'exact_partition')": {
+      "EQUALITY_EXCLUDED_POSITIVE": 44,
+      "INCONCLUSIVE": 512,
+      "NONINTEGRAL": 394
+    },
+    "(2, 'composition_bound')": {
+      "EQUALITY_EXCLUDED_POSITIVE": 7,
+      "INCONCLUSIVE": 440,
+      "NONINTEGRAL": 503
+    },
+    "(2, 'exact_partition')": {
+      "EQUALITY_EXCLUDED_POSITIVE": 79,
+      "INCONCLUSIVE": 333,
+      "NONINTEGRAL": 538
+    },
+    "(4, 'composition_bound')": {
+      "EQUALITY_EXCLUDED_POSITIVE": 8,
+      "INCONCLUSIVE": 396,
+      "NONINTEGRAL": 546
+    },
+    "(4, 'exact_partition')": {
+      "EQUALITY_EXCLUDED_POSITIVE": 89,
+      "INCONCLUSIVE": 275,
+      "NONINTEGRAL": 586
+    }
+  },
+  "promotion": false,
+  "python": "3.13.13",
+  "reference_values_choose_precision": false,
+  "scope": "Finite canonical-ratio decision layer using published resolver functions",
+  "source_sha256": "79b143136ff778001603c805bd006d87ef2c8f7af5f04e650802e3f9a1e3b4d1",
+  "status": "PASS",
+  "table_sha256": {
+    "ratio_interval_decisions.csv": "d0c940861beb160825ca3c549d1c746dbc0527b30c2569e9129be2f266c3a332"
+  }
+}
