@@ -1,0 +1,28 @@
+{
+  "boundary_scope": "n=2m+1",
+  "eventual_decrease_criterion": "H(n-1)-H(m-2)>m-1",
+  "formal_certification": "OPEN",
+  "git_operations": 0,
+  "global_case_B_classification": "OPEN",
+  "negative_control_ratio": "163550075392585167941/163320823394942693408",
+  "novelty_clearance": "OPEN",
+  "promotion": false,
+  "source_sha256": "0ffdc7af57b685879d190f6b0b865a15fedc61e3f5f1b3acba129891c83bfd34",
+  "status": "PASS",
+  "test_count": 2162,
+  "test_groups": {
+    "boundary_denominator": 13,
+    "boundary_growth": 13,
+    "boundary_initial_values": 5,
+    "boundary_ratio_growth": 13,
+    "complete_recurrence": 13,
+    "corrected_tau_bound": 13,
+    "eventual_decrease": 203,
+    "fixed_m_recurrence": 595,
+    "harmonic_q_bound": 595,
+    "negative_control": 3,
+    "newton_bound": 13,
+    "partition_growth": 88,
+    "partition_injection_consequence": 595
+  }
+}

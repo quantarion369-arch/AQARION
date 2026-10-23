@@ -1,0 +1,258 @@
+{
+ "body": {
+  "groups": {
+   "A_pilot_selector": {
+    "cases": [
+     {
+      "N_minus_1_nonnegative_deficits_lhs_minus_rhs": {
+       "1": 272,
+       "2": 11968,
+       "3": 301104,
+       "4": 2181440
+      },
+      "V_reduced_denominator": 85,
+      "V_reduced_numerator": 72,
+      "V_unreduced_denominator": 12240,
+      "V_unreduced_numerator": 10368,
+      "all_certifying_t_at_N": [
+       1
+      ],
+      "all_t_fail_at_N_minus_1": "YES",
+      "earliest_certified_N": 18,
+      "m": 4,
+      "positive_integer_margin": 1872,
+      "selected_t": 1
+     },
+     {
+      "N_minus_1_nonnegative_deficits_lhs_minus_rhs": {
+       "1": 94350,
+       "2": 429600,
+       "3": 20602350,
+       "4": 226833600,
+       "5": 1544040750
+      },
+      "V_reduced_denominator": 253,
+      "V_reduced_numerator": 243,
+      "V_unreduced_denominator": 5262400,
+      "V_unreduced_numerator": 5054400,
+      "all_certifying_t_at_N": [
+       2
+      ],
+      "all_t_fail_at_N_minus_1": "YES",
+      "earliest_certified_N": 26,
+      "m": 5,
+      "positive_integer_margin": 208000,
+      "selected_t": 2
+     },
+     {
+      "N_minus_1_nonnegative_deficits_lhs_minus_rhs": {
+       "1": 8405040,
+       "2": 14945280,
+       "3": 1661400720,
+       "4": 28293000960,
+       "5": 268038178800,
+       "6": 1914086039040
+      },
+      "V_reduced_denominator": 81158,
+      "V_reduced_numerator": 74925,
+      "V_unreduced_denominator": 373976064,
+      "V_unreduced_numerator": 345254400,
+      "all_certifying_t_at_N": [
+       2
+      ],
+      "all_t_fail_at_N_minus_1": "YES",
+      "earliest_certified_N": 36,
+      "m": 6,
+      "positive_integer_margin": 28721664,
+      "selected_t": 2
+     },
+     {
+      "N_minus_1_nonnegative_deficits_lhs_minus_rhs": {
+       "1": 75609224280,
+       "2": 58699607040,
+       "3": 13035561429960,
+       "4": 646947823288320,
+       "5": 11587602392206200,
+       "6": 141114410756858880,
+       "7": 1394387640564728040,
+       "8": 11967802009164840960
+      },
+      "V_reduced_denominator": 21813539,
+      "V_reduced_numerator": 20003760,
+      "V_unreduced_denominator": 3462244910080,
+      "V_unreduced_numerator": 3174996787200,
+      "all_certifying_t_at_N": [
+       2
+      ],
+      "all_t_fail_at_N_minus_1": "YES",
+      "earliest_certified_N": 62,
+      "m": 8,
+      "positive_integer_margin": 287248122880,
+      "selected_t": 2
+     },
+     {
+      "N_minus_1_nonnegative_deficits_lhs_minus_rhs": {
+       "1": 1147397238940970,
+       "10": 310563980581407274409600000,
+       "2": 12504730819056640,
+       "3": 101880322995432510,
+       "4": 21924557163651399680,
+       "5": 717676074492658191250,
+       "6": 13844191136964071685120,
+       "7": 207142119832875804058790,
+       "8": 2649096268203967385436160,
+       "9": 30125593012689247072494330
+      },
+      "V_reduced_denominator": 1595515913277,
+      "V_reduced_numerator": 1557463040000,
+      "V_unreduced_denominator": 1988954182331975430,
+      "V_unreduced_numerator": 1941517851033600000,
+      "all_certifying_t_at_N": [
+       3
+      ],
+      "all_t_fail_at_N_minus_1": "YES",
+      "earliest_certified_N": 95,
+      "m": 10,
+      "positive_integer_margin": 47436331298375430,
+      "selected_t": 3
+     },
+     {
+      "N_minus_1_nonnegative_deficits_lhs_minus_rhs": {
+       "1": 361980032044449459612430800,
+       "10": 106466179340636019795730316614815744000000,
+       "11": 2149570030688703698672066615923567432222800,
+       "12": 39949308688318067126002245980533957538611200,
+       "13": 688367185776991945122927527182963992785701200,
+       "14": 11063072361285568677261121123643442124377292800,
+       "15": 166683698574438494308191093550905750476741250000,
+       "2": 29719262948010847968146227200,
+       "3": 159010048602469214434195045200,
+       "4": 2388198059129203104386698444800,
+       "5": 3083426242810238511307177823250000,
+       "6": 188767540364077105549067469540556800,
+       "7": 6834902564533946273142486388515349200,
+       "8": 194792694430792680122040768109687603200,
+       "9": 4807517066876816184044259517419001198800
+      },
+      "V_reduced_denominator": 3507494355269936326912,
+      "V_reduced_numerator": 3376479023602312753125,
+      "V_unreduced_denominator": 156677449485647124917336093491200,
+      "V_unreduced_numerator": 150825081404610076510126080000000,
+      "all_certifying_t_at_N": [
+       4
+      ],
+      "all_t_fail_at_N_minus_1": "YES",
+      "earliest_certified_N": 213,
+      "m": 15,
+      "positive_integer_margin": 5852368081037048407210013491200,
+      "selected_t": 4
+     }
+    ],
+    "pilot_cases": 6,
+    "status": "PASS"
+   },
+   "B_independent_linear_scan": {
+    "pilot_cases": 6,
+    "rows": [
+     {
+      "bisection_N": 18,
+      "linear_scan_first_N": 18,
+      "m": 4,
+      "n_t_pairs_evaluated": 40,
+      "n_values_scanned": 10
+     },
+     {
+      "bisection_N": 26,
+      "linear_scan_first_N": 26,
+      "m": 5,
+      "n_t_pairs_evaluated": 80,
+      "n_values_scanned": 16
+     },
+     {
+      "bisection_N": 36,
+      "linear_scan_first_N": 36,
+      "m": 6,
+      "n_t_pairs_evaluated": 144,
+      "n_values_scanned": 24
+     },
+     {
+      "bisection_N": 62,
+      "linear_scan_first_N": 62,
+      "m": 8,
+      "n_t_pairs_evaluated": 368,
+      "n_values_scanned": 46
+     },
+     {
+      "bisection_N": 95,
+      "linear_scan_first_N": 95,
+      "m": 10,
+      "n_t_pairs_evaluated": 750,
+      "n_values_scanned": 75
+     },
+     {
+      "bisection_N": 213,
+      "linear_scan_first_N": 213,
+      "m": 15,
+      "n_t_pairs_evaluated": 2745,
+      "n_values_scanned": 183
+     }
+    ],
+    "status": "PASS",
+    "total_n_t_pairs_evaluated": 4127,
+    "total_n_values_scanned": 354
+   },
+   "C_R_le_Vt_exact_grid": {
+    "checks": 1130,
+    "m_values": [
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "n_range_inclusive": [
+     2,
+     60
+    ],
+    "note": "n runs from m to 60 for each m",
+    "status": "PASS",
+    "violations": 0
+   },
+   "D_ratio_positivity_exact_grid": {
+    "checks": 1110,
+    "m_values": [
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "note": "n runs from m to 59 for each m",
+    "status": "PASS",
+    "violations": 0
+   },
+   "E_t_equals_m_window": {
+    "checks": 5586,
+    "m_values": [
+     2,
+     15
+    ],
+    "n_window_per_m": 399,
+    "note": "finite window only; the all-n claim rests on the paper derivation",
+    "status": "PASS",
+    "violations": 0
+   }
+  },
+  "hypotheses": {
+   "case_B": "n >= 2m+1",
+   "envelope": "V_t(n,m) < 1 via integer inequality",
+   "m_min": 2,
+   "t_range": "1..m"
+  },
+  "schema": "aqarion-vt-selector-receipt-v1",
+  "source_sha256": "06a8ee91b0fc58ea2f499a98096f7d5a5fb8384567dde4c069cef180c165f31d"
+ },
+ "receipt_sha256": "33a92a475a68def6e27de88251f9527d681406726df02f634275f2efb2e21f51"
+}
+SOURCE_SHA256=06a8ee91b0fc58ea2f499a98096f7d5a5fb8384567dde4c069cef180c165f31d
+RECEIPT_SHA256=33a92a475a68def6e27de88251f9527d681406726df02f634275f2efb2e21f51

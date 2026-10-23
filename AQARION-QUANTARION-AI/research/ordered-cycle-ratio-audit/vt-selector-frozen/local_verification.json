@@ -1,0 +1,16 @@
+{
+  "actual_receipt_body_sha256": "33a92a475a68def6e27de88251f9527d681406726df02f634275f2efb2e21f51",
+  "actual_source_sha256": "06a8ee91b0fc58ea2f499a98096f7d5a5fb8384567dde4c069cef180c165f31d",
+  "audit_executed": true,
+  "exit_code": 0,
+  "expected_receipt_body_sha256": "33a92a475a68def6e27de88251f9527d681406726df02f634275f2efb2e21f51",
+  "expected_source_sha256": "06a8ee91b0fc58ea2f499a98096f7d5a5fb8384567dde4c069cef180c165f31d",
+  "formal_certification": "OPEN",
+  "global_case_B_classification": "OPEN",
+  "local_verification": "PASS",
+  "novelty_clearance": "OPEN",
+  "prior_receipts_merged": false,
+  "promotion": false,
+  "repository_operations": 0,
+  "source_bytes": 10021
+}
