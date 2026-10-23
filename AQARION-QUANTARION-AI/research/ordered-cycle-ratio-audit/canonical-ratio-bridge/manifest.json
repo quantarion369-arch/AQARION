@@ -1,0 +1,42 @@
+{
+  "auxiliary_Q": "n!/(m!*c(n,m))",
+  "base_commit": "7be1f402f28a0b5ec0d661807f0256ec8a09be9d",
+  "canonical_R": "m!*c(n,m)/(n!*P(n,m))",
+  "distinct_pair_identity_checks": 190,
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "audit.py": {
+      "bytes": 7613,
+      "sha256": "18dcc25d80132b1480f5f5d9c94f7645567196a3e41c42bce83640fb2f63274c"
+    },
+    "canonical_ratio_bridge.csv": {
+      "bytes": 77556,
+      "sha256": "a32c8f4acefa90824373e54c88430045c39bfe4e47fbf157bcfc982f0d23fe24"
+    },
+    "receipt.json": {
+      "bytes": 1280,
+      "sha256": "686a851bccb7c433a7bd659e4feb89fee2927c74ca702dfa5bece7df939134ab"
+    }
+  },
+  "formal_certification": "OPEN",
+  "global_classification": "OPEN",
+  "historical_source_preserved_unchanged": true,
+  "infinite_proof_added": false,
+  "normalization_controls": 4,
+  "novelty_clearance": "OPEN",
+  "observed_equalities_are_finite_domain_only": true,
+  "packaged_at_utc": "2026-10-23T03:16:34.766870+00:00",
+  "prime_pair_checks": 950,
+  "primes": [
+    2,
+    3,
+    5,
+    7,
+    11
+  ],
+  "promotion": false,
+  "relationship": "R*Q*P=1; vp(R)=-G-vp(P); vp(Q)=G",
+  "schema": "canonical-ratio-bridge-evidence-v1",
+  "scope": "Finite exact bridge audit, 3<=n<=21, 2<=m<n",
+  "source_retains_original_local_dependency_paths": true
+}

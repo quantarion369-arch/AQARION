@@ -1,0 +1,37 @@
+{
+  "auxiliary_Q": "n!/(m!*c(n,m))",
+  "canonical_R": "m!*c(n,m)/(n!*P(n,m))",
+  "completed_at_utc": "2026-10-23T03:12:20.664980+00:00",
+  "distinct_pair_identity_checks": 190,
+  "failures": [],
+  "formal_certification": "OPEN",
+  "git_operations": 0,
+  "global_classification": "OPEN",
+  "normalization_controls": {
+    "auxiliary_Q_is_not_canonical_R": true,
+    "omitted_partition_factor_changes_ratio": true,
+    "positive_local_valuation_does_not_imply_integer": true,
+    "wrong_gap_sign_rejected": true
+  },
+  "novelty_clearance": "OPEN",
+  "observed_equalities_in_tested_domain": [
+    [
+      3,
+      2
+    ]
+  ],
+  "parent_hashes": {
+    "audit.py": "57e6634d46c1059ca0f5e7ce4c5ff16b621344f2ef62529d77e528cfafa38588",
+    "polynomial_certificates.csv": "ec8a4a1723877364e8919bb208640093ee0a6bf82b09490f5019295bc0b1873c",
+    "receipt.json": "d7b602fdd2ce26d609985dcc9f2f8f5f5699caf004cd40b58728e3673ab560f3"
+  },
+  "prime_pair_checks": 950,
+  "promotion": false,
+  "python": "3.13.13",
+  "relation": "R*Q*P=1; vp(R)=-G-vp(P); vp(Q)=G",
+  "source_sha256": "18dcc25d80132b1480f5f5d9c94f7645567196a3e41c42bce83640fb2f63274c",
+  "status": "PASS",
+  "table_sha256": {
+    "canonical_ratio_bridge.csv": "a32c8f4acefa90824373e54c88430045c39bfe4e47fbf157bcfc982f0d23fe24"
+  }
+}
