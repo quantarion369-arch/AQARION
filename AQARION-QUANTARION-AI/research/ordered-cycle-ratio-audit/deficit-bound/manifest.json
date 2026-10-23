@@ -1,0 +1,64 @@
+{
+  "base_commit": "0afa7b23f1994b143a9302d5fc9611bb14dda5c8",
+  "decision_method": "Tighten saved lower bounds; retain saved upper bounds",
+  "deficit_bound": "Minimum of composition bound and deficit-composition bound",
+  "experiments_rerun_during_packaging": false,
+  "files": {
+    "audit.py": {
+      "bytes": 10204,
+      "sha256": "3744b837aa239040578d053b5c7ba16cf7a6a63ad183a8ac9512f919a34cb2cb"
+    },
+    "deficit_bound_decisions.csv": {
+      "bytes": 228747,
+      "sha256": "348553011fe0f4f5bcefa72dfdb96d990fd28035aca18b06cf1a42b80d912bec"
+    },
+    "receipt.json": {
+      "bytes": 2358,
+      "sha256": "8890644173e88a7e2dc7070470c4006170b163b05e4abf539660151417c1ff65"
+    },
+    "size_certificate_boundaries.csv": {
+      "bytes": 19098,
+      "sha256": "ba9105abc6ae9b5afbb5927129b02af9a8f755de207242425b16469d3996415d"
+    }
+  },
+  "formal_certification": "OPEN",
+  "global_classification": "OPEN",
+  "novelty_clearance": "OPEN",
+  "overlap_warning": "Counts overlap across precision caps and primes",
+  "packaged_at_utc": "2026-10-23T05:53:20.402986+00:00",
+  "production_integration": false,
+  "promotion": false,
+  "resolver_reexecuted": false,
+  "schema": "deficit-bound-evidence-v1",
+  "scope": {
+    "additional_early_positive_decisions": {
+      "1": 36,
+      "2": 21,
+      "4": 2
+    },
+    "additional_positive_decisions": {
+      "1": 36,
+      "2": 50,
+      "4": 54
+    },
+    "distinct_reference_pairs": 190,
+    "new_decision_comparisons": 2850,
+    "precision_caps": [
+      1,
+      2,
+      4
+    ]
+  },
+  "size_certificate": {
+    "boundary_binomial_checks": 149,
+    "conclusion": "R(n,n-d)>=2",
+    "covered_pairs_through_600_by_monotonicity": 44700,
+    "direct_ratio_evaluations_claimed": false,
+    "new_case_B_coverage_claimed": false,
+    "nonintegrality_claimed": false,
+    "region": "d>=1, n>=4*d+1",
+    "region_is_case_A": true
+  },
+  "source_retains_original_local_dependency_paths": true,
+  "stirling_tables_rebuilt": false
+}

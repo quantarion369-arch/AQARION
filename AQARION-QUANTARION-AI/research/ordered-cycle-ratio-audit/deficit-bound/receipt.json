@@ -1,0 +1,69 @@
+{
+  "additional_positive_decisions": {
+    "1": 36,
+    "2": 50,
+    "4": 54
+  },
+  "additional_positive_decisions_while_unresolved": {
+    "1": 36,
+    "2": 21,
+    "4": 2
+  },
+  "boundary_controls": 4,
+  "completed_at_utc": "2026-10-23T05:27:41.710870+00:00",
+  "distinct_partition_oracle_pairs": 190,
+  "failures": [],
+  "formal_certification": "OPEN",
+  "git_operations": 0,
+  "global_classification": "OPEN",
+  "new_decision_comparisons": 2850,
+  "novelty_clearance": "OPEN",
+  "parent_hashes": {
+    "canonical-ratio-bridge": {
+      "audit.py": "18dcc25d80132b1480f5f5d9c94f7645567196a3e41c42bce83640fb2f63274c",
+      "canonical_ratio_bridge.csv": "a32c8f4acefa90824373e54c88430045c39bfe4e47fbf157bcfc982f0d23fe24",
+      "receipt.json": "686a851bccb7c433a7bd659e4feb89fee2927c74ca702dfa5bece7df939134ab"
+    },
+    "ratio-decision": {
+      "audit.py": "79b143136ff778001603c805bd006d87ef2c8f7af5f04e650802e3f9a1e3b4d1",
+      "ratio_interval_decisions.csv": "d0c940861beb160825ca3c549d1c746dbc0527b30c2569e9129be2f266c3a332",
+      "receipt.json": "c8ed537c602dac71ad16f3b668a5f2466446804b1ad6251a418024e0cd933724"
+    }
+  },
+  "parent_top_level_audits_executed": false,
+  "partition_counts_used_only_as_bound_validation_oracles": true,
+  "production_integration": false,
+  "profiles": {
+    "1": {
+      "EQUALITY_EXCLUDED_POSITIVE": 39,
+      "INCONCLUSIVE": 527,
+      "NONINTEGRAL": 384
+    },
+    "2": {
+      "EQUALITY_EXCLUDED_POSITIVE": 57,
+      "INCONCLUSIVE": 390,
+      "NONINTEGRAL": 503
+    },
+    "4": {
+      "EQUALITY_EXCLUDED_POSITIVE": 62,
+      "INCONCLUSIVE": 342,
+      "NONINTEGRAL": 546
+    }
+  },
+  "promotion": false,
+  "python": "3.13.13",
+  "resolver_reexecuted": false,
+  "size_boundary_checks": 149,
+  "size_checks_are_not_direct_ratio_evaluations": true,
+  "size_region": "d>=1, n>=4*d+1",
+  "size_region_is_case_A": true,
+  "size_region_pairs_through_600_by_monotonicity": 44700,
+  "source_sha256": "3744b837aa239040578d053b5c7ba16cf7a6a63ad183a8ac9512f919a34cb2cb",
+  "status": "PASS",
+  "stirling_tables_rebuilt": false,
+  "strict_exponent_improvements_across_cap_records": 2244,
+  "table_sha256": {
+    "deficit_bound_decisions.csv": "348553011fe0f4f5bcefa72dfdb96d990fd28035aca18b06cf1a42b80d912bec",
+    "size_certificate_boundaries.csv": "ba9105abc6ae9b5afbb5927129b02af9a8f755de207242425b16469d3996415d"
+  }
+}
