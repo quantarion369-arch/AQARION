@@ -1,3 +1,24 @@
+<!-- AQARION-FRONTDOOR-REPAIR -->
+# AQARION: start here
+
+Research on finite dynamical systems, quotient structure, and reproducible verification.
+
+## Choose your first step
+
+1. Understand the project: read the existing overview below.
+2. Reproduce a finite regression from the repository root:
+
+    python3 -B AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py
+
+A passing finite regression is not a general proof or Lean verification.
+
+3. Explore the [evidence-workflow simulation](Executable-Mathematics-Verification-Dashboard-2026-10-01.html).
+Open the HTML file in a browser. It models evidence gates but does not execute verification.
+
+The existing project record follows unchanged.
+
+---
+
  ✨️ WELCOME TO AQARION 
 & QUANTARION AI ✨️ 
 

@@ -452,7 +452,7 @@
           <button class="active" data-claim="quotient">Finite quotient theorem</button>
           <button data-claim="defect">Defect operator</button>
           <button data-claim="congruence">Cycle congruence count</button>
-          <button data-claim="agent">Paper-to-agent tool</button><button data-claim="closuregap">Closure-gap chain</button><button data-claim="closuregap">Closure-gap chain</button>
+          <button data-claim="agent">Paper-to-agent tool</button><button data-claim="closuregap">Closure-gap chain</button>
         </div>
 
         <div id="claimDisplay" class="claim-list" style="margin-top:14px;"></div>
@@ -481,7 +481,7 @@
 
     <section class="grid two">
       <article class="panel">
-        <h2>Verification simulator</h2>
+        <h2>Verification simulator</h2><p role="note"><strong>EDUCATIONAL SIMULATION ONLY.</strong> These controls do not execute research code, an independent oracle, mutation tests, or Lean. All displayed statuses and JSON are simulated, not execution receipts or changes to research claim status.</p>
         <p class="small">
           This models a paper-to-agent system. The agent may run a tool, compare
           results with an oracle, run a mutation test, and emit a claim receipt.
@@ -489,19 +489,20 @@
         </p>
 
         <div class="controls">
-          <button id="runImplementation">Run implementation</button>
-          <button id="runOracle">Run independent oracle</button>
-          <button id="runMutation">Run mutation test</button>
-          <button id="runFormal">Run formal checker</button>
+          <button id="runImplementation">Simulate implementation pass</button>
+          <button id="runOracle">Simulate oracle agreement</button>
+          <button id="runMutation">Simulate mutation rejection</button>
+          <button id="runFormal">Simulate formal receipt</button>
           <button id="resetSimulation">Reset</button>
         </div>
 
         <div id="simulationResult" class="result" style="margin-top:14px;">
-          <strong>Awaiting evidence</strong>
+          <strong>SIMULATED — awaiting evidence</strong>
           No execution has been recorded in this simulation.
         </div>
 
         <pre id="receipt" style="margin-top:14px;">{
+  "simulated": true,
   "claim_id": "AQ-QP-FIN-01",
   "status": "[OPEN]",
   "implementation_run": false,
@@ -766,44 +767,45 @@ end Aqarion</pre>
 
     function updateSimulation() {
       let status = "[OPEN]";
-      let message = "A claim specification exists, but no simulation evidence has been recorded.";
+      let message = "No simulated steps selected. No verification has been executed.";
       let className = "";
 
       if (state.implementation) {
         status = "[V]";
-        message = "The reference implementation executed successfully on the declared fixture.";
+        message = "Simulation assumes an implementation pass. No research code was executed.";
         className = "pass";
       }
 
       if (state.implementation && state.oracle) {
         status = "[CV]";
-        message = "Reference implementation and independent oracle agree on the declared fixture.";
+        message = "Simulation assumes implementation and oracle agreement. No independent comparison was executed.";
         className = "pass";
       }
 
       if (state.implementation && state.oracle && state.mutation) {
         status = "[CV+]";
-        message = "Independent agreement exists and a plausible semantic mutation was rejected. The test suite is semantically discriminating.";
+        message = "Simulation assumes oracle agreement and mutation rejection. No mutation test was executed.";
         className = "pass";
       }
 
       if (state.formal) {
         status = "[FV]";
-        message = "Formal checker receipt recorded in the simulation. In a real artifact, this status additionally requires source, toolchain, axiom, and build receipts.";
+        message = "Simulation assumes a formal receipt. Lean was not run and no formal evidence was created.";
         className = "pass";
       }
 
       output.className = "result " + className;
-      output.innerHTML = `<strong>${status}</strong>${message}`;
+      output.innerHTML = `<strong>SIMULATED ${status}</strong>${message}`;
 
       receipt.textContent = JSON.stringify({
+        simulated: true,
         claim_id: "AQ-QP-FIN-01",
         status,
         implementation_run: state.implementation,
         oracle_agreement: state.oracle,
         mutation_rejected: state.mutation,
         formal_receipt: state.formal,
-        policy: "No status promotion beyond recorded evidence gates."
+        policy: "Educational simulation only. Not execution evidence, a formal receipt, or research claim promotion."
       }, null, 2);
     }
 
@@ -815,7 +817,7 @@ end Aqarion</pre>
     document.getElementById("runOracle").addEventListener("click", () => {
       if (!state.implementation) {
         output.className = "result fail";
-        output.innerHTML = "<strong>ORDER VIOLATION</strong>Run the reference implementation before comparing an independent oracle.";
+        output.innerHTML = "<strong>SIMULATED ORDER VIOLATION</strong>Simulate an implementation pass before simulating oracle agreement.";
         return;
       }
       state.oracle = true;
@@ -825,7 +827,7 @@ end Aqarion</pre>
     document.getElementById("runMutation").addEventListener("click", () => {
       if (!state.implementation) {
         output.className = "result fail";
-        output.innerHTML = "<strong>ORDER VIOLATION</strong>A mutation test needs a reference execution baseline.";
+        output.innerHTML = "<strong>SIMULATED ORDER VIOLATION</strong>Simulate an implementation pass before simulating mutation rejection.";
         return;
       }
       state.mutation = true;
@@ -835,7 +837,7 @@ end Aqarion</pre>
     document.getElementById("runFormal").addEventListener("click", () => {
       if (!(state.implementation && state.oracle)) {
         output.className = "result fail";
-        output.innerHTML = "<strong>FORMAL RECEIPT INCOMPLETE</strong>The simulator requires execution and independent-oracle evidence before formal status can be modeled.";
+        output.innerHTML = "<strong>SIMULATED RECEIPT INCOMPLETE</strong>Simulate implementation and oracle agreement before simulating a formal receipt.";
         return;
       }
       state.formal = true;
