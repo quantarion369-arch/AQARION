@@ -1,0 +1,912 @@
+[
+  {
+    "n": 31,
+    "sign": 1,
+    "partition_count": 230
+  },
+  {
+    "n": 32,
+    "sign": 1,
+    "partition_count": 295
+  },
+  {
+    "n": 33,
+    "sign": 1,
+    "partition_count": 381
+  },
+  {
+    "n": 34,
+    "sign": 1,
+    "partition_count": 483
+  },
+  {
+    "n": 35,
+    "sign": 1,
+    "partition_count": 615
+  },
+  {
+    "n": 36,
+    "sign": 1,
+    "partition_count": 773
+  },
+  {
+    "n": 37,
+    "sign": 1,
+    "partition_count": 972
+  },
+  {
+    "n": 38,
+    "sign": 1,
+    "partition_count": 1210
+  },
+  {
+    "n": 39,
+    "sign": 1,
+    "partition_count": 1508
+  },
+  {
+    "n": 40,
+    "sign": 1,
+    "partition_count": 1861
+  },
+  {
+    "n": 41,
+    "sign": 1,
+    "partition_count": 2297
+  },
+  {
+    "n": 42,
+    "sign": 1,
+    "partition_count": 2815
+  },
+  {
+    "n": 43,
+    "sign": 1,
+    "partition_count": 3446
+  },
+  {
+    "n": 44,
+    "sign": 1,
+    "partition_count": 4192
+  },
+  {
+    "n": 45,
+    "sign": 1,
+    "partition_count": 5096
+  },
+  {
+    "n": 46,
+    "sign": 1,
+    "partition_count": 6158
+  },
+  {
+    "n": 47,
+    "sign": 1,
+    "partition_count": 7434
+  },
+  {
+    "n": 48,
+    "sign": 1,
+    "partition_count": 8932
+  },
+  {
+    "n": 49,
+    "sign": 1,
+    "partition_count": 10715
+  },
+  {
+    "n": 50,
+    "sign": 1,
+    "partition_count": 12801
+  },
+  {
+    "n": 51,
+    "sign": 1,
+    "partition_count": 15272
+  },
+  {
+    "n": 52,
+    "sign": 1,
+    "partition_count": 18148
+  },
+  {
+    "n": 53,
+    "sign": 1,
+    "partition_count": 21535
+  },
+  {
+    "n": 54,
+    "sign": 1,
+    "partition_count": 25469
+  },
+  {
+    "n": 55,
+    "sign": 1,
+    "partition_count": 30073
+  },
+  {
+    "n": 56,
+    "sign": 1,
+    "partition_count": 35401
+  },
+  {
+    "n": 57,
+    "sign": 1,
+    "partition_count": 41612
+  },
+  {
+    "n": 58,
+    "sign": 1,
+    "partition_count": 48772
+  },
+  {
+    "n": 59,
+    "sign": 1,
+    "partition_count": 57080
+  },
+  {
+    "n": 60,
+    "sign": 1,
+    "partition_count": 66634
+  },
+  {
+    "n": 61,
+    "sign": 1,
+    "partition_count": 77667
+  },
+  {
+    "n": 62,
+    "sign": 1,
+    "partition_count": 90316
+  },
+  {
+    "n": 63,
+    "sign": 1,
+    "partition_count": 104875
+  },
+  {
+    "n": 64,
+    "sign": 1,
+    "partition_count": 121510
+  },
+  {
+    "n": 65,
+    "sign": 1,
+    "partition_count": 140587
+  },
+  {
+    "n": 66,
+    "sign": 1,
+    "partition_count": 162331
+  },
+  {
+    "n": 67,
+    "sign": 1,
+    "partition_count": 187175
+  },
+  {
+    "n": 68,
+    "sign": 1,
+    "partition_count": 215415
+  },
+  {
+    "n": 69,
+    "sign": 1,
+    "partition_count": 247587
+  },
+  {
+    "n": 70,
+    "sign": 1,
+    "partition_count": 284054
+  },
+  {
+    "n": 71,
+    "sign": 1,
+    "partition_count": 325472
+  },
+  {
+    "n": 72,
+    "sign": 1,
+    "partition_count": 372311
+  },
+  {
+    "n": 73,
+    "sign": 1,
+    "partition_count": 425349
+  },
+  {
+    "n": 74,
+    "sign": 1,
+    "partition_count": 485184
+  },
+  {
+    "n": 75,
+    "sign": 1,
+    "partition_count": 552767
+  },
+  {
+    "n": 76,
+    "sign": 1,
+    "partition_count": 628822
+  },
+  {
+    "n": 77,
+    "sign": 1,
+    "partition_count": 714504
+  },
+  {
+    "n": 78,
+    "sign": 1,
+    "partition_count": 810726
+  },
+  {
+    "n": 79,
+    "sign": 1,
+    "partition_count": 918851
+  },
+  {
+    "n": 80,
+    "sign": 1,
+    "partition_count": 1040014
+  },
+  {
+    "n": 81,
+    "sign": 1,
+    "partition_count": 1175862
+  },
+  {
+    "n": 82,
+    "sign": 1,
+    "partition_count": 1327763
+  },
+  {
+    "n": 83,
+    "sign": 1,
+    "partition_count": 1497696
+  },
+  {
+    "n": 84,
+    "sign": 1,
+    "partition_count": 1687344
+  },
+  {
+    "n": 85,
+    "sign": 1,
+    "partition_count": 1899041
+  },
+  {
+    "n": 86,
+    "sign": 1,
+    "partition_count": 2134841
+  },
+  {
+    "n": 87,
+    "sign": 1,
+    "partition_count": 2397537
+  },
+  {
+    "n": 88,
+    "sign": 1,
+    "partition_count": 2689583
+  },
+  {
+    "n": 89,
+    "sign": 1,
+    "partition_count": 3014304
+  },
+  {
+    "n": 90,
+    "sign": 1,
+    "partition_count": 3374676
+  },
+  {
+    "n": 91,
+    "sign": 1,
+    "partition_count": 3774599
+  },
+  {
+    "n": 92,
+    "sign": 1,
+    "partition_count": 4217657
+  },
+  {
+    "n": 93,
+    "sign": 1,
+    "partition_count": 4708477
+  },
+  {
+    "n": 94,
+    "sign": 1,
+    "partition_count": 5251305
+  },
+  {
+    "n": 95,
+    "sign": 1,
+    "partition_count": 5851608
+  },
+  {
+    "n": 96,
+    "sign": 1,
+    "partition_count": 6514463
+  },
+  {
+    "n": 97,
+    "sign": 1,
+    "partition_count": 7246258
+  },
+  {
+    "n": 98,
+    "sign": 1,
+    "partition_count": 8053039
+  },
+  {
+    "n": 99,
+    "sign": 1,
+    "partition_count": 8942320
+  },
+  {
+    "n": 100,
+    "sign": 1,
+    "partition_count": 9921212
+  },
+  {
+    "n": 101,
+    "sign": 1,
+    "partition_count": 10998526
+  },
+  {
+    "n": 102,
+    "sign": 1,
+    "partition_count": 12182681
+  },
+  {
+    "n": 103,
+    "sign": 1,
+    "partition_count": 13483920
+  },
+  {
+    "n": 104,
+    "sign": 1,
+    "partition_count": 14912165
+  },
+  {
+    "n": 105,
+    "sign": 1,
+    "partition_count": 16479384
+  },
+  {
+    "n": 106,
+    "sign": 1,
+    "partition_count": 18197166
+  },
+  {
+    "n": 107,
+    "sign": 1,
+    "partition_count": 20079452
+  },
+  {
+    "n": 108,
+    "sign": 1,
+    "partition_count": 22139835
+  },
+  {
+    "n": 109,
+    "sign": 1,
+    "partition_count": 24394441
+  },
+  {
+    "n": 110,
+    "sign": 1,
+    "partition_count": 26859162
+  },
+  {
+    "n": 111,
+    "sign": 1,
+    "partition_count": 29552711
+  },
+  {
+    "n": 112,
+    "sign": 1,
+    "partition_count": 32493532
+  },
+  {
+    "n": 113,
+    "sign": 1,
+    "partition_count": 35703292
+  },
+  {
+    "n": 114,
+    "sign": -1,
+    "partition_count": 39203452
+  },
+  {
+    "n": 115,
+    "sign": -1,
+    "partition_count": 43018955
+  },
+  {
+    "n": 116,
+    "sign": -1,
+    "partition_count": 47174701
+  },
+  {
+    "n": 117,
+    "sign": -1,
+    "partition_count": 51699468
+  },
+  {
+    "n": 118,
+    "sign": -1,
+    "partition_count": 56621986
+  },
+  {
+    "n": 119,
+    "sign": -1,
+    "partition_count": 61975379
+  },
+  {
+    "n": 120,
+    "sign": -1,
+    "partition_count": 67792847
+  },
+  {
+    "n": 121,
+    "sign": -1,
+    "partition_count": 74112342
+  },
+  {
+    "n": 122,
+    "sign": -1,
+    "partition_count": 80972138
+  },
+  {
+    "n": 123,
+    "sign": -1,
+    "partition_count": 88415780
+  },
+  {
+    "n": 124,
+    "sign": -1,
+    "partition_count": 96487178
+  },
+  {
+    "n": 125,
+    "sign": -1,
+    "partition_count": 105236197
+  },
+  {
+    "n": 126,
+    "sign": -1,
+    "partition_count": 114713263
+  },
+  {
+    "n": 127,
+    "sign": -1,
+    "partition_count": 124975255
+  },
+  {
+    "n": 128,
+    "sign": -1,
+    "partition_count": 136079959
+  },
+  {
+    "n": 129,
+    "sign": -1,
+    "partition_count": 148092302
+  },
+  {
+    "n": 130,
+    "sign": -1,
+    "partition_count": 161078251
+  },
+  {
+    "n": 131,
+    "sign": -1,
+    "partition_count": 175111785
+  },
+  {
+    "n": 132,
+    "sign": -1,
+    "partition_count": 190268239
+  },
+  {
+    "n": 133,
+    "sign": -1,
+    "partition_count": 206631638
+  },
+  {
+    "n": 134,
+    "sign": -1,
+    "partition_count": 224287850
+  },
+  {
+    "n": 135,
+    "sign": -1,
+    "partition_count": 243332340
+  },
+  {
+    "n": 136,
+    "sign": -1,
+    "partition_count": 263862659
+  },
+  {
+    "n": 137,
+    "sign": -1,
+    "partition_count": 285987096
+  },
+  {
+    "n": 138,
+    "sign": -1,
+    "partition_count": 309816493
+  },
+  {
+    "n": 139,
+    "sign": -1,
+    "partition_count": 335473334
+  },
+  {
+    "n": 140,
+    "sign": -1,
+    "partition_count": 363083343
+  },
+  {
+    "n": 141,
+    "sign": -1,
+    "partition_count": 392785070
+  },
+  {
+    "n": 142,
+    "sign": -1,
+    "partition_count": 424720724
+  },
+  {
+    "n": 143,
+    "sign": -1,
+    "partition_count": 459046796
+  },
+  {
+    "n": 144,
+    "sign": -1,
+    "partition_count": 495924111
+  },
+  {
+    "n": 145,
+    "sign": -1,
+    "partition_count": 535528998
+  },
+  {
+    "n": 146,
+    "sign": -1,
+    "partition_count": 578043054
+  },
+  {
+    "n": 147,
+    "sign": -1,
+    "partition_count": 623664925
+  },
+  {
+    "n": 148,
+    "sign": -1,
+    "partition_count": 672599172
+  },
+  {
+    "n": 149,
+    "sign": -1,
+    "partition_count": 725069271
+  },
+  {
+    "n": 150,
+    "sign": -1,
+    "partition_count": 781305581
+  },
+  {
+    "n": 151,
+    "sign": -1,
+    "partition_count": 841558976
+  },
+  {
+    "n": 152,
+    "sign": -1,
+    "partition_count": 906088492
+  },
+  {
+    "n": 153,
+    "sign": -1,
+    "partition_count": 975175680
+  },
+  {
+    "n": 154,
+    "sign": -1,
+    "partition_count": 1049111209
+  },
+  {
+    "n": 155,
+    "sign": -1,
+    "partition_count": 1128210650
+  },
+  {
+    "n": 156,
+    "sign": -1,
+    "partition_count": 1212800023
+  },
+  {
+    "n": 157,
+    "sign": -1,
+    "partition_count": 1303232368
+  },
+  {
+    "n": 158,
+    "sign": -1,
+    "partition_count": 1399872887
+  },
+  {
+    "n": 159,
+    "sign": -1,
+    "partition_count": 1503116362
+  },
+  {
+    "n": 160,
+    "sign": -1,
+    "partition_count": 1613371121
+  },
+  {
+    "n": 161,
+    "sign": -1,
+    "partition_count": 1731078102
+  },
+  {
+    "n": 162,
+    "sign": -1,
+    "partition_count": 1856693622
+  },
+  {
+    "n": 163,
+    "sign": -1,
+    "partition_count": 1990709348
+  },
+  {
+    "n": 164,
+    "sign": -1,
+    "partition_count": 2133634597
+  },
+  {
+    "n": 165,
+    "sign": -1,
+    "partition_count": 2286017335
+  },
+  {
+    "n": 166,
+    "sign": -1,
+    "partition_count": 2448425098
+  },
+  {
+    "n": 167,
+    "sign": -1,
+    "partition_count": 2621467913
+  },
+  {
+    "n": 168,
+    "sign": -1,
+    "partition_count": 2805777837
+  },
+  {
+    "n": 169,
+    "sign": -1,
+    "partition_count": 3002032961
+  },
+  {
+    "n": 170,
+    "sign": -1,
+    "partition_count": 3210936407
+  },
+  {
+    "n": 171,
+    "sign": -1,
+    "partition_count": 3433241512
+  },
+  {
+    "n": 172,
+    "sign": -1,
+    "partition_count": 3669729287
+  },
+  {
+    "n": 173,
+    "sign": -1,
+    "partition_count": 3921235802
+  },
+  {
+    "n": 174,
+    "sign": -1,
+    "partition_count": 4188628066
+  },
+  {
+    "n": 175,
+    "sign": -1,
+    "partition_count": 4472832697
+  },
+  {
+    "n": 176,
+    "sign": -1,
+    "partition_count": 4774811155
+  },
+  {
+    "n": 177,
+    "sign": -1,
+    "partition_count": 5095589827
+  },
+  {
+    "n": 178,
+    "sign": -1,
+    "partition_count": 5436233490
+  },
+  {
+    "n": 179,
+    "sign": -1,
+    "partition_count": 5797877918
+  },
+  {
+    "n": 180,
+    "sign": -1,
+    "partition_count": 6181701579
+  },
+  {
+    "n": 181,
+    "sign": -1,
+    "partition_count": 6588959731
+  },
+  {
+    "n": 182,
+    "sign": -1,
+    "partition_count": 7020955392
+  },
+  {
+    "n": 183,
+    "sign": -1,
+    "partition_count": 7479075059
+  },
+  {
+    "n": 184,
+    "sign": -1,
+    "partition_count": 7964757684
+  },
+  {
+    "n": 185,
+    "sign": -1,
+    "partition_count": 8479533313
+  },
+  {
+    "n": 186,
+    "sign": -1,
+    "partition_count": 9024990034
+  },
+  {
+    "n": 187,
+    "sign": -1,
+    "partition_count": 9602814371
+  },
+  {
+    "n": 188,
+    "sign": -1,
+    "partition_count": 10214757386
+  },
+  {
+    "n": 189,
+    "sign": -1,
+    "partition_count": 10862676970
+  },
+  {
+    "n": 190,
+    "sign": -1,
+    "partition_count": 11548501718
+  },
+  {
+    "n": 191,
+    "sign": -1,
+    "partition_count": 12274276512
+  },
+  {
+    "n": 192,
+    "sign": -1,
+    "partition_count": 13042124155
+  },
+  {
+    "n": 193,
+    "sign": -1,
+    "partition_count": 13854292985
+  },
+  {
+    "n": 194,
+    "sign": -1,
+    "partition_count": 14713117533
+  },
+  {
+    "n": 195,
+    "sign": -1,
+    "partition_count": 15621068350
+  },
+  {
+    "n": 196,
+    "sign": -1,
+    "partition_count": 16580710148
+  },
+  {
+    "n": 197,
+    "sign": -1,
+    "partition_count": 17594755420
+  },
+  {
+    "n": 198,
+    "sign": -1,
+    "partition_count": 18666020035
+  },
+  {
+    "n": 199,
+    "sign": -1,
+    "partition_count": 19797479204
+  },
+  {
+    "n": 200,
+    "sign": -1,
+    "partition_count": 20992222004
+  },
+  {
+    "n": 201,
+    "sign": -1,
+    "partition_count": 22253509876
+  },
+  {
+    "n": 202,
+    "sign": -1,
+    "partition_count": 23584728366
+  },
+  {
+    "n": 203,
+    "sign": -1,
+    "partition_count": 24989449893
+  },
+  {
+    "n": 204,
+    "sign": -1,
+    "partition_count": 26471382664
+  },
+  {
+    "n": 205,
+    "sign": -1,
+    "partition_count": 28034436183
+  },
+  {
+    "n": 206,
+    "sign": -1,
+    "partition_count": 29682668919
+  },
+  {
+    "n": 207,
+    "sign": -1,
+    "partition_count": 31420356757
+  },
+  {
+    "n": 208,
+    "sign": -1,
+    "partition_count": 33251937553
+  },
+  {
+    "n": 209,
+    "sign": -1,
+    "partition_count": 35182084437
+  },
+  {
+    "n": 210,
+    "sign": -1,
+    "partition_count": 37215647242
+  },
+  {
+    "n": 211,
+    "sign": -1,
+    "partition_count": 39357728919
+  },
+  {
+    "n": 212,
+    "sign": -1,
+    "partition_count": 41613625613
+  }
+]

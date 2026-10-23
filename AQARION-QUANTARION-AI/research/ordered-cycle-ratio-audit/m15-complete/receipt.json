@@ -1,0 +1,41 @@
+{
+  "above_one": [
+    31,
+    113
+  ],
+  "below_one": {
+    "from": 114,
+    "unbounded": true
+  },
+  "claim": "fixed m=15 Case B classification",
+  "equalities": [],
+  "files": {
+    "PROOF_NOTES.md": "a2aec8d11459f8264bf786003579bf5a9cf9968f1ac817d899d0188ee93085dc",
+    "audit.py": "cb9c552781c79bda5d37307204e12ffd4da02f508a8e655df919de6712229f57",
+    "prefix_signs.json": "5d6514c71d92f8e7dfcea12c6cbfa394fc12b6759bbd0213ffd91143e8b54d4f"
+  },
+  "formal_certification": "OPEN",
+  "git_operations": 0,
+  "global_classification": "OPEN",
+  "negative_control": "163550075392585167941/163320823394942693408",
+  "novelty_clearance": "OPEN",
+  "prefix_size": 182,
+  "promotion": false,
+  "status": "PASS",
+  "tail_envelope": "3376479023602312753125/3507494355269936326912",
+  "tail_integer_margin": 5852368081037048407210013491200,
+  "tail_witness": {
+    "N": 213,
+    "t": 4
+  },
+  "test_count": 378,
+  "test_groups": {
+    "fixed_witness_start": 1,
+    "negative_control": 3,
+    "partition_crosscheck": 182,
+    "prefix_classification": 182,
+    "prefix_counts": 3,
+    "stirling_harmonic_crosscheck": 5,
+    "tail_certificate": 2
+  }
+}
