@@ -1,0 +1,67 @@
+{
+  "case_B_classification": "OPEN",
+  "completed_at_utc": "2026-10-23T05:57:35.734875+00:00",
+  "external_theorem": {
+    "authors": "Christine Bessenrodt and Ken Ono",
+    "reference": "Theorem 2.1",
+    "strict_specialization": "a,b>=2 and a+b>9",
+    "title": "Maximal Multiplicative Properties of Partitions"
+  },
+  "external_theorem_proved_by_this_script": false,
+  "failures": [],
+  "files": {
+    "PROOF_NOTES.md": "259ea87de14e2ac4049ea88853c9600483bc17e6c688cf81235d182afc1638e1",
+    "e5c_regression_checks.csv": "eb81a2682111d78a9d996236beb0a478c47c0c198bfab79fcce821a1d9cd7899"
+  },
+  "formal_certification": "OPEN",
+  "git_operations": 0,
+  "induction_base_values": {
+    "5": {
+      "A": "285/32",
+      "boundary_ratio": "285/224",
+      "partition_count": 7
+    },
+    "6": {
+      "A": "242537/12096",
+      "boundary_ratio": "242537/133056",
+      "partition_count": 11
+    },
+    "7": {
+      "A": "790153/17280",
+      "boundary_ratio": "790153/259200",
+      "partition_count": 15
+    },
+    "8": {
+      "A": "54576553/518400",
+      "boundary_ratio": "54576553/11404800",
+      "partition_count": 22
+    },
+    "9": {
+      "A": "21878439/89600",
+      "boundary_ratio": "7292813/896000",
+      "partition_count": 30
+    }
+  },
+  "maximum_stirling_order": 48,
+  "novelty_clearance": "OPEN",
+  "production_integration": false,
+  "promotion": false,
+  "proof_scope": "Off-diagonal Case A, with diagonal controls",
+  "python": "3.13.13",
+  "source_sha256": "dde7d162fcc5409add55db13cb4361463ee5cc3440f125a021cbdb60014e1a3d",
+  "status": "PASS",
+  "test_count": 1000,
+  "test_groups": {
+    "case_A_sign": 576,
+    "closed_form": 24,
+    "coefficient_supermultiplicativity": 21,
+    "cycle_polynomial": 168,
+    "cycle_type_count": 12,
+    "diagonal": 5,
+    "domain_control": 2,
+    "extra_factorial_rejection": 21,
+    "induction_base": 5,
+    "induction_chain": 10,
+    "monotonic_increment": 156
+  }
+}
