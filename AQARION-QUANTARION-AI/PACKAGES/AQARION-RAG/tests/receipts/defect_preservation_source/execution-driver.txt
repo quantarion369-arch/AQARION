@@ -1,0 +1,253 @@
+import importlib.util
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+
+sys.dont_write_bytecode = True
+
+repo = Path.home() / "AQARION"
+pkg = repo / "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG"
+manifest = pkg / "corpus/MANIFEST.md"
+test = pkg / "tests/test_defect_preservation_source.py"
+work = Path(__file__).resolve().parent
+
+pin = "579ba9453b6ceb803492944f0228008e4b0989a4"
+source_path = (
+    "AQARION-QUANTARION-AI/research/"
+    "AQARION_DEFECT_Lab/PRESERVATION_RECORD.md"
+)
+label = "AQARION DEFECT experiment preservation"
+selector = source_path + "@" + pin
+
+if test.exists() or manifest.is_symlink():
+    raise RuntimeError(
+        "Test already exists or manifest is a symlink. Nothing overwritten."
+    )
+
+if importlib.util.find_spec("pytest") is None:
+    raise RuntimeError("pytest unavailable. No install or change attempted.")
+
+relative_manifest = str(manifest.relative_to(repo))
+for flags in (
+    ["diff", "--quiet", "HEAD"],
+    ["diff", "--cached", "--quiet", "HEAD"],
+):
+    result = subprocess.run(
+        ["git", "-C", str(repo), *flags, "--", relative_manifest]
+    )
+    if result.returncode:
+        raise RuntimeError(
+            "Manifest has existing changes. Nothing overwritten."
+        )
+
+pinned_text = subprocess.check_output(
+    ["git", "-C", str(repo), "show", pin + ":" + source_path],
+    text=True,
+)
+required = (
+    "AQARION DEFECT Lab",
+    "Reported execution evidence",
+    "Reconstruction benefit is inconsistent.",
+    "Remaining preservation gaps",
+    "not production deployment",
+)
+for marker in required:
+    if marker not in pinned_text:
+        raise RuntimeError("Pinned record missing expected content: " + marker)
+
+sys.path.insert(0, str(pkg))
+import retrieve
+
+entries = retrieve.validate_manifest()
+if any(
+    retrieve.source_id(entry) == selector or entry["doc"] == label
+    for entry in entries
+):
+    raise RuntimeError("DEFECT source already registered. No duplicate added.")
+
+original = manifest.read_bytes()
+shutil.copy2(manifest, work / "MANIFEST.before.md")
+
+row = (
+    f"| {label} | {source_path} | {pin} | "
+    "Reported toy-cycle experiments, preservation and limitations; "
+    "not independent reproduction or model repair |\n"
+)
+proposed = original.rstrip(b"\r\n") + b"\n" + row.encode("utf-8")
+
+test_source = r'''"""Integration checks for the pinned DEFECT preservation source."""
+import json
+import threading
+from http.server import ThreadingHTTPServer
+from unittest import mock
+from urllib.parse import urlencode
+from urllib.request import urlopen
+
+import api
+import context
+import retrieve
+
+PIN = "579ba9453b6ceb803492944f0228008e4b0989a4"
+PATH = (
+    "AQARION-QUANTARION-AI/research/"
+    "AQARION_DEFECT_Lab/PRESERVATION_RECORD.md"
+)
+SID = PATH + "@" + PIN
+LABEL = "AQARION DEFECT experiment preservation"
+
+
+def test_defect_source_scope_and_original_citations():
+    entry = retrieve.resolve_source_id(SID)
+    assert entry["doc"] == LABEL
+    assert entry["path"] == PATH
+    assert entry["sha"] == PIN
+
+    original = retrieve.load_at_sha(PATH, PIN)
+    normalized = " ".join(original.split())
+    assert "independent reproduction remain unestablished" in normalized
+    assert "not production deployment" in normalized
+
+    loader = retrieve.load_at_sha
+    with mock.patch.object(retrieve, "load_at_sha", wraps=loader) as spy:
+        bundle = context.retrieve_with_context(
+            "reconstruction generalization",
+            source_id=SID,
+        )
+        assert bundle["seed_results"]
+        for item in (
+            bundle["seed_results"] + bundle["supplementary_context"]
+        ):
+            assert item["path"] == PATH
+            assert item["commit_sha"] == PIN
+            assert item["doc"] == LABEL
+            assert item["passage"] == original[
+                item["char_start"]:item["char_end"]
+            ]
+
+        assert all(
+            call.args == (PATH, PIN)
+            for call in spy.call_args_list
+        )
+
+    seeds = "\n".join(
+        item["passage"] for item in bundle["seed_results"]
+    )
+    assert "Reconstruction benefit is inconsistent." in seeds
+    assert "Generalization" in seeds
+
+
+def test_defect_source_real_http_listing_and_complete_view():
+    server = ThreadingHTTPServer(("127.0.0.1", 0), api.Handler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    base = f"http://127.0.0.1:{server.server_port}"
+
+    try:
+        with urlopen(base + "/api/sources", timeout=10) as response:
+            listing = json.load(response)
+
+        matches = [
+            item for item in listing["sources"]
+            if item["source_id"] == SID
+        ]
+        assert len(matches) == 1
+        assert matches[0]["doc"] == LABEL
+
+        url = base + "/api/sources/view?" + urlencode({"source_id": SID})
+        with urlopen(url, timeout=10) as response:
+            body = json.load(response)
+
+        assert body["source"]["source_id"] == SID
+        assert body["source"]["path"] == PATH
+        assert body["source"]["sha"] == PIN
+        assert body["text"] == retrieve.load_at_sha(PATH, PIN)
+        assert "Remaining preservation gaps" in body["text"]
+
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join(timeout=5)
+'''
+
+compile(test_source, str(test), "exec")
+(work / "test.proposed.py").write_text(test_source, encoding="utf-8")
+(work / "MANIFEST.proposed.md").write_bytes(proposed)
+
+changed = False
+created_test = False
+
+try:
+    changed = True
+    manifest.write_bytes(proposed)
+
+    with test.open("x", encoding="utf-8") as handle:
+        handle.write(test_source)
+    created_test = True
+
+    entry = retrieve.resolve_source_id(selector)
+    assert entry["path"] == source_path and entry["sha"] == pin
+    assert retrieve.load_at_sha(source_path, pin) == pinned_text
+
+    completed = subprocess.run(
+        [
+            sys.executable, "-B", "-m", "pytest",
+            "-q", "-p", "no:cacheprovider", "tests",
+        ],
+        cwd=pkg,
+        env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    (work / "package-tests.log").write_text(
+        completed.stdout, encoding="utf-8"
+    )
+    print(completed.stdout, flush=True)
+
+    if completed.returncode:
+        raise RuntimeError("Package tests failed")
+
+    subprocess.run(
+        [
+            "git", "-C", str(repo), "diff", "--check",
+            "--", relative_manifest,
+        ],
+        check=True,
+    )
+
+    print("\nDEFECT_TEXT_SOURCE_INTEGRATION=PASS")
+    print("PINNED_SOURCE:", source_path)
+    print("PINNED_REVISION:", pin)
+    print("VALIDATED_SOURCE_COUNT:", len(retrieve.validate_manifest()))
+    print("SCOPED_CITATIONS_AND_HTTP_VIEW=PASS")
+    print("RANKING_AND_NORMALIZATION_UNCHANGED")
+    print("RESEARCH_ARTIFACTS_UNCHANGED")
+    print("MODEL_TRAINING=NOT_RUN")
+    print("NO_STAGE_COMMIT_PUSH_OR_INSTALL")
+    print("HUGGING_FACE_UNCHANGED")
+    print("SCRIPT_BACKUP_AND_LOGS:", work)
+
+    subprocess.run(
+        [
+            "git", "-C", str(repo), "status", "--short", "--",
+            relative_manifest,
+            str(test.relative_to(repo)),
+        ],
+        check=True,
+    )
+
+except BaseException:
+    if changed:
+        manifest.write_bytes(original)
+        assert manifest.read_bytes() == original
+        print("MANIFEST_RESTORE=VERIFIED")
+    if created_test:
+        shutil.move(
+            str(test),
+            str(work / "failed-generated-test.py"),
+        )
+        print("FAILED_TEST_SOURCE_PRESERVED")
+    print("SOURCE_INTEGRATION_FAILED; LOGS:", work)
+    raise

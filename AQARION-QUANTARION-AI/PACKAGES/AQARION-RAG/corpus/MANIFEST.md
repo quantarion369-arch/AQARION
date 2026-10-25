@@ -7,3 +7,4 @@ Retrieval must cite the SHA, not just the path, so answers remain reproducible.
 |---|---|---|---|
 | Evidence ledger | EVIDENCE-LEDGER.md | b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2 | Canonical provenance record for all claims, replay artifacts, and verification status |
 | Quadratic stability witnesses | AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md | e9322761a2525a2b5fb9a0c9d31888de092d7140 | Computed bounded-orbit stability evidence for x^2+c |
+| AQARION DEFECT experiment preservation | AQARION-QUANTARION-AI/research/AQARION_DEFECT_Lab/PRESERVATION_RECORD.md | 579ba9453b6ceb803492944f0228008e4b0989a4 | Reported toy-cycle experiments, preservation and limitations; not independent reproduction or model repair |

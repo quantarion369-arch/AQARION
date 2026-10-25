@@ -1,0 +1,32 @@
+{
+  "receipt_created_at_utc": "2026-10-25T05:55:44.905155+00:00",
+  "head_at_receipt_creation": "579ba9453b6ceb803492944f0228008e4b0989a4",
+  "execution_origin": "User-executed Termux scripts",
+  "source_hash_capture": "Post-test receipt snapshot; not test-time instrumentation",
+  "current_combined_worktree_sha256": {
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/MANIFEST.md": "c8980c58a0cf64ee56fa5c9f2a3c60c12cd7dd8647dd2fa6778b3d35932d203e",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_defect_preservation_source.py": "ff7eefb830e0082ea60bccfe099e96cb88cc5e647b65d4b37c24b257a75c2ca4",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py": "898d7a50c0bcd82646ea88bbfce5da2dc820041f002d98967f7d19997e67e413",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py": "da4c39f4f03be635a949b5b3e0b2fdc28532c9fabc34440c71d74101fdda8290"
+  },
+  "artifact_sha256": {
+    "package-tests.txt": "af188eca5a8d409d47118f8435efc321c2de4eccec445aeabb4b3c2444ce6c18",
+    "execution-driver.txt": "19c5bf3847b9b455996494485b1c95e96bf5dfd61f7ce695a59b41383363a823"
+  },
+  "results": {
+    "package_result": "121 passed, 10 subtests passed",
+    "browser_evidence_origin": "User-pasted browser output",
+    "browser_checks": {
+      "three_sources_displayed": "PASS",
+      "defect_source_selected": "PASS",
+      "retrieval_restricted_to_defect_record": "PASS",
+      "ranked_passage_and_neighbors_from_selected_revision": "PASS",
+      "complete_pinned_source_loaded": "PASS",
+      "limitations_and_preservation_gaps_visible": "PASS"
+    }
+  },
+  "deterministic_browser_race_test": "NOT_RUN",
+  "tests_rerun_by_receipt_preservation": false,
+  "commit_or_push_performed_by_receipt_preservation": false,
+  "historical_driver_note": "Execution driver preserved as text; not a replay guarantee."
+}
