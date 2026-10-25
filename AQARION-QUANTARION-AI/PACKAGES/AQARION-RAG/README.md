@@ -11,6 +11,8 @@ AQARION-RAG helps you locate and trace evidence. It does not prove mathematical 
 You can:
 
 - Search passages from Git-revision-pinned source documents.
+- Restrict passage retrieval to one selected pinned source.
+- Open the complete selected source separately from ranked evidence.
 - Inspect source paths, commits, exact character offsets, and lexical scores.
 - View immediate neighboring paragraphs separately from ranked results.
 - Discover registered corrections outside the retrieved neighborhood.
@@ -101,10 +103,12 @@ All listed routes use GET. Query-string values should be URL-encoded.
 | Route | Parameters | Purpose |
 |---|---|---|
 | `/` | None | Browser page served from `static/index.html` |
-| `/api/search` | `q` | Legacy top-three passage response |
-| `/api/search/cited` | `q` | Top-three structured passage citations |
-| `/api/search/context` | `q` | Existing context response |
-| `/api/search/evidence` | `q` | Context, related evidence, and diagnostics |
+| `/api/search` | `q`, optional `source_id` | Legacy top-three passage response |
+| `/api/search/cited` | `q`, optional `source_id` | Top-three structured passage citations |
+| `/api/search/context` | `q`, optional `source_id` | Existing context response |
+| `/api/search/evidence` | `q`, optional `source_id` | Context, related evidence, and diagnostics |
+| `/api/sources` | None | Validated pinned-source inventory and selectors |
+| `/api/sources/view` | Required `source_id` | Complete selected pinned document; source navigation, not ranked evidence |
 | `/api/claims` | Optional `status` | Parsed claim listing and count |
 | `/api/claims/search` | `q`, optional `has_artifact=true` | Claim search |
 
@@ -119,6 +123,46 @@ relationship_diagnostics
 ```
 
 The context endpoint preserves its existing response contract. Unknown routes return a JSON error with HTTP 404.
+
+## Source selection and loading boundaries
+
+Use `/api/sources` to obtain an exact `source_id`; URL-encode it when
+sending requests. The selector identifies a manifest path and full pinned
+revision.
+
+- Omit `source_id` for global passage search.
+- Supply one exact selector to restrict the four passage-search routes.
+- Blank, padded, or duplicate selector parameters return HTTP 400.
+- An unknown selector returns HTTP 404.
+- Complete-source viewing requires a selector.
+- Claims search is separate and does not use passage-source scoping.
+- Scoped no-match results do not fall back to global retrieval.
+- Related registry evidence remains separately labeled and may cite other
+  sources.
+
+For scoped retrieval and complete-source viewing, established local source
+absence returns HTTP 404 with `pinned Git object unavailable`. Operational,
+decoding, and detected blob-integrity failures return HTTP 500 with
+`pinned source loading failed`. These public messages do not include raw
+Git diagnostics. This is not a guarantee that every unrelated server
+exception has a controlled response.
+
+The loader disables replacement objects, requests no lazy fetching, and
+walks exact tree-entry names without using working-tree source content.
+It verifies the selected blob's Git identity from the original payload
+bytes before decoding. Default text decoding and universal-newline
+behavior are retained.
+
+The manifest currently requires full 40-hex object IDs. Selected-blob
+verification uses the existing SHA-1 Git object format; this is not a
+claim of production SHA-256-manifest support.
+
+Commit type and tree traversal are checked, but explicit rehashing of the
+complete commit/tree chain is not implemented by this checkpoint.
+Source scoping is a retrieval constraint, not authorization or independent
+verification of the source's claims.
+
+[Source-scoping documentation](SOURCE_SCOPING.md)
 
 ## Python context interface
 
@@ -159,10 +203,13 @@ The browser renders source text using `textContent`, rather than treating it as 
 
 ## Corpus and evaluation
 
-The manifest currently pins two source documents:
+At the documented implementation checkpoint, the manifest pins three source documents:
 
 - The evidence ledger.
 - The quadratic-stability witness document.
+- The AQARION DEFECT experiment preservation record.
+
+The DEFECT entry indexes the preservation summary, not the checkpoint binaries or every experimental CSV. Its reported results and limitations remain distinct from independent reproduction.
 
 Referenced production code, receipts, and proof artifacts are not comprehensively indexed. A ledger summary is not a substitute for inspecting the underlying artifact.
 
@@ -196,7 +243,17 @@ The workflow runs on qualifying pushes to main, matching pull requests, and manu
 
 The suite covers citation reconstruction, legacy/API compatibility, context boundaries and saved replay, browser-source contracts, relationship validation, and enrichment failure behavior.
 
-Static browser-source checks are not equivalent to comprehensive automated browser testing. Test counts should come from the receipt for the tested revision, not a permanently copied README number.
+Static browser-source checks are not equivalent to comprehensive automated browser testing.
+
+A separate user-executed browser harness recorded twelve passing deterministic response-order cases against a captured application page. Its synthetic fetch fixture intentionally ignored cancellation. Removing the search-generation guard from a test-only copy produced the expected stale-query failure.
+
+The [browser-race evidence](tests/receipts/browser_races/README.md) preserves both the initial fixture failure and corrected run. This is not an automatic pytest test, independent replay, real-network congestion test, cross-browser guarantee, or universal race-safety proof.
+
+The [classification and blob-identity evidence](tests/receipts/pinned_source_classification_blob/README.md) preserves the earlier user-executed checkpoints, commands, failures, source snapshots, and test receipts. The final preserved checkpoint reports 95 focused tests and 214 package tests plus 10 subtests passing; these are historical counts, not a live CI result or a fresh execution.
+
+The [DEFECT source-integration receipt](tests/receipts/defect_preservation_source/receipt.json) records the new-source checks.
+
+Use the receipt for the tested revision when reporting test counts.
 
 With pytest installed, run from the package directory:
 
@@ -244,7 +301,7 @@ Prose-derived graph navigation is separate from the explicit relationship regist
 
 - Independently review pending relationship interpretations.
 - Add distinct relationships only when their sources justify the type and scope.
-- Repair and test the standalone replay harness before a fresh research replay.
+- Keep mathematical replay separate from search; perform a fresh replay when required by a declared research task, not merely to reread an existing receipt.
 - Evaluate actual research tasks, not only benchmark scores.
 - Keep AQARION-LEAN proof work and ClaimLock governance separate from RAG.
 - Review authentication, input handling, serving configuration, and security before external deployment.
@@ -253,11 +310,13 @@ No comprehensive correction coverage, general claim verification, independent re
 
 ## Documentation checkpoint and history
 
-This README was reconciled against implementation commit:
+This documentation update describes implementation checkpoint:
 
 ```text
-40680eb1bce791dc872c98869552d538f8b20ee3
+8d9ef019e80a272dc5038bac678ff628db8ab183
 ```
+
+The earlier README reconciliation targeted `40680eb1bce791dc872c98869552d538f8b20ee3`. Historical benchmark results retain their original scope; this update does not recompute them.
 
 The [previous README](docs/README-HISTORY-before-2026-10-20.md) is preserved verbatim as historical documentation. It contains superseded statements and is not the current operating guide.
 
