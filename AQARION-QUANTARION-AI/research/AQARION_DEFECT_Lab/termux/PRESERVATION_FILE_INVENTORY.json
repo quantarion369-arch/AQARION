@@ -1,0 +1,72 @@
+[
+  {
+    "path": "defect_experiments/exact_vs_ridge_1ij1_299/config.json",
+    "bytes": 300,
+    "sha256": "898297936541e6cbb940bee981e89bba4b0f6d5dd9cb83d7ef867697f39d9a1f"
+  },
+  {
+    "path": "defect_experiments/exact_vs_ridge_ykslaj_o/config.json",
+    "bytes": 307,
+    "sha256": "b3ada26dd6c0d6fa4a93b9d071c7ec5e0ebc6b0c73aeddc4e2327f9339495328"
+  },
+  {
+    "path": "defect_experiments/exact_vs_ridge_ykslaj_o/exact.pt",
+    "bytes": 21667,
+    "sha256": "7ec4fb467bb79be93786033158150032073dd0f9b22fc6f2f01085eefab85055"
+  },
+  {
+    "path": "defect_experiments/exact_vs_ridge_ykslaj_o/none.pt",
+    "bytes": 21625,
+    "sha256": "30473b5bb4b130a5c77c70cf3b9319ed38b13d356af424f14b2248ab6df68e9e"
+  },
+  {
+    "path": "defect_experiments/exact_vs_ridge_ykslaj_o/results.csv",
+    "bytes": 670,
+    "sha256": "a3dd22d4b24b612f747b5c4b5d3138de849d3b2780043698a6d13e6a9ce3b090"
+  },
+  {
+    "path": "defect_experiments/exact_vs_ridge_ykslaj_o/ridge.pt",
+    "bytes": 21667,
+    "sha256": "45e28d718e236b25438a979fd7853c2ae9707d4e4df8e39ef9c36ed42d524a83"
+  },
+  {
+    "path": "receipt-20261024-220627.txt",
+    "bytes": 6567,
+    "sha256": "38b9dfa345f580bd233e060ad8257bc1b004abe9d3ce340ab23e653ccc0b1af3"
+  },
+  {
+    "path": "receipt-source-scope-20261024-220629.txt",
+    "bytes": 7509,
+    "sha256": "922fcef255c723ad82292a6364e5bfda9c9649849bfdc9a01488619af9bd199d"
+  },
+  {
+    "path": "run_termux.sh",
+    "bytes": 905,
+    "sha256": "4e6f3f24048274bdb3072b88a1ac4171da0c4eda1defb6a529e33e314d2ad5b4"
+  },
+  {
+    "path": "tests/test_action_gate.py",
+    "bytes": 1651,
+    "sha256": "241adfe588561c363362f28da590076d7c6c6b4dea9ad6eee841d394f2641f6b"
+  },
+  {
+    "path": "tests/test_flint_optional.py",
+    "bytes": 938,
+    "sha256": "779d595d7e396a2072d924639d20fc16f691373a4bac33256ae7ad158a6c677f"
+  },
+  {
+    "path": "tests/test_integrity.py",
+    "bytes": 526,
+    "sha256": "b617bcd7c3d6b8d755c799ad969befe990b8979d3b856faddbfa5a2f2d32d9b4"
+  },
+  {
+    "path": "tests/test_normalization.py",
+    "bytes": 3394,
+    "sha256": "a97de628fb45c65fa78d98ac09093955a75586705587dbc9ed7f94ff1ee9741e"
+  },
+  {
+    "path": "tests/test_source_scope_readiness.py",
+    "bytes": 1485,
+    "sha256": "243c3436f34a091e8f7c0c85d12d06ef5c0344e6771438900078f618aa6eccaa"
+  }
+]

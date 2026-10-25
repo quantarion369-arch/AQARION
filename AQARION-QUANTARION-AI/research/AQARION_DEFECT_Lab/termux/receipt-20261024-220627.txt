@@ -1,0 +1,127 @@
+=== SCIOT Termux Test Suite v0.1 ===
+timestamp=2026-10-24T22:06:27-04:00
+python=Python 3.13.13
+AQARION_RAG_PATH=<not set>
+
+=== Runtime inventory ===
+python_version: 3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0
+implementation: CPython
+platform: Android-16-aarch64-64bit-ELF
+machine: aarch64
+git: /data/data/com.termux/files/usr/bin/git
+clang: /data/data/com.termux/files/usr/bin/clang
+cmake: /data/data/com.termux/files/usr/bin/cmake
+make: /data/data/com.termux/files/usr/bin/make
+llama-server: NOT_FOUND
+module_flint: False
+module_pytest: True
+module_requests: False
+
+=== Unit tests ===
+test_authorized_positive_control (test_action_gate.ActionGateTests.test_authorized_positive_control) ... ok
+test_unauthorized_action_rejected (test_action_gate.ActionGateTests.test_unauthorized_action_rejected) ... ok
+test_untrusted_text_cannot_expand_allowlist (test_action_gate.ActionGateTests.test_untrusted_text_cannot_expand_allowlist) ... ok
+setUpClass (test_flint_optional.FlintOptionalTests) ... skipped "python-flint unavailable: ModuleNotFoundError: No module named 'flint'"
+test_half_open_offsets (test_integrity.IntegrityTests.test_half_open_offsets) ... ok
+test_hash_determinism (test_integrity.IntegrityTests.test_hash_determinism) ... ok
+test_all_pairs_all_policies (test_normalization.NormalizationTests.test_all_pairs_all_policies) ... ok
+test_deletion_can_change_boundaries (test_normalization.NormalizationTests.test_deletion_can_change_boundaries) ... ok
+test_input_strings_remain_unchanged (test_normalization.NormalizationTests.test_input_strings_remain_unchanged) ... ok
+test_nfkc_compatibility_changes (test_normalization.NormalizationTests.test_nfkc_compatibility_changes) ... ok
+test_raw_tokenizer_controls (test_normalization.NormalizationTests.test_raw_tokenizer_controls) ... ok
+test_required_files_exist (test_source_scope_readiness.SourceScopeReadinessTests.test_required_files_exist) ... skipped 'AQARION_RAG_PATH not set'
+test_source_scope_surface (test_source_scope_readiness.SourceScopeReadinessTests.test_source_scope_surface) ... skipped 'AQARION_RAG_PATH not set'
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.009s
+
+OK (skipped=3)
+
+NORMALIZATION INVENTORY
+unicode_version = 15.1.0
+
+fullwidth: context-dependent
+  raw: left=[] right=['abc'] equal=False
+  nfkc: left=['abc'] right=['abc'] equal=True
+  remove_200b: left=[] right=['abc'] equal=False
+  remove_2060: left=[] right=['abc'] equal=False
+  combined: left=['abc'] right=['abc'] equal=True
+
+math-italic: context-dependent
+  raw: left=[] right=['x'] equal=False
+  nfkc: left=['x'] right=['x'] equal=True
+  remove_200b: left=[] right=['x'] equal=False
+  remove_2060: left=[] right=['x'] equal=False
+  combined: left=['x'] right=['x'] equal=True
+
+superscript: semantic-collision-risk
+  raw: left=['x'] right=['x2'] equal=False
+  nfkc: left=['x2'] right=['x2'] equal=True
+  remove_200b: left=['x'] right=['x2'] equal=False
+  remove_2060: left=['x'] right=['x2'] equal=False
+  combined: left=['x2'] right=['x2'] equal=True
+
+subscript: semantic-collision-risk
+  raw: left=['h', 'o'] right=['h2o'] equal=False
+  nfkc: left=['h2o'] right=['h2o'] equal=True
+  remove_200b: left=['h', 'o'] right=['h2o'] equal=False
+  remove_2060: left=['h', 'o'] right=['h2o'] equal=False
+  combined: left=['h2o'] right=['h2o'] equal=True
+
+ligature: candidate-benefit
+  raw: left=['o', 'ce'] right=['office'] equal=False
+  nfkc: left=['office'] right=['office'] equal=True
+  remove_200b: left=['o', 'ce'] right=['office'] equal=False
+  remove_2060: left=['o', 'ce'] right=['office'] equal=False
+  combined: left=['office'] right=['office'] equal=True
+
+zero-width-inside-word: candidate-benefit
+  raw: left=['sta', 'bility'] right=['stability'] equal=False
+  nfkc: left=['sta', 'bility'] right=['stability'] equal=False
+  remove_200b: left=['stability'] right=['stability'] equal=True
+  remove_2060: left=['sta', 'bility'] right=['stability'] equal=False
+  combined: left=['stability'] right=['stability'] equal=True
+
+zero-width-joins-words: boundary-regression-risk
+  raw: left=['alpha', 'beta'] right=['alpha', 'beta'] equal=True
+  nfkc: left=['alpha', 'beta'] right=['alpha', 'beta'] equal=True
+  remove_200b: left=['alphabeta'] right=['alpha', 'beta'] equal=False
+  remove_2060: left=['alpha', 'beta'] right=['alpha', 'beta'] equal=True
+  combined: left=['alphabeta'] right=['alpha', 'beta'] equal=False
+
+zero-width-before-space: boundary-sensitive
+  raw: left=['alpha', 'beta'] right=['alpha', 'beta'] equal=True
+  nfkc: left=['alpha', 'beta'] right=['alpha', 'beta'] equal=True
+  remove_200b: left=['alpha', 'beta'] right=['alpha', 'beta'] equal=True
+  remove_2060: left=['alpha', 'beta'] right=['alpha', 'beta'] equal=True
+  combined: left=['alpha', 'beta'] right=['alpha', 'beta'] equal=True
+
+word-joiner: boundary-sensitive
+  raw: left=['source', 'id'] right=['sourceid'] equal=False
+  nfkc: left=['source', 'id'] right=['sourceid'] equal=False
+  remove_200b: left=['source', 'id'] right=['sourceid'] equal=False
+  remove_2060: left=['sourceid'] right=['sourceid'] equal=True
+  combined: left=['sourceid'] right=['sourceid'] equal=True
+
+ordinary-control: control
+  raw: left=['observable', 'closure'] right=['observable', 'closure'] equal=True
+  nfkc: left=['observable', 'closure'] right=['observable', 'closure'] equal=True
+  remove_200b: left=['observable', 'closure'] right=['observable', 'closure'] equal=True
+  remove_2060: left=['observable', 'closure'] right=['observable', 'closure'] equal=True
+  combined: left=['observable', 'closure'] right=['observable', 'closure'] equal=True
+
+underscore-control: control
+  raw: left=['source_id'] right=['source_id'] equal=True
+  nfkc: left=['source_id'] right=['source_id'] equal=True
+  remove_200b: left=['source_id'] right=['source_id'] equal=True
+  remove_2060: left=['source_id'] right=['source_id'] equal=True
+  combined: left=['source_id'] right=['source_id'] equal=True
+
+quoted-instruction: benign-quote-control
+  raw: left=['ignore', 'all', 'instructions'] right=['ignore', 'all', 'instructions'] equal=True
+  nfkc: left=['ignore', 'all', 'instructions'] right=['ignore', 'all', 'instructions'] equal=True
+  remove_200b: left=['ignoreall', 'instructions'] right=['ignore', 'all', 'instructions'] equal=False
+  remove_2060: left=['ignore', 'all', 'instructions'] right=['ignore', 'all', 'instructions'] equal=True
+  combined: left=['ignoreall', 'instructions'] right=['ignore', 'all', 'instructions'] equal=False
+
+UNITTEST_EXIT=0

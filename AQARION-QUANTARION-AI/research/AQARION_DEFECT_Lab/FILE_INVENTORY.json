@@ -1,0 +1,249 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1135,
+      "sha256": "59fa791887a5ffa82a9c10bededa387069b3f537e539e5c9a48ba958f2184067"
+    },
+    {
+      "path": "colab/file_inventory.json",
+      "bytes": 5007,
+      "sha256": "f35e09808b6e0185038e2162d84940866d8249245e4bbaf0811e09071206f1d2"
+    },
+    {
+      "path": "colab/preservation_notes.json",
+      "bytes": 1206,
+      "sha256": "85879c6863524fe9804ca3fdc73788a0c06f096a4fc55e4ddbf68cd66bafa479"
+    },
+    {
+      "path": "colab/replication/checkpoint_audit_20261025T025348982325Z.csv",
+      "bytes": 8078,
+      "sha256": "ec4b7147fbc11983f55749e3ba3ff1ad89e3b213f54cb074b0bd4b9b19b849dc"
+    },
+    {
+      "path": "colab/replication/config.json",
+      "bytes": 404,
+      "sha256": "e3d3a25cd522f8503788f5190f670c41662912bb394c84e5634c41879046850c"
+    },
+    {
+      "path": "colab/replication/results.csv",
+      "bytes": 3551,
+      "sha256": "235ef31cb097d059b3e8f7228fd8626c89eb552a123f426d982b955a2f21f441"
+    },
+    {
+      "path": "colab/replication/ridge_components_20261025T025558036549Z.csv",
+      "bytes": 3328,
+      "sha256": "833f8f3a5ad936e7158855f03e2a7b1c39ce70a5c6678615199fde81dbfe13ca"
+    },
+    {
+      "path": "colab/replication/seed_372_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "f497d98e39a23ef3b93cabe9225c3ff31050af83600f6e3782153355eec4e97c"
+    },
+    {
+      "path": "colab/replication/seed_372_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "7adaab5902b99ac245fe9918947df9f60407d6aab8be9fce5dca7322d08c620d"
+    },
+    {
+      "path": "colab/replication/seed_373_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "686ca7a7f9adb9d19b6b754bc5d7eca0607d4e46808277eb7e4206db773999a8"
+    },
+    {
+      "path": "colab/replication/seed_373_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "ac31939aefe3a66cc62619809afc41e6917bbbc469cf98daf5164b83f655001b"
+    },
+    {
+      "path": "colab/replication/seed_374_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "c542c807f043bb5762cc7b4a995da053e0d8b4a9037e4b9e0c668cd85843636a"
+    },
+    {
+      "path": "colab/replication/seed_374_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "cd0876cd5d60d8726ac902ded488f9fd8ba316073bce711ed877a010db3cc0f2"
+    },
+    {
+      "path": "colab/replication/seed_375_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "3de89212be1ae75e2a27c4b662377ac218fe0956681b2ec1953ea9ba4bece04f"
+    },
+    {
+      "path": "colab/replication/seed_375_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "a56de1408161497f4109c63f46817968be070430e0e7e61113098373e9111518"
+    },
+    {
+      "path": "colab/replication/seed_376_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "51a0ab67455971aff97309fec072e4c6d4b50c9e5cd9000016bda0b8fb62e856"
+    },
+    {
+      "path": "colab/replication/seed_376_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "70e0d4f72ef7b1d93ad9289b11e3e880e9e9e1173a8b657bfd584553737eda23"
+    },
+    {
+      "path": "colab/replication/seed_377_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "7931968f5fc7dd4453e3f7098af19ec0f40731e79ae1e477623285671594787c"
+    },
+    {
+      "path": "colab/replication/seed_377_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "cc7f6e32eb381f2fe29acb0eff3c930a4b65656ba97859cd2b649ae2bfddbdbc"
+    },
+    {
+      "path": "colab/replication/seed_378_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "c116b7c02ccbf2c3897bd9a4d5e76f94963856c095aaef443908c2dca06c0e9a"
+    },
+    {
+      "path": "colab/replication/seed_378_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "8d7f9db9fa73e338993f492c0c23c542d827523bfbf4c52037b64c509d114aa9"
+    },
+    {
+      "path": "colab/replication/seed_379_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "0d63ead96c17916aea9c05bf83f9e497f70b7a880b681c6bb04f7d2ee4dc67fd"
+    },
+    {
+      "path": "colab/replication/seed_379_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "9df94dbd48210db9f810679184d87d7413d4d3064d0b40a126d763898838884f"
+    },
+    {
+      "path": "colab/replication/seed_380_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "15e97523303f670b84a753a8f7135a9982728e16c70058edbcd0629358cbbc8d"
+    },
+    {
+      "path": "colab/replication/seed_380_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "c2367d8863948ea50cce25c90f3f624c3d9fa02842ceb0d4bd6472e87aece9fd"
+    },
+    {
+      "path": "colab/replication/seed_381_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "19fdc666dc9ff4fe88b4e22345ebe81a8101e713fe733150341d111fcc965940"
+    },
+    {
+      "path": "colab/replication/seed_381_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "8d7b539ccc690bc98bc960126cdf15f010e62ab98c6fb8f592265ed4c2b3ef8a"
+    },
+    {
+      "path": "colab/runtime_source_cells/executed_cell_0002.py",
+      "bytes": 3364,
+      "sha256": "cc4a3776b8908f85efdef2b7b989627ffee7478718fed67b00f8b7030d39035f"
+    },
+    {
+      "path": "colab/runtime_source_cells/executed_cell_0012.py",
+      "bytes": 9523,
+      "sha256": "d74760dfec9ae00226854ffd2723b78b8fcaba2529c31a9901b7567c4ca9b0d5"
+    },
+    {
+      "path": "colab/runtime_source_cells/executed_cell_0013.py",
+      "bytes": 7815,
+      "sha256": "cc79aa6bcad32fabb92988d2154edf4b94e1bfb5c5f7457e568adf1ec1ca1a16"
+    },
+    {
+      "path": "colab/runtime_source_cells/executed_cell_0014.py",
+      "bytes": 4647,
+      "sha256": "3e62684b1e9ae99ad26cff640f6535e92d837614bc62dd76565c5b8872ce1d16"
+    },
+    {
+      "path": "preserved_archives/AQARION_DEFECT_preserved_20261025T032307187625Z.zip",
+      "bytes": 308627,
+      "sha256": "acc2b6addae6df8b9f2084674dde1232d26c22d273788ad0af0dc74653d862e1"
+    },
+    {
+      "path": "preserved_archives/AQARION_TERMUX_preserved_20261025T033408076483Z.zip",
+      "bytes": 53625,
+      "sha256": "7a78681abbe0f7b61bb0cf985ac5c5a5f46ed2d7a8844d06e6aec459820ba66b"
+    },
+    {
+      "path": "termux/PRESERVATION_FILE_INVENTORY.json",
+      "bytes": 2282,
+      "sha256": "25b251716ab20b3cf8726367b0cc9dc14f915fd75af497a0b9f0dd54f37649fd"
+    },
+    {
+      "path": "termux/PRESERVATION_NOTES.json",
+      "bytes": 797,
+      "sha256": "7b604fa7c3ca7cbe4602c8e0a80056277d5c2dc26e8d43484aa272a89fd31468"
+    },
+    {
+      "path": "termux/defect_experiments/exact_vs_ridge_1ij1_299/config.json",
+      "bytes": 300,
+      "sha256": "898297936541e6cbb940bee981e89bba4b0f6d5dd9cb83d7ef867697f39d9a1f"
+    },
+    {
+      "path": "termux/defect_experiments/exact_vs_ridge_ykslaj_o/config.json",
+      "bytes": 307,
+      "sha256": "b3ada26dd6c0d6fa4a93b9d071c7ec5e0ebc6b0c73aeddc4e2327f9339495328"
+    },
+    {
+      "path": "termux/defect_experiments/exact_vs_ridge_ykslaj_o/exact.pt",
+      "bytes": 21667,
+      "sha256": "7ec4fb467bb79be93786033158150032073dd0f9b22fc6f2f01085eefab85055"
+    },
+    {
+      "path": "termux/defect_experiments/exact_vs_ridge_ykslaj_o/none.pt",
+      "bytes": 21625,
+      "sha256": "30473b5bb4b130a5c77c70cf3b9319ed38b13d356af424f14b2248ab6df68e9e"
+    },
+    {
+      "path": "termux/defect_experiments/exact_vs_ridge_ykslaj_o/results.csv",
+      "bytes": 670,
+      "sha256": "a3dd22d4b24b612f747b5c4b5d3138de849d3b2780043698a6d13e6a9ce3b090"
+    },
+    {
+      "path": "termux/defect_experiments/exact_vs_ridge_ykslaj_o/ridge.pt",
+      "bytes": 21667,
+      "sha256": "45e28d718e236b25438a979fd7853c2ae9707d4e4df8e39ef9c36ed42d524a83"
+    },
+    {
+      "path": "termux/receipt-20261024-220627.txt",
+      "bytes": 6567,
+      "sha256": "38b9dfa345f580bd233e060ad8257bc1b004abe9d3ce340ab23e653ccc0b1af3"
+    },
+    {
+      "path": "termux/receipt-source-scope-20261024-220629.txt",
+      "bytes": 7509,
+      "sha256": "922fcef255c723ad82292a6364e5bfda9c9649849bfdc9a01488619af9bd199d"
+    },
+    {
+      "path": "termux/run_termux.sh",
+      "bytes": 905,
+      "sha256": "4e6f3f24048274bdb3072b88a1ac4171da0c4eda1defb6a529e33e314d2ad5b4"
+    },
+    {
+      "path": "termux/tests/test_action_gate.py",
+      "bytes": 1651,
+      "sha256": "241adfe588561c363362f28da590076d7c6c6b4dea9ad6eee841d394f2641f6b"
+    },
+    {
+      "path": "termux/tests/test_flint_optional.py",
+      "bytes": 938,
+      "sha256": "779d595d7e396a2072d924639d20fc16f691373a4bac33256ae7ad158a6c677f"
+    },
+    {
+      "path": "termux/tests/test_integrity.py",
+      "bytes": 526,
+      "sha256": "b617bcd7c3d6b8d755c799ad969befe990b8979d3b856faddbfa5a2f2d32d9b4"
+    },
+    {
+      "path": "termux/tests/test_normalization.py",
+      "bytes": 3394,
+      "sha256": "a97de628fb45c65fa78d98ac09093955a75586705587dbc9ed7f94ff1ee9741e"
+    },
+    {
+      "path": "termux/tests/test_source_scope_readiness.py",
+      "bytes": 1485,
+      "sha256": "243c3436f34a091e8f7c0c85d12d06ef5c0344e6771438900078f618aa6eccaa"
+    }
+  ]
+}

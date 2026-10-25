@@ -1,0 +1,13 @@
+{
+  "seed": 369,
+  "width": 3,
+  "steps": 400,
+  "learning_rate": 0.01,
+  "ridge": 0.0001,
+  "noise": 0.02,
+  "exact_guard_min_ratio": 1e-06,
+  "target": "noisy training observations",
+  "gradient_clipping": false,
+  "torch_version": "2.11.0",
+  "purpose": "single-seed development feasibility comparison"
+}

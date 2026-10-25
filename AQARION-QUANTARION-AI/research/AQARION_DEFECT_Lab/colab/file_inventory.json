@@ -1,0 +1,150 @@
+{
+  "purpose": "File inventory only; not a new claim-status schema",
+  "files": [
+    {
+      "path": "preservation_notes.json",
+      "bytes": 1206,
+      "sha256": "85879c6863524fe9804ca3fdc73788a0c06f096a4fc55e4ddbf68cd66bafa479"
+    },
+    {
+      "path": "replication/checkpoint_audit_20261025T025348982325Z.csv",
+      "bytes": 8078,
+      "sha256": "ec4b7147fbc11983f55749e3ba3ff1ad89e3b213f54cb074b0bd4b9b19b849dc"
+    },
+    {
+      "path": "replication/config.json",
+      "bytes": 404,
+      "sha256": "e3d3a25cd522f8503788f5190f670c41662912bb394c84e5634c41879046850c"
+    },
+    {
+      "path": "replication/results.csv",
+      "bytes": 3551,
+      "sha256": "235ef31cb097d059b3e8f7228fd8626c89eb552a123f426d982b955a2f21f441"
+    },
+    {
+      "path": "replication/ridge_components_20261025T025558036549Z.csv",
+      "bytes": 3328,
+      "sha256": "833f8f3a5ad936e7158855f03e2a7b1c39ce70a5c6678615199fde81dbfe13ca"
+    },
+    {
+      "path": "replication/seed_372_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "f497d98e39a23ef3b93cabe9225c3ff31050af83600f6e3782153355eec4e97c"
+    },
+    {
+      "path": "replication/seed_372_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "7adaab5902b99ac245fe9918947df9f60407d6aab8be9fce5dca7322d08c620d"
+    },
+    {
+      "path": "replication/seed_373_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "686ca7a7f9adb9d19b6b754bc5d7eca0607d4e46808277eb7e4206db773999a8"
+    },
+    {
+      "path": "replication/seed_373_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "ac31939aefe3a66cc62619809afc41e6917bbbc469cf98daf5164b83f655001b"
+    },
+    {
+      "path": "replication/seed_374_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "c542c807f043bb5762cc7b4a995da053e0d8b4a9037e4b9e0c668cd85843636a"
+    },
+    {
+      "path": "replication/seed_374_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "cd0876cd5d60d8726ac902ded488f9fd8ba316073bce711ed877a010db3cc0f2"
+    },
+    {
+      "path": "replication/seed_375_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "3de89212be1ae75e2a27c4b662377ac218fe0956681b2ec1953ea9ba4bece04f"
+    },
+    {
+      "path": "replication/seed_375_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "a56de1408161497f4109c63f46817968be070430e0e7e61113098373e9111518"
+    },
+    {
+      "path": "replication/seed_376_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "51a0ab67455971aff97309fec072e4c6d4b50c9e5cd9000016bda0b8fb62e856"
+    },
+    {
+      "path": "replication/seed_376_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "70e0d4f72ef7b1d93ad9289b11e3e880e9e9e1173a8b657bfd584553737eda23"
+    },
+    {
+      "path": "replication/seed_377_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "7931968f5fc7dd4453e3f7098af19ec0f40731e79ae1e477623285671594787c"
+    },
+    {
+      "path": "replication/seed_377_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "cc7f6e32eb381f2fe29acb0eff3c930a4b65656ba97859cd2b649ae2bfddbdbc"
+    },
+    {
+      "path": "replication/seed_378_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "c116b7c02ccbf2c3897bd9a4d5e76f94963856c095aaef443908c2dca06c0e9a"
+    },
+    {
+      "path": "replication/seed_378_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "8d7f9db9fa73e338993f492c0c23c542d827523bfbf4c52037b64c509d114aa9"
+    },
+    {
+      "path": "replication/seed_379_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "0d63ead96c17916aea9c05bf83f9e497f70b7a880b681c6bb04f7d2ee4dc67fd"
+    },
+    {
+      "path": "replication/seed_379_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "9df94dbd48210db9f810679184d87d7413d4d3064d0b40a126d763898838884f"
+    },
+    {
+      "path": "replication/seed_380_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "15e97523303f670b84a753a8f7135a9982728e16c70058edbcd0629358cbbc8d"
+    },
+    {
+      "path": "replication/seed_380_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "c2367d8863948ea50cce25c90f3f624c3d9fa02842ceb0d4bd6472e87aece9fd"
+    },
+    {
+      "path": "replication/seed_381_weight_0.pt",
+      "bytes": 24034,
+      "sha256": "19fdc666dc9ff4fe88b4e22345ebe81a8101e713fe733150341d111fcc965940"
+    },
+    {
+      "path": "replication/seed_381_weight_1.pt",
+      "bytes": 24034,
+      "sha256": "8d7b539ccc690bc98bc960126cdf15f010e62ab98c6fb8f592265ed4c2b3ef8a"
+    },
+    {
+      "path": "runtime_source_cells/executed_cell_0002.py",
+      "bytes": 3364,
+      "sha256": "cc4a3776b8908f85efdef2b7b989627ffee7478718fed67b00f8b7030d39035f"
+    },
+    {
+      "path": "runtime_source_cells/executed_cell_0012.py",
+      "bytes": 9523,
+      "sha256": "d74760dfec9ae00226854ffd2723b78b8fcaba2529c31a9901b7567c4ca9b0d5"
+    },
+    {
+      "path": "runtime_source_cells/executed_cell_0013.py",
+      "bytes": 7815,
+      "sha256": "cc79aa6bcad32fabb92988d2154edf4b94e1bfb5c5f7457e568adf1ec1ca1a16"
+    },
+    {
+      "path": "runtime_source_cells/executed_cell_0014.py",
+      "bytes": 4647,
+      "sha256": "3e62684b1e9ae99ad26cff640f6535e92d837614bc62dd76565c5b8872ce1d16"
+    }
+  ]
+}

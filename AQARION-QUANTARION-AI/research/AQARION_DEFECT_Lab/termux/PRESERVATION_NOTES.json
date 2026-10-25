@@ -1,0 +1,18 @@
+{
+  "purpose": "Preserve existing Termux files before debugging",
+  "created_utc": "2026-10-25T03:34:08.076418+00:00",
+  "scope": "/data/data/com.termux/files/home/AQARION-Test-Suite",
+  "skipped_symlinks": [],
+  "limitations": [
+    "Only existing saved files are included.",
+    "Unsaved stdin Python sessions are not recovered.",
+    "This is not a backup of the whole AQARION repository.",
+    "This does not independently reproduce any experiment."
+  ],
+  "failure_observation_transcribed_from_chat": {
+    "directory": "defect_experiments/exact_vs_ridge_1ij1_299",
+    "python_error": "ValueError: optimizer got an empty parameter list",
+    "subsequent_event": "Python fragments were entered at a Bash prompt",
+    "provenance": "User-supplied transcript, not a captured terminal log"
+  }
+}

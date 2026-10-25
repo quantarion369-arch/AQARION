@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-10-25T03:23:07.183091+00:00",
+  "purpose": "Preservation of existing experiment artifacts",
+  "checkpoint_count": 20,
+  "runtime_source_cells": [
+    {
+      "execution_index": 2,
+      "file": "runtime_source_cells/executed_cell_0002.py",
+      "definitions": [
+        "CandidateDefectLoss"
+      ]
+    },
+    {
+      "execution_index": 12,
+      "file": "runtime_source_cells/executed_cell_0012.py",
+      "definitions": [
+        "run_width3_replication"
+      ]
+    },
+    {
+      "execution_index": 13,
+      "file": "runtime_source_cells/executed_cell_0013.py",
+      "definitions": [
+        "run_checkpoint_audit"
+      ]
+    },
+    {
+      "execution_index": 14,
+      "file": "runtime_source_cells/executed_cell_0014.py",
+      "definitions": [
+        "audit_ridge_components"
+      ]
+    }
+  ],
+  "source_definitions_not_recovered": [],
+  "limitations": [
+    "Runtime-history snapshots are not a complete notebook.",
+    "Multiple source versions may be present.",
+    "This operation does not independently reproduce training.",
+    "Hashes establish byte identity, not scientific correctness.",
+    "Successful browser download must be confirmed by the user."
+  ]
+}
