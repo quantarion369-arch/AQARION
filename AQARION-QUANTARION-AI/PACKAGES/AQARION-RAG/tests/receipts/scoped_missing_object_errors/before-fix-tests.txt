@@ -1,0 +1,493 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_____________ test_missing_pinned_object_returns_json[/api/search] _____________
+
+route = '/api/search'
+pinned_sources = (PosixPath('/data/data/com.termux/files/usr/tmp/pytest-of-u0_a352/pytest-26/pinned-error-fixture0'), {'doc': 'Valid fi...issing fixture', 'path': 'notes.md', 'sha': 'ffffffffffffffffffffffffffffffffffffffff', 'purpose': 'negative control'})
+
+    @pytest.mark.parametrize("route", ROUTES)
+    def test_missing_pinned_object_returns_json(route, pinned_sources):
+        root, good, missing = pinned_sources
+        loader = retrieve.load_at_sha
+    
+        with (
+            mock.patch.object(
+                retrieve, "load_manifest", return_value=[good, missing]
+            ),
+            mock.patch.object(
+                retrieve, "__file__", str(root / "retrieve.py")
+            ),
+            mock.patch.object(
+                retrieve, "load_at_sha", wraps=loader
+            ) as loads,
+            mock.patch.object(
+                relationships, "resolve_related"
+            ) as enrichment,
+            http_server(api) as base,
+        ):
+>           status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(missing)},
+            )
+
+tests/test_source_scope_errors.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_source_scope.py:36: in request
+    with urlopen(url, timeout=15) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:189: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:489: in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:506: in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+../../../../../usr/lib/python3.13/urllib/request.py:466: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1348: in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1323: in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/http/client.py:1450: in getresponse
+    response.begin()
+../../../../../usr/lib/python3.13/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <http.client.HTTPResponse object at 0x7702c40610>
+
+    def _read_status(self):
+        line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+        if len(line) > _MAXLINE:
+            raise LineTooLong("status line")
+        if self.debuglevel > 0:
+            print("reply:", repr(line))
+        if not line:
+            # Presumably, the server closed the connection before
+            # sending a valid response.
+>           raise RemoteDisconnected("Remote end closed connection without"
+                                     " response")
+E           http.client.RemoteDisconnected: Remote end closed connection without response
+
+../../../../../usr/lib/python3.13/http/client.py:305: RemoteDisconnected
+----------------------------- Captured stderr call -----------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48762)
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py", line 133, in do_GET
+    results = retrieve(
+        q, top_k=3, source_id=source_scope)
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 135, in retrieve
+    retrieve_cited(query, top_k=top_k, source_id=source_id)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 103, in retrieve_cited
+    text = load_at_sha(entry["path"], entry["sha"])
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1252, in _execute_mock_call
+    return self._mock_wraps(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 24, in load_at_sha
+    result = subprocess.run(
+        ["git", "show", f"{sha}:{path}"],
+    ...<3 lines>...
+        check=True,
+    )
+  File "/data/data/com.termux/files/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'show', 'ffffffffffffffffffffffffffffffffffffffff:notes.md']' returned non-zero exit status 128.
+----------------------------------------
+__________ test_missing_pinned_object_returns_json[/api/search/cited] __________
+
+route = '/api/search/cited'
+pinned_sources = (PosixPath('/data/data/com.termux/files/usr/tmp/pytest-of-u0_a352/pytest-26/pinned-error-fixture0'), {'doc': 'Valid fi...issing fixture', 'path': 'notes.md', 'sha': 'ffffffffffffffffffffffffffffffffffffffff', 'purpose': 'negative control'})
+
+    @pytest.mark.parametrize("route", ROUTES)
+    def test_missing_pinned_object_returns_json(route, pinned_sources):
+        root, good, missing = pinned_sources
+        loader = retrieve.load_at_sha
+    
+        with (
+            mock.patch.object(
+                retrieve, "load_manifest", return_value=[good, missing]
+            ),
+            mock.patch.object(
+                retrieve, "__file__", str(root / "retrieve.py")
+            ),
+            mock.patch.object(
+                retrieve, "load_at_sha", wraps=loader
+            ) as loads,
+            mock.patch.object(
+                relationships, "resolve_related"
+            ) as enrichment,
+            http_server(api) as base,
+        ):
+>           status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(missing)},
+            )
+
+tests/test_source_scope_errors.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_source_scope.py:36: in request
+    with urlopen(url, timeout=15) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:189: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:489: in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:506: in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+../../../../../usr/lib/python3.13/urllib/request.py:466: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1348: in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1323: in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/http/client.py:1450: in getresponse
+    response.begin()
+../../../../../usr/lib/python3.13/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <http.client.HTTPResponse object at 0x7702c9fe50>
+
+    def _read_status(self):
+        line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+        if len(line) > _MAXLINE:
+            raise LineTooLong("status line")
+        if self.debuglevel > 0:
+            print("reply:", repr(line))
+        if not line:
+            # Presumably, the server closed the connection before
+            # sending a valid response.
+>           raise RemoteDisconnected("Remote end closed connection without"
+                                     " response")
+E           http.client.RemoteDisconnected: Remote end closed connection without response
+
+../../../../../usr/lib/python3.13/http/client.py:305: RemoteDisconnected
+----------------------------- Captured stderr call -----------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 45344)
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py", line 143, in do_GET
+    results = retrieve_cited(
+        q, top_k=3, source_id=source_scope)
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 103, in retrieve_cited
+    text = load_at_sha(entry["path"], entry["sha"])
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1252, in _execute_mock_call
+    return self._mock_wraps(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 24, in load_at_sha
+    result = subprocess.run(
+        ["git", "show", f"{sha}:{path}"],
+    ...<3 lines>...
+        check=True,
+    )
+  File "/data/data/com.termux/files/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'show', 'ffffffffffffffffffffffffffffffffffffffff:notes.md']' returned non-zero exit status 128.
+----------------------------------------
+_________ test_missing_pinned_object_returns_json[/api/search/context] _________
+
+route = '/api/search/context'
+pinned_sources = (PosixPath('/data/data/com.termux/files/usr/tmp/pytest-of-u0_a352/pytest-26/pinned-error-fixture0'), {'doc': 'Valid fi...issing fixture', 'path': 'notes.md', 'sha': 'ffffffffffffffffffffffffffffffffffffffff', 'purpose': 'negative control'})
+
+    @pytest.mark.parametrize("route", ROUTES)
+    def test_missing_pinned_object_returns_json(route, pinned_sources):
+        root, good, missing = pinned_sources
+        loader = retrieve.load_at_sha
+    
+        with (
+            mock.patch.object(
+                retrieve, "load_manifest", return_value=[good, missing]
+            ),
+            mock.patch.object(
+                retrieve, "__file__", str(root / "retrieve.py")
+            ),
+            mock.patch.object(
+                retrieve, "load_at_sha", wraps=loader
+            ) as loads,
+            mock.patch.object(
+                relationships, "resolve_related"
+            ) as enrichment,
+            http_server(api) as base,
+        ):
+>           status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(missing)},
+            )
+
+tests/test_source_scope_errors.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_source_scope.py:36: in request
+    with urlopen(url, timeout=15) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:189: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:489: in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:506: in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+../../../../../usr/lib/python3.13/urllib/request.py:466: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1348: in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1323: in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/http/client.py:1450: in getresponse
+    response.begin()
+../../../../../usr/lib/python3.13/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <http.client.HTTPResponse object at 0x7702c9f7c0>
+
+    def _read_status(self):
+        line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+        if len(line) > _MAXLINE:
+            raise LineTooLong("status line")
+        if self.debuglevel > 0:
+            print("reply:", repr(line))
+        if not line:
+            # Presumably, the server closed the connection before
+            # sending a valid response.
+>           raise RemoteDisconnected("Remote end closed connection without"
+                                     " response")
+E           http.client.RemoteDisconnected: Remote end closed connection without response
+
+../../../../../usr/lib/python3.13/http/client.py:305: RemoteDisconnected
+----------------------------- Captured stderr call -----------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 40972)
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py", line 119, in do_GET
+    self._send(context.retrieve_with_context(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        q, source_id=source_scope))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/context.py", line 132, in retrieve_with_context
+    seeds = retrieve.retrieve_cited(query, top_k=3, source_id=source_id)
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 103, in retrieve_cited
+    text = load_at_sha(entry["path"], entry["sha"])
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1252, in _execute_mock_call
+    return self._mock_wraps(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 24, in load_at_sha
+    result = subprocess.run(
+        ["git", "show", f"{sha}:{path}"],
+    ...<3 lines>...
+        check=True,
+    )
+  File "/data/data/com.termux/files/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'show', 'ffffffffffffffffffffffffffffffffffffffff:notes.md']' returned non-zero exit status 128.
+----------------------------------------
+________ test_missing_pinned_object_returns_json[/api/search/evidence] _________
+
+route = '/api/search/evidence'
+pinned_sources = (PosixPath('/data/data/com.termux/files/usr/tmp/pytest-of-u0_a352/pytest-26/pinned-error-fixture0'), {'doc': 'Valid fi...issing fixture', 'path': 'notes.md', 'sha': 'ffffffffffffffffffffffffffffffffffffffff', 'purpose': 'negative control'})
+
+    @pytest.mark.parametrize("route", ROUTES)
+    def test_missing_pinned_object_returns_json(route, pinned_sources):
+        root, good, missing = pinned_sources
+        loader = retrieve.load_at_sha
+    
+        with (
+            mock.patch.object(
+                retrieve, "load_manifest", return_value=[good, missing]
+            ),
+            mock.patch.object(
+                retrieve, "__file__", str(root / "retrieve.py")
+            ),
+            mock.patch.object(
+                retrieve, "load_at_sha", wraps=loader
+            ) as loads,
+            mock.patch.object(
+                relationships, "resolve_related"
+            ) as enrichment,
+            http_server(api) as base,
+        ):
+>           status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(missing)},
+            )
+
+tests/test_source_scope_errors.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_source_scope.py:36: in request
+    with urlopen(url, timeout=15) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:189: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:489: in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:506: in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+../../../../../usr/lib/python3.13/urllib/request.py:466: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1348: in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1323: in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/http/client.py:1450: in getresponse
+    response.begin()
+../../../../../usr/lib/python3.13/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <http.client.HTTPResponse object at 0x7702c9f340>
+
+    def _read_status(self):
+        line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+        if len(line) > _MAXLINE:
+            raise LineTooLong("status line")
+        if self.debuglevel > 0:
+            print("reply:", repr(line))
+        if not line:
+            # Presumably, the server closed the connection before
+            # sending a valid response.
+>           raise RemoteDisconnected("Remote end closed connection without"
+                                     " response")
+E           http.client.RemoteDisconnected: Remote end closed connection without response
+
+../../../../../usr/lib/python3.13/http/client.py:305: RemoteDisconnected
+----------------------------- Captured stderr call -----------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 40248)
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/socketserver.py", line 766, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/http/server.py", line 447, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/http/server.py", line 435, in handle_one_request
+    method()
+    ~~~~~~^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py", line 103, in do_GET
+    retrieval_context = context.retrieve_with_context(
+        q, source_id=source_scope)
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/context.py", line 132, in retrieve_with_context
+    seeds = retrieve.retrieve_cited(query, top_k=3, source_id=source_id)
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 103, in retrieve_cited
+    text = load_at_sha(entry["path"], entry["sha"])
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/usr/lib/python3.13/unittest/mock.py", line 1252, in _execute_mock_call
+    return self._mock_wraps(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py", line 24, in load_at_sha
+    result = subprocess.run(
+        ["git", "show", f"{sha}:{path}"],
+    ...<3 lines>...
+        check=True,
+    )
+  File "/data/data/com.termux/files/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['git', 'show', 'ffffffffffffffffffffffffffffffffffffffff:notes.md']' returned non-zero exit status 128.
+----------------------------------------
+=========================== short test summary info ============================
+FAILED tests/test_source_scope_errors.py::test_missing_pinned_object_returns_json[/api/search]
+FAILED tests/test_source_scope_errors.py::test_missing_pinned_object_returns_json[/api/search/cited]
+FAILED tests/test_source_scope_errors.py::test_missing_pinned_object_returns_json[/api/search/context]
+FAILED tests/test_source_scope_errors.py::test_missing_pinned_object_returns_json[/api/search/evidence]
+4 failed, 8 deselected in 4.07s

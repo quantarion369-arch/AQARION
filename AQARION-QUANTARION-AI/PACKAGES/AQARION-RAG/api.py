@@ -18,6 +18,13 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _retrieve_pinned_or_error(self, operation):
+        try:
+            return True, operation()
+        except subprocess.CalledProcessError:
+            self._send({"error": "pinned Git object unavailable"}, 404)
+            return False, None
+
     def do_GET(self):
         url = urlparse(self.path)
         qs = parse_qs(url.query)
@@ -100,8 +107,11 @@ class Handler(BaseHTTPRequestHandler):
             if source_scope is None:
                 retrieval_context = context.retrieve_with_context(q)
             else:
-                retrieval_context = context.retrieve_with_context(
-                    q, source_id=source_scope)
+                succeeded, retrieval_context = self._retrieve_pinned_or_error(
+                    lambda: context.retrieve_with_context(
+                        q, source_id=source_scope))
+                if not succeeded:
+                    return
             passages = (
                 retrieval_context["seed_results"]
                 + retrieval_context["supplementary_context"]
@@ -116,8 +126,12 @@ class Handler(BaseHTTPRequestHandler):
             if source_scope is None:
                 self._send(context.retrieve_with_context(q))
             else:
-                self._send(context.retrieve_with_context(
-                    q, source_id=source_scope))
+                succeeded, result = self._retrieve_pinned_or_error(
+                    lambda: context.retrieve_with_context(
+                        q, source_id=source_scope))
+                if not succeeded:
+                    return
+                self._send(result)
         elif url.path == "/api/claims":
             claims = parse_claims()
             status = qs.get("status", [None])[0]
@@ -130,8 +144,11 @@ class Handler(BaseHTTPRequestHandler):
             if source_scope is None:
                 results = retrieve(q, top_k=3)
             else:
-                results = retrieve(
-                    q, top_k=3, source_id=source_scope)
+                succeeded, results = self._retrieve_pinned_or_error(
+                    lambda: retrieve(
+                        q, top_k=3, source_id=source_scope))
+                if not succeeded:
+                    return
             self._send({"query": q, "results": [
                 {"score": s, "doc": d, "sha": h, "passage": p}
                 for s, d, h, p in results]})
@@ -140,8 +157,11 @@ class Handler(BaseHTTPRequestHandler):
             if source_scope is None:
                 results = retrieve_cited(q, top_k=3)
             else:
-                results = retrieve_cited(
-                    q, top_k=3, source_id=source_scope)
+                succeeded, results = self._retrieve_pinned_or_error(
+                    lambda: retrieve_cited(
+                        q, top_k=3, source_id=source_scope))
+                if not succeeded:
+                    return
             self._send({"query": q, "results": results})
         elif url.path == "/api/claims/search":
             q = qs.get("q", [""])[0]

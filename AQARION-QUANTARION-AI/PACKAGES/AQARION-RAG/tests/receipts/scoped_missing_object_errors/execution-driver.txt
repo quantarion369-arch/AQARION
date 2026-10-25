@@ -1,0 +1,427 @@
+import importlib
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import xml.etree.ElementTree as ET
+
+sys.dont_write_bytecode = True
+
+repo = Path.home() / "AQARION"
+pkg = repo / "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG"
+api_path = pkg / "api.py"
+test_path = pkg / "tests/test_source_scope_errors.py"
+work = Path(__file__).resolve().parent
+
+if test_path.exists() or api_path.is_symlink():
+    raise RuntimeError("Existing error test or API symlink; nothing overwritten.")
+
+relative_api = str(api_path.relative_to(repo))
+for flags in (
+    ["diff", "--quiet", "HEAD"],
+    ["diff", "--cached", "--quiet", "HEAD"],
+):
+    result = subprocess.run(
+        ["git", "-C", str(repo), *flags, "--", relative_api]
+    )
+    if result.returncode:
+        raise RuntimeError("api.py already has local changes; nothing overwritten.")
+
+original = api_path.read_bytes()
+source = original.decode("utf-8")
+
+def edit(text, old, new, label):
+    count = text.count(old)
+    if count != 1:
+        raise RuntimeError(
+            f"Anchor mismatch: {label}; expected 1, found {count}"
+        )
+    return text.replace(old, new, 1)
+
+helper = '''    def _retrieve_pinned_or_error(self, operation):
+        try:
+            return True, operation()
+        except subprocess.CalledProcessError:
+            self._send({"error": "pinned Git object unavailable"}, 404)
+            return False, None
+
+'''
+
+proposed = edit(
+    source,
+    "    def do_GET(self):\n",
+    helper + "    def do_GET(self):\n",
+    "narrow retrieval error helper",
+)
+
+proposed = edit(
+    proposed,
+    "                retrieval_context = context.retrieve_with_context(\n"
+    "                    q, source_id=source_scope)\n",
+    "                succeeded, retrieval_context = self._retrieve_pinned_or_error(\n"
+    "                    lambda: context.retrieve_with_context(\n"
+    "                        q, source_id=source_scope))\n"
+    "                if not succeeded:\n"
+    "                    return\n",
+    "scoped evidence retrieval",
+)
+
+proposed = edit(
+    proposed,
+    "                self._send(context.retrieve_with_context(\n"
+    "                    q, source_id=source_scope))\n",
+    "                succeeded, result = self._retrieve_pinned_or_error(\n"
+    "                    lambda: context.retrieve_with_context(\n"
+    "                        q, source_id=source_scope))\n"
+    "                if not succeeded:\n"
+    "                    return\n"
+    "                self._send(result)\n",
+    "scoped context retrieval",
+)
+
+for function in ("retrieve", "retrieve_cited"):
+    proposed = edit(
+        proposed,
+        f"                results = {function}(\n"
+        "                    q, top_k=3, source_id=source_scope)\n",
+        "                succeeded, results = self._retrieve_pinned_or_error(\n"
+        f"                    lambda: {function}(\n"
+        "                        q, top_k=3, source_id=source_scope))\n"
+        "                if not succeeded:\n"
+        "                    return\n",
+        function + " scoped retrieval",
+    )
+
+compile(proposed, str(api_path), "exec")
+
+test_source = r'''"""Scoped missing-object errors; real Git, HTTP, and positive controls."""
+import subprocess
+from pathlib import Path
+from unittest import mock
+
+import pytest
+
+import api
+import context
+import relationships
+import retrieve
+from tests.test_source_scope import http_server, request
+
+ROUTES = (
+    "/api/search",
+    "/api/search/cited",
+    "/api/search/context",
+    "/api/search/evidence",
+)
+ERROR = {"error": "pinned Git object unavailable"}
+
+
+@pytest.fixture(scope="module")
+def pinned_sources(tmp_path_factory):
+    root = tmp_path_factory.mktemp("pinned-error-fixture")
+
+    def git(*args):
+        return subprocess.check_output(
+            [
+                "git",
+                "-c", "core.hooksPath=/dev/null",
+                "-c", "commit.gpgsign=false",
+                "-c", "user.name=AQARION Error Test",
+                "-c", "user.email=error-test@example.invalid",
+                "-C", str(root), *args,
+            ],
+            text=True,
+            stderr=subprocess.STDOUT,
+        ).strip()
+
+    git("init", "-q")
+    (root / "notes.md").write_text(
+        "needle valid pinned passage", encoding="utf-8"
+    )
+    git("add", "--", "notes.md")
+    git("commit", "-q", "-m", "valid fixture snapshot")
+    good_sha = git("rev-parse", "HEAD")
+
+    (root / "notes.md").write_text(
+        "WORKTREE_FALLBACK_CANARY", encoding="utf-8"
+    )
+
+    good = {
+        "doc": "Valid fixture",
+        "path": "notes.md",
+        "sha": good_sha,
+        "purpose": "positive control",
+    }
+    missing = {
+        "doc": "Missing fixture",
+        "path": "notes.md",
+        "sha": "f"*40,
+        "purpose": "negative control",
+    }
+    return root, good, missing
+
+
+@pytest.mark.parametrize("route", ROUTES)
+def test_missing_pinned_object_returns_json(route, pinned_sources):
+    root, good, missing = pinned_sources
+    loader = retrieve.load_at_sha
+
+    with (
+        mock.patch.object(
+            retrieve, "load_manifest", return_value=[good, missing]
+        ),
+        mock.patch.object(
+            retrieve, "__file__", str(root / "retrieve.py")
+        ),
+        mock.patch.object(
+            retrieve, "load_at_sha", wraps=loader
+        ) as loads,
+        mock.patch.object(
+            relationships, "resolve_related"
+        ) as enrichment,
+        http_server(api) as base,
+    ):
+        status, body = request(
+            base, route,
+            {"q": "needle", "source_id": retrieve.source_id(missing)},
+        )
+        assert status == 404
+        assert body == ERROR
+        assert loads.call_count >= 1
+        assert all(
+            call.args == ("notes.md", missing["sha"])
+            for call in loads.call_args_list
+        )
+        enrichment.assert_not_called()
+
+
+@pytest.mark.parametrize("route", ROUTES)
+def test_valid_source_works_after_missing_object(route, pinned_sources):
+    root, good, missing = pinned_sources
+
+    with (
+        mock.patch.object(
+            retrieve, "load_manifest", return_value=[good, missing]
+        ),
+        mock.patch.object(
+            retrieve, "__file__", str(root / "retrieve.py")
+        ),
+        mock.patch.object(
+            relationships, "resolve_related",
+            return_value={"relationships": []},
+        ),
+        http_server(api) as base,
+    ):
+        status, body = request(
+            base, route,
+            {"q": "needle", "source_id": retrieve.source_id(missing)},
+        )
+        assert status == 404 and body == ERROR
+
+        status, body = request(
+            base, route,
+            {"q": "needle", "source_id": retrieve.source_id(good)},
+        )
+        assert status == 200
+        assert "needle valid pinned passage" in str(body)
+        assert "WORKTREE_FALLBACK_CANARY" not in str(body)
+
+
+def test_successful_none_is_not_an_error_sentinel():
+    class Sink:
+        def _send(self, *args):
+            raise AssertionError("Unexpected error response")
+
+    result = api.Handler._retrieve_pinned_or_error(Sink(), lambda: None)
+    assert result == (True, None)
+
+
+@pytest.mark.parametrize("error_type", (ValueError, KeyError))
+def test_programming_errors_are_not_client_errors(error_type):
+    class Sink:
+        def _send(self, *args):
+            raise AssertionError("Programming error was relabeled")
+
+    def broken():
+        raise error_type("intentional programming-error control")
+
+    with pytest.raises(error_type):
+        api.Handler._retrieve_pinned_or_error(Sink(), broken)
+
+
+def test_enrichment_failure_is_not_relabelled_as_missing_source(pinned_sources):
+    _, good, missing = pinned_sources
+
+    class Probe:
+        path = "/api/search/evidence?q=needle&source_id=" + retrieve.source_id(good)
+        _send = mock.Mock()
+        _retrieve_pinned_or_error = api.Handler._retrieve_pinned_or_error
+
+    probe = Probe()
+    failure = subprocess.CalledProcessError(128, ["enrichment-fixture"])
+
+    with (
+        mock.patch.object(
+            retrieve, "load_manifest", return_value=[good, missing]
+        ),
+        mock.patch.object(
+            context, "retrieve_with_context",
+            return_value={"seed_results": [], "supplementary_context": []},
+        ),
+        mock.patch.object(
+            relationships, "resolve_related", side_effect=failure
+        ),
+    ):
+        with pytest.raises(subprocess.CalledProcessError):
+            api.Handler.do_GET(probe)
+        probe._send.assert_not_called()
+'''
+
+compile(test_source, str(test_path), "exec")
+shutil.copy2(api_path, work / "api.before.py")
+(work / "api.proposed.py").write_text(proposed, encoding="utf-8")
+(work / "test.proposed.py").write_text(test_source, encoding="utf-8")
+
+sys.path.insert(0, str(pkg))
+import api
+from tests.test_source_scope import http_server, request
+
+def global_snapshot():
+    results = {}
+    with http_server(api) as base:
+        for query in ("quadratic stability", "zzzzqxxnomatch"):
+            results[query] = {
+                route: request(base, route, {"q": query})
+                for route in (
+                    "/api/search", "/api/search/cited",
+                    "/api/search/context", "/api/search/evidence",
+                )
+            }
+    return json.loads(json.dumps(results))
+
+def pytest_run(arguments, filename):
+    completed = subprocess.run(
+        [
+            sys.executable, "-B", "-m", "pytest",
+            "-q", "-p", "no:cacheprovider", *arguments,
+        ],
+        cwd=pkg,
+        env=dict(os.environ, PYTHONDONTWRITEBYTECODE="1"),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    (work / filename).write_text(completed.stdout, encoding="utf-8")
+    return completed
+
+created = False
+changed = False
+
+try:
+    before = global_snapshot()
+    (work / "global-before.json").write_text(
+        json.dumps(before, indent=2), encoding="utf-8"
+    )
+
+    with test_path.open("x", encoding="utf-8") as handle:
+        handle.write(test_source)
+    created = True
+
+    xml_path = work / "before.xml"
+    red = pytest_run(
+        [
+            "tests/test_source_scope_errors.py",
+            "-k", "missing_pinned_object",
+            "--junitxml=" + str(xml_path),
+        ],
+        "before-fix-tests.log",
+    )
+
+    cases = ET.parse(xml_path).findall(".//testcase")
+    if (
+        red.returncode != 1
+        or len(cases) != 4
+        or not all(case.find("failure") is not None for case in cases)
+        or any(case.find("error") is not None for case in cases)
+    ):
+        print(red.stdout, flush=True)
+        raise RuntimeError(
+            "Expected four pre-patch regression failures were not established."
+        )
+
+    print("PREPATCH_MISSING_OBJECT_FAILURES=4_CONFIRMED", flush=True)
+
+    if api_path.read_bytes() != original:
+        raise RuntimeError("api.py changed during the baseline checks.")
+
+    changed = True
+    api_path.write_bytes(proposed.encode("utf-8"))
+    importlib.invalidate_caches()
+    importlib.reload(api)
+
+    after = global_snapshot()
+    (work / "global-after.json").write_text(
+        json.dumps(after, indent=2), encoding="utf-8"
+    )
+    if before != after:
+        raise RuntimeError("Successful unscoped HTTP responses changed.")
+
+    print("GLOBAL_HTTP_BEFORE_AFTER=PASS", flush=True)
+
+    focused = pytest_run(
+        ["tests/test_source_scope_errors.py"],
+        "after-fix-focused-tests.log",
+    )
+    print(focused.stdout, flush=True)
+    if focused.returncode:
+        raise RuntimeError("Focused error tests failed.")
+
+    full = pytest_run(["tests"], "package-tests.log")
+    print(full.stdout, flush=True)
+    if full.returncode:
+        raise RuntimeError("Package suite failed.")
+
+    subprocess.run(
+        [
+            "git", "-C", str(repo), "diff", "--check",
+            "--", relative_api,
+        ],
+        check=True,
+    )
+
+    print("\nSCOPED_MISSING_OBJECT_ERROR_FIX=PASS")
+    print("ALL_FOUR_SCOPED_SEARCH_ROUTES=CONTROLLED_404")
+    print("VALID_SOURCE_RECOVERY=PASS")
+    print("WORKTREE_AND_GLOBAL_FALLBACK=REJECTED")
+    print("ENRICHMENT_FAILURE_NOT_RECLASSIFIED=PASS")
+    print("GLOBAL_SUCCESS_RESPONSES_UNCHANGED=PASS")
+    print("PACKAGE_SUITE=PASS")
+    print("BACKUPS_AND_LOGS:", work)
+    print("CORPUS_BROWSER_AND_DEFECT_FILES_UNCHANGED")
+    print("NO_STAGE_COMMIT_PUSH_INSTALL_OR_TRAINING")
+    print("HUGGING_FACE_UNCHANGED")
+
+    subprocess.run(
+        [
+            "git", "-C", str(repo), "status", "--short", "--",
+            relative_api,
+            str(test_path.relative_to(repo)),
+        ],
+        check=True,
+    )
+
+except BaseException:
+    if changed:
+        api_path.write_bytes(original)
+        assert api_path.read_bytes() == original
+        print("API_RESTORE=VERIFIED")
+    if created:
+        shutil.move(
+            str(test_path),
+            str(work / "failed-or-unapplied-regression.py"),
+        )
+        print("REGRESSION_SOURCE_PRESERVED_OUTSIDE_REPOSITORY")
+    print("FAILED_ATTEMPT_LOGS:", work)
+    raise

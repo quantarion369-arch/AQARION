@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="4" time="4.062" timestamp="2026-10-25T01:43:27.746291-04:00" hostname="localhost"><testcase classname="tests.test_source_scope_errors" name="test_missing_pinned_object_returns_json[/api/search]" time="0.696"><failure message="http.client.RemoteDisconnected: Remote end closed connection without response">route = '/api/search'
+pinned_sources = (PosixPath('/data/data/com.termux/files/usr/tmp/pytest-of-u0_a352/pytest-26/pinned-error-fixture0'), {'doc': 'Valid fi...issing fixture', 'path': 'notes.md', 'sha': 'ffffffffffffffffffffffffffffffffffffffff', 'purpose': 'negative control'})
+
+    @pytest.mark.parametrize("route", ROUTES)
+    def test_missing_pinned_object_returns_json(route, pinned_sources):
+        root, good, missing = pinned_sources
+        loader = retrieve.load_at_sha
+    
+        with (
+            mock.patch.object(
+                retrieve, "load_manifest", return_value=[good, missing]
+            ),
+            mock.patch.object(
+                retrieve, "__file__", str(root / "retrieve.py")
+            ),
+            mock.patch.object(
+                retrieve, "load_at_sha", wraps=loader
+            ) as loads,
+            mock.patch.object(
+                relationships, "resolve_related"
+            ) as enrichment,
+            http_server(api) as base,
+        ):
+&gt;           status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(missing)},
+            )
+
+tests/test_source_scope_errors.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_source_scope.py:36: in request
+    with urlopen(url, timeout=15) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:189: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:489: in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:506: in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+../../../../../usr/lib/python3.13/urllib/request.py:466: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1348: in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1323: in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/http/client.py:1450: in getresponse
+    response.begin()
+../../../../../usr/lib/python3.13/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;http.client.HTTPResponse object at 0x7702c40610&gt;
+
+    def _read_status(self):
+        line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+        if len(line) &gt; _MAXLINE:
+            raise LineTooLong("status line")
+        if self.debuglevel &gt; 0:
+            print("reply:", repr(line))
+        if not line:
+            # Presumably, the server closed the connection before
+            # sending a valid response.
+&gt;           raise RemoteDisconnected("Remote end closed connection without"
+                                     " response")
+E           http.client.RemoteDisconnected: Remote end closed connection without response
+
+../../../../../usr/lib/python3.13/http/client.py:305: RemoteDisconnected</failure></testcase><testcase classname="tests.test_source_scope_errors" name="test_missing_pinned_object_returns_json[/api/search/cited]" time="0.514"><failure message="http.client.RemoteDisconnected: Remote end closed connection without response">route = '/api/search/cited'
+pinned_sources = (PosixPath('/data/data/com.termux/files/usr/tmp/pytest-of-u0_a352/pytest-26/pinned-error-fixture0'), {'doc': 'Valid fi...issing fixture', 'path': 'notes.md', 'sha': 'ffffffffffffffffffffffffffffffffffffffff', 'purpose': 'negative control'})
+
+    @pytest.mark.parametrize("route", ROUTES)
+    def test_missing_pinned_object_returns_json(route, pinned_sources):
+        root, good, missing = pinned_sources
+        loader = retrieve.load_at_sha
+    
+        with (
+            mock.patch.object(
+                retrieve, "load_manifest", return_value=[good, missing]
+            ),
+            mock.patch.object(
+                retrieve, "__file__", str(root / "retrieve.py")
+            ),
+            mock.patch.object(
+                retrieve, "load_at_sha", wraps=loader
+            ) as loads,
+            mock.patch.object(
+                relationships, "resolve_related"
+            ) as enrichment,
+            http_server(api) as base,
+        ):
+&gt;           status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(missing)},
+            )
+
+tests/test_source_scope_errors.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_source_scope.py:36: in request
+    with urlopen(url, timeout=15) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:189: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:489: in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:506: in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+../../../../../usr/lib/python3.13/urllib/request.py:466: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1348: in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1323: in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/http/client.py:1450: in getresponse
+    response.begin()
+../../../../../usr/lib/python3.13/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;http.client.HTTPResponse object at 0x7702c9fe50&gt;
+
+    def _read_status(self):
+        line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+        if len(line) &gt; _MAXLINE:
+            raise LineTooLong("status line")
+        if self.debuglevel &gt; 0:
+            print("reply:", repr(line))
+        if not line:
+            # Presumably, the server closed the connection before
+            # sending a valid response.
+&gt;           raise RemoteDisconnected("Remote end closed connection without"
+                                     " response")
+E           http.client.RemoteDisconnected: Remote end closed connection without response
+
+../../../../../usr/lib/python3.13/http/client.py:305: RemoteDisconnected</failure></testcase><testcase classname="tests.test_source_scope_errors" name="test_missing_pinned_object_returns_json[/api/search/context]" time="0.514"><failure message="http.client.RemoteDisconnected: Remote end closed connection without response">route = '/api/search/context'
+pinned_sources = (PosixPath('/data/data/com.termux/files/usr/tmp/pytest-of-u0_a352/pytest-26/pinned-error-fixture0'), {'doc': 'Valid fi...issing fixture', 'path': 'notes.md', 'sha': 'ffffffffffffffffffffffffffffffffffffffff', 'purpose': 'negative control'})
+
+    @pytest.mark.parametrize("route", ROUTES)
+    def test_missing_pinned_object_returns_json(route, pinned_sources):
+        root, good, missing = pinned_sources
+        loader = retrieve.load_at_sha
+    
+        with (
+            mock.patch.object(
+                retrieve, "load_manifest", return_value=[good, missing]
+            ),
+            mock.patch.object(
+                retrieve, "__file__", str(root / "retrieve.py")
+            ),
+            mock.patch.object(
+                retrieve, "load_at_sha", wraps=loader
+            ) as loads,
+            mock.patch.object(
+                relationships, "resolve_related"
+            ) as enrichment,
+            http_server(api) as base,
+        ):
+&gt;           status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(missing)},
+            )
+
+tests/test_source_scope_errors.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_source_scope.py:36: in request
+    with urlopen(url, timeout=15) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:189: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:489: in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:506: in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+../../../../../usr/lib/python3.13/urllib/request.py:466: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1348: in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1323: in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/http/client.py:1450: in getresponse
+    response.begin()
+../../../../../usr/lib/python3.13/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;http.client.HTTPResponse object at 0x7702c9f7c0&gt;
+
+    def _read_status(self):
+        line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+        if len(line) &gt; _MAXLINE:
+            raise LineTooLong("status line")
+        if self.debuglevel &gt; 0:
+            print("reply:", repr(line))
+        if not line:
+            # Presumably, the server closed the connection before
+            # sending a valid response.
+&gt;           raise RemoteDisconnected("Remote end closed connection without"
+                                     " response")
+E           http.client.RemoteDisconnected: Remote end closed connection without response
+
+../../../../../usr/lib/python3.13/http/client.py:305: RemoteDisconnected</failure></testcase><testcase classname="tests.test_source_scope_errors" name="test_missing_pinned_object_returns_json[/api/search/evidence]" time="0.511"><failure message="http.client.RemoteDisconnected: Remote end closed connection without response">route = '/api/search/evidence'
+pinned_sources = (PosixPath('/data/data/com.termux/files/usr/tmp/pytest-of-u0_a352/pytest-26/pinned-error-fixture0'), {'doc': 'Valid fi...issing fixture', 'path': 'notes.md', 'sha': 'ffffffffffffffffffffffffffffffffffffffff', 'purpose': 'negative control'})
+
+    @pytest.mark.parametrize("route", ROUTES)
+    def test_missing_pinned_object_returns_json(route, pinned_sources):
+        root, good, missing = pinned_sources
+        loader = retrieve.load_at_sha
+    
+        with (
+            mock.patch.object(
+                retrieve, "load_manifest", return_value=[good, missing]
+            ),
+            mock.patch.object(
+                retrieve, "__file__", str(root / "retrieve.py")
+            ),
+            mock.patch.object(
+                retrieve, "load_at_sha", wraps=loader
+            ) as loads,
+            mock.patch.object(
+                relationships, "resolve_related"
+            ) as enrichment,
+            http_server(api) as base,
+        ):
+&gt;           status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(missing)},
+            )
+
+tests/test_source_scope_errors.py:88: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_source_scope.py:36: in request
+    with urlopen(url, timeout=15) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:189: in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:489: in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:506: in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+../../../../../usr/lib/python3.13/urllib/request.py:466: in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1348: in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/urllib/request.py:1323: in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+../../../../../usr/lib/python3.13/http/client.py:1450: in getresponse
+    response.begin()
+../../../../../usr/lib/python3.13/http/client.py:336: in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;http.client.HTTPResponse object at 0x7702c9f340&gt;
+
+    def _read_status(self):
+        line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+        if len(line) &gt; _MAXLINE:
+            raise LineTooLong("status line")
+        if self.debuglevel &gt; 0:
+            print("reply:", repr(line))
+        if not line:
+            # Presumably, the server closed the connection before
+            # sending a valid response.
+&gt;           raise RemoteDisconnected("Remote end closed connection without"
+                                     " response")
+E           http.client.RemoteDisconnected: Remote end closed connection without response
+
+../../../../../usr/lib/python3.13/http/client.py:305: RemoteDisconnected</failure></testcase></testsuite></testsuites>
