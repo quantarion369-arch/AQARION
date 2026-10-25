@@ -1,0 +1,63 @@
+name: Closure-Gap Contract Regression
+
+on:
+  push:
+    paths:
+      - "AQARION-QUANTARION-AI/verification/CLOSURE-GAP/**"
+      - ".github/workflows/closure-gap-contract.yml"
+  pull_request:
+    paths:
+      - "AQARION-QUANTARION-AI/verification/CLOSURE-GAP/**"
+      - ".github/workflows/closure-gap-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closure-gap-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13.13"
+
+      - name: Install pinned dependency
+        run: python -m pip install "sympy==1.14.0"
+
+      - name: Record reproducibility metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python --version
+          python -c "import sympy; print('SymPy:', sympy.__version__)"
+          echo "Commit: $GITHUB_SHA"
+          sha256sum \
+            AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py \
+            AQARION-QUANTARION-AI/verification/CLOSURE-GAP/closure_gap_replay.py \
+            | tee closure-gap-sha256.txt
+
+      - name: Run closure-gap formula contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B \
+            AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py \
+            2>&1 | tee closure-gap-test.log
+
+      - name: Preserve test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: closure-gap-contract-${{ github.sha }}
+          path: |
+            closure-gap-sha256.txt
+            closure-gap-test.log
+          if-no-files-found: warn
+          retention-days: 14
