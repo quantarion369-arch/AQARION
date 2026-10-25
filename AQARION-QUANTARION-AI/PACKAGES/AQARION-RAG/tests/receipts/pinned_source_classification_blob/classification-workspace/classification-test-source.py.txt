@@ -1,0 +1,90 @@
+"""Operational source failures must not masquerade as absence."""
+
+import subprocess
+from unittest import mock
+
+import pytest
+
+import api
+import relationships
+import retrieve
+
+from tests.test_source_scope import http_server, request
+from tests.test_source_scope_errors import pinned_sources
+
+
+ROUTES = (
+    "/api/search",
+    "/api/search/cited",
+    "/api/search/context",
+    "/api/search/evidence",
+    "/api/sources/view",
+)
+
+FAILURES = (
+    "nonzero_exit",
+    "executable_missing",
+    "permission_denied",
+)
+
+
+def injected_failure(kind):
+    if kind == "nonzero_exit":
+        return subprocess.CalledProcessError(
+            128,
+            ["git", "injected-operation"],
+            stderr="PRIVATE_DIAGNOSTIC_CANARY",
+        )
+    if kind == "executable_missing":
+        return FileNotFoundError("PRIVATE_DIAGNOSTIC_CANARY")
+    return PermissionError("PRIVATE_DIAGNOSTIC_CANARY")
+
+
+@pytest.mark.parametrize("route", ROUTES)
+@pytest.mark.parametrize("failure_kind", FAILURES)
+def test_operational_failure_is_500_and_recovers(
+    route, failure_kind, pinned_sources
+):
+    root, good, missing = pinned_sources
+
+    with (
+        mock.patch.object(
+            retrieve, "load_manifest", return_value=[good, missing]
+        ),
+        mock.patch.object(
+            retrieve, "__file__", str(root / "retrieve.py")
+        ),
+        mock.patch.object(
+            relationships, "resolve_related",
+            return_value={"relationships": []},
+        ) as enrichment,
+        http_server(api) as base,
+    ):
+        query = {
+            "q": "needle",
+            "source_id": retrieve.source_id(good),
+        }
+
+        # Fixture setup already completed using real Git.
+        # Inject failure only during the source-loading request.
+        with mock.patch.object(
+            retrieve.subprocess,
+            "run",
+            side_effect=injected_failure(failure_kind),
+        ):
+            status, body = request(base, route, query)
+
+        assert status == 500, (
+            f"{route}: operational {failure_kind} returned "
+            f"{status}, expected 500; body={body!r}"
+        )
+        assert body == {"error": "pinned source loading failed"}
+        assert "PRIVATE_DIAGNOSTIC_CANARY" not in str(body)
+        assert "WORKTREE_FALLBACK_CANARY" not in str(body)
+        enrichment.assert_not_called()
+
+        # Fault removed: the same server must serve the valid pin.
+        status, body = request(base, route, query)
+        assert status == 200
+        assert "needle valid pinned passage" in str(body)
+        assert "WORKTREE_FALLBACK_CANARY" not in str(body)

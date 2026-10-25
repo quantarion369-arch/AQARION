@@ -1,0 +1,34 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+____ test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search] ____
+tests/test_pinned_failure_classification.py:77: in test_operational_failure_is_500_and_recovers
+    assert status == 500, (
+E   AssertionError: /api/search: operational nonzero_exit returned 404, expected 500; body={'error': 'pinned Git object unavailable'}
+E   assert 404 == 500
+_ test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/cited] _
+tests/test_pinned_failure_classification.py:77: in test_operational_failure_is_500_and_recovers
+    assert status == 500, (
+E   AssertionError: /api/search/cited: operational nonzero_exit returned 404, expected 500; body={'error': 'pinned Git object unavailable'}
+E   assert 404 == 500
+_ test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/context] _
+tests/test_pinned_failure_classification.py:77: in test_operational_failure_is_500_and_recovers
+    assert status == 500, (
+E   AssertionError: /api/search/context: operational nonzero_exit returned 404, expected 500; body={'error': 'pinned Git object unavailable'}
+E   assert 404 == 500
+_ test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/evidence] _
+tests/test_pinned_failure_classification.py:77: in test_operational_failure_is_500_and_recovers
+    assert status == 500, (
+E   AssertionError: /api/search/evidence: operational nonzero_exit returned 404, expected 500; body={'error': 'pinned Git object unavailable'}
+E   assert 404 == 500
+_ test_operational_failure_is_500_and_recovers[nonzero_exit-/api/sources/view] _
+tests/test_pinned_failure_classification.py:77: in test_operational_failure_is_500_and_recovers
+    assert status == 500, (
+E   AssertionError: /api/sources/view: operational nonzero_exit returned 404, expected 500; body={'error': 'pinned Git object unavailable'}
+E   assert 404 == 500
+=========================== short test summary info ============================
+FAILED tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search]
+FAILED tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/cited]
+FAILED tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/context]
+FAILED tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/evidence]
+FAILED tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/sources/view]
+5 failed, 10 deselected in 3.17s

@@ -1,0 +1,40 @@
+{
+  "head": "b5aa8d46e73a0dba1a60486c0123169c0ff3e69b",
+  "pytest_exit_code": 1,
+  "cases": [
+    {
+      "name": "test_loader_object_integrity[valid]",
+      "failure": null,
+      "error": null
+    },
+    {
+      "name": "test_loader_object_integrity[corrupt_commit]",
+      "failure": null,
+      "error": null
+    },
+    {
+      "name": "test_loader_object_integrity[missing_referenced_blob]",
+      "failure": null,
+      "error": null
+    },
+    {
+      "name": "test_loader_object_integrity[wrong_hash_blob]",
+      "failure": "Failed: DID NOT RAISE PinnedSourceLoadError",
+      "error": null
+    },
+    {
+      "name": "test_loader_object_integrity[wrong_hash_commit]",
+      "failure": null,
+      "error": null
+    },
+    {
+      "name": "test_loader_object_integrity[wrong_hash_tree]",
+      "failure": null,
+      "error": null
+    }
+  ],
+  "production_sources_unchanged": true,
+  "test_sha256": "bc2b0f72dc9646f007ab1927277602692c658193360bcfac4e43bc3510b3bc04",
+  "production_patch_applied": false,
+  "scope": "Actual loader; disposable object corruption only"
+}

@@ -1,0 +1,15 @@
+[
+  "/data/data/com.termux/files/usr/bin/python",
+  "-B",
+  "-m",
+  "pytest",
+  "-q",
+  "--tb=short",
+  "-p",
+  "no:cacheprovider",
+  "--junitxml=/data/data/com.termux/files/home/AQARION-RAG-loader-review-20jj6jo3/blob-fix-focused.xml",
+  "tests/test_pinned_object_integrity.py",
+  "tests/test_pinned_failure_classification.py",
+  "tests/test_source_scope_errors.py",
+  "tests/test_repository_binding.py"
+]

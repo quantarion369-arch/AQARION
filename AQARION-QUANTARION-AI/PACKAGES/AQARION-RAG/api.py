@@ -21,8 +21,11 @@ class Handler(BaseHTTPRequestHandler):
     def _retrieve_pinned_or_error(self, operation):
         try:
             return True, operation()
-        except subprocess.CalledProcessError:
+        except retrieval_module.PinnedSourceUnavailable:
             self._send({"error": "pinned Git object unavailable"}, 404)
+            return False, None
+        except retrieval_module.PinnedSourceLoadError:
+            self._send({"error": "pinned source loading failed"}, 500)
             return False, None
 
     def do_GET(self):
@@ -88,8 +91,10 @@ class Handler(BaseHTTPRequestHandler):
                     "source": {"source_id": source_scope, **selected_entry},
                     "text": text,
                 })
-            except subprocess.CalledProcessError:
+            except retrieval_module.PinnedSourceUnavailable:
                 self._send({"error": "pinned Git object unavailable"}, 404)
+            except retrieval_module.PinnedSourceLoadError:
+                self._send({"error": "pinned source loading failed"}, 500)
             except Exception:
                 self._send({"error": "pinned source loading failed"}, 500)
 

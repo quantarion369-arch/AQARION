@@ -1,0 +1,14 @@
+[
+  "/data/data/com.termux/files/usr/bin/python",
+  "-B",
+  "-m",
+  "pytest",
+  "-q",
+  "tests/test_pinned_failure_classification.py",
+  "-k",
+  "nonzero_exit",
+  "--tb=short",
+  "-p",
+  "no:cacheprovider",
+  "--junitxml=/data/data/com.termux/files/home/AQARION-RAG-classification-eajf7x9n/pre-fix-regression.xml"
+]

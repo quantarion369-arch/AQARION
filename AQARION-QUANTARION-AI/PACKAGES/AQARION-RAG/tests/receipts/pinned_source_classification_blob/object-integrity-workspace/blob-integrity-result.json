@@ -1,0 +1,24 @@
+{
+  "head": "b5aa8d46e73a0dba1a60486c0123169c0ff3e69b",
+  "focused_exit_code": 0,
+  "package_exit_code": 0,
+  "source_hashes_stable_during_tests": true,
+  "api_unchanged_by_blob_fix": true,
+  "pre_test_hashes": {
+    "retrieve.py": "03332508a1c0347a81c20186379389519df12756ee4f16ef12ec816419064cbe",
+    "api.py": "390c5dec0ab381b26cdbaba0d0659aab6ba95b06795cfc94375e4dabb7391b2c",
+    "tests/test_pinned_object_integrity.py": "1a93749ebdf06d7c6f72aa2f34e3784675abe326c1b7e6b44895bdc549086690"
+  },
+  "post_test_hashes": {
+    "retrieve.py": "03332508a1c0347a81c20186379389519df12756ee4f16ef12ec816419064cbe",
+    "api.py": "390c5dec0ab381b26cdbaba0d0659aab6ba95b06795cfc94375e4dabb7391b2c",
+    "tests/test_pinned_object_integrity.py": "1a93749ebdf06d7c6f72aa2f34e3784675abe326c1b7e6b44895bdc549086690"
+  },
+  "scope": "Explicit selected-blob identity check in the existing SHA-1 repository; existing commit/tree controls retained",
+  "limitations": [
+    "Not a repository-wide integrity audit.",
+    "No claim of explicit rehashing of every commit and tree.",
+    "Git object identity is not execution attestation or proof of truth.",
+    "No browser harness or research experiment was rerun."
+  ]
+}

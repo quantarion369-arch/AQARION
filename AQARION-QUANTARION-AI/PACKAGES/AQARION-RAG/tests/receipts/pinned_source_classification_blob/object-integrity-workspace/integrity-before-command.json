@@ -1,0 +1,14 @@
+[
+  "/data/data/com.termux/files/usr/bin/python",
+  "-B",
+  "-m",
+  "pytest",
+  "-q",
+  "--tb=short",
+  "-p",
+  "no:cacheprovider",
+  "tests/test_pinned_object_integrity.py",
+  "-k",
+  "test_loader_object_integrity",
+  "--junitxml=/data/data/com.termux/files/home/AQARION-RAG-loader-review-20jj6jo3/integrity-before.xml"
+]

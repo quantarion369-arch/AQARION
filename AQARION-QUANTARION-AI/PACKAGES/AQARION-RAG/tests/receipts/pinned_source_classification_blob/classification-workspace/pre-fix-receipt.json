@@ -1,0 +1,9 @@
+{
+  "head": "b5aa8d46e73a0dba1a60486c0123169c0ff3e69b",
+  "pytest_exit_code": 1,
+  "five_operational_404_regressions_confirmed": true,
+  "production_sources_unchanged": true,
+  "test_file": "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py",
+  "test_sha256": "972c7b0180aff9a532465fb3db905b7b45430b03f692e03fc53bc5f98896f42b",
+  "production_patch_applied": false
+}

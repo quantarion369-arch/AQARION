@@ -1,0 +1,10 @@
+...F..                                                                   [100%]
+=================================== FAILURES ===================================
+________________ test_loader_object_integrity[wrong_hash_blob] _________________
+tests/test_pinned_object_integrity.py:160: in test_loader_object_integrity
+    with pytest.raises(retrieve.PinnedSourceLoadError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE PinnedSourceLoadError
+=========================== short test summary info ============================
+FAILED tests/test_pinned_object_integrity.py::test_loader_object_integrity[wrong_hash_blob]
+1 failed, 5 passed, 30 deselected in 2.06s

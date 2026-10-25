@@ -20,15 +20,141 @@ def load_manifest():
                 rows.append({"doc": cols[0], "path": cols[1], "sha": cols[2], "purpose": cols[3]})
     return rows
 
-def load_at_sha(path, sha):
-    result = subprocess.run(
-        ["git", "show", f"{sha}:{path}"],
-        cwd=Path(__file__).resolve().parent,
-        capture_output=True,
-        text=True,
-        check=True,
-    )
+class PinnedSourceUnavailable(RuntimeError):
+    """A pinned commit or exact path is absent in the inspected repository."""
+
+
+class PinnedSourceLoadError(RuntimeError):
+    """Pinned-source loading failed without established source absence."""
+
+
+def _pinned_git(arguments, *, input_text=None, binary=False):
+    import os
+
+    environment = os.environ.copy()
+    environment["GIT_NO_LAZY_FETCH"] = "1"
+
+    try:
+        result = subprocess.run(
+            ["git", "--no-replace-objects", *arguments],
+            cwd=Path(__file__).resolve().parent,
+            capture_output=True,
+            text=not binary,
+            check=True,
+            input=input_text,
+            env=environment,
+        )
+    except (OSError, subprocess.SubprocessError, UnicodeError) as exc:
+        raise PinnedSourceLoadError(
+            "Pinned Git operation failed"
+        ) from exc
+
+    # Do not turn a diagnostic-bearing lookup into an absence verdict.
+    if result.stderr:
+        raise PinnedSourceLoadError(
+            "Pinned Git operation emitted diagnostics"
+        )
     return result.stdout
+
+
+
+def _verified_pinned_blob(object_id):
+    import hashlib
+    import io
+
+    payload = _pinned_git(
+        ["cat-file", "blob", object_id],
+        binary=True,
+    )
+    if not isinstance(payload, bytes):
+        raise PinnedSourceLoadError("Unexpected blob payload type")
+
+    header = b"blob " + str(len(payload)).encode("ascii") + b"\0"
+    actual_id = hashlib.sha1(
+        header + payload, usedforsecurity=False
+    ).hexdigest()
+
+    if actual_id != object_id:
+        raise PinnedSourceLoadError("Pinned blob identity mismatch")
+
+    # Preserve the previous default decoding and universal-newline behavior.
+    # Object identity was checked against the original bytes above.
+    try:
+        with io.TextIOWrapper(
+            io.BytesIO(payload), newline=None
+        ) as stream:
+            return stream.read()
+    except UnicodeError as exc:
+        raise PinnedSourceLoadError(
+            "Pinned blob text decoding failed"
+        ) from exc
+
+
+def load_at_sha(path, sha):
+    # Reuse the existing manifest rules rather than adding a second policy.
+    validate_manifest([{"doc": "Pinned source", "path": path, "sha": sha}])
+    pin = sha.lower()
+
+    info = _pinned_git(
+        ["cat-file", "--batch-check=%(objectname) %(objecttype)"],
+        input_text=pin + "\n",
+    )
+    if info == pin + " missing\n":
+        raise PinnedSourceUnavailable("Pinned commit absent locally")
+    if info != pin + " commit\n":
+        raise PinnedSourceLoadError(
+            "Pinned identity did not resolve to a commit"
+        )
+
+    current = pin
+    components = path.split("/")
+
+    for index, component in enumerate(components):
+        listing = _pinned_git(
+            ["ls-tree", "--full-tree", "-z", current]
+        )
+        if listing and not listing.endswith("\0"):
+            raise PinnedSourceLoadError("Malformed tree output")
+
+        entries = {}
+        for record in listing.split("\0")[:-1]:
+            try:
+                metadata, name = record.split("\t", 1)
+                mode, kind, object_id = metadata.split()
+            except ValueError as exc:
+                raise PinnedSourceLoadError(
+                    "Malformed tree entry"
+                ) from exc
+
+            if (
+                not name or "/" in name or name in entries
+                or not re.fullmatch(r"[0-9a-f]{40}", object_id)
+                or kind not in {"tree", "blob", "commit"}
+            ):
+                raise PinnedSourceLoadError("Invalid tree entry")
+            entries[name] = (kind, object_id)
+
+        if component not in entries:
+            raise PinnedSourceUnavailable("Pinned path absent")
+
+        kind, object_id = entries[component]
+        final = index == len(components) - 1
+
+        if final:
+            if kind != "blob":
+                raise PinnedSourceLoadError(
+                    "Pinned source is not a blob"
+                )
+            return _verified_pinned_blob(object_id)
+
+        if kind != "tree":
+            raise PinnedSourceUnavailable(
+                "Pinned path cannot continue through a non-directory"
+            )
+        current = object_id
+
+    raise PinnedSourceLoadError("Unexpected empty source traversal")
+
 
 
 def source_id(entry):

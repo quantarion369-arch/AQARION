@@ -1,0 +1,316 @@
+import ast
+import hashlib
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+home = Path.home()
+repo = home / "AQARION"
+package = repo / "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG"
+work = home / "AQARION-RAG-loader-review-20jj6jo3"
+
+loader = package / "retrieve.py"
+api = package / "api.py"
+test = package / "tests/test_pinned_object_integrity.py"
+
+def digest(path):
+    with path.open("rb") as handle:
+        return hashlib.file_digest(handle, "sha256").hexdigest()
+
+def git(*args):
+    return subprocess.check_output(
+        ["git", "--no-optional-locks", "-C", str(repo), *args],
+        text=True,
+    ).strip()
+
+if git("rev-parse", "HEAD") != (
+    "b5aa8d46e73a0dba1a60486c0123169c0ff3e69b"
+):
+    raise SystemExit("STOP: HEAD changed.")
+
+if git("rev-parse", "--show-object-format") != "sha1":
+    raise SystemExit("STOP: this patch targets the existing SHA-1 repository.")
+
+if git("diff", "--cached", "--name-only"):
+    raise SystemExit("STOP: staged paths now exist; review first.")
+
+expected = {
+    loader: "b16aba70e626562a09f6251f4187ada5d17d962459175e28fd83a2efe1ebb7d1",
+    api: "390c5dec0ab381b26cdbaba0d0659aab6ba95b06795cfc94375e4dabb7391b2c",
+}
+for path, value in expected.items():
+    if digest(path) != value:
+        raise SystemExit("STOP: source changed: " + path.name)
+
+before_receipt = json.loads(
+    (work / "integrity-before-receipt.json").read_text()
+)
+if digest(test) != before_receipt["test_sha256"]:
+    raise SystemExit("STOP: integrity test changed.")
+
+regression = [
+    case for case in before_receipt["cases"]
+    if case.get("failure") or case.get("error")
+]
+if (
+    before_receipt["pytest_exit_code"] != 1
+    or len(regression) != 1
+    or "wrong_hash_blob" not in regression[0]["name"]
+    or regression[0].get("error")
+):
+    raise SystemExit("STOP: unexpected pre-fix regression evidence.")
+
+original_loader = loader.read_text()
+original_test = test.read_text()
+
+helper_nodes = [
+    node for node in ast.parse(original_loader).body
+    if isinstance(node, ast.FunctionDef)
+    and node.name == "_pinned_git"
+]
+if len(helper_nodes) != 1:
+    raise SystemExit("STOP: unexpected Git helper structure.")
+
+old_helper = ast.get_source_segment(
+    original_loader, helper_nodes[0]
+)
+old_signature = "def _pinned_git(arguments, *, input_text=None):"
+new_signature = (
+    "def _pinned_git(arguments, *, input_text=None, binary=False):"
+)
+
+if old_helper.count(old_signature) != 1:
+    raise SystemExit("STOP: Git helper signature changed.")
+if old_helper.count("text=True,") != 1:
+    raise SystemExit("STOP: unexpected Git helper text-mode configuration.")
+
+new_helper = old_helper.replace(
+    old_signature, new_signature, 1
+).replace("text=True,", "text=not binary,", 1)
+
+blob_helper = r'''
+def _verified_pinned_blob(object_id):
+    import hashlib
+    import io
+
+    payload = _pinned_git(
+        ["cat-file", "blob", object_id],
+        binary=True,
+    )
+    if not isinstance(payload, bytes):
+        raise PinnedSourceLoadError("Unexpected blob payload type")
+
+    header = b"blob " + str(len(payload)).encode("ascii") + b"\0"
+    actual_id = hashlib.sha1(
+        header + payload, usedforsecurity=False
+    ).hexdigest()
+
+    if actual_id != object_id:
+        raise PinnedSourceLoadError("Pinned blob identity mismatch")
+
+    # Preserve the previous default decoding and universal-newline behavior.
+    # Object identity was checked against the original bytes above.
+    try:
+        with io.TextIOWrapper(
+            io.BytesIO(payload), newline=None
+        ) as stream:
+            return stream.read()
+    except UnicodeError as exc:
+        raise PinnedSourceLoadError(
+            "Pinned blob text decoding failed"
+        ) from exc
+
+'''
+
+old_return = 'return _pinned_git(["cat-file", "blob", object_id])'
+if original_loader.count(old_return) != 1:
+    raise SystemExit("STOP: expected blob-return site not found.")
+
+new_loader = original_loader.replace(old_helper, new_helper, 1)
+new_loader = new_loader.replace(
+    "def load_at_sha(path, sha):",
+    blob_helper + "\ndef load_at_sha(path, sha):",
+    1,
+)
+new_loader = new_loader.replace(
+    old_return, "return _verified_pinned_blob(object_id)", 1
+)
+
+extra_tests = r'''
+
+@pytest.mark.parametrize(
+    "payload",
+    (
+        b"",
+        b"first\r\nsecond\rthird\n",
+        b"\xcf\x80 and \xce\xbb\n",
+        b"\xff\xfe",
+    ),
+    ids=("empty", "mixed_newlines", "unicode", "undecodable"),
+)
+def test_verified_blob_preserves_text_behavior(
+    payload, tmp_path, monkeypatch
+):
+    def git(*args, text=False):
+        return subprocess.check_output(
+            [
+                "git",
+                "-c", "core.hooksPath=/dev/null",
+                "-c", "commit.gpgsign=false",
+                "-c", "user.name=Blob Compatibility Test",
+                "-c", "user.email=test@example.invalid",
+                "-C", str(tmp_path),
+                *args,
+            ],
+            text=text,
+        )
+
+    git("init", "-q", "--object-format=sha1")
+    (tmp_path / "notes.md").write_bytes(payload)
+    git("add", "--", "notes.md")
+    git("commit", "-q", "-m", "blob compatibility fixture")
+    pin = git("rev-parse", "HEAD", text=True).strip()
+
+    monkeypatch.setattr(
+        retrieve, "__file__", str(tmp_path / "retrieve.py")
+    )
+
+    try:
+        reference = git("show", pin + ":notes.md", text=True)
+    except UnicodeError:
+        with pytest.raises(retrieve.PinnedSourceLoadError):
+            retrieve.load_at_sha("notes.md", pin)
+    else:
+        assert retrieve.load_at_sha("notes.md", pin) == reference
+'''
+
+new_test = original_test + extra_tests
+
+compile(new_loader, str(loader), "exec")
+compile(new_test, str(test), "exec")
+
+for name, content in (
+    ("before-blob-fix-retrieve.py", original_loader),
+    ("before-blob-fix-test.py", original_test),
+    ("planned-blob-fix-retrieve.py", new_loader),
+    ("planned-blob-fix-test.py", new_test),
+):
+    with (work / name).open("x", encoding="utf-8") as handle:
+        handle.write(content)
+
+try:
+    loader.write_text(new_loader, encoding="utf-8")
+    test.write_text(new_test, encoding="utf-8")
+except Exception:
+    loader.write_text(original_loader, encoding="utf-8")
+    test.write_text(original_test, encoding="utf-8")
+    raise
+
+pre_test_hashes = {
+    str(path.relative_to(package)): digest(path)
+    for path in (loader, api, test)
+}
+
+environment = os.environ.copy()
+environment["PYTHONDONTWRITEBYTECODE"] = "1"
+
+def run_tests(label, targets):
+    command = [
+        sys.executable, "-B", "-m", "pytest",
+        "-q", "--tb=short", "-p", "no:cacheprovider",
+        "--junitxml=" + str(work / (label + ".xml")),
+        *targets,
+    ]
+    with (work / (label + "-command.json")).open(
+        "x", encoding="utf-8"
+    ) as handle:
+        json.dump(command, handle, indent=2)
+
+    print("\nSTART:", label, flush=True)
+    with (work / (label + ".txt")).open(
+        "x", encoding="utf-8"
+    ) as log:
+        process = subprocess.Popen(
+            command, cwd=package, env=environment,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        for line in process.stdout:
+            print(line, end="", flush=True)
+            log.write(line)
+            log.flush()
+        return process.wait()
+
+focused = run_tests(
+    "blob-fix-focused",
+    [
+        "tests/test_pinned_object_integrity.py",
+        "tests/test_pinned_failure_classification.py",
+        "tests/test_source_scope_errors.py",
+        "tests/test_repository_binding.py",
+    ],
+)
+
+package_result = None
+if focused == 0:
+    package_result = run_tests("blob-fix-package", ["tests"])
+
+post_test_hashes = {
+    str(path.relative_to(package)): digest(path)
+    for path in (loader, api, test)
+}
+stable = pre_test_hashes == post_test_hashes
+api_unchanged = digest(api) == expected[api]
+
+diff = subprocess.check_output(
+    ["git", "-C", str(repo), "diff", "--binary", "--",
+     str(loader.relative_to(repo)), str(api.relative_to(repo))]
+)
+with (work / "combined-production-after-blob-fix.patch").open(
+    "xb"
+) as handle:
+    handle.write(diff)
+
+report = {
+    "head": git("rev-parse", "HEAD"),
+    "focused_exit_code": focused,
+    "package_exit_code": package_result,
+    "source_hashes_stable_during_tests": stable,
+    "api_unchanged_by_blob_fix": api_unchanged,
+    "pre_test_hashes": pre_test_hashes,
+    "post_test_hashes": post_test_hashes,
+    "scope": (
+        "Explicit selected-blob identity check in the existing "
+        "SHA-1 repository; existing commit/tree controls retained"
+    ),
+    "limitations": [
+        "Not a repository-wide integrity audit.",
+        "No claim of explicit rehashing of every commit and tree.",
+        "Git object identity is not execution attestation or proof of truth.",
+        "No browser harness or research experiment was rerun.",
+    ],
+}
+with (work / "blob-integrity-result.json").open(
+    "x", encoding="utf-8"
+) as handle:
+    json.dump(report, handle, indent=2)
+
+print("\nBLOB_IDENTITY_PATCH_APPLIED=YES")
+print("FOCUSED_EXIT_CODE:", focused)
+print("PACKAGE_EXIT_CODE:", package_result)
+print("SOURCE_HASHES_STABLE_DURING_TESTS:", stable)
+print("API_UNCHANGED_BY_THIS_FIX:", api_unchanged)
+print("RECEIPTS:", work)
+print("NO_STAGE_COMMIT_PUSH")
+print("NO_INSTALL_OR_TRAINING")
+print("BROWSER_CORPUS_NORMALIZATION_DEFECT_UNCHANGED")
+
+if focused != 0 or package_result != 0 or not stable or not api_unchanged:
+    raise SystemExit(
+        "REVIEW_REQUIRED: preserve the output; do not rerun this driver."
+    )
+
+print("BLOB_IDENTITY_TEST_CHECKPOINT=PASS")

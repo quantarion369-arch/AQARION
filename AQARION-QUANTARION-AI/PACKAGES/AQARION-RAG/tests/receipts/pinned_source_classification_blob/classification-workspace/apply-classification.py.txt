@@ -1,0 +1,502 @@
+import ast
+import hashlib
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+home = Path.home()
+repo = home / "AQARION"
+relative = "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG"
+package = repo / relative
+work = home / "AQARION-RAG-classification-eajf7x9n"
+test_path = package / "tests/test_pinned_failure_classification.py"
+expected_head = "b5aa8d46e73a0dba1a60486c0123169c0ff3e69b"
+
+
+def sha256(path):
+    with path.open("rb") as handle:
+        return hashlib.file_digest(handle, "sha256").hexdigest()
+
+
+def git(*arguments):
+    result = subprocess.run(
+        ["git", "--no-optional-locks", "-C", str(repo), *arguments],
+        capture_output=True, text=True, check=True,
+    )
+    return result.stdout.strip()
+
+
+if git("rev-parse", "HEAD") != expected_head:
+    raise SystemExit("STOP: HEAD changed.")
+
+if git("diff", "--name-only", "--", relative):
+    raise SystemExit("STOP: tracked package files changed.")
+
+if git("diff", "--cached", "--name-only", "--", relative):
+    raise SystemExit("STOP: package changes are already staged.")
+
+expected_status = (
+    "?? " + relative + "/tests/test_pinned_failure_classification.py"
+)
+status = git(
+    "status", "--short", "--untracked-files=all", "--", relative
+)
+if status != expected_status:
+    raise SystemExit("STOP: unexpected package working-tree state:\n" + status)
+
+receipt = json.loads(
+    (work / "pre-fix-receipt.json").read_text()
+)
+if not receipt.get("five_operational_404_regressions_confirmed"):
+    raise SystemExit("STOP: expected pre-fix regression not confirmed.")
+
+for name in ("retrieve.py", "api.py", "context.py"):
+    if sha256(package / name) != sha256(work / name):
+        raise SystemExit("STOP: source differs from saved baseline: " + name)
+
+if sha256(test_path) != receipt["test_sha256"]:
+    raise SystemExit("STOP: regression test changed.")
+
+loader_code = r'''class PinnedSourceUnavailable(RuntimeError):
+    """A pinned commit or exact path is absent in the inspected repository."""
+
+
+class PinnedSourceLoadError(RuntimeError):
+    """Pinned-source loading failed without established source absence."""
+
+
+def _pinned_git(arguments, *, input_text=None):
+    import os
+
+    environment = os.environ.copy()
+    environment["GIT_NO_LAZY_FETCH"] = "1"
+
+    try:
+        result = subprocess.run(
+            ["git", "--no-replace-objects", *arguments],
+            cwd=Path(__file__).resolve().parent,
+            capture_output=True,
+            text=True,
+            check=True,
+            input=input_text,
+            env=environment,
+        )
+    except (OSError, subprocess.SubprocessError, UnicodeError) as exc:
+        raise PinnedSourceLoadError(
+            "Pinned Git operation failed"
+        ) from exc
+
+    # Do not turn a diagnostic-bearing lookup into an absence verdict.
+    if result.stderr:
+        raise PinnedSourceLoadError(
+            "Pinned Git operation emitted diagnostics"
+        )
+    return result.stdout
+
+
+def load_at_sha(path, sha):
+    # Reuse the existing manifest rules rather than adding a second policy.
+    validate_manifest([{"doc": "Pinned source", "path": path, "sha": sha}])
+    pin = sha.lower()
+
+    info = _pinned_git(
+        ["cat-file", "--batch-check=%(objectname) %(objecttype)"],
+        input_text=pin + "\n",
+    )
+    if info == pin + " missing\n":
+        raise PinnedSourceUnavailable("Pinned commit absent locally")
+    if info != pin + " commit\n":
+        raise PinnedSourceLoadError(
+            "Pinned identity did not resolve to a commit"
+        )
+
+    current = pin
+    components = path.split("/")
+
+    for index, component in enumerate(components):
+        listing = _pinned_git(
+            ["ls-tree", "--full-tree", "-z", current]
+        )
+        if listing and not listing.endswith("\0"):
+            raise PinnedSourceLoadError("Malformed tree output")
+
+        entries = {}
+        for record in listing.split("\0")[:-1]:
+            try:
+                metadata, name = record.split("\t", 1)
+                mode, kind, object_id = metadata.split()
+            except ValueError as exc:
+                raise PinnedSourceLoadError(
+                    "Malformed tree entry"
+                ) from exc
+
+            if (
+                not name or "/" in name or name in entries
+                or not re.fullmatch(r"[0-9a-f]{40}", object_id)
+                or kind not in {"tree", "blob", "commit"}
+            ):
+                raise PinnedSourceLoadError("Invalid tree entry")
+            entries[name] = (kind, object_id)
+
+        if component not in entries:
+            raise PinnedSourceUnavailable("Pinned path absent")
+
+        kind, object_id = entries[component]
+        final = index == len(components) - 1
+
+        if final:
+            if kind != "blob":
+                raise PinnedSourceLoadError(
+                    "Pinned source is not a blob"
+                )
+            return _pinned_git(["cat-file", "blob", object_id])
+
+        if kind != "tree":
+            raise PinnedSourceUnavailable(
+                "Pinned path cannot continue through a non-directory"
+            )
+        current = object_id
+
+    raise PinnedSourceLoadError("Unexpected empty source traversal")
+'''
+
+retrieve_path = package / "retrieve.py"
+retrieve_original = retrieve_path.read_text()
+retrieve_tree = ast.parse(retrieve_original)
+functions = [
+    node for node in retrieve_tree.body
+    if isinstance(node, ast.FunctionDef) and node.name == "load_at_sha"
+]
+if len(functions) != 1:
+    raise SystemExit("STOP: unexpected loader structure.")
+
+old_loader = ast.get_source_segment(retrieve_original, functions[0])
+retrieve_new = retrieve_original.replace(old_loader, loader_code, 1)
+
+api_path = package / "api.py"
+api_original = api_path.read_text()
+
+old_helper = '''    def _retrieve_pinned_or_error(self, operation):
+        try:
+            return True, operation()
+        except subprocess.CalledProcessError:
+            self._send({"error": "pinned Git object unavailable"}, 404)
+            return False, None
+'''
+
+new_helper = '''    def _retrieve_pinned_or_error(self, operation):
+        try:
+            return True, operation()
+        except retrieval_module.PinnedSourceUnavailable:
+            self._send({"error": "pinned Git object unavailable"}, 404)
+            return False, None
+        except retrieval_module.PinnedSourceLoadError:
+            self._send({"error": "pinned source loading failed"}, 500)
+            return False, None
+'''
+
+old_view = '''            except subprocess.CalledProcessError:
+                self._send({"error": "pinned Git object unavailable"}, 404)
+            except Exception:
+                self._send({"error": "pinned source loading failed"}, 500)
+'''
+
+new_view = '''            except retrieval_module.PinnedSourceUnavailable:
+                self._send({"error": "pinned Git object unavailable"}, 404)
+            except retrieval_module.PinnedSourceLoadError:
+                self._send({"error": "pinned source loading failed"}, 500)
+            except Exception:
+                self._send({"error": "pinned source loading failed"}, 500)
+'''
+
+if api_original.count(old_helper) != 1:
+    raise SystemExit("STOP: shared API helper differs from expected source.")
+if api_original.count(old_view) != 1:
+    raise SystemExit("STOP: complete-source handler differs from expected source.")
+
+api_new = api_original.replace(old_helper, new_helper, 1)
+api_new = api_new.replace(old_view, new_view, 1)
+
+extra_tests = r'''
+
+@pytest.mark.parametrize("route", ROUTES)
+@pytest.mark.parametrize(
+    "condition", ("missing_commit", "missing_path", "noncommit_object")
+)
+def test_classified_source_conditions(route, condition, pinned_sources):
+    root, good, missing = pinned_sources
+    selected = dict(good)
+
+    if condition == "missing_commit":
+        selected = dict(missing)
+    elif condition == "missing_path":
+        selected["path"] = "absent/pinned.md"
+    else:
+        selected["sha"] = subprocess.check_output(
+            ["git", "-C", str(root), "rev-parse",
+             good["sha"] + ":notes.md"],
+            text=True,
+        ).strip()
+
+    expected_status = 500 if condition == "noncommit_object" else 404
+    expected_error = (
+        "pinned source loading failed" if expected_status == 500
+        else "pinned Git object unavailable"
+    )
+
+    with (
+        mock.patch.object(
+            retrieve, "load_manifest", return_value=[selected]
+        ),
+        mock.patch.object(
+            retrieve, "__file__", str(root / "retrieve.py")
+        ),
+        mock.patch.object(
+            relationships, "resolve_related",
+            return_value={"relationships": []},
+        ) as enrichment,
+        http_server(api) as base,
+    ):
+        status, body = request(
+            base, route,
+            {"q": "needle", "source_id": retrieve.source_id(selected)},
+        )
+        assert status == expected_status
+        assert body == {"error": expected_error}
+        assert "WORKTREE_FALLBACK_CANARY" not in str(body)
+        enrichment.assert_not_called()
+
+
+@pytest.mark.parametrize("route", ROUTES)
+@pytest.mark.parametrize("stage", ("tree_read", "blob_read"))
+def test_later_git_operation_failure_is_500(
+    route, stage, pinned_sources
+):
+    root, good, missing = pinned_sources
+    real_run = subprocess.run
+
+    def failing_run(command, *args, **kwargs):
+        is_tree = "ls-tree" in command
+        is_blob = (
+            "cat-file" in command
+            and command[command.index("cat-file") + 1] == "blob"
+        )
+        if (
+            (stage == "tree_read" and is_tree)
+            or (stage == "blob_read" and is_blob)
+        ):
+            raise subprocess.CalledProcessError(
+                128, command, stderr="PRIVATE_DIAGNOSTIC_CANARY"
+            )
+        return real_run(command, *args, **kwargs)
+
+    with (
+        mock.patch.object(
+            retrieve, "load_manifest", return_value=[good, missing]
+        ),
+        mock.patch.object(
+            retrieve, "__file__", str(root / "retrieve.py")
+        ),
+        mock.patch.object(
+            relationships, "resolve_related"
+        ) as enrichment,
+        http_server(api) as base,
+    ):
+        with mock.patch.object(
+            retrieve.subprocess, "run", side_effect=failing_run
+        ):
+            status, body = request(
+                base, route,
+                {"q": "needle", "source_id": retrieve.source_id(good)},
+            )
+        assert status == 500
+        assert body == {"error": "pinned source loading failed"}
+        assert "PRIVATE_DIAGNOSTIC_CANARY" not in str(body)
+        enrichment.assert_not_called()
+
+
+def test_exact_filename_and_nested_path_loading(tmp_path, monkeypatch):
+    def git(*args):
+        return subprocess.check_output(
+            [
+                "git", "-c", "core.hooksPath=/dev/null",
+                "-c", "commit.gpgsign=false",
+                "-c", "user.name=Classification Test",
+                "-c", "user.email=test@example.invalid",
+                "-C", str(tmp_path), *args,
+            ],
+            text=True,
+        ).strip()
+
+    git("init", "-q")
+    names = (
+        "literal[ab]*?.md",
+        "literalabX.md",
+        "nested/topic.md",
+    )
+    for name in names:
+        path = tmp_path / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("PINNED:" + name, encoding="utf-8")
+
+    git("add", "--", ".")
+    git("commit", "-q", "-m", "literal path fixture")
+    pin = git("rev-parse", "HEAD")
+
+    monkeypatch.setattr(
+        retrieve, "__file__", str(tmp_path / "retrieve.py")
+    )
+
+    for name in names:
+        (tmp_path / name).write_text(
+            "WORKTREE_FALLBACK_CANARY", encoding="utf-8"
+        )
+        assert retrieve.load_at_sha(name, pin) == "PINNED:" + name
+
+    # Existing directory and existing noncommit identity are load errors.
+    with pytest.raises(retrieve.PinnedSourceLoadError):
+        retrieve.load_at_sha("nested", pin)
+
+    with pytest.raises(retrieve.PinnedSourceUnavailable):
+        retrieve.load_at_sha("absent.md", pin)
+'''
+
+test_original = test_path.read_text()
+test_new = test_original + extra_tests
+
+planned = {
+    retrieve_path: retrieve_new,
+    api_path: api_new,
+    test_path: test_new,
+}
+
+# Validate all generated Python before editing any repository file.
+for path, text in planned.items():
+    compile(text, str(path), "exec")
+    (work / ("planned-" + path.name)).write_text(
+        text, encoding="utf-8"
+    )
+
+originals = {path: path.read_bytes() for path in planned}
+try:
+    for path, text in planned.items():
+        path.write_text(text, encoding="utf-8")
+except Exception:
+    for path, content in originals.items():
+        path.write_bytes(content)
+    raise
+
+source_hashes = {
+    path.name: sha256(path) for path in planned
+}
+(work / "post-patch-pre-test-hashes.json").write_text(
+    json.dumps(source_hashes, indent=2), encoding="utf-8"
+)
+
+environment = os.environ.copy()
+environment["PYTHONDONTWRITEBYTECODE"] = "1"
+
+
+def run_tests(label, targets):
+    command = [
+        sys.executable, "-B", "-m", "pytest",
+        "-q", "--tb=short", "-p", "no:cacheprovider",
+        "--junitxml=" + str(work / (label + ".xml")),
+        *targets,
+    ]
+    (work / (label + "-command.json")).write_text(
+        json.dumps(command, indent=2), encoding="utf-8"
+    )
+
+    print("\nSTART:", label, flush=True)
+    with (work / (label + ".txt")).open(
+        "x", encoding="utf-8"
+    ) as log:
+        process = subprocess.Popen(
+            command, cwd=package, env=environment,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+        )
+        for line in process.stdout:
+            print(line, end="", flush=True)
+            log.write(line)
+            log.flush()
+        return process.wait()
+
+
+focused = run_tests(
+    "post-fix-focused",
+    [
+        "tests/test_pinned_failure_classification.py",
+        "tests/test_source_scope_errors.py",
+        "tests/test_repository_binding.py",
+    ],
+)
+
+package_result = None
+if focused == 0:
+    package_result = run_tests("post-fix-package", ["tests"])
+
+final_hashes = {path.name: sha256(path) for path in planned}
+stable = source_hashes == final_hashes
+
+final_diff = subprocess.check_output(
+    ["git", "-C", str(repo), "diff", "--binary", "--",
+     relative + "/retrieve.py", relative + "/api.py"],
+)
+(work / "final-production.patch").write_bytes(final_diff)
+
+(work / "final-test-source.py").write_text(
+    test_path.read_text(), encoding="utf-8"
+)
+(work / "final-status.txt").write_text(
+    git("status", "--short", "--untracked-files=all"),
+    encoding="utf-8",
+)
+
+final = {
+    "head": git("rev-parse", "HEAD"),
+    "pre_fix_operational_404_cases": 5,
+    "focused_exit_code": focused,
+    "package_exit_code": package_result,
+    "patched_files_unchanged_during_tests": stable,
+    "post_patch_pre_test_hashes": source_hashes,
+    "post_test_hashes": final_hashes,
+    "production_files": ["retrieve.py", "api.py"],
+    "test_file": str(test_path.relative_to(package)),
+    "limitations": [
+        "Missing revision means absent from the inspected local object database.",
+        "Operational faults include injected failures; not every failure mode is reproduced.",
+        "Tree traversal adds Git operations; performance was not benchmarked.",
+        "No live browser harness was rerun.",
+        "No research conclusion was independently reproduced.",
+    ],
+}
+
+with (work / "classification-result.json").open(
+    "x", encoding="utf-8"
+) as handle:
+    json.dump(final, handle, indent=2)
+
+print("\nCLASSIFICATION_PATCH_APPLIED=YES")
+print("FOCUSED_EXIT_CODE:", focused)
+print("PACKAGE_EXIT_CODE:", package_result)
+print("SOURCE_HASHES_STABLE_DURING_TESTS:", stable)
+print("RECEIPTS:", work)
+print("NO_STAGE_COMMIT_PUSH")
+print("NO_DEPENDENCY_INSTALL")
+print("NO_TRAINING")
+print("BROWSER_UNCHANGED")
+print("CORPUS_AND_NORMALIZATION_UNCHANGED")
+print("DEFECT_ARTIFACTS_UNCHANGED")
+
+if focused != 0 or package_result != 0 or not stable:
+    raise SystemExit(
+        "REVIEW_REQUIRED: preserve output and patched files; "
+        "do not commit or rerun this driver."
+    )
+
+print("CLASSIFICATION_TEST_CHECKPOINT=PASS")

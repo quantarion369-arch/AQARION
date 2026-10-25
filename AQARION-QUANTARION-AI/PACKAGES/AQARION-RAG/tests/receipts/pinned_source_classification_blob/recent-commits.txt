@@ -1,0 +1,10 @@
+b5aa8d46e73a0dba1a60486c0123169c0ff3e69b test(rag): preserve deterministic browser race checks and negative control
+8b224279c1c45a7d687724be8e9f63f5132b105a fix(rag): return controlled errors for unavailable scoped Git objects
+ec4e6681748f2ab1b1d3da322a00bc03dd9bbf85 feat(rag): register pinned DEFECT preservation source
+579ba9453b6ceb803492944f0228008e4b0989a4 feat(rag): add pinned source scoping and complete-source viewing
+da6fb6098384c84d4414eacf34635a480fe5da11 research: preserve AQARION DEFECT experiments and checkpoints
+b88096bc22e9cab50deedbb3a43ad346c626a9b6 docs: relocate root documentation into project docs
+e84efdda10202919f4eca8d4bfb154933ad98161 Rename exact_frobenius_defect.md to exact_frobenius_defect.md
+c47fcb6cb7924cf68a723a7521654ed3d14b83f1 Rename PB-CORE-006.md to PB-CORE-006.md
+030209714dc23a89e491200037852c5536d38207 Move AQ-2026-10-11.txt to a new directory
+012e71c5b2a24872c7f6b08e09d1451ad3ee5a36 Rename Smoke.lean to Smoke.lean

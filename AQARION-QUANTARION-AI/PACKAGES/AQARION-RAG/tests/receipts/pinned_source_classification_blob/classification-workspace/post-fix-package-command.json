@@ -1,0 +1,12 @@
+[
+  "/data/data/com.termux/files/usr/bin/python",
+  "-B",
+  "-m",
+  "pytest",
+  "-q",
+  "--tb=short",
+  "-p",
+  "no:cacheprovider",
+  "--junitxml=/data/data/com.termux/files/home/AQARION-RAG-classification-eajf7x9n/post-fix-package.xml",
+  "tests"
+]
