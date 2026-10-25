@@ -1,0 +1,95 @@
+{
+  "purpose": "Historical feature-validation inventory",
+  "limitations": [
+    "Hashes identify bytes, not scientific truth.",
+    "Execution receipts are supplied local results.",
+    "Browser race execution remains unverified."
+  ],
+  "files": [
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/retrieve.py",
+      "bytes": 6114,
+      "sha256": "9e3e8987e80997a31ac3a682b4d11a2e0da1cf70b7a673ffa7fc1a1c47a30c30"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/context.py",
+      "bytes": 5059,
+      "sha256": "12055bbd44eeff7191a39081b241606a7a89acbfc35cb5134239eabd262ed18f"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py",
+      "bytes": 6479,
+      "sha256": "cd94f0c43f4a88618c38f0b4254b1dffdcb40bfc97ac25feb148abb7cb5c0b46"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/static/index.html",
+      "bytes": 16258,
+      "sha256": "d43494786e65367d4efb36bfe15a7a7759481074f1e97df72de3012a2816ea33"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope.py",
+      "bytes": 11097,
+      "sha256": "c461bb3646f9e7947f20c4393feb1594cafabb8917f08b4b7e5523f8184f87dd"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_ui.py",
+      "bytes": 1920,
+      "sha256": "007bbb6a21fc528e81f6521d2b2ac6f47636e850f75d22bf880c96bd9a21be78"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/SOURCE_SCOPING.md",
+      "bytes": 2936,
+      "sha256": "736328828a7256c3c412524e602cf3eb1944c3163ac2abf4b51911eba45c4559"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/apply_backend.py",
+      "bytes": 24985,
+      "sha256": "4ec13ad97663aeddbfa5ec40164a2082a1f0dd648e77ace34827e29eb93da922"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/apply_browser.py",
+      "bytes": 13325,
+      "sha256": "876fbf017dbfff6e11f393a9a8b7b82ccfa448aea4513f6594f986cc886e8384"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/global-before.json",
+      "bytes": 42153,
+      "sha256": "32fec43b8ff0dfe5602722bccd73622bbf0ee525a536065be6a0078069bcedd1"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/global-after.json",
+      "bytes": 42153,
+      "sha256": "32fec43b8ff0dfe5602722bccd73622bbf0ee525a536065be6a0078069bcedd1"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/backend-tests.log",
+      "bytes": 190,
+      "sha256": "c6ada9daf2149447d24def77bfc7e6f236a14ec740774a2274e6548458f37fd2"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/permanent-backend-tests.log",
+      "bytes": 191,
+      "sha256": "fb3304a12e6768551d8e87ddd26268356ff749dc61968457a46b945c69e4d750"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/permanent-backend-test-receipt.json",
+      "bytes": 417,
+      "sha256": "15b0e49293dba75d3a6911c4d839e86353999f95fefcf9174bb4b0028e2df368"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/backend-terminal.log",
+      "bytes": 1372,
+      "sha256": "cfb0747e538994e4656a6887866c412b8b1dca438c5ff0617b9158b7c1864da2"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/browser-tests.log",
+      "bytes": 190,
+      "sha256": "ddaa1fd4ee4f4ec7936b7f02538dd986bf85209efc5e4ae3915ba400c4a6306e"
+    },
+    {
+      "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/receipts/source_scope/browser-terminal.log",
+      "bytes": 856,
+      "sha256": "4a6af67253e65e20c02436dee56cbd262a5c0f35e80ad99a6475b5472d1f2014"
+    }
+  ]
+}

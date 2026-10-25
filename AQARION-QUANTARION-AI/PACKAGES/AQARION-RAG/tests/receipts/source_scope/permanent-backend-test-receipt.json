@@ -1,0 +1,9 @@
+{
+  "test_path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope.py",
+  "test_sha256": "c461bb3646f9e7947f20c4393feb1594cafabb8917f08b4b7e5523f8184f87dd",
+  "source_harness_sha256": "4ec13ad97663aeddbfa5ec40164a2082a1f0dd648e77ace34827e29eb93da922",
+  "pytest_exit": 0,
+  "scope": "Backend regression preservation; browser unchanged",
+  "project_commit_created": false,
+  "push_performed": false
+}

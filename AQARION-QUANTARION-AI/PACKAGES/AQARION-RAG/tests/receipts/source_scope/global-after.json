@@ -1,0 +1,1030 @@
+{
+  "quadratic stability": {
+    "legacy": [
+      [
+        2,
+        "Quadratic stability witnesses",
+        "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+        "# Quadratic stability witnesses"
+      ],
+      [
+        1,
+        "Evidence ledger",
+        "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "## Stability-notions clarification \u2014 accepted"
+      ],
+      [
+        1,
+        "Evidence ledger",
+        "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar\u2019s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition."
+      ]
+    ],
+    "cited": [
+      {
+        "score": 2,
+        "doc": "Quadratic stability witnesses",
+        "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+        "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+        "passage": "# Quadratic stability witnesses",
+        "char_start": 0,
+        "char_end": 31,
+        "rank": 1
+      },
+      {
+        "score": 1,
+        "doc": "Evidence ledger",
+        "path": "EVIDENCE-LEDGER.md",
+        "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "passage": "## Stability-notions clarification \u2014 accepted",
+        "char_start": 6518,
+        "char_end": 6563,
+        "rank": 2
+      },
+      {
+        "score": 1,
+        "doc": "Evidence ledger",
+        "path": "EVIDENCE-LEDGER.md",
+        "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar\u2019s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+        "char_start": 6636,
+        "char_end": 7108,
+        "rank": 3
+      }
+    ],
+    "context": {
+      "seed_results": [
+        {
+          "score": 2,
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "passage": "# Quadratic stability witnesses",
+          "char_start": 0,
+          "char_end": 31,
+          "rank": 1
+        },
+        {
+          "score": 1,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "## Stability-notions clarification \u2014 accepted",
+          "char_start": 6518,
+          "char_end": 6563,
+          "rank": 2
+        },
+        {
+          "score": 1,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar\u2019s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+          "char_start": 6636,
+          "char_end": 7108,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Quadratic stability witnesses",
+          "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+          "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+          "char_start": 33,
+          "char_end": 110,
+          "passage": "Computed evidence for the real quadratic map x -> x^2 + c, starting at x = 0.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 0,
+              "seed_char_end": 31,
+              "direction": "following"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6401,
+          "char_end": 6516,
+          "passage": "**Artifacts:** `extensions/closure-cost-equality/replay/` and `extensions/closure-cost-equality/local-dependency/`.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 6518,
+              "seed_char_end": 6563,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 6565,
+          "char_end": 6634,
+          "passage": "**Status:** Accepted as a framework correction and case verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 6518,
+              "seed_char_end": 6563,
+              "direction": "following"
+            },
+            {
+              "seed_rank": 3,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 7110,
+          "char_end": 7225,
+          "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 6636,
+              "seed_char_end": 7108,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "expansion_metadata": {
+        "rule": "immediate_nonempty_neighbors_v1",
+        "seed_top_k": 3,
+        "previous_paragraphs": 1,
+        "following_paragraphs": 1,
+        "recursive": false,
+        "maximum_supplements": 6,
+        "seed_count": 3,
+        "supplementary_count": 4,
+        "seed_characters": 548,
+        "supplementary_characters": 376,
+        "support_adjudicated": false
+      }
+    },
+    "http": {
+      "/api/search": [
+        200,
+        {
+          "query": "quadratic stability",
+          "results": [
+            {
+              "score": 2,
+              "doc": "Quadratic stability witnesses",
+              "sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+              "passage": "# Quadratic stability witnesses"
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Stability-notions clarification \u2014 accepted"
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar\u2019s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition."
+            }
+          ]
+        }
+      ],
+      "/api/search/cited": [
+        200,
+        {
+          "query": "quadratic stability",
+          "results": [
+            {
+              "score": 2,
+              "doc": "Quadratic stability witnesses",
+              "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+              "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+              "passage": "# Quadratic stability witnesses",
+              "char_start": 0,
+              "char_end": 31,
+              "rank": 1
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Stability-notions clarification \u2014 accepted",
+              "char_start": 6518,
+              "char_end": 6563,
+              "rank": 2
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar\u2019s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+              "char_start": 6636,
+              "char_end": 7108,
+              "rank": 3
+            }
+          ]
+        }
+      ],
+      "/api/search/context": [
+        200,
+        {
+          "seed_results": [
+            {
+              "score": 2,
+              "doc": "Quadratic stability witnesses",
+              "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+              "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+              "passage": "# Quadratic stability witnesses",
+              "char_start": 0,
+              "char_end": 31,
+              "rank": 1
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Stability-notions clarification \u2014 accepted",
+              "char_start": 6518,
+              "char_end": 6563,
+              "rank": 2
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar\u2019s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+              "char_start": 6636,
+              "char_end": 7108,
+              "rank": 3
+            }
+          ],
+          "supplementary_context": [
+            {
+              "doc": "Quadratic stability witnesses",
+              "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+              "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+              "char_start": 33,
+              "char_end": 110,
+              "passage": "Computed evidence for the real quadratic map x -> x^2 + c, starting at x = 0.",
+              "context_only": true,
+              "seed_links": [
+                {
+                  "seed_rank": 1,
+                  "seed_char_start": 0,
+                  "seed_char_end": 31,
+                  "direction": "following"
+                }
+              ]
+            },
+            {
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "char_start": 6401,
+              "char_end": 6516,
+              "passage": "**Artifacts:** `extensions/closure-cost-equality/replay/` and `extensions/closure-cost-equality/local-dependency/`.",
+              "context_only": true,
+              "seed_links": [
+                {
+                  "seed_rank": 2,
+                  "seed_char_start": 6518,
+                  "seed_char_end": 6563,
+                  "direction": "previous"
+                }
+              ]
+            },
+            {
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "char_start": 6565,
+              "char_end": 6634,
+              "passage": "**Status:** Accepted as a framework correction and case verification.",
+              "context_only": true,
+              "seed_links": [
+                {
+                  "seed_rank": 2,
+                  "seed_char_start": 6518,
+                  "seed_char_end": 6563,
+                  "direction": "following"
+                },
+                {
+                  "seed_rank": 3,
+                  "seed_char_start": 6636,
+                  "seed_char_end": 7108,
+                  "direction": "previous"
+                }
+              ]
+            },
+            {
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "char_start": 7110,
+              "char_end": 7225,
+              "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+              "context_only": true,
+              "seed_links": [
+                {
+                  "seed_rank": 3,
+                  "seed_char_start": 6636,
+                  "seed_char_end": 7108,
+                  "direction": "following"
+                }
+              ]
+            }
+          ],
+          "expansion_metadata": {
+            "rule": "immediate_nonempty_neighbors_v1",
+            "seed_top_k": 3,
+            "previous_paragraphs": 1,
+            "following_paragraphs": 1,
+            "recursive": false,
+            "maximum_supplements": 6,
+            "seed_count": 3,
+            "supplementary_count": 4,
+            "seed_characters": 548,
+            "supplementary_characters": 376,
+            "support_adjudicated": false
+          }
+        }
+      ],
+      "/api/search/evidence": [
+        200,
+        {
+          "retrieval_context": {
+            "seed_results": [
+              {
+                "score": 2,
+                "doc": "Quadratic stability witnesses",
+                "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+                "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+                "passage": "# Quadratic stability witnesses",
+                "char_start": 0,
+                "char_end": 31,
+                "rank": 1
+              },
+              {
+                "score": 1,
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "passage": "## Stability-notions clarification \u2014 accepted",
+                "char_start": 6518,
+                "char_end": 6563,
+                "rank": 2
+              },
+              {
+                "score": 1,
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "passage": "1. `D=(I-P)KP=0` is forward stability, not commutation: it does not imply `[K,P]=0`.\n2. Forward-stable partitions are closed under join and meet. The transitive-closure argument is valid; 18,737 random non-bijective n=6 checks provide independent randomized corroboration, not exhaustive proof.\n3. Kaprekar\u2019s many forward-stable partitions versus one pullback-stable partition is consistent with its non-invertibility. Pullback stability is a distinct, stronger condition.",
+                "char_start": 6636,
+                "char_end": 7108,
+                "rank": 3
+              }
+            ],
+            "supplementary_context": [
+              {
+                "doc": "Quadratic stability witnesses",
+                "path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/corpus/quadratic-stability-witnesses.md",
+                "commit_sha": "e9322761a2525a2b5fb9a0c9d31888de092d7140",
+                "char_start": 33,
+                "char_end": 110,
+                "passage": "Computed evidence for the real quadratic map x -> x^2 + c, starting at x = 0.",
+                "context_only": true,
+                "seed_links": [
+                  {
+                    "seed_rank": 1,
+                    "seed_char_start": 0,
+                    "seed_char_end": 31,
+                    "direction": "following"
+                  }
+                ]
+              },
+              {
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "char_start": 6401,
+                "char_end": 6516,
+                "passage": "**Artifacts:** `extensions/closure-cost-equality/replay/` and `extensions/closure-cost-equality/local-dependency/`.",
+                "context_only": true,
+                "seed_links": [
+                  {
+                    "seed_rank": 2,
+                    "seed_char_start": 6518,
+                    "seed_char_end": 6563,
+                    "direction": "previous"
+                  }
+                ]
+              },
+              {
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "char_start": 6565,
+                "char_end": 6634,
+                "passage": "**Status:** Accepted as a framework correction and case verification.",
+                "context_only": true,
+                "seed_links": [
+                  {
+                    "seed_rank": 2,
+                    "seed_char_start": 6518,
+                    "seed_char_end": 6563,
+                    "direction": "following"
+                  },
+                  {
+                    "seed_rank": 3,
+                    "seed_char_start": 6636,
+                    "seed_char_end": 7108,
+                    "direction": "previous"
+                  }
+                ]
+              },
+              {
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "char_start": 7110,
+                "char_end": 7225,
+                "passage": "**Label:** mathematical clarification plus independent randomized/case verification; not a new all-systems theorem.",
+                "context_only": true,
+                "seed_links": [
+                  {
+                    "seed_rank": 3,
+                    "seed_char_start": 6636,
+                    "seed_char_end": 7108,
+                    "direction": "following"
+                  }
+                ]
+              }
+            ],
+            "expansion_metadata": {
+              "rule": "immediate_nonempty_neighbors_v1",
+              "seed_top_k": 3,
+              "previous_paragraphs": 1,
+              "following_paragraphs": 1,
+              "recursive": false,
+              "maximum_supplements": 6,
+              "seed_count": 3,
+              "supplementary_count": 4,
+              "seed_characters": 548,
+              "supplementary_characters": 376,
+              "support_adjudicated": false
+            }
+          },
+          "related_evidence": [],
+          "relationship_diagnostics": []
+        }
+      ]
+    }
+  },
+  "observable closure": {
+    "legacy": [
+      [
+        1,
+        "Evidence ledger",
+        "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "## Closure-cost proof and audit artifacts"
+      ],
+      [
+        1,
+        "Evidence ledger",
+        "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output."
+      ],
+      [
+        1,
+        "Evidence ledger",
+        "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "## Closure-cost equality extension \u2014 general feedback characterization"
+      ]
+    ],
+    "cited": [
+      {
+        "score": 1,
+        "doc": "Evidence ledger",
+        "path": "EVIDENCE-LEDGER.md",
+        "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "passage": "## Closure-cost proof and audit artifacts",
+        "char_start": 4049,
+        "char_end": 4090,
+        "rank": 1
+      },
+      {
+        "score": 1,
+        "doc": "Evidence ledger",
+        "path": "EVIDENCE-LEDGER.md",
+        "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output.",
+        "char_start": 4092,
+        "char_end": 4377,
+        "rank": 2
+      },
+      {
+        "score": 1,
+        "doc": "Evidence ledger",
+        "path": "EVIDENCE-LEDGER.md",
+        "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+        "passage": "## Closure-cost equality extension \u2014 general feedback characterization",
+        "char_start": 4511,
+        "char_end": 4581,
+        "rank": 3
+      }
+    ],
+    "context": {
+      "seed_results": [
+        {
+          "score": 1,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "## Closure-cost proof and audit artifacts",
+          "char_start": 4049,
+          "char_end": 4090,
+          "rank": 1
+        },
+        {
+          "score": 1,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output.",
+          "char_start": 4092,
+          "char_end": 4377,
+          "rank": 2
+        },
+        {
+          "score": 1,
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "passage": "## Closure-cost equality extension \u2014 general feedback characterization",
+          "char_start": 4511,
+          "char_end": 4581,
+          "rank": 3
+        }
+      ],
+      "supplementary_context": [
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 3270,
+          "char_end": 4047,
+          "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 1,
+              "seed_char_start": 4049,
+              "seed_char_end": 4090,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4379,
+          "char_end": 4509,
+          "passage": "Paper proof is not machine-checked; novelty is not established.\nClaude's complete extended-search artifacts remain pending export.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 2,
+              "seed_char_start": 4092,
+              "seed_char_end": 4377,
+              "direction": "following"
+            },
+            {
+              "seed_rank": 3,
+              "seed_char_start": 4511,
+              "seed_char_end": 4581,
+              "direction": "previous"
+            }
+          ]
+        },
+        {
+          "doc": "Evidence ledger",
+          "path": "EVIDENCE-LEDGER.md",
+          "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+          "char_start": 4583,
+          "char_end": 4647,
+          "passage": "**Status:** Paper-level proof present; precision review pending.",
+          "context_only": true,
+          "seed_links": [
+            {
+              "seed_rank": 3,
+              "seed_char_start": 4511,
+              "seed_char_end": 4581,
+              "direction": "following"
+            }
+          ]
+        }
+      ],
+      "expansion_metadata": {
+        "rule": "immediate_nonempty_neighbors_v1",
+        "seed_top_k": 3,
+        "previous_paragraphs": 1,
+        "following_paragraphs": 1,
+        "recursive": false,
+        "maximum_supplements": 6,
+        "seed_count": 3,
+        "supplementary_count": 3,
+        "seed_characters": 396,
+        "supplementary_characters": 971,
+        "support_adjudicated": false
+      }
+    },
+    "http": {
+      "/api/search": [
+        200,
+        {
+          "query": "observable closure",
+          "results": [
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Closure-cost proof and audit artifacts"
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output."
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Closure-cost equality extension \u2014 general feedback characterization"
+            }
+          ]
+        }
+      ],
+      "/api/search/cited": [
+        200,
+        {
+          "query": "observable closure",
+          "results": [
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Closure-cost proof and audit artifacts",
+              "char_start": 4049,
+              "char_end": 4090,
+              "rank": 1
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output.",
+              "char_start": 4092,
+              "char_end": 4377,
+              "rank": 2
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Closure-cost equality extension \u2014 general feedback characterization",
+              "char_start": 4511,
+              "char_end": 4581,
+              "rank": 3
+            }
+          ]
+        }
+      ],
+      "/api/search/context": [
+        200,
+        {
+          "seed_results": [
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Closure-cost proof and audit artifacts",
+              "char_start": 4049,
+              "char_end": 4090,
+              "rank": 1
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output.",
+              "char_start": 4092,
+              "char_end": 4377,
+              "rank": 2
+            },
+            {
+              "score": 1,
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "passage": "## Closure-cost equality extension \u2014 general feedback characterization",
+              "char_start": 4511,
+              "char_end": 4581,
+              "rank": 3
+            }
+          ],
+          "supplementary_context": [
+            {
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "char_start": 3270,
+              "char_end": 4047,
+              "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+              "context_only": true,
+              "seed_links": [
+                {
+                  "seed_rank": 1,
+                  "seed_char_start": 4049,
+                  "seed_char_end": 4090,
+                  "direction": "previous"
+                }
+              ]
+            },
+            {
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "char_start": 4379,
+              "char_end": 4509,
+              "passage": "Paper proof is not machine-checked; novelty is not established.\nClaude's complete extended-search artifacts remain pending export.",
+              "context_only": true,
+              "seed_links": [
+                {
+                  "seed_rank": 2,
+                  "seed_char_start": 4092,
+                  "seed_char_end": 4377,
+                  "direction": "following"
+                },
+                {
+                  "seed_rank": 3,
+                  "seed_char_start": 4511,
+                  "seed_char_end": 4581,
+                  "direction": "previous"
+                }
+              ]
+            },
+            {
+              "doc": "Evidence ledger",
+              "path": "EVIDENCE-LEDGER.md",
+              "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+              "char_start": 4583,
+              "char_end": 4647,
+              "passage": "**Status:** Paper-level proof present; precision review pending.",
+              "context_only": true,
+              "seed_links": [
+                {
+                  "seed_rank": 3,
+                  "seed_char_start": 4511,
+                  "seed_char_end": 4581,
+                  "direction": "following"
+                }
+              ]
+            }
+          ],
+          "expansion_metadata": {
+            "rule": "immediate_nonempty_neighbors_v1",
+            "seed_top_k": 3,
+            "previous_paragraphs": 1,
+            "following_paragraphs": 1,
+            "recursive": false,
+            "maximum_supplements": 6,
+            "seed_count": 3,
+            "supplementary_count": 3,
+            "seed_characters": 396,
+            "supplementary_characters": 971,
+            "support_adjudicated": false
+          }
+        }
+      ],
+      "/api/search/evidence": [
+        200,
+        {
+          "retrieval_context": {
+            "seed_results": [
+              {
+                "score": 1,
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "passage": "## Closure-cost proof and audit artifacts",
+                "char_start": 4049,
+                "char_end": 4090,
+                "rank": 1
+              },
+              {
+                "score": 1,
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "passage": "See research/closure-cost/:\n- THEOREM.md: general bound, equality criterion, binary characterization.\n- AUDIT.md: evidence attribution, counts, witnesses, and limitations.\n- check_actual_source.py: production-source replay harness.\n- actual-source-n4.txt: captured local replay output.",
+                "char_start": 4092,
+                "char_end": 4377,
+                "rank": 2
+              },
+              {
+                "score": 1,
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "passage": "## Closure-cost equality extension \u2014 general feedback characterization",
+                "char_start": 4511,
+                "char_end": 4581,
+                "rank": 3
+              }
+            ],
+            "supplementary_context": [
+              {
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "char_start": 3270,
+                "char_end": 4047,
+                "passage": "### Actual production-source cross-check\n- Execution: user ran the path-specific loader in the local Termux checkout.\n- Source:\n  AQARION-QUANTARION-AI/verification/defect-transport/closure_profile.py\n- Source SHA-256:\n  e97325fedd0ee6a5d9223003b857358ce5ba303c483603b36215eb233f115db1\n- Method: explicitly load the source above, then run dt_check/xcheck.py\n  against the independent prof.profile oracle.\n- Domain: every map and set partition for 1 <= n <= 4.\n- Result: 3,984 cases; zero profile/linear-cost mismatches;\n  zero implementation self-check failures; reported runtime 9 seconds.\n- Scope: finite-domain agreement for the identified production source.\n  Not a general correctness proof, a replay of larger reported searches,\n  or machine-checked theorem verification.",
+                "context_only": true,
+                "seed_links": [
+                  {
+                    "seed_rank": 1,
+                    "seed_char_start": 4049,
+                    "seed_char_end": 4090,
+                    "direction": "previous"
+                  }
+                ]
+              },
+              {
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "char_start": 4379,
+                "char_end": 4509,
+                "passage": "Paper proof is not machine-checked; novelty is not established.\nClaude's complete extended-search artifacts remain pending export.",
+                "context_only": true,
+                "seed_links": [
+                  {
+                    "seed_rank": 2,
+                    "seed_char_start": 4092,
+                    "seed_char_end": 4377,
+                    "direction": "following"
+                  },
+                  {
+                    "seed_rank": 3,
+                    "seed_char_start": 4511,
+                    "seed_char_end": 4581,
+                    "direction": "previous"
+                  }
+                ]
+              },
+              {
+                "doc": "Evidence ledger",
+                "path": "EVIDENCE-LEDGER.md",
+                "commit_sha": "b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2",
+                "char_start": 4583,
+                "char_end": 4647,
+                "passage": "**Status:** Paper-level proof present; precision review pending.",
+                "context_only": true,
+                "seed_links": [
+                  {
+                    "seed_rank": 3,
+                    "seed_char_start": 4511,
+                    "seed_char_end": 4581,
+                    "direction": "following"
+                  }
+                ]
+              }
+            ],
+            "expansion_metadata": {
+              "rule": "immediate_nonempty_neighbors_v1",
+              "seed_top_k": 3,
+              "previous_paragraphs": 1,
+              "following_paragraphs": 1,
+              "recursive": false,
+              "maximum_supplements": 6,
+              "seed_count": 3,
+              "supplementary_count": 3,
+              "seed_characters": 396,
+              "supplementary_characters": 971,
+              "support_adjudicated": false
+            }
+          },
+          "related_evidence": [],
+          "relationship_diagnostics": []
+        }
+      ]
+    }
+  },
+  "zzzzqxxnomatch": {
+    "legacy": [],
+    "cited": [],
+    "context": {
+      "seed_results": [],
+      "supplementary_context": [],
+      "expansion_metadata": {
+        "rule": "immediate_nonempty_neighbors_v1",
+        "seed_top_k": 3,
+        "previous_paragraphs": 1,
+        "following_paragraphs": 1,
+        "recursive": false,
+        "maximum_supplements": 6,
+        "seed_count": 0,
+        "supplementary_count": 0,
+        "seed_characters": 0,
+        "supplementary_characters": 0,
+        "support_adjudicated": false
+      }
+    },
+    "http": {
+      "/api/search": [
+        200,
+        {
+          "query": "zzzzqxxnomatch",
+          "results": []
+        }
+      ],
+      "/api/search/cited": [
+        200,
+        {
+          "query": "zzzzqxxnomatch",
+          "results": []
+        }
+      ],
+      "/api/search/context": [
+        200,
+        {
+          "seed_results": [],
+          "supplementary_context": [],
+          "expansion_metadata": {
+            "rule": "immediate_nonempty_neighbors_v1",
+            "seed_top_k": 3,
+            "previous_paragraphs": 1,
+            "following_paragraphs": 1,
+            "recursive": false,
+            "maximum_supplements": 6,
+            "seed_count": 0,
+            "supplementary_count": 0,
+            "seed_characters": 0,
+            "supplementary_characters": 0,
+            "support_adjudicated": false
+          }
+        }
+      ],
+      "/api/search/evidence": [
+        200,
+        {
+          "retrieval_context": {
+            "seed_results": [],
+            "supplementary_context": [],
+            "expansion_metadata": {
+              "rule": "immediate_nonempty_neighbors_v1",
+              "seed_top_k": 3,
+              "previous_paragraphs": 1,
+              "following_paragraphs": 1,
+              "recursive": false,
+              "maximum_supplements": 6,
+              "seed_count": 0,
+              "supplementary_count": 0,
+              "seed_characters": 0,
+              "supplementary_characters": 0,
+              "support_adjudicated": false
+            }
+          },
+          "related_evidence": [],
+          "relationship_diagnostics": []
+        }
+      ]
+    }
+  }
+}

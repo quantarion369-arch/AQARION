@@ -1,0 +1,31 @@
+GENUINE_GLOBAL_BEFORE_AFTER=PASS
+PASS: real Git revision isolation, selected-only loads, citations
+PASS: forged label rejected
+PASS: context rejects wrong-revision seeds
+PASS: no-match does not fall back globally
+PASS: invalid scopes stop all four routes before downstream calls
+PASS: valid request positive control uses monitored namespace
+PASS: scoped evidence HTTP; enrichment mocked at its boundary
+PASS: source list and complete pinned-source JSON
+PASS: real missing Git object fails without worktree fallback
+PASS: duplicate and malformed manifests fail closed
+FOCUSED_CHECKS_PASSED: 10
+TEMPORARY_TEST_GIT_COMMITS=2
+PROJECT_GIT_COMMITS=0
+........................................................................ [ 63%]
+..........................................                     [100%]
+114 passed, 10 subtests passed in 8.32s
+
+ AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py  | 95 ++++++++++++++++++++--
+ .../PACKAGES/AQARION-RAG/context.py                | 13 ++-
+ .../PACKAGES/AQARION-RAG/retrieve.py               | 63 +++++++++++++-
+ 3 files changed, 159 insertions(+), 12 deletions(-)
+
+SOURCE_SCOPE_BACKEND=PASS
+EXISTING_PACKAGE_TESTS=PASS
+BACKUPS_SOURCE_AND_LOGS: /data/data/com.termux/files/home/AQARION-RAG-work.wyo8fG
+BROWSER_UNCHANGED
+CORPUS_AND_NORMALIZATION_UNCHANGED
+DEFECT_RESEARCH_UNCHANGED
+NO_STAGE_COMMIT_PUSH_OR_INSTALL
+HUGGING_FACE_UNCHANGED

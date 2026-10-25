@@ -51,6 +51,8 @@ def _expand_context(seeds):
         source = (seed["path"], seed["commit_sha"])
         if source not in entries:
             raise ValueError("Seed source is not in the pinned manifest")
+        if seed.get("doc") != entries[source]["doc"]:
+            raise ValueError("Seed document label does not match manifest")
         if source not in documents:
             text = retrieve.load_at_sha(*source)
             records = _paragraphs(entries[source], text)
@@ -117,11 +119,18 @@ def _expand_context(seeds):
     }
 
 
-def retrieve_with_context(query):
+def retrieve_with_context(query, source_id=None):
     """Keep top-three cited search unchanged; return neighbors separately.
 
     Offsets are half-open decoded-text positions, not byte offsets.
     Supplement order follows seed rank, then previous/following direction.
     Expansion is nonrecursive and confined to each seed's pinned source.
     """
-    return _expand_context(retrieve.retrieve_cited(query, top_k=3))
+    if source_id is None:
+        return _expand_context(retrieve.retrieve_cited(query, top_k=3))
+    entry = retrieve.resolve_source_id(source_id)
+    seeds = retrieve.retrieve_cited(query, top_k=3, source_id=source_id)
+    expected = (entry["path"], entry["sha"])
+    if any((s["path"], s["commit_sha"]) != expected for s in seeds):
+        raise ValueError("Scoped seed crossed source boundary")
+    return _expand_context(seeds)

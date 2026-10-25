@@ -21,6 +21,10 @@ article{background:white;border:1px solid #d8cdbd;border-radius:10px;padding:16p
 a{color:#075d7b}
 .error{color:#a01818}
 #status{min-height:1.6em}
+.source-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+#source-selector{flex:1;min-width:0;max-width:100%}
+#source-view pre{font:inherit;white-space:pre-wrap;overflow-wrap:anywhere}
+button:disabled{cursor:default;opacity:.55}
 </style>
 </head>
 <body>
@@ -37,8 +41,19 @@ a{color:#075d7b}
 <input id="q" placeholder="Enter a research question..." autofocus>
 <button type="submit">Search</button>
 </form>
+<div class="source-tools">
+<label for="source-selector">Pinned source</label>
+<select id="source-selector">
+<option value="">All sources — global search</option>
+</select>
+<button id="open-source" type="button" disabled>Open complete source</button>
+</div>
+<p id="source-status" class="muted" role="status" aria-live="polite">
+Loading source list…
+</p>
 <p id="status" role="status" aria-live="polite"></p>
 <div id="out"></div>
+<section id="source-view" hidden aria-label="Complete pinned source"></section>
 <footer class="muted">Retrieval does not establish answerability or claim truth.</footer>
 </main>
 <script>
@@ -48,6 +63,11 @@ const out = document.getElementById("out");
 const status = document.getElementById("status");
 const input = document.getElementById("q");
 const mode = document.getElementById("mode");
+const sourceSelect = document.getElementById("source-selector");
+const openSource = document.getElementById("open-source");
+const sourceStatus = document.getElementById("source-status");
+const sourceView = document.getElementById("source-view");
+const sourceEntries = new Map();
 let requestId = 0;
 let controller = null;
 
@@ -181,6 +201,7 @@ function renderEvidence(data) {
   out.append(node("h2", "Related corrections / qualifications"));
   out.append(node("p",
     "Explicit registry links, separate from ranking and immediate neighbors. " +
+    "These may cite other sources; they are not selected-source retrieval. " +
     "Locator validation does not establish interpretation or claim truth.",
     "muted"));
 
@@ -228,6 +249,9 @@ function renderEvidence(data) {
 }
 
 async function search() {
+  syncSourceControls();
+  hideSourceView();
+  const selectedSource = mode.value === "passages" ? sourceSelect.value : "";
   const id = ++requestId;
   if (controller) controller.abort();
   controller = new AbortController();
@@ -245,14 +269,24 @@ async function search() {
   const endpoint = selectedMode === "claims" ?
     "/api/claims/search" : "/api/search/evidence";
 
+  const scopeParameter = selectedSource ?
+    "&source_id=" + encodeURIComponent(selectedSource) : "";
+
   try {
-    const response = await fetch(endpoint + "?q=" + encodeURIComponent(query),
+    const response = await fetch(endpoint + "?q=" + encodeURIComponent(query) + scopeParameter,
       {signal: controller.signal});
     if (!response.ok) throw new Error("HTTP " + response.status);
     const data = await response.json();
 
     if (id !== requestId) return;
+    if (selectedMode === "passages" && selectedSource) {
+      validateScopedEvidence(data, selectedSource);
+    }
     out.replaceChildren();
+    if (selectedSource) {
+      out.append(node("p", "Retrieval restricted to: " +
+        sourceEntries.get(selectedSource).doc, "warning"));
+    }
     if (selectedMode === "claims") renderClaims(data);
     else renderEvidence(data);
     status.textContent = "Search complete.";
@@ -271,13 +305,174 @@ document.getElementById("search").addEventListener("submit", event => {
 mode.addEventListener("change", search);
 
 input.addEventListener("input", () => {
+  hideSourceView();
   ++requestId;
   if (controller) controller.abort();
   out.replaceChildren();
   status.textContent = "Query changed. Press Search or Enter.";
 });
 
+
+function hideSourceView() {
+  sourceView.hidden = true;
+  sourceView.replaceChildren();
+}
+
+function syncSourceControls() {
+  const claimsMode = mode.value === "claims";
+  sourceSelect.disabled = claimsMode;
+  openSource.disabled = claimsMode || !sourceSelect.value;
+}
+
+function validateScopedEvidence(data, selectedSource) {
+  const selected = sourceEntries.get(selectedSource);
+  const bundle = data.retrieval_context;
+
+  if (!selected || !bundle ||
+      !Array.isArray(bundle.seed_results) ||
+      !Array.isArray(bundle.supplementary_context)) {
+    throw new Error("Invalid scoped evidence response");
+  }
+
+  for (const item of [
+    ...bundle.seed_results, ...bundle.supplementary_context
+  ]) {
+    if (item.path !== selected.path ||
+        item.commit_sha !== selected.sha ||
+        item.doc !== selected.doc) {
+      throw new Error("Response crossed the selected source boundary");
+    }
+  }
+}
+
+async function loadSources() {
+  try {
+    const response = await fetch("/api/sources");
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    const data = await response.json();
+
+    if (!Array.isArray(data.sources)) {
+      throw new Error("Invalid source list");
+    }
+
+    const entries = new Map();
+    const options = [node("option", "All sources — global search")];
+    options[0].value = "";
+
+    for (const item of data.sources) {
+      if (!item || typeof item.source_id !== "string" ||
+          !item.source_id || typeof item.doc !== "string" ||
+          typeof item.path !== "string" ||
+          !/^[0-9a-f]{40}$/i.test(String(item.sha || "")) ||
+          item.source_id !== item.path + "@" + item.sha ||
+          entries.has(item.source_id)) {
+        throw new Error("Invalid or duplicate source identity");
+      }
+      entries.set(item.source_id, item);
+      const option = node(
+        "option", item.doc + " · " + item.sha.slice(0, 12)
+      );
+      option.value = item.source_id;
+      options.push(option);
+    }
+
+    const previous = sourceSelect.value;
+    sourceEntries.clear();
+    for (const [key, value] of entries) sourceEntries.set(key, value);
+    sourceSelect.replaceChildren(...options);
+    if (entries.has(previous)) sourceSelect.value = previous;
+    syncSourceControls();
+
+    sourceStatus.textContent =
+      entries.size + " pinned sources available. " +
+      "Source selection constrains passages, not claim-registry search.";
+  } catch (error) {
+    sourceStatus.textContent =
+      "Source list unavailable: " + error.message +
+      ". Global search remains available.";
+  }
+}
+
+async function openCompleteSource() {
+  const selectedSource = sourceSelect.value;
+  if (mode.value === "claims" || !selectedSource) return;
+
+  const id = ++requestId;
+  if (controller) controller.abort();
+  controller = new AbortController();
+
+  hideSourceView();
+  out.replaceChildren();
+  status.textContent = "Opening complete pinned source...";
+
+  try {
+    const response = await fetch(
+      "/api/sources/view?source_id=" + encodeURIComponent(selectedSource),
+      {signal: controller.signal}
+    );
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    const data = await response.json();
+
+    if (id !== requestId) return;
+
+    const expected = sourceEntries.get(selectedSource);
+    const source = data.source;
+    if (!expected || !source ||
+        source.source_id !== selectedSource ||
+        source.path !== expected.path ||
+        source.sha !== expected.sha ||
+        source.doc !== expected.doc ||
+        typeof data.text !== "string") {
+      throw new Error("Source view identity mismatch");
+    }
+
+    sourceView.append(node("h2", source.doc));
+    sourceView.append(node(
+      "p",
+      "Complete pinned source. This is source navigation, not ranked evidence " +
+      "or independent verification.",
+      "warning"
+    ));
+    sourceView.append(node("div", "Source: " + source.path, "metadata"));
+    sourceView.append(node("div", "Pinned commit: " + source.sha, "metadata"));
+
+    const url = sourceURL({
+      path: source.path,
+      commit_sha: source.sha
+    });
+    if (url) {
+      const link = node("a", "Open source at pinned revision");
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      sourceView.append(link);
+    }
+
+    sourceView.append(node("pre", data.text, "passage"));
+    sourceView.hidden = false;
+    status.textContent = "Complete pinned source loaded.";
+  } catch (error) {
+    if (id !== requestId || error.name === "AbortError") return;
+    hideSourceView();
+    status.textContent = "Source view failed: " + error.message;
+  }
+}
+
+sourceSelect.addEventListener("change", () => {
+  ++requestId;
+  if (controller) controller.abort();
+  hideSourceView();
+  out.replaceChildren();
+  syncSourceControls();
+  status.textContent =
+    "Source changed. Press Search or Open complete source.";
+});
+
+openSource.addEventListener("click", openCompleteSource);
+
+loadSources();
 search();
+
 </script>
 </body>
 </html>

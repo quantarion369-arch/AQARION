@@ -30,13 +30,61 @@ def load_at_sha(path, sha):
     )
     return result.stdout
 
+
+def source_id(entry):
+    return f'{entry["path"]}@{entry["sha"]}'
+
+
+def validate_manifest(entries=None):
+    if entries is None:
+        entries = load_manifest()
+    if not isinstance(entries, list):
+        raise ValueError("Manifest must contain a list")
+    seen = set()
+    for entry in entries:
+        if not isinstance(entry, dict):
+            raise ValueError("Invalid manifest entry")
+        path = entry.get("path")
+        sha = entry.get("sha")
+        doc = entry.get("doc")
+        if (
+            not isinstance(path, str) or not path
+            or path != path.strip()
+            or "\\" in path
+            or any(ord(ch) < 32 for ch in path)
+            or any(part in ("", ".", "..") for part in path.split("/"))
+        ):
+            raise ValueError("Invalid repository-relative path")
+        if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-fA-F]{40}", sha):
+            raise ValueError("Invalid full pinned SHA")
+        if not isinstance(doc, str) or not doc.strip():
+            raise ValueError("Invalid document label")
+        identity = (path, sha.lower())
+        if identity in seen:
+            raise ValueError("Duplicate manifest path/revision")
+        seen.add(identity)
+    return entries
+
+
+def resolve_source_id(value, entries=None):
+    if not isinstance(value, str) or not value or value != value.strip():
+        raise ValueError("Invalid source selector")
+    matches = [
+        entry for entry in validate_manifest(entries)
+        if source_id(entry) == value
+    ]
+    if len(matches) != 1:
+        raise KeyError("Unknown source selector")
+    return matches[0]
+
+
 def stem(w):
     for suf in "ization ational fulness ized ing ers ed s".split():
         if w.endswith(suf) and len(w) > len(suf) + 2:
             return w[:len(w) - len(suf)]
     return w
 
-def retrieve_cited(query, top_k=3):
+def retrieve_cited(query, top_k=3, source_id=None):
     """Retrieve passages with reconstructible source citations.
 
     Records contain score, doc, path, commit_sha, passage,
@@ -48,7 +96,10 @@ def retrieve_cited(query, top_k=3):
     """
     q = set(stem(w) for w in WORD.findall(query.lower()))
     results = []
-    for entry in load_manifest():
+    entries = load_manifest()
+    if source_id is not None:
+        entries = [resolve_source_id(source_id, entries)]
+    for entry in entries:
         text = load_at_sha(entry["path"], entry["sha"])
         offset = 0
         for para in text.split(PARA_BREAK):
@@ -74,11 +125,15 @@ def retrieve_cited(query, top_k=3):
     return selected
 
 
-def retrieve(query, top_k=3):
+def retrieve(query, top_k=3, source_id=None):
     """Preserve the legacy four-element retrieval results."""
     return [
         (item["score"], item["doc"], item["commit_sha"], item["passage"])
-        for item in retrieve_cited(query, top_k=top_k)
+        for item in (
+            retrieve_cited(query, top_k=top_k)
+            if source_id is None else
+            retrieve_cited(query, top_k=top_k, source_id=source_id)
+        )
     ]
 
 if __name__ == "__main__":
