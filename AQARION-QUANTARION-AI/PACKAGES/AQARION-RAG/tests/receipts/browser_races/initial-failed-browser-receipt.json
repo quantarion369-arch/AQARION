@@ -1,0 +1,87 @@
+{
+  "head": "8b224279c1c45a7d687724be8e9f63f5132b105a",
+  "application_path": "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/static/index.html",
+  "application_sha256": "d43494786e65367d4efb36bfe15a7a7759481074f1e97df72de3012a2816ea33",
+  "negative_control_sha256": "9f5f535117eb2092436a0c9ba67f7bcb8ab2617f39c2760df6a39c045d16d2d3",
+  "negative_control_change": "First post-JSON generation guard removed",
+  "browser_user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36",
+  "recorded_at_utc": "2026-10-25T06:10:30.996Z",
+  "test_method": "Actual page in srcdoc iframe; controlled fetch responses",
+  "cancellation_behavior": "Mock fetch intentionally ignores abort",
+  "baseline_cases": [
+    {
+      "name": "Late source list preserves startup search",
+      "status": "FAIL",
+      "error": "Missing request: /api/search/evidence"
+    },
+    {
+      "name": "New query wins over older response",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "Source change rejects old scoped evidence",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "Query edit invalidates pending search without resubmission",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "Claims mode ignores old passage response",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "New search supersedes old complete-source view",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "New complete-source view supersedes old search",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "Source switch supersedes old complete-source view",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "Source change during search JSON decoding",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "Source change during source-view JSON decoding",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "Stale HTTP error cannot erase current results",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    {
+      "name": "Stale JSON error cannot erase current results",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    }
+  ],
+  "negative_control": {
+    "expected": "Stale-query assertion fails after search guard removal",
+    "observed": {
+      "name": "New query wins over older response",
+      "status": "FAIL",
+      "error": "Missing request: /api/sources"
+    },
+    "status": "FAIL"
+  },
+  "overall": "FAIL",
+  "real_network_congestion_test": false,
+  "production_files_modified": false,
+  "server_received_at_utc": "2026-10-25T06:10:31.014343+00:00",
+  "application_still_matches_snapshot": true
+}

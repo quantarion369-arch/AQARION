@@ -1,0 +1,478 @@
+from datetime import datetime, timezone
+from hashlib import sha256
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from pathlib import Path
+import json
+import subprocess
+import time
+
+WORK = Path(__file__).resolve().parent
+REPO = Path.home() / "AQARION"
+REL = "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/static/index.html"
+HEAD = "8b224279c1c45a7d687724be8e9f63f5132b105a"
+
+actual_head = subprocess.check_output(
+    ["git", "-C", str(REPO), "rev-parse", "HEAD"], text=True
+).strip()
+if actual_head != HEAD:
+    raise RuntimeError("HEAD differs from the published checkpoint; stopping.")
+
+APP = (REPO / REL).read_bytes()
+committed = subprocess.check_output(
+    ["git", "-C", str(REPO), "show", HEAD + ":" + REL]
+)
+if APP != committed:
+    raise RuntimeError("Browser page differs from committed bytes; stopping.")
+
+guard = b"    if (id !== requestId) return;"
+if APP.count(guard) != 2 or APP.count(b"<script>") != 1:
+    raise RuntimeError("Unexpected application structure; stopping.")
+
+MUTANT = APP.replace(
+    guard, b"    /* TEST ONLY: search-generation guard removed */", 1
+)
+META = {
+    "head": HEAD,
+    "application_path": REL,
+    "application_sha256": sha256(APP).hexdigest(),
+    "negative_control_sha256": sha256(MUTANT).hexdigest(),
+    "negative_control_change": "First post-JSON generation guard removed",
+}
+(WORK / "application.snapshot.html").write_bytes(APP)
+(WORK / "negative-control.snapshot.html").write_bytes(MUTANT)
+
+PAGE = r'''<!doctype html>
+<html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AQARION deterministic browser races</title>
+<style>
+body{font:16px/1.5 system-ui;margin:20px;max-width:900px}
+button{font:inherit;padding:12px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+</style>
+<h1>AQARION browser race checks</h1>
+<p>This tests a captured application page with synthetic responses.
+It does not change the application or contact its API.</p>
+<button id="run">Run deterministic race checks</button>
+<pre id="log">Ready.</pre>
+<script>
+"use strict";
+const log = document.getElementById("log");
+const button = document.getElementById("run");
+const OLD = "STALE_FIXTURE_MUST_NOT_APPEAR";
+const NEW = "CURRENT_FIXTURE_MUST_REMAIN";
+const A = {doc:"Fixture A",path:"fixture-a.md",sha:"a".repeat(40)};
+const B = {doc:"Fixture B",path:"fixture-b.md",sha:"b".repeat(40)};
+for (const source of [A,B]) source.source_id=source.path+"@"+source.sha;
+
+function assert(value,message) {
+  if (!value) throw new Error(message);
+}
+async function settle() {
+  await new Promise(resolve=>setTimeout(resolve,0));
+  await new Promise(resolve=>setTimeout(resolve,0));
+}
+function installFixture(initialQuery) {
+  const records=[], errors=[];
+  window.__race={records,errors};
+  window.addEventListener("error",event=>errors.push(String(event.message)));
+  window.addEventListener("unhandledrejection",
+    event=>errors.push(String(event.reason)));
+  document.getElementById("q").value=initialQuery;
+  window.fetch=(url,options={})=>new Promise(resolve=>{
+    let bodyResolve,bodyReject;
+    const body=new Promise((yes,no)=>{bodyResolve=yes;bodyReject=no;});
+    const request={
+      url:new URL(String(url),location.href),
+      signal:options.signal,
+      jsonStarted:false,
+      headers(status=200) {
+        resolve({
+          ok:status>=200 && status<300,
+          status,
+          json:()=>{request.jsonStarted=true;return body;}
+        });
+      },
+      body:bodyResolve,
+      rejectBody:bodyReject,
+      reply(data,status=200) {
+        request.headers(status);
+        bodyResolve(data);
+      }
+    };
+    records.push(request);
+    // Abort is deliberately ignored: stale responses can still finish.
+  });
+}
+function evidence(source,text) {
+  return {
+    retrieval_context:{
+      seed_results:[{
+        rank:1,score:1,doc:source.doc,path:source.path,
+        commit_sha:source.sha,char_start:0,char_end:text.length,
+        passage:text
+      }],
+      supplementary_context:[]
+    },
+    related_evidence:[],
+    relationship_diagnostics:[]
+  };
+}
+function complete(source,text) {
+  return {source:{...source},text};
+}
+async function boot(html,test) {
+  const frame=document.createElement("iframe");
+  frame.hidden=true;
+  const loaded=new Promise((resolve,reject)=>{
+    frame.onload=resolve;
+    frame.onerror=()=>reject(new Error("Fixture frame failed to load"));
+  });
+  const bootstrap="<script>("+installFixture.toString()+")("+
+    JSON.stringify(test.initial || "")+");</scr"+"ipt><script>";
+  frame.srcdoc=html.replace("<script>",bootstrap);
+  document.body.append(frame);
+  try {
+    await loaded;
+    await settle();
+    const w=frame.contentWindow, d=w.document;
+    const h={
+      frame,w,d,
+      records:w.__race.records,
+      errors:w.__race.errors,
+      out:d.getElementById("out"),
+      view:d.getElementById("source-view"),
+      status:d.getElementById("status"),
+      last(path) {
+        const matches=this.records.filter(r=>r.url.pathname===path);
+        assert(matches.length,"Missing request: "+path);
+        return matches[matches.length-1];
+      },
+      query(text) {
+        const input=d.getElementById("q");
+        input.value=text;
+        input.dispatchEvent(new w.Event("input",{bubbles:true}));
+      },
+      submit(text) {
+        this.query(text);
+        d.getElementById("search").dispatchEvent(
+          new w.Event("submit",{bubbles:true,cancelable:true})
+        );
+        return this.last("/api/search/evidence");
+      },
+      select(source) {
+        const select=d.getElementById("source-selector");
+        select.value=source.source_id;
+        select.dispatchEvent(new w.Event("change",{bubbles:true}));
+      },
+      open() {
+        d.getElementById("open-source").click();
+        return this.last("/api/sources/view");
+      }
+    };
+    if (!test.deferSources) {
+      h.last("/api/sources").reply({sources:[A,B]});
+      await settle();
+      assert(d.getElementById("source-selector").options.length===3,
+        "Fixture source list did not initialize");
+    }
+    return h;
+  } catch(error) {
+    frame.remove();
+    throw error;
+  }
+}
+function currentSearch(h) {
+  assert(h.out.textContent.includes(NEW),"Current search did not render");
+}
+function noOld(h) {
+  assert(!h.d.body.textContent.includes(OLD),"Stale fixture appeared");
+}
+function aborted(request) {
+  assert(request.signal && request.signal.aborted,
+    "Superseded request was not aborted");
+}
+const tests=[
+  {
+    name:"Late source list preserves startup search",
+    initial:"startup",deferSources:true,
+    async run(h) {
+      const search=h.last("/api/search/evidence");
+      search.reply(evidence(A,NEW)); await settle(); currentSearch(h);
+      h.last("/api/sources").reply({sources:[A,B]}); await settle();
+      currentSearch(h);
+      assert(!search.signal.aborted,"Source list aborted startup search");
+    }
+  },
+  {
+    name:"New query wins over older response",
+    async run(h) {
+      const old=h.submit("old query");
+      const fresh=h.submit("new query");
+      aborted(old);
+      fresh.reply(evidence(A,NEW)); await settle(); currentSearch(h);
+      old.reply(evidence(A,OLD)); await settle();
+      assert(h.out.textContent.includes(NEW) &&
+        !h.out.textContent.includes(OLD),
+        "late query replaced current results");
+    }
+  },
+  {
+    name:"Source change rejects old scoped evidence",
+    async run(h) {
+      h.select(A); const old=h.submit("needle");
+      h.select(B); aborted(old);
+      old.reply(evidence(A,OLD)); await settle();
+      noOld(h); assert(!h.out.textContent,"Old scoped output remained");
+      const fresh=h.submit("needle");
+      assert(fresh.url.searchParams.get("source_id")===B.source_id,
+        "New request used wrong selector");
+      fresh.reply(evidence(B,NEW)); await settle(); currentSearch(h);
+    }
+  },
+  {
+    name:"Query edit invalidates pending search without resubmission",
+    async run(h) {
+      const old=h.submit("old query");
+      h.query("edited but not submitted"); aborted(old);
+      old.reply(evidence(A,OLD)); await settle();
+      noOld(h); assert(!h.out.textContent,"Edited query retained results");
+      assert(h.status.textContent.includes("Query changed"),
+        "Edited-query status was replaced");
+    }
+  },
+  {
+    name:"Claims mode ignores old passage response",
+    async run(h) {
+      h.select(A); const old=h.submit("needle");
+      const mode=h.d.getElementById("mode");
+      mode.value="claims";
+      mode.dispatchEvent(new h.w.Event("change",{bubbles:true}));
+      const claims=h.last("/api/claims/search");
+      aborted(old);
+      assert(!claims.url.searchParams.has("source_id"),
+        "Claims request inherited source selector");
+      assert(h.d.getElementById("source-selector").disabled &&
+        h.d.getElementById("open-source").disabled,
+        "Claims controls were not disabled");
+      claims.reply({claims:[{section:"Fixture claim",text:NEW}]});
+      await settle(); currentSearch(h);
+      old.reply(evidence(A,OLD)); await settle();
+      currentSearch(h); noOld(h);
+      assert(h.out.textContent.includes("Claim search"),
+        "Old response replaced Claims mode");
+    }
+  },
+  {
+    name:"New search supersedes old complete-source view",
+    async run(h) {
+      h.select(A); const old=h.open();
+      const fresh=h.submit("new query"); aborted(old);
+      fresh.reply(evidence(A,NEW)); await settle();
+      old.reply(complete(A,OLD)); await settle();
+      currentSearch(h); noOld(h);
+      assert(h.view.hidden,"Stale complete-source panel opened");
+    }
+  },
+  {
+    name:"New complete-source view supersedes old search",
+    async run(h) {
+      h.select(A); const old=h.submit("old query");
+      const fresh=h.open(); aborted(old);
+      fresh.reply(complete(A,NEW)); await settle();
+      old.reply(evidence(A,OLD)); await settle();
+      noOld(h);
+      assert(!h.view.hidden && h.view.textContent.includes(NEW),
+        "Current complete-source view was replaced");
+      assert(!h.out.textContent,"Old search reappeared");
+    }
+  },
+  {
+    name:"Source switch supersedes old complete-source view",
+    async run(h) {
+      h.select(A); const old=h.open();
+      h.select(B); const fresh=h.open(); aborted(old);
+      fresh.reply(complete(B,NEW)); await settle();
+      old.reply(complete(A,OLD)); await settle();
+      noOld(h);
+      assert(!h.view.hidden && h.view.textContent.includes(NEW) &&
+        h.view.textContent.includes(B.doc),"Wrong source view remained");
+    }
+  },
+  {
+    name:"Source change during search JSON decoding",
+    async run(h) {
+      h.select(A); const old=h.submit("needle");
+      old.headers(); await settle();
+      assert(old.jsonStarted,"Search JSON stage was not reached");
+      h.select(B); aborted(old);
+      old.body(evidence(A,OLD)); await settle();
+      noOld(h); assert(!h.out.textContent,"Decoded stale search appeared");
+    }
+  },
+  {
+    name:"Source change during source-view JSON decoding",
+    async run(h) {
+      h.select(A); const old=h.open();
+      old.headers(); await settle();
+      assert(old.jsonStarted,"Source-view JSON stage was not reached");
+      h.select(B); aborted(old);
+      old.body(complete(A,OLD)); await settle();
+      noOld(h);
+      assert(h.view.hidden && !h.view.textContent,
+        "Decoded stale source view appeared");
+    }
+  },
+  {
+    name:"Stale HTTP error cannot erase current results",
+    async run(h) {
+      const old=h.submit("old query");
+      const fresh=h.submit("new query");
+      fresh.reply(evidence(A,NEW)); await settle();
+      old.headers(500); await settle();
+      currentSearch(h);
+      assert(h.status.textContent==="Search complete.",
+        "Stale HTTP error replaced current status");
+    }
+  },
+  {
+    name:"Stale JSON error cannot erase current results",
+    async run(h) {
+      const old=h.submit("old query");
+      old.headers(); await settle();
+      assert(old.jsonStarted,"Old JSON stage was not reached");
+      const fresh=h.submit("new query");
+      fresh.reply(evidence(A,NEW)); await settle();
+      old.rejectBody(new Error("synthetic old JSON failure"));
+      await settle(); currentSearch(h);
+      assert(h.status.textContent==="Search complete.",
+        "Stale JSON error replaced current status");
+    }
+  }
+];
+async function execute(test,html) {
+  let h;
+  try {
+    h=await boot(html,test);
+    await test.run(h);
+    await settle();
+    assert(!h.errors.length,"Browser runtime errors: "+h.errors.join("; "));
+    return {name:test.name,status:"PASS"};
+  } catch(error) {
+    return {name:test.name,status:"FAIL",error:String(error.message || error)};
+  } finally {
+    if(h) h.frame.remove();
+  }
+}
+button.addEventListener("click",async()=>{
+  button.disabled=true;
+  log.textContent="Running controlled browser response orders...\n";
+  try {
+    const [html,mutant,meta]=await Promise.all([
+      fetch("/application").then(r=>r.text()),
+      fetch("/negative-control").then(r=>r.text()),
+      fetch("/metadata").then(r=>r.json())
+    ]);
+    const results=[];
+    for(const test of tests) {
+      const result=await execute(test,html);
+      results.push(result);
+      log.textContent+=result.status+" — "+result.name+
+        (result.error ? ": "+result.error : "")+"\n";
+    }
+    const observed=await execute(tests[1],mutant);
+    const negativePassed=observed.status==="FAIL" &&
+      observed.error==="late query replaced current results";
+    const passed=results.every(r=>r.status==="PASS") && negativePassed;
+    const report={
+      ...meta,
+      browser_user_agent:navigator.userAgent,
+      recorded_at_utc:new Date().toISOString(),
+      test_method:"Actual page in srcdoc iframe; controlled fetch responses",
+      cancellation_behavior:"Mock fetch intentionally ignores abort",
+      baseline_cases:results,
+      negative_control:{
+        expected:"Stale-query assertion fails after search guard removal",
+        observed,
+        status:negativePassed ? "PASS" : "FAIL"
+      },
+      overall:passed ? "PASS" : "FAIL",
+      real_network_congestion_test:false,
+      production_files_modified:false
+    };
+    const response=await fetch("/receipt",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(report)
+    });
+    if(!response.ok) throw new Error("Receipt save failed: HTTP "+response.status);
+    const saved=await response.json();
+    log.textContent+="\nBROWSER_RACE_SUITE="+report.overall+
+      "\nBASELINE_CASES="+results.filter(r=>r.status==="PASS").length+"/"+
+      results.length+
+      "\nEXPECTED_NEGATIVE_CONTROL="+(negativePassed ? "PASS" : "FAIL")+
+      "\nRECEIPT_SAVED="+saved.receipt+"\n";
+  } catch(error) {
+    log.textContent+="\nHARNESS_ERROR="+String(error.message || error)+"\n";
+  } finally {
+    button.disabled=false;
+  }
+});
+</script></html>'''
+(WORK / "race-check.html").write_text(PAGE, encoding="utf-8")
+
+class Handler(BaseHTTPRequestHandler):
+    def send_bytes(self, data, content_type, status=200):
+        self.send_response(status)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
+
+    def do_GET(self):
+        path = self.path.split("?", 1)[0]
+        routes = {
+            "/": (PAGE.encode(), "text/html; charset=utf-8"),
+            "/application": (APP, "text/html; charset=utf-8"),
+            "/negative-control": (MUTANT, "text/html; charset=utf-8"),
+            "/metadata": (json.dumps(META).encode(), "application/json"),
+        }
+        if path not in routes:
+            self.send_bytes(b"Not found", "text/plain", 404)
+            return
+        self.send_bytes(*routes[path])
+
+    def do_POST(self):
+        if self.path != "/receipt":
+            self.send_bytes(b"Not found", "text/plain", 404)
+            return
+        length = int(self.headers.get("Content-Length", "0"))
+        if not 0 < length <= 128000:
+            self.send_bytes(b"Invalid length", "text/plain", 400)
+            return
+        report = json.loads(self.rfile.read(length))
+        if any(report.get(key) != value for key, value in META.items()):
+            self.send_bytes(b"Metadata mismatch", "text/plain", 400)
+            return
+        report["server_received_at_utc"] = datetime.now(timezone.utc).isoformat()
+        report["application_still_matches_snapshot"] = (
+            (REPO / REL).read_bytes() == APP
+        )
+        filename = "browser-race-receipt-" + str(time.time_ns()) + ".json"
+        (WORK / filename).write_text(
+            json.dumps(report, indent=2) + "\n", encoding="utf-8"
+        )
+        print("BROWSER_RACE_RECEIPT:", WORK / filename, flush=True)
+        print("REPORTED_RESULT:", report.get("overall"), flush=True)
+        self.send_bytes(
+            json.dumps({"receipt": filename}).encode(), "application/json"
+        )
+
+with HTTPServer(("127.0.0.1", 8766), Handler) as server:
+    print("HARNESS_URL=http://127.0.0.1:8766/", flush=True)
+    print("APPLICATION_SHA256=" + META["application_sha256"], flush=True)
+    print("PRODUCTION_SERVER_8765_UNCHANGED", flush=True)
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nBrowser race harness stopped.", flush=True)

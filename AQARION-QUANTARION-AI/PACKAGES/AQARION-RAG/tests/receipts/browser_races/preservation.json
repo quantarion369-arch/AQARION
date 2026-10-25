@@ -1,0 +1,21 @@
+{
+  "preserved_at_utc": "2026-10-25T06:15:23.938256+00:00",
+  "execution_origin": "User-executed Android browser harness",
+  "tested_checkpoint": "8b224279c1c45a7d687724be8e9f63f5132b105a",
+  "application_sha256": "d43494786e65367d4efb36bfe15a7a7759481074f1e97df72de3012a2816ea33",
+  "baseline_cases_passed": 12,
+  "expected_negative_control": "PASS",
+  "initial_fixture_failure_preserved": true,
+  "independent_replay": false,
+  "real_network_congestion_test": false,
+  "artifact_sha256": {
+    "corrected-harness-driver.txt": "365e04fb630ce12c070a39ce12c403a49900fb4de4cad8e4c301b9cbb139c5d4",
+    "initial-harness-driver.txt": "cff6874aa1da15968b6240f7917d09b71811ae559c7a36a44984a7452c915ef0",
+    "race-check.html": "da0cdeea73b9efe87a963ec70d9158be736c12d9b01a620a02f24ea3f06d076d",
+    "application.snapshot.html": "d43494786e65367d4efb36bfe15a7a7759481074f1e97df72de3012a2816ea33",
+    "negative-control.snapshot.html": "9f5f535117eb2092436a0c9ba67f7bcb8ab2617f39c2760df6a39c045d16d2d3",
+    "passed-browser-receipt.json": "9d11cd331e0109bd08b2d75c977e85a1358963ad80301d1606f601ad98056f23",
+    "initial-failed-browser-receipt.json": "900489794b4b31bef4653231101c010aa95d4cb82c98bd0b4822d721c170c74f",
+    "README.md": "eab7d6a5b3827e7cb9961b9989525ccde47119daed16d16cec29b60538fbed98"
+  }
+}
