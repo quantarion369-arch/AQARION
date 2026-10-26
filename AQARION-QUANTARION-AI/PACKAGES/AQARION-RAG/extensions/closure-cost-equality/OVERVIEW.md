@@ -38,10 +38,10 @@ Equivalently, the itinerary-prefix set has the full Cartesian-product size dicta
 
 The nested-alphabet and common-coordinate feedback characterization is proved
 for the general all-\(k\), all-profile case in
-`research/closure-cost/GENERAL-FEEDBACK.md`.
+[`research/closure-cost/GENERAL-FEEDBACK.md`](../../research/closure-cost/GENERAL-FEEDBACK.md).
 
 The binary all-ones-profile special case remains in
-`research/closure-cost/THEOREM.md`.
+[`research/closure-cost/THEOREM.md`](../../research/closure-cost/THEOREM.md).
 
 ## Replay evidence
 
@@ -53,12 +53,12 @@ Therefore this is a **local semantic replay**, not a hash-verified byte-for-byte
 
 See:
 
-- `research/closure-cost/THEOREM.md`
-- `research/closure-cost/AUDIT.md`
-- `extensions/closure-cost-equality/replay/REPLAY.md`
-- `extensions/closure-cost-equality/replay/equality_check.py`
-- `extensions/closure-cost-equality/replay/local_eq0_reconstructed.txt`
-- `extensions/closure-cost-equality/replay/local_eq1_reconstructed.txt`
+- [`research/closure-cost/THEOREM.md`](../../research/closure-cost/THEOREM.md)
+- [`research/closure-cost/AUDIT.md`](../../research/closure-cost/AUDIT.md)
+- [`extensions/closure-cost-equality/replay/REPLAY.md`](replay/REPLAY.md)
+- [`extensions/closure-cost-equality/replay/equality_check.py`](replay/equality_check.py)
+- [`extensions/closure-cost-equality/replay/local_eq0_reconstructed.txt`](replay/local_eq0_reconstructed.txt)
+- [`extensions/closure-cost-equality/replay/local_eq1_reconstructed.txt`](replay/local_eq1_reconstructed.txt)
 
 ## Explicit non-claims
 
@@ -72,3 +72,7 @@ See:
 ## Position
 
 The extension has a reviewed paper-level argument and a pushed, locally reproduced semantic replay with its dependency limitation stated explicitly. Formalization, novelty, and publication certification remain separate gates.
+
+## Historical record
+
+[Archived October 14 repository/session overview](archive/2026-10-14-repository-overview.md) is preserved byte-for-byte from its former trailing-period filename. It contains historical status statements, obsolete paths, and embedded save/push instructions; do not treat those instructions as current commands. This relocation does not revalidate its mathematical claims or execution reports. Use this maintained overview and its linked documents for navigation.
