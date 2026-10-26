@@ -20,14 +20,14 @@ permissions:
 
 jobs:
   focused-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.13'
       - name: Install pinned pytest
@@ -67,7 +67,7 @@ jobs:
           ], plugins=[Gate()]))
       - name: Preserve CI test report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: explanation-engine-005-tests
           path: ${{ runner.temp }}/explanation-engine-005/
