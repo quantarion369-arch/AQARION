@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-10-26T05:10:11.907307+00:00",
+  "finished_utc": "2026-10-26T05:10:14.890094+00:00",
+  "command": [
+    "proot-distro",
+    "login",
+    "ubuntu",
+    "--",
+    "/root/.venvs/aqarion-flint-090/bin/python",
+    "-B",
+    "-I",
+    "-"
+  ],
+  "execution_method": "saved source bytes passed unchanged to stdin",
+  "source_file": "frontier_check.py",
+  "source_sha256": "53bcf2f4c0378ec45688844e5c53c08a376c85c2af43cd74ee2a874789b5482a",
+  "source_unchanged_after_run": true,
+  "stdout_sha256": "08f3c7a3071ffc9ff8c6c3ea2c7c36a3e456b8265208205627282a8cf0c66809",
+  "stderr_sha256": "6628672263c899722eb398cfce77138ef4d9a6d458e3652b7b62056d619a0181",
+  "returncode": 0,
+  "failures": [],
+  "thresholds_checked_against_user_transcription": 12,
+  "winner_entries_checked_against_user_transcription": 12,
+  "scope": "finite certificate catalog; no global optimality claim"
+}

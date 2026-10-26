@@ -1,0 +1,59 @@
+{
+  "fixture_G_monomial_coefficients": [
+    "1/10",
+    "-3/10",
+    "0",
+    "1/2"
+  ],
+  "interval": [
+    "-1",
+    "1"
+  ],
+  "coefficient_order": "constant term first",
+  "square_weights": {
+    "construction": "(1-mu)*p(mu)^2, normalized to integral one",
+    "old11": [
+      -8,
+      24,
+      20,
+      -51,
+      84,
+      -100
+    ],
+    "new11": [
+      21,
+      -33,
+      -60,
+      -127,
+      -514,
+      1000
+    ],
+    "simple13": [
+      0,
+      -1,
+      -1,
+      -3,
+      -6,
+      -25,
+      50
+    ]
+  },
+  "power_weights": {
+    "construction": "(1-mu)^r, normalized to integral one",
+    "r_min": 3,
+    "r_max": 37
+  },
+  "error_model": "|Delta M_j| <= delta*a_j",
+  "profiles": {
+    "equal": "a_j=1",
+    "linear": "a_j=1+j/10",
+    "geometric": "a_j=(11/10)^j"
+  },
+  "available_degree_budgets": [
+    11,
+    13,
+    20,
+    37
+  ],
+  "threshold_rule": "delta strictly less than reported threshold"
+}

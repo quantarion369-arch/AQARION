@@ -1,0 +1,56 @@
+{
+  "provenance": "Structured transcription of user-supplied terminal output in chat dated 2026-10-26; not an original stdout capture",
+  "reported_interpreter": "/root/.venvs/aqarion-flint-090/bin/python",
+  "reported_python_flint_version": "0.9.0",
+  "reported_candidates_checked": 38,
+  "reported_checks_passed": 321,
+  "reported_all_checks": "PASS",
+  "reported_exit_status": 0,
+  "reported_warning": "proot warning: can't sanitize binding \"/proc/self/fd/0\": No such file or directory",
+  "selected_exact_thresholds": {
+    "old11": {
+      "equal": "35723537/29654024400",
+      "linear": "71447074/108662278725",
+      "geometric": "11163605312500/20798495299655073"
+    },
+    "new11": {
+      "equal": "515138509/319709590200",
+      "linear": "1030277018/1264800101565",
+      "geometric": "643923136250000/1021203794368676919"
+    },
+    "simple13": {
+      "equal": "40500847/19894574700",
+      "linear": "40500847/43459461045",
+      "geometric": "101252117500000/154569839188465701"
+    },
+    "power37": {
+      "equal": "122/50635",
+      "linear": "488/577239",
+      "geometric": "33535104647168000000000000000000000000000000000000/84643714786604304859650997024073002629122615446856907"
+    }
+  },
+  "reported_winners": {
+    "11": {
+      "equal": "new11",
+      "linear": "new11",
+      "geometric": "new11"
+    },
+    "13": {
+      "equal": "simple13",
+      "linear": "simple13",
+      "geometric": "simple13"
+    },
+    "20": {
+      "equal": "simple13",
+      "linear": "simple13",
+      "geometric": "simple13"
+    },
+    "37": {
+      "equal": "power37",
+      "linear": "simple13",
+      "geometric": "simple13"
+    }
+  },
+  "execution_time_source_hash": "NOT_RECORDED",
+  "scope": "finite catalog; no global optimality or instability result"
+}
