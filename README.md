@@ -1,21 +1,36 @@
 <!-- AQARION-FRONTDOOR-REPAIR -->
-# AQARION: start here
+# AQARION: inspect and replay mathematical research
 
-Research on finite dynamical systems, quotient structure, and reproducible verification.
+AQARION studies finite dynamics, observable quotients, and reproducible
+verification. Its local evidence workbench helps you inspect pinned
+sources, nearby qualifications, and explicitly registered corrections.
 
-## Choose your first step
+## Choose one task
 
-1. Understand the project: read the existing overview below.
-2. Reproduce a finite regression from the repository root:
+| What you want to do | Start here |
+|---|---|
+| Inspect a claim and its qualifications | [Run the local evidence workbench](AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/README.md#run-the-browser-application) |
+| Follow a concrete correction-tracing example | [Try correction-aware evidence search](AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/README.md#try-correction-aware-evidence-search) |
+| Run a small finite regression | Use the command below |
+| Reproduce the moment-certificate comparison | [Certificate-frontier benchmark](AQARION-QUANTARION-AI/research/neutrino-moment-benchmarks/certificate-frontier/README.md) — requires Python-FLINT |
+
+### Small regression: Python 3, no additional Python packages
+
+From the repository root:
 
     python3 -B AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py
 
 A passing finite regression is not a general proof or Lean verification.
 
-3. Explore the [evidence-workflow simulation](Executable-Mathematics-Verification-Dashboard-2026-10-01.html).
-Open the HTML file in a browser. It models evidence gates but does not execute verification.
+### What the workbench does
 
-The existing project record follows unchanged.
+It helps locate recorded evidence and inspect its source revision and
+qualifications. It does not independently prove retrieved claims or
+execute experiments merely by displaying their receipts.
+
+The workbench runs locally; these instructions are not a public hosted demo.
+
+The existing research overview and historical record follow unchanged.
 
 ---
 
