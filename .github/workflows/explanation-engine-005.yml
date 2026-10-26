@@ -25,7 +25,6 @@ jobs:
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
-      CI_EVIDENCE_DIR: ${{ runner.temp }}/explanation-engine-005
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -34,6 +33,8 @@ jobs:
       - name: Install pinned pytest
         run: python -m pip install 'pytest==9.1.1'
       - name: Run focused tests and enforce collection
+        env:
+          CI_EVIDENCE_DIR: ${{ runner.temp }}/explanation-engine-005
         shell: python
         run: |
           import os
