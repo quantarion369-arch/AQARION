@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform android -- Python 3.13.13, pytest-9.1.1, pluggy-1.6.0 -- /data/data/com.termux/files/usr/bin/python
+rootdir: /data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005
+collecting ... collected 7 items
+
+test_explain.py::ExplanationTests::test_annihilator_and_product_pairing PASSED [ 14%]
+test_explain.py::ExplanationTests::test_existing_compatible_quotient PASSED [ 28%]
+test_explain.py::ExplanationTests::test_reject_malformed_inputs
+test_explain.py::ExplanationTests::test_reject_malformed_inputs PASSED   [ 42%]
+test_explain.py::ExplanationTests::test_relabeling_and_single_state PASSED [ 57%]
+test_explain.py::ExplanationTests::test_round_profiles_and_certificates
+test_explain.py::ExplanationTests::test_round_profiles_and_certificates PASSED [ 71%]
+test_explain.py::ExplanationTests::test_stable_class_not_raw_state_annihilators PASSED [ 85%]
+test_explain.py::ExplanationTests::test_three_distinct_mechanisms
+test_explain.py::ExplanationTests::test_three_distinct_mechanisms PASSED [100%]
+
+- generated xml file: /data/data/com.termux/files/home/AQARION-engine-evidence-refresh-diqt_06v/junit.xml -
+==================== 7 passed, 14 subtests passed in 0.13s =====================

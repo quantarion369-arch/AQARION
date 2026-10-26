@@ -1,0 +1,48 @@
+{
+  "schema": "focused-pytest-result-v1",
+  "exit_code": 0,
+  "passed": true,
+  "source_sha256": {
+    "README.md": "4fb37e9a9a5e9f28a536e53c53ebeefff6925a30e040dd0c34c076c6e2d64b8a",
+    "explain.py": "b0eb4ab159efb00e2ba45e3d820cba86751da107b37ccec624e660ac8e75ea0e",
+    "test_explain.py": "76a9e16c5a1b190a7ffdb4fd7b6f5e33fd928a074494cd86ed793c8975a59856"
+  },
+  "junit_cases": [
+    {
+      "name": "test_annihilator_and_product_pairing",
+      "classname": "test_explain.ExplanationTests",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_existing_compatible_quotient",
+      "classname": "test_explain.ExplanationTests",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_reject_malformed_inputs",
+      "classname": "test_explain.ExplanationTests",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_relabeling_and_single_state",
+      "classname": "test_explain.ExplanationTests",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_round_profiles_and_certificates",
+      "classname": "test_explain.ExplanationTests",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_stable_class_not_raw_state_annihilators",
+      "classname": "test_explain.ExplanationTests",
+      "outcome": "passed"
+    },
+    {
+      "name": "test_three_distinct_mechanisms",
+      "classname": "test_explain.ExplanationTests",
+      "outcome": "passed"
+    }
+  ],
+  "scope": "Focused existing tests; no separate census or formal proof"
+}

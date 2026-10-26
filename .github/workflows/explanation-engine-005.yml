@@ -1,0 +1,73 @@
+name: Exact Explanation Engine 005
+
+on:
+  push:
+    paths:
+      - 'AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/**'
+      - 'AQARION-QUANTARION-AI/research/exact-quotient-agreement/quotient-audit-001/**'
+      - 'AQARION-QUANTARION-AI/research/exact-quotient-agreement/closure-certificate-004/**'
+      - '.github/workflows/explanation-engine-005.yml'
+  pull_request:
+    paths:
+      - 'AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/**'
+      - 'AQARION-QUANTARION-AI/research/exact-quotient-agreement/quotient-audit-001/**'
+      - 'AQARION-QUANTARION-AI/research/exact-quotient-agreement/closure-certificate-004/**'
+      - '.github/workflows/explanation-engine-005.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+      CI_EVIDENCE_DIR: ${{ runner.temp }}/explanation-engine-005
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned pytest
+        run: python -m pip install 'pytest==9.1.1'
+      - name: Run focused tests and enforce collection
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+          import pytest
+
+          output = Path(os.environ["CI_EVIDENCE_DIR"])
+          output.mkdir(parents=True, exist_ok=True)
+
+          class Gate:
+              def __init__(self):
+                  self.skipped = False
+
+              def pytest_collectreport(self, report):
+                  self.skipped |= report.skipped
+
+              def pytest_runtest_logreport(self, report):
+                  self.skipped |= report.skipped
+
+              def pytest_sessionfinish(self, session, exitstatus):
+                  if session.testscollected != 7 or self.skipped:
+                      print("FAIL: expected exactly 7 collected tests and no skips.")
+                      session.exitstatus = 1
+
+          raise SystemExit(pytest.main([
+              "-o", "addopts=", "-p", "no:cacheprovider",
+              "-q", "--tb=short",
+              "--junitxml=" + str(output / "junit.xml"),
+              "AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/test_explain.py",
+          ], plugins=[Gate()]))
+      - name: Preserve CI test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: explanation-engine-005-tests
+          path: ${{ runner.temp }}/explanation-engine-005/
+          if-no-files-found: warn

@@ -1,0 +1,51 @@
+{
+  "repository_head": "46a1afb619a7bcddf8f197fb6b9d29886595dfd1",
+  "started_at_utc": "2026-10-26T21:59:43.993877+00:00",
+  "finished_at_utc": "2026-10-26T21:59:44.945114+00:00",
+  "command": [
+    "/data/data/com.termux/files/usr/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-o",
+    "addopts=",
+    "-p",
+    "no:cacheprovider",
+    "-v",
+    "--tb=short",
+    "--junitxml=/data/data/com.termux/files/home/AQARION-engine-evidence-refresh-diqt_06v/junit.xml",
+    "test_explain.py"
+  ],
+  "exit_code": 0,
+  "dependencies_sha256": {
+    "quotient-audit-001/quotient_audit.py": "d3c5e971c63db8b37ec7f987b1d7c02d05bea186150849319b1439c806bc0708",
+    "closure-certificate-004/closure_certificate.py": "c315253708355164579159e6e92b82aa74b0a9ea11cef8c04fdf55ec510efd60"
+  },
+  "artifact_sha256": {
+    "README.md": "67fe9c1f7493e7d2f85b2491e09dc8a15be3ff40d5efd0a224be4e3bd9c533c2",
+    "explain.py": "b0eb4ab159efb00e2ba45e3d820cba86751da107b37ccec624e660ac8e75ea0e",
+    "test_explain.py": "76a9e16c5a1b190a7ffdb4fd7b6f5e33fd928a074494cd86ed793c8975a59856",
+    "test-output.txt": "0ab5f428345c73fd618d2ef34260ae86856ae5a54e7f0cfeec6b3f2d8d2a850c",
+    "test-results.json": "c1a69456a8f78b354f8a9a554a1cac69e2250e8c029d39c8b969bb32d20c58f9"
+  },
+  "dependencies_unchanged": true,
+  "git_index_unchanged": true,
+  "previous_artifacts_backup": "/data/data/com.termux/files/home/AQARION-engine-evidence-refresh-diqt_06v/previous",
+  "scope": "Focused local tests of amended test source; not independent review",
+  "post_run_documentation_update": {
+    "files": [
+      "README.md"
+    ],
+    "engine_and_tests_unchanged": true,
+    "note": "Reproduction and CI instructions added after the recorded run."
+  },
+  "test_output_normalization": {
+    "recorded_at_utc": "2026-10-26T22:16:40.594247+00:00",
+    "original_log_sha256": "ed7da437fe21cda7b81c086da74db863560e9f50adb22d2f507363b747ddcb85",
+    "published_log_sha256": "0ab5f428345c73fd618d2ef34260ae86856ae5a54e7f0cfeec6b3f2d8d2a850c",
+    "original_log_backup": "/data/data/com.termux/files/home/AQARION-original-test-log-l43ei6yf/test-output.txt",
+    "transformation": "Remove trailing spaces/tabs; normalize CRLF to LF; remove extra blank lines at EOF; retain one final newline.",
+    "published_log_is_raw_capture": false,
+    "tests_rerun": false
+  }
+}
