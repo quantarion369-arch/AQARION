@@ -36,7 +36,7 @@ def test_source_actions_reuse_generation_and_safe_rendering():
         "id !== requestId",
         "validateScopedEvidence(data, selectedSource)",
         'sourceView.append(node("pre", data.text, "passage"))',
-        'mode.addEventListener("change", search)',
+        'mode.addEventListener("change", handleModeChange)',
     ):
         assert marker in page
     for forbidden in (

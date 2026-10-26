@@ -40,6 +40,7 @@ button:disabled{cursor:default;opacity:.55}
 <label for="q" hidden>Research question</label>
 <input id="q" placeholder="Enter a research question..." autofocus>
 <button type="submit">Search</button>
+<p id="active-search-scope" class="warning" role="status" aria-live="polite" style="flex-basis:100%;margin:0">Search scope: All sources — source list loading.</p>
 </form>
 <div class="source-tools">
 <label for="source-selector">Pinned source</label>
@@ -68,6 +69,8 @@ const openSource = document.getElementById("open-source");
 const sourceStatus = document.getElementById("source-status");
 const sourceView = document.getElementById("source-view");
 const sourceEntries = new Map();
+const activeSearchScope = document.getElementById("active-search-scope");
+let sourceListState = "loading";
 let requestId = 0;
 let controller = null;
 
@@ -302,7 +305,16 @@ document.getElementById("search").addEventListener("submit", event => {
   search();
 });
 
-mode.addEventListener("change", search);
+function handleModeChange() {
+  ++requestId;
+  if (controller) controller.abort();
+  hideSourceView();
+  out.replaceChildren();
+  syncSourceControls();
+  status.textContent = "Mode changed. Press Search or Enter.";
+}
+
+mode.addEventListener("change", handleModeChange);
 
 input.addEventListener("input", () => {
   hideSourceView();
@@ -318,10 +330,37 @@ function hideSourceView() {
   sourceView.replaceChildren();
 }
 
+function updateSearchScope() {
+  if (mode.value === "claims") {
+    activeSearchScope.textContent =
+      "Search scope: claim registry — pinned-source selection does not apply.";
+    return;
+  }
+  const selected = sourceSelect.value;
+  if (selected) {
+    const entry = sourceEntries.get(selected);
+    activeSearchScope.textContent = entry
+      ? "Search scope: " + entry.doc + " — one pinned document."
+      : "Search scope: selected source unavailable — choose a valid pinned source.";
+    return;
+  }
+  if (sourceListState === "loaded") {
+    const count = sourceEntries.size;
+    activeSearchScope.textContent =
+      "Search scope: All sources — " + count +
+      (count === 1 ? " pinned document." : " pinned documents.");
+  } else {
+    activeSearchScope.textContent = sourceListState === "failed"
+      ? "Search scope: All sources — source count unavailable."
+      : "Search scope: All sources — source list loading.";
+  }
+}
+
 function syncSourceControls() {
   const claimsMode = mode.value === "claims";
   sourceSelect.disabled = claimsMode;
   openSource.disabled = claimsMode || !sourceSelect.value;
+  updateSearchScope();
 }
 
 function validateScopedEvidence(data, selectedSource) {
@@ -381,12 +420,15 @@ async function loadSources() {
     for (const [key, value] of entries) sourceEntries.set(key, value);
     sourceSelect.replaceChildren(...options);
     if (entries.has(previous)) sourceSelect.value = previous;
+    sourceListState = "loaded";
     syncSourceControls();
 
     sourceStatus.textContent =
       entries.size + " pinned sources available. " +
       "Source selection constrains passages, not claim-registry search.";
   } catch (error) {
+    sourceListState = "failed";
+    updateSearchScope();
     sourceStatus.textContent =
       "Source list unavailable: " + error.message +
       ". Global search remains available.";
