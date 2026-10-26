@@ -1,0 +1,102 @@
+{
+  "application_sha256": "876fc2dfd19467a19109df4f3358e04b2c131a6a759484fe106f697fce505fce",
+  "harness_sha256": "92c93f70d9f38a905361133358d6f8a08d9c592fec7f071ca4b2e1aedd038549",
+  "stale_control_sha256": "38492142823aa5213f8c97fd0a01b684345dced116656fa19fd2c690b162b1cc",
+  "auto_control_sha256": "8d354138159b57e6f8dfdd98c681c7581d34a437afb955d8acdb25d01d0f82f1",
+  "historical_harness_sha256": "da0cdeea73b9efe87a963ec70d9158be736c12d9b01a620a02f24ea3f06d076d",
+  "scope": "CURRENT_FULL_PAGE_CONTROLLED_FETCH",
+  "real_backend_search_test": false,
+  "independent_replay": false,
+  "browser_user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Mobile Safari/537.36",
+  "recorded_at_utc": "2026-10-26T09:16:00.870Z",
+  "test_method": "Actual page in srcdoc iframe; controlled fetch responses",
+  "cancellation_behavior": "Mock fetch intentionally ignores abort",
+  "baseline_cases": [
+    {
+      "name": "Late source list preserves startup search",
+      "status": "PASS"
+    },
+    {
+      "name": "New query wins over older response",
+      "status": "PASS"
+    },
+    {
+      "name": "Source change rejects old scoped evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "Query edit invalidates pending search without resubmission",
+      "status": "PASS"
+    },
+    {
+      "name": "Claims mode ignores old passage response",
+      "status": "PASS"
+    },
+    {
+      "name": "New search supersedes old complete-source view",
+      "status": "PASS"
+    },
+    {
+      "name": "New complete-source view supersedes old search",
+      "status": "PASS"
+    },
+    {
+      "name": "Source switch supersedes old complete-source view",
+      "status": "PASS"
+    },
+    {
+      "name": "Source change during search JSON decoding",
+      "status": "PASS"
+    },
+    {
+      "name": "Source change during source-view JSON decoding",
+      "status": "PASS"
+    },
+    {
+      "name": "Stale HTTP error cannot erase current results",
+      "status": "PASS"
+    },
+    {
+      "name": "Stale JSON error cannot erase current results",
+      "status": "PASS"
+    },
+    {
+      "name": "Only explicit submission searches",
+      "status": "PASS"
+    },
+    {
+      "name": "Scoped failure never retries globally",
+      "status": "PASS"
+    },
+    {
+      "name": "Scoped response rejects wrong path",
+      "status": "PASS"
+    },
+    {
+      "name": "Scoped response rejects wrong commit_sha",
+      "status": "PASS"
+    }
+  ],
+  "negative_control": {
+    "expected": "Stale-query assertion fails after search guard removal",
+    "observed": {
+      "name": "New query wins over older response",
+      "status": "FAIL",
+      "error": "late query replaced current results"
+    },
+    "status": "PASS"
+  },
+  "auto_search_negative_control": {
+    "observed": {
+      "name": "Only explicit submission searches",
+      "status": "FAIL",
+      "error": "Mode/source change submitted a search"
+    },
+    "status": "PASS"
+  },
+  "overall": "PASS",
+  "real_network_congestion_test": false,
+  "production_files_modified": false,
+  "application_still_matches_snapshot": true,
+  "server_checked_overall": "PASS"
+}

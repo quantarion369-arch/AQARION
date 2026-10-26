@@ -35,6 +35,12 @@ jobs:
         with:
           python-version: "3.13.13"
 
+      - name: Set up Node for UI function tests
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
       - name: Install test dependency
         run: python -m pip install pytest==9.1.1
 
@@ -51,6 +57,7 @@ jobs:
           import json
           import os
           import platform
+          import shutil
           import subprocess
           import sys
           import traceback
@@ -99,6 +106,13 @@ jobs:
                   raise RuntimeError("Checked-out HEAD differs from expected commit")
 
               report["pytest_version"] = importlib.metadata.version("pytest")
+
+              node = shutil.which("node")
+              if not node:
+                  raise RuntimeError("Node required for UI function tests")
+              report["node_version"] = subprocess.check_output(
+                  [node, "--version"], text=True
+              ).strip()
               report["git_status_before"] = git(
                   "status", "--porcelain", "--untracked-files=normal"
               ).decode()
@@ -194,6 +208,36 @@ jobs:
 
               if counts["tests"] == 0 or counts["failures"] or counts["errors"]:
                   raise RuntimeError("JUnit report has no tests or reports failures")
+
+              required_ui_tests = {
+                  "test_eight_runtime_states",
+                  "test_mode_change_runtime_without_submission",
+              }
+              ui_cases = {
+                  name: [
+                      case for case in xml.iter("testcase")
+                      if case.get("name") == name
+                      and case.get("classname", "").endswith(
+                          "test_active_scope_summary.ActiveScopeSummaryTests"
+                      )
+                  ]
+                  for name in required_ui_tests
+              }
+              report["required_ui_runtime_tests"] = {}
+              for name, cases in sorted(ui_cases.items()):
+                  if len(cases) != 1:
+                      raise RuntimeError(
+                          "Missing or duplicated UI runtime test: " + name
+                      )
+                  case = cases[0]
+                  if any(
+                      case.find(tag) is not None
+                      for tag in ("skipped", "failure", "error")
+                  ):
+                      raise RuntimeError(
+                          "UI runtime test did not pass: " + name
+                      )
+                  report["required_ui_runtime_tests"][name] = "PASS"
 
               report["status"] = "PASS"
 

@@ -1,0 +1,10 @@
+{
+  "application_sha256": "876fc2dfd19467a19109df4f3358e04b2c131a6a759484fe106f697fce505fce",
+  "harness_sha256": "92c93f70d9f38a905361133358d6f8a08d9c592fec7f071ca4b2e1aedd038549",
+  "stale_control_sha256": "38492142823aa5213f8c97fd0a01b684345dced116656fa19fd2c690b162b1cc",
+  "auto_control_sha256": "8d354138159b57e6f8dfdd98c681c7581d34a437afb955d8acdb25d01d0f82f1",
+  "historical_harness_sha256": "da0cdeea73b9efe87a963ec70d9158be736c12d9b01a620a02f24ea3f06d076d",
+  "scope": "CURRENT_FULL_PAGE_CONTROLLED_FETCH",
+  "real_backend_search_test": false,
+  "independent_replay": false
+}

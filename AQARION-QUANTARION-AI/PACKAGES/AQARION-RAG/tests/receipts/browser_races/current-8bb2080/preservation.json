@@ -1,0 +1,19 @@
+{
+  "preserved_at_utc": "2026-10-26T09:33:29.401246+00:00",
+  "implementation_commit": "8bb2080b7e218200747df90a3d4d21525533e99a",
+  "association_basis": "Tested HTML bytes equal committed HTML bytes",
+  "application_sha256": "876fc2dfd19467a19109df4f3358e04b2c131a6a759484fe106f697fce505fce",
+  "execution_origin": "User-executed Android browser",
+  "baseline_cases_passed": 16,
+  "negative_controls_passed": 2,
+  "independent_replay": false,
+  "real_network_congestion_test": false,
+  "artifact_sha256": {
+    "application.snapshot.html": "876fc2dfd19467a19109df4f3358e04b2c131a6a759484fe106f697fce505fce",
+    "stale-control.snapshot.html": "38492142823aa5213f8c97fd0a01b684345dced116656fa19fd2c690b162b1cc",
+    "auto-control.snapshot.html": "8d354138159b57e6f8dfdd98c681c7581d34a437afb955d8acdb25d01d0f82f1",
+    "race-check.html": "92c93f70d9f38a905361133358d6f8a08d9c592fec7f071ca4b2e1aedd038549",
+    "metadata.json": "d59562a0aba8783d2b5012674c89958be45ea8149b46218d8a07d23f9b6c5117",
+    "browser-receipt.json": "82c41ac0f15a91341cf9d8baa98b828aded744d320fc3c8629b53810a74080ba"
+  }
+}
