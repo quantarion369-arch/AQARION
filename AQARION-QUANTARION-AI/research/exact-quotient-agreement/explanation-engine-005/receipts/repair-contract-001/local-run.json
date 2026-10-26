@@ -1,0 +1,21 @@
+{
+  "scope": "Eight-test repair-contract extension; local CI-runner rehearsal",
+  "started_at_utc": "2026-10-26T23:36:26.772019+00:00",
+  "finished_at_utc": "2026-10-26T23:36:28.019672+00:00",
+  "exit_code": 0,
+  "expected_collected_test_functions": 8,
+  "source_sha256": {
+    "AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/README.md": "15257bd7f5fc8fade8933fa2f9d6aab9b0360f085c91928c716201ea58d1a9a6",
+    "AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/test_explain.py": "3e67112bb6a58d557981902c21c6ed7fc8ffebf83f59229030d192f6a4c0435f",
+    "AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/explain.py": "b0eb4ab159efb00e2ba45e3d820cba86751da107b37ccec624e660ac8e75ea0e",
+    "AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/execution.json": "00b88b01adc957dcfeaac346cc96edc34cc8dc68e78f76a57232cca17b5bc15f",
+    "AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/test-results.json": "c1a69456a8f78b354f8a9a554a1cac69e2250e8c029d39c8b969bb32d20c58f9",
+    "AQARION-QUANTARION-AI/research/exact-quotient-agreement/explanation-engine-005/test-output.txt": "0ab5f428345c73fd618d2ef34260ae86856ae5a54e7f0cfeec6b3f2d8d2a850c",
+    ".github/workflows/explanation-engine-005.yml": "66cf5b48b271e81a4d710247b6fe688421f105df0092a7c6728925eb3de2be6e",
+    "AQARION-QUANTARION-AI/research/exact-quotient-agreement/quotient-audit-001/quotient_audit.py": "d3c5e971c63db8b37ec7f987b1d7c02d05bea186150849319b1439c806bc0708",
+    "AQARION-QUANTARION-AI/research/exact-quotient-agreement/closure-certificate-004/closure_certificate.py": "c315253708355164579159e6e92b82aa74b0a9ea11cef8c04fdf55ec510efd60"
+  },
+  "runner_sha256": "f4cf624bad84d84efdfb4eef51b499e71ab8931c8efe1833d229127ffaf171a4",
+  "raw_test_output_sha256": "17c98adc5b5bfa62f9e4bf88acc82103337b8e602d6336b8e02d17980c74183b",
+  "watched_files_unchanged": true
+}

@@ -55,8 +55,8 @@ jobs:
                   self.skipped |= report.skipped
 
               def pytest_sessionfinish(self, session, exitstatus):
-                  if session.testscollected != 7 or self.skipped:
-                      print("FAIL: expected exactly 7 collected tests and no skips.")
+                  if session.testscollected != 8 or self.skipped:
+                      print("FAIL: expected exactly 8 collected tests and no skips.")
                       session.exitstatus = 1
 
           raise SystemExit(pytest.main([
