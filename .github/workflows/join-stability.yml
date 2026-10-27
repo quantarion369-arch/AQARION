@@ -1,0 +1,199 @@
+name: JOIN-STABILITY Reproduction Contract
+
+'on':
+  push:
+    branches: [main]
+    paths:
+      - 'AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/**'
+      - '.github/workflows/join-stability.yml'
+  pull_request:
+    paths:
+      - 'AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/**'
+      - '.github/workflows/join-stability.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Run wrapper tests and verify source integrity
+        env:
+          CI_EVIDENCE_DIR: ${{ runner.temp }}/join-stability-contract
+          EXPECTED_TESTED_REVISION: ${{ github.sha }}
+        shell: python
+        run: |
+          import contextlib
+          from datetime import datetime, timezone
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import runpy
+          import subprocess
+          import sys
+          import traceback
+          import unittest
+
+          root = Path(os.environ["GITHUB_WORKSPACE"]).resolve()
+          output = Path(os.environ["CI_EVIDENCE_DIR"]).resolve()
+          if output == root or root in output.parents:
+              raise RuntimeError("CI evidence must be outside the checkout")
+          output.mkdir(parents=True, exist_ok=True)
+          prefix = "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/"
+          log = output / "tests.log"
+          report = {
+              "status": "FAIL",
+              "expected_tests": 20,
+              "started_at_utc": datetime.now(timezone.utc).isoformat(),
+              "python_version": sys.version,
+              "expected_revision": os.environ["EXPECTED_TESTED_REVISION"],
+              "scope": "WRAPPER_FIXTURES_AND_IN_MEMORY_VALIDATOR_CONTROLS_ONLY",
+              "finite_census": "NOT_RUN",
+              "lean": "NOT_RUN",
+              "promotion_changed": False,
+          }
+
+          def git(*args):
+              return subprocess.check_output(
+                  ["git", "--no-optional-locks", "-C", str(root), *args],
+                  stderr=subprocess.PIPE,
+              )
+
+          def source_hashes():
+              names = git("ls-files", "-z", "--", prefix).split(b"\0")
+              result = {}
+              for raw in names:
+                  if not raw:
+                      continue
+                  name = raw.decode("utf-8")
+                  path = root / name
+                  if path.is_symlink() or not path.is_file():
+                      raise RuntimeError("Nonregular source: " + name)
+                  result[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+              required = {prefix + name for name in (
+                  "reproduce.sh", "reproduction.py", "test_reproduction.py",
+                  "verify.py", "manifest.json",
+              )}
+              if not required <= set(result):
+                  raise RuntimeError("Required tracked package inputs missing")
+              return result
+
+          try:
+              actual = git("rev-parse", "HEAD").decode().strip()
+              report["tested_revision"] = actual
+              if actual != report["expected_revision"]:
+                  raise RuntimeError("Checkout differs from expected GitHub commit")
+              if git("status", "--porcelain", "--untracked-files=no"):
+                  raise RuntimeError("Tracked checkout or index is dirty before tests")
+              before = source_hashes()
+              report["source_sha256_before"] = before
+
+              with log.open("w", encoding="utf-8") as stream:
+                  with contextlib.redirect_stdout(stream), contextlib.redirect_stderr(stream):
+                      namespace = runpy.run_path(
+                          str(root / prefix / "test_reproduction.py")
+                      )
+                      suite = unittest.defaultTestLoader.loadTestsFromTestCase(
+                          namespace["ReceiptTests"]
+                      )
+                      report["collected_tests"] = suite.countTestCases()
+                      report["test_names"] = [case.id() for case in suite]
+                      if (
+                          report["collected_tests"] != 20
+                          or len(set(report["test_names"])) != 20
+                      ):
+                          raise RuntimeError(
+                              "Expected exactly 20 unique collected tests"
+                          )
+
+                      result = unittest.TextTestRunner(
+                          stream=stream, verbosity=2
+                      ).run(suite)
+                      report.update({
+                          "tests_run": result.testsRun,
+                          "failures": [
+                              {"test": str(t), "traceback": text}
+                              for t, text in result.failures
+                          ],
+                          "errors": [
+                              {"test": str(t), "traceback": text}
+                              for t, text in result.errors
+                          ],
+                          "skipped": [
+                              {"test": str(t), "reason": text}
+                              for t, text in result.skipped
+                          ],
+                      })
+                      if (
+                          result.testsRun != 20
+                          or result.skipped
+                          or not result.wasSuccessful()
+                      ):
+                          raise RuntimeError(
+                              "Required tests failed, errored, skipped, "
+                              "or did not all execute"
+                          )
+              report["status"] = "PASS"
+          except BaseException:
+              report["status"] = "FAIL"
+              report["error"] = traceback.format_exc()
+          finally:
+              try:
+                  after = source_hashes()
+                  report["source_sha256_after"] = after
+                  unchanged = (
+                      report.get("source_sha256_before") == after
+                      and git("rev-parse", "HEAD").decode().strip()
+                          == report.get("tested_revision")
+                      and not git(
+                          "status", "--porcelain", "--untracked-files=no"
+                      )
+                  )
+                  report["tracked_sources_and_revision_unchanged"] = unchanged
+                  if not unchanged:
+                      report["status"] = "FAIL"
+              except BaseException:
+                  report["status"] = "FAIL"
+                  report["postflight_error"] = traceback.format_exc()
+
+              report["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
+              if log.exists():
+                  report["test_log_sha256"] = hashlib.sha256(
+                      log.read_bytes()
+                  ).hexdigest()
+              (output / "execution.json").write_text(
+                  json.dumps(report, indent=2) + "\n",
+                  encoding="utf-8",
+              )
+
+          if log.exists():
+              print(log.read_text(encoding="utf-8"), end="")
+          if report.get("error"):
+              print(report["error"], file=sys.stderr)
+          if report.get("postflight_error"):
+              print(report["postflight_error"], file=sys.stderr)
+          print("JOIN_CONTRACT_CI=" + report["status"])
+          print("FULL_CENSUS_AND_LEAN=NOT_RUN")
+          raise SystemExit(0 if report["status"] == "PASS" else 1)
+      - name: Preserve diagnostics even on test failure
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: join-stability-contract-tests
+          path: ${{ runner.temp }}/join-stability-contract/
+          if-no-files-found: error
+          retention-days: 30
