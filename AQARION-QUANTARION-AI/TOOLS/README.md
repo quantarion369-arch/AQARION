@@ -99,21 +99,44 @@ AQARION
 
 Evidence Discipline
 
-AQARION-TOOLS follows the AQARION evidence taxonomy.
+AQARION-TOOLS follows the [AQARION evidence and claim-status taxonomy](../../README.md#evidence-and-claim-status).
 
-| Code | Meaning |
+Evidence type and claim disposition are separate concepts.
+
+### Evidence labels
+
+| Label | Meaning |
 |---|---|
 | [D] | Definition |
 | [P] | Mathematical proof |
-| [V] | Exhaustive computational verification |
-| [PV] | Proof + verification |
+| [V] | Verification over a declared computational domain |
+| [PV] | Mathematical proof and computational verification |
 | [C] | Conjecture |
-| [R] | Research / investigation |
-| DEPRECATED | Refuted or disproved — retained for provenance, excluded from promotion |
-| SUPERSEDED | Replaced by successor claim |
-| RETRACTED | Withdrawn due to error |
-| REFUTED | Counterexample exists |
-| QUARANTINED | Preserved but not currently promotable |
+| [R] | Active research or investigation |
+| [F] | Refuted claim or claim with a counterexample |
+| [Q] | Quarantined artifact or claim |
+
+### Claim dispositions
+
+| Disposition | Meaning |
+|---|---|
+| OPEN | Unresolved or active |
+| FROZEN | A specified artifact or version is locked for audit |
+| BLOCKED | A required gate prevents promotion |
+| QUARANTINED | Preserved but excluded from promotion pending resolution |
+| DEPRECATED | An obsolete representation or artifact retained for provenance |
+| SUPERSEDED | Replaced by a successor |
+| RETRACTED | Withdrawn and no longer to be relied on as stated |
+| REFUTED | The stated claim is contradicted by a valid counterexample or argument |
+
+DEPRECATED does not, by itself, mean false or disproved. Use REFUTED only
+when the stated claim is contradicted by a valid counterexample or argument.
+Historical records retain their original wording; this clarification does not
+reclassify existing claims or change promotion decisions.
+
+Earlier versions of this README conflated DEPRECATED with REFUTED.
+That wording is corrected here; historical receipts and claim records
+are not rewritten by this documentation change.
 
 Evidence does not migrate upward automatically.
 

@@ -291,6 +291,11 @@ Where used in claim records, the following terms distinguish different situation
 | RETRACTED | Withdrawn and no longer to be relied on as stated |
 | REFUTED | The stated claim is contradicted by a valid counterexample or argument |
 
+DEPRECATED does not, by itself, mean false or disproved. Use REFUTED only
+when the stated claim is contradicted by a valid counterexample or argument.
+Historical records retain their original wording; this clarification does not
+reclassify existing claims or change promotion decisions.
+
 A claim may have computational evidence while its proof remains open. A proof candidate may be mathematically promising while its formalization remains incomplete. A refuted statement must not be silently rewritten as if the original statement had been correct.
 
 ### Promotion principle
