@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform android -- Python 3.13.13, pytest-9.1.1, pluggy-1.6.0 -- /data/data/com.termux/files/usr/bin/python3
+rootdir: /data/data/com.termux/files/home
+collecting ... collected 6 items
+
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_case_route_does_not_call_retrieval PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_fixed_case_page_and_headers PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_homepage_links_to_case PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_no_path_or_query_parameter_interface PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_recorded_baseline_and_mutation PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_reusable_recognizer_matches_saved_cases PASSED
+
+- generated xml file: /data/data/com.termux/files/home/AQARION_AUDIT/extremal-inspector/verification.14BOQd6y/inspector-targeted.xml -
+============================== 6 passed in 0.92s ===============================

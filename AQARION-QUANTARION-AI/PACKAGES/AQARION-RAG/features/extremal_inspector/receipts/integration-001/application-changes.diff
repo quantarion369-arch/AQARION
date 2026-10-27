@@ -1,0 +1,77 @@
+diff --git a/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/README.md b/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/README.md
+index aaa410c..e6ddca5 100644
+--- a/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/README.md
++++ b/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/README.md
+@@ -321,3 +321,23 @@ The earlier README reconciliation targeted `40680eb1bce791dc872c98869552d538f8b2
+ The [previous README](docs/README-HISTORY-before-2026-10-20.md) is preserved verbatim as historical documentation. It contains superseded statements and is not the current operating guide.
+ 
+ The workbench helps inspect what is recorded, where it came from, and what qualifies it. It does not silently promote retrieved text into a verified conclusion.
++
++## Exact one-edge dynamics inspector
++
++Open `/cases/extremal` on the existing local server, or use the
++research-case link on the home page.
++
++Feature files live in `features/extremal_inspector/`.
++The original checked prototype is preserved under `build-001/`.
++
++The page displays 57 distinct maps through 64 selectable one-edge
++choices. The results were computed during the preserved build;
++the browser does not submit arbitrary computations.
++
++`recognizer.py` is reusable Python code. It distinguishes prefix
++collisions, nonliteral terminals, and extremal register normal forms.
++Computed ranks, theorem-derived consequences, and certificate checks
++remain separately labeled.
++
++This integration does not change retrieval ranking, source manifests,
++relationship semantics, or claim-promotion gates.
+diff --git a/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py b/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py
+index 8dffa8d..42eae22 100644
+--- a/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py
++++ b/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py
+@@ -63,6 +63,28 @@ class Handler(BaseHTTPRequestHandler):
+                     self._send({"error": "manifest validation failed"}, 500)
+                     return
+ 
++        if url.path == "/cases/extremal":
++            if url.query:
++                self._send({"error": "case page accepts no parameters"}, 400)
++                return
++            page = (
++                Path(__file__).resolve().parent
++                / "features" / "extremal_inspector"
++                / "build-001" / "inspector.html"
++            )
++            try:
++                body = page.read_bytes()
++            except OSError:
++                self._send({"error": "case page unavailable"}, 503)
++                return
++            self.send_response(200)
++            self.send_header("Content-Type", "text/html; charset=utf-8")
++            self.send_header("Content-Length", str(len(body)))
++            self.send_header("X-Content-Type-Options", "nosniff")
++            self.end_headers()
++            self.wfile.write(body)
++            return
++
+         if url.path == "/api/sources":
+             try:
+                 entries = retrieval_module.validate_manifest()
+diff --git a/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/static/index.html b/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/static/index.html
+index 63e61ca..2a4db01 100644
+--- a/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/static/index.html
++++ b/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/static/index.html
+@@ -516,5 +516,11 @@ loadSources();
+ search();
+ 
+ </script>
++
++<nav aria-label="Research cases" style="margin:1.5rem 0">
++  <a href="/cases/extremal">Open the exact one-edge dynamics inspector</a>
++  <p>Separate saved-case view. Retrieval does not validate its mathematics.</p>
++</nav>
++
+ </body>
+ </html>

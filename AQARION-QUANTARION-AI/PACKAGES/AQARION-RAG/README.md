@@ -321,3 +321,23 @@ The earlier README reconciliation targeted `40680eb1bce791dc872c98869552d538f8b2
 The [previous README](docs/README-HISTORY-before-2026-10-20.md) is preserved verbatim as historical documentation. It contains superseded statements and is not the current operating guide.
 
 The workbench helps inspect what is recorded, where it came from, and what qualifies it. It does not silently promote retrieved text into a verified conclusion.
+
+## Exact one-edge dynamics inspector
+
+Open `/cases/extremal` on the existing local server, or use the
+research-case link on the home page.
+
+Feature files live in `features/extremal_inspector/`.
+The original checked prototype is preserved under `build-001/`.
+
+The page displays 57 distinct maps through 64 selectable one-edge
+choices. The results were computed during the preserved build;
+the browser does not submit arbitrary computations.
+
+`recognizer.py` is reusable Python code. It distinguishes prefix
+collisions, nonliteral terminals, and extremal register normal forms.
+Computed ranks, theorem-derived consequences, and certificate checks
+remain separately labeled.
+
+This integration does not change retrieval ranking, source manifests,
+relationship semantics, or claim-promotion gates.

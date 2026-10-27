@@ -1,0 +1,256 @@
+============================= test session starts ==============================
+platform android -- Python 3.13.13, pytest-9.1.1, pluggy-1.6.0 -- /data/data/com.termux/files/usr/bin/python3
+rootdir: /data/data/com.termux/files/home
+collecting ... collected 225 items
+
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_active_scope_summary.py::ActiveScopeSummaryTests::test_eight_runtime_states SKIPPED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_active_scope_summary.py::ActiveScopeSummaryTests::test_label_is_inside_search_form PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_active_scope_summary.py::ActiveScopeSummaryTests::test_loading_updates_are_connected PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_active_scope_summary.py::ActiveScopeSummaryTests::test_mode_change_runtime_without_submission SKIPPED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_active_scope_summary.py::ActiveScopeSummaryTests::test_mode_changes_do_not_submit PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_import_does_not_execute_crosscheck PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_paths_are_independent_of_current_directory PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_missing_dependencies_are_rejected[source] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_missing_dependencies_are_rejected[checker] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_missing_dependencies_are_rejected[oracle] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_checker_failures_propagate[0-0] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_checker_failures_propagate[1-0] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_checker_failures_propagate[0-1] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_checker_failures_propagate[1-1] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_invalid_checker_results_are_rejected[result0] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_invalid_checker_results_are_rejected[result1] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_invalid_checker_results_are_rejected[result2] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_invalid_checker_results_are_rejected[result3] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_actual_source_harness.py::test_one_case_smoke_from_unrelated_directory PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_api_citations.py::test_legacy_search_response_is_unchanged PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_api_citations.py::test_cited_search_exposes_structured_records PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_api_citations.py::test_cited_search_handles_missing_query PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_api_citations.py::test_unknown_endpoint_remains_404 PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_citation_contract.py::test_real_citations_reconstruct_from_pinned_sources PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_citation_contract.py::test_repeated_paragraphs_have_distinct_exact_locations PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_citation_contract.py::test_legacy_ranking_ties_and_limits_are_preserved PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_claims.py::test_parses_claims PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_claims.py::test_artifact_backed_claim PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_empty_results PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_document_edges_and_nonrecursive_expansion[0] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_document_edges_and_nonrecursive_expansion[6] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_shared_neighbor_has_two_seed_links PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_seed_results_are_not_duplicated_as_context PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_repeated_text_keeps_distinct_seed_locations PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_document_and_revision_isolation[other_source0] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_document_and_revision_isolation[other_source1] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_seed_records_are_not_modified PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_invalid_seed_span_is_rejected PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_six_supplement_cap PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L01] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L02] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L03] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L04] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L05] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L06] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L07] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L08] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L09] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[L10] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[Q01] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[Q02] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[Q03] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[Q04] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[Q05] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[Q06] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[M01] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[M02] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[M03] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[M04] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[N01] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[N02] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[N03] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_context.py::test_exact_saved_adjacency_replay[N04] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_defect_preservation_source.py::test_defect_source_scope_and_original_citations PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_defect_preservation_source.py::test_defect_source_real_http_listing_and_complete_view PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_escape_domain.py::EscapeDomainTests::test_boundary_minus_two_does_not_trigger_strict_threshold PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_escape_domain.py::EscapeDomainTests::test_negative_iteration_count_rejected PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_escape_domain.py::EscapeDomainTests::test_parameter_above_two_escapes PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_escape_domain.py::EscapeDomainTests::test_parameter_below_minus_two_escapes PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_escape_domain.py::EscapeDomainTests::test_zero_iterations_is_no_escape_observed PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_evidence_api.py::test_enriched_endpoint_preserves_context_and_exposes_correction PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_evidence_api.py::test_original_context_endpoint_has_no_enrichment_wrapper PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_evidence_api.py::test_invalid_relation_is_diagnostic_not_valid_evidence PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_evidence_api.py::test_empty_enriched_query_preserves_existing_empty_context PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_evidence_api.py::test_enriched_page_uses_safe_text_and_explicit_review_labels PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_evidence_api.py::test_registry_failure_preserves_http_retrieval[missing_registry] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_evidence_api.py::test_registry_failure_preserves_http_retrieval[invalid_json] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_case_route_does_not_call_retrieval PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_fixed_case_page_and_headers PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_homepage_links_to_case PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_no_path_or_query_parameter_interface PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_recorded_baseline_and_mutation PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py::TestExtremalInspector::test_reusable_recognizer_matches_saved_cases PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_graph.py::test_dependents_of_artifact PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_graph.py::test_dependents_of_unknown_hash PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_graph.py::test_evidence_chain_no_infinite_loop PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_graph.py::test_supersedes_finds_one PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[nonzero_exit-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[executable_missing-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[executable_missing-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[executable_missing-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[executable_missing-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[executable_missing-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[permission_denied-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[permission_denied-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[permission_denied-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[permission_denied-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_operational_failure_is_500_and_recovers[permission_denied-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_commit-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_commit-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_commit-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_commit-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_commit-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_path-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_path-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_path-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_path-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[missing_path-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[noncommit_object-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[noncommit_object-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[noncommit_object-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[noncommit_object-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_classified_source_conditions[noncommit_object-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[tree_read-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[tree_read-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[tree_read-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[tree_read-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[tree_read-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[blob_read-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[blob_read-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[blob_read-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[blob_read-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_later_git_operation_failure_is_500[blob_read-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_failure_classification.py::test_exact_filename_and_nested_path_loading PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_loader_object_integrity[valid] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_loader_object_integrity[corrupt_commit] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_loader_object_integrity[missing_referenced_blob] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_loader_object_integrity[wrong_hash_blob] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_loader_object_integrity[wrong_hash_commit] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_loader_object_integrity[wrong_hash_tree] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[valid-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[valid-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[valid-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[valid-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[valid-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[corrupt_commit-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[corrupt_commit-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[corrupt_commit-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[corrupt_commit-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[corrupt_commit-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[missing_referenced_blob-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[missing_referenced_blob-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[missing_referenced_blob-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[missing_referenced_blob-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[missing_referenced_blob-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_blob-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_blob-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_blob-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_blob-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_blob-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_commit-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_commit-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_commit-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_commit-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_commit-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_tree-/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_tree-/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_tree-/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_tree-/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_http_object_integrity[wrong_hash_tree-/api/sources/view] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_verified_blob_preserves_text_behavior[empty] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_verified_blob_preserves_text_behavior[mixed_newlines] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_verified_blob_preserves_text_behavior[unicode] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_pinned_object_integrity.py::test_verified_blob_preserves_text_behavior[undecodable] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_malformed_record_returns_diagnostic[None] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_malformed_record_returns_diagnostic[not an object] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_malformed_record_returns_diagnostic[7] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_malformed_record_returns_diagnostic[bad3] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_registry_load_failure_degrades[error0] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_registry_load_failure_degrades[error1] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_registry_load_failure_degrades[error2] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_unavailable_pinned_source_degrades PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_invalid_record_does_not_hide_valid_relationship PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_null_supporting_evidence_degrades PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_invalid_registry_container_degrades[records0] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_invalid_registry_container_degrades[invalid] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationship_failures.py::test_invalid_registry_container_degrades[42] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_all_three_pinned_anchors_reconstruct PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_old_wording_discovers_nonadjacent_correction_without_changing_context PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_correction_resolves_back_to_original_statement PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_invalid_anchor_is_not_displayed_as_valid[change0] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_invalid_anchor_is_not_displayed_as_valid[change1] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_invalid_anchor_is_not_displayed_as_valid[change2] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_invalid_anchor_is_not_displayed_as_valid[change3] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_invalid_anchor_is_not_displayed_as_valid[change4] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_unrelated_passage_has_no_invented_relationship PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_approval_requires_explicit_review_metadata PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_relationships.py::test_invalid_follow_up_invalidates_whole_relationship_package PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_repository_binding.py::test_snapshot_loader_works_outside_checkout PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_repository_binding.py::test_retrieval_ignores_unrelated_git_repository PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_claim_list_preserves_status_filter PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_claim_search_preserves_artifact_filter PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_context_delegates_decoded_query_without_wrapper PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_legacy_cited_shape_and_top_k PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_legacy_search_shape_and_top_k PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_missing_and_empty_queries_match_existing_function SUBPASSED(route='/api/search/context')
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_missing_and_empty_queries_match_existing_function SUBPASSED(route='/api/search/context?q=')
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_missing_and_empty_queries_match_existing_function PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_page_static_safe_rendering_and_request_guards PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_claim_search_matches_existing_function PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction SUBPASSED(citation=('EVIDENCE-LEDGER.md', 'b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2', 3270, 4047))
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction SUBPASSED(citation=('EVIDENCE-LEDGER.md', 'b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2', 4092, 4377))
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction SUBPASSED(citation=('EVIDENCE-LEDGER.md', 'b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2', 5232, 5380))
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction SUBPASSED(citation=('EVIDENCE-LEDGER.md', 'b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2', 2912, 3268))
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction SUBPASSED(citation=('EVIDENCE-LEDGER.md', 'b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2', 4049, 4090))
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction SUBPASSED(citation=('EVIDENCE-LEDGER.md', 'b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2', 4379, 4509))
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction SUBPASSED(citation=('EVIDENCE-LEDGER.md', 'b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2', 5061, 5230))
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction SUBPASSED(citation=('EVIDENCE-LEDGER.md', 'b1642c3392bfee54d4d7854b3dc6d8b53f4f58b2', 5382, 5572))
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_real_context_http_and_pinned_citation_reconstruction PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_root_serves_exact_page PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_research_flow.py::ResearchFlowTests::test_unknown_endpoint_remains_json_404 PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_retrieve.py::test_manifest_loads PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_retrieve.py::test_retrieve_returns_cited_results PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope.py::test_source_scope_boundary_contract PASS: real Git revision isolation, selected-only loads, citations
+PASS: forged label rejected
+PASS: context rejects wrong-revision seeds
+PASS: no-match does not fall back globally
+PASS: invalid scopes stop all four routes before downstream calls
+PASS: valid request positive control uses monitored namespace
+PASS: scoped evidence HTTP; enrichment mocked at its boundary
+PASS: source list and complete pinned-source JSON
+PASS: real missing Git object fails without worktree fallback
+PASS: duplicate and malformed manifests fail closed
+FOCUSED_CHECKS_PASSED: 10
+TEMPORARY_TEST_GIT_COMMITS=2
+PROJECT_GIT_COMMITS=0
+PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_missing_pinned_object_returns_json[/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_missing_pinned_object_returns_json[/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_missing_pinned_object_returns_json[/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_missing_pinned_object_returns_json[/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_valid_source_works_after_missing_object[/api/search] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_valid_source_works_after_missing_object[/api/search/cited] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_valid_source_works_after_missing_object[/api/search/context] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_valid_source_works_after_missing_object[/api/search/evidence] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_successful_none_is_not_an_error_sentinel PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_programming_errors_are_not_client_errors[ValueError] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_programming_errors_are_not_client_errors[KeyError] PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_errors.py::test_enrichment_failure_is_not_relabelled_as_missing_source PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_ui.py::test_source_scope_controls_and_complete_view_exist PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_ui.py::test_source_list_loading_does_not_cancel_searches PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_ui.py::test_source_actions_reuse_generation_and_safe_rendering PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_source_scope_ui.py::test_scoped_search_and_source_navigation_remain_distinct PASSED
+../../../AQARION/AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_supersedes.py::test_returns_list_of_pairs PASSED
+
+- generated xml file: /data/data/com.termux/files/home/AQARION_AUDIT/extremal-inspector/verification.14BOQd6y/rag-full-suite.xml -
+======== 223 passed, 2 skipped, 10 subtests passed in 94.19s (0:01:34) =========

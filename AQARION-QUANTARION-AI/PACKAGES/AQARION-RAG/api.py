@@ -63,6 +63,28 @@ class Handler(BaseHTTPRequestHandler):
                     self._send({"error": "manifest validation failed"}, 500)
                     return
 
+        if url.path == "/cases/extremal":
+            if url.query:
+                self._send({"error": "case page accepts no parameters"}, 400)
+                return
+            page = (
+                Path(__file__).resolve().parent
+                / "features" / "extremal_inspector"
+                / "build-001" / "inspector.html"
+            )
+            try:
+                body = page.read_bytes()
+            except OSError:
+                self._send({"error": "case page unavailable"}, 503)
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
         if url.path == "/api/sources":
             try:
                 entries = retrieval_module.validate_manifest()

@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "unique_maps_checked": 57,
+  "selectable_source_target_pairs": 64,
+  "classification_histogram": {
+    "EXTREMAL_REGISTER": 1,
+    "NONLITERAL_TERMINAL": 8,
+    "PREFIX_COLLISION": 48
+  },
+  "malformed_input_controls": 7,
+  "exact_rank_comparisons": "PASS",
+  "positive_parity_certificate_checks": "PASS",
+  "baseline_profile": [
+    1,
+    4,
+    7,
+    8
+  ],
+  "one_edge_mutation_profile": [
+    1,
+    5,
+    8,
+    8
+  ],
+  "repository_state_unchanged": true,
+  "browser_interaction": "USER_CHECK_PENDING",
+  "production_RAG_integration": "NOT_INSTALLED",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "dependencies": "Python standard library only"
+}
