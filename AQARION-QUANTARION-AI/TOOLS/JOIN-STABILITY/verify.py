@@ -442,13 +442,49 @@ def run_negative_control_self_tests() -> None:
         lambda: safe_package_path("../../outside"),
     ))
 
+    require(
+        validate_claims([dict(base_claim)]) == {"A"},
+        "valid claim positive control failed",
+    )
+    require(
+        validate_evidence([dict(base_evidence)], {"A"}) == {"EV-A"},
+        "valid evidence positive control failed",
+    )
+    print("POSITIVE_CONTROLS=2/2")
+
+    expected_errors = {
+        "duplicate_claim_id": "duplicate claim_id: A",
+        "unresolved_dependency": "B: unresolved dependency MISSING",
+        "missing_claim_field": "claim record 1 is missing required fields",
+        "unknown_claim_field": "claim record 1 has unknown fields",
+        "unresolved_evidence_claim": "EV-A: unresolved claim MISSING",
+        "duplicate_evidence_id": "duplicate evidence_id: EV-A",
+        "invalid_claim_status": "A: invalid mathematical_status",
+        "invalid_evidence_class": "A: invalid evidence_class",
+        "absolute_path": "absolute package path rejected: /etc/passwd",
+        "path_traversal": "path escapes package root: ../../outside",
+    }
+    require(
+        len(tests) == len(expected_errors)
+        and {name for name, _ in tests} == set(expected_errors),
+        "negative-control expectation inventory differs",
+    )
+
     passed = 0
     for name, action in tests:
         try:
             action()
-        except (VerificationError, OSError, ValueError):
+        except VerificationError as exc:
+            require(
+                str(exc) == expected_errors[name],
+                f"negative control wrong rejection reason: {name}: {exc}",
+            )
             print(f"NEGATIVE_CONTROL={name}:REJECTED")
             passed += 1
+        except Exception as exc:
+            raise VerificationError(
+                f"negative control raised unexpected exception: {name}"
+            ) from exc
         else:
             print(f"NEGATIVE_CONTROL={name}:UNEXPECTED_ACCEPT")
             raise VerificationError(
