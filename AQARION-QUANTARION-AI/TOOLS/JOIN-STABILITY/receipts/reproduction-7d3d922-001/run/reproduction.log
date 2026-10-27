@@ -1,0 +1,29 @@
+Source baseline: 6ba13ec6bb764a2e822f75a3953967efdfaa6e34
+Tested revision: 7d3d9229b7029887a39d81e957361d66a5bcd8b9
+Claims: 7
+Evidence records: 4
+Tested revision: 7d3d9229b7029887a39d81e957361d66a5bcd8b9
+STRUCTURAL_RESULT=PASS
+MATHEMATICAL_PROOF=NOT_ESTABLISHED_BY_THIS_VERIFIER
+LEAN_STATUS=OPEN
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 1}, "join_stability_failures": 0, "match": true, "n": 1, "ordered_stable_relation_pairs": 1}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 10}, "join_stability_failures": 0, "match": true, "n": 2, "ordered_stable_relation_pairs": 10}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 117}, "join_stability_failures": 0, "match": true, "n": 3, "ordered_stable_relation_pairs": 117}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 1960}, "join_stability_failures": 0, "match": true, "n": 4, "ordered_stable_relation_pairs": 1960}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 40385}, "join_stability_failures": 0, "match": true, "n": 5, "ordered_stable_relation_pairs": 40385}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 1016496}, "join_stability_failures": 0, "match": true, "n": 6, "ordered_stable_relation_pairs": 1016496}
+AUDIT_RESULT=PASS
+AUDIT_SCOPE=FINITE_ENUMERATION_ONLY
+POSITIVE_CONTROLS=2/2
+NEGATIVE_CONTROL=duplicate_claim_id:REJECTED
+NEGATIVE_CONTROL=unresolved_dependency:REJECTED
+NEGATIVE_CONTROL=missing_claim_field:REJECTED
+NEGATIVE_CONTROL=unknown_claim_field:REJECTED
+NEGATIVE_CONTROL=unresolved_evidence_claim:REJECTED
+NEGATIVE_CONTROL=duplicate_evidence_id:REJECTED
+NEGATIVE_CONTROL=invalid_claim_status:REJECTED
+NEGATIVE_CONTROL=invalid_evidence_class:REJECTED
+NEGATIVE_CONTROL=absolute_path:REJECTED
+NEGATIVE_CONTROL=path_traversal:REJECTED
+NEGATIVE_CONTROLS=10/10
+NEGATIVE_CONTROL_SCOPE=IN_MEMORY_VALIDATOR_TESTS_ONLY

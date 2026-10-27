@@ -1,0 +1,25 @@
+test_actual_validator_positive_and_negative_controls (__main__.ReceiptTests.test_actual_validator_positive_and_negative_controls) ... ok
+test_atomic_replacement_failure (__main__.ReceiptTests.test_atomic_replacement_failure) ... ok
+test_atomic_temporary_write_failure (__main__.ReceiptTests.test_atomic_temporary_write_failure) ... ok
+test_existing_nonancestor_rejected (__main__.ReceiptTests.test_existing_nonancestor_rejected) ... ok
+test_interruption_cannot_pass (__main__.ReceiptTests.test_interruption_cannot_pass) ... ok
+test_logging_failure_cannot_pass (__main__.ReceiptTests.test_logging_failure_cannot_pass) ... ok
+test_missing_baseline_object_rejected (__main__.ReceiptTests.test_missing_baseline_object_rejected) ... ok
+test_output_inside_repository_rejected (__main__.ReceiptTests.test_output_inside_repository_rejected) ... ok
+test_producer_failure_preserved (__main__.ReceiptTests.test_producer_failure_preserved) ... ok
+test_receipt_failure_is_nonzero (__main__.ReceiptTests.test_receipt_failure_is_nonzero) ... ok
+test_short_write_rejected (__main__.ReceiptTests.test_short_write_rejected) ... ok
+test_source_mutation_stops_next_command (__main__.ReceiptTests.test_source_mutation_stops_next_command) ... ok
+test_staged_source_rejected (__main__.ReceiptTests.test_staged_source_rejected) ... ok
+test_success_complete_receipt (__main__.ReceiptTests.test_success_complete_receipt) ... ok
+test_unique_outputs (__main__.ReceiptTests.test_unique_outputs) ... ok
+test_unstaged_source_rejected (__main__.ReceiptTests.test_unstaged_source_rejected) ... ok
+test_untracked_entrypoint_rejected (__main__.ReceiptTests.test_untracked_entrypoint_rejected) ... ok
+test_validator_acceptance_mutant_detected (__main__.ReceiptTests.test_validator_acceptance_mutant_detected) ... ok
+test_validator_wrong_errors_cannot_pass (__main__.ReceiptTests.test_validator_wrong_errors_cannot_pass) ... ok
+test_wrong_revision_rejected (__main__.ReceiptTests.test_wrong_revision_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 15.432s
+
+OK

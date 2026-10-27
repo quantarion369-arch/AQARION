@@ -1,0 +1,21 @@
+{
+  "base_commit": "6587c5b343c8497f995e3322281b902545162fdb",
+  "command": [
+    "/data/data/com.termux/files/usr/bin/python",
+    "-B",
+    "-I",
+    "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/test_reproduction.py"
+  ],
+  "test_exit": 0,
+  "test_methods": 20,
+  "source_sha256": {
+    "reproduce.sh": "9e3b301133a4fe42ace94e09db78dafa8db46538e22263b34ee515c90167abd5",
+    "reproduction.py": "9d0632b057b9de73429001933c212d0ab3704e6354e6a458d5623ab93881cb05",
+    "test_reproduction.py": "6bd81b15a1c86e96bb2ee3553bab04da4b3b505130ea28150acd6c95700612c9",
+    "receipts/README.md": "0abe2671c40fea2f336e978b7d7e5439f4f32f54fd447204c4d09c39b4f2745a",
+    "verify.py": "afef7d785d5c3b9bd5b9a8d97a8450f2376ade3480d5d2834ef7246832fc6b72"
+  },
+  "scope": "wrapper fixtures plus in-memory validator controls",
+  "real_package_reproduction": "NOT_RUN",
+  "staging_commit_push": "NONE"
+}

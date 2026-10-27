@@ -1,0 +1,8 @@
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 1}, "join_stability_failures": 0, "match": true, "n": 1, "ordered_stable_relation_pairs": 1}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 10}, "join_stability_failures": 0, "match": true, "n": 2, "ordered_stable_relation_pairs": 10}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 117}, "join_stability_failures": 0, "match": true, "n": 3, "ordered_stable_relation_pairs": 117}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 1960}, "join_stability_failures": 0, "match": true, "n": 4, "ordered_stable_relation_pairs": 1960}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 40385}, "join_stability_failures": 0, "match": true, "n": 5, "ordered_stable_relation_pairs": 40385}
+{"expected": {"join_stability_failures": 0, "ordered_stable_relation_pairs": 1016496}, "join_stability_failures": 0, "match": true, "n": 6, "ordered_stable_relation_pairs": 1016496}
+AUDIT_RESULT=PASS
+AUDIT_SCOPE=FINITE_ENUMERATION_ONLY

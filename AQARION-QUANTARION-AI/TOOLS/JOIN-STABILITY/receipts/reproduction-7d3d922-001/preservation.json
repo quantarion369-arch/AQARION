@@ -1,0 +1,29 @@
+{
+  "tested_commit": "7d3d9229b7029887a39d81e957361d66a5bcd8b9",
+  "wrapper_test_baseline": "6587c5b343c8497f995e3322281b902545162fdb",
+  "source_baseline": "6ba13ec6bb764a2e822f75a3953967efdfaa6e34",
+  "execution_origin": "User-executed Termux Python",
+  "wrapper_tests": 20,
+  "real_audit_rows": 6,
+  "receipt_sha256": "bcbbbc97a9b1d9e6bff36d041423aee07d3428b25ab064be4317785c5ece41b2",
+  "copied_artifact_sha256": {
+    "run/acceptance.json": "581ac73bb070f44f8d53118c735ee7b454c1857d06b7be8a133ac024ca416bb1",
+    "run/audit.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run/audit.stdout": "86f1338795c553160b10a540f19b5b5ee5fa33be6e200c0fc175bbfdc359450d",
+    "run/negative-controls.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run/negative-controls.stdout": "63d5d9fe977e3448c0d001ce47b30a8bcd0910ed38c4f56b2d88490aa891e8e2",
+    "run/receipt.json": "bcbbbc97a9b1d9e6bff36d041423aee07d3428b25ab064be4317785c5ece41b2",
+    "run/reproduction.log": "3acabf654c2dd17ebc405f46f6d001aff5057e786429fc68297e38a42e120aea",
+    "run/verify.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "run/verify.stdout": "949191e8404561561cfef0f23e4d78e75607a5e4fdb6216f992591a229c1c3df",
+    "wrapper-tests/control-test-record.json": "96ece8e05c0111feb4c28674b842af2fd81bafefbadb45ce9591df3cb5eefb4f",
+    "wrapper-tests/tests.stderr.txt": "437c506d69606e1c6d7efae652af582aeb91cfbfae5f3e361253665478184cf0",
+    "wrapper-tests/tests.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "raw_bytes_preserved": true,
+  "original_evidence_retained": true,
+  "scope": "STRUCTURAL_AND_FINITE_COMPUTATIONAL_CHECKS_ONLY",
+  "lean": "NOT_RUN_OPEN",
+  "promotion_changed": false,
+  "independent_external_reproduction": false
+}

@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "tested_commit": "7d3d9229b7029887a39d81e957361d66a5bcd8b9",
+  "receipt_sha256": "bcbbbc97a9b1d9e6bff36d041423aee07d3428b25ab064be4317785c5ece41b2",
+  "validated_audit_rows": [
+    {
+      "expected": {
+        "join_stability_failures": 0,
+        "ordered_stable_relation_pairs": 1
+      },
+      "join_stability_failures": 0,
+      "match": true,
+      "n": 1,
+      "ordered_stable_relation_pairs": 1
+    },
+    {
+      "expected": {
+        "join_stability_failures": 0,
+        "ordered_stable_relation_pairs": 10
+      },
+      "join_stability_failures": 0,
+      "match": true,
+      "n": 2,
+      "ordered_stable_relation_pairs": 10
+    },
+    {
+      "expected": {
+        "join_stability_failures": 0,
+        "ordered_stable_relation_pairs": 117
+      },
+      "join_stability_failures": 0,
+      "match": true,
+      "n": 3,
+      "ordered_stable_relation_pairs": 117
+    },
+    {
+      "expected": {
+        "join_stability_failures": 0,
+        "ordered_stable_relation_pairs": 1960
+      },
+      "join_stability_failures": 0,
+      "match": true,
+      "n": 4,
+      "ordered_stable_relation_pairs": 1960
+    },
+    {
+      "expected": {
+        "join_stability_failures": 0,
+        "ordered_stable_relation_pairs": 40385
+      },
+      "join_stability_failures": 0,
+      "match": true,
+      "n": 5,
+      "ordered_stable_relation_pairs": 40385
+    },
+    {
+      "expected": {
+        "join_stability_failures": 0,
+        "ordered_stable_relation_pairs": 1016496
+      },
+      "join_stability_failures": 0,
+      "match": true,
+      "n": 6,
+      "ordered_stable_relation_pairs": 1016496
+    }
+  ],
+  "source_and_output_hashes": "PASS",
+  "wrapper_test_record": "/data/data/com.termux/files/home/AQARION-local-backups/join-control-hardening-cys0ncd2/control-test-record.json",
+  "scope": "STRUCTURAL_AND_FINITE_COMPUTATIONAL_CHECKS_ONLY",
+  "lean": "NOT_RUN_OPEN",
+  "promotion_changed": false,
+  "push_performed": false
+}

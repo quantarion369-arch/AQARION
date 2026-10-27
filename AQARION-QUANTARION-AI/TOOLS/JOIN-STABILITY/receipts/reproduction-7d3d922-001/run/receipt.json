@@ -1,0 +1,135 @@
+{
+  "package_id": "JOIN-STABILITY",
+  "package_version": "0.1.1",
+  "started_at_utc": "2026-10-27T03:49:30.707940+00:00",
+  "expected_tested_revision": "7d3d9229b7029887a39d81e957361d66a5bcd8b9",
+  "wrapper_command": [
+    "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/reproduction.py"
+  ],
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "source_baseline": "6ba13ec6bb764a2e822f75a3953967efdfaa6e34",
+  "tested_revision": "7d3d9229b7029887a39d81e957361d66a5bcd8b9",
+  "repository_url": "https://github.com/quantarion369-arch/AQARION.git",
+  "preflight": "PASS",
+  "commands": [
+    {
+      "name": "verify",
+      "argv": [
+        "/data/data/com.termux/files/usr/bin/python3",
+        "-B",
+        "-I",
+        "verify.py"
+      ],
+      "result": "PASS",
+      "exit_code": 0,
+      "logging_exit": 0,
+      "started_at_utc": "2026-10-27T03:49:30.878178+00:00",
+      "stdout": "verify.stdout",
+      "stderr": "verify.stderr",
+      "finished_at_utc": "2026-10-27T03:49:31.058907+00:00"
+    },
+    {
+      "name": "audit",
+      "argv": [
+        "/data/data/com.termux/files/usr/bin/python3",
+        "-B",
+        "-I",
+        "join_stability_independent_audit.py"
+      ],
+      "result": "PASS",
+      "exit_code": 0,
+      "logging_exit": 0,
+      "started_at_utc": "2026-10-27T03:49:31.121610+00:00",
+      "stdout": "audit.stdout",
+      "stderr": "audit.stderr",
+      "finished_at_utc": "2026-10-27T03:49:45.586690+00:00"
+    },
+    {
+      "name": "negative-controls",
+      "argv": [
+        "/data/data/com.termux/files/usr/bin/python3",
+        "-B",
+        "-I",
+        "verify.py",
+        "--self-test-negative-controls"
+      ],
+      "result": "PASS",
+      "exit_code": 0,
+      "logging_exit": 0,
+      "started_at_utc": "2026-10-27T03:49:45.677143+00:00",
+      "stdout": "negative-controls.stdout",
+      "stderr": "negative-controls.stderr",
+      "finished_at_utc": "2026-10-27T03:49:45.804362+00:00"
+    }
+  ],
+  "result": "PASS",
+  "scope": "STRUCTURAL_AND_FINITE_COMPUTATIONAL_CHECKS_ONLY",
+  "lean": {
+    "result": "NOT_RUN",
+    "status": "OPEN",
+    "version": null,
+    "mathlib_revision": null
+  },
+  "promotion_changed": false,
+  "source_sha256_before": {
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/AQ_DYN_PULL_RIGID-001.lean": "cffdd6a9c505b5d324bfceabad5478722a507840b7b937899822b77c757d0b5c",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/FILETREE.md": "267303c0806e64113f349e6054ebc8eefa673b0f3c295681325a78ea86a99f3f",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/PROOF-OBLIGATIONS.md": "abc93a25723da49f347f9c691c20008ca481c349292182617d4afe5823907c4b",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/README.md": "77036add5796ea1edf592f4037ac13161b640d24c71e68860abc1b58e9c8b844",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/claims.jsonl": "d8a25a4dd658c99e2e249a97b310fc152d92e809a9352014b8b626bc458d978a",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/BOUNDARY.md": "3c5a102d77fb6281047935751f686f0a340987b68ff932776c2b95043b7cbbb2",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/INDEPENDENT_AUDIT_2026-09-29.md": "26b3f1a55db11bfbbab2b9d9b3ccb1cd3e14166f63b74d5adccecf4643ae6012",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/PROOF-ARCHITECTURE.md": "5797e6a7eb92192a3e5e478ce0645d1f00b25178b3f9039cd303b022b4ac79fa",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/README.md": "89af4ed823e818bc5c376ac300eca7cc54754b208716d43a9c82cd11acac7d24",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/checkpoints/aq_s29_cp.md": "996b3b3581cff6eebb21f43a7acb3af258a8a8517a121348f936b971fa22b218",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/finite-pullback-rigidity.md": "e8227488d913db8fdb890b75c325abf2760ef1993629e2e8c9e60517324e2ece",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/evidence.jsonl": "42ed9c52f6b657c4e347c2e8aef5abbd4b3c2125e6bbd905f53a9d1023abdc3a",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/fixtures/README.md": "fa89a50d61fce8b2e965dd87943c054da0c5fc8912caf3f41f43f53a93e28e0d",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/join_stability_independent_audit.py": "cd89faf6c5e66d42877ca5cd3c5d06fc8ae6cbf460041b55bb476eaf9644c48a",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/manifest.json": "ae6cbbfbc1fe536188ae1a887e003a1f87e0232e621d3fd869ceb0e6a1cac390",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/negative-controls/README.md": "bb215675c490248e1099d8b0a94764d2c19fd67e2d3a02acd3dff75ad46c1042",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/receipts/README.md": "0abe2671c40fea2f336e978b7d7e5439f4f32f54fd447204c4d09c39b4f2745a",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/reproduce.sh": "9e3b301133a4fe42ace94e09db78dafa8db46538e22263b34ee515c90167abd5",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/reproduction.py": "9d0632b057b9de73429001933c212d0ab3704e6354e6a458d5623ab93881cb05",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/test_reproduction.py": "6bd81b15a1c86e96bb2ee3553bab04da4b3b505130ea28150acd6c95700612c9",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/verify.py": "afef7d785d5c3b9bd5b9a8d97a8450f2376ade3480d5d2834ef7246832fc6b72",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/zip-clone.md": "1ff669c1a48286c6c95db4577c8107232cdd8bcc6fbcaf7314e797d9e179096f"
+  },
+  "source_sha256_after": {
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/AQ_DYN_PULL_RIGID-001.lean": "cffdd6a9c505b5d324bfceabad5478722a507840b7b937899822b77c757d0b5c",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/FILETREE.md": "267303c0806e64113f349e6054ebc8eefa673b0f3c295681325a78ea86a99f3f",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/PROOF-OBLIGATIONS.md": "abc93a25723da49f347f9c691c20008ca481c349292182617d4afe5823907c4b",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/README.md": "77036add5796ea1edf592f4037ac13161b640d24c71e68860abc1b58e9c8b844",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/claims.jsonl": "d8a25a4dd658c99e2e249a97b310fc152d92e809a9352014b8b626bc458d978a",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/BOUNDARY.md": "3c5a102d77fb6281047935751f686f0a340987b68ff932776c2b95043b7cbbb2",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/INDEPENDENT_AUDIT_2026-09-29.md": "26b3f1a55db11bfbbab2b9d9b3ccb1cd3e14166f63b74d5adccecf4643ae6012",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/PROOF-ARCHITECTURE.md": "5797e6a7eb92192a3e5e478ce0645d1f00b25178b3f9039cd303b022b4ac79fa",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/README.md": "89af4ed823e818bc5c376ac300eca7cc54754b208716d43a9c82cd11acac7d24",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/checkpoints/aq_s29_cp.md": "996b3b3581cff6eebb21f43a7acb3af258a8a8517a121348f936b971fa22b218",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/docs/finite-pullback-rigidity.md": "e8227488d913db8fdb890b75c325abf2760ef1993629e2e8c9e60517324e2ece",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/evidence.jsonl": "42ed9c52f6b657c4e347c2e8aef5abbd4b3c2125e6bbd905f53a9d1023abdc3a",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/fixtures/README.md": "fa89a50d61fce8b2e965dd87943c054da0c5fc8912caf3f41f43f53a93e28e0d",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/join_stability_independent_audit.py": "cd89faf6c5e66d42877ca5cd3c5d06fc8ae6cbf460041b55bb476eaf9644c48a",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/manifest.json": "ae6cbbfbc1fe536188ae1a887e003a1f87e0232e621d3fd869ceb0e6a1cac390",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/negative-controls/README.md": "bb215675c490248e1099d8b0a94764d2c19fd67e2d3a02acd3dff75ad46c1042",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/receipts/README.md": "0abe2671c40fea2f336e978b7d7e5439f4f32f54fd447204c4d09c39b4f2745a",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/reproduce.sh": "9e3b301133a4fe42ace94e09db78dafa8db46538e22263b34ee515c90167abd5",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/reproduction.py": "9d0632b057b9de73429001933c212d0ab3704e6354e6a458d5623ab93881cb05",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/test_reproduction.py": "6bd81b15a1c86e96bb2ee3553bab04da4b3b505130ea28150acd6c95700612c9",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/verify.py": "afef7d785d5c3b9bd5b9a8d97a8450f2376ade3480d5d2834ef7246832fc6b72",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/zip-clone.md": "1ff669c1a48286c6c95db4577c8107232cdd8bcc6fbcaf7314e797d9e179096f"
+  },
+  "tracked_sources_and_revision_unchanged": true,
+  "finished_at_utc": "2026-10-27T03:49:45.981491+00:00",
+  "output_sha256": {
+    "audit.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "audit.stdout": "86f1338795c553160b10a540f19b5b5ee5fa33be6e200c0fc175bbfdc359450d",
+    "negative-controls.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "negative-controls.stdout": "63d5d9fe977e3448c0d001ce47b30a8bcd0910ed38c4f56b2d88490aa891e8e2",
+    "reproduction.log": "3acabf654c2dd17ebc405f46f6d001aff5057e786429fc68297e38a42e120aea",
+    "verify.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify.stdout": "949191e8404561561cfef0f23e4d78e75607a5e4fdb6216f992591a229c1c3df"
+  },
+  "overall_exit": 0,
+  "receipt_write_exit": 0
+}
