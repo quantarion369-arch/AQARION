@@ -1,0 +1,199 @@
+{
+  "status": "PASS",
+  "scope": "Three supplied eight-state binary fixtures.",
+  "arithmetic": "Exact rational arithmetic using fractions.Fraction.",
+  "floating_point_rank_used": false,
+  "external_python_packages_required": false,
+  "full_census_rerun": false,
+  "repository_operations": "NONE",
+  "cases": [
+    {
+      "T": [
+        6,
+        1,
+        4,
+        0,
+        6,
+        4,
+        1,
+        0
+      ],
+      "observation": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "T_image_size": 4,
+      "distinct_itinerary_count": 8,
+      "itinerary_words": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "distinct_temporal_columns": 4,
+      "exact_ranks_degrees_0_to_3": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "quadratic_left_nullvector": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "cubic_witness": {
+        "temporal_coordinates": [
+          0,
+          1,
+          2
+        ],
+        "weighted_sum": -1
+      },
+      "quadratic_annihilation": "PASS",
+      "cubic_detection": "PASS"
+    },
+    {
+      "T": [
+        1,
+        6,
+        4,
+        0,
+        6,
+        4,
+        1,
+        0
+      ],
+      "observation": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "T_image_size": 4,
+      "distinct_itinerary_count": 8,
+      "itinerary_words": [
+        84,
+        85,
+        86,
+        87,
+        168,
+        169,
+        170,
+        171
+      ],
+      "distinct_temporal_columns": 4,
+      "exact_ranks_degrees_0_to_3": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "quadratic_left_nullvector": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "cubic_witness": {
+        "temporal_coordinates": [
+          0,
+          1,
+          2
+        ],
+        "weighted_sum": 1
+      },
+      "quadratic_annihilation": "PASS",
+      "cubic_detection": "PASS"
+    },
+    {
+      "T": [
+        4,
+        0,
+        6,
+        1,
+        6,
+        4,
+        1,
+        0
+      ],
+      "observation": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "T_image_size": 4,
+      "distinct_itinerary_count": 8,
+      "itinerary_words": [
+        50,
+        51,
+        102,
+        103,
+        152,
+        153,
+        204,
+        205
+      ],
+      "distinct_temporal_columns": 5,
+      "exact_ranks_degrees_0_to_3": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "quadratic_left_nullvector": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "cubic_witness": {
+        "temporal_coordinates": [
+          0,
+          1,
+          2
+        ],
+        "weighted_sum": 1
+      },
+      "quadratic_annihilation": "PASS",
+      "cubic_detection": "PASS"
+    }
+  ],
+  "limitations": [
+    "Does not certify the complete reported 4608-case census.",
+    "Does not recreate the original verify10.py or verify13.py.",
+    "Does not claim a Lean build, enrollment, or publication."
+  ]
+}
