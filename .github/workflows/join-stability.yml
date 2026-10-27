@@ -189,6 +189,47 @@ jobs:
           print("JOIN_CONTRACT_CI=" + report["status"])
           print("FULL_CENSUS_AND_LEAN=NOT_RUN")
           raise SystemExit(0 if report["status"] == "PASS" else 1)
+      - name: Run validator type regression tests
+        env:
+          CI_EVIDENCE_DIR: ${{ runner.temp }}/join-stability-contract
+        shell: python
+        run: |
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          output = Path(os.environ["CI_EVIDENCE_DIR"])
+          output.mkdir(parents=True, exist_ok=True)
+          script = (
+              Path(os.environ["GITHUB_WORKSPACE"])
+              / "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY"
+              / "test_validator_types.py"
+          )
+          result = subprocess.run(
+              [sys.executable, "-I", str(script)],
+              stdout=subprocess.PIPE,
+              stderr=subprocess.STDOUT,
+              text=True,
+          )
+          (output / "validator-types.log").write_text(
+              result.stdout, encoding="utf-8"
+          )
+          (output / "validator-types-execution.json").write_text(
+              json.dumps({
+                  "status": "PASS" if result.returncode == 0 else "FAIL",
+                  "expected_tests": 17,
+                  "exit_code": result.returncode,
+                  "scope": "TYPE_BOUNDARIES_AND_VALIDATOR_CONTROLS_ONLY",
+                  "finite_census": "NOT_RUN",
+                  "lean": "NOT_RUN",
+                  "promotion_changed": False,
+              }, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(result.stdout, end="")
+          raise SystemExit(result.returncode)
       - name: Preserve diagnostics even on test failure
         if: always()
         uses: actions/upload-artifact@v6

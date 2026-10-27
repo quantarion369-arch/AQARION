@@ -1,0 +1,52 @@
+test_actual_validator_positive_and_negative_controls (<run_path>.ReceiptTests.test_actual_validator_positive_and_negative_controls) ... ok
+test_atomic_replacement_failure (<run_path>.ReceiptTests.test_atomic_replacement_failure) ... ok
+test_atomic_temporary_write_failure (<run_path>.ReceiptTests.test_atomic_temporary_write_failure) ... ok
+test_existing_nonancestor_rejected (<run_path>.ReceiptTests.test_existing_nonancestor_rejected) ... ok
+test_interruption_cannot_pass (<run_path>.ReceiptTests.test_interruption_cannot_pass) ... ok
+test_logging_failure_cannot_pass (<run_path>.ReceiptTests.test_logging_failure_cannot_pass) ... ok
+test_missing_baseline_object_rejected (<run_path>.ReceiptTests.test_missing_baseline_object_rejected) ... ok
+test_output_inside_repository_rejected (<run_path>.ReceiptTests.test_output_inside_repository_rejected) ... ok
+test_producer_failure_preserved (<run_path>.ReceiptTests.test_producer_failure_preserved) ... ok
+test_receipt_failure_is_nonzero (<run_path>.ReceiptTests.test_receipt_failure_is_nonzero) ... ok
+test_short_write_rejected (<run_path>.ReceiptTests.test_short_write_rejected) ... ok
+test_source_mutation_stops_next_command (<run_path>.ReceiptTests.test_source_mutation_stops_next_command) ... ok
+test_staged_source_rejected (<run_path>.ReceiptTests.test_staged_source_rejected) ... ok
+test_success_complete_receipt (<run_path>.ReceiptTests.test_success_complete_receipt) ... ok
+test_unique_outputs (<run_path>.ReceiptTests.test_unique_outputs) ... ok
+test_unstaged_source_rejected (<run_path>.ReceiptTests.test_unstaged_source_rejected) ... ok
+test_untracked_entrypoint_rejected (<run_path>.ReceiptTests.test_untracked_entrypoint_rejected) ... ok
+test_validator_acceptance_mutant_detected (<run_path>.ReceiptTests.test_validator_acceptance_mutant_detected) ... ok
+test_validator_wrong_errors_cannot_pass (<run_path>.ReceiptTests.test_validator_wrong_errors_cannot_pass) ... ok
+test_wrong_revision_rejected (<run_path>.ReceiptTests.test_wrong_revision_rejected) ... ok
+test_actual_manifest_and_registries (<run_path>.TypeBoundaryTests.test_actual_manifest_and_registries) ... ok
+test_existing_in_memory_controls (<run_path>.TypeBoundaryTests.test_existing_in_memory_controls) ... ok
+test_type_artifact_entry_integer (<run_path>.TypeBoundaryTests.test_type_artifact_entry_integer) ... ok
+test_type_audit_boolean_count (<run_path>.TypeBoundaryTests.test_type_audit_boolean_count) ... ok
+test_type_audit_null (<run_path>.TypeBoundaryTests.test_type_audit_null) ... ok
+test_type_claim_class_array (<run_path>.TypeBoundaryTests.test_type_claim_class_array) ... ok
+test_type_claim_status_object (<run_path>.TypeBoundaryTests.test_type_claim_status_object) ... ok
+test_type_evidence_artifact_integer (<run_path>.TypeBoundaryTests.test_type_evidence_artifact_integer) ... ok
+test_type_evidence_claim_object (<run_path>.TypeBoundaryTests.test_type_evidence_claim_object) ... ok
+test_type_evidence_class_array (<run_path>.TypeBoundaryTests.test_type_evidence_class_array) ... ok
+test_type_package_path_integer (<run_path>.TypeBoundaryTests.test_type_package_path_integer) ... ok
+test_type_policy_array (<run_path>.TypeBoundaryTests.test_type_policy_array) ... ok
+test_type_policy_flag_array (<run_path>.TypeBoundaryTests.test_type_policy_flag_array) ... ok
+test_type_policy_null (<run_path>.TypeBoundaryTests.test_type_policy_null) ... ok
+test_type_proof_artifact_false (<run_path>.TypeBoundaryTests.test_type_proof_artifact_false) ... ok
+test_type_registry_path_null (<run_path>.TypeBoundaryTests.test_type_registry_path_null) ... ok
+test_type_status_object (<run_path>.TypeBoundaryTests.test_type_status_object) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 13.974s
+
+OK
+INSTALLATION_STARTED=True
+RESULT=PASS
+WRAPPER_TESTS=20/20
+TYPE_REGRESSION_TESTS=17/17
+TOTAL_TESTS=37/37
+TYPE_TESTS_WIRED_INTO_CI=YES
+EXISTING_CI_20_TEST_CONTRACT=UNCHANGED
+MANIFEST_AND_REGISTRIES_UNCHANGED=YES
+FULL_CENSUS_AND_LEAN=NOT_RUN
+GIT_STAGE_COMMIT_PUSH=NONE

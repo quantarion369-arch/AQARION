@@ -77,10 +77,120 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
     return records
 
 
+
+# Explicit JSON-type boundaries. These do not alter promotion gates.
+
+def _jt_object(value, location):
+    require(
+        isinstance(value, dict),
+        f"TYPE_ERROR: {location}: object required",
+    )
+
+def _jt_text(value, location):
+    require(
+        isinstance(value, str) and bool(value) and "\0" not in value,
+        f"TYPE_ERROR: {location}: nonempty NUL-free string required",
+    )
+
+def _jt_records(records, kind):
+    require(
+        isinstance(records, list),
+        f"TYPE_ERROR: {kind}_records: array required",
+    )
+    for index, record in enumerate(records, 1):
+        location = f"{kind}[{index}]"
+        _jt_object(record, location)
+
+        fields = (
+            ("evidence_class", "mathematical_status")
+            if kind == "claim"
+            else ("claim_id", "class", "artifact")
+        )
+
+        for field in fields:
+            if field in record:
+                _jt_text(record[field], f"{location}.{field}")
+
+        if kind == "claim" and "proof_artifact" in record:
+            artifact = record["proof_artifact"]
+            if artifact is not None:
+                _jt_text(artifact, f"{location}.proof_artifact")
+
+def _jt_manifest(manifest):
+    _jt_object(manifest, "manifest")
+
+    for field in ("verification_policy", "audit", "promotion"):
+        if field in manifest:
+            _jt_object(manifest[field], f"manifest.{field}")
+
+    for field in (
+        "status", "source_revision", "claim_registry",
+        "evidence_registry",
+    ):
+        if field in manifest:
+            _jt_text(manifest[field], f"manifest.{field}")
+
+    for field in ("required_artifacts", "required_directories"):
+        if field not in manifest:
+            continue
+
+        require(
+            isinstance(manifest[field], list),
+            f"TYPE_ERROR: manifest.{field}: array required",
+        )
+
+        for index, value in enumerate(manifest[field]):
+            _jt_text(value, f"manifest.{field}[{index}]")
+
+    policy = manifest.get("verification_policy", {})
+
+    for field in (
+        "fail_closed", "allow_automatic_manifest_generation",
+        "reject_unknown_record_fields", "require_source_revision_match",
+        "require_independent_audit", "require_negative_controls",
+    ):
+        if field in policy:
+            require(
+                type(policy[field]) is bool,
+                f"TYPE_ERROR: manifest.verification_policy.{field}: boolean required",
+            )
+
+    for field in ("lean_status", "mathematical_verification_status"):
+        if field in policy:
+            _jt_text(
+                policy[field],
+                f"manifest.verification_policy.{field}",
+            )
+
+def _jt_audit(manifest):
+    _jt_object(manifest, "manifest")
+
+    if "audit" not in manifest:
+        return
+
+    audit = manifest["audit"]
+    _jt_object(audit, "manifest.audit")
+
+    if "expected" not in audit:
+        return
+
+    expected = audit["expected"]
+    _jt_object(expected, "manifest.audit.expected")
+
+    for key, pair in expected.items():
+        require(
+            isinstance(pair, list)
+            and len(pair) == 2
+            and all(type(value) is int for value in pair),
+            f"TYPE_ERROR: manifest.audit.expected.{key}: integer pair required",
+        )
+
+
 def validate_claims(
     records: list[dict[str, Any]],
     reject_unknown: bool = True,
 ) -> set[str]:
+    _jt_records(records, 'claim')
     seen: set[str] = set()
 
     for index, record in enumerate(records, start=1):
@@ -136,6 +246,7 @@ def validate_evidence(
     claim_ids: set[str],
     reject_unknown: bool = True,
 ) -> set[str]:
+    _jt_records(records, 'evidence')
     seen: set[str] = set()
 
     for index, record in enumerate(records, start=1):
@@ -177,6 +288,7 @@ def validate_evidence(
 
 
 def safe_package_path(relative: str) -> Path:
+    _jt_text(relative, 'package_path')
     path = Path(relative)
     require(not path.is_absolute(), f"absolute package path rejected: {relative}")
     resolved = (ROOT / path).resolve()
@@ -188,6 +300,7 @@ def safe_package_path(relative: str) -> Path:
 
 
 def check_manifest_shape(manifest: dict[str, Any]) -> None:
+    _jt_manifest(manifest)
     required = {
         "schema_version", "package_id", "package_version", "status",
         "source_revision", "claim_registry", "evidence_registry",
@@ -278,6 +391,7 @@ def check_revision(source_baseline: str) -> str:
 
 
 def check_audit_contract(manifest: dict[str, Any]) -> None:
+    _jt_audit(manifest)
     audit = manifest["audit"]
     require(
         audit.get("script") == "join_stability_independent_audit.py",

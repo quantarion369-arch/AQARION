@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "installation_started": true,
+  "source_run": "/data/data/com.termux/files/home/AQARION_AUDIT/join-type-hardening/run.9ZM6tIAy",
+  "repository": "/data/data/com.termux/files/home/AQARION",
+  "finite_census": "NOT_RUN",
+  "lean": "NOT_RUN",
+  "git_stage_commit_push": "NONE",
+  "parent_revision": "774de98072760a44ba0b2013315ba997b02b3b37",
+  "installed_paths": [
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/verify.py",
+    "AQARION-QUANTARION-AI/PB_001.md",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/test_validator_types.py",
+    ".github/workflows/join-stability.yml"
+  ],
+  "expected_wrapper_tests": 20,
+  "expected_type_tests": 17,
+  "tests_run": 37,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "installed_source_sha256": {
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/verify.py": "3c86b12e650c13ab398e930cd9a2a44c4f0d1a041174227e5ccfb12ba344d8ba",
+    "AQARION-QUANTARION-AI/PB_001.md": "5a23d685db1bfc607132df3bbacfd7856be8a6811084100e11d2be54cff66d4e",
+    "AQARION-QUANTARION-AI/TOOLS/JOIN-STABILITY/test_validator_types.py": "ad743091092cbe20f9d2c4bf0962de51380628a8243efd402749426a0c4df2ca",
+    ".github/workflows/join-stability.yml": "2348cd7358f89f8e3f3cbf79f245274eed8db08f2d6c77e4e9190cff6b4573d6"
+  },
+  "manifest_and_registries_unchanged": true,
+  "head_unchanged": true
+}
