@@ -1,0 +1,11050 @@
+{
+  "mode": "PRECOMPUTED_EXACT_ONE_EDGE_CASES",
+  "baseline": [
+    0,
+    2,
+    4,
+    6,
+    0,
+    2,
+    4,
+    6
+  ],
+  "observation": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1
+  ],
+  "source_commit_for_reference_checker": "d4aa19bba59385fce3be7856ff2384820f2f036e",
+  "reference_checker_sha256": "3e7af0579efa8a954e8280dd766df5fc07cc8b3b38ab73275ead58884d206f17",
+  "recognizer_sha256": "a8e221e2ba49e00cdbae59234a0aaeeabd9b88f205df98911e461e321f53d4cf",
+  "unique_maps": 57,
+  "classification_histogram": {
+    "EXTREMAL_REGISTER": 1,
+    "NONLITERAL_TERMINAL": 8,
+    "PREFIX_COLLISION": 48
+  },
+  "cases": {
+    "0:0": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "recognition": {
+        "classification": "EXTREMAL_REGISTER",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "terminal_rule": {
+          "kind": "constant",
+          "value": 0
+        },
+        "certificate": {
+          "state_weights": [
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "detecting_temporal_coordinates": [
+            0,
+            1,
+            2
+          ],
+          "weighted_sum": -1
+        },
+        "scope": "Positive register normal form and parity certificate. Completeness of the classification uses the spectral-to-register reduction."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": null
+    },
+    "0:1": {
+      "T": [
+        1,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "NONLITERAL_TERMINAL",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "terminal_truth_table": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "repair_certificate": {
+          "parameter_dimension": 3,
+          "nonlinear_support": [
+            0,
+            1,
+            2
+          ],
+          "coefficient": -1,
+          "multiplier_prefix_coordinates": [],
+          "temporal_product_coordinates": [
+            3
+          ],
+          "temporal_product_degree": 1,
+          "parity_moment": 1,
+          "full_rank_degree": 2,
+          "full_rank": 8,
+          "method": "INTEGER_MOBIUS_AND_DIRECT_PARITY"
+        },
+        "scope": "The prefix separates all states, but the terminal is not constant or a signed coordinate literal. Full degree-(d-1) rank is theorem-derived; this recognizer does not compute ranks."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          3
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "0:2": {
+      "T": [
+        2,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            1
+          ],
+          "prefix": [
+            0,
+            0,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "0:3": {
+      "T": [
+        3,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            1
+          ],
+          "prefix": [
+            0,
+            0,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          1,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "0:4": {
+      "T": [
+        4,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 6,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        6,
+        6
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            2
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "0:5": {
+      "T": [
+        5,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 6,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        6,
+        6
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            2
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "0:6": {
+      "T": [
+        6,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "0:7": {
+      "T": [
+        7,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "1:0": {
+      "T": [
+        0,
+        0,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            1
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "1:1": {
+      "T": [
+        0,
+        1,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            1
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "1:2": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "recognition": {
+        "classification": "EXTREMAL_REGISTER",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "terminal_rule": {
+          "kind": "constant",
+          "value": 0
+        },
+        "certificate": {
+          "state_weights": [
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "detecting_temporal_coordinates": [
+            0,
+            1,
+            2
+          ],
+          "weighted_sum": -1
+        },
+        "scope": "Positive register normal form and parity certificate. Completeness of the classification uses the spectral-to-register reduction."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": null
+    },
+    "1:3": {
+      "T": [
+        0,
+        3,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "NONLITERAL_TERMINAL",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "terminal_truth_table": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "repair_certificate": {
+          "parameter_dimension": 3,
+          "nonlinear_support": [
+            0,
+            1,
+            2
+          ],
+          "coefficient": 1,
+          "multiplier_prefix_coordinates": [],
+          "temporal_product_coordinates": [
+            3
+          ],
+          "temporal_product_degree": 1,
+          "parity_moment": -1,
+          "full_rank_degree": 2,
+          "full_rank": 8,
+          "method": "INTEGER_MOBIUS_AND_DIRECT_PARITY"
+        },
+        "scope": "The prefix separates all states, but the terminal is not constant or a signed coordinate literal. Full degree-(d-1) rank is theorem-derived; this recognizer does not compute ranks."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          3
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "1:4": {
+      "T": [
+        0,
+        4,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            1,
+            2
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "1:5": {
+      "T": [
+        0,
+        5,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            1,
+            2
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "1:6": {
+      "T": [
+        0,
+        6,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            1,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "1:7": {
+      "T": [
+        0,
+        7,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            1,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "2:0": {
+      "T": [
+        0,
+        2,
+        0,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 5,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        5,
+        5
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            1
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "2:1": {
+      "T": [
+        0,
+        2,
+        1,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 5,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        5,
+        5
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            1
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "2:2": {
+      "T": [
+        0,
+        2,
+        2,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 5,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        5,
+        5
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            1
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "2:3": {
+      "T": [
+        0,
+        2,
+        3,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            1
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "2:4": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "recognition": {
+        "classification": "EXTREMAL_REGISTER",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "terminal_rule": {
+          "kind": "constant",
+          "value": 0
+        },
+        "certificate": {
+          "state_weights": [
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "detecting_temporal_coordinates": [
+            0,
+            1,
+            2
+          ],
+          "weighted_sum": -1
+        },
+        "scope": "Positive register normal form and parity certificate. Completeness of the classification uses the spectral-to-register reduction."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": null
+    },
+    "2:5": {
+      "T": [
+        0,
+        2,
+        5,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "NONLITERAL_TERMINAL",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "terminal_truth_table": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "repair_certificate": {
+          "parameter_dimension": 3,
+          "nonlinear_support": [
+            0,
+            1,
+            2
+          ],
+          "coefficient": 1,
+          "multiplier_prefix_coordinates": [],
+          "temporal_product_coordinates": [
+            3
+          ],
+          "temporal_product_degree": 1,
+          "parity_moment": -1,
+          "full_rank_degree": 2,
+          "full_rank": 8,
+          "method": "INTEGER_MOBIUS_AND_DIRECT_PARITY"
+        },
+        "scope": "The prefix separates all states, but the terminal is not constant or a signed coordinate literal. Full degree-(d-1) rank is theorem-derived; this recognizer does not compute ranks."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          3
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "2:6": {
+      "T": [
+        0,
+        2,
+        6,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "2:7": {
+      "T": [
+        0,
+        2,
+        7,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "3:0": {
+      "T": [
+        0,
+        2,
+        4,
+        0,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            3
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "3:1": {
+      "T": [
+        0,
+        2,
+        4,
+        1,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            3
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "3:2": {
+      "T": [
+        0,
+        2,
+        4,
+        2,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            1,
+            3
+          ],
+          "prefix": [
+            0,
+            0,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "3:3": {
+      "T": [
+        0,
+        2,
+        4,
+        3,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            0,
+            3
+          ],
+          "prefix": [
+            0,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "3:4": {
+      "T": [
+        0,
+        2,
+        4,
+        4,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "3:5": {
+      "T": [
+        0,
+        2,
+        4,
+        5,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "3:6": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "recognition": {
+        "classification": "EXTREMAL_REGISTER",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "terminal_rule": {
+          "kind": "constant",
+          "value": 0
+        },
+        "certificate": {
+          "state_weights": [
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "detecting_temporal_coordinates": [
+            0,
+            1,
+            2
+          ],
+          "weighted_sum": -1
+        },
+        "scope": "Positive register normal form and parity certificate. Completeness of the classification uses the spectral-to-register reduction."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": null
+    },
+    "3:7": {
+      "T": [
+        0,
+        2,
+        4,
+        7,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "NONLITERAL_TERMINAL",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "repair_certificate": {
+          "parameter_dimension": 3,
+          "nonlinear_support": [
+            0,
+            1,
+            2
+          ],
+          "coefficient": -1,
+          "multiplier_prefix_coordinates": [],
+          "temporal_product_coordinates": [
+            3
+          ],
+          "temporal_product_degree": 1,
+          "parity_moment": 1,
+          "full_rank_degree": 2,
+          "full_rank": 8,
+          "method": "INTEGER_MOBIUS_AND_DIRECT_PARITY"
+        },
+        "scope": "The prefix separates all states, but the terminal is not constant or a signed coordinate literal. Full degree-(d-1) rank is theorem-derived; this recognizer does not compute ranks."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          3
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "4:0": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "recognition": {
+        "classification": "EXTREMAL_REGISTER",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "terminal_rule": {
+          "kind": "constant",
+          "value": 0
+        },
+        "certificate": {
+          "state_weights": [
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "detecting_temporal_coordinates": [
+            0,
+            1,
+            2
+          ],
+          "weighted_sum": -1
+        },
+        "scope": "Positive register normal form and parity certificate. Completeness of the classification uses the spectral-to-register reduction."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": null
+    },
+    "4:1": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        1,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "NONLITERAL_TERMINAL",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "repair_certificate": {
+          "parameter_dimension": 3,
+          "nonlinear_support": [
+            0,
+            1,
+            2
+          ],
+          "coefficient": 1,
+          "multiplier_prefix_coordinates": [],
+          "temporal_product_coordinates": [
+            3
+          ],
+          "temporal_product_degree": 1,
+          "parity_moment": -1,
+          "full_rank_degree": 2,
+          "full_rank": 8,
+          "method": "INTEGER_MOBIUS_AND_DIRECT_PARITY"
+        },
+        "scope": "The prefix separates all states, but the terminal is not constant or a signed coordinate literal. Full degree-(d-1) rank is theorem-derived; this recognizer does not compute ranks."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          3
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "4:2": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        2,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            4,
+            5
+          ],
+          "prefix": [
+            1,
+            0,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "4:3": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        3,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            4,
+            5
+          ],
+          "prefix": [
+            1,
+            0,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "4:4": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        4,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 5,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        5,
+        5
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "4:5": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        5,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "4:6": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        6,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 5,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        5,
+        5
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "4:7": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 5,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        5,
+        5
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "5:0": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        0,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            4,
+            5
+          ],
+          "prefix": [
+            1,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "5:1": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        1,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            4,
+            5
+          ],
+          "prefix": [
+            1,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "5:2": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "recognition": {
+        "classification": "EXTREMAL_REGISTER",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "terminal_rule": {
+          "kind": "constant",
+          "value": 0
+        },
+        "certificate": {
+          "state_weights": [
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "detecting_temporal_coordinates": [
+            0,
+            1,
+            2
+          ],
+          "weighted_sum": -1
+        },
+        "scope": "Positive register normal form and parity certificate. Completeness of the classification uses the spectral-to-register reduction."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": null
+    },
+    "5:3": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        3,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "NONLITERAL_TERMINAL",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "repair_certificate": {
+          "parameter_dimension": 3,
+          "nonlinear_support": [
+            0,
+            1,
+            2
+          ],
+          "coefficient": -1,
+          "multiplier_prefix_coordinates": [],
+          "temporal_product_coordinates": [
+            3
+          ],
+          "temporal_product_degree": 1,
+          "parity_moment": 1,
+          "full_rank_degree": 2,
+          "full_rank": 8,
+          "method": "INTEGER_MOBIUS_AND_DIRECT_PARITY"
+        },
+        "scope": "The prefix separates all states, but the terminal is not constant or a signed coordinate literal. Full degree-(d-1) rank is theorem-derived; this recognizer does not compute ranks."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          3
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "5:4": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        4,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            5,
+            6
+          ],
+          "prefix": [
+            1,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "5:5": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        5,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            5,
+            7
+          ],
+          "prefix": [
+            1,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "5:6": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        6,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            5,
+            7
+          ],
+          "prefix": [
+            1,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "5:7": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        7,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            5,
+            7
+          ],
+          "prefix": [
+            1,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "6:0": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        0,
+        6
+      ],
+      "distinct_itineraries_computed": 6,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        6,
+        6
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "6:1": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        1,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "6:2": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        2,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "6:3": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        3,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            2,
+            3
+          ],
+          "prefix": [
+            0,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": -1
+      }
+    },
+    "6:4": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "recognition": {
+        "classification": "EXTREMAL_REGISTER",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "terminal_rule": {
+          "kind": "constant",
+          "value": 0
+        },
+        "certificate": {
+          "state_weights": [
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "detecting_temporal_coordinates": [
+            0,
+            1,
+            2
+          ],
+          "weighted_sum": -1
+        },
+        "scope": "Positive register normal form and parity certificate. Completeness of the classification uses the spectral-to-register reduction."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": null
+    },
+    "6:5": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        5,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        6,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "NONLITERAL_TERMINAL",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "repair_certificate": {
+          "parameter_dimension": 3,
+          "nonlinear_support": [
+            0,
+            1,
+            2
+          ],
+          "coefficient": -1,
+          "multiplier_prefix_coordinates": [],
+          "temporal_product_coordinates": [
+            3
+          ],
+          "temporal_product_degree": 1,
+          "parity_moment": 1,
+          "full_rank_degree": 2,
+          "full_rank": 8,
+          "method": "INTEGER_MOBIUS_AND_DIRECT_PARITY"
+        },
+        "scope": "The prefix separates all states, but the terminal is not constant or a signed coordinate literal. Full degree-(d-1) rank is theorem-derived; this recognizer does not compute ranks."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          3
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "6:6": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        6,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            6,
+            7
+          ],
+          "prefix": [
+            1,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "6:7": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        7,
+        6
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            6,
+            7
+          ],
+          "prefix": [
+            1,
+            1,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "7:0": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        0
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            4,
+            7
+          ],
+          "prefix": [
+            1,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "7:1": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        1
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            4,
+            7
+          ],
+          "prefix": [
+            1,
+            0,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "7:2": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        2
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            5,
+            7
+          ],
+          "prefix": [
+            1,
+            0,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "7:3": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        3
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            5,
+            7
+          ],
+          "prefix": [
+            1,
+            0,
+            1
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          1
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "7:4": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        4
+      ],
+      "distinct_itineraries_computed": 7,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        7
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            6,
+            7
+          ],
+          "prefix": [
+            1,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "7:5": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        5
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "PREFIX_COLLISION",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "collision": {
+          "states": [
+            6,
+            7
+          ],
+          "prefix": [
+            1,
+            1,
+            0
+          ]
+        },
+        "scope": "Outside the separating extremal class. This prefix collision alone does not decide whether longer itineraries separate states."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          2
+        ],
+        "weighted_sum": 1
+      }
+    },
+    "7:6": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        6
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        4,
+        7,
+        8
+      ],
+      "recognition": {
+        "classification": "EXTREMAL_REGISTER",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prefix_bijection_computed": true,
+        "terminal_rule": {
+          "kind": "constant",
+          "value": 0
+        },
+        "certificate": {
+          "state_weights": [
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "detecting_temporal_coordinates": [
+            0,
+            1,
+            2
+          ],
+          "weighted_sum": -1
+        },
+        "scope": "Positive register normal form and parity certificate. Completeness of the classification uses the spectral-to-register reduction."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "first_broken_baseline_feature": null
+    },
+    "7:7": {
+      "T": [
+        0,
+        2,
+        4,
+        6,
+        0,
+        2,
+        4,
+        7
+      ],
+      "distinct_itineraries_computed": 8,
+      "rank_profile_computed_exactly": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "recognition": {
+        "classification": "NONLITERAL_TERMINAL",
+        "n": 8,
+        "d": 3,
+        "prefixes": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "rank_profile_theorem_derived": null,
+        "terminal_truth_table": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "prefix_bijection_computed": true,
+        "repair_certificate": {
+          "parameter_dimension": 3,
+          "nonlinear_support": [
+            0,
+            1,
+            2
+          ],
+          "coefficient": 1,
+          "multiplier_prefix_coordinates": [],
+          "temporal_product_coordinates": [
+            3
+          ],
+          "temporal_product_degree": 1,
+          "parity_moment": -1,
+          "full_rank_degree": 2,
+          "full_rank": 8,
+          "method": "INTEGER_MOBIUS_AND_DIRECT_PARITY"
+        },
+        "scope": "The prefix separates all states, but the terminal is not constant or a signed coordinate literal. Full degree-(d-1) rank is theorem-derived; this recognizer does not compute ranks."
+      },
+      "state_itineraries": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "first_broken_baseline_feature": {
+        "temporal_coordinates": [
+          3
+        ],
+        "weighted_sum": -1
+      }
+    }
+  },
+  "base_recognizer_sha256": "0c248d38dcb9cf71978493334734dc5973f206c6a38041d648687d12da1d059d",
+  "extension": {
+    "kind": "CONSTRUCTIVE_TERMINAL_REPAIR",
+    "base_build": "build-001",
+    "rank_calculations_repeated": false,
+    "historical_rank_values_preserved": true,
+    "distinct_nonliteral_cases_certified": 8
+  }
+}

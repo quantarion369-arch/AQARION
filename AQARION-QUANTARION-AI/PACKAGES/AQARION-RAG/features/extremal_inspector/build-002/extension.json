@@ -1,0 +1,7 @@
+{
+  "kind": "CONSTRUCTIVE_TERMINAL_REPAIR",
+  "base_build": "build-001",
+  "rank_calculations_repeated": false,
+  "historical_rank_values_preserved": true,
+  "distinct_nonliteral_cases_certified": 8
+}

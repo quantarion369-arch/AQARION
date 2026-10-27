@@ -1,0 +1,34 @@
+{
+  "kind": "constructive_terminal_repair_upgrade",
+  "status": "PASS",
+  "preservation_parent_revision": "813cfc47ca8aa109bc82483de0f76353f3a6219f",
+  "tested_source_sha256": {
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/recognizer.py": "a8e221e2ba49e00cdbae59234a0aaeeabd9b88f205df98911e461e321f53d4cf",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/README.md": "90c894d4ec9c5e3981169d7266f563753fb559689c864d6bdb94de9a0bea4915",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py": "079b13f939ab761399100b668a3fdc7c92a4707735a6ccdc57c4cc030a8fa4cc",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py": "990aa34f7d381b8c58aa22d5c44c9128e350b02fe66ccb446ac01cda52430037",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_terminal_repair.py": "4500ef31c837454ebd0686a65cd23ecbef7b53dbd8d06c73c1b7073e99669b09",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/cases.json": "7bb916ecad2b9cbe12361d95e76aef37d1e138fdf41402bce93170d8e7cdc0a7",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/page-template.html": "f04e0b95d131292927e9c51f064989d794f7087b9c9a2acc6d82295148fb4bd5",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/inspector.html": "b5e2ecbaae2767d999d3e4a77f1a69c15162dc7764c319a509ccdbd106273936",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/extension.json": "d789518f07f73ed62777357b7c86c085e55b8675921f24221f16ca002a4cf12a",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/enrich_cases.py": "78eb36dec2bbb1048228d15fc65952506425842785d09c215913bb069494579a",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/README.md": "ffc752a864e0a43c57ef5b5cd90fc67a45af47eea0fa5267cdda0d84afb35652",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/PROOF.md": "c81a04a2bc45a44e6d6fa0d6580927ebd4ab0af3a82fd1f3033381c2ece2e792",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/SHA256SUMS": "e7a625b87d3ac01afef9a287b1f97812f902dd832846c16c926781ef0808e650"
+  },
+  "historical_build_001_unchanged": true,
+  "repair_regression_tests": 9,
+  "full_suite_exit": 0,
+  "terminal_reported_summary": {
+    "passed": 232,
+    "skipped": 2,
+    "subtests_passed": 10
+  },
+  "nonliteral_saved_cases_certified": 8,
+  "rank_recomputation": "NONE",
+  "browser_mutation_render": "USER_TRANSCRIPT_OBSERVED",
+  "promotion_changed": false,
+  "hosted_ci_for_future_commit": "NOT_YET_VERIFIED",
+  "archive_scope": "Selected execution source, logs, XML, result, and exit status. Not a copy of the entire local upgrade directory."
+}

@@ -70,7 +70,7 @@ class Handler(BaseHTTPRequestHandler):
             page = (
                 Path(__file__).resolve().parent
                 / "features" / "extremal_inspector"
-                / "build-001" / "inspector.html"
+                / "build-002" / "inspector.html"
             )
             try:
                 body = page.read_bytes()

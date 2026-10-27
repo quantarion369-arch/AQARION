@@ -1,0 +1,31 @@
+{
+  "source": "User-supplied browser transcript",
+  "observation_time_local": "2026-10-27 06:38 EDT",
+  "route": "/cases/extremal",
+  "build": "build-002",
+  "mutation_render": "OBSERVED_IN_USER_TRANSCRIPT",
+  "transition": [
+    0,
+    2,
+    4,
+    6,
+    0,
+    2,
+    4,
+    7
+  ],
+  "classification": "NONLITERAL_TERMINAL",
+  "displayed_exact_rank_profile": [
+    1,
+    5,
+    8,
+    8
+  ],
+  "displayed_detecting_temporal_coordinates": [
+    3
+  ],
+  "displayed_parity_moment": -1,
+  "displayed_full_rank_degree": 2,
+  "displayed_full_rank": 8,
+  "scope": "Records the supplied mutation-page rendering. Not an assertion that every selector or visual property was manually tested."
+}

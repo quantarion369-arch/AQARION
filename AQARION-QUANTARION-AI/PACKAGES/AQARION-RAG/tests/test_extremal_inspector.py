@@ -56,7 +56,7 @@ class TestExtremalInspector(unittest.TestCase):
             headers["X-Content-Type-Options"], "nosniff"
         )
         self.assertEqual(int(headers["Content-Length"]), len(body))
-        self.assertEqual(body, (BUILD / "inspector.html").read_bytes())
+        self.assertEqual(body, (FEATURE / "build-002" / "inspector.html").read_bytes())
         self.assertNotIn(b"__CASE_DATA__", body)
 
     def test_homepage_links_to_case(self):
@@ -89,7 +89,15 @@ class TestExtremalInspector(unittest.TestCase):
                 continue
             seen.add(T)
             result = recognize(T, data["observation"])
-            self.assertEqual(result, case["recognition"])
+            self.assertEqual(
+                {key: result[key] for key in case["recognition"]},
+                case["recognition"],
+            )
+            if "repair_certificate" in result:
+                self.assertTrue(module["verify_terminal_repair"](
+                    result["terminal_truth_table"],
+                    result["repair_certificate"],
+                ))
             outcomes.add(result["classification"])
 
         self.assertEqual(len(seen), 57)

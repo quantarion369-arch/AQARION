@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "installation_started": true,
+  "historical_build": "build-001",
+  "new_build": "build-002",
+  "rank_recomputation": "NONE",
+  "git_stage_commit_push": "NONE",
+  "repair_tests": 9,
+  "full_suite_exit": 0,
+  "junit_cases_recorded": 234,
+  "junit_skips": 2,
+  "build_001_unchanged": true,
+  "installed_source_sha256": {
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/recognizer.py": "a8e221e2ba49e00cdbae59234a0aaeeabd9b88f205df98911e461e321f53d4cf",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/README.md": "90c894d4ec9c5e3981169d7266f563753fb559689c864d6bdb94de9a0bea4915",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/api.py": "079b13f939ab761399100b668a3fdc7c92a4707735a6ccdc57c4cc030a8fa4cc",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_extremal_inspector.py": "990aa34f7d381b8c58aa22d5c44c9128e350b02fe66ccb446ac01cda52430037",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/tests/test_terminal_repair.py": "4500ef31c837454ebd0686a65cd23ecbef7b53dbd8d06c73c1b7073e99669b09",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/cases.json": "7bb916ecad2b9cbe12361d95e76aef37d1e138fdf41402bce93170d8e7cdc0a7",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/page-template.html": "f04e0b95d131292927e9c51f064989d794f7087b9c9a2acc6d82295148fb4bd5",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/inspector.html": "b5e2ecbaae2767d999d3e4a77f1a69c15162dc7764c319a509ccdbd106273936",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/extension.json": "d789518f07f73ed62777357b7c86c085e55b8675921f24221f16ca002a4cf12a",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/enrich_cases.py": "78eb36dec2bbb1048228d15fc65952506425842785d09c215913bb069494579a",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/README.md": "ffc752a864e0a43c57ef5b5cd90fc67a45af47eea0fa5267cdda0d84afb35652",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/PROOF.md": "c81a04a2bc45a44e6d6fa0d6580927ebd4ab0af3a82fd1f3033381c2ece2e792",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/SHA256SUMS": "e7a625b87d3ac01afef9a287b1f97812f902dd832846c16c926781ef0808e650"
+  },
+  "historical_build_sha256": {
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/recognizer.py": "0c248d38dcb9cf71978493334734dc5973f206c6a38041d648687d12da1d059d",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/build_inspector.py": "ec0fc9e4113e826c90c6d4d2ddd39451ee31ea5bcba77bb55005fee835328516",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/page-template.html": "18d4669152e08c1d2d2425a7c871ce37f7a95ca49a8c90f2f2dde3427d1b2c30",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/README.md": "14fd4c1ea80c62dee5f4c312ed17d96e69816033b263d18b26bcd980a0a20fd3",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/stdout.txt": "ec8dc856a7d99e27ad933d18c474d29badcf141682d34452508ff41f7b9e759d",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/cases.json": "b6961b456ceac809476439c4278e38f68cbad0fb5b09badbd468c5a4d8c49f59",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/inspector.html": "bbac87b16537414fdbbd26f0f85b2af3bae3eaf70822b001fefc4d7b968a1ecc",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/verification.json": "7a2e05d463cf642a169e34dcc6804d0be973c34800a5f8a19ea56f34d3a6cd74",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/python_exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-001/SHA256SUMS": "4eda52ce360e564ad614f139def2ab44eb9bb50c98c9ea455b1e69c2cc215dec"
+  },
+  "browser_rendering": "USER_CHECK_PENDING"
+}
