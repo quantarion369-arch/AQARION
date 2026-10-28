@@ -1,0 +1,63 @@
+name: PB Core - PB-006 Regression
+
+'on':
+  push:
+    branches: [main]
+    paths:
+      - 'AQARION-QUANTARION-AI/verification/PB/**'
+      - '.github/workflows/pb-core-verify.yml'
+  pull_request:
+    paths:
+      - 'AQARION-QUANTARION-AI/verification/PB/**'
+      - '.github/workflows/pb-core-verify.yml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pb-core-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pb006-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out tested revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run existing bounded PB-006 regression
+        shell: bash
+        env:
+          EVIDENCE_DIR: ${{ runner.temp }}/pb-core-evidence
+        run: |
+          set -euo pipefail
+          mkdir -p "$EVIDENCE_DIR"
+          git rev-parse HEAD > "$EVIDENCE_DIR/tested-commit.txt"
+          test "$(cat "$EVIDENCE_DIR/tested-commit.txt")" = "$GITHUB_SHA"
+          python --version > "$EVIDENCE_DIR/python-version.txt" 2>&1
+          PB="AQARION-QUANTARION-AI/verification/PB/PB-CORE"
+          sha256sum \
+            "$PB/tests/regression_pb006_relation_sets.py" \
+            "$PB/verify_pb_core_005_006.py" \
+            "$PB/PB-CORE-006-ARITHMETIC-VERIFY.py" \
+            > "$EVIDENCE_DIR/source-sha256.txt"
+          python -I -B "$PB/tests/regression_pb006_relation_sets.py" \
+            "$GITHUB_WORKSPACE" 2>&1 | tee "$EVIDENCE_DIR/regression.log"
+
+      - name: Preserve execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pb-core-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pb-core-evidence/
+          if-no-files-found: error
+          retention-days: 30

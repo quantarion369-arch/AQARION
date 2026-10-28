@@ -1,0 +1,129 @@
+# ============================================================
+# PB-006 CERTIFICATION GATE SPEC — v2.1 (CORRECTED)
+# Generated: 2026-10-16
+# ============================================================
+version: "2.1"
+claim: >-
+  PB-006: A_n = sum_{f:[n]->[n]} p(|Cyc(f)|)
+  = sum_{k=1}^{n-1} binom(n,k) k! p(k) k n^{n-k-1} + n! p(n),
+  with EGF A_n = n! [z^n] P(T(z)), T(z) = z exp(T(z)),
+  P(x) = sum_{k>=1} p(k) x^k, p(0) = 1.
+lean_commit_pinned: "6ee406a"
+lean_file: "PBCore006.lean"
+receipt_chain: "PB-CORE-006-LABELED-MAP-ENUMERATION.md"
+definition_register:
+  affine_rank: >-
+    rank_Q([M | 1]) — rank over Q of itinerary matrix M with
+    all-ones column appended. Equals affine dimension + 1.
+    NOT affine dimension itself.
+  gap: >-
+    m - affine_rank. Equals dimension of affine-dependency space.
+  cyclic_points: >-
+    Points on cycles of the functional digraph. |Cyc(f)| counts
+    these points, NOT the number of cycles.
+  partition_function: "p(k) = number of integer partitions of k, p(0) = 1"
+  itinerary: >-
+    For (S,T) with block partition beta: S -> {0,1} and L = |S|,
+    itinerary of s is (beta(s), beta(Ts), ..., beta(T^{L-1}s)).
+gates:
+  - id: theorem_correctness
+    name: "Theorem statement matches canonical formula"
+    evidence_required:
+      - "Theorem states canonical boundary-safe form with separate n! p(n) endpoint"
+      - "Boundary k=n handled as F(n,n)=1, no negative exponent in Nat"
+      - "p(k) and Cyc(f) defined per definition_register"
+      - "Every non-standard term resolves to a definition_register entry"
+    pass_criterion: "Statement matches canonical form verbatim; all terms pinned"
+    fail_criterion: "Deviation from canonical form or unpinned term"
+    automation: "semi-automated"
+    owner: "Lean build runner + formalization reviewer"
+    status: "INCONCLUSIVE — source not yet audited"
+  - id: foundations
+    name: "No proof gaps or unapproved axioms"
+    evidence_required:
+      - "grep for sorry/admit/sorryAx/native_decide returns no unapproved matches"
+      - "#print axioms shows only Mathlib-standard axioms"
+      - "No user-declared axiom lines"
+      - "audit_protocol.py receipt overall = PASS"
+    pass_criterion: "Clean scan; axiom report Mathlib-standard only; receipt PASS"
+    fail_criterion: "Any sorry/admit/sorryAx; user axiom; receipt FAIL"
+    automation: "fully-automated"
+    owner: "audit_protocol.py + Lean build runner"
+    status: "PENDING — audit_protocol.py not yet run against repo"
+  - id: provenance
+    name: "Source hash binds to commit"
+    evidence_required:
+      - "git rev-parse HEAD = 6ee406a (or recorded successor)"
+      - "sha256sum PBCore006.lean matches receipt"
+      - "lakefile.toml and lean-toolchain hashes recorded"
+    pass_criterion: "All hashes match receipt; commit matches pin; tree clean"
+    fail_criterion: "Hash mismatch; commit drift; uncommitted changes"
+    automation: "fully-automated"
+    owner: "audit_protocol.py"
+    status: "PENDING — audit_protocol.py not yet run against repo"
+  - id: reproducibility
+    name: "Clean rebuild in isolated environment"
+    evidence_required:
+      - "lake build in freshly initialized environment, no cached artifacts"
+      - "Build succeeds Lean 4.35.0 + Mathlib"
+      - "Build log captured with timestamp and exit code"
+    pass_criterion: "Clean rebuild succeeds, exit 0, log archived"
+    fail_criterion: "Cache reuse; build fails; arch mismatch"
+    automation: "semi-automated"
+    owner: "Independent replay operator"
+    status: "PENDING — clean rebuild not yet performed"
+  - id: independent_computation
+    name: "Independent brute-force matches formula to n=7"
+    evidence_required:
+      - "Direct enumeration n^n maps, sum p(|Cyc(f)|), n=1..7"
+      - "Formula via exact integer arithmetic"
+      - "Match: 1, 6, 51, 592, 8565, 148896, 3018127"
+      - "Definition register implemented literally in verifier"
+      - "Verifier does not reuse Lean output"
+    pass_criterion: "Brute matches formula n=1..7; register literal; no Lean reuse"
+    fail_criterion: "Mismatch; Lean reuse; register not literal"
+    automation: "fully-automated"
+    owner: "Independent computation author"
+    status: "VERIFIED — n<=7 census complete, 823543 maps at n=7"
+  - id: prior_art_novelty
+    name: "Prior art assessment — three objects, separable verdicts"
+    evidence_required:
+      object_1_counting_method:
+        status: "KNOWN"
+        evidence: "Fripertinger-Schöpf 1999 Thm 1; Goulden-Jackson eq 3.1.47"
+        location: "Fripertinger pp.173-187; G&J eq 3.1.47"
+      object_2_weighted_aggregate:
+        status: "UNCERTAIN"
+        evidence: "OEIS negative (raw/diffs/cumulative/normalized); Superseeker + full-text G&J/BLL/Stanley incomplete"
+        location: "Pending Kimi 8-search completion"
+        blocker: true
+      object_3_egf_presentation:
+        status: "KNOWN"
+        evidence: "BLL Example 3.14 weighted-species substitution, w(k)=p(k)"
+        location: "BLL Example 3.14; Flajolet-Sedgewick"
+    pass_criterion: "Objects 1,3 KNOWN; Object 2 KNOWN or NOT FOUND with 8-search evidence"
+    fail_criterion: "Object 2 UNCERTAIN; inconclusive search recorded as novelty proof"
+    automation: "manual"
+    owner: "Prior-art researcher + qualified reviewer"
+    status: "BLOCKED"
+    blocked_reason: "Object 2 UNCERTAIN — Kimi 8-search pending"
+  - id: registry_consistency
+    name: "Status semantics preserved"
+    evidence_required:
+      - "COMPILED NOT CERTIFIED until all 6 prior gates pass"
+      - "Distinguish [V] computed, [P] proved, [C] compiled, [C*] certified"
+      - "gap2 promotion requires pinned affine-rank definition in artifact"
+    pass_criterion: "Registry honest; no status inflation; gap-2 promotion includes pinned definition"
+    fail_criterion: "Status exceeds evidence; gap-2 promotion lacks pinned definition"
+    automation: "semi-automated"
+    owner: "CLAIMLOCK validator + registry maintainer"
+    status: "PENDING — gap-2 promotion not yet executed"
+meta:
+  patches_applied: 3
+  gates_total: 7
+  blocked_gates: 1
+  blocked_gate_id: "prior_art_novelty"
+  blocked_due_to: "Object 2 UNCERTAIN — Kimi 8-search pending"
+  definition_register_entries: 5
+  session_date: "2026-10-16"
+# PATCHES APPLIED: 3 | GATES: 7 | BLOCKED GATES: 1
