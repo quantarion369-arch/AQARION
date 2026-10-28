@@ -28,6 +28,118 @@ class Handler(BaseHTTPRequestHandler):
             self._send({"error": "pinned source loading failed"}, 500)
             return False, None
 
+    def _send_live(self, data, code=200):
+        self.close_connection = True
+        body = json.dumps(data, allow_nan=False).encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_POST(self):
+        import socket
+
+        url = urlparse(self.path)
+
+        if url.path != "/api/cases/extremal/analyze":
+            self._send_live({"error": "not found"}, 404)
+            return
+        if url.query:
+            self._send_live({"error": "query parameters are not accepted"}, 400)
+            return
+
+        port = self.server.server_address[1]
+        allowed_hosts = {
+            f"127.0.0.1:{port}", f"localhost:{port}"
+        }
+        hosts = self.headers.get_all("Host", [])
+
+        if len(hosts) != 1 or hosts[0] not in allowed_hosts:
+            self._send_live({"error": "local host required"}, 403)
+            return
+
+        origins = self.headers.get_all("Origin", [])
+        allowed_origins = {"http://" + h for h in allowed_hosts}
+
+        if len(origins) > 1 or (
+            origins and origins[0] not in allowed_origins
+        ):
+            self._send_live({"error": "origin rejected"}, 403)
+            return
+
+        if self.headers.get("Transfer-Encoding") is not None:
+            self._send_live({"error": "transfer encoding not accepted"}, 400)
+            return
+        if self.headers.get("Content-Encoding") is not None:
+            self._send_live({"error": "content encoding not accepted"}, 415)
+            return
+
+        content_type = self.headers.get("Content-Type", "")
+        if content_type.split(";", 1)[0].strip().lower() != "application/json":
+            self._send_live({"error": "application/json required"}, 415)
+            return
+
+        lengths = self.headers.get_all("Content-Length", [])
+
+        if not lengths:
+            self._send_live({"error": "Content-Length required"}, 411)
+            return
+        if (
+            len(lengths) != 1
+            or not lengths[0].isascii()
+            or not lengths[0].isdigit()
+            or len(lengths[0]) > 5
+        ):
+            self._send_live({"error": "invalid Content-Length"}, 400)
+            return
+
+        size = int(lengths[0])
+
+        if size > 2048:
+            self._send_live({"error": "request exceeds 2048 bytes"}, 413)
+            return
+
+        previous_timeout = self.connection.gettimeout()
+        try:
+            self.connection.settimeout(2)
+            raw = self.rfile.read(size)
+        except socket.timeout:
+            self._send_live({"error": "request body timed out"}, 408)
+            return
+        finally:
+            self.connection.settimeout(previous_timeout)
+
+        if len(raw) != size:
+            self._send_live({"error": "incomplete request body"}, 400)
+            return
+
+        try:
+            from features.extremal_inspector.live_analysis import (
+                analyze, decode_request, ReferenceUnavailable,
+            )
+        except ImportError:
+            self._send_live({"error": "live analysis unavailable"}, 503)
+            return
+
+        try:
+            result = analyze(decode_request(raw))
+        except ValueError as error:
+            self._send_live({"error": str(error)}, 400)
+            return
+        except ReferenceUnavailable:
+            self._send_live({"error": "exact reference unavailable"}, 503)
+            return
+        except Exception:
+            import traceback
+            traceback.print_exc()
+            self._send_live({"error": "internal analysis failure"}, 500)
+            return
+
+        self._send_live(result)
+
     def do_GET(self):
         url = urlparse(self.path)
         qs = parse_qs(url.query)
@@ -62,6 +174,28 @@ class Handler(BaseHTTPRequestHandler):
                 except Exception:
                     self._send({"error": "manifest validation failed"}, 500)
                     return
+
+        if url.path == "/cases/extremal/live":
+            if url.query:
+                self._send({"error": "live page accepts no parameters"}, 400)
+                return
+            page = (
+                Path(__file__).resolve().parent
+                / "features" / "extremal_inspector" / "live" / "index.html"
+            )
+            try:
+                body = page.read_bytes()
+            except OSError:
+                self._send({"error": "live page unavailable"}, 503)
+                return
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.end_headers()
+            self.wfile.write(body)
+            return
 
         if url.path == "/cases/extremal":
             if url.query:

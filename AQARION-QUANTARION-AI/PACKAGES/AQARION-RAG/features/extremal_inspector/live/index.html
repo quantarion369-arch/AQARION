@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AQARION — bounded live dynamics</title>
+<style>
+:root{color-scheme:dark}
+body{font:16px system-ui;background:#101827;color:#e5edf8;
+max-width:1000px;margin:auto;padding:18px;line-height:1.5}
+section{background:#172235;border:1px solid #334155;
+border-radius:12px;padding:16px;margin:16px 0}
+textarea{box-sizing:border-box;width:100%;background:#0b1220;
+color:#e5edf8;border:1px solid #64748b;border-radius:7px;padding:10px;
+font:15px monospace}
+button{font:inherit;padding:10px;margin:4px;background:#25344b;
+color:white;border:1px solid #64748b;border-radius:7px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+a{color:#93c5fd}.small{font-size:.9rem;color:#b6c7df}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+svg{width:100%;max-width:440px;background:#0b1220;border-radius:10px}
+#status{padding:10px;background:#0b1220}
+</style>
+</head>
+<body>
+<h1>AQARION: bounded live dynamics</h1>
+<p>Fresh exact computation for 2, 4, or 8 states. Binary observation.
+This is separate from the saved-case inspector.</p>
+<p><a href="/">Research workbench</a> ·
+<a href="/cases/extremal">Saved exact cases</a></p>
+
+<section>
+<button id="baseline">Run baseline</button>
+<button id="mutation">Run one-edge mutation</button>
+<button id="cycle">Run eight-cycle</button>
+<label for="T">Transition array T</label>
+<textarea id="T" rows="2">[0,2,4,6,0,2,4,6]</textarea>
+<label for="h">Observation array h</label>
+<textarea id="h" rows="2">[0,0,0,0,1,1,1,1]</textarea>
+<button id="run">Compute exact analysis</button>
+<p class="small">Arrays contain integer state indices and binary labels.
+No code, paths, or commands are accepted.</p>
+</section>
+
+<p id="status">No live analysis has run.</p>
+
+<div class="grid">
+<section>
+<h2>Transition graph</h2>
+<svg id="graph" viewBox="0 0 420 360" role="img"
+aria-label="Live transition graph"></svg>
+<p class="small">Blue/orange indicates the observation label.</p>
+</section>
+<section>
+<h2>Computed result</h2>
+<pre id="summary"></pre>
+<h2>Certificate</h2>
+<pre id="certificate"></pre>
+</section>
+</div>
+
+<section>
+<h2>Full response</h2>
+<p class="small">Live results are not automatically saved. You can select
+and copy this JSON. This page does not download a file.</p>
+<textarea id="result" rows="18" readonly></textarea>
+</section>
+
+<script>
+"use strict";
+const el=id=>document.getElementById(id);
+const NS="http://www.w3.org/2000/svg";
+function node(tag,attrs,parent){
+ const n=document.createElementNS(NS,tag);
+ for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));
+ parent.appendChild(n);return n;
+}
+function draw(T,h){
+ const svg=el("graph");svg.replaceChildren();
+ const defs=node("defs",{},svg);
+ const marker=node("marker",{
+  id:"live-arrow",viewBox:"0 0 8 8",refX:7,refY:4,
+  markerWidth:7,markerHeight:7,orient:"auto"
+ },defs);
+ node("path",{d:"M0 0 L8 4 L0 8 Z",fill:"#94a3b8"},marker);
+ const points=T.map((_,i)=>{
+  const a=-Math.PI/2+2*Math.PI*i/T.length;
+  return [210+125*Math.cos(a),180+125*Math.sin(a)];
+ });
+ T.forEach((target,i)=>{
+  const [x,y]=points[i],[u,v]=points[target];
+  let d;
+  if(i===target){
+   d=`M${x-12},${y-17} C${x-48},${y-64} ${x+48},${y-64} ${x+12},${y-17}`;
+  }else{
+   const r=Math.hypot(u-x,v-y);
+   const ax=x+(u-x)*23/r,ay=y+(v-y)*23/r;
+   const bx=u-(u-x)*27/r,by=v-(v-y)*27/r;
+   d=`M${ax},${ay} Q${(ax+bx)/2-(v-y)*.09},${(ay+by)/2+(u-x)*.09} ${bx},${by}`;
+  }
+  node("path",{
+   d,fill:"none",stroke:"#94a3b8","stroke-width":1.8,
+   "marker-end":"url(#live-arrow)"
+  },svg);
+ });
+ points.forEach(([x,y],i)=>{
+  node("circle",{
+   cx:x,cy:y,r:22,fill:h[i]?"#9a531a":"#1e5792",
+   stroke:"#e2e8f0"
+  },svg);
+  const text=node("text",{
+   x,y:y+5,fill:"white","text-anchor":"middle"
+  },svg);
+  text.textContent=String(i);
+ });
+}
+async function run(){
+ const buttons=[...document.querySelectorAll("button")];
+ buttons.forEach(b=>b.disabled=true);
+ el("status").textContent="Computing exact bounded analysis…";
+ try{
+  const payload={T:JSON.parse(el("T").value),h:JSON.parse(el("h").value)};
+  const response=await fetch("/api/cases/extremal/analyze",{
+   method:"POST",
+   headers:{"Content-Type":"application/json"},
+   body:JSON.stringify(payload)
+  });
+  const data=await response.json();
+  if(!response.ok)throw new Error(data.error||"Analysis failed");
+  el("status").textContent=
+   "Fresh analysis complete. ID: "+data.analysis_id;
+  el("summary").textContent=
+   "Mode: "+data.mode+
+   "\nDistinct itineraries: "+data.distinct_itinerary_count+
+   " / "+data.state_count+
+   "\nSeparates states: "+data.observation_separates_states+
+   "\nExact rank profile: "+data.rank_profile_computed_exactly.join(", ")+
+   "\nLeast full degree on itinerary support: "+
+   data.minimum_full_degree_on_itinerary_support+
+   "\nClassification: "+data.recognition.classification;
+  el("certificate").textContent=JSON.stringify(
+   data.recognition.repair_certificate??
+   data.recognition.certificate??
+   data.recognition.collision??null,null,2
+  );
+  el("result").value=JSON.stringify(data,null,2);
+  draw(data.T,data.h);
+ }catch(error){
+  el("status").textContent="Rejected or failed: "+error.message;
+  el("summary").textContent="";
+  el("certificate").textContent="";
+  el("result").value="";
+  el("graph").replaceChildren();
+ }finally{
+  buttons.forEach(b=>b.disabled=false);
+ }
+}
+function example(T){
+ el("T").value=JSON.stringify(T);
+ el("h").value="[0,0,0,0,1,1,1,1]";
+ run();
+}
+el("run").onclick=run;
+el("baseline").onclick=()=>example([0,2,4,6,0,2,4,6]);
+el("mutation").onclick=()=>example([0,2,4,6,0,2,4,7]);
+el("cycle").onclick=()=>example([1,2,3,4,5,6,7,0]);
+</script>
+</body>
+</html>
