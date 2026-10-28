@@ -1,0 +1,28 @@
+{
+  "scope": "two fixed points plus one-hot observed cycle",
+  "cycle_lengths": {
+    "minimum": 2,
+    "maximum": 20
+  },
+  "family_cases": 19,
+  "horizon_degree_rank_checks": 741,
+  "single_deletion_circuit_checks": 247,
+  "fraction_rank_crosschecks": 15,
+  "negative_controls": 38,
+  "rank_formula_failures": 0,
+  "obstruction_failures": 0,
+  "state_indicator_failures": 0,
+  "circuit_deletion_failures": 0,
+  "coefficient_field": "Q",
+  "arithmetic": "exact integer elimination and Fraction cross-checks",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "novelty": "not established",
+  "general_proof_machine_checked": false,
+  "scope_limit": "A constructed family only; this experiment does not classify all temporal circuits or all finite systems.",
+  "old_censuses_rerun": false,
+  "manuscript_changed": false,
+  "repository_operations": "none",
+  "elapsed_seconds": 0.5643012309992628,
+  "status": "PASS"
+}

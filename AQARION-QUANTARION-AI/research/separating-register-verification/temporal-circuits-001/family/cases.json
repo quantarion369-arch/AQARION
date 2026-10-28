@@ -1,0 +1,3403 @@
+[
+  {
+    "cycle_length": 2,
+    "state_count": 4,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "primitive_obstruction": [
+      1,
+      1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 2,
+    "full_profile_degree_0_to_2": [
+      1,
+      3,
+      4
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 1,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      3
+    ],
+    "circuit_single_deletion_checks": 4,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 3,
+    "state_count": 5,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      2,
+      1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 3,
+    "full_profile_degree_0_to_2": [
+      1,
+      4,
+      5
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 2,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 5,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 4,
+    "state_count": 6,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      3,
+      1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 4,
+    "full_profile_degree_0_to_2": [
+      1,
+      5,
+      6
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 3,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 6,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 5,
+    "state_count": 7,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      4,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 5,
+    "full_profile_degree_0_to_2": [
+      1,
+      6,
+      7
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 4,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 7,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 6,
+    "state_count": 8,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      5,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 6,
+    "full_profile_degree_0_to_2": [
+      1,
+      7,
+      8
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 5,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 8,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 7,
+    "state_count": 9,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      6,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 7,
+    "full_profile_degree_0_to_2": [
+      1,
+      8,
+      9
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 6,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 9,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 8,
+    "state_count": 10,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      7,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 8,
+    "full_profile_degree_0_to_2": [
+      1,
+      9,
+      10
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 7,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 10,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 9,
+    "state_count": 11,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      8,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 9,
+    "full_profile_degree_0_to_2": [
+      1,
+      10,
+      11
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 8,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 11,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 10,
+    "state_count": 12,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      9,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 10,
+    "full_profile_degree_0_to_2": [
+      1,
+      11,
+      12
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 9,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 12,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 11,
+    "state_count": 13,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      10,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 11,
+    "full_profile_degree_0_to_2": [
+      1,
+      12,
+      13
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 10,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 13,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 12,
+    "state_count": 14,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      11,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 12,
+    "full_profile_degree_0_to_2": [
+      1,
+      13,
+      14
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 11,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 14,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 13,
+    "state_count": 15,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      12,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 13,
+    "full_profile_degree_0_to_2": [
+      1,
+      14,
+      15
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 12,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      },
+      {
+        "L": 14,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 15,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 14,
+    "state_count": 16,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      13,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 14,
+    "full_profile_degree_0_to_2": [
+      1,
+      15,
+      16
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 13,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      },
+      {
+        "L": 14,
+        "ranks_degree_0_to_2": [
+          1,
+          15,
+          16
+        ]
+      },
+      {
+        "L": 15,
+        "ranks_degree_0_to_2": [
+          1,
+          15,
+          16
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 16,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 15,
+    "state_count": 17,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      14,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 15,
+    "full_profile_degree_0_to_2": [
+      1,
+      16,
+      17
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 14,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      },
+      {
+        "L": 14,
+        "ranks_degree_0_to_2": [
+          1,
+          15,
+          16
+        ]
+      },
+      {
+        "L": 15,
+        "ranks_degree_0_to_2": [
+          1,
+          16,
+          17
+        ]
+      },
+      {
+        "L": 16,
+        "ranks_degree_0_to_2": [
+          1,
+          16,
+          17
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 17,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 16,
+    "state_count": 18,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      15,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 16,
+    "full_profile_degree_0_to_2": [
+      1,
+      17,
+      18
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 15,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      },
+      {
+        "L": 14,
+        "ranks_degree_0_to_2": [
+          1,
+          15,
+          16
+        ]
+      },
+      {
+        "L": 15,
+        "ranks_degree_0_to_2": [
+          1,
+          16,
+          17
+        ]
+      },
+      {
+        "L": 16,
+        "ranks_degree_0_to_2": [
+          1,
+          17,
+          18
+        ]
+      },
+      {
+        "L": 17,
+        "ranks_degree_0_to_2": [
+          1,
+          17,
+          18
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 18,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 17,
+    "state_count": 19,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      16,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 17,
+    "full_profile_degree_0_to_2": [
+      1,
+      18,
+      19
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 16,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      },
+      {
+        "L": 14,
+        "ranks_degree_0_to_2": [
+          1,
+          15,
+          16
+        ]
+      },
+      {
+        "L": 15,
+        "ranks_degree_0_to_2": [
+          1,
+          16,
+          17
+        ]
+      },
+      {
+        "L": 16,
+        "ranks_degree_0_to_2": [
+          1,
+          17,
+          18
+        ]
+      },
+      {
+        "L": 17,
+        "ranks_degree_0_to_2": [
+          1,
+          18,
+          19
+        ]
+      },
+      {
+        "L": 18,
+        "ranks_degree_0_to_2": [
+          1,
+          18,
+          19
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 19,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 18,
+    "state_count": 20,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      17,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 18,
+    "full_profile_degree_0_to_2": [
+      1,
+      19,
+      20
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 17,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      },
+      {
+        "L": 14,
+        "ranks_degree_0_to_2": [
+          1,
+          15,
+          16
+        ]
+      },
+      {
+        "L": 15,
+        "ranks_degree_0_to_2": [
+          1,
+          16,
+          17
+        ]
+      },
+      {
+        "L": 16,
+        "ranks_degree_0_to_2": [
+          1,
+          17,
+          18
+        ]
+      },
+      {
+        "L": 17,
+        "ranks_degree_0_to_2": [
+          1,
+          18,
+          19
+        ]
+      },
+      {
+        "L": 18,
+        "ranks_degree_0_to_2": [
+          1,
+          19,
+          20
+        ]
+      },
+      {
+        "L": 19,
+        "ranks_degree_0_to_2": [
+          1,
+          19,
+          20
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 20,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 19,
+    "state_count": 21,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      18,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 19,
+    "full_profile_degree_0_to_2": [
+      1,
+      20,
+      21
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 18,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      },
+      {
+        "L": 14,
+        "ranks_degree_0_to_2": [
+          1,
+          15,
+          16
+        ]
+      },
+      {
+        "L": 15,
+        "ranks_degree_0_to_2": [
+          1,
+          16,
+          17
+        ]
+      },
+      {
+        "L": 16,
+        "ranks_degree_0_to_2": [
+          1,
+          17,
+          18
+        ]
+      },
+      {
+        "L": 17,
+        "ranks_degree_0_to_2": [
+          1,
+          18,
+          19
+        ]
+      },
+      {
+        "L": 18,
+        "ranks_degree_0_to_2": [
+          1,
+          19,
+          20
+        ]
+      },
+      {
+        "L": 19,
+        "ranks_degree_0_to_2": [
+          1,
+          20,
+          21
+        ]
+      },
+      {
+        "L": 20,
+        "ranks_degree_0_to_2": [
+          1,
+          20,
+          21
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      20,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 21,
+    "degree_two_state_indicators_verified": true
+  },
+  {
+    "cycle_length": 20,
+    "state_count": 22,
+    "state_order": "fixed_zero, fixed_one, cycle_0,...,cycle_(m-1)",
+    "T": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      2
+    ],
+    "h": [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "primitive_obstruction": [
+      19,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "least_separating_prefix_length": 20,
+    "full_profile_degree_0_to_2": [
+      1,
+      21,
+      22
+    ],
+    "minimum_full_degree": 2,
+    "maximum_absolute_obstruction_coefficient": 19,
+    "horizon_profiles": [
+      {
+        "L": 0,
+        "ranks_degree_0_to_2": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "L": 1,
+        "ranks_degree_0_to_2": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "L": 2,
+        "ranks_degree_0_to_2": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "L": 3,
+        "ranks_degree_0_to_2": [
+          1,
+          4,
+          5
+        ]
+      },
+      {
+        "L": 4,
+        "ranks_degree_0_to_2": [
+          1,
+          5,
+          6
+        ]
+      },
+      {
+        "L": 5,
+        "ranks_degree_0_to_2": [
+          1,
+          6,
+          7
+        ]
+      },
+      {
+        "L": 6,
+        "ranks_degree_0_to_2": [
+          1,
+          7,
+          8
+        ]
+      },
+      {
+        "L": 7,
+        "ranks_degree_0_to_2": [
+          1,
+          8,
+          9
+        ]
+      },
+      {
+        "L": 8,
+        "ranks_degree_0_to_2": [
+          1,
+          9,
+          10
+        ]
+      },
+      {
+        "L": 9,
+        "ranks_degree_0_to_2": [
+          1,
+          10,
+          11
+        ]
+      },
+      {
+        "L": 10,
+        "ranks_degree_0_to_2": [
+          1,
+          11,
+          12
+        ]
+      },
+      {
+        "L": 11,
+        "ranks_degree_0_to_2": [
+          1,
+          12,
+          13
+        ]
+      },
+      {
+        "L": 12,
+        "ranks_degree_0_to_2": [
+          1,
+          13,
+          14
+        ]
+      },
+      {
+        "L": 13,
+        "ranks_degree_0_to_2": [
+          1,
+          14,
+          15
+        ]
+      },
+      {
+        "L": 14,
+        "ranks_degree_0_to_2": [
+          1,
+          15,
+          16
+        ]
+      },
+      {
+        "L": 15,
+        "ranks_degree_0_to_2": [
+          1,
+          16,
+          17
+        ]
+      },
+      {
+        "L": 16,
+        "ranks_degree_0_to_2": [
+          1,
+          17,
+          18
+        ]
+      },
+      {
+        "L": 17,
+        "ranks_degree_0_to_2": [
+          1,
+          18,
+          19
+        ]
+      },
+      {
+        "L": 18,
+        "ranks_degree_0_to_2": [
+          1,
+          19,
+          20
+        ]
+      },
+      {
+        "L": 19,
+        "ranks_degree_0_to_2": [
+          1,
+          20,
+          21
+        ]
+      },
+      {
+        "L": 20,
+        "ranks_degree_0_to_2": [
+          1,
+          21,
+          22
+        ]
+      },
+      {
+        "L": 21,
+        "ranks_degree_0_to_2": [
+          1,
+          21,
+          22
+        ]
+      }
+    ],
+    "cycle_indicator_state_for_each_time": [
+      2,
+      21,
+      20,
+      19,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3
+    ],
+    "circuit_single_deletion_checks": 22,
+    "degree_two_state_indicators_verified": true
+  }
+]

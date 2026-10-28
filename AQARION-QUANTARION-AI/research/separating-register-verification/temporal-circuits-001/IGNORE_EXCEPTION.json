@@ -1,0 +1,12 @@
+{
+  "purpose": "Include one preserved research evidence log",
+  "evidence_path": "family/execution.log",
+  "evidence_sha256": "f7ac59caac6515523f3e03ecbe542a1be5ed7ec8d11bf57ba489be1e1fa93a7e",
+  "package_ignore_rule": "!/family/execution.log",
+  "prior_package_manifest_sha256": "14a591fd241e518ec2a2f1ecd45e7118bee97e61825c338012c088b62dfe4a1b",
+  "publication_manifest_sha256": "705f76b6c75dd1c98ffc739e7bfc27abd3fe2021d8a00b518acc48654c46e8f6",
+  "repository_root_ignore_changed": false,
+  "experiment_bytes_changed": false,
+  "experiments_rerun": false,
+  "git_stage_commit_push": "NONE"
+}
