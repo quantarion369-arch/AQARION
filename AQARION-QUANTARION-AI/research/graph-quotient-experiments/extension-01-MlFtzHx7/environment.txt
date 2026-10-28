@@ -1,0 +1,2 @@
+Python 3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0
+Linux localhost 5.15.189-android13-8-33641424 #1 SMP PREEMPT Mon Oct 5 10:54:50 UTC 2026 aarch64 Android

@@ -1,0 +1,15 @@
+DELAY_FAMILY d=2 vertices=4 adjacency=PASS stochastic=PASS
+DELAY_FAMILY d=3 vertices=6 adjacency=PASS stochastic=PASS
+DELAY_FAMILY d=4 vertices=8 adjacency=PASS stochastic=PASS
+DELAY_FAMILY d=5 vertices=10 adjacency=PASS stochastic=PASS
+DELAY_FAMILY d=6 vertices=12 adjacency=PASS stochastic=PASS
+GAP_FAMILY n=3 stable=3 rank=3 gap=0 old_bound=0 violation=NO
+GAP_FAMILY n=4 stable=4 rank=3 gap=1 old_bound=1 violation=NO
+GAP_FAMILY n=5 stable=5 rank=3 gap=2 old_bound=1 violation=YES
+GAP_FAMILY n=6 stable=6 rank=3 gap=3 old_bound=2 violation=YES
+GAP_FAMILY n=7 stable=7 rank=3 gap=4 old_bound=3 violation=YES
+GAP_FAMILY n=8 stable=8 rank=3 gap=5 old_bound=4 violation=YES
+GAP_FAMILY n=9 stable=9 rank=3 gap=6 old_bound=4 violation=YES
+GAP_FAMILY n=10 stable=10 rank=3 gap=7 old_bound=5 violation=YES
+FAMILY_CERTIFICATE=PASS
+SCOPE=BOUNDED_EXACT_TESTS_NOT_AN_ALL_SIZE_PROOF

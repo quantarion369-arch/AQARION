@@ -1,0 +1,255 @@
+{
+  "preparation_status": "CURRENT_BYTES_VERIFIED",
+  "prepared_at_utc": "2026-10-28T08:00:16.491830+00:00",
+  "repository_base_commit": "d2c40cd4281b688d479a661220e9fb03d11d87b0",
+  "packages": [
+    {
+      "directory": "quotient-01",
+      "files": 5,
+      "source_syntax": "VALID",
+      "historical_exit": 0,
+      "historical_source_checks": [
+        {
+          "recorded_path": "quotient-01/experiment.py",
+          "verified_local_file": "experiment.py",
+          "resolution": "EXACT_PACKAGE_PREFIX_RESOLVED"
+        }
+      ],
+      "historical_package_checks": null,
+      "historical_log_last_line": "QUOTIENT_WALK_EXPERIMENT=PASS",
+      "fresh_experiment_execution": false
+    },
+    {
+      "directory": "boundary-01",
+      "files": 5,
+      "source_syntax": "VALID",
+      "historical_exit": 0,
+      "historical_source_checks": [
+        {
+          "recorded_path": "boundary-01/experiment.py",
+          "verified_local_file": "experiment.py",
+          "resolution": "EXACT_PACKAGE_PREFIX_RESOLVED"
+        }
+      ],
+      "historical_package_checks": null,
+      "historical_log_last_line": "THREE_CASE_BOUNDARY_EXPERIMENT=PASS",
+      "fresh_experiment_execution": false
+    },
+    {
+      "directory": "one-sided-01",
+      "files": 5,
+      "source_syntax": "VALID",
+      "historical_exit": 0,
+      "historical_source_checks": [
+        {
+          "recorded_path": "one-sided-01/experiment.py",
+          "verified_local_file": "experiment.py",
+          "resolution": "EXACT_PACKAGE_PREFIX_RESOLVED"
+        }
+      ],
+      "historical_package_checks": null,
+      "historical_log_last_line": "ONE_SIDED_EXPERIMENT=PASS",
+      "fresh_experiment_execution": false
+    },
+    {
+      "directory": "extension-01-MlFtzHx7",
+      "files": 6,
+      "source_syntax": "VALID",
+      "historical_exit": 0,
+      "historical_source_checks": [
+        {
+          "recorded_path": "experiment.py",
+          "verified_local_file": "experiment.py",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        }
+      ],
+      "historical_package_checks": [
+        {
+          "recorded_path": "experiment.py",
+          "verified_local_file": "experiment.py",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        },
+        {
+          "recorded_path": "environment.txt",
+          "verified_local_file": "environment.txt",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        },
+        {
+          "recorded_path": "output.log",
+          "verified_local_file": "output.log",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        },
+        {
+          "recorded_path": "exit.txt",
+          "verified_local_file": "exit.txt",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        },
+        {
+          "recorded_path": "source.sha256",
+          "verified_local_file": "source.sha256",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        }
+      ],
+      "historical_log_last_line": "RESEARCH_EXTENSION=PASS",
+      "fresh_experiment_execution": false
+    },
+    {
+      "directory": "families-01-GVWU4n3Z",
+      "files": 6,
+      "source_syntax": "VALID",
+      "historical_exit": 0,
+      "historical_source_checks": [
+        {
+          "recorded_path": "experiment.py",
+          "verified_local_file": "experiment.py",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        }
+      ],
+      "historical_package_checks": [
+        {
+          "recorded_path": "experiment.py",
+          "verified_local_file": "experiment.py",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        },
+        {
+          "recorded_path": "environment.txt",
+          "verified_local_file": "environment.txt",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        },
+        {
+          "recorded_path": "output.log",
+          "verified_local_file": "output.log",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        },
+        {
+          "recorded_path": "exit.txt",
+          "verified_local_file": "exit.txt",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        },
+        {
+          "recorded_path": "source.sha256",
+          "verified_local_file": "source.sha256",
+          "resolution": "DIRECT_PACKAGE_FILENAME"
+        }
+      ],
+      "historical_log_last_line": "SCOPE=BOUNDED_EXACT_TESTS_NOT_AN_ALL_SIZE_PROOF",
+      "fresh_experiment_execution": false
+    }
+  ],
+  "original_file_fingerprints": {
+    "quotient-01/environment.txt": {
+      "sha256": "6b64edf0fc8f22e798fb64873acba6b4106df290f0bf458b507e8cb409b63e49",
+      "mode": 384
+    },
+    "quotient-01/exit.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "mode": 384
+    },
+    "quotient-01/experiment.py": {
+      "sha256": "38a7ade7ba2e218a1858ba019209a6e21b446ab5c5b293932b10016b2451a3f6",
+      "mode": 384
+    },
+    "quotient-01/output.log": {
+      "sha256": "444cbe308ccd5b2c6cba2b3339f574495a5597feb1c315ef3f18cc62eff15ad8",
+      "mode": 384
+    },
+    "quotient-01/source.sha256": {
+      "sha256": "7c1974997e0c3c8061be310f7580e4988cd538fda6afc8089fe429acaaf1f7b2",
+      "mode": 384
+    },
+    "boundary-01/environment.txt": {
+      "sha256": "6b64edf0fc8f22e798fb64873acba6b4106df290f0bf458b507e8cb409b63e49",
+      "mode": 384
+    },
+    "boundary-01/exit.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "mode": 384
+    },
+    "boundary-01/experiment.py": {
+      "sha256": "834fa9fa317d992605ba601e392050f0dc44b88a4df75865b9794043075ec877",
+      "mode": 384
+    },
+    "boundary-01/output.log": {
+      "sha256": "061d99bfebb2a39795d7ddfc80ffb9a7794cffd75c1c0b8e1e355ec1991483ee",
+      "mode": 384
+    },
+    "boundary-01/source.sha256": {
+      "sha256": "b1348dd411fa1d3ddefb2b9c137706b5b959931f6c4a2e2f045cb357a0131885",
+      "mode": 384
+    },
+    "one-sided-01/environment.txt": {
+      "sha256": "6b64edf0fc8f22e798fb64873acba6b4106df290f0bf458b507e8cb409b63e49",
+      "mode": 384
+    },
+    "one-sided-01/exit.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "mode": 384
+    },
+    "one-sided-01/experiment.py": {
+      "sha256": "f0c187eccfd97a14c77e9b0c5118bedec36956455256675ed35aa43ac7608ce4",
+      "mode": 384
+    },
+    "one-sided-01/output.log": {
+      "sha256": "a42234589d6dfb64a42c329af7ef488c787aa0d82307b2a76d394cb5553f7108",
+      "mode": 384
+    },
+    "one-sided-01/source.sha256": {
+      "sha256": "bd4c80f05b73ee44229d3fe72699058ddaabd5d6710e5efd5476b07a498af201",
+      "mode": 384
+    },
+    "extension-01-MlFtzHx7/SHA256SUMS": {
+      "sha256": "f72f7eb3807a0e8ec064d6412ebd5c2e3265736908aa7a15c768300a15347304",
+      "mode": 384
+    },
+    "extension-01-MlFtzHx7/environment.txt": {
+      "sha256": "04ec6f9e279e1767ef56f705070bbf5b9b258415dcace5933764ec5fb53fcc73",
+      "mode": 384
+    },
+    "extension-01-MlFtzHx7/exit.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "mode": 384
+    },
+    "extension-01-MlFtzHx7/experiment.py": {
+      "sha256": "433a9252bd2f88143fd550712b3e6d9573942acf827b4f6ae97c998fc6b5f65e",
+      "mode": 384
+    },
+    "extension-01-MlFtzHx7/output.log": {
+      "sha256": "84af759a6e2b250df061f6c94e4e3770a8e1f51f4cdf8e3e34f42fe838020ad9",
+      "mode": 384
+    },
+    "extension-01-MlFtzHx7/source.sha256": {
+      "sha256": "cfc54ab3556427acdceabc9fa8c6e2c26b8d0f7d5694fcfaa4fffec1ad7b227c",
+      "mode": 384
+    },
+    "families-01-GVWU4n3Z/SHA256SUMS": {
+      "sha256": "c8498eac018bf671647434cb656dfe457376d47ff59440e0d62a880b28a5d976",
+      "mode": 384
+    },
+    "families-01-GVWU4n3Z/environment.txt": {
+      "sha256": "04ec6f9e279e1767ef56f705070bbf5b9b258415dcace5933764ec5fb53fcc73",
+      "mode": 384
+    },
+    "families-01-GVWU4n3Z/exit.txt": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "mode": 384
+    },
+    "families-01-GVWU4n3Z/experiment.py": {
+      "sha256": "ef13dceef5975214fc64b4f08d3e01e52422d37c62fbe0fd878dbe19dbac32a4",
+      "mode": 384
+    },
+    "families-01-GVWU4n3Z/output.log": {
+      "sha256": "c4049eb2859a6a40dd7a46bca2e46b809f8c923cd75c4c05468f34c5de66b3c8",
+      "mode": 384
+    },
+    "families-01-GVWU4n3Z/source.sha256": {
+      "sha256": "00a26026f3678b61f363c4dcdcfd25d3f1c998f0ae1d39993c667f1aa59b7d1d",
+      "mode": 384
+    }
+  },
+  "original_files": 27,
+  "historical_manifests_rewritten": false,
+  "original_external_locations_read": false,
+  "experiments_rerun": false,
+  "formal_proof_or_novelty_certification": false,
+  "staged_committed_pushed": false
+}
