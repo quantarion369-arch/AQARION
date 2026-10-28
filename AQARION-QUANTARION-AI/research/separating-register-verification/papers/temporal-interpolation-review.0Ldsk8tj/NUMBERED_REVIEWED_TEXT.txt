@@ -1,0 +1,166 @@
+0126: ## 4. The external support result used here
+0127: 
+0128: We use the following specialization of [V, Theorems 1 and 2].
+0129: 
+0130: Let v be a nonzero real-valued function on {0,1}^L, orthogonal to every
+0131: Walsh character of weight less than d. Then
+0132: 
+0133:     |supp(v)| >= 2^d.
+0134: 
+0135: If equality holds, the support is, up to a hypercube automorphism, a
+0136: product of d two-point blocks and fixed coordinates.
+0137: 
+0138: More explicitly, there are d nonempty disjoint coordinate blocks.
+0139: Within each block all coordinates equal one free bit. Coordinates
+0140: outside the blocks are fixed. Permuting coordinates and flipping
+0141: individual coordinates yields the general equivalent support.
+0142: 
+0143: Consequently each coordinate, as a function on that support, is
+0144: constant or a literal of one of d independent binary parameters.
+0145: 
+0146: Explanation of the specialization.
+0147: The orthogonality condition places v in U_[d,L](L).
+0148: Theorem 1 applies with i=d and j=L. At equality, Theorem 2 gives a
+0149: tensor product of d functions phi_t and a fixed-coordinate factor.
+0150: Each phi_t is supported on the all-zero and all-one vectors in its
+0151: block. The parity restrictions in the general theorem add no
+0152: restriction here because L-j=0.
+0153: 
+0154: An automorphism of the Boolean hypercube permutes coordinates and
+0155: flips individual bits. Thus the literal-coordinate description follows.
+0156: 
+0157: This result is cited, not reproved or machine-verified in this work.
+0158: 
+0159: ## 5. Main classification
+0160: 
+0161: Theorem 5.1.
+0162: Let d>=1, let |X|=n=2^d, and let L>=d+1.
+0163: Assume Phi_L separates states. The following are equivalent.
+0164: 
+0165: (A) H(L,d-1)<n.
+0166: 
+0167: (B) Phi_d is bijective onto {0,1}^d and, in these coordinates,
+0168: 
+0169:         T_f(u_1,...,u_d)=(u_2,...,u_d,f(u)),
+0170: 
+0171:     where
+0172: 
+0173:         f in {0,1,u_1,1-u_1,...,u_d,1-u_d}.
+0174: 
+0175: (C) For every L'>=d and j>=0,
+0176: 
+0177:         H(L',j)=sum(binomial(d,k), k=0..min(j,d)).
+0178: 
+0179: In particular the defect in (A) is exactly one.
+0180: 
+0181: Proof of (A) implies (B).
+0182: A nonzero left-null vector of the degree-(d-1) evaluation matrix
+0183: assigns rational weights to the n distinct itinerary points. Extend
+0184: those weights by zero to the full L-dimensional Boolean cube.
+0185: 
+0186: Low-degree monomials and low-weight Walsh characters span the same
+0187: filtered polynomial space over Q and R. The extension v therefore
+0188: belongs to U_[d,L](L).
+0189: 
+0190: The external support bound gives |supp(v)|>=2^d=n. Since v is
+0191: supported on an n-point itinerary set, equality holds and every
+0192: itinerary has nonzero weight.
+0193: 
+0194: The equality geometry of Section 4 supplies independent parameters
+0195: b_1,...,b_d such that every a_t in the window is constant or a literal
+0196: of one parameter. Every parameter occurs. Hence
+0197: 
+0198:     dim W_L=d+1.
+0199: 
+0200: We claim dim W_d=d+1. Otherwise, among the d steps from W_0 to W_d,
+0201: one step must fail to increase dimension. Lemma 3.1 would then
+0202: prevent W_L from reaching dimension d+1, a contradiction.
+0203: 
+0204: Independence of 1,a_0,...,a_(d-1), together with their literal form,
+0205: forces the first d observations to use all d parameters, with no
+0206: constant coordinate and no repeated parameter. Thus Phi_d is bijective.
+0207: 
+0208: In these prefix coordinates the transition shifts the first d-1
+0209: coordinates, and its terminal is a_d. Since L>=d+1, this observation
+0210: belongs to the classified window. It is constant or a literal of a
+0211: parameter, and hence constant or a literal of the prefix coordinates.
+0212: This proves (B).
+0213: 
+0214: Proof of (B) implies (C).
+0215: Under a constant/literal terminal every future observation remains
+0216: constant or a literal of an original prefix coordinate. Therefore a
+0217: product of at most j temporal observations is a polynomial of degree
+0218: at most j in those original coordinates.
+0219: 
+0220: Conversely, the first d observations provide every original coordinate,
+0221: so their monomials span the entire ordinary degree-j space on the
+0222: d-cube. Its dimension is the stated binomial sum.
+0223: 
+0224: Proof of (C) implies (A).
+0225: At j=d-1 the binomial sum is 2^d-1.
+0226: End proof.
+0227: 
+0228: Remark 5.2 (why the extra observation matters).
+0229: At L=d, any bijective cube prefix already has rank 2^d-1 through
+0230: degree d-1, regardless of its terminal. The terminal has not yet been
+0231: observed. Thus the constant/literal terminal conclusion cannot follow
+0232: from that window alone. The condition L>=d+1 is essential in general.
+0233: 
+0234: Corollary 5.3.
+0235: For a system whose infinite itineraries separate its 2^d states, the
+0236: least full temporal interpolation degree equals d if and only if the
+0237: system has the form in (B). Otherwise degree at most d-1 suffices.
+0238: 
+0239: Proof.
+0240: Choose a sufficiently long separating window with L>=d+1.
+0241: If degree d-1 is deficient, Theorem 5.1 gives the complete cube
+0242: profile. Otherwise that window already reconstructs all functions
+0243: at degree at most d-1.
+0244: End proof.
+0245: 
+0246: ## 6. Exact obstruction and labelled counts
+0247: 
+0248: Corollary 6.1.
+0249: In the extremal class, the annihilator at degree d-1 is one-dimensional.
+0250: In prefix coordinates it is generated by
+0251: 
+0252:     v(u)=(-1)^(u_1+...+u_d).
+0253: 
+0254: Proof.
+0255: Parity annihilates every polynomial of degree less than d on the
+0256: full d-cube. Every temporal monomial of degree at most d-1 is such
+0257: a polynomial. Theorem 5.1 gives rank n-1, proving uniqueness up to scale.
+0258: End proof.
+0259: 
+0260: Corollary 6.2.
+0261: Fix a labelled set X of size n=2^d and a balanced observation h,
+0262: meaning both observation fibers have size n/2.
+0263: The number of transitions in the extremal separating class is
+0264: 
+0265:     ((n/2)!)^2 * (2d+2).
+0266: 
+0267: For an unbalanced observation the number is zero.
+0268: Counting over all observations gives (2d+2)n! observed pairs.
+0269: 
+0270: Proof.
+0271: A coordinate bijection q:X->{0,1}^d with first coordinate h has
+0272: ((n/2)!)^2 choices. There are 2d+2 permitted terminals.
+0273: Conjugating the canonical register by q constructs an observed
+0274: transition with prefix map exactly q.
+0275: 
+0276: Conversely, q is recovered from (T,h) as Phi_d, and its terminal
+0277: is then recovered from T. Thus the construction has no duplicates.
+0278: Theorem 5.1 supplies completeness. A bijective prefix forces h to
+0279: be balanced.
+0280: 
+0281: There are binomial(n,n/2) balanced observations. Multiplying yields
+0282: (2d+2)n!. These counts distinguish labelled states; they are not
+0283: counts up to dynamical isomorphism.
+0284: End proof.
+0285: 
+0286: For d=3 and fixed h=00001111, the count is
+0287: 
+0288:     (4!)^2 * 8 = 4608.
+0289: 
+0290: This is a mathematical consequence of the classification, not a new
+0291: enumeration of all eight-state transition maps.

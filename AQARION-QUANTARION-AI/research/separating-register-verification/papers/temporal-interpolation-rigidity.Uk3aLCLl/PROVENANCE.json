@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "purpose": "Local working manuscript and preserved evidence",
+  "proof_review_origin": "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/separating-register-verification/spectral-register-reduction-review.ex3Z95Fj",
+  "cycle16_origin": "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/separating-register-verification/audits/primitive-cycle-16-fast/run.7EbiEKCF",
+  "recorded_repository_HEAD": "cfd9c6a511babb14e9e488269d3d1ee095105f24",
+  "proof_review_manifest_sha256": "b1b42425f21a22ac4d63476f901766d9692fe70ab5ce1b577ec91f2f40ec93cf",
+  "cycle16_manifest_sha256": "25bf0af01994df127893074e0ebcb4240ac51da32dfe387f8dc80350a54ba372",
+  "source_snapshots": {
+    "AQARION-QUANTARION-AI/research/separating-register-verification/cubic-exact-001/PROOF_AND_SCOPE.md": "06b600d37e54976ca0b7447c1fa11eaae8764733907a3471771aec34b9dce89d",
+    "AQARION-QUANTARION-AI/research/separating-register-verification/register-classification-001/verify_registers.py": "ab21d92ff3e98b1be4bff578533bf59342830e5d751c9a5d0d4ee2259a7e3f9f",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/PROOF.md": "c81a04a2bc45a44e6d6fa0d6580927ebd4ab0af3a82fd1f3033381c2ece2e792"
+  },
+  "census_rerun": false,
+  "new_rank_computations": false,
+  "public_archive_status": "Not published by this preparation",
+  "proof_status": "Written derivation under external theorem; review draft",
+  "submission_authorized": false,
+  "application_sources_modified": false,
+  "stage_commit_fetch_push": "NONE"
+}

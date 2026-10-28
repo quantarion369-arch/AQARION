@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "repository_HEAD": "cfd9c6a511babb14e9e488269d3d1ee095105f24",
+  "prior_run": "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/separating-register-verification/audits/primitive-cycle-16-fast/run.7EbiEKCF",
+  "prior_manifest_sha256": "25bf0af01994df127893074e0ebcb4240ac51da32dfe387f8dc80350a54ba372",
+  "verified_prior_files": {
+    "census.py": "ae10bbfa6522302a36583cc0eb78f38559d440b3c96e0990c6382b6d2888a8ad",
+    "exit.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "results.json": "23281ae87afa9e565816cccb80130bbf2eb3b9237dc48408f5fe3d0b8ff1b248",
+    "stdout.txt": "2563556a5daa58a05c34db77255e77f0fb09235e17eee01ba41ea951488a9728"
+  },
+  "recorded_primitive_cases": 4080,
+  "prefix_good_recount": 16,
+  "rank_census_rerun": false,
+  "rank_claims": "Checked for receipt consistency; not recomputed",
+  "local_source_hashes": {
+    "AQARION-QUANTARION-AI/research/separating-register-verification/cubic-exact-001/PROOF_AND_SCOPE.md": "06b600d37e54976ca0b7447c1fa11eaae8764733907a3471771aec34b9dce89d",
+    "AQARION-QUANTARION-AI/research/separating-register-verification/register-classification-001/verify_registers.py": "ab21d92ff3e98b1be4bff578533bf59342830e5d751c9a5d0d4ee2259a7e3f9f",
+    "AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/features/extremal_inspector/build-002/PROOF.md": "c81a04a2bc45a44e6d6fa0d6580927ebd4ab0af3a82fd1f3033381c2ece2e792"
+  },
+  "fixed_balanced_h_extremal_count_d3": 4608,
+  "proof_status": "Written derivation under external theorem; review draft",
+  "machine_checked_general_proof": false,
+  "application_sources_changed": false,
+  "stage_commit_fetch_push": "NONE"
+}

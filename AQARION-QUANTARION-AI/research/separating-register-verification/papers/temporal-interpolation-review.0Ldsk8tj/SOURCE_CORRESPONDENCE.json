@@ -1,0 +1,85 @@
+{
+  "review_type": "Assistant source-correspondence review",
+  "independent_referee_report": false,
+  "manuscript_version": "0.1",
+  "manuscript_sha256": "6c068e7944ffee836903415d198fdee22d17aea79edcf14b5883679e161dc906",
+  "reviewed_lines": [
+    126,
+    291
+  ],
+  "external_source": {
+    "identifier": "arXiv:2303.10995v1",
+    "author": "Alexandr Valyuzhenich",
+    "title": "Optimal functions with spectral constraints in hypercubes",
+    "used_results": [
+      "Lemma 4",
+      "Theorem 1",
+      "Theorem 2(1)"
+    ],
+    "source_cube_dimension": "L",
+    "source_lower_level": "d",
+    "source_upper_level": "L"
+  },
+  "rows": [
+    {
+      "lines": "130-133,147-148",
+      "claim": "Support lower bound",
+      "basis": "Valyuzhenich Theorem 1; n_source=L, i=d, j=L",
+      "disposition": "SUPPORTED"
+    },
+    {
+      "lines": "135-155",
+      "claim": "Disjoint-block support and literal coordinates",
+      "basis": "Theorem 2(1); k+ell=d; ell>=L-j=0",
+      "disposition": "SUPPORTED"
+    },
+    {
+      "lines": "182-188",
+      "claim": "Nonzero rational annihilator and spectral interval",
+      "basis": "Injective itinerary map and low-degree character basis",
+      "disposition": "SUPPORTED"
+    },
+    {
+      "lines": "190-192",
+      "claim": "Equality on the entire itinerary support",
+      "basis": "Support at least 2^d and contained in 2^d points",
+      "disposition": "SUPPORTED"
+    },
+    {
+      "lines": "194-206",
+      "claim": "First d observations form a bijective prefix",
+      "basis": "Literal coordinate span dimension d+1; no-pause lemma",
+      "disposition": "SUPPORTED"
+    },
+    {
+      "lines": "208-212",
+      "claim": "Terminal is constant or literal",
+      "basis": "The observation a_d is inside the window since L>=d+1",
+      "disposition": "SUPPORTED"
+    },
+    {
+      "lines": "214-225",
+      "claim": "Converse and complete Hilbert profile",
+      "basis": "All future observations are literals; prefix supplies cube bits",
+      "disposition": "SUPPORTED"
+    },
+    {
+      "lines": "248-257",
+      "claim": "Unique parity obstruction up to scale",
+      "basis": "Parity annihilation and rank 2^d-1",
+      "disposition": "SUPPORTED"
+    },
+    {
+      "lines": "260-283",
+      "claim": "Labelled counting formula",
+      "basis": "Prefix recovers encoding; terminal is then uniquely recovered",
+      "disposition": "SUPPORTED"
+    }
+  ],
+  "blocking_gap_identified_in_displayed_sections": false,
+  "general_proof_machine_checked": false,
+  "novelty_cleared": false,
+  "independent_review_complete": false,
+  "new_manuscript_version_created": false,
+  "experiments_rerun": false
+}
