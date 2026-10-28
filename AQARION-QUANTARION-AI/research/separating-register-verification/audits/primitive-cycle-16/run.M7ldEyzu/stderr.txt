@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/separating-register-verification/audits/primitive-cycle-16/run.M7ldEyzu/census.py", line 305, in <module>
+    main(Path(sys.argv[1]))
+    ~~~~^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/separating-register-verification/audits/primitive-cycle-16/run.M7ldEyzu/census.py", line 175, in main
+    rank = exact_rank(degree_three_matrix(points))
+  File "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/separating-register-verification/audits/primitive-cycle-16/run.M7ldEyzu/census.py", line 84, in exact_rank
+    A[r][j] - factor * A[rank][j]
+    ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+KeyboardInterrupt

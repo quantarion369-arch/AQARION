@@ -1,0 +1,155 @@
+{
+  "status": "PASS",
+  "scope": "Small exact claim-correction audit only. No register, necklace, or spectral-support census.",
+  "arithmetic": "Python integers and fractions.Fraction. No NumPy, floating ranks, or Gram matrices.",
+  "full_itinerary_profile": [
+    1,
+    5,
+    8,
+    8
+  ],
+  "prefix_profile": [
+    1,
+    4,
+    6,
+    6
+  ],
+  "prefix_collisions": [
+    [
+      0,
+      1,
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    [
+      4,
+      5,
+      [
+        1,
+        1,
+        1
+      ]
+    ]
+  ],
+  "full_witness_columns": [
+    [],
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ]
+  ],
+  "full_witness_determinant": "1",
+  "prefix_witness_columns": [
+    [],
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ]
+  ],
+  "prefix_witness_determinant": "-1",
+  "row_order": "Lexicographically sorted distinct itinerary tuples",
+  "AND_profiles": [
+    {
+      "d": 2,
+      "computed": [
+        1,
+        4,
+        4
+      ],
+      "expected": [
+        1,
+        4,
+        4
+      ]
+    },
+    {
+      "d": 3,
+      "computed": [
+        1,
+        5,
+        8,
+        8
+      ],
+      "expected": [
+        1,
+        5,
+        8,
+        8
+      ]
+    },
+    {
+      "d": 4,
+      "computed": [
+        1,
+        6,
+        12,
+        16,
+        16
+      ],
+      "expected": [
+        1,
+        6,
+        12,
+        16,
+        16
+      ]
+    },
+    {
+      "d": 5,
+      "computed": [
+        1,
+        7,
+        17,
+        27,
+        32,
+        32
+      ],
+      "expected": [
+        1,
+        7,
+        17,
+        27,
+        32,
+        32
+      ]
+    }
+  ],
+  "application_sources_modified": false,
+  "git_stage_commit_push": "NONE"
+}
