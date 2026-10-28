@@ -29,3 +29,23 @@ replay, formal proof certificate, novelty clearance, or claim promotion.
 No TCR-specific workflow is introduced by this organization step.
 A future integrity workflow must distinguish archive verification from
 fresh execution of the archived experiments.
+
+## Current integrity and regression checks
+
+The subsequent TCR Evidence Verification workflow is defined in
+`.github/workflows/tcr-evidence.yml`.
+
+From the repository root:
+
+    python3 -I -B AQARION-QUANTARION-AI/verification/TCR/verify_evidence.py
+    python3 -I -B AQARION-QUANTARION-AI/verification/TCR/test_integrity.py
+
+The first command checks both package manifests and reruns only the
+nine small scalar fixtures and ten count-formula arithmetic checks.
+The second tests rejection of damaged disposable evidence packages.
+
+It does not rerun the archived family/classification censuses, prove the
+written theorems formally, or establish novelty. GitHub execution must
+be checked separately after publication.
+
+`OBSERVATION_POLYNOMIAL.md` supplies the individual-observation addendum.

@@ -1,0 +1,46 @@
+name: TCR Evidence Verification
+'on':
+  push:
+    branches: [main]
+    paths:
+      - 'AQARION-QUANTARION-AI/verification/TCR/**'
+      - '.github/workflows/tcr-evidence.yml'
+  pull_request:
+    paths:
+      - 'AQARION-QUANTARION-AI/verification/TCR/**'
+      - '.github/workflows/tcr-evidence.yml'
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  integrity-and-fixtures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify evidence and test rejection controls
+        shell: bash
+        env:
+          EVIDENCE: ${{ runner.temp }}/tcr-evidence
+          TMPDIR: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$EVIDENCE"
+          git rev-parse HEAD > "$EVIDENCE/tested-commit.txt"
+          TCR="AQARION-QUANTARION-AI/verification/TCR"
+          sha256sum "$TCR/verify_evidence.py" "$TCR/test_integrity.py" > "$EVIDENCE/checker-source-sha256.txt"
+          python -I -B "$TCR/verify_evidence.py" | tee "$EVIDENCE/integrity.json"
+          python -I -B "$TCR/test_integrity.py" | tee "$EVIDENCE/negative-controls.json"
+      - name: Preserve scoped execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tcr-${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/tcr-evidence/
+          if-no-files-found: error
+          retention-days: 30

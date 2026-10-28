@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "packages": {
+    "temporal-circuits-001": {
+      "files": 18,
+      "manifest_sha256": "fa71b31340ea9c564f790e70100be5a0cc40d4a0854a3a03cf03dd6fc8069dde"
+    },
+    "scalar-temporal-circuits-002": {
+      "files": 8,
+      "manifest_sha256": "a3ef48cf7ddcae293f7b8f8cde5fee4f018773426cacb2494db38b46f198505d"
+    }
+  },
+  "fresh_witness_checks": 9,
+  "fresh_formula_arithmetic_checks": 10,
+  "exhaustive_census_executed": false,
+  "formal_proof_machine_check": false
+}

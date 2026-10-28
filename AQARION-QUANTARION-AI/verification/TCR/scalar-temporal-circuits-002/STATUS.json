@@ -1,0 +1,21 @@
+{
+  "preparation_status": "PASS",
+  "repository_base_commit": "903308ccc866dfd8e6e4a1c788b8cff2b64d9c03",
+  "written_proofs": "Derived mathematical arguments for review",
+  "independent_referee_review": "NOT_ESTABLISHED",
+  "literature_priority": "UNESTABLISHED",
+  "formal_proof_machine_checked": false,
+  "fresh_targeted_checker_exit": 0,
+  "witness_checks": 9,
+  "count_formula_arithmetic_checks": 10,
+  "exhaustive_census_rerun": false,
+  "sources_unchanged": true,
+  "head_unchanged": true,
+  "index_unchanged": true,
+  "source_sha256": {
+    "RESEARCH_NOTES.md": "7e83ce3bce1507fd99c02eca178fd376295e3b5d4caba28bc9f0824c1c96e23a",
+    "verify.py": "62014151d7bf324143de5b01331287d44e46282552a1b43ff07796ad7af231fe"
+  },
+  "execution_error": null,
+  "staged_committed_pushed_by_preparation": false
+}

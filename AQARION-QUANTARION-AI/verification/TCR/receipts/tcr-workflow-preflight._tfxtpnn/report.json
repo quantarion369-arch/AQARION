@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "repository_base_commit": "903308ccc866dfd8e6e4a1c788b8cff2b64d9c03",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "results": {
+    "integrity": {
+      "status": "PASS",
+      "packages": {
+        "temporal-circuits-001": {
+          "files": 18,
+          "manifest_sha256": "fa71b31340ea9c564f790e70100be5a0cc40d4a0854a3a03cf03dd6fc8069dde"
+        },
+        "scalar-temporal-circuits-002": {
+          "files": 8,
+          "manifest_sha256": "a3ef48cf7ddcae293f7b8f8cde5fee4f018773426cacb2494db38b46f198505d"
+        }
+      },
+      "fresh_witness_checks": 9,
+      "fresh_formula_arithmetic_checks": 10,
+      "exhaustive_census_executed": false,
+      "formal_proof_machine_check": false
+    },
+    "negative-controls": {
+      "status": "PASS",
+      "fixture_cases": 7,
+      "damaged_fixtures_rejected": 6
+    }
+  },
+  "scalar_package_unchanged": true,
+  "head_unchanged": true,
+  "index_unchanged": true,
+  "error": null,
+  "new_file_sha256": {
+    "AQARION-QUANTARION-AI/verification/TCR/verify_evidence.py": "8e3b52ead53885e84391e4fb21cd423490bd3a12c9a74a399437fbab578288a9",
+    "AQARION-QUANTARION-AI/verification/TCR/test_integrity.py": "f1c014f73423be09ecae517bd7a215e9b04c2153c1483318219db56e13d27f3c",
+    "AQARION-QUANTARION-AI/verification/TCR/OBSERVATION_POLYNOMIAL.md": "51ff646dbb599e2775a987bc15400579d71bb10f02ac617abdd062839bd9a6d6",
+    ".github/workflows/tcr-evidence.yml": "4b33b1b88f3dd7ac00fd24e54ce3586042cd22dadd409b2a3a5d850db561ce95"
+  },
+  "landing_readme_sha256": "81beddfa6f68e692556c2b38a4ca94498886ff3313a233ba58a7ec19dab89a99",
+  "github_execution": "NOT_YET_ESTABLISHED",
+  "staged_committed_pushed": false
+}
