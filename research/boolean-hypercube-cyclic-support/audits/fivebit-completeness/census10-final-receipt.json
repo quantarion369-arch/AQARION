@@ -1,0 +1,28 @@
+{
+  "classification": "exhaustive_modular_rank_census",
+  "created_utc": "2026-10-30T08:01:15.097502+00:00",
+  "dimension": 5,
+  "field": "F_2147483629",
+  "final_marker": "FINAL 64512240 72960",
+  "git_commit": "b9ab099da3bc03cefe3cdc058246f63145d8d078",
+  "modularly_deficient_subsets": 72960,
+  "original_checkpoint_records": 61,
+  "original_run_checked": 61000000,
+  "original_run_deficient": 64780,
+  "prime": 2147483629,
+  "resume_checkpoint_records": 5,
+  "resumed_run_additional_deficient": 8180,
+  "resumed_run_checked": 3512240,
+  "sha256": {
+    "research/boolean-hypercube-cyclic-support/audits/fivebit-completeness/census10": "13382184b26f09a947f33e8ee266335480ae9757e19c1145cc0eaafdd0fc7202",
+    "research/boolean-hypercube-cyclic-support/audits/fivebit-completeness/census10-progress.txt": "27b2341a41d3502a55d8b99142e77d47795e0b525c89dcf9216e8ad41844d341",
+    "research/boolean-hypercube-cyclic-support/audits/fivebit-completeness/census10-resume": "adc8a315f5035b03b03c63df62aa425127cda8f5f3c09c5db1cca0c081d49751",
+    "research/boolean-hypercube-cyclic-support/audits/fivebit-completeness/census10-resume-progress.txt": "1466e94e3d80d6fb4bda1583b0e1b49c4a70537bfbed89c00817997c4daf0231",
+    "research/boolean-hypercube-cyclic-support/audits/fivebit-completeness/census10-resume.cpp": "c880788cfd3cf2ff19d53f032b1efa179f45ba1e3206e766392994594def90be",
+    "research/boolean-hypercube-cyclic-support/audits/fivebit-completeness/census10-resume.log": "5f11e7121e2af28f3cbb752c0349950c157e094a9ddbca6c048096f7acb5e400",
+    "research/boolean-hypercube-cyclic-support/audits/fivebit-completeness/census10.cpp": "d216100a1a54ecf3964eadfdd2f79304434552e565b8be225120da9ace64d1a7"
+  },
+  "status": "COMPUTATION_COMPLETE",
+  "subset_size": 10,
+  "total_subsets_checked": 64512240
+}
