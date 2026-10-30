@@ -1,0 +1,5 @@
+{"D24_ascending": [1, 0, 0, 0, -1, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1], "coefficient_order": "ascending internally; displayed word is descending", "cyclotomic_signature_checked": [4, 12, 24], "direct_feature_rank_over_Q": 10, "direct_gap": 14, "display_word_descending": "111100101101101001111000", "distinct_rotations_p": 24, "n": 24, "quotient_ascending": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1], "remainder_ascending": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "weight": 14}
+{"D24_ascending": [1, 0, 0, 0, -1, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1], "coefficient_order": "ascending internally; displayed word is descending", "cyclotomic_signature_checked": [4, 12, 24], "direct_feature_rank_over_Q": 10, "direct_gap": 14, "display_word_descending": "111000011010010010110000", "distinct_rotations_p": 24, "n": 24, "quotient_ascending": [0, 0, 0, 0, 1, 1, 0, 1, 1, 1], "remainder_ascending": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "weight": 10}
+D24 degree: 14
+D24 has only 0/1 coefficients: False
+WITNESS_AUDIT_PASS
