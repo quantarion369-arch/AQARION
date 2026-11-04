@@ -1,0 +1,31 @@
+{
+  "elapsed_seconds": 5.45568,
+  "expected_direction_count": 1395,
+  "expected_flat_count": 11160,
+  "finished_utc": "2026-11-04T14:27:53.891922+00:00",
+  "flat_census_sha256": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+  "geometry_gate": "PASS",
+  "modular_rank_exception_count": 0,
+  "observed_direction_count": 1395,
+  "observed_flat_count": 11160,
+  "point_count": 64,
+  "prime": 2147483629,
+  "prime_verified": true,
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_Fp_distribution": {
+    "7": 2800,
+    "8": 8360
+  },
+  "rank_Q_distribution": {
+    "7": 2800,
+    "8": 8360
+  },
+  "rank_eight_gate": "PASS",
+  "rank_eight_observed": 8360,
+  "rank_eight_target": 8360,
+  "rank_eight_target_match": true,
+  "script_sha256": "700d2b036c8cf3617f26f4e97bcdc52fa00ad648514426598b948d38aea6d5b5",
+  "started_utc": "2026-11-04T14:27:48.436284+00:00",
+  "status": "COMPUTATION_COMPLETE",
+  "title": "AQARION six-bit flat census receipt"
+}
