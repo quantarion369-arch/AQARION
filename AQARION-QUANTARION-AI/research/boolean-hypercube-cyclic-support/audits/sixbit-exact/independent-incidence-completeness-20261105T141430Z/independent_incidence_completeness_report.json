@@ -1,0 +1,66 @@
+{
+  "baseline_hash_matches": {
+    "flat_census.json": true,
+    "run_receipt.json": true,
+    "ten_point_circuit_search.json": true
+  },
+  "checks": {
+    "all_8360_rank_eight_bases_processed": true,
+    "all_base_ranks_independently_verified": true,
+    "all_candidate_minimality_tests_pass": true,
+    "all_nullspace_dimensions_are_14": true,
+    "all_per_flat_pair_partitions_complete": true,
+    "candidate_occurrences_are_22400": true,
+    "historical_inputs_unchanged": true,
+    "historical_unique_supports_are_22400": true,
+    "input_hashes_match_baseline": true,
+    "no_duplicate_historical_supports": true,
+    "no_duplicate_reconstructed_supports": true,
+    "no_extra_reconstructed_supports": true,
+    "no_missing_historical_supports": true,
+    "reconstructed_unique_supports_are_22400": true,
+    "reconstructed_verified_occurrences_are_22400": true,
+    "total_pair_incidences_are_12874400": true
+  },
+  "duplicate_historical_support_count": 0,
+  "duplicate_reconstructed_support_count": 0,
+  "expected": {
+    "flats": 11160,
+    "historical_circuits": 22400,
+    "outside_pairs_per_base": 1540,
+    "rank_eight_flats": 8360,
+    "rank_seven_flats": 2800,
+    "total_incidences": 12874400
+  },
+  "extra_support_count": 0,
+  "input_sha256_after": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "ten_point_circuit_search.json": "888290158e77937a706a9c5ca7e8f61dd5ae412df5a53417f27e444f128815f4"
+  },
+  "input_sha256_before": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "ten_point_circuit_search.json": "888290158e77937a706a9c5ca7e8f61dd5ae412df5a53417f27e444f128815f4"
+  },
+  "method": "Independent exact rational right-nullspace basis, projective quotient grouping, fraction-free Bareiss rank and deletion-rank checks.",
+  "minimality_failure_count": 0,
+  "missing_support_count": 0,
+  "observed": {
+    "incidences": 12874400,
+    "minimality_checks": 22400,
+    "nonproportional_pairs": 12852000,
+    "proportional_candidate_occurrences": 22400,
+    "rank_eight_bases_processed": 8360,
+    "unique_historical_supports": 22400,
+    "unique_reconstructed_supports": 22400,
+    "verified_reconstructed_occurrences": 22400,
+    "zero_nonzero_pairs": 0,
+    "zero_zero_pairs": 0
+  },
+  "pair_partition": "1540 = C(z,2) + z(56-z) + sum C(s_i,2) + sum_{i<j} s_i*s_j",
+  "quotient": "For each rank-eight base B, use a Q-basis n_1,...,n_14 of ker(A_B); q_B(x)=(v(x)n_1,...,v(x)n_14).",
+  "scope": "Completeness relative to supplied historical flat census; does not regenerate the census or prove the global structural containment theorem.",
+  "status": "PASS",
+  "title": "Independent Rational-Nullspace Incidence Completeness Audit"
+}

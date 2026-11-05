@@ -1,0 +1,5 @@
+{
+  "identity_method": "SHA-256 of exact executed auditor source copy",
+  "sha256": "4c881175ed8a9e467e355efdfcd85c8aae01d902e3ddb96b9783bd0fe68e0576",
+  "source_file": "independent_incidence_completeness_audit.py"
+}

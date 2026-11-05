@@ -1,0 +1,11 @@
+{
+  "duplicate_historical_supports": [],
+  "duplicate_reconstructed_supports": [],
+  "extra_reconstructed_supports": [],
+  "historical_occurrences": 22400,
+  "historical_unique_supports": 22400,
+  "minimality_failures": [],
+  "missing_historical_supports": [],
+  "reconstructed_unique_supports": 22400,
+  "reconstructed_verified_occurrences": 22400
+}

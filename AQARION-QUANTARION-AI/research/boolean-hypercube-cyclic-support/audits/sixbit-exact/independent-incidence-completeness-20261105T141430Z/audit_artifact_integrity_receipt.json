@@ -1,0 +1,33 @@
+{
+  "audit_output_sha256": {
+    "independent_incidence_completeness_report.json": "82b36cc087752463874a3d472d77792ee0faabc05dbca8f1661472d1dca9e945",
+    "per_flat_incidence_accounting.json": "458ca44371f5bb4b44c6e820a8f9df2a87068083c5eddeec9e169f3b82aa7d0b",
+    "support_reconciliation.json": "e270639cca5f598e36e76ed340f3ccb140fe990a89be6c9fe0a7343664fae107"
+  },
+  "audit_report_status": "PASS",
+  "candidate_occurrences": 22400,
+  "historical_input_sha256": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "ten_point_circuit_search.json": "888290158e77937a706a9c5ca7e8f61dd5ae412df5a53417f27e444f128815f4"
+  },
+  "historical_input_sha256_after": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "ten_point_circuit_search.json": "888290158e77937a706a9c5ca7e8f61dd5ae412df5a53417f27e444f128815f4"
+  },
+  "minimality_failures": 0,
+  "note": "Hashes identify the three audit outputs; this receipt is not included in its own hash set.",
+  "per_flat_records": 8360,
+  "receipt_type": "AQARION_INDEPENDENT_INCIDENCE_AUDIT_ARTIFACT_INTEGRITY",
+  "status": "PASS",
+  "support_reconciliation": {
+    "duplicate_historical": 0,
+    "duplicate_reconstructed": 0,
+    "extra": 0,
+    "historical_occurrences": 22400,
+    "missing": 0,
+    "reconstructed_occurrences": 22400
+  },
+  "total_pair_incidences": 12874400
+}
