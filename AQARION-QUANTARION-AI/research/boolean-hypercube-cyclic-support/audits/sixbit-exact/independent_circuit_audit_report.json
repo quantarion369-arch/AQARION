@@ -1,0 +1,16 @@
+{
+  "census_sha256": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+  "circuit_occurrences_checked": 22400,
+  "deletion_rank_histogram": {
+    "(9, 9, 9, 9, 9, 9, 9, 9, 9, 9)": 22400
+  },
+  "geometry_error_count": 0,
+  "geometry_errors_first_20": [],
+  "method": "Fraction-free Bareiss integer elimination",
+  "rank_error_count": 0,
+  "rank_errors_first_20": [],
+  "result": "PASS",
+  "search_result_sha256": "888290158e77937a706a9c5ca7e8f61dd5ae412df5a53417f27e444f128815f4",
+  "title": "Independent exact ten-point circuit certificate audit",
+  "unique_support_count": 22400
+}

@@ -1,0 +1,39 @@
+{
+  "audit": "independent six-bit affine-flat census audit",
+  "census_sha256": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+  "checks": {
+    "all_affine_flat_supports_unique": true,
+    "all_exact_rational_ranks_match": true,
+    "all_modular_ranks_match": true,
+    "direction_bases_are_canonical_rref": true,
+    "direction_count": true,
+    "direction_spans_have_eight_points": true,
+    "directions_are_distinct": true,
+    "eight_cosets_partition_each_direction": true,
+    "feature_matrix_has_22_columns": true,
+    "flat_ids_unique_and_complete": true,
+    "flat_list_length": true,
+    "flat_records_well_formed": true,
+    "independent_modular_distribution": true,
+    "independent_rational_distribution": true,
+    "receipt_census_hash": true,
+    "receipt_summary_matches_independent_results": true,
+    "schema_constants": true,
+    "stored_flats_match_reconstructed_cosets": true
+  },
+  "direction_count": 1395,
+  "failed_checks": [],
+  "flat_count": 11160,
+  "method": "Fraction Gaussian elimination; independently reconstructed GF(2) directions and cosets",
+  "modular_rank_distribution": {
+    "7": 2800,
+    "8": 8360
+  },
+  "modular_rank_mismatch_count": 0,
+  "rational_rank_distribution": {
+    "7": 2800,
+    "8": 8360
+  },
+  "rational_rank_mismatch_count": 0,
+  "result": "PASS"
+}
