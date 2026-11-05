@@ -1,0 +1,44 @@
+PASS: pinned inputs, receipt semantics, prime and generator binding
+PASS: all 1395 directions and 11160 flats independently reconciled
+Rank-eight directions processed: 100 affine instances: 3200
+Rank-eight directions processed: 200 affine instances: 6112
+Rank-eight directions processed: 300 affine instances: 8640
+Rank-eight directions processed: 400 affine instances: 10880
+Rank-eight directions processed: 500 affine instances: 13120
+Rank-eight directions processed: 600 affine instances: 14688
+Rank-eight directions processed: 700 affine instances: 17152
+Rank-eight directions processed: 800 affine instances: 18816
+Rank-eight directions processed: 900 affine instances: 20640
+Rank-eight directions processed: 1000 affine instances: 22080
+{
+  "affine_circuit_instances_certified": 22400,
+  "covered_outside_pair_universe_size": 12874400,
+  "direct_kernel_checks": 2800,
+  "directions_verified": 1395,
+  "finished_utc": "2026-11-05T19:40:57.288127+00:00",
+  "flats_verified": 11160,
+  "gate": "SIXBIT-VERIFY-002",
+  "historical_generator_sha256": "700d2b036c8cf3617f26f4e97bcdc52fa00ad648514426598b948d38aea6d5b5",
+  "historical_incidence_equality": true,
+  "incidence_counter_sha256": "4f9be9be96f5117029ac062fea0438f7a4471a7940555030783abb98c28c4f82",
+  "input_sha256": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "ten_point_circuit_search.json": "888290158e77937a706a9c5ca7e8f61dd5ae412df5a53417f27e444f128815f4"
+  },
+  "inputs_unchanged": true,
+  "modular_rank_method": "Rational character rank plus prime and Hadamard minor bound",
+  "pair_universe_individually_enumerated": false,
+  "prime": 2147483629,
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_distribution": {
+    "7": 2800,
+    "8": 8360
+  },
+  "rank_eight_directions_checked": 1045,
+  "receipt_semantics_verified": true,
+  "scope": "Finite rank-eight-affine-flat-containing circuit family, displacement and historical incidence equality. Not global ten-point circuit completeness. Mutation suite not run by this verifier.",
+  "source_sha256": "3d6d796e9df7c6bcd8d396c6e2717d39dcfb65d3d87364cd96f43c8c0f972322",
+  "started_utc": "2026-11-05T19:40:21.262766+00:00",
+  "status": "PASS"
+}
