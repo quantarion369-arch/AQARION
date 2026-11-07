@@ -1,0 +1,75 @@
+{
+  "baseline_sha256": "3d6d796e9df7c6bcd8d396c6e2717d39dcfb65d3d87364cd96f43c8c0f972322",
+  "cases": [
+    {
+      "actual_error": null,
+      "case": "positive_baseline",
+      "exit": 0,
+      "expected_error": null,
+      "verdict": "ACCEPTED"
+    },
+    {
+      "actual_error": "Census metadata: point_count",
+      "case": "census_metadata",
+      "exit": 2,
+      "expected_error": "Census metadata: point_count",
+      "verdict": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "actual_error": "Receipt prime flag",
+      "case": "prime_flag",
+      "exit": 2,
+      "expected_error": "Receipt prime flag",
+      "verdict": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "actual_error": "Receipt field: geometry_gate",
+      "case": "geometry_gate",
+      "exit": 2,
+      "expected_error": "Receipt field: geometry_gate",
+      "verdict": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "actual_error": "Historical status",
+      "case": "historical_status",
+      "exit": 2,
+      "expected_error": "Historical status",
+      "verdict": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "actual_error": "Historical generator hash mismatch",
+      "case": "generator_hash",
+      "exit": 2,
+      "expected_error": "Historical generator hash mismatch",
+      "verdict": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "actual_error": "Flat coverage/duplication",
+      "case": "flat_geometry",
+      "exit": 2,
+      "expected_error": "Flat coverage/duplication",
+      "verdict": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "actual_error": "Incorrect rank_Q",
+      "case": "rank_Q",
+      "exit": 2,
+      "expected_error": "Incorrect rank_Q",
+      "verdict": "REJECTED_AS_EXPECTED"
+    },
+    {
+      "actual_error": "Incorrect rank_Fp",
+      "case": "rank_Fp",
+      "exit": 2,
+      "expected_error": "Incorrect rank_Fp",
+      "verdict": "REJECTED_AS_EXPECTED"
+    }
+  ],
+  "finished_utc": "2026-11-07T01:22:16.043864+00:00",
+  "gate": "SIXBIT-VERIFY-003",
+  "mutations_rejected_as_expected": 8,
+  "positive_controls_passed": 1,
+  "protected_files_unchanged": true,
+  "started_utc": "2026-11-07T01:21:31.212393+00:00",
+  "status": "PASS"
+}
