@@ -1,0 +1,31 @@
+{
+  "affine_flats_checked": 11160,
+  "canonical_coset_representatives_verified": true,
+  "canonical_direction_ids_verified": true,
+  "canonical_direction_rrefs_verified": true,
+  "direct_modular_rank_checks": 11160,
+  "directions_checked": 1395,
+  "eight_cosets_per_direction_verified": true,
+  "elapsed_seconds": 2.610874,
+  "finished_utc": "2026-11-07T02:13:16.261352+00:00",
+  "gate": "SIXBIT-VERIFY-005",
+  "input_sha256": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "sixbit_flats.py": "700d2b036c8cf3617f26f4e97bcdc52fa00ad648514426598b948d38aea6d5b5"
+  },
+  "inputs_unchanged": true,
+  "modular_rank_method": "Direct Gaussian elimination",
+  "prime": 2147483629,
+  "prime_test": "Trial division through integer square root",
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_distribution": {
+    "7": 2800,
+    "8": 8360
+  },
+  "rational_rank_method": "Independent Walsh character count",
+  "scope": "Independent RREF-pivot enumeration, exact canonical direction/coset reconciliation and direct finite-field rank checks. No circuit search, mutation suite, formal proof, or global circuit-completeness claim.",
+  "source_sha256": "568d2893d9c119df72267b0f23f153684004775379f5e592756d632908801967",
+  "started_utc": "2026-11-07T02:13:13.650942+00:00",
+  "status": "PASS"
+}
