@@ -1,0 +1,167 @@
+{
+  "affine_3_flat_checks": 11160,
+  "all_supports_circuit_minimal": true,
+  "census_flats_checked": 11160,
+  "exact_base_rank_checks": 11160,
+  "exact_rational_rank_9_checks": 22400,
+  "finished_utc": "2026-11-07T01:50:36.074352+00:00",
+  "gate": "SIXBIT-VERIFY-004",
+  "historical_supports_checked": 22400,
+  "input_sha256": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "ten_point_circuit_search.json": "888290158e77937a706a9c5ca7e8f61dd5ae412df5a53417f27e444f128815f4"
+  },
+  "inputs_unchanged": true,
+  "nonzero_dependency_checks": 22400,
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_histogram": {
+    "9": 22400
+  },
+  "sample_exact_kernels": [
+    {
+      "direction_id": 33,
+      "flat_id": 264,
+      "kernel": [
+        "1",
+        "-1",
+        "-2",
+        "2",
+        "1",
+        "-1",
+        "1",
+        "-1",
+        "-1",
+        "1"
+      ],
+      "points": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "direction_id": 33,
+      "flat_id": 264,
+      "kernel": [
+        "-1",
+        "1",
+        "2",
+        "-2",
+        "-1",
+        "1",
+        "1",
+        "-1",
+        "-1",
+        "1"
+      ],
+      "points": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "direction_id": 33,
+      "flat_id": 264,
+      "kernel": [
+        "-1",
+        "1",
+        "1",
+        "-1",
+        "2",
+        "-2",
+        "-1",
+        "1",
+        "-1",
+        "1"
+      ],
+      "points": [
+        0,
+        1,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "direction_id": 33,
+      "flat_id": 264,
+      "kernel": [
+        "-1/2",
+        "1/2",
+        "1/2",
+        "-1/2",
+        "1/2",
+        "-1/2",
+        "1/2",
+        "-1/2",
+        "-1",
+        "1"
+      ],
+      "points": [
+        0,
+        1,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "direction_id": 33,
+      "flat_id": 265,
+      "kernel": [
+        "-2",
+        "2",
+        "1",
+        "-1",
+        "1",
+        "-1",
+        "1",
+        "-1",
+        "-1",
+        "1"
+      ],
+      "points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        8,
+        9,
+        14,
+        15
+      ]
+    }
+  ],
+  "scope": "Independent exact rational verification of all supports in the pinned historical 22400-entry ledger, including affine 3-flat bases of ranks 7 or 8, rank-eight circuit bases, exact support rank 9, and full-support nonzero dependencies. Does not prove global completeness of the historical ten-point circuit ledger.",
+  "source_sha256": "e46d3abf71303d7d6f1d4d1466f7e162bc4708ab5c7a29d778fead5df91899c1",
+  "started_utc": "2026-11-07T01:49:07.270015+00:00",
+  "status": "PASS",
+  "unique_supports": 22400
+}
