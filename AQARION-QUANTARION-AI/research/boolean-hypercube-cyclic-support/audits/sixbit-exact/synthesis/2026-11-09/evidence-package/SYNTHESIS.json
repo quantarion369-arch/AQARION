@@ -1,0 +1,57 @@
+{
+  "evidence_separation": {
+    "execution_origin": "user-supplied Termux artifacts",
+    "formal_proof": "OPEN",
+    "odd12_independent_second_implementation": false,
+    "source_review_origin": "conversation source-listing review",
+    "this_operation": "artifact binding and metadata checks only"
+  },
+  "limitations": [
+    "Not a new execution of either sector enumeration",
+    "Not external authentication of original provenance",
+    "Not a full combined symmetry-orbit classification",
+    "Not a Lean proof",
+    "Not novelty or publication certification",
+    "Selected reports and sources, not a complete archival export",
+    "Not a validated W3C PROV or RO-Crate export"
+  ],
+  "mathematical_dependencies": [
+    "Primitive integer parity reduction is nonzero",
+    "Parity belongs to RM(3,6)",
+    "Nonzero parity weight at most twelve is eight or twelve",
+    "Weight-eight parity support is an affine three-flat",
+    "Circuit minimality forces rational base-flat rank eight",
+    "Exhaustive rank-eight direction coverage",
+    "Declared cut-action and translation invariance",
+    "Weight-twelve support has affine dimension five",
+    "Unique hyperplane coverage for weight-twelve supports",
+    "Exact rational circuit validity and minimality",
+    "Disjointness of parity sectors"
+  ],
+  "promotion": {
+    "allowed": false
+  },
+  "reported_counts": {
+    "combined": 497056,
+    "odd_eight": 286720,
+    "odd_twelve": 210336,
+    "patterns": {
+      "1^10 3^2": 4032,
+      "1^12": 206304,
+      "1^6 2^4 3^2": 40320,
+      "1^7 2^4 3^1": 44800,
+      "1^8 2^4": 201600
+    }
+  },
+  "target": {
+    "ambient_space": "F2^6",
+    "coefficient_field_for_circuits": "Q",
+    "counted_objects": "distinct rational circuit support subsets",
+    "features": "1, all coordinates, all squarefree quadratic pairs",
+    "matrix_shape": [
+      22,
+      64
+    ],
+    "support_size": 12
+  }
+}

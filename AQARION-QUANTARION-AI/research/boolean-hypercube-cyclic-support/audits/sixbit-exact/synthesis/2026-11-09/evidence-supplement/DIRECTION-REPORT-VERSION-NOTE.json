@@ -1,0 +1,13 @@
+{
+  "cause_of_report_replacement": "NOT_ESTABLISHED",
+  "comparison_origin": "Prior user-supplied diagnosis against report content previously supplied in conversation",
+  "current_direction_report_sha256": "1c51d46a8c56e0a8ceddc46ed21b0a2769ff75b6ce719d7381a2348f8693b34f",
+  "current_elapsed_seconds": 3.242797,
+  "historical_direction_report_sha256": "5e6860be1a73f995a9a4b4a9f9b3649b464f7a35d07cd8904ec5c1ca3dea022f",
+  "historical_pin_overwritten": false,
+  "historical_report_bytes_recovered": false,
+  "previous_elapsed_seconds": 2.978388,
+  "reported_parsed_json_difference": [
+    "elapsed_seconds"
+  ]
+}
