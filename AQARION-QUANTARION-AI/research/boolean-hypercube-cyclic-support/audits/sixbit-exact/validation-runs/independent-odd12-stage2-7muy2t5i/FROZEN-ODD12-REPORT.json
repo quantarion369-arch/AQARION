@@ -1,0 +1,38 @@
+{
+  "actual_six_bit_kernel_vector_tests": 22848,
+  "all_actual_six_bit_ranks_individually_recomputed": false,
+  "binary_codewords_enumerated": 65536,
+  "classical_coverage_dependency": "Ghorbani et al. 2020, Lemma 13: the relevant weight-twelve RM(3,6) supports have affine dimension five.",
+  "complete_twelve_circuit_census": false,
+  "conditional_lower_bound_if_retained_44800_family_valid": 255136,
+  "elapsed_seconds": 6.481845,
+  "experiment": "ODD-TWELVE-HYPERPLANE-007",
+  "finished_utc": "2026-11-09T17:29:04.533449+00:00",
+  "five_bit_rank_eleven_supports": 3808,
+  "five_bit_rank_twelve_supports": 10080,
+  "five_bit_support_orbits": 23,
+  "five_bit_weight_twelve_supports": 13888,
+  "global_pattern_counts": {
+    "1^10 3^2": 4032,
+    "1^12": 206304
+  },
+  "historical_44800_family_reenumerated": false,
+  "hyperplanes_covered": 126,
+  "novelty_claim": false,
+  "odd_support_eight_sector_completed": false,
+  "odd_support_twelve_sector_count": 210336,
+  "other_weighted_supports": 3360,
+  "published_seed_family_reconstructed": 672,
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_certificate": "Exact base-orbit ranks give lower bounds by coordinate projection. Actual six-bit integer identities give matching upper bounds. Full-support kernels establish minimality.",
+  "representative_hyperplane_candidates": 83328,
+  "scope": "Exact odd-support-twelve sector audit conditional on the cited classical binary-support theorem. Not the odd-support-eight sector or a full twelve-circuit census.",
+  "source_sha256": "093518636f2e5127b04f9ce86f05e3a5f03037e8baec61d9ff19e0a6fd982dbe",
+  "source_unchanged": true,
+  "started_utc": "2026-11-09T17:28:58.052161+00:00",
+  "status": "PASS",
+  "support_set_sha256": {
+    "1^10 3^2": "f5e46406b9ad5542531b2d394fcb67aa3365fb96b64a02e8fea03cc2d4343aa3",
+    "1^12": "a44774950d547afd1f42ac3976b68d9fa17cd61a9fddff84c61ecd0d8629d1a8"
+  }
+}

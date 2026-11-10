@@ -1,0 +1,91 @@
+{
+  "experiment": "DIRECT_FULL_MATRIX_ODD8_BASES_2_TO_6",
+  "status": "PASS_FOR_BASES_2_TO_6_LOCAL_COMPLETENESS",
+  "commit": "5093e2af9db66567cba85caaff34220f1f8a0b35",
+  "full_census_verified": false,
+  "promotion": false,
+  "completed_bases": [
+    {
+      "base_row": 2,
+      "extensions_visited": 367290,
+      "modular_full_rank_rejections": 361538,
+      "exact_fallbacks": 5752,
+      "rank11_full_support_candidates": 8,
+      "accepted_odd_eight_circuits": 8,
+      "support_set_sha256": "c8fbc12cc5e8abb5f50346db650aa2197282d89b4900872708f1b40451650d39",
+      "missing_retained_supports": [],
+      "unexpected_supports": [],
+      "support_set_matches_retained": true,
+      "elapsed_seconds": 58.564
+    },
+    {
+      "base_row": 3,
+      "extensions_visited": 367290,
+      "modular_full_rank_rejections": 361472,
+      "exact_fallbacks": 5818,
+      "rank11_full_support_candidates": 56,
+      "accepted_odd_eight_circuits": 56,
+      "support_set_sha256": "bfa5f2450b6e9b71b8a474b3823df3cd7ae74fc069820e51479c838ae5fa5dd3",
+      "missing_retained_supports": [],
+      "unexpected_supports": [],
+      "support_set_matches_retained": true,
+      "elapsed_seconds": 50.064
+    },
+    {
+      "base_row": 4,
+      "extensions_visited": 367290,
+      "modular_full_rank_rejections": 361522,
+      "exact_fallbacks": 5768,
+      "rank11_full_support_candidates": 24,
+      "accepted_odd_eight_circuits": 24,
+      "support_set_sha256": "fb3dd958fc891720b8a0f02ad28da655dfe539861f134f39efbeb2e848526662",
+      "missing_retained_supports": [],
+      "unexpected_supports": [],
+      "support_set_matches_retained": true,
+      "elapsed_seconds": 56.491
+    },
+    {
+      "base_row": 5,
+      "extensions_visited": 367290,
+      "modular_full_rank_rejections": 361488,
+      "exact_fallbacks": 5802,
+      "rank11_full_support_candidates": 48,
+      "accepted_odd_eight_circuits": 48,
+      "support_set_sha256": "0c2b82178a1dbc26e925954a9f9c352efa7c691aa6c3482347960cccd2ed0c6b",
+      "missing_retained_supports": [],
+      "unexpected_supports": [],
+      "support_set_matches_retained": true,
+      "elapsed_seconds": 56.776
+    },
+    {
+      "base_row": 6,
+      "extensions_visited": 367290,
+      "modular_full_rank_rejections": 367244,
+      "exact_fallbacks": 46,
+      "rank11_full_support_candidates": 24,
+      "accepted_odd_eight_circuits": 24,
+      "support_set_sha256": "ef2c3aaeaa8814cec5077de871922b136db56b84baeee88185c7b9b3953bfcd4",
+      "missing_retained_supports": [],
+      "unexpected_supports": [],
+      "support_set_matches_retained": true,
+      "elapsed_seconds": 52.629
+    }
+  ],
+  "source_sha256": "3d3564594ca8af2205e53bbcb662dfffbcd6efb4788fd9bc7108fd80aa8bc044",
+  "pilot_source_sha256": "fa3d655b1d0e16c1a1c17a88e3cd5171e93258a4b5b70aebbb2efb26f727c26f",
+  "frozen_report_sha256": "59fe9ea76d765ff8455033baf59a28328bd0a6d032387a679806123aa901e80e",
+  "accepted_total_bases_2_to_6": 160,
+  "inputs_unchanged": true,
+  "elapsed_seconds": 274.592,
+  "tracked_inputs": {
+    "/data/data/com.termux/files/home/AQARION-REPLAYS/replay-layout-v2-i5fpem7s/runs/odd8-base1-replay-90kfy6m9/SHA256SUMS": "86b76a4b290db6a0c8e24202a5926da4a437e1bb8caa0f4fcfb06ba4cbc64938",
+    "/data/data/com.termux/files/home/AQARION-REPLAYS/replay-layout-v2-i5fpem7s/runs/odd8-base1-replay-90kfy6m9/check.py": "fa3d655b1d0e16c1a1c17a88e3cd5171e93258a4b5b70aebbb2efb26f727c26f",
+    "/data/data/com.termux/files/home/AQARION-REPLAYS/replay-layout-v2-i5fpem7s/runs/odd8-base1-replay-90kfy6m9/REPORT.json": "933cbe2742282a2e6b635aaf098da97ab9b1bc4ff185bcc2128a874e4b84fd6f",
+    "/data/data/com.termux/files/home/AQARION-REPLAYS/replay-layout-v2-i5fpem7s/runs/odd8-bases2to6-replay-459t5ri4/check.py": "3d3564594ca8af2205e53bbcb662dfffbcd6efb4788fd9bc7108fd80aa8bc044",
+    "/data/data/com.termux/files/home/AQARION-sixbit-synthesis/AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/synthesis/2026-11-09/direct-reconstruction-successor/portable-reproduction/input-home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-2-CIRCUITS.jsonl": "97e5c90eb3732170d6ab333cb262134aacbad1bc0baa7ddc8bd150e7033e3390",
+    "/data/data/com.termux/files/home/AQARION-sixbit-synthesis/AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/synthesis/2026-11-09/direct-reconstruction-successor/portable-reproduction/input-home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-3-CIRCUITS.jsonl": "2d7eff1458d2ca3ad5e83652fa05d2773f5035c1ce76b45c943ac52b08fc86ef",
+    "/data/data/com.termux/files/home/AQARION-sixbit-synthesis/AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/synthesis/2026-11-09/direct-reconstruction-successor/portable-reproduction/input-home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-4-CIRCUITS.jsonl": "4ed24e7b56aa1c0cdc4fe357623ffa0d26b9d928c26641be0cd64cd1becde9f5",
+    "/data/data/com.termux/files/home/AQARION-sixbit-synthesis/AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/synthesis/2026-11-09/direct-reconstruction-successor/portable-reproduction/input-home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-5-CIRCUITS.jsonl": "8c7773580ec4b9942b680b3dfc00ffbb84904dd68a705047e230d8d778802da9",
+    "/data/data/com.termux/files/home/AQARION-sixbit-synthesis/AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/synthesis/2026-11-09/direct-reconstruction-successor/portable-reproduction/input-home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-6-CIRCUITS.jsonl": "002d8c680326e5e7ee61ab6b7ab861cafe5f9a50484ab662ba7919a308f13b35"
+  }
+}

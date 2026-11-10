@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-11-09T19:50:48.263425+00:00",
+  "direction_report_sha256": "1c51d46a8c56e0a8ceddc46ed21b0a2769ff75b6ce719d7381a2348f8693b34f",
+  "direction_source_sha256": "b4f06e4896749174987fc95e476c3c3466887cee48d12246e005d5acd54dc162",
+  "experiment": "SIXBIT-CENSUS-EVIDENCE-SUPPLEMENT",
+  "historical_direction_report_sha256": "5e6860be1a73f995a9a4b4a9f9b3649b464f7a35d07cd8904ec5c1ca3dea022f",
+  "original_inputs_changed": [],
+  "parent_manifest_sha256": "a44939ade11d47dc4d596dff83a884b820b987d5b56a02ad40a53f9b7d246eaf",
+  "parent_package": "/data/data/com.termux/files/home/AQARION-EVIDENCE/sixbit-census-synthesis.ex_2rxhq",
+  "parity_report_sha256": "e4eed531fddf27a2ec319a68577ce1fdce666662bb92ae1b81c983028539abdf",
+  "promotion": {
+    "allowed": false
+  },
+  "research_programs_executed": [],
+  "status": "PASS_FOR_EVIDENCE_SUPPLEMENT_ASSEMBLY"
+}

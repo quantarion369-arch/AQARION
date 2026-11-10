@@ -1,0 +1,25 @@
+{
+  "contents_modified": false,
+  "files": [
+    {
+      "bytes": 1484,
+      "destination_path": "AQARION-QUANTARION-AI/maintenance/root-artifact-relocation/2026-11-09/terminal-captures/git-reflog-capture.txt",
+      "original_path": "-files --others --exclude-standard",
+      "sha256": "36b68e68e97e9d27e649dd141ffe2e60c36afd844f10ed5341be881036353092"
+    },
+    {
+      "bytes": 17182,
+      "destination_path": "AQARION-QUANTARION-AI/maintenance/root-artifact-relocation/2026-11-09/terminal-captures/less-help-capture.txt",
+      "original_path": "--short",
+      "sha256": "779381a9d9da4eae2f1f18acd6f4ea8c7c29d52b4bec2ca7b73fc9ef8bcc15e8"
+    },
+    {
+      "bytes": 0,
+      "destination_path": "AQARION-QUANTARION-AI/maintenance/root-artifact-relocation/2026-11-09/unassigned-progress/census10-progress.txt",
+      "original_path": "census10-progress.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "integrated_research_commit": "b99edb04891662ae1dc43daf72d9100323f59d06",
+  "main_before": "79227205c593c2a834dd4bd8e45e293302a8b425"
+}

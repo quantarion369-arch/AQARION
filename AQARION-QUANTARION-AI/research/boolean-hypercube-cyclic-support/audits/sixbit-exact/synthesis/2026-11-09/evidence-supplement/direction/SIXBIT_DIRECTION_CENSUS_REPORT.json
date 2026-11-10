@@ -1,0 +1,139 @@
+{
+  "affine_group_order": 322560,
+  "affine_orbit_sizes": [
+    240,
+    280,
+    1120,
+    1680,
+    2520,
+    2520
+  ],
+  "arithmetic": "exact rational Gaussian elimination",
+  "audit": "SIXBIT_INDEPENDENT_DIRECTION_CENSUS",
+  "canonical_bases": [
+    {
+      "base": [
+        0,
+        7,
+        25,
+        30,
+        42,
+        45,
+        51,
+        52
+      ],
+      "canonical_base_rank": 8,
+      "canonical_index": 1,
+      "direction_orbit_size": 30
+    },
+    {
+      "base": [
+        0,
+        3,
+        5,
+        6,
+        9,
+        10,
+        12,
+        15
+      ],
+      "canonical_base_rank": 8,
+      "canonical_index": 2,
+      "direction_orbit_size": 35
+    },
+    {
+      "base": [
+        0,
+        1,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13
+      ],
+      "canonical_base_rank": 8,
+      "canonical_index": 3,
+      "direction_orbit_size": 140
+    },
+    {
+      "base": [
+        0,
+        3,
+        5,
+        6,
+        24,
+        27,
+        29,
+        30
+      ],
+      "canonical_base_rank": 8,
+      "canonical_index": 4,
+      "direction_orbit_size": 210
+    },
+    {
+      "base": [
+        0,
+        1,
+        6,
+        7,
+        26,
+        27,
+        28,
+        29
+      ],
+      "canonical_base_rank": 8,
+      "canonical_index": 5,
+      "direction_orbit_size": 315
+    },
+    {
+      "base": [
+        0,
+        3,
+        12,
+        15,
+        21,
+        22,
+        25,
+        26
+      ],
+      "canonical_base_rank": 8,
+      "canonical_index": 6,
+      "direction_orbit_size": 315
+    }
+  ],
+  "dependencies": "Python standard library only",
+  "dimension": 6,
+  "elapsed_seconds": 3.242797,
+  "eligible_affine_3_flats": 8360,
+  "excluded_rank_7_affine_flats": 2800,
+  "feature_dimension": 22,
+  "project": "AQARION",
+  "rank_7_directions": 350,
+  "rank_8_directions": 1045,
+  "rank_distribution": {
+    "7": 350,
+    "8": 1045
+  },
+  "root_swap_orbit_count": 6,
+  "root_swap_orbit_sizes": [
+    30,
+    35,
+    140,
+    210,
+    315,
+    315
+  ],
+  "scope_limit": "This census does not prove completeness of the six local 12-point circuit replay generators.",
+  "stabilizer_orders": [
+    128,
+    128,
+    192,
+    288,
+    1152,
+    1344
+  ],
+  "status": "PASS",
+  "subspace_dimension": 3,
+  "total_linear_3_flats": 1395
+}

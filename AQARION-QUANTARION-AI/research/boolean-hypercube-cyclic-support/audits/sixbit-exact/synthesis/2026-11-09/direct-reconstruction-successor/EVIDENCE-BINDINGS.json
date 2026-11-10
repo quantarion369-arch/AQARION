@@ -1,0 +1,26 @@
+{
+  "bindings": {
+    "direction_coverage": {
+      "report": "AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/validation-runs/direction-coverage-zupjowEB/REPORT.json",
+      "report_sha256": "f32785765c7b1b0a72c28b2a87be167eab6fdd8816e277bdb4d7ced700c968cc",
+      "status": "PASS_FOR_DIRECTION_COVERAGE_ONLY"
+    },
+    "odd12_direct": {
+      "report": "AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/validation-runs/independent-odd12-stage2-7muy2t5i/REPORT.json",
+      "report_sha256": "c4ed67d40ef1ae04d1f12400ce35f8695adb57186ea8345c798dee1696bc5044",
+      "status": "PASS_FOR_DIRECT_ODD12_RECONSTRUCTION"
+    },
+    "odd8_base1": {
+      "report": "AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/validation-runs/direct-odd8-base1-UsreglHb/REPORT.json",
+      "report_sha256": "e9236a920af0397e68a307436ecc884d0c199a321aa878d0da3a684c02fd30ba",
+      "status": "PASS_FOR_BASE1_LOCAL_COMPLETENESS"
+    },
+    "odd8_bases2to6": {
+      "report": "AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/validation-runs/direct-odd8-bases2to6-b0hP586v/REPORT.json",
+      "report_sha256": "d47f146d4b8059dbc551f3a2a94fcbd2657b9311fc5758241f8b8a51cdaecb55",
+      "status": "PASS_FOR_BASES_2_TO_6_LOCAL_COMPLETENESS"
+    }
+  },
+  "frozen_commit": "5093e2af9db66567cba85caaff34220f1f8a0b35",
+  "promotion": false
+}

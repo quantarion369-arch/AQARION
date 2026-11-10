@@ -1,0 +1,44 @@
+{
+  "created_utc": "2026-11-09T19:42:18.029782+00:00",
+  "experiment": "SIXBIT-TWELVE-CENSUS-EVIDENCE-SYNTHESIS",
+  "finished_utc": "2026-11-09T19:42:18.033114+00:00",
+  "inputs": {
+    "odd12-report.json": {
+      "original_path": "/data/data/com.termux/files/home/AQARION_AUDIT/ODD-TWELVE-007-REPLAY/run.ilh_j0ky/results/REPORT.json",
+      "pin_origin": "previously supplied conversation checkpoint",
+      "sha256": "ce3de1e21b021a7456c920eb029ded3eafb700e69b416be7a36c8f534d7bb169"
+    },
+    "odd12-source.py": {
+      "original_path": "/data/data/com.termux/files/home/AQARION_AUDIT/ODD-TWELVE-007-REPLAY/run.ilh_j0ky/audit_odd12.py",
+      "pin_origin": "previously supplied conversation checkpoint",
+      "sha256": "093518636f2e5127b04f9ce86f05e3a5f03037e8baec61d9ff19e0a6fd982dbe"
+    },
+    "reconciliation-report.json": {
+      "original_path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-reconcile-pinned.vTbwM0Re/results/REPORT.json",
+      "pin_origin": "previously supplied conversation checkpoint",
+      "sha256": "206cedb8f917165edaee81e2e2c74fc5a74d4aa0fa5523a82c722bd4f04344f8"
+    },
+    "reconciliation-source.py": {
+      "original_path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-reconcile-pinned.vTbwM0Re/reconcile.py",
+      "pin_origin": "previously supplied conversation checkpoint",
+      "sha256": "56e5a8372271da06af8a10149344b476834b1b57e7f09f69c287cc1089f860c1"
+    },
+    "sixflat-report.json": {
+      "original_path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/REPORT.json",
+      "pin_origin": "previously supplied conversation checkpoint",
+      "sha256": "59fe9ea76d765ff8455033baf59a28328bd0a6d032387a679806123aa901e80e"
+    },
+    "sixflat-source.py": {
+      "original_path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/replay.py",
+      "pin_origin": "previously supplied conversation checkpoint",
+      "sha256": "04e9bd88f44cb75d8cbab8e683de05c14b39bbf8de64072bfa6a12c8ba655b8a"
+    }
+  },
+  "operation": "Pinned artifact copying and metadata consistency checks",
+  "original_inputs_changed": [],
+  "promotion": {
+    "allowed": false
+  },
+  "research_programs_executed": [],
+  "status": "PASS_FOR_PINNED_EVIDENCE_ASSEMBLY"
+}

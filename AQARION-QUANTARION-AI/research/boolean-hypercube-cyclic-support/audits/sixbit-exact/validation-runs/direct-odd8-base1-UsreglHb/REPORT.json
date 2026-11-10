@@ -1,0 +1,33 @@
+{
+  "experiment": "DIRECT_FULL_MATRIX_ODD8_BASE1",
+  "status": "PASS_FOR_BASE1_LOCAL_COMPLETENESS",
+  "commit": "5093e2af9db66567cba85caaff34220f1f8a0b35",
+  "base": [
+    0,
+    7,
+    25,
+    30,
+    42,
+    45,
+    51,
+    52
+  ],
+  "full_census_verified": false,
+  "promotion": false,
+  "frozen_report_sha256": "59fe9ea76d765ff8455033baf59a28328bd0a6d032387a679806123aa901e80e",
+  "retained_circuit_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "source_sha256": "fa3d655b1d0e16c1a1c17a88e3cd5171e93258a4b5b70aebbb2efb26f727c26f",
+  "extensions_visited": 367290,
+  "modular_full_rank_rejections": 367276,
+  "exact_fallbacks": 14,
+  "rank11_full_support_candidates": 0,
+  "accepted_odd_eight_circuits": 0,
+  "support_set_matches_retained": true,
+  "limitations": [
+    "Checks Base 1 only.",
+    "Uses SymPy exact nullspaces for modular deficiencies.",
+    "Does not certify the other five local lists.",
+    "Does not certify the combined census."
+  ],
+  "elapsed_seconds": 75.583
+}

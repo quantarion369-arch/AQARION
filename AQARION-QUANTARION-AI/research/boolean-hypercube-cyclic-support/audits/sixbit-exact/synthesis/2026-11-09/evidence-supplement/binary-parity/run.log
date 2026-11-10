@@ -1,0 +1,61 @@
+EXECUTION DIRECTORY: /data/data/com.termux/files/home/AQARION_AUDIT/REED-MULLER-PARITY/run.n32l7fi1
+NO FROZEN RESEARCH FILES WILL BE MODIFIED
+
+[1/5] Enumerating RM(2,6): 4194304 words
+[2/5] Exact MacWilliams transform to RM(3,6)
+[3/5] Enumerating RM(2,5): 65536 words
+[4/5] Checking binary dual orthogonality
+[5/5] Checking incidence arithmetic
+
+RM-2-6
+weight 0 count 1
+weight 16 count 2604
+weight 24 count 291648
+weight 28 count 888832
+weight 32 count 1828134
+weight 36 count 888832
+weight 40 count 291648
+weight 48 count 2604
+weight 64 count 1
+
+RM-3-6
+weight 0 count 1
+weight 8 count 11160
+weight 12 count 1749888
+weight 14 count 22855680
+weight 16 count 232081500
+weight 18 count 1717223424
+weight 20 count 9366150528
+weight 22 count 38269550592
+weight 24 count 119637587496
+weight 26 count 286573658112
+weight 28 count 533982211840
+weight 30 count 771854598144
+weight 32 count 874731154374
+weight 34 count 771854598144
+weight 36 count 533982211840
+weight 38 count 286573658112
+weight 40 count 119637587496
+weight 42 count 38269550592
+weight 44 count 9366150528
+weight 46 count 1717223424
+weight 48 count 232081500
+weight 50 count 22855680
+weight 52 count 1749888
+weight 56 count 11160
+weight 64 count 1
+
+RM-2-5
+weight 0 count 1
+weight 8 count 620
+weight 12 count 13888
+weight 16 count 36518
+weight 20 count 13888
+weight 24 count 620
+weight 32 count 1
+
+=== FINAL ===
+STATUS: PASS_FOR_DECLARED_BINARY_CODE_SCOPE
+REPORT: /data/data/com.termux/files/home/AQARION_AUDIT/REED-MULLER-PARITY/run.n32l7fi1/REPORT.json
+RETAINED EXECUTION: /data/data/com.termux/files/home/AQARION_AUDIT/REED-MULLER-PARITY/run.n32l7fi1
+PROMOTION: FALSE
