@@ -1,0 +1,8 @@
+{
+  "stage": "odd8-bases2to6",
+  "exit_code": 0,
+  "archived_source_sha256": "3d3564594ca8af2205e53bbcb662dfffbcd6efb4788fd9bc7108fd80aa8bc044",
+  "copied_source_sha256": "3d3564594ca8af2205e53bbcb662dfffbcd6efb4788fd9bc7108fd80aa8bc044",
+  "output": "/data/data/com.termux/files/home/AQARION-REPLAYS/replay-layout-v2-i5fpem7s/runs/odd8-bases2to6-replay-459t5ri4",
+  "note": "Wrapper log and receipt are sibling files outside the checker output directory"
+}

@@ -1,0 +1,41 @@
+{
+  "experiment": "INDEPENDENT_ODD12_FIVEBIT_STAGE1",
+  "status": "PASS_FOR_FIVEBIT_CANDIDATE_LAYER",
+  "started_utc": "2026-11-10T04:00:48.199295+00:00",
+  "source_sha256": "6e609cf878640dd891d61c47099532b10fbeb9f84749ce33cfcaa92a0b1fe06e",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "method": "Direct codeword-span enumeration and individual integer-elimination ranks; no symmetry-orbit reduction",
+  "sixbit_sector_verified": false,
+  "full_census_verified": false,
+  "promotion": false,
+  "distinct_codewords": 65536,
+  "codeword_weight_distribution": {
+    "0": 1,
+    "32": 1,
+    "16": 36518,
+    "8": 620,
+    "24": 620,
+    "12": 13888,
+    "20": 13888
+  },
+  "weight_twelve_candidates": 13888,
+  "exact_rank_counts": {
+    "11": 3808,
+    "12": 10080
+  },
+  "full_support_all_odd_kernels": 3808,
+  "rank11_pattern_counts": {
+    "1^10 3^2": 96,
+    "1^12": 3712
+  },
+  "rank11_support_digest": "e4090f2d29717c182832a2c9a040af142df3c5e62798c99f363d30fa8dfd7062",
+  "support_digest_format": "SHA256 of concatenated 12-byte supports, each internally sorted, supports in lexicographic order",
+  "limitations": [
+    "Does not yet lift candidates to all six-bit hyperplanes.",
+    "Does not yet compare full support sets with historical outputs.",
+    "Does not establish the six-bit count 210336.",
+    "Does not prove the classical binary-support coverage theorem."
+  ],
+  "elapsed_seconds": 4.76,
+  "finished_utc": "2026-11-10T04:00:52.959202+00:00"
+}

@@ -1,0 +1,8 @@
+{
+  "stage": "odd12-stage1",
+  "exit_code": 0,
+  "archived_source_sha256": "6e609cf878640dd891d61c47099532b10fbeb9f84749ce33cfcaa92a0b1fe06e",
+  "copied_source_sha256": "6e609cf878640dd891d61c47099532b10fbeb9f84749ce33cfcaa92a0b1fe06e",
+  "output": "/data/data/com.termux/files/home/AQARION-REPLAYS/replay-layout-v2-i5fpem7s/runs/odd12-stage1-replay-yws9te0m",
+  "note": "Wrapper log and receipt are sibling files outside the checker output directory"
+}

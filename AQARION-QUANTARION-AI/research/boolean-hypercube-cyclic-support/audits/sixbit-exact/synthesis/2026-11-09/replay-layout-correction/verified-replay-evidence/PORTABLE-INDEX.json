@@ -1,0 +1,40 @@
+{
+  "note": "Original receipts retain original device paths. This index resolves the archived copies portably.",
+  "runs": [
+    {
+      "log": "logs/odd12-stage1-replay-yws9te0m.replay.log",
+      "report_sha256": "22776e869a5c09707c9960243e1fa089661c4658e85300b9c3e21a7c7ba5a2c7",
+      "run_directory": "runs/odd12-stage1-replay-yws9te0m",
+      "stage": "odd12-stage1",
+      "status": "PASS_FOR_FIVEBIT_CANDIDATE_LAYER",
+      "wrapper_receipt": "receipts/odd12-stage1-replay-yws9te0m.WRAPPER-RECEIPT.json"
+    },
+    {
+      "log": "logs/odd12-stage2-replay-t4ez4y43.replay.log",
+      "report_sha256": "79faa853b41e4800452846d150bc07677612a2c30f809de1eaf1dca998de585e",
+      "run_directory": "runs/odd12-stage2-replay-t4ez4y43",
+      "stage": "odd12-stage2",
+      "status": "PASS_FOR_DIRECT_ODD12_RECONSTRUCTION",
+      "wrapper_receipt": "receipts/odd12-stage2-replay-t4ez4y43.WRAPPER-RECEIPT.json"
+    },
+    {
+      "log": "logs/odd8-base1-replay-90kfy6m9.replay.log",
+      "report_sha256": "933cbe2742282a2e6b635aaf098da97ab9b1bc4ff185bcc2128a874e4b84fd6f",
+      "run_directory": "runs/odd8-base1-replay-90kfy6m9",
+      "stage": "odd8-base1",
+      "status": "PASS_FOR_BASE1_LOCAL_COMPLETENESS",
+      "wrapper_receipt": "receipts/odd8-base1-replay-90kfy6m9.WRAPPER-RECEIPT.json"
+    },
+    {
+      "log": "logs/odd8-bases2to6-replay-459t5ri4.replay.log",
+      "report_sha256": "fd67e2d95ecc98f2a5efd77fe8756a70d7d5f8c7f6ac179002729d49f482acde",
+      "run_directory": "runs/odd8-bases2to6-replay-459t5ri4",
+      "stage": "odd8-bases2to6",
+      "status": "PASS_FOR_BASES_2_TO_6_LOCAL_COMPLETENESS",
+      "wrapper_receipt": "receipts/odd8-bases2to6-replay-459t5ri4.WRAPPER-RECEIPT.json"
+    }
+  ],
+  "scope": "Fresh outputs and detached frozen worktree on the existing device/environment; not a clean dependency installation",
+  "summary_sha256": "7be65b3a2a799c7e3f22e021e5358ad228dd5d4d7576a22c74ed46e3ee092cf5",
+  "wrapper_sha256": "1481e5e57d7f471ee49885ccf5594c2e38174370cdf3d37d0468af8b299f7c33"
+}
