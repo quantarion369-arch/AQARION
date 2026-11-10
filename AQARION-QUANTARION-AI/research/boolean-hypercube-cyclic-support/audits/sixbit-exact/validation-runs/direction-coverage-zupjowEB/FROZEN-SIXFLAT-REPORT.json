@@ -1,0 +1,220 @@
+{
+  "boundaries": [
+    "No original search program or retained circuit list imported.",
+    "No direct historical global-support-set comparison.",
+    "Parity-flat reduction and symmetry validity remain mathematical dependencies.",
+    "No odd-twelve or combined 497056 certification.",
+    "No Lean, CI, novelty or publication certification."
+  ],
+  "elapsed_seconds": 49.03551149368286,
+  "exact_deletion_checks": 1920,
+  "experiment": "SIX-FLAT-INDEPENDENT-TERMUX-REPLAY",
+  "finished_utc": "2026-11-09T16:33:32.409990+00:00",
+  "local_circuits": 160,
+  "numpy": "2.4.4",
+  "promotion": {
+    "allowed": false
+  },
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_eight_directions": 1045,
+  "rows": [
+    {
+      "accepted": 0,
+      "base_flat": [
+        0,
+        7,
+        25,
+        30,
+        42,
+        45,
+        51,
+        52
+      ],
+      "canonical_support_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cases_visited": 367290,
+      "circuit_file_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counts": {
+        "QUOTIENT_RANK_4": 367276,
+        "ZERO_COEFFICIENT": 14
+      },
+      "exact_fallbacks": 14,
+      "flat_orbit_size": 240,
+      "matches_previous_sandbox_patterns": true,
+      "patterns": {},
+      "row": 1,
+      "seconds": 1.3795084953308105,
+      "weighted_contribution": 0
+    },
+    {
+      "accepted": 8,
+      "base_flat": [
+        0,
+        3,
+        5,
+        6,
+        9,
+        10,
+        12,
+        15
+      ],
+      "canonical_support_sha256": "ce1bfeab144800138d3cf19c5d10c6c3b77e9f73b42392236284bcbf9612fc3c",
+      "cases_visited": 367290,
+      "circuit_file_sha256": "97e5c90eb3732170d6ab333cb262134aacbad1bc0baa7ddc8bd150e7033e3390",
+      "counts": {
+        "ODD_EIGHT_CIRCUIT": 8,
+        "QUOTIENT_RANK_2": 6,
+        "QUOTIENT_RANK_4": 361538,
+        "ZERO_COEFFICIENT": 5738
+      },
+      "exact_fallbacks": 5824,
+      "flat_orbit_size": 280,
+      "matches_previous_sandbox_patterns": true,
+      "patterns": {
+        "1^7 2^4 3^1": 8
+      },
+      "row": 2,
+      "seconds": 7.961885213851929,
+      "weighted_contribution": 2240
+    },
+    {
+      "accepted": 56,
+      "base_flat": [
+        0,
+        1,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13
+      ],
+      "canonical_support_sha256": "93577fd33951cdd6b77f1b7b5c4962bd8219423c6a5b6baea3c22383ffc2abc7",
+      "cases_visited": 367290,
+      "circuit_file_sha256": "2d7eff1458d2ca3ad5e83652fa05d2773f5035c1ce76b45c943ac52b08fc86ef",
+      "counts": {
+        "ODD_EIGHT_CIRCUIT": 56,
+        "QUOTIENT_RANK_2": 6,
+        "QUOTIENT_RANK_4": 361472,
+        "ZERO_COEFFICIENT": 5756
+      },
+      "exact_fallbacks": 5854,
+      "flat_orbit_size": 1120,
+      "matches_previous_sandbox_patterns": true,
+      "patterns": {
+        "1^6 2^4 3^2": 12,
+        "1^7 2^4 3^1": 8,
+        "1^8 2^4": 36
+      },
+      "row": 3,
+      "seconds": 12.790036916732788,
+      "weighted_contribution": 62720
+    },
+    {
+      "accepted": 24,
+      "base_flat": [
+        0,
+        3,
+        5,
+        6,
+        24,
+        27,
+        29,
+        30
+      ],
+      "canonical_support_sha256": "dae659549eb9eff158c7db3796612b8df8bf881d91d132868c3de33540d8774b",
+      "cases_visited": 367290,
+      "circuit_file_sha256": "4ed24e7b56aa1c0cdc4fe357623ffa0d26b9d928c26641be0cd64cd1becde9f5",
+      "counts": {
+        "ODD_EIGHT_CIRCUIT": 24,
+        "QUOTIENT_RANK_2": 6,
+        "QUOTIENT_RANK_4": 361522,
+        "ZERO_COEFFICIENT": 5738
+      },
+      "exact_fallbacks": 5936,
+      "flat_orbit_size": 1680,
+      "matches_previous_sandbox_patterns": true,
+      "patterns": {
+        "1^6 2^4 3^2": 4,
+        "1^7 2^4 3^1": 8,
+        "1^8 2^4": 12
+      },
+      "row": 4,
+      "seconds": 8.928143739700317,
+      "weighted_contribution": 40320
+    },
+    {
+      "accepted": 48,
+      "base_flat": [
+        0,
+        1,
+        6,
+        7,
+        26,
+        27,
+        28,
+        29
+      ],
+      "canonical_support_sha256": "90da79cb87df7932fd3cb7bed84898f269e6039d69fb41ac660cd5685c320565",
+      "cases_visited": 367290,
+      "circuit_file_sha256": "8c7773580ec4b9942b680b3dfc00ffbb84904dd68a705047e230d8d778802da9",
+      "counts": {
+        "ODD_EIGHT_CIRCUIT": 48,
+        "QUOTIENT_RANK_2": 6,
+        "QUOTIENT_RANK_4": 361488,
+        "ZERO_COEFFICIENT": 5748
+      },
+      "exact_fallbacks": 6030,
+      "flat_orbit_size": 2520,
+      "matches_previous_sandbox_patterns": true,
+      "patterns": {
+        "1^6 2^4 3^2": 8,
+        "1^7 2^4 3^1": 8,
+        "1^8 2^4": 32
+      },
+      "row": 5,
+      "seconds": 12.064059495925903,
+      "weighted_contribution": 120960
+    },
+    {
+      "accepted": 24,
+      "base_flat": [
+        0,
+        3,
+        12,
+        15,
+        21,
+        22,
+        25,
+        26
+      ],
+      "canonical_support_sha256": "3fb263959add2eae4d3f4bfb312a7973fa716e2ac3d4a2eb5eefab38ef71da61",
+      "cases_visited": 367290,
+      "circuit_file_sha256": "002d8c680326e5e7ee61ab6b7ab861cafe5f9a50484ab662ba7919a308f13b35",
+      "counts": {
+        "ODD_EIGHT_CIRCUIT": 24,
+        "QUOTIENT_RANK_4": 367244,
+        "ZERO_COEFFICIENT": 22
+      },
+      "exact_fallbacks": 214,
+      "flat_orbit_size": 2520,
+      "matches_previous_sandbox_patterns": true,
+      "patterns": {
+        "1^8 2^4": 24
+      },
+      "row": 6,
+      "seconds": 4.574942588806152,
+      "weighted_contribution": 60480
+    }
+  ],
+  "source_sha256": "04e9bd88f44cb75d8cbab8e683de05c14b39bbf8de64072bfa6a12c8ba655b8a",
+  "started_utc": "2026-11-09T16:32:43.374558+00:00",
+  "status": "PASS_FOR_DECLARED_SCOPE",
+  "sympy": "1.14.0",
+  "total_extensions": 2203740,
+  "weighted_odd_eight_total": 286720,
+  "weighted_pattern_counts": {
+    "1^6 2^4 3^2": 40320,
+    "1^7 2^4 3^1": 44800,
+    "1^8 2^4": 201600
+  }
+}

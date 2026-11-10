@@ -1,0 +1,13 @@
+{
+  "base_row": 5,
+  "extensions_visited": 367290,
+  "modular_full_rank_rejections": 361488,
+  "exact_fallbacks": 5802,
+  "rank11_full_support_candidates": 48,
+  "accepted_odd_eight_circuits": 48,
+  "support_set_sha256": "0c2b82178a1dbc26e925954a9f9c352efa7c691aa6c3482347960cccd2ed0c6b",
+  "missing_retained_supports": [],
+  "unexpected_supports": [],
+  "support_set_matches_retained": true,
+  "elapsed_seconds": 54.454
+}

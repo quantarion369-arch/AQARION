@@ -1,0 +1,50 @@
+{
+  "status": "PASS_FOR_BOUNDED_VALIDATION_ONLY",
+  "commit": "5093e2af9db66567cba85caaff34220f1f8a0b35",
+  "started_utc": "2026-11-09T21:01:01.230236+00:00",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "verifier_sha256": "938f6fe616f237de6fae677a9cfa93c01387595035720930547ceaf40cb225c7",
+  "tests": [
+    {
+      "test": "frozen_delivery_integrity",
+      "status": "PASS_WITHIN_SCOPE",
+      "seconds": 1.089,
+      "details": {
+        "verified_files": 27
+      }
+    },
+    {
+      "test": "checker_positive_and_negative_controls",
+      "status": "PASS_WITHIN_SCOPE",
+      "seconds": 0.059,
+      "details": {
+        "valid_circuit_accepted": true,
+        "invalid_inputs_rejected": 4,
+        "linear_algebra_controls": 2
+      }
+    },
+    {
+      "test": "selected_exact_circuit_checks",
+      "status": "PASS_WITHIN_SCOPE",
+      "seconds": 0.489,
+      "details": {
+        "preserved_representatives_checked": 14,
+        "explicit_odd_twelve_seeds_checked": 2,
+        "census_completeness_checked": false
+      }
+    },
+    {
+      "test": "final_evidence_integrity",
+      "status": "PASS_WITHIN_SCOPE",
+      "seconds": 0.003,
+      "details": {
+        "evidence_files_unchanged": 27
+      }
+    }
+  ],
+  "full_census_verified": false,
+  "promotion": false,
+  "elapsed_seconds": 1.752,
+  "finished_utc": "2026-11-09T21:01:02.982194+00:00"
+}

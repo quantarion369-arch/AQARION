@@ -1,0 +1,66 @@
+{
+  "status": "PASS_FOR_ALL_160_PRESERVED_LOCAL_RECORDS",
+  "commit": "5093e2af9db66567cba85caaff34220f1f8a0b35",
+  "started_utc": "2026-11-09T21:03:27.921663+00:00",
+  "files": [
+    {
+      "base": 1,
+      "path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-1-CIRCUITS.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "records_verified": 0,
+      "within_base_duplicates": 0
+    },
+    {
+      "base": 2,
+      "path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-2-CIRCUITS.jsonl",
+      "sha256": "97e5c90eb3732170d6ab333cb262134aacbad1bc0baa7ddc8bd150e7033e3390",
+      "records_verified": 8,
+      "within_base_duplicates": 0
+    },
+    {
+      "base": 3,
+      "path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-3-CIRCUITS.jsonl",
+      "sha256": "2d7eff1458d2ca3ad5e83652fa05d2773f5035c1ce76b45c943ac52b08fc86ef",
+      "records_verified": 56,
+      "within_base_duplicates": 0
+    },
+    {
+      "base": 4,
+      "path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-4-CIRCUITS.jsonl",
+      "sha256": "4ed24e7b56aa1c0cdc4fe357623ffa0d26b9d928c26641be0cd64cd1becde9f5",
+      "records_verified": 24,
+      "within_base_duplicates": 0
+    },
+    {
+      "base": 5,
+      "path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-5-CIRCUITS.jsonl",
+      "sha256": "8c7773580ec4b9942b680b3dfc00ffbb84904dd68a705047e230d8d778802da9",
+      "records_verified": 48,
+      "within_base_duplicates": 0
+    },
+    {
+      "base": 6,
+      "path": "/data/data/com.termux/files/home/AQARION-EXPERIMENTS/six-flat-independent.6tHXV6wT/results/BASE-6-CIRCUITS.jsonl",
+      "sha256": "002d8c680326e5e7ee61ab6b7ab861cafe5f9a50484ab662ba7919a308f13b35",
+      "records_verified": 24,
+      "within_base_duplicates": 0
+    }
+  ],
+  "records_verified": 160,
+  "full_census_verified": false,
+  "promotion": false,
+  "reused_verifier_sha256": "938f6fe616f237de6fae677a9cfa93c01387595035720930547ceaf40cb225c7",
+  "per_base_pattern_totals_match": true,
+  "reported_orbit_weighted_patterns": {
+    "1^7 2^4 3^1": 44800,
+    "1^8 2^4": 201600,
+    "1^6 2^4 3^2": 40320
+  },
+  "reported_orbit_weighted_total": 286720,
+  "distinct_supports_across_local_files": 160,
+  "orbit_sizes_independently_verified": false,
+  "local_generator_completeness_verified": false,
+  "odd_twelve_sector_verified": false,
+  "elapsed_seconds": 5.646,
+  "finished_utc": "2026-11-09T21:03:33.567515+00:00"
+}

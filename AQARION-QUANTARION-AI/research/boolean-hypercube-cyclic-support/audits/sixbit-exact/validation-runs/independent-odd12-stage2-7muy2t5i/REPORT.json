@@ -1,0 +1,964 @@
+{
+  "status": "PASS_FOR_DIRECT_ODD12_RECONSTRUCTION",
+  "experiment": "DIRECT_ALL_126_HYPERPLANES",
+  "commit": "5093e2af9db66567cba85caaff34220f1f8a0b35",
+  "started_utc": "2026-11-09T23:18:53.615372+00:00",
+  "source_sha256": "1dd0dd2da0907894f09ef157896e5f05b338cd2a5d08291b64479f6b0bd1a1b3",
+  "full_census_verified": false,
+  "promotion": false,
+  "base_circuits_rechecked": 3808,
+  "hyperplanes_visited": 126,
+  "lift_candidates_tested": 479808,
+  "distinct_sixbit_supports": 210336,
+  "global_pattern_counts": {
+    "1^10 3^2": 4032,
+    "1^12": 206304
+  },
+  "support_set_sha256": {
+    "1^10 3^2": "f5e46406b9ad5542531b2d394fcb67aa3365fb96b64a02e8fea03cc2d4343aa3",
+    "1^12": "a44774950d547afd1f42ac3976b68d9fa17cd61a9fddff84c61ecd0d8629d1a8"
+  },
+  "historical_support_hashes_match": true,
+  "stage1_input_hashes": {
+    "ALL-CANDIDATE-DECISIONS.jsonl": "f1f6e521872240a26447ea5088fc816cb4bfe0c1394f9fb53ba0f26650518a34",
+    "RANK11-KERNELS.jsonl": "ce875915feb7e2950705b1fc86069a19c9ed95732ec3132c0229707c554edd35",
+    "REPORT.json": "350cd4f25937101618de9e4199d4710b07c848817a1731308b72ce0dcaa9c9bc",
+    "reconstruct.py": "6e609cf878640dd891d61c47099532b10fbeb9f84749ce33cfcaa92a0b1fe06e"
+  },
+  "hyperplane_cases": [
+    {
+      "normal": 1,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 1,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 2,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 2,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 3,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 3,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 4,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 4,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 5,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 5,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 6,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 6,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 7,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 7,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 8,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 8,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 9,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 9,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 10,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 10,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 11,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 11,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 12,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 12,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 13,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 13,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 14,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 14,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 15,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 15,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 16,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 16,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 17,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 17,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 18,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 18,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 19,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 19,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 20,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 20,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 21,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 21,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 22,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 22,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 23,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 23,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 24,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 24,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 25,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 25,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 26,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 26,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 27,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 27,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 28,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 28,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 29,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 29,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 30,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 30,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 31,
+      "parity": 0,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 31,
+      "parity": 1,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 32,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 32,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 33,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 33,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 34,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 34,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 35,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 35,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 36,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 36,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 37,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 37,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 38,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 38,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 39,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 39,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 40,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 40,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 41,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 41,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 42,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 42,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 43,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 43,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 44,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 44,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 45,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 45,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 46,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 46,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 47,
+      "parity": 0,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 47,
+      "parity": 1,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 48,
+      "parity": 0,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 48,
+      "parity": 1,
+      "counts": {
+        "1^10 3^2": 96,
+        "1^12": 3712
+      }
+    },
+    {
+      "normal": 49,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 49,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 50,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 50,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 51,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 51,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 52,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 52,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 53,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 53,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 54,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 54,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 55,
+      "parity": 0,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 55,
+      "parity": 1,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 56,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 56,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 57,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 57,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 58,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 58,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 59,
+      "parity": 0,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 59,
+      "parity": 1,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 60,
+      "parity": 0,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 60,
+      "parity": 1,
+      "counts": {
+        "1^12": 672
+      }
+    },
+    {
+      "normal": 61,
+      "parity": 0,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 61,
+      "parity": 1,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 62,
+      "parity": 0,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 62,
+      "parity": 1,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 63,
+      "parity": 0,
+      "counts": {
+        "1^12": 240
+      }
+    },
+    {
+      "normal": 63,
+      "parity": 1,
+      "counts": {
+        "1^12": 240
+      }
+    }
+  ],
+  "support_file_format": "Concatenated 12-byte sorted supports; records ordered lexicographically. Each byte is a point in 0..63.",
+  "rank_certificate": "Each base support has exact rank eleven. Projection to the five free coordinates supplies the lifted rank lower bound. The checked full-support kernel supplies the matching upper bound and minimality.",
+  "limitations": [
+    "General odd-twelve coverage remains conditional on the cited classical binary-support theorem.",
+    "Six-bit ranks are certified by projection and kernel, not separately eliminated for every lifted support.",
+    "Does not establish odd-eight local-search completeness.",
+    "Not a full census proof, Lean proof, or novelty certification."
+  ],
+  "elapsed_seconds": 12.174,
+  "finished_utc": "2026-11-09T23:19:05.788949+00:00"
+}
