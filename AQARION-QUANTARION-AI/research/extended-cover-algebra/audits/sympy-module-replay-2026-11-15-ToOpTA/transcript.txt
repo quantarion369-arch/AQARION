@@ -1,0 +1,129 @@
+SOURCE SHA256: d27f8c8dbe6ee4527e2a2f55668570b97c4161f782bf8366c553189d06add105
+PYTHON: 3.13.13
+SYMPY: 1.14.0
+ENGINE: SymPy AGCA; FIELD: QQ
+
+=== n=3 ===
+Candidate columns: 16
+Computing complete polynomial kernel...
+Computed kernel generators: 30
+Testing kernel <= candidates...
+Testing candidates <= kernel...
+Testing degree-layer minimality...
+{
+  "n": 3,
+  "candidate_columns": 16,
+  "computed_kernel_generators": 30,
+  "kernel_equals_candidate_module": true,
+  "minimal_homogeneous_generators": true,
+  "degree_layers": [
+    {
+      "degree": 3,
+      "candidate_columns": 16,
+      "independent_classes": 16
+    }
+  ],
+  "elapsed_seconds": 0.915
+}
+
+=== n=4 ===
+Candidate columns: 35
+Computing complete polynomial kernel...
+Computed kernel generators: 114
+Testing kernel <= candidates...
+Testing candidates <= kernel...
+Testing degree-layer minimality...
+{
+  "n": 4,
+  "candidate_columns": 35,
+  "computed_kernel_generators": 114,
+  "kernel_equals_candidate_module": true,
+  "minimal_homogeneous_generators": true,
+  "degree_layers": [
+    {
+      "degree": 4,
+      "candidate_columns": 3,
+      "independent_classes": 3
+    },
+    {
+      "degree": 5,
+      "candidate_columns": 24,
+      "independent_classes": 24
+    },
+    {
+      "degree": 6,
+      "candidate_columns": 8,
+      "independent_classes": 8
+    }
+  ],
+  "elapsed_seconds": 4.472
+}
+
+=== n=5 ===
+Candidate columns: 64
+Computing complete polynomial kernel...
+Computed kernel generators: 297
+Testing kernel <= candidates...
+Testing candidates <= kernel...
+Testing degree-layer minimality...
+{
+  "n": 5,
+  "candidate_columns": 64,
+  "computed_kernel_generators": 297,
+  "kernel_equals_candidate_module": true,
+  "minimal_homogeneous_generators": true,
+  "degree_layers": [
+    {
+      "degree": 5,
+      "candidate_columns": 4,
+      "independent_classes": 4
+    },
+    {
+      "degree": 7,
+      "candidate_columns": 40,
+      "independent_classes": 40
+    },
+    {
+      "degree": 9,
+      "candidate_columns": 20,
+      "independent_classes": 20
+    }
+  ],
+  "elapsed_seconds": 27.876
+}
+
+=== n=6 ===
+Candidate columns: 105
+Computing complete polynomial kernel...
+Computed kernel generators: 664
+Testing kernel <= candidates...
+Testing candidates <= kernel...
+Testing degree-layer minimality...
+{
+  "n": 6,
+  "candidate_columns": 105,
+  "computed_kernel_generators": 664,
+  "kernel_equals_candidate_module": true,
+  "minimal_homogeneous_generators": true,
+  "degree_layers": [
+    {
+      "degree": 6,
+      "candidate_columns": 5,
+      "independent_classes": 5
+    },
+    {
+      "degree": 9,
+      "candidate_columns": 60,
+      "independent_classes": 60
+    },
+    {
+      "degree": 12,
+      "candidate_columns": 40,
+      "independent_classes": 40
+    }
+  ],
+  "elapsed_seconds": 168.424
+}
+
+HASH-BOUND MODULE AUDIT: PASSED
+Integral and all-n claims are not asserted.

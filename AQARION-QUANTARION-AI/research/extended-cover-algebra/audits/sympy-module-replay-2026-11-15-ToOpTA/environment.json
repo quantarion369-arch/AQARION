@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-11-15T18:08:28.101060+00:00",
+  "provenance": "Fresh reconstruction of the inline SymPy audit from the research conversation; not recovered historical bytes.",
+  "python_executable": "/data/data/com.termux/files/usr/bin/python3",
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-14-aarch64-64bit-ELF",
+  "sympy_version": "1.14.0",
+  "sympy_location": "/data/data/com.termux/files/usr/lib/python3.13/site-packages/sympy/__init__.py",
+  "engine": "SymPy AGCA",
+  "coefficient_field": "QQ",
+  "polynomial_order": "grevlex",
+  "cases": [
+    3,
+    4,
+    5,
+    6
+  ],
+  "source_sha256": "d27f8c8dbe6ee4527e2a2f55668570b97c4161f782bf8366c553189d06add105"
+}
