@@ -1,0 +1,500 @@
+{
+  "format": "AQARION semigroup structural certificate v1",
+  "export_filename": "AQARION-complete-complex-20261114T163933580791Z.json",
+  "export_sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0",
+  "replay_script_sha256": "4338a6b3a7e4d7a4ce96e4526c876bb1be63965530c5a308b50e320ed39c0804",
+  "coordinate_order": [
+    "a0",
+    "a1",
+    "a2",
+    "a3",
+    "k"
+  ],
+  "generator_names": [
+    "A",
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "C"
+  ],
+  "generators": [
+    [
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      2
+    ]
+  ],
+  "lattice_basis_indices_zero_based": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "lattice_basis_determinant": -1,
+  "primitive_facets": [
+    {
+      "normal": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "incident_generator_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        8
+      ],
+      "independent_incident_indices_zero_based": [
+        1,
+        2,
+        3,
+        8
+      ],
+      "values_on_generators": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "normal": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "incident_generator_indices_zero_based": [
+        0,
+        1,
+        2,
+        4,
+        7
+      ],
+      "independent_incident_indices_zero_based": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "values_on_generators": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "normal": [
+        0,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "incident_generator_indices_zero_based": [
+        1,
+        2,
+        7,
+        8,
+        9
+      ],
+      "independent_incident_indices_zero_based": [
+        2,
+        7,
+        8,
+        9
+      ],
+      "values_on_generators": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "normal": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "incident_generator_indices_zero_based": [
+        0,
+        1,
+        3,
+        4,
+        6
+      ],
+      "independent_incident_indices_zero_based": [
+        1,
+        3,
+        4,
+        6
+      ],
+      "values_on_generators": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "normal": [
+        0,
+        1,
+        0,
+        1,
+        -1
+      ],
+      "incident_generator_indices_zero_based": [
+        1,
+        3,
+        6,
+        8,
+        9
+      ],
+      "independent_incident_indices_zero_based": [
+        3,
+        6,
+        8,
+        9
+      ],
+      "values_on_generators": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "normal": [
+        0,
+        1,
+        1,
+        0,
+        -1
+      ],
+      "incident_generator_indices_zero_based": [
+        1,
+        4,
+        6,
+        7,
+        9
+      ],
+      "independent_incident_indices_zero_based": [
+        4,
+        6,
+        7,
+        9
+      ],
+      "values_on_generators": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "normal": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "incident_generator_indices_zero_based": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "independent_incident_indices_zero_based": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "values_on_generators": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "normal": [
+        1,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "incident_generator_indices_zero_based": [
+        2,
+        3,
+        5,
+        8,
+        9
+      ],
+      "independent_incident_indices_zero_based": [
+        3,
+        5,
+        8,
+        9
+      ],
+      "values_on_generators": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "normal": [
+        1,
+        0,
+        1,
+        0,
+        -1
+      ],
+      "incident_generator_indices_zero_based": [
+        2,
+        4,
+        5,
+        7,
+        9
+      ],
+      "independent_incident_indices_zero_based": [
+        4,
+        5,
+        7,
+        9
+      ],
+      "values_on_generators": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "normal": [
+        1,
+        1,
+        0,
+        0,
+        -1
+      ],
+      "incident_generator_indices_zero_based": [
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "independent_incident_indices_zero_based": [
+        4,
+        5,
+        6,
+        9
+      ],
+      "values_on_generators": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "kappa": [
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "ambient_degree_sum": [
+    5,
+    5,
+    5,
+    5,
+    5
+  ],
+  "final_shift": [
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "canonical_scalar_generator_degree": 3,
+  "final_scalar_shift": 12,
+  "D5_unit_gcd": true,
+  "semigroup_generation_proof": [
+    "Every generator satisfies ai>=0 and ai+aj-k>=0.",
+    "For an integral feasible point with k<=0, use Ei powers and A^(-k).",
+    "For k=1, at most one coordinate is zero; subtract a suitable Bi.",
+    "For k>=2 with every ai>=1, subtract C; all inequalities remain valid.",
+    "For k>=2 with ai=0, every other aj>=k; subtract Bi.",
+    "Each positive-k step decreases k, so induction terminates.",
+    "Hence S equals the integral points of the stated cone.",
+    "Rational feasible points can be scaled to integral points, so the stated inequality cone equals the generator cone.",
+    "Together with the unimodular lattice basis, this proves saturation."
+  ],
+  "canonical_translate_proof": [
+    "Primitive facet functionals are integral and equal 1 on kappa.",
+    "An interior lattice point has each facet value at least 1.",
+    "Subtracting kappa therefore produces a lattice point in the cone.",
+    "Conversely kappa plus a cone lattice point is interior.",
+    "Thus interior lattice points equal kappa+S.",
+    "The normal-semigroup canonical-module theorem gives a principal canonical module, generated in scalar degree 3."
+  ],
+  "theorem_dependencies": [
+    "Normal affine semigroup rings are Cohen-Macaulay.",
+    "The canonical module is indexed by interior lattice points."
+  ],
+  "scope": [
+    "Structural certificate for the exported endpoint semigroup.",
+    "Does not rerun middle component ranks.",
+    "Does not claim recovery of the missing original program.",
+    "Does not establish characteristic independence of the complex."
+  ]
+}

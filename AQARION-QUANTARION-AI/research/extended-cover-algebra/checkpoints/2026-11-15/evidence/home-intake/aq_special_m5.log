@@ -1,0 +1,56 @@
+==========================================================
+AQARION EXACT SPECIAL-FAMILY AUDIT
+m = 5
+Arithmetic: exact fractions; standard library only
+==========================================================
+Active systems: 3008 (4368 possible)
+Distinct vertices: 11
+V 0 ('0', '0', '0', '0', '0') integer True active [1, 2, 4, 7, 8, 11, 13, 14, 15]
+V 1 ('0', '0', '0', '0', '5') integer True active [0, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14]
+V 2 ('0', '0', '0', '5', '0') integer True active [1, 6, 7, 10, 11, 12, 13, 15]
+V 3 ('0', '0', '5', '0', '0') integer True active [2, 5, 7, 9, 11, 12, 14, 15]
+V 4 ('0', '5/2', '5/2', '5/2', '0') integer False active [7, 9, 10, 12, 15]
+V 5 ('0', '5', '0', '0', '0') integer True active [3, 4, 7, 9, 10, 13, 14, 15]
+V 6 ('5/2', '0', '5/2', '5/2', '0') integer False active [5, 6, 11, 12, 15]
+V 7 ('5/2', '5/2', '0', '5/2', '0') integer False active [3, 6, 10, 13, 15]
+V 8 ('5/2', '5/2', '5/2', '0', '0') integer False active [3, 5, 9, 14, 15]
+V 9 ('5/2', '5/2', '5/2', '5/2', '0') integer False active [3, 5, 6, 9, 10, 12, 15]
+V 10 ('5', '0', '0', '0', '0') integer True active [3, 5, 6, 8, 11, 13, 14, 15]
+CELL 0 face_dimension 0 facet False
+CELL 1 face_dimension 1 facet False
+CELL 2 face_dimension 1 facet False
+CELL 3 face_dimension 4 facet True
+CELL 4 face_dimension 1 facet False
+CELL 5 face_dimension 4 facet True
+CELL 6 face_dimension 4 facet True
+CELL 7 face_dimension 4 facet True
+CELL 8 face_dimension 1 facet False
+CELL 9 face_dimension 4 facet True
+CELL 10 face_dimension 4 facet True
+CELL 11 face_dimension 4 facet True
+CELL 12 face_dimension 4 facet True
+CELL 13 face_dimension 4 facet True
+CELL 14 face_dimension 4 facet True
+CELL 15 face_dimension 4 facet True
+FACETS: [3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15]
+NON-FACETS: [0, 1, 2, 4, 8]
+REAL MAX L: 10
+REAL OPTIMIZERS: [('5/2', '5/2', '5/2', '5/2', '0')]
+INTEGER POINT COUNT: 420
+INTEGER MAX L: 9
+INTEGER OPTIMIZERS: [(2, 2, 2, 2, 1), (2, 2, 2, 3, 0), (2, 2, 3, 2, 0), (2, 3, 2, 2, 0), (3, 2, 2, 2, 0)]
+EHRHART VALUE: 420
+EHRHART MATCH: True
+HOMOTHETY VERTEX CHECK: True
+INTEGER OBJECTIVE FORMULA: True predicted 9
+IDP WITNESS FEASIBLE AT SCALE 2: True
+IDP WITNESS COORDINATE SUM: 4
+IDP DECOMPOSITION INTO TWO SCALE-1 POINTS: NO
+Reason: every scale-1 integer point has sum <= 1.
+----------------------------------------------------------
+CHECKS: 6 / 6
+FINITE AUDIT: PASS
+Scope: stated special family only.
+No arbitrary-margin, Markov-basis, mixing,
+or novelty claim.
+AUDIT COMPLETE

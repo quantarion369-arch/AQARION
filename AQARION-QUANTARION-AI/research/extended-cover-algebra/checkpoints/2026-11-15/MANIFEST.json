@@ -1,0 +1,359 @@
+{
+  "checkpoint": "2026-11-15",
+  "source_copies": [
+    {
+      "path": "evidence/home-intake/AQARION-D4-rank13-witness-20261114T165438532744Z.json",
+      "source": "/data/data/com.termux/files/home/AQARION-D4-rank13-witness-20261114T165438532744Z.json",
+      "bytes": 6604,
+      "sha256": "4a25bf580162f71d27d2a7dcc58ed4d6caa7a7c1792a425864997a6653e8e5f7"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-algebra-replay-20261114T164651806439Z.json",
+      "source": "/data/data/com.termux/files/home/AQARION-algebra-replay-20261114T164651806439Z.json",
+      "bytes": 2978,
+      "sha256": "5581387035a1f5448f514adacc04fc47c1357c3f0cbb48496fae2b901c64d07d"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-complete-complex-20261114T163933580791Z.json",
+      "source": "/data/data/com.termux/files/home/AQARION-complete-complex-20261114T163933580791Z.json",
+      "bytes": 63260,
+      "sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-resolution-evidence-20261114T171514834259Z.tar.gz",
+      "source": "/data/data/com.termux/files/home/AQARION-resolution-evidence-20261114T171514834259Z.tar.gz",
+      "bytes": 16090,
+      "sha256": "b0231475bb60dd70eafca56752f1f14d36d2ed3ed9ff86dd79cd179257600e77"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-semigroup-certificate-20261114T164416695765Z.json",
+      "source": "/data/data/com.termux/files/home/AQARION-semigroup-certificate-20261114T164416695765Z.json",
+      "bytes": 7712,
+      "sha256": "291b40ac0b15a131b733ba96ae98752f5054ebf0a387c960efca39fb46c07f5b"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-singular-orbits-20261114T185252688899Z.json",
+      "source": "/data/data/com.termux/files/home/AQARION-singular-orbits-20261114T185252688899Z.json",
+      "bytes": 42491,
+      "sha256": "ee481f54fbef284dba9db6420c538e44c7ab10ce1fb16cd7c108d8362d61fb7f"
+    },
+    {
+      "path": "evidence/home-intake/aq_audit_driver.py",
+      "source": "/data/data/com.termux/files/home/aq_audit_driver.py",
+      "bytes": 9014,
+      "sha256": "236db176086de639559064aed9e3fea85bdba8a976794caccae64d014f3743e9"
+    },
+    {
+      "path": "evidence/home-intake/aq_bundle_hash_diagnosis.py",
+      "source": "/data/data/com.termux/files/home/aq_bundle_hash_diagnosis.py",
+      "bytes": 1145,
+      "sha256": "93fea4299426fc3b62979a9173f2e558a3063212052732036285494a541b0232"
+    },
+    {
+      "path": "evidence/home-intake/aq_complex_json_replay.py",
+      "source": "/data/data/com.termux/files/home/aq_complex_json_replay.py",
+      "bytes": 10794,
+      "sha256": "3bcd30a8ec4985287dc260288c10a9a794c9085ccf4ad7eaf72ce11615393785"
+    },
+    {
+      "path": "evidence/home-intake/aq_d4_rank_witness.py",
+      "source": "/data/data/com.termux/files/home/aq_d4_rank_witness.py",
+      "bytes": 3280,
+      "sha256": "fd45b5e5a49ae0646371893d3431c69921740180fdab9ffcda6ddcade3e23014"
+    },
+    {
+      "path": "evidence/home-intake/aq_endpoint_syzygy_audit.py",
+      "source": "/data/data/com.termux/files/home/aq_endpoint_syzygy_audit.py",
+      "bytes": 3247,
+      "sha256": "ef8a7151b38b957a5d628b9193937c9c1154adb7e8cc819e8d8c7c7b80d687ef"
+    },
+    {
+      "path": "evidence/home-intake/aq_final_evidence_audit.py",
+      "source": "/data/data/com.termux/files/home/aq_final_evidence_audit.py",
+      "bytes": 8950,
+      "sha256": "027b1549c95e2f5fd405ef5b7d95817d57190cee4285db8c591ccdcd656c8d0b"
+    },
+    {
+      "path": "evidence/home-intake/aq_final_evidence_audit_v2.py",
+      "source": "/data/data/com.termux/files/home/aq_final_evidence_audit_v2.py",
+      "bytes": 6772,
+      "sha256": "732a9274fdf4a598271ad9d7e81dca792caef382c42763206dcc6de56c413d12"
+    },
+    {
+      "path": "evidence/home-intake/aq_next_evidence_inspection.py",
+      "source": "/data/data/com.termux/files/home/aq_next_evidence_inspection.py",
+      "bytes": 2041,
+      "sha256": "98febd2f97dc5a21fc8800d1a6952facd2fe0f64d6d38cee96921a941d16e422"
+    },
+    {
+      "path": "evidence/home-intake/aq_resolution_audit.py",
+      "source": "/data/data/com.termux/files/home/aq_resolution_audit.py",
+      "bytes": 11067,
+      "sha256": "034fb557b7d2d2b185135baf9e33b961f2237f8d415612cef9cc0326e13568e7"
+    },
+    {
+      "path": "evidence/home-intake/aq_semigroup_certificate.py",
+      "source": "/data/data/com.termux/files/home/aq_semigroup_certificate.py",
+      "bytes": 7217,
+      "sha256": "4338a6b3a7e4d7a4ce96e4526c876bb1be63965530c5a308b50e320ed39c0804"
+    },
+    {
+      "path": "evidence/home-intake/aq_singular_orbit_audit.py",
+      "source": "/data/data/com.termux/files/home/aq_singular_orbit_audit.py",
+      "bytes": 5497,
+      "sha256": "d0af4a8631b86b236d46fc4f16fe71f51db7678eed5c2040231dc5b9151b0c98"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m1.log",
+      "source": "/data/data/com.termux/files/home/aq_special_m1.log",
+      "bytes": 2318,
+      "sha256": "6f22c0f16eb00f56c4a25c08bfb6a51f16f67f9805b0c1bc5275ecbcbb949a9f"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m2.log",
+      "source": "/data/data/com.termux/files/home/aq_special_m2.log",
+      "bytes": 2371,
+      "sha256": "08446041b5ee8fca402a7f5328a8d30cb0a4f0f88339b0fdc26b789b87f0448b"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m3.log",
+      "source": "/data/data/com.termux/files/home/aq_special_m3.log",
+      "bytes": 2484,
+      "sha256": "957f762cab3e7a51fa1f9979b2174b97321830cc11e9465bf23185436f376cbd"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m4.log",
+      "source": "/data/data/com.termux/files/home/aq_special_m4.log",
+      "bytes": 2373,
+      "sha256": "6f076b460cbc2a0fd055f01f0c38795fc4ee7d421d5bb0240f2f32d391b2a169"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m5.log",
+      "source": "/data/data/com.termux/files/home/aq_special_m5.log",
+      "bytes": 2487,
+      "sha256": "95905e6aeced7bfc16f65a39a575064af56a1acffef545be464bf3b07a27d0ad"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m6.log",
+      "source": "/data/data/com.termux/files/home/aq_special_m6.log",
+      "bytes": 2376,
+      "sha256": "5da517c2f20c2e97c5c2c3d020cea03f1194e1c2fd8f90d4edb063d291554c96"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m7.log",
+      "source": "/data/data/com.termux/files/home/aq_special_m7.log",
+      "bytes": 2491,
+      "sha256": "e7e63648901a0a4085c6da3a4ec0335fc938aa8d11aab25d48bacff079f960fc"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m8.log",
+      "source": "/data/data/com.termux/files/home/aq_special_m8.log",
+      "bytes": 2378,
+      "sha256": "f4f0b44d2f4de8004f75eb7e9807dc4fda20d303aa0854542f751a74f12ff914"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_polytope_audit.py",
+      "source": "/data/data/com.termux/files/home/aq_special_polytope_audit.py",
+      "bytes": 5803,
+      "sha256": "e6b63f51b7e265cc170031b0184c813f4d76ef9d66d7bc91bb87b8eea9791d95"
+    },
+    {
+      "path": "evidence/home-intake/aq_total4_audit.py",
+      "source": "/data/data/com.termux/files/home/aq_total4_audit.py",
+      "bytes": 4396,
+      "sha256": "bef4f5207e75b3526d0fed1115df2244013246a699321077edccf1240282f5b1"
+    },
+    {
+      "path": "evidence/home-intake/aq_total4_circuit_audit.py",
+      "source": "/data/data/com.termux/files/home/aq_total4_circuit_audit.py",
+      "bytes": 4821,
+      "sha256": "d93b03b5f906185f729f5fa6ddc0302366c5075fa06abe5cdf152d15a2f32b78"
+    },
+    {
+      "path": "evidence/home-intake/aq_total4_circuit_receipt.log",
+      "source": "/data/data/com.termux/files/home/aq_total4_circuit_receipt.log",
+      "bytes": 5381,
+      "sha256": "cd4965f9f1219ff5189b2ba7514878d2676dd7f96bfdc6c6203e270e3919f088"
+    },
+    {
+      "path": "intake/unclassified-local-scripts/c.py",
+      "source": "/data/data/com.termux/files/home/yang-mills-audit/YM/submissions/openai-20261028/c.py",
+      "bytes": 1198,
+      "sha256": "2339fedb974fd7ee55da6bb3f9768cf6436617ebf483fe2becc2d26aaa04b8b3"
+    },
+    {
+      "path": "intake/unclassified-local-scripts/h.py",
+      "source": "/data/data/com.termux/files/home/yang-mills-audit/YM/submissions/openai-20261028/h.py",
+      "bytes": 859,
+      "sha256": "72d8bbdefdae011ff86c824f243e258e9f6f9cdaa3e06fc65a11eefbaa673b99"
+    }
+  ],
+  "files": [
+    {
+      "path": "PENDING-ARCHIVE-REVIEW.json",
+      "bytes": 4661,
+      "sha256": "0d50252515c647ef9432901df22c44462d85269cfa83d36b8a8bccceeb21987d"
+    },
+    {
+      "path": "RESEARCH-STATUS.md",
+      "bytes": 5520,
+      "sha256": "6963f50f51d1e85ad592bb24143df1d24ea40124447058fbee89c586aa6a1a1d"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-D4-rank13-witness-20261114T165438532744Z.json",
+      "bytes": 6604,
+      "sha256": "4a25bf580162f71d27d2a7dcc58ed4d6caa7a7c1792a425864997a6653e8e5f7"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-algebra-replay-20261114T164651806439Z.json",
+      "bytes": 2978,
+      "sha256": "5581387035a1f5448f514adacc04fc47c1357c3f0cbb48496fae2b901c64d07d"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-complete-complex-20261114T163933580791Z.json",
+      "bytes": 63260,
+      "sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-resolution-evidence-20261114T171514834259Z.tar.gz",
+      "bytes": 16090,
+      "sha256": "b0231475bb60dd70eafca56752f1f14d36d2ed3ed9ff86dd79cd179257600e77"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-semigroup-certificate-20261114T164416695765Z.json",
+      "bytes": 7712,
+      "sha256": "291b40ac0b15a131b733ba96ae98752f5054ebf0a387c960efca39fb46c07f5b"
+    },
+    {
+      "path": "evidence/home-intake/AQARION-singular-orbits-20261114T185252688899Z.json",
+      "bytes": 42491,
+      "sha256": "ee481f54fbef284dba9db6420c538e44c7ab10ce1fb16cd7c108d8362d61fb7f"
+    },
+    {
+      "path": "evidence/home-intake/aq_audit_driver.py",
+      "bytes": 9014,
+      "sha256": "236db176086de639559064aed9e3fea85bdba8a976794caccae64d014f3743e9"
+    },
+    {
+      "path": "evidence/home-intake/aq_bundle_hash_diagnosis.py",
+      "bytes": 1145,
+      "sha256": "93fea4299426fc3b62979a9173f2e558a3063212052732036285494a541b0232"
+    },
+    {
+      "path": "evidence/home-intake/aq_complex_json_replay.py",
+      "bytes": 10794,
+      "sha256": "3bcd30a8ec4985287dc260288c10a9a794c9085ccf4ad7eaf72ce11615393785"
+    },
+    {
+      "path": "evidence/home-intake/aq_d4_rank_witness.py",
+      "bytes": 3280,
+      "sha256": "fd45b5e5a49ae0646371893d3431c69921740180fdab9ffcda6ddcade3e23014"
+    },
+    {
+      "path": "evidence/home-intake/aq_endpoint_syzygy_audit.py",
+      "bytes": 3247,
+      "sha256": "ef8a7151b38b957a5d628b9193937c9c1154adb7e8cc819e8d8c7c7b80d687ef"
+    },
+    {
+      "path": "evidence/home-intake/aq_final_evidence_audit.py",
+      "bytes": 8950,
+      "sha256": "027b1549c95e2f5fd405ef5b7d95817d57190cee4285db8c591ccdcd656c8d0b"
+    },
+    {
+      "path": "evidence/home-intake/aq_final_evidence_audit_v2.py",
+      "bytes": 6772,
+      "sha256": "732a9274fdf4a598271ad9d7e81dca792caef382c42763206dcc6de56c413d12"
+    },
+    {
+      "path": "evidence/home-intake/aq_next_evidence_inspection.py",
+      "bytes": 2041,
+      "sha256": "98febd2f97dc5a21fc8800d1a6952facd2fe0f64d6d38cee96921a941d16e422"
+    },
+    {
+      "path": "evidence/home-intake/aq_resolution_audit.py",
+      "bytes": 11067,
+      "sha256": "034fb557b7d2d2b185135baf9e33b961f2237f8d415612cef9cc0326e13568e7"
+    },
+    {
+      "path": "evidence/home-intake/aq_semigroup_certificate.py",
+      "bytes": 7217,
+      "sha256": "4338a6b3a7e4d7a4ce96e4526c876bb1be63965530c5a308b50e320ed39c0804"
+    },
+    {
+      "path": "evidence/home-intake/aq_singular_orbit_audit.py",
+      "bytes": 5497,
+      "sha256": "d0af4a8631b86b236d46fc4f16fe71f51db7678eed5c2040231dc5b9151b0c98"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m1.log",
+      "bytes": 2318,
+      "sha256": "6f22c0f16eb00f56c4a25c08bfb6a51f16f67f9805b0c1bc5275ecbcbb949a9f"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m2.log",
+      "bytes": 2371,
+      "sha256": "08446041b5ee8fca402a7f5328a8d30cb0a4f0f88339b0fdc26b789b87f0448b"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m3.log",
+      "bytes": 2484,
+      "sha256": "957f762cab3e7a51fa1f9979b2174b97321830cc11e9465bf23185436f376cbd"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m4.log",
+      "bytes": 2373,
+      "sha256": "6f076b460cbc2a0fd055f01f0c38795fc4ee7d421d5bb0240f2f32d391b2a169"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m5.log",
+      "bytes": 2487,
+      "sha256": "95905e6aeced7bfc16f65a39a575064af56a1acffef545be464bf3b07a27d0ad"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m6.log",
+      "bytes": 2376,
+      "sha256": "5da517c2f20c2e97c5c2c3d020cea03f1194e1c2fd8f90d4edb063d291554c96"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m7.log",
+      "bytes": 2491,
+      "sha256": "e7e63648901a0a4085c6da3a4ec0335fc938aa8d11aab25d48bacff079f960fc"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_m8.log",
+      "bytes": 2378,
+      "sha256": "f4f0b44d2f4de8004f75eb7e9807dc4fda20d303aa0854542f751a74f12ff914"
+    },
+    {
+      "path": "evidence/home-intake/aq_special_polytope_audit.py",
+      "bytes": 5803,
+      "sha256": "e6b63f51b7e265cc170031b0184c813f4d76ef9d66d7bc91bb87b8eea9791d95"
+    },
+    {
+      "path": "evidence/home-intake/aq_total4_audit.py",
+      "bytes": 4396,
+      "sha256": "bef4f5207e75b3526d0fed1115df2244013246a699321077edccf1240282f5b1"
+    },
+    {
+      "path": "evidence/home-intake/aq_total4_circuit_audit.py",
+      "bytes": 4821,
+      "sha256": "d93b03b5f906185f729f5fa6ddc0302366c5075fa06abe5cdf152d15a2f32b78"
+    },
+    {
+      "path": "evidence/home-intake/aq_total4_circuit_receipt.log",
+      "bytes": 5381,
+      "sha256": "cd4965f9f1219ff5189b2ba7514878d2676dd7f96bfdc6c6203e270e3919f088"
+    },
+    {
+      "path": "intake/unclassified-local-scripts/c.py",
+      "bytes": 1198,
+      "sha256": "2339fedb974fd7ee55da6bb3f9768cf6436617ebf483fe2becc2d26aaa04b8b3"
+    },
+    {
+      "path": "intake/unclassified-local-scripts/h.py",
+      "bytes": 859,
+      "sha256": "72d8bbdefdae011ff86c824f243e258e9f6f9cdaa3e06fc65a11eefbaa673b99"
+    }
+  ],
+  "scope": "Local evidence intake plus explicitly labelled research notes"
+}

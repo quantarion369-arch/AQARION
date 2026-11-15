@@ -1,0 +1,180 @@
+[
+  {
+    "source": "/data/data/com.termux/files/home/research-preservation-20261115T004644894353Z.tar.gz",
+    "bytes": 60081,
+    "sha256": "654f7891513dd1c5d5cf08acbc08e2dadadace923a0f127d42a15d13a449443f",
+    "disposition": "NOT COPIED OR STAGED; contents review pending",
+    "members": [
+      {
+        "name": "CONTINUITY.txt",
+        "bytes": 1506,
+        "regular_file": true
+      },
+      {
+        "name": "MANIFEST.json",
+        "bytes": 8821,
+        "regular_file": true
+      },
+      {
+        "name": "files/AQARION-D4-rank13-witness-20261114T165438532744Z.json",
+        "bytes": 6604,
+        "regular_file": true
+      },
+      {
+        "name": "files/AQARION-algebra-replay-20261114T164651806439Z.json",
+        "bytes": 2978,
+        "regular_file": true
+      },
+      {
+        "name": "files/AQARION-complete-complex-20261114T163933580791Z.json",
+        "bytes": 63260,
+        "regular_file": true
+      },
+      {
+        "name": "files/AQARION-resolution-evidence-20261114T171514834259Z.tar.gz",
+        "bytes": 16090,
+        "regular_file": true
+      },
+      {
+        "name": "files/AQARION-semigroup-certificate-20261114T164416695765Z.json",
+        "bytes": 7712,
+        "regular_file": true
+      },
+      {
+        "name": "files/AQARION-singular-orbits-20261114T185252688899Z.json",
+        "bytes": 42491,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_audit_driver.py",
+        "bytes": 9014,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_bundle_hash_diagnosis.py",
+        "bytes": 1145,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_complex_json_replay.py",
+        "bytes": 10794,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_d4_rank_witness.py",
+        "bytes": 3280,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_endpoint_syzygy_audit.py",
+        "bytes": 3247,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_final_evidence_audit.py",
+        "bytes": 8950,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_final_evidence_audit_v2.py",
+        "bytes": 6772,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_next_evidence_inspection.py",
+        "bytes": 2041,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_resolution_audit.py",
+        "bytes": 11067,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_semigroup_certificate.py",
+        "bytes": 7217,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_singular_orbit_audit.py",
+        "bytes": 5497,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_m1.log",
+        "bytes": 2318,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_m2.log",
+        "bytes": 2371,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_m3.log",
+        "bytes": 2484,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_m4.log",
+        "bytes": 2373,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_m5.log",
+        "bytes": 2487,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_m6.log",
+        "bytes": 2376,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_m7.log",
+        "bytes": 2491,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_m8.log",
+        "bytes": 2378,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_special_polytope_audit.py",
+        "bytes": 5803,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_total4_audit.py",
+        "bytes": 4396,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_total4_circuit_audit.py",
+        "bytes": 4821,
+        "regular_file": true
+      },
+      {
+        "name": "files/aq_total4_circuit_receipt.log",
+        "bytes": 5381,
+        "regular_file": true
+      },
+      {
+        "name": "files/yang-mills-audit/YM/submissions/openai-20261028/runs/20261114T210607.478311Z/result.json",
+        "bytes": 2519,
+        "regular_file": true
+      },
+      {
+        "name": "files/yang-mills-audit/YM/submissions/openai-20261028/runs/20261114T210805.943855Z/dependency-cache.log",
+        "bytes": 0,
+        "regular_file": true
+      },
+      {
+        "name": "files/yang-mills-audit/YM/submissions/openai-20261028/runs/20261114T210805.943855Z/result.json",
+        "bytes": 2718,
+        "regular_file": true
+      }
+    ]
+  }
+]

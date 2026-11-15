@@ -1,0 +1,2401 @@
+{
+  "format": "AQARION singular-orbit certificate v1",
+  "complex_sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0",
+  "structural_certificate_sha256": "291b40ac0b15a131b733ba96ae98752f5054ebf0a387c960efca39fb46c07f5b",
+  "replay_script_sha256": "d0af4a8631b86b236d46fc4f16fe71f51db7678eed5c2040231dc5b9151b0c98",
+  "field": "QQ; geometric interpretation after algebraic closure",
+  "ambient_dimension": 10,
+  "variety_dimension": 5,
+  "jacobian_smoothness_rank": 5,
+  "orbit_records": [
+    {
+      "support_indices_zero_based": [],
+      "nonzero_coordinates": [],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 0,
+      "jacobian_rank": 0,
+      "tangent_dimension": 10,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        0
+      ],
+      "nonzero_coordinates": [
+        "A"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1
+      ],
+      "nonzero_coordinates": [
+        "E0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        2
+      ],
+      "nonzero_coordinates": [
+        "E1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        3
+      ],
+      "nonzero_coordinates": [
+        "E2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        4
+      ],
+      "nonzero_coordinates": [
+        "E3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        5
+      ],
+      "nonzero_coordinates": [
+        "B0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        6
+      ],
+      "nonzero_coordinates": [
+        "B1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        7
+      ],
+      "nonzero_coordinates": [
+        "B2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        8
+      ],
+      "nonzero_coordinates": [
+        "B3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        9
+      ],
+      "nonzero_coordinates": [
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        1
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E0"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        2
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E1"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        3
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E2"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        4
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E3"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        2
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        3
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        4
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        6
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "B1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        7
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "B2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        8
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "B3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        3
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "E2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        4
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "E3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        5
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "B0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        7
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "B2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        8
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "B3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        4
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "E3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        5
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "B0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        6
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "B1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        8
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "B3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        4,
+        5
+      ],
+      "nonzero_coordinates": [
+        "E3",
+        "B0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        4,
+        6
+      ],
+      "nonzero_coordinates": [
+        "E3",
+        "B1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        4,
+        7
+      ],
+      "nonzero_coordinates": [
+        "E3",
+        "B2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        4,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E3",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        5,
+        9
+      ],
+      "nonzero_coordinates": [
+        "B0",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        6,
+        9
+      ],
+      "nonzero_coordinates": [
+        "B1",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        7,
+        9
+      ],
+      "nonzero_coordinates": [
+        "B2",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        8,
+        9
+      ],
+      "nonzero_coordinates": [
+        "B3",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 1
+      },
+      "orbit_dimension": 2,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        1,
+        2
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E0",
+        "E1"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 1,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        1,
+        3
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E0",
+        "E2"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 1,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        1,
+        4
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E0",
+        "E3"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        2,
+        3
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E1",
+        "E2"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 0,
+        "E1": 1,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        2,
+        4
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E1",
+        "E3"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        3,
+        4
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E2",
+        "E3"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        2,
+        7
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E1",
+        "B2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        2,
+        8
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E1",
+        "B3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        3,
+        6
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E2",
+        "B1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        3,
+        8
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E2",
+        "B3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        4,
+        6
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E3",
+        "B1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        4,
+        7
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E3",
+        "B2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        6,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "B1",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        7,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "B2",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        8,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "B3",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        3,
+        5
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "E2",
+        "B0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 1,
+        "E3": 0,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        3,
+        8
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "E2",
+        "B3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        4,
+        5
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "E3",
+        "B0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 1,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        4,
+        7
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "E3",
+        "B2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        5,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "B0",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        7,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "B2",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        8,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "B3",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        4,
+        5
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "E3",
+        "B0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 1,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        4,
+        6
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "E3",
+        "B1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 1,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        5,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "B0",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        6,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "B1",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        8,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "B3",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        4,
+        5,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E3",
+        "B0",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        4,
+        6,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E3",
+        "B1",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        4,
+        7,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E3",
+        "B2",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 3,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        8
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E0",
+        "E1",
+        "E2",
+        "B3"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 1,
+        "E1": 1,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 0
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        1,
+        2,
+        4,
+        7
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E0",
+        "E1",
+        "E3",
+        "B2"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 1,
+        "E1": 1,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        1,
+        3,
+        4,
+        6
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E0",
+        "E2",
+        "E3",
+        "B1"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 1,
+        "E1": 0,
+        "E2": 1,
+        "E3": 1,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E1",
+        "E2",
+        "E3",
+        "B0"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 0,
+        "E1": 1,
+        "E2": 1,
+        "E3": 1,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        2,
+        7,
+        8,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E1",
+        "B2",
+        "B3",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 1,
+        "B3": 1,
+        "C": 1
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        3,
+        6,
+        8,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E2",
+        "B1",
+        "B3",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 1,
+        "B2": 0,
+        "B3": 1,
+        "C": 1
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        1,
+        4,
+        6,
+        7,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E0",
+        "E3",
+        "B1",
+        "B2",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 1,
+        "B2": 1,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        3,
+        5,
+        8,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "E2",
+        "B0",
+        "B3",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 1,
+        "E3": 0,
+        "B0": 1,
+        "B1": 0,
+        "B2": 0,
+        "B3": 1,
+        "C": 1
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        2,
+        4,
+        5,
+        7,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E1",
+        "E3",
+        "B0",
+        "B2",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 1,
+        "B0": 1,
+        "B1": 0,
+        "B2": 1,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "nonzero_coordinates": [
+        "E2",
+        "E3",
+        "B0",
+        "B1",
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 1,
+        "B0": 1,
+        "B1": 1,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 4,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    },
+    {
+      "support_indices_zero_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "nonzero_coordinates": [
+        "A",
+        "E0",
+        "E1",
+        "E2",
+        "E3",
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "C"
+      ],
+      "representative": {
+        "A": 1,
+        "E0": 1,
+        "E1": 1,
+        "E2": 1,
+        "E3": 1,
+        "B0": 1,
+        "B1": 1,
+        "B2": 1,
+        "B3": 1,
+        "C": 1
+      },
+      "orbit_dimension": 5,
+      "jacobian_rank": 5,
+      "tangent_dimension": 5,
+      "singular": false
+    }
+  ],
+  "maximal_singular_orbits": [
+    {
+      "support_indices_zero_based": [
+        1
+      ],
+      "nonzero_coordinates": [
+        "E0"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 1,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        2
+      ],
+      "nonzero_coordinates": [
+        "E1"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 1,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        3
+      ],
+      "nonzero_coordinates": [
+        "E2"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 1,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        4
+      ],
+      "nonzero_coordinates": [
+        "E3"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 1,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 0
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    },
+    {
+      "support_indices_zero_based": [
+        9
+      ],
+      "nonzero_coordinates": [
+        "C"
+      ],
+      "representative": {
+        "A": 0,
+        "E0": 0,
+        "E1": 0,
+        "E2": 0,
+        "E3": 0,
+        "B0": 0,
+        "B1": 0,
+        "B2": 0,
+        "B3": 0,
+        "C": 1
+      },
+      "orbit_dimension": 1,
+      "jacobian_rank": 1,
+      "tangent_dimension": 9,
+      "singular": true
+    }
+  ],
+  "reduced_singular_locus": {
+    "components": [
+      "E0-axis",
+      "E1-axis",
+      "E2-axis",
+      "E3-axis",
+      "C-axis"
+    ],
+    "dimension": 1,
+    "codimension_in_X": 4,
+    "ideal_description": "(A,B0,B1,B2,B3) plus all pairwise products of distinct members of {E0,E1,E2,E3,C}"
+  },
+  "proof_dependencies": [
+    "The established normal toric endpoint identification.",
+    "Faces are all intersections of the certified facets.",
+    "Distinguished face points represent all geometric torus orbits.",
+    "Smoothness is invariant under the torus action.",
+    "Characteristic-zero Jacobian criterion."
+  ],
+  "scope": [
+    "Determines the reduced geometric singular locus.",
+    "Does not compute the nonreduced Jacobian singular subscheme.",
+    "Does not establish behavior in positive characteristic.",
+    "Does not alter the existing resolution bundle."
+  ]
+}
