@@ -1,0 +1,498 @@
+#!/usr/bin/env python3
+"""SIXBIT-MARGINAL-009
+Read-only exact checker for retained 12-point circuit records.
+Standard library only. Does not rerun the 008 search.
+"""
+import argparse
+import hashlib
+import json
+import math
+import re
+import sys
+from collections import Counter
+from datetime import datetime, timezone
+from fractions import Fraction
+from pathlib import Path
+
+VERSION = "1.0.1-odd-eight-scope"
+NPOINTS = 64
+NFEATURES = 22
+EXPECTED_RECORDS = 472
+# Retained ODD-EIGHT-QUOTIENT-008 specimen only.
+# Exactly eight odd coefficients are required by the base-flat check.
+# This is not a global classification of all 12-point circuits.
+PATTERNS = {
+    "1^8 2^4",
+    "1^7 2^4 3^1",
+    "1^6 2^4 3^2",
+}
+
+def sha256_file(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+def exact_rank(matrix):
+    """Rank over Q by exact Fraction Gaussian elimination."""
+    if not matrix:
+        return 0
+    a = [[Fraction(v) for v in row] for row in matrix]
+    m, n = len(a), len(a[0])
+    if any(len(row) != n for row in a):
+        raise ValueError("ragged matrix")
+    r = 0
+    for c in range(n):
+        pivot = next((i for i in range(r, m) if a[i][c]), None)
+        if pivot is None:
+            continue
+        a[r], a[pivot] = a[pivot], a[r]
+        q = a[r][c]
+        a[r] = [v / q for v in a[r]]
+        for i in range(m):
+            if i != r and a[i][c]:
+                q = a[i][c]
+                a[i] = [a[i][j] - q * a[r][j] for j in range(n)]
+        r += 1
+        if r == m:
+            break
+    return r
+
+def is_prime(n):
+    if n < 2:
+        return False
+    if n % 2 == 0:
+        return n == 2
+    d = 3
+    while d * d <= n:
+        if n % d == 0:
+            return False
+        d += 2
+    return True
+
+def modular_rank(matrix, p):
+    a = [[int(v) % p for v in row] for row in matrix]
+    if not a:
+        return 0
+    m, n = len(a), len(a[0])
+    r = 0
+    for c in range(n):
+        pivot = next((i for i in range(r, m) if a[i][c] % p), None)
+        if pivot is None:
+            continue
+        a[r], a[pivot] = a[pivot], a[r]
+        inv = pow(a[r][c], p - 2, p)
+        a[r] = [(v * inv) % p for v in a[r]]
+        for i in range(m):
+            if i != r and a[i][c]:
+                q = a[i][c]
+                a[i] = [(a[i][j] - q * a[r][j]) % p for j in range(n)]
+        r += 1
+        if r == m:
+            break
+    return r
+
+def binary_rank(vectors):
+    """Rank of bit vectors over F_2."""
+    basis = {}
+    for value in vectors:
+        x = int(value)
+        while x:
+            p = x.bit_length() - 1
+            if p in basis:
+                x ^= basis[p]
+            else:
+                basis[p] = x
+                break
+    return len(basis)
+
+def affine_rank(points):
+    if not points:
+        return -1
+    origin = points[0]
+    return binary_rank([p ^ origin for p in points[1:]])
+
+def phi_matrix(points):
+    """22 x |points| matrix: 1, x_i, x_i*x_j."""
+    cols = []
+    for x in points:
+        bits = [(x >> i) & 1 for i in range(6)]
+        col = [1] + bits
+        for i in range(6):
+            for j in range(i + 1, 6):
+                col.append(bits[i] * bits[j])
+        assert len(col) == NFEATURES
+        cols.append(col)
+    return [[cols[j][i] for j in range(len(points))]
+            for i in range(NFEATURES)]
+
+def psi_matrix(points):
+    """Independent signed-feature construction: 1, s_i, s_i*s_j."""
+    cols = []
+    for x in points:
+        s = [1 if ((x >> i) & 1) == 0 else -1 for i in range(6)]
+        col = [1] + s
+        for i in range(6):
+            for j in range(i + 1, 6):
+                col.append(s[i] * s[j])
+        assert len(col) == NFEATURES
+        cols.append(col)
+    return [[cols[j][i] for j in range(len(points))]
+            for i in range(NFEATURES)]
+
+def dot_kernel(matrix, kernel):
+    return [sum(row[j] * kernel[j] for j in range(len(kernel)))
+            for row in matrix]
+
+def coefficient_pattern(kernel):
+    c = Counter(abs(int(v)) for v in kernel)
+    return " ".join(f"{k}^{c[k]}" for k in sorted(c))
+
+def normalize_pattern(value):
+    if value is None:
+        return None
+    if isinstance(value, dict):
+        try:
+            return " ".join(
+                f"{int(k)}^{int(v)}"
+                for k, v in sorted(value.items(), key=lambda z: int(z[0]))
+                if int(v)
+            )
+        except Exception:
+            return str(value).replace(",", " ").strip()
+    if isinstance(value, list):
+        try:
+            c = Counter(abs(int(x)) for x in value)
+            return " ".join(f"{k}^{c[k]}" for k in sorted(c))
+        except Exception:
+            return str(value)
+    s = str(value).strip().replace(",", " ")
+    s = re.sub(r"\s+", " ", s)
+    return s
+
+def get_records(root):
+    if isinstance(root, list):
+        return root
+    if isinstance(root, dict):
+        for key in ("records", "representatives", "circuits",
+                    "representative_circuits", "items"):
+            if isinstance(root.get(key), list):
+                return root[key]
+    raise ValueError("Cannot locate record list in JSON root")
+
+def record_check(rec, index):
+    errors = []
+    if not isinstance(rec, dict):
+        return {"index": index, "errors": ["record is not an object"]}
+
+    support = rec.get("support")
+    kernel = rec.get("primitive_kernel")
+    base = rec.get("base_flat")
+
+    if not isinstance(support, list) or not isinstance(kernel, list):
+        return {"index": index, "errors": [
+            "missing support[] or primitive_kernel[]"
+        ]}
+
+    try:
+        support = [int(x) for x in support]
+        kernel = [int(x) for x in kernel]
+    except Exception:
+        return {"index": index, "errors": ["non-integer support/kernel"]}
+
+    if len(support) != 12:
+        errors.append(f"support length is {len(support)}, expected 12")
+    if len(set(support)) != len(support):
+        errors.append("support contains duplicate points")
+    if support != sorted(support):
+        errors.append("support is not sorted")
+    if any(x < 0 or x >= NPOINTS for x in support):
+        errors.append("support point outside [0,63]")
+    if len(kernel) != 12:
+        errors.append(f"kernel length is {len(kernel)}, expected 12")
+    if len(kernel) != len(support):
+        return {"index": index, "errors": errors + [
+            "cannot align support and kernel lengths"
+        ]}
+    if any(v == 0 for v in kernel):
+        errors.append("kernel contains zero coefficient")
+    g = 0
+    for v in kernel:
+        g = math.gcd(g, abs(v))
+    if g != 1:
+        errors.append(f"kernel is not primitive; gcd={g}")
+
+    if errors:
+        return {"index": index, "errors": errors}
+
+    A = phi_matrix(support)
+    B = psi_matrix(support)
+    id_phi = dot_kernel(A, kernel)
+    id_psi = dot_kernel(B, kernel)
+
+    if any(id_phi):
+        errors.append("Phi kernel identity is not exactly zero")
+    if any(id_psi):
+        errors.append("Psi signed-feature kernel identity is not exactly zero")
+
+    rank_phi = exact_rank(A)
+    rank_psi = exact_rank(B)
+    prime_p, prime_q = 2147483629, 1000003
+    if not is_prime(prime_p) or not is_prime(prime_q):
+        errors.append("modular audit prime failed trial-division primality")
+    rank_phi_p = modular_rank(A, prime_p)
+    rank_phi_q = modular_rank(A, prime_q)
+    rank_psi_p = modular_rank(B, prime_p)
+    rank_psi_q = modular_rank(B, prime_q)
+    if (rank_phi_p, rank_phi_q, rank_psi_p, rank_psi_q) != (11, 11, 11, 11):
+        errors.append(
+            "two-prime rank mismatch: "
+            f"Phi=({rank_phi_p},{rank_phi_q}), "
+            f"Psi=({rank_psi_p},{rank_psi_q})"
+        )
+    if rank_phi != 11:
+        errors.append(f"rank_Q(Phi)={rank_phi}, expected 11")
+    if rank_psi != 11:
+        errors.append(f"rank_Q(Psi)={rank_psi}, expected 11")
+
+    deletion_ranks = []
+    for j in range(12):
+        Aj = [[row[k] for k in range(12) if k != j] for row in A]
+        Bj = [[row[k] for k in range(12) if k != j] for row in B]
+        ra, rb = exact_rank(Aj), exact_rank(Bj)
+        deletion_ranks.append(ra)
+        if ra != 11:
+            errors.append(f"Phi deletion {j} rank={ra}, expected 11")
+        if rb != 11:
+            errors.append(f"Psi deletion {j} rank={rb}, expected 11")
+
+    odd_set = sorted(support[i] for i, v in enumerate(kernel)
+                     if abs(v) % 2 == 1)
+
+    try:
+        base = [int(x) for x in base]
+    except Exception:
+        base = []
+        errors.append("missing/invalid base_flat")
+
+    if len(base) != 8 or len(set(base)) != 8 or base != sorted(base):
+        errors.append("base_flat must be 8 sorted distinct points")
+    if any(x < 0 or x >= NPOINTS for x in base):
+        errors.append("base_flat point outside [0,63]")
+    if sorted(base) != odd_set:
+        errors.append("odd coefficient support does not equal base_flat")
+    arank = affine_rank(base) if len(base) == 8 and len(set(base)) == 8 else -1
+    if arank != 3:
+        errors.append(f"base_flat affine dimension={arank}, expected 3")
+
+    pattern = coefficient_pattern(kernel)
+    claimed = None
+    for key in ("pattern", "coefficient_pattern", "abs_pattern"):
+        if key in rec:
+            claimed = normalize_pattern(rec[key])
+            break
+    if claimed is not None and claimed != pattern:
+        errors.append(f"pattern mismatch: actual={pattern}; claimed={claimed}")
+    if pattern not in PATTERNS:
+        errors.append(f"unexpected coefficient pattern: {pattern}")
+
+    return {
+        "index": index,
+        "record_id": rec.get("record_id", rec.get("id", index)),
+        "support": support,
+        "support_sha256": hashlib.sha256(
+            json.dumps(support, separators=(",", ":")).encode()
+        ).hexdigest(),
+        "kernel_sha256": hashlib.sha256(
+            json.dumps(kernel, separators=(",", ":")).encode()
+        ).hexdigest(),
+        "rank_phi_Q": rank_phi,
+        "rank_psi_Q": rank_psi,
+        "prime_fields": [2147483629, 1000003],
+        "rank_phi_Fp": rank_phi_p,
+        "rank_phi_Fq": rank_phi_q,
+        "rank_psi_Fp": rank_psi_p,
+        "rank_psi_Fq": rank_psi_q,
+        "deletion_ranks_phi_Q": deletion_ranks,
+        "kernel_identity_phi_exact": not any(id_phi),
+        "kernel_identity_psi_exact": not any(id_psi),
+        "odd_set_equals_base_flat": sorted(base) == odd_set,
+        "base_flat_affine_dimension": arank,
+        "coefficient_pattern": pattern,
+        "circuit_status": not errors,
+        "errors": errors,
+    }
+
+def self_test():
+    assert exact_rank([[1, 0], [0, 1], [1, 1]]) == 2
+    assert exact_rank([[1, 2], [2, 4]]) == 1
+    assert binary_rank([1, 2, 3]) == 2
+    # Affine 3-flat: all eight points with first three bits free.
+    flat = [a | (b << 1) | (c << 2)
+            for a in range(2) for b in range(2) for c in range(2)]
+    assert len(flat) == 8 and affine_rank(flat) == 3
+    assert affine_rank([0, 1, 2, 4, 7, 8, 16, 32]) != 3
+    assert coefficient_pattern([3, -1, -2, -2, 1, 1, -2, 1, 1, 1, 1, -2]) \
+           == "1^7 2^4 3^1"
+    print("SELF-TEST: PASS")
+    print("Exact rational rank, F2 rank, affine-flat checks, pattern parser: PASS")
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--records", required=False,
+                    help="Path to retained REPRESENTATIVE-CIRCUITS.json")
+    ap.add_argument("--outdir", default=str(Path(__file__).resolve().parent))
+    ap.add_argument("--expected-count", type=int, default=EXPECTED_RECORDS)
+    ap.add_argument("--expected-sha256", default=None,
+                    help="Optional pinned SHA-256 of the records JSON")
+    ap.add_argument("--self-test", action="store_true")
+    args = ap.parse_args()
+
+    if args.self_test:
+        self_test()
+        if not args.records:
+            return 0
+    if not args.records:
+        ap.error("--records is required unless running --self-test alone")
+
+    source = Path(args.records).expanduser().resolve()
+    outdir = Path(args.outdir).expanduser().resolve()
+    outdir.mkdir(parents=True, exist_ok=True)
+    if not source.is_file():
+        print(f"ERROR: records file not found: {source}", file=sys.stderr)
+        return 2
+
+    input_hash = sha256_file(source)
+    if args.expected_sha256 and input_hash.lower() != args.expected_sha256.lower():
+        print("ERROR: input SHA-256 does not match requested pin", file=sys.stderr)
+        print(f"expected={args.expected_sha256}", file=sys.stderr)
+        print(f"actual  ={input_hash}", file=sys.stderr)
+        return 2
+
+    try:
+        root = json.loads(source.read_text(encoding="utf-8"))
+        records = get_records(root)
+    except Exception as e:
+        print(f"ERROR: cannot parse records: {e}", file=sys.stderr)
+        return 2
+
+    results = [record_check(r, i) for i, r in enumerate(records)]
+    passed = sum(not r.get("errors") for r in results)
+    failed = len(results) - passed
+    patterns = Counter(
+        r.get("coefficient_pattern", "INVALID")
+        for r in results if not r.get("errors")
+    )
+    supports = [
+        tuple(r["support"]) for r in results
+        if not r.get("errors") and "support" in r
+    ]
+    duplicate_supports = len(supports) - len(set(supports))
+
+    global_errors = []
+    if len(records) != args.expected_count:
+        global_errors.append(
+            f"record count {len(records)} != expected {args.expected_count}"
+        )
+    if failed:
+        global_errors.append(f"{failed} record(s) failed")
+    if duplicate_supports:
+        global_errors.append(
+            f"{duplicate_supports} duplicate support record(s)"
+        )
+    if set(patterns) != PATTERNS:
+        global_errors.append(
+            f"pattern set mismatch: found {sorted(patterns)}"
+        )
+
+    status = "PASS" if not global_errors else "FAIL"
+    report = {
+        "audit": "SIXBIT-MARGINAL-009",
+        "version": VERSION,
+        "status": status,
+        "created_utc": datetime.now(timezone.utc).isoformat(),
+        "scope": [
+            "retained record validation only",
+            "exact integer kernel identities",
+            "exact rational rank and deletion checks",
+            "independent signed-feature construction",
+            "odd-set/base-flat and affine-flat checks",
+            "coefficient-pattern validation",
+        ],
+        "explicitly_not_claimed": [
+            "global circuit-search completeness",
+            "full cut-polytope symmetry orbit count",
+            "Lean formal proof",
+            "novelty against all prior literature",
+        ],
+        "input": str(source),
+        "input_sha256": input_hash,
+        "verifier": str(Path(__file__).resolve()),
+        "verifier_sha256": sha256_file(Path(__file__).resolve()),
+        "records_expected": args.expected_count,
+        "records_found": len(records),
+        "records_passed": passed,
+        "records_failed": failed,
+        "duplicate_support_records": duplicate_supports,
+        "pattern_counts": dict(sorted(patterns.items())),
+        "global_errors": global_errors,
+        "record_results": results,
+    }
+
+    report_path = outdir / "REPORT.json"
+    tmp = outdir / "REPORT.json.tmp"
+    tmp.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n",
+                   encoding="utf-8")
+    tmp.replace(report_path)
+
+    # A PASS certificate is freshly replaced only after all checks pass.
+    pass_path = outdir / "PASS.json"
+    fail_path = outdir / "FAIL.json"
+    if status == "PASS":
+        cert = {
+            "audit": "SIXBIT-MARGINAL-009",
+            "status": "PASS",
+            "report_sha256": sha256_file(report_path),
+            "input_sha256": input_hash,
+            "verifier_sha256": report["verifier_sha256"],
+            "records_checked": len(records),
+            "records_passed": passed,
+            "records_failed": failed,
+            "duplicate_support_records": duplicate_supports,
+            "pattern_counts": dict(sorted(patterns.items())),
+        }
+        t = outdir / "PASS.json.tmp"
+        t.write_text(json.dumps(cert, indent=2, sort_keys=True) + "\n",
+                     encoding="utf-8")
+        t.replace(pass_path)
+        if fail_path.exists():
+            fail_path.unlink()
+    else:
+        if pass_path.exists():
+            pass_path.unlink()
+        fail_path.write_text(
+            json.dumps({"audit": "SIXBIT-MARGINAL-009",
+                        "status": "FAIL",
+                        "report_sha256": sha256_file(report_path),
+                        "errors": global_errors}, indent=2) + "\n",
+            encoding="utf-8"
+        )
+
+    print("=== SIXBIT-MARGINAL-009 ===")
+    print("status:", status)
+    print("records:", len(records))
+    print("passed:", passed)
+    print("failed:", failed)
+    print("duplicate supports:", duplicate_supports)
+    print("patterns:", json.dumps(dict(sorted(patterns.items()))))
+    print("input sha256:", input_hash)
+    print("report:", report_path)
+    print("certificate:", pass_path if status == "PASS" else fail_path)
+    if global_errors:
+        for e in global_errors:
+            print("FAIL:", e)
+    return 0 if status == "PASS" else 1
+
+if __name__ == "__main__":
+    raise SystemExit(main())

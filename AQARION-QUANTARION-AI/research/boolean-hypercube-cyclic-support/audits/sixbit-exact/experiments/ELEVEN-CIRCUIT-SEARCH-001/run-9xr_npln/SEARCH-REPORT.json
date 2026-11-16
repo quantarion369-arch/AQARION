@@ -1,0 +1,27 @@
+{
+  "circuits": [],
+  "distinct_circuits_found": 0,
+  "draws_completed": 100000,
+  "duplicate_draws": 111,
+  "elapsed_seconds": 25.406533,
+  "exact_rejection_counts": {
+    "proper_dependent_support_10": 526
+  },
+  "exhaustive": false,
+  "experiment": "ELEVEN-CIRCUIT-SEARCH-001",
+  "finished_utc": "2026-11-07T17:06:56.591849+00:00",
+  "modular_candidates_exactly_tested": 526,
+  "nonexistence_claim": false,
+  "prime": 2147483647,
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_eight_flat_batches": 2000,
+  "requested_draws": 100000,
+  "samples_per_flat": 50,
+  "scope": "Seeded sampling of a rank-eight affine 3-flat plus three outside points; exact certification of discoveries. Not exhaustive and not a nonexistence proof.",
+  "seed": 6007001,
+  "source_sha256": "e491e8b8dd751660ee7ae2c2749b0e4337e9c7ed9885a69bd643a4f59f02489b",
+  "source_unchanged": true,
+  "started_utc": "2026-11-07T17:06:31.186260+00:00",
+  "status": "COMPLETED",
+  "unique_supports_tested": 99889
+}

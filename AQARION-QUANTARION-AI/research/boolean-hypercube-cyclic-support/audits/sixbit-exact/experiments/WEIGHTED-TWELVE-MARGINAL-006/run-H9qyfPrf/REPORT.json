@@ -1,0 +1,249 @@
+{
+  "accepted_assignments": 12,
+  "all_672_ranks_individually_recomputed": false,
+  "allowed_coordinate_functions": "constants, five coordinate copies, five complements",
+  "arbitrary_binary_affine_maps_used": false,
+  "assignments_tested": 4096,
+  "circuit_transfer_method": "Exact orbit-representative certification plus coordinate permutations and bit complements",
+  "distinct_six_bit_supports": 672,
+  "elapsed_seconds": 0.660674,
+  "experiment": "WEIGHTED-TWELVE-MARGINAL-006",
+  "finished_utc": "2026-11-08T03:16:07.550229+00:00",
+  "git_index_before": "a2e8d8551ea746fc6f08ebf8c6791ad30cb1505244e0c67886a11574896de49b",
+  "git_index_unchanged": true,
+  "orbit_sizes": [
+    192,
+    480
+  ],
+  "orbits": [
+    {
+      "certification": {
+        "marginal": {
+          "corrupted_kernel_rejected": true,
+          "deletion_ranks": [
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "exact_identity": true,
+          "rank": 11
+        },
+        "monomial": {
+          "corrupted_kernel_rejected": true,
+          "deletion_ranks": [
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "exact_identity": true,
+          "rank": 11
+        }
+      },
+      "orbit_size": 192,
+      "primitive_kernel": [
+        3,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        -3
+      ],
+      "representative": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        15,
+        16,
+        23,
+        27,
+        29,
+        30,
+        31
+      ],
+      "stabilizer_order": 240,
+      "support_set_sha256": "66d673f17df692900ece3712a1839a0824a418a6bd1aabe39dec6d852c3bf7f0"
+    },
+    {
+      "certification": {
+        "marginal": {
+          "corrupted_kernel_rejected": true,
+          "deletion_ranks": [
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "exact_identity": true,
+          "rank": 11
+        },
+        "monomial": {
+          "corrupted_kernel_rejected": true,
+          "deletion_ranks": [
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "exact_identity": true,
+          "rank": 11
+        }
+      },
+      "orbit_size": 480,
+      "primitive_kernel": [
+        3,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        -3
+      ],
+      "representative": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        15,
+        48,
+        55,
+        59,
+        61,
+        62,
+        63
+      ],
+      "stabilizer_order": 96,
+      "support_set_sha256": "d7b9c5fe815cdfcc41111a169a53a7ba4bc7594ff3a10786d8040a4b823e2d9f"
+    }
+  ],
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "representation_scalar_checks": {
+    "five_bits": 1280,
+    "six_bits": 3840
+  },
+  "scope": "Complete one-coordinate extension and cube-orbit closure of one published five-bit weighted circuit. Not all weighted twelve-point circuits, not a complete six-bit circuit census, and no novelty claim.",
+  "seed": {
+    "certification": {
+      "marginal": {
+        "corrupted_kernel_rejected": true,
+        "deletion_ranks": [
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "exact_identity": true,
+        "rank": 11
+      },
+      "monomial": {
+        "corrupted_kernel_rejected": true,
+        "deletion_ranks": [
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        "exact_identity": true,
+        "rank": 11
+      }
+    },
+    "points": [
+      0,
+      1,
+      2,
+      4,
+      8,
+      15,
+      16,
+      23,
+      27,
+      29,
+      30,
+      31
+    ],
+    "primitive_kernel": [
+      3,
+      -1,
+      -1,
+      -1,
+      -1,
+      1,
+      -1,
+      1,
+      1,
+      1,
+      1,
+      -3
+    ],
+    "trade_volume": 8
+  },
+  "source_of_seed": "Develin-Sullivant, Markov Bases of Binary Graph Models, displayed K5 degree-eight move / Proposition 2.7",
+  "source_sha256": "89efef2bfd22e5a844dadb7dec255a79d0a97342bd72f0b9dc369b2a89759227",
+  "source_unchanged": true,
+  "started_utc": "2026-11-08T03:16:06.936827+00:00",
+  "status": "PASS",
+  "support_set_sha256": "e25852b2942ba0e496d8ae9cd3e9335b3ccaf5a5223244f3e5b3f07550c77d24"
+}

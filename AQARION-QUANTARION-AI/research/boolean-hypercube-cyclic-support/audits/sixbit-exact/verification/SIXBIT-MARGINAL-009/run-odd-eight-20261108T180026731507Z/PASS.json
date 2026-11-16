@@ -1,0 +1,16 @@
+{
+  "audit": "SIXBIT-MARGINAL-009",
+  "duplicate_support_records": 0,
+  "input_sha256": "fd85dd9977c015efde2a22c8e9b52eefff210970ec7858fd9294cb2fb13647d1",
+  "pattern_counts": {
+    "1^6 2^4 3^2": 72,
+    "1^7 2^4 3^1": 88,
+    "1^8 2^4": 312
+  },
+  "records_checked": 472,
+  "records_failed": 0,
+  "records_passed": 472,
+  "report_sha256": "823c24ca355b1d56495991a528312d629159883c65fe9f3b066197a80601e6a3",
+  "status": "PASS",
+  "verifier_sha256": "d56f45e7277dbc39868671eb67964863a6738c837bada5199a8c64f090a70620"
+}

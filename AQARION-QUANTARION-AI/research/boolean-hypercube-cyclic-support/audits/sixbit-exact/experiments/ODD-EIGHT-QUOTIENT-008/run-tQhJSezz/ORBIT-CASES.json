@@ -1,0 +1,437 @@
+[
+  {
+    "representative_flat": [
+      0,
+      1,
+      6,
+      7,
+      10,
+      11,
+      12,
+      13
+    ],
+    "direction_orbit_size": 60,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 56,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 36,
+      "1^6 2^4 3^2": 12
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 85,
+      "actual_point_quadruples_tested": 100,
+      "integer_kernel_vector_checks": 100,
+      "direct_candidate_rank_checks": 100,
+      "proper_dependency_rejections": 44,
+      "direct_deletion_rank_checks": 672
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      1,
+      6,
+      7,
+      26,
+      27,
+      28,
+      29
+    ],
+    "direction_orbit_size": 180,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 48,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 32,
+      "1^6 2^4 3^2": 8
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 69,
+      "actual_point_quadruples_tested": 84,
+      "integer_kernel_vector_checks": 84,
+      "direct_candidate_rank_checks": 84,
+      "proper_dependency_rejections": 36,
+      "direct_deletion_rank_checks": 576
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      1,
+      6,
+      7,
+      58,
+      59,
+      60,
+      61
+    ],
+    "direction_orbit_size": 60,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 56,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 36,
+      "1^6 2^4 3^2": 12
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 85,
+      "actual_point_quadruples_tested": 100,
+      "integer_kernel_vector_checks": 100,
+      "direct_candidate_rank_checks": 100,
+      "proper_dependency_rejections": 44,
+      "direct_deletion_rank_checks": 672
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      1,
+      14,
+      15,
+      50,
+      51,
+      60,
+      61
+    ],
+    "direction_orbit_size": 90,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 48,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 32,
+      "1^6 2^4 3^2": 8
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 69,
+      "actual_point_quadruples_tested": 84,
+      "integer_kernel_vector_checks": 84,
+      "direct_candidate_rank_checks": 84,
+      "proper_dependency_rejections": 36,
+      "direct_deletion_rank_checks": 576
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      5,
+      6,
+      9,
+      10,
+      12,
+      15
+    ],
+    "direction_orbit_size": 15,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 8,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 19,
+      "actual_point_quadruples_tested": 34,
+      "integer_kernel_vector_checks": 34,
+      "direct_candidate_rank_checks": 34,
+      "proper_dependency_rejections": 26,
+      "direct_deletion_rank_checks": 96
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      5,
+      6,
+      24,
+      27,
+      29,
+      30
+    ],
+    "direction_orbit_size": 60,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 24,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 12,
+      "1^6 2^4 3^2": 4
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 35,
+      "actual_point_quadruples_tested": 50,
+      "integer_kernel_vector_checks": 50,
+      "direct_candidate_rank_checks": 50,
+      "proper_dependency_rejections": 26,
+      "direct_deletion_rank_checks": 288
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      5,
+      6,
+      25,
+      26,
+      28,
+      31
+    ],
+    "direction_orbit_size": 60,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 24,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 12,
+      "1^6 2^4 3^2": 4
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 35,
+      "actual_point_quadruples_tested": 50,
+      "integer_kernel_vector_checks": 50,
+      "direct_candidate_rank_checks": 50,
+      "proper_dependency_rejections": 26,
+      "direct_deletion_rank_checks": 288
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      5,
+      6,
+      56,
+      59,
+      61,
+      62
+    ],
+    "direction_orbit_size": 20,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 8,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 19,
+      "actual_point_quadruples_tested": 34,
+      "integer_kernel_vector_checks": 34,
+      "direct_candidate_rank_checks": 34,
+      "proper_dependency_rejections": 26,
+      "direct_deletion_rank_checks": 96
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      5,
+      6,
+      57,
+      58,
+      60,
+      63
+    ],
+    "direction_orbit_size": 20,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 56,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 36,
+      "1^6 2^4 3^2": 12
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 85,
+      "actual_point_quadruples_tested": 100,
+      "integer_kernel_vector_checks": 100,
+      "direct_candidate_rank_checks": 100,
+      "proper_dependency_rejections": 44,
+      "direct_deletion_rank_checks": 672
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      12,
+      15,
+      21,
+      22,
+      25,
+      26
+    ],
+    "direction_orbit_size": 90,
+    "projective_classes": 56,
+    "canonical_circuits_per_flat": 24,
+    "pattern_counts_per_flat": {
+      "1^8 2^4": 24
+    },
+    "checks": {
+      "projective_quadruples_covered": 367290,
+      "triple_projections": 27720,
+      "dependent_projective_quadruples": 46,
+      "actual_point_quadruples_tested": 46,
+      "integer_kernel_vector_checks": 46,
+      "direct_candidate_rank_checks": 46,
+      "proper_dependency_rejections": 22,
+      "direct_deletion_rank_checks": 288
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      12,
+      15,
+      49,
+      50,
+      61,
+      62
+    ],
+    "direction_orbit_size": 90,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 24,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 12,
+      "1^6 2^4 3^2": 4
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 35,
+      "actual_point_quadruples_tested": 50,
+      "integer_kernel_vector_checks": 50,
+      "direct_candidate_rank_checks": 50,
+      "proper_dependency_rejections": 26,
+      "direct_deletion_rank_checks": 288
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      12,
+      15,
+      53,
+      54,
+      57,
+      58
+    ],
+    "direction_orbit_size": 45,
+    "projective_classes": 56,
+    "canonical_circuits_per_flat": 24,
+    "pattern_counts_per_flat": {
+      "1^8 2^4": 24
+    },
+    "checks": {
+      "projective_quadruples_covered": 367290,
+      "triple_projections": 27720,
+      "dependent_projective_quadruples": 46,
+      "actual_point_quadruples_tested": 46,
+      "integer_kernel_vector_checks": 46,
+      "direct_candidate_rank_checks": 46,
+      "proper_dependency_rejections": 22,
+      "direct_deletion_rank_checks": 288
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      13,
+      14,
+      49,
+      50,
+      60,
+      63
+    ],
+    "direction_orbit_size": 45,
+    "projective_classes": 52,
+    "canonical_circuits_per_flat": 48,
+    "pattern_counts_per_flat": {
+      "1^7 2^4 3^1": 8,
+      "1^8 2^4": 32,
+      "1^6 2^4 3^2": 8
+    },
+    "checks": {
+      "projective_quadruples_covered": 270725,
+      "triple_projections": 22100,
+      "dependent_projective_quadruples": 69,
+      "actual_point_quadruples_tested": 84,
+      "integer_kernel_vector_checks": 84,
+      "direct_candidate_rank_checks": 84,
+      "proper_dependency_rejections": 36,
+      "direct_deletion_rank_checks": 576
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      3,
+      13,
+      14,
+      52,
+      55,
+      57,
+      58
+    ],
+    "direction_orbit_size": 180,
+    "projective_classes": 56,
+    "canonical_circuits_per_flat": 24,
+    "pattern_counts_per_flat": {
+      "1^8 2^4": 24
+    },
+    "checks": {
+      "projective_quadruples_covered": 367290,
+      "triple_projections": 27720,
+      "dependent_projective_quadruples": 46,
+      "actual_point_quadruples_tested": 46,
+      "integer_kernel_vector_checks": 46,
+      "direct_candidate_rank_checks": 46,
+      "proper_dependency_rejections": 22,
+      "direct_deletion_rank_checks": 288
+    }
+  },
+  {
+    "representative_flat": [
+      0,
+      7,
+      25,
+      30,
+      42,
+      45,
+      51,
+      52
+    ],
+    "direction_orbit_size": 30,
+    "projective_classes": 56,
+    "canonical_circuits_per_flat": 0,
+    "pattern_counts_per_flat": {},
+    "checks": {
+      "projective_quadruples_covered": 367290,
+      "triple_projections": 27720,
+      "dependent_projective_quadruples": 14,
+      "actual_point_quadruples_tested": 14,
+      "integer_kernel_vector_checks": 14,
+      "direct_candidate_rank_checks": 14,
+      "proper_dependency_rejections": 14
+    }
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "S6_direction_orbits": [
+    {
+      "orbit_size": 15,
+      "representative_rref": [
+        1,
+        2,
+        60
+      ]
+    },
+    {
+      "orbit_size": 15,
+      "representative_rref": [
+        3,
+        12,
+        48
+      ]
+    },
+    {
+      "orbit_size": 20,
+      "representative_rref": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "orbit_size": 60,
+      "representative_rref": [
+        1,
+        2,
+        28
+      ]
+    },
+    {
+      "orbit_size": 60,
+      "representative_rref": [
+        1,
+        6,
+        56
+      ]
+    },
+    {
+      "orbit_size": 90,
+      "representative_rref": [
+        1,
+        2,
+        12
+      ]
+    },
+    {
+      "orbit_size": 90,
+      "representative_rref": [
+        1,
+        6,
+        24
+      ]
+    }
+  ],
+  "affine_flats": 11160,
+  "affine_support_counts_by_direction_orbit": [
+    120,
+    120,
+    160,
+    480,
+    480,
+    720,
+    720
+  ],
+  "audit": "SIXBIT-CIRCUIT-003",
+  "bit_convention": "x_i=(x>>i)&1",
+  "cosets_per_direction": 8,
+  "cube_points": 64,
+  "directions": 1395,
+  "exact_rational_rank_checks": 2800,
+  "exclusions": [
+    "No claim that all possible circuits in the full system have been classified.",
+    "No circuit-search completeness claim.",
+    "No formal Lean proof is claimed."
+  ],
+  "feature_dimension": 22,
+  "field": "Q for exact rank and identities; F_p for independent modular rank checks",
+  "group_order_S6": 720,
+  "hypercube_affine_group_order": 46080,
+  "input_sha256": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "sixbit_flats.py": "700d2b036c8cf3617f26f4e97bcdc52fa00ad648514426598b948d38aea6d5b5"
+  },
+  "kernel_identity_checks": 61600,
+  "missing_walsh_character_histogram": {
+    "7": 2800
+  },
+  "prime": 2147483629,
+  "prime_verification": "deterministic trial division through floor(sqrt(prime))",
+  "rank_distribution": {
+    "7": 2800,
+    "8": 8360
+  },
+  "rank_seven_directions": 350,
+  "scope": "All affine 3-flats in F_2^6 under the pinned quadratic 22-feature evaluation map; rank-seven circuit minimality and S6 coordinate-permutation orbits.",
+  "script_sha256": "62e16ed7907c0043ebede81f8dc9d29dabb80dee2d7e9f23e2f9d68263938e7d",
+  "single_point_deletion_checks_mod_p": 22400,
+  "status": "PASS"
+}

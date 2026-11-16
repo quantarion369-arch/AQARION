@@ -1,0 +1,46 @@
+{
+  "all_global_supports_individually_rank_checked": false,
+  "canonical_representative_supports": 472,
+  "checks": {
+    "actual_point_quadruples_tested": 922,
+    "dependent_projective_quadruples": 757,
+    "direct_candidate_rank_checks": 922,
+    "direct_deletion_rank_checks": 5664,
+    "integer_kernel_vector_checks": 922,
+    "projective_quadruples_covered": 4447135,
+    "proper_dependency_rejections": 450,
+    "triple_projections": 353980
+  },
+  "conditional_combined_twelve_count_with_007": 497056,
+  "coverage_dependency": "Primitive parity reduction and binary minimum-weight classification force the eight odd points to be an affine 3-flat. Circuit minimality gives its rational rank eight. The primitive odd support selects the canonical counting flat.",
+  "dependency_007": {
+    "odd_support_twelve_sector_count": 210336,
+    "report_sha256": "9e07102a735a999b06f006eac4e727765be3e8f05e000c8119bd7d3eccd9ad95",
+    "source_sha256": "093518636f2e5127b04f9ce86f05e3a5f03037e8baec61d9ff19e0a6fd982dbe"
+  },
+  "elapsed_seconds": 33.711344,
+  "experiment": "ODD-EIGHT-QUOTIENT-008",
+  "finished_utc": "2026-11-08T17:09:04.131596+00:00",
+  "formal_proof": false,
+  "global_certification_method": "Exact canonical quotient kernels, separate rational candidate/deletion ranks, then valid coordinate permutations and affine translations.",
+  "global_pattern_counts": {
+    "1^6 2^4 3^2": 40320,
+    "1^7 2^4 3^1": 44800,
+    "1^8 2^4": 201600
+  },
+  "global_support_sha256": {
+    "1^6 2^4 3^2": "3a886f32555301d51cf5958308ae2a6939f86b01c4ab02142cda7a2c9918c524",
+    "1^7 2^4 3^1": "a0e5c92af5f1902fc9ce7cd11073df3ed0703166d745255076e60806f8f040c3",
+    "1^8 2^4": "698a51932a270d311f1612c2a2836339acf2760c4906755d105b8b64f1f3536b"
+  },
+  "novelty_claim": false,
+  "odd_support_eight_sector_count": 286720,
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_eight_direction_orbits": 15,
+  "rank_eight_directions_covered": 1045,
+  "scope": "Exact odd-support-eight twelve-circuit census under the stated parity-containment reduction. Combined twelve-point conclusion depends on retained 007 and the classical parity/support theorems. No formal proof or novelty claim.",
+  "source_sha256": "fedd7b810d84a2902644accb7a3e9c71b26fba7cce3f1e33f7c5fcb18607a1be",
+  "source_unchanged": true,
+  "started_utc": "2026-11-08T17:08:30.421057+00:00",
+  "status": "PASS"
+}

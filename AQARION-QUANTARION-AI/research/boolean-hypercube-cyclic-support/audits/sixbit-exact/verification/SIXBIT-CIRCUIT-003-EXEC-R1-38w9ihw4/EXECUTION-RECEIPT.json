@@ -1,0 +1,32 @@
+{
+  "audit": "SIXBIT-CIRCUIT-003-EXEC-R1",
+  "command": [
+    "/data/data/com.termux/files/usr/bin/python",
+    "-u",
+    "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/verification/SIXBIT-CIRCUIT-003-EXEC-R1-38w9ihw4/verify003.py"
+  ],
+  "elapsed_seconds": 19.046424,
+  "expected_certificate_sha256": "bc69ee381eb17405365111bb74c3869444ae380667663e11a7bebe17282437f7",
+  "finished_utc": "2026-11-08T15:41:26.764467+00:00",
+  "fresh_certificate_reproduced_exactly": true,
+  "fresh_certificate_sha256": "bc69ee381eb17405365111bb74c3869444ae380667663e11a7bebe17282437f7",
+  "git_head_after": "e2099535e0c06af003aa331513c50f54de0f294f",
+  "git_head_before": "e2099535e0c06af003aa331513c50f54de0f294f",
+  "git_head_unchanged": true,
+  "git_index_unchanged": true,
+  "input_sha256": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "sixbit_flats.py": "700d2b036c8cf3617f26f4e97bcdc52fa00ad648514426598b948d38aea6d5b5"
+  },
+  "protected_files_unchanged": true,
+  "scope": "Positive execution provenance for the exact revised verify003.py. No source modification, new mathematical theorem, mutation suite, commit, push, or promotion.",
+  "source_sha256_before_execution": "62e16ed7907c0043ebede81f8dc9d29dabb80dee2d7e9f23e2f9d68263938e7d",
+  "source_snapshot_captured_before_execution": true,
+  "staged_diff_sha256_after": "bdb32b5ad5af77e23244b92045e8ff336daf84fa61651ff44fda36a8c233b9f8",
+  "staged_diff_sha256_before": "bdb32b5ad5af77e23244b92045e8ff336daf84fa61651ff44fda36a8c233b9f8",
+  "started_utc": "2026-11-08T15:41:07.718826+00:00",
+  "status": "PASS",
+  "verifier_exit_code": 0,
+  "working_directory": "/data/data/com.termux/files/home/AQARION/AQARION-QUANTARION-AI/research/boolean-hypercube-cyclic-support/audits/sixbit-exact/verification/SIXBIT-CIRCUIT-003-EXEC-R1-38w9ihw4"
+}

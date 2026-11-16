@@ -1,0 +1,191 @@
+{
+  "all_deletion_ranks_individually_computed": false,
+  "circuit_minimality_method": "Exact rank seven plus nonzero eight-entry kernel",
+  "directions_checked": 1395,
+  "disjoint_variable_block_checks": 2800,
+  "eight_point_circuits_certified_in_flat_census": 2800,
+  "elapsed_seconds": 2.933983,
+  "exact_rational_rank_checks": 11160,
+  "finished_utc": "2026-11-08T02:41:17.671734+00:00",
+  "first_five_kernel_witnesses": [
+    {
+      "direction_id": 0,
+      "direction_rref": [
+        1,
+        2,
+        4
+      ],
+      "flat_id": 0,
+      "points_parameter_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "primitive_kernel": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "representative": 0,
+      "walsh_character": 7
+    },
+    {
+      "direction_id": 0,
+      "direction_rref": [
+        1,
+        2,
+        4
+      ],
+      "flat_id": 1,
+      "points_parameter_order": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "primitive_kernel": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "representative": 8,
+      "walsh_character": 7
+    },
+    {
+      "direction_id": 0,
+      "direction_rref": [
+        1,
+        2,
+        4
+      ],
+      "flat_id": 2,
+      "points_parameter_order": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "primitive_kernel": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "representative": 16,
+      "walsh_character": 7
+    },
+    {
+      "direction_id": 0,
+      "direction_rref": [
+        1,
+        2,
+        4
+      ],
+      "flat_id": 3,
+      "points_parameter_order": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "primitive_kernel": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "representative": 24,
+      "walsh_character": 7
+    },
+    {
+      "direction_id": 0,
+      "direction_rref": [
+        1,
+        2,
+        4
+      ],
+      "flat_id": 4,
+      "points_parameter_order": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "primitive_kernel": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "representative": 32,
+      "walsh_character": 7
+    }
+  ],
+  "full_support_primitive_kernels_checked": 2800,
+  "gate": "SIXBIT-CIRCUIT-003",
+  "input_sha256": {
+    "flat_census.json": "5e684e0152d240534632a9c0dc4916727c5b80e4baa5243727098a0710a1e161",
+    "run_receipt.json": "745b853be897690264271064d05deb5bea3032c4ae0c85b033be542dc2c0fd12",
+    "sixbit_flats.py": "700d2b036c8cf3617f26f4e97bcdc52fa00ad648514426598b948d38aea6d5b5"
+  },
+  "inputs_unchanged": true,
+  "kernel_certificate_stream_sha256": "9e381e8b6fb1d2cae5b3f644937035dfe83cc8320096d583493135ffa13159ed",
+  "missing_character_111_checks": 2800,
+  "mixed_rank_directions": 0,
+  "point_reconstruction_checks": 11160,
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "rank_distribution": {
+    "7": 2800,
+    "8": 8360
+  },
+  "rank_eight_directions": 1045,
+  "rank_seven_directions": 350,
+  "scope": "Exact structural certification of the pinned affine-flat census: rational ranks, parameter reconstruction and rank-seven alternating kernels. Not a new ten/twelve-point circuit census, formal proof, or novelty claim.",
+  "source_sha256": "23636e2dbd25241548c617d2ef2c55c0d44f13f2f29ad54cad7b4c49a0a7ed71",
+  "source_unchanged": true,
+  "started_utc": "2026-11-08T02:41:14.738113+00:00",
+  "status": "PASS"
+}

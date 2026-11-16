@@ -1,0 +1,8 @@
+{
+  "existing_report_log_exit_modified": false,
+  "experiment_rerun": false,
+  "matches_source_hash_recorded_by_R1": true,
+  "snapshot_timing": "Added after the completed R1 execution",
+  "source_sha256": "23636e2dbd25241548c617d2ef2c55c0d44f13f2f29ad54cad7b4c49a0a7ed71",
+  "source_snapshot_added_utc": "2026-11-08T04:52:22.173637+00:00"
+}

@@ -1,0 +1,1551 @@
+{
+  "experiment": "SIXBIT-NOVELTY-001",
+  "timestamp_utc": "2026-11-07T23:25:49.021182+00:00",
+  "seed": 377001,
+  "generator": "independent_column_permutations",
+  "group": "Q6 = coordinate permutations \u00d7 coordinate flips",
+  "group_order": 46080,
+  "catalog_representatives": 32,
+  "catalog_orbit_union": 206304,
+  "scope": {
+    "balance": "constant plus six coordinate-bit rows",
+    "novelty": "outside retained 32 catalog orbits",
+    "rank": "not tested",
+    "minimality": "not tested",
+    "global_completeness": false
+  },
+  "counters": {
+    "attempts": 214,
+    "invalid": 189,
+    "known_orbit_hits": 0,
+    "novel_supports": 25,
+    "novel_orbits": 25
+  },
+  "discoveries": [
+    {
+      "canonical_support_mask_hex": "0x18394080528",
+      "support": [
+        0,
+        8,
+        12,
+        16,
+        19,
+        29,
+        45,
+        48,
+        50,
+        55,
+        60,
+        62
+      ],
+      "positive_vertices": [
+        0,
+        8,
+        29,
+        48,
+        55,
+        62
+      ],
+      "negative_vertices": [
+        12,
+        16,
+        19,
+        45,
+        50,
+        60
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "3b60a40893773bf64e6920594f79d45d77b0afbfe856a95ffa61a1d9c785b75a",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x182c02807a",
+      "support": [
+        2,
+        6,
+        7,
+        29,
+        38,
+        43,
+        44,
+        46,
+        47,
+        52,
+        55,
+        61
+      ],
+      "positive_vertices": [
+        2,
+        7,
+        46,
+        47,
+        52,
+        61
+      ],
+      "negative_vertices": [
+        6,
+        29,
+        38,
+        43,
+        44,
+        55
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "963fd7bc5916d088d8686418f136730d7f4e27cd1828a5a404b2a0560f126835",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x6012a803b",
+      "support": [
+        14,
+        18,
+        21,
+        22,
+        24,
+        26,
+        28,
+        30,
+        44,
+        54,
+        59,
+        62
+      ],
+      "positive_vertices": [
+        18,
+        22,
+        28,
+        30,
+        44,
+        59
+      ],
+      "negative_vertices": [
+        14,
+        21,
+        24,
+        26,
+        54,
+        62
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "b9618d7026819b38c9e5b62f8e6cbbc482e88282148c3b522ddbdf3b49c785f7",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x172a018c40",
+      "support": [
+        5,
+        9,
+        11,
+        22,
+        24,
+        25,
+        26,
+        28,
+        32,
+        36,
+        38,
+        52
+      ],
+      "positive_vertices": [
+        9,
+        22,
+        24,
+        25,
+        36,
+        38
+      ],
+      "negative_vertices": [
+        5,
+        11,
+        26,
+        28,
+        32,
+        52
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "24698734573166ff07de4e2258a89365cb20395a0538f8dece6704e8117c6a84",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x1018286038110",
+      "support": [
+        0,
+        3,
+        8,
+        10,
+        15,
+        18,
+        20,
+        31,
+        32,
+        50,
+        56,
+        61
+      ],
+      "positive_vertices": [
+        0,
+        15,
+        18,
+        31,
+        32,
+        56
+      ],
+      "negative_vertices": [
+        3,
+        8,
+        10,
+        20,
+        50,
+        61
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "249673c396048db6679d4aa48a1951a2ae09adcca9c9ef1cda8d7bcd98b0348f",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x18917a00201",
+      "support": [
+        0,
+        12,
+        28,
+        31,
+        32,
+        35,
+        36,
+        38,
+        42,
+        43,
+        48,
+        63
+      ],
+      "positive_vertices": [
+        0,
+        12,
+        38,
+        43,
+        48,
+        63
+      ],
+      "negative_vertices": [
+        28,
+        31,
+        32,
+        35,
+        36,
+        42
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "9dad04137245b0333985d52939476347ec125207e564b393194fa88aec63c864",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x30044ac27",
+      "support": [
+        0,
+        1,
+        4,
+        6,
+        9,
+        16,
+        33,
+        35,
+        41,
+        48,
+        50,
+        51
+      ],
+      "positive_vertices": [
+        0,
+        4,
+        9,
+        35,
+        48,
+        51
+      ],
+      "negative_vertices": [
+        1,
+        6,
+        16,
+        33,
+        41,
+        50
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "bb7e3a128a05ad69538cd3e9de524c910efcb06e90f72cdee0a3622b31e150fe",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x1801268a86",
+      "support": [
+        4,
+        9,
+        13,
+        21,
+        26,
+        29,
+        44,
+        49,
+        53,
+        57,
+        60,
+        63
+      ],
+      "positive_vertices": [
+        13,
+        21,
+        26,
+        44,
+        53,
+        57
+      ],
+      "negative_vertices": [
+        4,
+        9,
+        29,
+        49,
+        60,
+        63
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "be0fb6561ca7e5d455125f6789d69624f3fc838b7250c695381767b664451bb2",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x6601e28a0",
+      "support": [
+        1,
+        3,
+        4,
+        10,
+        17,
+        24,
+        32,
+        34,
+        38,
+        39,
+        51,
+        53
+      ],
+      "positive_vertices": [
+        3,
+        4,
+        10,
+        32,
+        51,
+        53
+      ],
+      "negative_vertices": [
+        1,
+        17,
+        24,
+        34,
+        38,
+        39
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "0d8f53f9682137f1290e8c28af706debd4f7440db2193658e63a1e23d0082f35",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x1806217821",
+      "support": [
+        5,
+        15,
+        17,
+        19,
+        26,
+        31,
+        39,
+        43,
+        51,
+        53,
+        59,
+        60
+      ],
+      "positive_vertices": [
+        15,
+        17,
+        19,
+        39,
+        59,
+        60
+      ],
+      "negative_vertices": [
+        5,
+        26,
+        31,
+        43,
+        51,
+        53
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "e2e274183087bfede83eecfed035c0f07e94b257dc8ae8c98b303be7a880c95b",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x180180a1ae",
+      "support": [
+        0,
+        6,
+        7,
+        8,
+        12,
+        26,
+        32,
+        40,
+        41,
+        44,
+        46,
+        60
+      ],
+      "positive_vertices": [
+        0,
+        7,
+        8,
+        40,
+        46,
+        60
+      ],
+      "negative_vertices": [
+        6,
+        12,
+        26,
+        32,
+        41,
+        44
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "f77daecf3c5b906d65de87d26712039f4a371436b444806077cc5e6ac2ab857e",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x13e8c19",
+      "support": [
+        1,
+        8,
+        9,
+        18,
+        25,
+        26,
+        42,
+        50,
+        51,
+        56,
+        57,
+        59
+      ],
+      "positive_vertices": [
+        8,
+        18,
+        25,
+        42,
+        51,
+        57
+      ],
+      "negative_vertices": [
+        1,
+        9,
+        26,
+        50,
+        56,
+        59
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "b5bf4081d17b0f21f2a608b7f06d6561122b494d0f65c4ba3e056b40c714ff4e",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x180628a033",
+      "support": [
+        18,
+        20,
+        24,
+        29,
+        35,
+        40,
+        48,
+        49,
+        50,
+        51,
+        54,
+        62
+      ],
+      "positive_vertices": [
+        20,
+        24,
+        35,
+        49,
+        50,
+        62
+      ],
+      "negative_vertices": [
+        18,
+        29,
+        40,
+        48,
+        51,
+        54
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "fdc6dfc85c9eb4d740f12fd4d66c0aa0acecfbf78e723c0caad2462a67ee0390",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x198b6041800",
+      "support": [
+        0,
+        8,
+        15,
+        20,
+        35,
+        41,
+        47,
+        51,
+        53,
+        55,
+        59,
+        60
+      ],
+      "positive_vertices": [
+        0,
+        20,
+        41,
+        47,
+        55,
+        59
+      ],
+      "negative_vertices": [
+        8,
+        15,
+        35,
+        51,
+        53,
+        60
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "58aee5af621c805950c89700d661762a1da326e6ecf0d1b03b15ad86899ed533",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x1b0e04a820",
+      "support": [
+        4,
+        6,
+        14,
+        17,
+        20,
+        24,
+        25,
+        26,
+        44,
+        46,
+        47,
+        63
+      ],
+      "positive_vertices": [
+        4,
+        6,
+        25,
+        26,
+        44,
+        63
+      ],
+      "negative_vertices": [
+        14,
+        17,
+        20,
+        24,
+        46,
+        47
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "ff308c36b4f6e5aed11349732727837a882d7002792099986cf886c280b03555",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x198881b0104",
+      "support": [
+        3,
+        5,
+        18,
+        28,
+        36,
+        37,
+        43,
+        47,
+        50,
+        52,
+        55,
+        60
+      ],
+      "positive_vertices": [
+        5,
+        18,
+        36,
+        43,
+        55,
+        60
+      ],
+      "negative_vertices": [
+        3,
+        28,
+        37,
+        47,
+        50,
+        52
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "385d83c44dee6cd11094261e6f61cd5c5bdeadc1c72645cb1d73e9a84fb3b9e7",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x180a418d84",
+      "support": [
+        20,
+        21,
+        25,
+        26,
+        32,
+        43,
+        50,
+        52,
+        54,
+        56,
+        60,
+        61
+      ],
+      "positive_vertices": [
+        20,
+        25,
+        43,
+        52,
+        54,
+        56
+      ],
+      "negative_vertices": [
+        21,
+        26,
+        32,
+        50,
+        60,
+        61
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "03abcad785b6f92f6ad83af9127aea88d9541bbfa3e81bffe8c400109bc17c38",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x10182c80082a1",
+      "support": [
+        2,
+        3,
+        7,
+        11,
+        25,
+        27,
+        44,
+        47,
+        52,
+        59,
+        61,
+        62
+      ],
+      "positive_vertices": [
+        3,
+        7,
+        25,
+        44,
+        59,
+        62
+      ],
+      "negative_vertices": [
+        2,
+        11,
+        27,
+        47,
+        52,
+        61
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "1aa0b3de51b6af600d9952826f923b7a5e79fa9c975d2382abb33eef40fdd39a",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x67020c852",
+      "support": [
+        2,
+        5,
+        7,
+        9,
+        10,
+        22,
+        32,
+        36,
+        37,
+        53,
+        54,
+        55
+      ],
+      "positive_vertices": [
+        2,
+        5,
+        9,
+        36,
+        54,
+        55
+      ],
+      "negative_vertices": [
+        7,
+        10,
+        22,
+        32,
+        37,
+        53
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "a6c2cc839ba6e3440516f66869e0632b263ef6db00951d2318230c094ce68882",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x18008924199",
+      "support": [
+        13,
+        17,
+        21,
+        23,
+        30,
+        31,
+        33,
+        36,
+        37,
+        39,
+        43,
+        51
+      ],
+      "positive_vertices": [
+        17,
+        21,
+        30,
+        37,
+        39,
+        43
+      ],
+      "negative_vertices": [
+        13,
+        23,
+        31,
+        33,
+        36,
+        51
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "7353158177b633d41960b4aa34ce7b394a30db98a89319e44a25c67471037066",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x170a28a030",
+      "support": [
+        0,
+        1,
+        14,
+        17,
+        28,
+        30,
+        37,
+        48,
+        52,
+        53,
+        54,
+        62
+      ],
+      "positive_vertices": [
+        0,
+        14,
+        17,
+        52,
+        53,
+        62
+      ],
+      "negative_vertices": [
+        1,
+        28,
+        30,
+        37,
+        48,
+        54
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "7034d8f5d8db8277aaa87a3043ddf819e8b5f2cc829d82ce06b6ff6da417eb17",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x18240aac03",
+      "support": [
+        10,
+        14,
+        15,
+        20,
+        41,
+        45,
+        47,
+        55,
+        58,
+        59,
+        60,
+        62
+      ],
+      "positive_vertices": [
+        14,
+        15,
+        41,
+        55,
+        58,
+        60
+      ],
+      "negative_vertices": [
+        10,
+        20,
+        45,
+        47,
+        59,
+        62
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "fa7bc6f41fd88d2df0f8eadd11cb1439f686d99b123d4d04cc00071f3cb2c5e5",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x30440914f",
+      "support": [
+        0,
+        2,
+        8,
+        9,
+        10,
+        12,
+        14,
+        17,
+        32,
+        35,
+        41,
+        48
+      ],
+      "positive_vertices": [
+        8,
+        10,
+        12,
+        17,
+        32,
+        35
+      ],
+      "negative_vertices": [
+        0,
+        2,
+        9,
+        14,
+        41,
+        48
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "73df05966b2cca62f4a76a7b3ca71a99dc66ede21a8cf43be729dec1de69adc5",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x1b0588aa00",
+      "support": [
+        2,
+        3,
+        12,
+        13,
+        14,
+        15,
+        20,
+        22,
+        40,
+        42,
+        52,
+        53
+      ],
+      "positive_vertices": [
+        3,
+        12,
+        15,
+        20,
+        42,
+        52
+      ],
+      "negative_vertices": [
+        2,
+        13,
+        14,
+        22,
+        40,
+        53
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "23a1884dab9eda4673a514ac5db3d7e65e3a793cad9a4074c385cc7ea37e9f28",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    },
+    {
+      "canonical_support_mask_hex": "0x18990a90280",
+      "support": [
+        0,
+        11,
+        14,
+        19,
+        22,
+        25,
+        26,
+        27,
+        36,
+        41,
+        44,
+        57
+      ],
+      "positive_vertices": [
+        11,
+        22,
+        25,
+        26,
+        36,
+        41
+      ],
+      "negative_vertices": [
+        0,
+        14,
+        19,
+        27,
+        44,
+        57
+      ],
+      "kernel": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "coordinate_balance": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "constant_balance": 0,
+      "encounters": 1,
+      "support_sha256": "e25d7fe30b34c7cdd7e40dce23e733002b333eb71bdbcbb330e3f21b7e98d3cc",
+      "status": "NOVEL_BALANCED_SUPPORT_CANDIDATE",
+      "rank_Q": "NOT_TESTED",
+      "circuit_minimality": "NOT_TESTED"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "audit": "SIXBIT-MARGINAL-009",
+  "status": "FAIL",
+  "report_sha256": "8c57b2d043bbee24b9a1a38d419a17c0599b60a147b4cf5f498275e5b4dd905f",
+  "errors": [
+    "pattern set mismatch: found ['1^6 2^4 3^2', '1^7 2^4 3^1', '1^8 2^4']"
+  ]
+}
