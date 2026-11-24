@@ -1,0 +1,395 @@
+{
+  "status": "PASS",
+  "mode": "full",
+  "started_utc": "20261123T210809_482730Z",
+  "elapsed_seconds": 76.857,
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-14-aarch64-64bit-ELF",
+  "source_sha256": "aec4b37276aac8775b0e241ad3941e339f67d1573f416b41bc2fd706588f4c49",
+  "paper": "https://arxiv.org/abs/2608.22564v1",
+  "results": {
+    "families": {
+      "family3_cases": 2360,
+      "family2_cases": 49,
+      "max_z": 30,
+      "all_parameter_coefficient_identity": true,
+      "four_state_feature_ranks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "restricted_update_matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          11,
+          -1,
+          0
+        ],
+        [
+          121,
+          -22,
+          1
+        ]
+      ],
+      "restricted_projector": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "11/2",
+          "0",
+          "0"
+        ],
+        [
+          "121/2",
+          "-11",
+          "1"
+        ]
+      ],
+      "first_30_digit_cycle": [
+        "877765554333199997666544432222",
+        "877764444222199997777555532222"
+      ],
+      "second_30_digit_cycle": [
+        "877765544332199997766554432222",
+        "877765444322199997776555432222"
+      ],
+      "scope": "Family membership and restricted subsystem; not Section 6 classification necessity"
+    },
+    "census": {
+      "max_digits": 13,
+      "patterns": 1143935,
+      "per_length": [
+        [
+          2,
+          45,
+          0,
+          "[]"
+        ],
+        [
+          3,
+          210,
+          0,
+          "[]"
+        ],
+        [
+          4,
+          705,
+          0,
+          "[]"
+        ],
+        [
+          5,
+          1992,
+          1,
+          "[[\"53955\", \"59994\"]]"
+        ],
+        [
+          6,
+          4995,
+          0,
+          "[]"
+        ],
+        [
+          7,
+          11430,
+          0,
+          "[]"
+        ],
+        [
+          8,
+          24300,
+          0,
+          "[]"
+        ],
+        [
+          9,
+          48610,
+          0,
+          "[]"
+        ],
+        [
+          10,
+          92368,
+          0,
+          "[]"
+        ],
+        [
+          11,
+          167950,
+          0,
+          "[]"
+        ],
+        [
+          12,
+          293920,
+          0,
+          "[]"
+        ],
+        [
+          13,
+          497410,
+          1,
+          "[[\"8733209876622\", \"9665429654331\"]]"
+        ]
+      ]
+    },
+    "even_bases": {
+      "max_base": 256,
+      "bases_tested": 128,
+      "states": 1422656,
+      "unique_cycle_bases": [
+        [
+          6,
+          6
+        ],
+        [
+          10,
+          1
+        ],
+        [
+          14,
+          3
+        ],
+        [
+          24,
+          12
+        ],
+        [
+          28,
+          3
+        ],
+        [
+          40,
+          1
+        ],
+        [
+          96,
+          18
+        ],
+        [
+          112,
+          3
+        ],
+        [
+          160,
+          1
+        ],
+        [
+          224,
+          3
+        ]
+      ],
+      "scope": "Bounded numerical test, not Lean verification or an all-base proof"
+    },
+    "no9_reconstruction": {
+      "cases": 324,
+      "stats": {
+        "linear_equalities_inconsistent": 320,
+        "nonnegative_bounds_inconsistent": 3,
+        "rationally_feasible": 1
+      },
+      "survivors": [
+        {
+          "p": [
+            2,
+            6
+          ],
+          "q": [
+            2,
+            6
+          ],
+          "P_affine": [
+            [
+              "0",
+              "0"
+            ],
+            [
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              1
+            ],
+            [
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ],
+            [
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "free_original_indices": [
+            3
+          ]
+        }
+      ],
+      "scope": "Exact unbounded rational feasibility for necessary pair-count conditions, conditional on preceding paper lemmas; not full Section 6 proof"
+    },
+    "D5": {
+      "sorted_states": 1992,
+      "trace_history_including_stability_check": [
+        54,
+        178,
+        179,
+        179
+      ],
+      "trace_states": 179,
+      "linear_dimension": 16,
+      "with_constant_dimension": 17,
+      "basis_minor_determinant": "43200",
+      "closure_verified_all_states": true,
+      "coordinate_trace_partitions_equal": true,
+      "basin_string_counts": {
+        "62964": 48320,
+        "53955": 3190,
+        "61974": 48480
+      },
+      "cycle_means": {
+        "62964": [
+          "7",
+          "3/2"
+        ],
+        "53955": [
+          "11/2",
+          "0"
+        ],
+        "61974": [
+          "27/4",
+          "3/2"
+        ]
+      },
+      "mu": 5,
+      "L": 4,
+      "projector_rank": 2,
+      "with_constant_projector_rank": 3,
+      "basin_indicator_coefficients_[1,a,b]": {
+        "53955": [
+          "1",
+          "0",
+          "-2/3"
+        ],
+        "61974": [
+          "22",
+          "-4",
+          "4"
+        ],
+        "62964": [
+          "-22",
+          "4",
+          "-10/3"
+        ]
+      },
+      "digit_sum_coefficients_[1,a,b]": [
+        "63/2",
+        "0",
+        "-3"
+      ],
+      "all_projector_and_indicator_identities_verified": true
+    },
+    "D6": {
+      "sorted_states": 4995,
+      "trace_history_including_stability_check": [
+        54,
+        380,
+        532,
+        554,
+        554
+      ],
+      "trace_states": 554,
+      "linear_dimension": 31,
+      "with_constant_dimension": 32,
+      "basis_minor_determinant": "-1401421824",
+      "closure_verified_all_states": true,
+      "coordinate_trace_partitions_equal": true,
+      "basin_string_counts": {
+        "420876": 935520,
+        "631764": 62520,
+        "549945": 1950
+      },
+      "cycle_means": {
+        "420876": [
+          "7",
+          "11/7"
+        ],
+        "631764": [
+          "6",
+          "0"
+        ],
+        "549945": [
+          "5",
+          "4"
+        ]
+      },
+      "mu": 12,
+      "L": 7,
+      "projector_rank": 2,
+      "with_constant_projector_rank": 3,
+      "basin_indicator_coefficients_[1,a,b]": {
+        "420876": [
+          "-56/13",
+          "28/39",
+          "7/39"
+        ],
+        "549945": [
+          "22/13",
+          "-11/39",
+          "7/39"
+        ],
+        "631764": [
+          "47/13",
+          "-17/39",
+          "-14/39"
+        ]
+      },
+      "digit_sum_coefficients_[1,a,b]": [
+        "549/13",
+        "-33/13",
+        "21/13"
+      ],
+      "all_projector_and_indicator_identities_verified": true
+    },
+    "single_attractor_entropy": {
+      "3": {
+        "sorted_states": 210,
+        "cycle_labels": [
+          495
+        ],
+        "conditional_attractor_label_entropy_when_nonempty": 0,
+        "H0_minus_Hinfinity": 0,
+        "normalized_ratio": "undefined: 0/0 unless an extra convention is specified"
+      },
+      "4": {
+        "sorted_states": 705,
+        "cycle_labels": [
+          6174
+        ],
+        "conditional_attractor_label_entropy_when_nonempty": 0,
+        "H0_minus_Hinfinity": 0,
+        "normalized_ratio": "undefined: 0/0 unless an extra convention is specified"
+      }
+    }
+  },
+  "scope": "Independent arithmetic audit; not formal verification or proof of all classification necessity statements"
+}
