@@ -1,0 +1,53 @@
+{
+  "map": "D3",
+  "degree": 6,
+  "rows": 188,
+  "columns": 8,
+  "expected_QQ_rank": 8,
+  "unit_pivots": 8,
+  "status": "UNIMODULAR_RANK_CERTIFIED",
+  "unit_pivot_trace": [
+    [
+      4,
+      0,
+      1
+    ],
+    [
+      24,
+      1,
+      1
+    ],
+    [
+      23,
+      2,
+      1
+    ],
+    [
+      63,
+      3,
+      -1
+    ],
+    [
+      2,
+      4,
+      1
+    ],
+    [
+      73,
+      5,
+      -1
+    ],
+    [
+      1,
+      6,
+      1
+    ],
+    [
+      83,
+      7,
+      -1
+    ]
+  ],
+  "residual_nonzero_entries": 0,
+  "residual_entry_gcd": 0
+}

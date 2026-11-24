@@ -1,0 +1,39 @@
+EXPERIMENT AND EVIDENCE BOUNDARY
+
+This experiment constructs weighted component matrices directly over Z.
+
+No imported research helper, CAS, finite-field arithmetic, or archived
+source program is executed.
+
+Unit-pivot elimination uses integer unimodular row/column operations.
+A complete reduction to r unit pivots and a zero residual certifies
+integral Smith form I_r plus zero.
+A corresponding rank-r minor is unimodular.
+The rank therefore equals r over every field.
+
+Each stored trace is replayed against the original component matrix.
+
+A unit-pivot stall is NOT a mathematical counterexample.
+Some unimodular matrices require Euclidean operations before a unit
+becomes visible.
+
+Exactness of the archived resolution over every field is NOT
+automatically asserted by this arithmetic status.
+Its proof also requires:
+
+1. The endpoint presentation agrees with the semigroup algebra over
+   the fields in question.
+   The pure-difference binomial presentation can be analyzed via its
+   monoid congruence. Rational equality alone must be accompanied
+   by that argument.
+
+2. The structural and complete divisor-complex arguments give the
+   intended field-independent Betti degrees.
+
+3. Inductive kernel-generation arguments use the certified ranks
+   in all necessary generator degrees.
+
+4. The final-column primitive argument is valid over each field.
+   A gcd computation over QQ alone is not its universal proof.
+
+No Lean, novelty, or automatic theorem-status promotion is claimed.

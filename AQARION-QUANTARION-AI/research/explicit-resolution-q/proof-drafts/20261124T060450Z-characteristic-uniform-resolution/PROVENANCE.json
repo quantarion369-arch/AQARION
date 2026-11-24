@@ -1,0 +1,34 @@
+{
+  "frozen_export_sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0",
+  "bundles": [
+    {
+      "label": "qq",
+      "source_directory": "/data/data/com.termux/files/home/aq_p2_json_native_CGdjVwxB",
+      "manifest_sha256": "c014c915d0008614470629a10554f766738ca777acffdbebb9808a1e7b4b338e",
+      "receipt_sha256": "87a0d5910ec45eb78a6cf92619aa31a0c710c41af47cc692f39dc54f24047dd8",
+      "verifier_sha256": "4c131c6cd554009b05d2fee68886660d4097e740eec7e6f5d8c3067d34ae43f5",
+      "preserved_status": "PASS_ARITHMETIC_WITH_EXPLICIT_THEOREM_DEPENDENCIES",
+      "copied_manifested_artifacts": 7
+    },
+    {
+      "label": "divisor",
+      "source_directory": "/data/data/com.termux/files/home/aq_p2_divisor_b3X2omUU",
+      "manifest_sha256": "9351a35ff87f94d4897fc5e9785da308d4face43a64be14e179b9254c3f4aa6a",
+      "receipt_sha256": "a281335abaf5e6e9ae15d71f64fc1ec6393f55a1f0ca5e872431ce3cb4f9b29a",
+      "verifier_sha256": "5bfbf0938a02d887cd53d38ca2950056e0f062794464129c100a3fc1f416e072",
+      "preserved_status": "PASS_COMPLETE_DIVISOR_HOMOLOGY_WITH_EXPLICIT_DEPENDENCIES",
+      "copied_manifested_artifacts": 11
+    },
+    {
+      "label": "integral",
+      "source_directory": "/data/data/com.termux/files/home/aq_p2_integral_components_X9sQlk2K",
+      "manifest_sha256": "675345cfff19ef5848c0ee38b1cdbe6cca0ea6ec31df8049dce9815262bca8e7",
+      "receipt_sha256": "99b859b7671543ab25a7205c20da8c70c4313b4e5238848600f9cd258cb4bcba",
+      "verifier_sha256": "4d39302598e81e7a83cbe53187297db380649a0d387fcbc9bae9c04ecf04f673",
+      "preserved_status": "PASS_UNIMODULAR_COMPONENT_CERTIFICATES",
+      "copied_manifested_artifacts": 13
+    }
+  ],
+  "original_files_modified": false,
+  "historical_receipt_scope_flags_modified": false
+}

@@ -1,0 +1,27 @@
+{
+  "status": "THEOREM_DRAFT_SUPPORTED_BY_REPLAYED_CERTIFICATES",
+  "proposed_claim": "Fixed frozen matrices give a minimal graded resolution of K[S] over every field. Integral exactness is a separate corollary.",
+  "automated_assembly_checks": [
+    "manifested bytes",
+    "receipt/verifier hash linkage",
+    "frozen export identity",
+    "full multigraded shift comparison",
+    "integral case summaries and trace lengths",
+    "Hilbert coefficient arithmetic"
+  ],
+  "not_done_by_assembly": [
+    "rerun previous audits",
+    "independent peer review",
+    "Lean compilation",
+    "novelty clearance"
+  ],
+  "proof_obligations_for_review": [
+    "structural semigroup lemmas",
+    "pure-difference presentation bridge",
+    "complete Betti-degree interval",
+    "divisor/Koszul identification",
+    "inductive use of kernel dimensions",
+    "last shifted-free-module argument",
+    "integral universal-coefficient corollary"
+  ]
+}

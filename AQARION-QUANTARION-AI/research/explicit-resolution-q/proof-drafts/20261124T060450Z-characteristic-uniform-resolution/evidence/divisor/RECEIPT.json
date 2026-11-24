@@ -1,0 +1,41 @@
+{
+  "status": "PASS_COMPLETE_DIVISOR_HOMOLOGY_WITH_EXPLICIT_DEPENDENCIES",
+  "utc": "2026-11-24T05:08:49.320213+00:00",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "sympy": "1.14.0",
+  "platform": "Android-14-aarch64-64bit-ELF",
+  "elapsed_seconds": 46.57331562042236,
+  "source_sha256": "5bfbf0938a02d887cd53d38ca2950056e0f062794464129c100a3fc1f416e072",
+  "frozen_export_sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0",
+  "input_path": "/data/data/com.termux/files/home/aq_p2_json_native_CGdjVwxB/inputs/AQARION-complete-complex-20261114T163933580791Z.json",
+  "results": {
+    "degrees": 835,
+    "orbit_count": 138,
+    "symmetry_used_to_reduce_computation": false,
+    "boundary_smith_forms": 2956,
+    "integer_unit_reductions": 2956,
+    "unit_traces_replayed": 2956,
+    "boundary_composition_checks": 2122,
+    "torsion_cases": 0,
+    "nonzero_multigraded_positions": 54,
+    "betti_totals": [
+      1,
+      14,
+      35,
+      35,
+      14,
+      1
+    ],
+    "maximum_faces_including_empty": 843,
+    "archived_multigraded_shifts_match": true
+  },
+  "scope": {
+    "archived_matrices_used": false,
+    "archived_shifts_used": "Post-computation comparison only",
+    "endpoint_field_independent_betti_conclusion": "Requires structural, completeness, Koszul/divisor and universal-coefficient arguments in PROOF_DEPENDENCIES.txt",
+    "archived_matrix_characteristic_independence": false,
+    "formal_verification": false,
+    "novelty_claimed": false,
+    "integer_method": "SymPy Smith forms AND replayed Python-integer unit-pivot certificates"
+  }
+}

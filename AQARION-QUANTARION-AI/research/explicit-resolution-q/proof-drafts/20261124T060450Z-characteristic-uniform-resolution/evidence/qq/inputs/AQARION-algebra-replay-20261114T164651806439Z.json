@@ -1,0 +1,122 @@
+{
+  "complex_sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0",
+  "structural_certificate_sha256": "291b40ac0b15a131b733ba96ae98752f5054ebf0a387c960efca39fb46c07f5b",
+  "replay_script_sha256": "3bcd30a8ec4985287dc260288c10a9a794c9085ccf4ad7eaf72ce11615393785",
+  "field": "QQ",
+  "results": {
+    "compositions": true,
+    "J_colon_A_infinity_equals_J": true,
+    "localized_endpoint_identification": true,
+    "D5_unit_gcd": true,
+    "degree4_generators_have_no_degree5_relation": true
+  },
+  "endpoint_groebner_basis": [
+    "A**2*C**3 - B0*B1*B2*B3",
+    "A*C**2*E0 - B1*B2*B3",
+    "A*C**2*E1 - B0*B2*B3",
+    "A*C**2*E2 - B0*B1*B3",
+    "A*C**2*E3 - B0*B1*B2",
+    "-A*B3 + E0*E1*E2",
+    "-A*B2 + E0*E1*E3",
+    "-A*B1 + E0*E2*E3",
+    "-A*B0 + E1*E2*E3",
+    "-B2*B3 + C*E0*E1",
+    "-B1*B3 + C*E0*E2",
+    "-B0*B3 + C*E1*E2",
+    "-B1*B2 + C*E0*E3",
+    "-B0*B2 + C*E1*E3",
+    "-B0*B1 + C*E2*E3",
+    "-A*C + B0*E0",
+    "-A*C + B1*E1",
+    "-A*C + B2*E2",
+    "-A*C + B3*E3"
+  ],
+  "saturation_elimination_generators": [
+    "A*B0 - E1*E2*E3",
+    "A*B1 - E0*E2*E3",
+    "A*B2 - E0*E1*E3",
+    "A*B3 - E0*E1*E2",
+    "A*C - B3*E3",
+    "-B2*B3 + C*E0*E1",
+    "-B1*B3 + C*E0*E2",
+    "-B1*B2 + C*E0*E3",
+    "B0*E0 - B3*E3",
+    "-B0*B3 + C*E1*E2",
+    "-B0*B2 + C*E1*E3",
+    "B1*E1 - B3*E3",
+    "-B0*B1 + C*E2*E3",
+    "B2*E2 - B3*E3",
+    "-B0*B1*B2 + B3*C*E3**2"
+  ],
+  "hilbert_numerator": "-t**12 + 8*t**9 + 3*t**8 - 24*t**7 + 24*t**5 - 3*t**4 - 8*t**3 + 1",
+  "component_results": [
+    [
+      2,
+      4,
+      3,
+      3
+    ],
+    [
+      2,
+      5,
+      39,
+      39
+    ],
+    [
+      2,
+      6,
+      180,
+      180
+    ],
+    [
+      3,
+      6,
+      8,
+      8
+    ],
+    [
+      3,
+      7,
+      64,
+      64
+    ],
+    [
+      3,
+      8,
+      277,
+      277
+    ],
+    [
+      3,
+      9,
+      937,
+      937
+    ],
+    [
+      4,
+      8,
+      6,
+      6
+    ],
+    [
+      4,
+      9,
+      38,
+      38
+    ]
+  ],
+  "generator_degree_argument": [
+    "The linked structural proof identifies a codimension-five Gorenstein endpoint with final scalar shift 12.",
+    "D2 spans the endpoint kernel in degrees 4,5,6.",
+    "Its degree-four generators have no degree-five relation.",
+    "Thus the minimal third module has no generators below degree 6.",
+    "Gorenstein duality excludes second-module generators above 6.",
+    "Therefore D2 generates the whole endpoint kernel.",
+    "Duality gives third-module shifts 6^8,7^24,8^3.",
+    "The D3 component spans therefore give full kernel generation.",
+    "Duality gives fourth-module shifts 8^6,9^8.",
+    "The D4 component spans therefore give full kernel generation.",
+    "Final exactness uses nonzero D5, its unit gcd, and rank D4=13."
+  ],
+  "scope": "JSON-only replay of endpoint and component computations. Global conclusions also use the linked structural theorem and stated generator-degree argument. No novelty or characteristic-independence claim."
+}

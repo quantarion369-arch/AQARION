@@ -1,0 +1,37 @@
+{
+  "polynomial_ring_dimensions_0_through_9": [
+    1,
+    5,
+    20,
+    60,
+    160,
+    376,
+    820,
+    1660,
+    3190,
+    5830
+  ],
+  "kernel_numerator_coefficients": {
+    "D2": {
+      "4": 3,
+      "5": 24,
+      "7": -24,
+      "8": 3,
+      "9": 8,
+      "12": -1
+    },
+    "D3": {
+      "6": 8,
+      "7": 24,
+      "8": -3,
+      "9": -8,
+      "12": 1
+    },
+    "D4": {
+      "8": 6,
+      "9": 8,
+      "12": -1
+    }
+  },
+  "scope": "Coefficient arithmetic. K2 and K3 formulas apply only after the induction steps stated in the draft."
+}

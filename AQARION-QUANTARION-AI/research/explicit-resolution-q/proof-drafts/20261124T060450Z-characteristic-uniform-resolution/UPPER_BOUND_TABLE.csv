@@ -1,0 +1,10 @@
+map,degree,full_kernel_component_dimension,dependency
+D2,4,3,Endpoint presentation and Hilbert series
+D2,5,39,Endpoint presentation and Hilbert series
+D2,6,180,Endpoint presentation and Hilbert series
+D3,6,8,After D2 generation and minimal-cover proof
+D3,7,64,After D2 generation and minimal-cover proof
+D3,8,277,After D2 generation and minimal-cover proof
+D3,9,937,After D2 generation and minimal-cover proof
+D4,8,6,After D3 generation and minimal-cover proof
+D4,9,38,After D3 generation and minimal-cover proof

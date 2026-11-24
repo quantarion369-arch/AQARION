@@ -1,0 +1,130 @@
+{
+  "status": "PASS_UNIMODULAR_COMPONENT_CERTIFICATES",
+  "utc": "2026-11-24T05:15:18.198763+00:00",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-14-aarch64-64bit-ELF",
+  "elapsed_seconds": 6.851337671279907,
+  "source_sha256": "4d39302598e81e7a83cbe53187297db380649a0d387fcbc9bae9c04ecf04f673",
+  "frozen_export_sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0",
+  "prior_bundles": [
+    {
+      "path": "/data/data/com.termux/files/home/aq_p2_json_native_CGdjVwxB",
+      "manifest_sha256": "c014c915d0008614470629a10554f766738ca777acffdbebb9808a1e7b4b338e",
+      "files_verified": 7
+    },
+    {
+      "path": "/data/data/com.termux/files/home/aq_p2_divisor_b3X2omUU",
+      "manifest_sha256": "9351a35ff87f94d4897fc5e9785da308d4face43a64be14e179b9254c3f4aa6a",
+      "files_verified": 11
+    }
+  ],
+  "cases_summary": [
+    {
+      "map": "D2",
+      "degree": 4,
+      "rows": 46,
+      "columns": 3,
+      "expected_QQ_rank": 3,
+      "unit_pivots": 3,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    },
+    {
+      "map": "D2",
+      "degree": 5,
+      "rows": 190,
+      "columns": 39,
+      "expected_QQ_rank": 39,
+      "unit_pivots": 39,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    },
+    {
+      "map": "D2",
+      "degree": 6,
+      "rows": 600,
+      "columns": 188,
+      "expected_QQ_rank": 180,
+      "unit_pivots": 180,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    },
+    {
+      "map": "D3",
+      "degree": 6,
+      "rows": 188,
+      "columns": 8,
+      "expected_QQ_rank": 8,
+      "unit_pivots": 8,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    },
+    {
+      "map": "D3",
+      "degree": 7,
+      "rows": 700,
+      "columns": 64,
+      "expected_QQ_rank": 64,
+      "unit_pivots": 64,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    },
+    {
+      "map": "D3",
+      "degree": 8,
+      "rows": 2080,
+      "columns": 283,
+      "expected_QQ_rank": 277,
+      "unit_pivots": 277,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    },
+    {
+      "map": "D3",
+      "degree": 9,
+      "rows": 5448,
+      "columns": 975,
+      "expected_QQ_rank": 937,
+      "unit_pivots": 937,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    },
+    {
+      "map": "D4",
+      "degree": 8,
+      "rows": 283,
+      "columns": 6,
+      "expected_QQ_rank": 6,
+      "unit_pivots": 6,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    },
+    {
+      "map": "D4",
+      "degree": 9,
+      "rows": 975,
+      "columns": 38,
+      "expected_QQ_rank": 38,
+      "unit_pivots": 38,
+      "status": "UNIMODULAR_RANK_CERTIFIED",
+      "residual_nonzero_entries": 0,
+      "residual_entry_gcd": 0
+    }
+  ],
+  "scope": {
+    "integer_arithmetic_only": true,
+    "sympy_used": false,
+    "integral_compositions_verified": true,
+    "archived_matrices_all_characteristic_exactness": "NOT_AUTOMATICALLY_PROMOTED; see PROOF_BOUNDARY.txt",
+    "formal_verification": false,
+    "novelty_claimed": false
+  }
+}
