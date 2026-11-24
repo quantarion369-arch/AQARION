@@ -1,0 +1,1 @@
+72d674b469a5732f69b4d6408c215040c227cc25b4c6b7c7826c16fe19e088b3  /root/.elan-aqarion-p2/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean

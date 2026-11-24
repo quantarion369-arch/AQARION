@@ -1,0 +1,23 @@
+proot warning: can't sanitize binding "/proc/self/fd/1": No such file or directory
+proot warning: can't sanitize binding "/proc/self/fd/2": No such file or directory
+RUNTIME_ARCH=aarch64
+RUNTIME_M2_VERSION=1.24.11
+M2_QQ_MATRICES_CONSTRUCTED=PASS
+M2_QQ_COMPOSITIONS=PASS
+M2_QQ_ENDPOINT_DIMENSION=5
+START_HH_5
+HH_5_ZERO=true
+HH_5_CHECK=PASS
+START_HH_4
+HH_4_ZERO=true
+HH_4_CHECK=PASS
+START_HH_3
+HH_3_ZERO=true
+HH_3_CHECK=PASS
+START_HH_2
+HH_2_ZERO=true
+HH_2_CHECK=PASS
+START_HH_1
+HH_1_ZERO=true
+HH_1_CHECK=PASS
+M2_QQ_POSITIVE_HOMOLOGY=PASS

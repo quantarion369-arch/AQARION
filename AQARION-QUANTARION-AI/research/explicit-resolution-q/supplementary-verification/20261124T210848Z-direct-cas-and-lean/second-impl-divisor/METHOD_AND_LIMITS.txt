@@ -1,0 +1,34 @@
+SECOND-IMPLEMENTATION DIVISOR CHECK
+
+Differently implemented finite-certificate consumer, not external peer review.
+
+The source package is pinned by a full Git commit and its manifest.
+No archived verifier is imported or executed.
+No SymPy, rank routine, or Smith routine is used.
+
+Candidate degrees are enumerated by a rectangular-box test of both cone
+memberships, rather than the original k-interval constructor.
+
+Faces are rebuilt using facet signatures of generator subsets, enumerated
+by combinations rather than the original bit-sum recurrence.
+
+Boundary signs use the number of set bits below the removed vertex.
+
+Original row-elimination traces are checked using COLUMN elimination.
+Stored Smith diagonals are not used to obtain ranks or torsion conclusions.
+
+Complete unit reductions certify integral equivalence to I_r plus zero,
+hence torsion-free cokernels.
+The split quotient onto the free previous-boundary image identifies
+homology torsion with next-boundary cokernel torsion.
+
+Homology ranks and Betti data are recomputed from the reconstructed faces
+and validated boundary ranks.
+
+The theoretical degree cutoff and divisor/Koszul interpretation remain
+explicit mathematical dependencies, not formal-verification claims.
+
+A unit-pivot rank certificate does NOT assert total unimodularity of
+every submatrix.
+
+No theorem-status promotion, novelty claim, or Git write is performed.

@@ -1,0 +1,4 @@
+'Aqarion.P2Gen.gen_feasible' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Gen.gen_base' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Gen.feasible_gen' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Gen.gen_iff' depends on axioms: [propext, Quot.sound]

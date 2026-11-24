@@ -1,0 +1,38 @@
+{
+  "status": "PASS_M2_QQ_DIRECT_POSITIVE_HOMOLOGY",
+  "utc": "2026-11-24T07:35:10.952940+00:00",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-14-aarch64-64bit-ELF",
+  "generator_sha256": "f63718365f1cc261f1f2b4900b6f848fd37e7f940a1dcd9adaa244d9a48d65b7",
+  "frozen_input_sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0",
+  "generated_m2_sha256": "c4fb7132916b0d76942fb9e8da9fa6399efac5dd92dafea701e616ebf265561a",
+  "coefficient_field": "QQ",
+  "container": "aqarion-m2",
+  "runtime_m2_version": "1.24.11",
+  "limits": {
+    "wall_seconds": 180,
+    "virtual_address_space_KiB": 1572864
+  },
+  "elapsed_wall_seconds": 8.992343187332153,
+  "returncode": 0,
+  "timeout": false,
+  "interrupted": false,
+  "positive_homology_checks_passed": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "nonzero_homology_reported": [],
+  "scope": {
+    "archived_matrix_data_used": true,
+    "old_audit_scripts_executed": false,
+    "comparison_resolution_computed": false,
+    "all_characteristic_claim": false,
+    "integral_exactness_claim": false,
+    "Lean_verification": false,
+    "novelty_claim": false,
+    "endpoint_semigroup_identification_reproved": false
+  }
+}

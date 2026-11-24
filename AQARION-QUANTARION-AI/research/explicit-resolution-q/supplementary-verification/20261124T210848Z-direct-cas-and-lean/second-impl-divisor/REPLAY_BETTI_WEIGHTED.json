@@ -1,0 +1,62 @@
+[
+  {
+    "homological_degree": 0,
+    "scalar_degree": 0,
+    "multiplicity": 1
+  },
+  {
+    "homological_degree": 1,
+    "scalar_degree": 3,
+    "multiplicity": 8
+  },
+  {
+    "homological_degree": 1,
+    "scalar_degree": 4,
+    "multiplicity": 6
+  },
+  {
+    "homological_degree": 2,
+    "scalar_degree": 4,
+    "multiplicity": 3
+  },
+  {
+    "homological_degree": 2,
+    "scalar_degree": 5,
+    "multiplicity": 24
+  },
+  {
+    "homological_degree": 2,
+    "scalar_degree": 6,
+    "multiplicity": 8
+  },
+  {
+    "homological_degree": 3,
+    "scalar_degree": 6,
+    "multiplicity": 8
+  },
+  {
+    "homological_degree": 3,
+    "scalar_degree": 7,
+    "multiplicity": 24
+  },
+  {
+    "homological_degree": 3,
+    "scalar_degree": 8,
+    "multiplicity": 3
+  },
+  {
+    "homological_degree": 4,
+    "scalar_degree": 8,
+    "multiplicity": 6
+  },
+  {
+    "homological_degree": 4,
+    "scalar_degree": 9,
+    "multiplicity": 8
+  },
+  {
+    "homological_degree": 5,
+    "scalar_degree": 12,
+    "multiplicity": 1
+  }
+]

@@ -1,0 +1,26 @@
+BOUNDED INDEPENDENT-CAS EXPERIMENT
+
+Object: the fixed archived complex over QQ.
+
+Python translates JSON polynomial entries to Macaulay2 syntax.
+No original verifier, homology_check.m2, or empty characteristic script
+is executed.
+
+Macaulay2 constructs the supplied maps and directly computes
+ker(D_i)/image(D_(i+1)).
+H5 is ker D5.
+
+No res(coker D1) comparison resolution is constructed.
+
+This is QQ only. It does not establish an all-characteristic theorem.
+It does not independently reprove the toric/semigroup identification
+of coker D1.
+
+Limits:
+180 seconds wall time for the container job.
+1536 MiB virtual address space.
+
+Timeout, allocation failure, or API error is incomplete or execution
+error, not automatically a mathematical counterexample.
+
+Existing research data and Git repositories are not modified.

@@ -1,0 +1,12 @@
+{
+  "toolchain": "leanprover/lean4:v4.35.0-rc4",
+  "lean_source_commit": "66efa358583f3331afbd9ee4c898a26c8e089fb3",
+  "toolchain_source": "PROJECTS/PBCore006/lean-toolchain",
+  "bootstrap_commit": "3cc76985a1becb3c03cd65c1c5007e6f186ae474",
+  "bootstrap_url": "https://raw.githubusercontent.com/leanprover/elan/3cc76985a1becb3c03cd65c1c5007e6f186ae474/elan-init.sh",
+  "bootstrap_sha256": "a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53",
+  "mathlib_required": false,
+  "candidate_status": "UNCOMPILED",
+  "ubuntu_private_elan_home": "/root/.elan-aqarion-p2",
+  "scope": "Arithmetic helpers only; not full semigroup generation or the resolution proof."
+}

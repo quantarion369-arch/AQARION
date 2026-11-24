@@ -1,0 +1,7 @@
+{
+  "architecture": "aarch64",
+  "free_bytes": 7075602432,
+  "free_GiB": 6.59,
+  "policy_floor_GiB": 6,
+  "note": "Conservative installation safety margin, not a verified minimum."
+}

@@ -1,0 +1,22 @@
+[
+  "Aqarion.P2Arithmetic.generator_A",
+  "Aqarion.P2Arithmetic.generator_E0",
+  "Aqarion.P2Arithmetic.generator_E1",
+  "Aqarion.P2Arithmetic.generator_E2",
+  "Aqarion.P2Arithmetic.generator_E3",
+  "Aqarion.P2Arithmetic.generator_B0",
+  "Aqarion.P2Arithmetic.generator_B1",
+  "Aqarion.P2Arithmetic.generator_B2",
+  "Aqarion.P2Arithmetic.generator_B3",
+  "Aqarion.P2Arithmetic.generator_C",
+  "Aqarion.P2Arithmetic.subtract_B0_zero",
+  "Aqarion.P2Arithmetic.subtract_B1_zero",
+  "Aqarion.P2Arithmetic.subtract_B2_zero",
+  "Aqarion.P2Arithmetic.subtract_B3_zero",
+  "Aqarion.P2Arithmetic.subtract_C",
+  "Aqarion.P2Arithmetic.subtract_B0_at_one",
+  "Aqarion.P2Arithmetic.strict_iff_shifted",
+  "Aqarion.P2Arithmetic.bound_after_B",
+  "Aqarion.P2Arithmetic.bound_after_C",
+  "Aqarion.P2Arithmetic.bound_by_toNat"
+]

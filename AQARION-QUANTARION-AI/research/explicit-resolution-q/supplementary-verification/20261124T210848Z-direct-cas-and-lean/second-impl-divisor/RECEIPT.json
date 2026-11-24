@@ -1,0 +1,41 @@
+{
+  "status": "PASS_SECOND_IMPLEMENTATION_DIVISOR_REPLAY",
+  "utc": "2026-11-24T06:32:45.805340+00:00",
+  "python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "platform": "Android-14-aarch64-64bit-ELF",
+  "elapsed_seconds": 8.837635517120361,
+  "source_sha256": "b19672beef974ce26a79e4b54606706e1d297c9742af5e431430fc56212b2ac4",
+  "review_commit": "4ebd01fdb849555c2967cd7975a3ba3fdc03c128",
+  "resolved_package": "AQARION-QUANTARION-AI/research/explicit-resolution-q/proof-drafts/20261124T060450Z-characteristic-uniform-resolution",
+  "committed_manifest_sha256": "95d947f33f29b5111ea703b344d99491abe93f148e64febc40ceb6e8d0e3ae06",
+  "committed_artifacts_hash_checked": 43,
+  "frozen_export_sha256": "1a9f22866a38f135859a41616f18a5756e7fdecc921a2f36b078c20db334a8a0",
+  "original_divisor_certificate_sha256": "05c972c1ccdd5623f029e27754328f8a9615258d4866169278672b9afe15dbed",
+  "results": {
+    "degrees": 835,
+    "column_replayed_boundaries": 2956,
+    "boundary_composition_checks": 2122,
+    "torsion_cases": 0,
+    "nonzero_multigraded_positions": 54,
+    "betti_totals": [
+      1,
+      14,
+      35,
+      35,
+      14,
+      1
+    ],
+    "corrupted_face_rejected": true,
+    "corrupted_pivot_rejected": true
+  },
+  "scope": {
+    "archived_verifiers_imported": false,
+    "sympy_used": false,
+    "rank_or_smith_routine_used": false,
+    "independent_face_construction": true,
+    "elimination_direction": "columns",
+    "external_independent_researcher_execution": false,
+    "formal_verification": false,
+    "theorem_status_changed": false
+  }
+}

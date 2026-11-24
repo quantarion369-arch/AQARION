@@ -1,0 +1,54 @@
+proot warning: can't sanitize binding "/proc/self/fd/1": No such file or directory
+proot warning: can't sanitize binding "/proc/self/fd/2": No such file or directory
+prepare.py: OK
+finish.py: OK
+run_ubuntu.sh: OK
+ArithmeticKernel.lean: OK
+NegativeControl.lean: OK
+lean-toolchain: OK
+THEOREMS.json: OK
+elan-init.sh: OK
+PINNING.json: OK
+PRIVATE_ELAN_HOME=/root/.elan-aqarion-p2
+info: downloading installer
+elan 4.4.0 (3cc76985a 2026-11-18)
+info: downloading https://releases.lean-lang.org/lean4/v4.35.0-rc4/lean-4.35.0-rc4-linux_aarch64.tar.zst
+info: installing /root/.elan-aqarion-p2/toolchains/leanprover--lean4---v4.35.0-rc4
+
+leanprover/lean4:v4.35.0-rc4 installed - Lean (version 4.35.0-rc4, aarch64-unknown-linux-gnu, commit c29b6dda4f7c20e3eeaa717c4e565663c5cfa364, Release)
+
+Lean (version 4.35.0-rc4, aarch64-unknown-linux-gnu, commit c29b6dda4f7c20e3eeaa717c4e565663c5cfa364, Release)
+72d674b469a5732f69b4d6408c215040c227cc25b4c6b7c7826c16fe19e088b3  /root/.elan-aqarion-p2/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean
+'Aqarion.P2Arithmetic.generator_A' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_E0' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_E1' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_E2' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_E3' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_B0' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_B1' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_B2' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_B3' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.generator_C' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.subtract_B0_zero' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.subtract_B1_zero' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.subtract_B2_zero' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.subtract_B3_zero' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.subtract_C' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.subtract_B0_at_one' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.strict_iff_shifted' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.bound_after_B' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.bound_after_C' depends on axioms: [propext, Quot.sound]
+'Aqarion.P2Arithmetic.bound_by_toNat' depends on axioms: [propext, Quot.sound]
+NegativeControl.lean:3:2: error: omega could not prove the goal:
+No usable constraints found. You may need to unfold definitions so `omega` can see linear arithmetic facts about `Nat` and `Int`, which may also involve multiplication, division, and modular remainder by constants.
+prepare.py: OK
+finish.py: OK
+run_ubuntu.sh: OK
+ArithmeticKernel.lean: OK
+NegativeControl.lean: OK
+lean-toolchain: OK
+THEOREMS.json: OK
+elan-init.sh: OK
+PINNING.json: OK
+LEAN_CANDIDATE_COMPILATION=PASS
+FALSE_THEOREM_REJECTED=PASS

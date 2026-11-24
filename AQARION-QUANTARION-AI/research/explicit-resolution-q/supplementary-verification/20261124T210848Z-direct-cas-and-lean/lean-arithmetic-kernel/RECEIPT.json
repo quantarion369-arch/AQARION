@@ -1,0 +1,38 @@
+{
+  "status": "PASS_COMPILED_ARITHMETIC_KERNEL",
+  "utc": "2026-11-24T20:44:49.453802+00:00",
+  "host_python": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "host_platform": "Android-14-aarch64-64bit-ELF",
+  "supervisor_exit_code": 0,
+  "pinning": {
+    "toolchain": "leanprover/lean4:v4.35.0-rc4",
+    "lean_source_commit": "66efa358583f3331afbd9ee4c898a26c8e089fb3",
+    "toolchain_source": "PROJECTS/PBCore006/lean-toolchain",
+    "bootstrap_commit": "3cc76985a1becb3c03cd65c1c5007e6f186ae474",
+    "bootstrap_url": "https://raw.githubusercontent.com/leanprover/elan/3cc76985a1becb3c03cd65c1c5007e6f186ae474/elan-init.sh",
+    "bootstrap_sha256": "a620ff1641616222c8d37c54845492004bb84d6877cdbc944dd65c1aa685bf53",
+    "mathlib_required": false,
+    "candidate_status": "UNCOMPILED",
+    "ubuntu_private_elan_home": "/root/.elan-aqarion-p2",
+    "scope": "Arithmetic helpers only; not full semigroup generation or the resolution proof."
+  },
+  "source_manifest_unchanged": true,
+  "positive_compile_exit": "0",
+  "negative_control_exit": "1",
+  "all_twenty_axiom_reports_present": true,
+  "sorryAx_in_positive_log": false,
+  "lean_version_report": "Lean (version 4.35.0-rc4, aarch64-unknown-linux-gnu, commit c29b6dda4f7c20e3eeaa717c4e565663c5cfa364, Release)",
+  "elan_version_report": "elan 4.4.0 (3cc76985a 2026-11-18)",
+  "compiler_binary_sha256_record": "72d674b469a5732f69b4d6408c215040c227cc25b4c6b7c7826c16fe19e088b3  /root/.elan-aqarion-p2/toolchains/leanprover--lean4---v4.35.0-rc4/bin/lean",
+  "compiled_olean_sha256": "4192929493cd22b001e78c40d110dfbffa5bfab5dcb34f329335a1d9df88d338",
+  "formal_scope": {
+    "candidate_named_theorems": 20,
+    "arithmetic_helpers_compiled": true,
+    "complete_semigroup_generation_theorem": false,
+    "real_cone_interior_theorem": false,
+    "whole_resolution_formalized": false,
+    "mathlib_downloaded_by_script": false,
+    "axiom_free_claim": false,
+    "axioms": "See LEAN_BUILD.log; this is not merely a source-token scan."
+  }
+}
