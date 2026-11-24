@@ -1,0 +1,3 @@
+Actual error is maximum row TV by convexity. At t=6, fine mass outside the absorbing state is at most 243/3125; coarse mass is at most 1/32. Both are nonincreasing thereafter. TV between distributions sharing an absorbing target is at most the larger mass outside that target. The t=0..5 maximum is 11/100, attained at t=2,3. Thus the all-time maximum is exactly 11/100.
+Dual bound: B1=1/10; for t>=2, Bt=(33/50)(3/5)^(t-2)-(1/2)(1/2)^(t-2). Its difference is negative because 33/125>1/4 and the negative term's relative dominance grows by 6/5. Hence the dual maximum is B2=4/25.
+No truncation mechanism is inferred from parser offsets alone.

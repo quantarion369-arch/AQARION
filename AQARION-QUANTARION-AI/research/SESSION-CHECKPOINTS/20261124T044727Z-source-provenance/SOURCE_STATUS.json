@@ -1,0 +1,22 @@
+{
+  "status": "COMMITTED_MALFORMED_JSON",
+  "observed_utc": "2026-11-24T04:47:28.368234+00:00",
+  "source_commit": "3618edcb4c5d783c1a4302b1db8d557cee08d6ab",
+  "repository_relative_path": "AQARION-QUANTARION-AI/evidence/AQ/detection_signatures_n4.json",
+  "git_blob_object_id": "8b2b7e2e458faa60616263c4fa881f4abf99d391",
+  "content_sha256": "68de2198219efa42bc48de14cf606eb69ca17b7e392d4f51fdfa381c94ad4600",
+  "bytes": 100001,
+  "characters": 100001,
+  "json_failure": {
+    "message": "Expecting ',' delimiter",
+    "line": 11319,
+    "column": 1,
+    "position": 100001,
+    "at_end": true
+  },
+  "archived_bytes_file": "detection_signatures_n4.json.invalid.bin",
+  "originating_process": "UNDETERMINED",
+  "truncation_cause": "SUSPECTED_NOT_ESTABLISHED",
+  "repair_performed": false,
+  "scope": "Finding applies to the named historical commit. It is not a claim about every branch or current main. Invalid bytes are preserved for provenance, not offered as a valid signature dataset."
+}

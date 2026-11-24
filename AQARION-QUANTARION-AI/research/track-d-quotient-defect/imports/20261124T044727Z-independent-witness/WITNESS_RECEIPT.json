@@ -1,0 +1,46 @@
+{
+  "status": "WITNESS_ARITHMETIC_PASS",
+  "scope": "Explicit four-state witness only; not imported verifier replay or Lean verification",
+  "utc": "2026-11-24T03:55:19.781580+00:00",
+  "source_sha256": "d7562b50fabda1999c8bbd38d8c8ff529d2bd87edf362744faa3f14621b9746f",
+  "Q": [
+    [
+      "1/2",
+      "1/2",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "1"
+    ],
+    [
+      "0",
+      "0",
+      "1"
+    ]
+  ],
+  "epsilon": "1/5",
+  "profiles_checked_through": 40,
+  "telescoping_checked_through": 12,
+  "dual_all_time_max": "4/25",
+  "actual_all_time_max": "11/100",
+  "actual_maximizing_times": [
+    2,
+    3
+  ],
+  "tail_start": 6,
+  "all_later_times_error_bound": "243/3125",
+  "finite_error_values_t0_to6": [
+    "0",
+    "1/10",
+    "11/100",
+    "11/100",
+    "91/1000",
+    "671/10000",
+    "4651/100000"
+  ],
+  "justification": "Finite prefix plus absorbing-state tail monotonicity; dual closed form plus monotone ratio of its difference terms.",
+  "source_json_diagnostics_are_separate_from_math_status": true,
+  "elapsed_seconds": 0.34027838706970215
+}
