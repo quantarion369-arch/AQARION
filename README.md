@@ -1,4 +1,3 @@
-<!-- AQARION-FRONTDOOR-REPAIR -->
 # AQARION: inspect and replay mathematical research
 
 AQARION studies finite dynamics, observable quotients, and reproducible
