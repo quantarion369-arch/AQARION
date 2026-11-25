@@ -1,101 +1,88 @@
-# AQARION: inspect and replay mathematical research
+<div align="center">
 
-AQARION studies finite dynamics, observable quotients, and reproducible
-verification. Its local evidence workbench helps you inspect pinned
-sources, nearby qualifications, and explicitly registered corrections.
+# AQARION
 
-## Choose one task
+### Evidence-first mathematical research for finite dynamical systems, quotient structure, and reproducible verification
 
-| What you want to do | Start here |
+*Prove first. Verify exhaustively. Predict second. No free parameters.*
+
+[![Stars](https://img.shields.io/github/stars/quantarion369-arch/AQARION?style=flat)](https://github.com/quantarion369-arch/AQARION/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/quantarion369-arch/AQARION)](https://github.com/quantarion369-arch/AQARION/commits/main)
+[![Commits](https://img.shields.io/github/commit-activity/t/quantarion369-arch/AQARION)](https://github.com/quantarion369-arch/AQARION/commits/main)
+[![Issues](https://img.shields.io/github/issues/quantarion369-arch/AQARION)](https://github.com/quantarion369-arch/AQARION/issues)
+[![License](https://img.shields.io/github/license/quantarion369-arch/AQARION)](LICENSE)
+
+![Lean 4](https://img.shields.io/badge/Lean-4-blue)
+![PBCore006](https://img.shields.io/badge/PBCore006%20Lean%20build-passing%20(785%20jobs)-brightgreen)
+![Python](https://img.shields.io/badge/Python-3-blue)
+![Promotion](https://img.shields.io/badge/promotion-BLOCKED-orange)
+![Evidence first](https://img.shields.io/badge/evidence-first-informational)
+
+**[Lean formalization](https://github.com/quantarion369-arch/AQARION-LEAN)** ·
+**[FastAPI development](https://github.com/quantarion369-arch/Aqarion-Fastapi)** ·
+**[Issues](https://github.com/quantarion369-arch/AQARION/issues)**
+
+</div>
+
+---
+
+## Welcome
+
+AQARION is an open, independent research program on **finite dynamics, observable quotients, and
+reproducible verification**. It investigates finite dynamical systems, invariant quotients, Koopman
+operators, observable subspaces, exact enumeration, and formalizable computational mathematics.
+
+The repository is kept as an **auditable research record**. It keeps mathematical statements,
+implementations, finite computations, independent reconstruction, formal proof, provenance and
+publication decisions clearly apart, and each artifact is read according to its recorded scope.
+
+> Do not promote a result beyond what its evidence establishes.
+
+Independent reproduction, technical feedback and collaboration are welcome.
+
+## At a glance
+
+| | |
 |---|---|
-| Inspect a claim and its qualifications | [Run the local evidence workbench](AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/README.md#run-the-browser-application) |
-| Follow a concrete correction-tracing example | [Try correction-aware evidence search](AQARION-QUANTARION-AI/PACKAGES/AQARION-RAG/README.md#try-correction-aware-evidence-search) |
-| Run a small finite regression | Use the command below |
-| Reproduce the moment-certificate comparison | [Certificate-frontier benchmark](AQARION-QUANTARION-AI/research/neutrino-moment-benchmarks/certificate-frontier/README.md) — requires Python-FLINT |
+| **Focus** | Finite dynamical systems, quotient structure, Koopman operators and observable defects, exact computation |
+| **Method** | Exact claim, frozen definitions, executable verifier with negative controls, preserved execution evidence, independent reconstruction, then formal audit where required |
+| **Formal side** | Lean builds and receipts live in [AQARION-LEAN](https://github.com/quantarion369-arch/AQARION-LEAN); PBCore006 completed a recorded 785-job build |
+| **Governance** | C3 OPEN · C4 BLOCKED · Lean formalization OPEN · SDS-002 QUARANTINED · Promotion BLOCKED · Promotable false |
+| **Tooling** | ClaimLock, ProofGym, JOIN-STABILITY, replay, provenance chains, schemas, skills and CLI tools under `AQARION-QUANTARION-AI/` |
+| **Retrieval** | AQARION-RAG: BM25-ranked, SHA-256-referenced, evidence-graph-aware navigation of the corpus |
 
-### Small regression: Python 3, no additional Python packages
+Governance labels are dispositions, not mathematical conclusions: a blocked theorem is not thereby
+false, and a quarantined result is not automatically refuted.
 
-From the repository root:
+## The three repositories
 
-    python3 -B AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py
+| Repository | Role |
+|---|---|
+| **[AQARION](https://github.com/quantarion369-arch/AQARION)** (this one) | Research context, mathematical development, and evidence organization |
+| **[AQARION-LEAN](https://github.com/quantarion369-arch/AQARION-LEAN)** | Lean formalization projects, build receipts and console logs |
+| **[Aqarion-Fastapi](https://github.com/quantarion369-arch/Aqarion-Fastapi)** | Python/FastAPI implementation, tests and tooling |
 
-A passing finite regression is not a general proof or Lean verification.
+This describes the repositories' complementary roles. It does not claim that cross-repository
+automation is already implemented.
 
-### What the workbench does
+## Quick start
 
-It helps locate recorded evidence and inspect its source revision and
-qualifications. It does not independently prove retrieved claims or
-execute experiments merely by displaying their receipts.
-
-The workbench runs locally; these instructions are not a public hosted demo.
-
-The existing research overview and historical record follow unchanged.
-
----
-
- ✨️ WELCOME TO AQARION 
-& QUANTARION AI ✨️ 
-
-**Evidence-First Mathematical Research for Finite Dynamical Systems, Quotient Structure, and Reproducible Verification**
-
-AQARION is open for public sharing, technical feedback, independent
-reproduction, and collaboration.
-
-Released artifacts should be read according to their recorded scope:
-research proposals, computational results, Lean build records, and
-formally established statements are identified separately.
-
-Open publication does not imply that every claim is proved, peer-reviewed,
-or ready for unrestricted promotion.
-
----
-
-## Published update — October 18, 2026
-
-The binary observable closure-gap formula boundary fix and its regression
-contract tests are published on `main` in commit
-`1eb1c98bfced7011cd9593d07646817783504b33`.
-
-Implementation and tests:
-
-- [Closure-gap replay](AQARION-QUANTARION-AI/verification/CLOSURE-GAP/closure_gap_replay.py)
-- [Formula contract tests](AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py)
-
-The contract suite covers all 1,022 nonempty binary words of lengths
-1 through 9, checking both list and tuple inputs against the replay
-gap calculation. It also checks constant-word boundaries, rejection
-of empty and nonbinary inputs, the six-cycle gap-two witness, and
-the existing regression fixtures.
-
-Replay from the repository root:
+Run the small finite regression from the repository root (Python 3, no extra packages):
 
 ```bash
 python3 -B AQARION-QUANTARION-AI/verification/CLOSURE-GAP/test_formula_contract.py
 ```
 
-This is finite regression coverage, not a general proof or Lean
-verification. It does not change claim-promotion gates.
-
-The separate PB core direct-enumeration audit in PR #2 is not part
-of this closure-gap commit.
+A passing finite regression is not a general proof or Lean verification. The full task list follows
+below, together with the complete research record.
 
 ---
 
-[![Lean Build: PASS](https://img.shields.io/badge/Lean_Build-PASS-2ea44f?style=for-the-badge&logo=lean&logoColor=white)](https://github.com/quantarion369-arch/AQARION-LEAN)
-[![Build Evidence: Published](https://img.shields.io/badge/Build_Evidence-PUBLISHED-0969da?style=for-the-badge)](https://github.com/quantarion369-arch/AQARION-LEAN/blob/main/RECEIPTS/PBCore006-build-result-20261017.md)
-[![Publication: Open](https://img.shields.io/badge/Publication-OPEN-00897b?style=for-the-badge)](#publication-and-collaboration)
-[![Collaboration: Welcome](https://img.shields.io/badge/Collaboration-WELCOME-8250df?style=for-the-badge)](#publication-and-collaboration)
-[![Verification: Claim-Specific](https://img.shields.io/badge/Verification-CLAIM--SPECIFIC-57606a?style=for-the-badge)](#formal-verification)
-[![SDS-002: Quarantined](https://img.shields.io/badge/SDS--002-QUARANTINED-orange?style=for-the-badge)](#corrections-and-historical-provenance)
+# Full research record
 
-PBCore006 has a recorded successful Lean build with published console
-evidence. Publication is open for sharing research artifacts, receiving
-feedback, and collaboration. Mathematical verification and promotion
-remain specific to each claim and its supporting evidence.
+The sections below are the complete, unchanged record of the project.
 
 ---
-
-AQARION is an open mathematical research project maintained by James A. It investigates finite dynamical systems, invariant quotients, Koopman operators, observable subspaces, exact enumeration, and formalizable computational mathematics.
 
 The repository is maintained as an auditable research record. It distinguishes mathematical statements, implementations, finite computations, independent reconstruction, formal proof, provenance, and publication decisions.
 
