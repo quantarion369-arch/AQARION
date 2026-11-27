@@ -1,0 +1,5 @@
+n=3 Hochster Betti of S/M_n: [1, 9, 16, 9, 1] total 36
+n=4 Hochster Betti of S/M_n: [1, 14, 35, 35, 14, 1] total 100
+n=3 Taylor(x)k Betti: {0: 1, 1: 9, 2: 16, 3: 9, 4: 1} total 36
+Betti(R_n over P) = Betti(S/M_n over S) when A,C regular on R_n: R_3 total 36, R_4 total 100
+ALL PASS

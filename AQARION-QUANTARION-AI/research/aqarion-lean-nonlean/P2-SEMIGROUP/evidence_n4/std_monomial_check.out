@@ -1,0 +1,5 @@
+PASS n=3 weight<=14: 14400 standard monomials, injective=True, image=S_n=True, decode inverts=True
+PASS n=4 weight<=13: 18984 standard monomials, injective=True, image=S_n=True, decode inverts=True
+PASS n=5 weight<=12: 28865 standard monomials, injective=True, image=S_n=True, decode inverts=True
+PASS n=6 weight<=11: 40000 standard monomials, injective=True, image=S_n=True, decode inverts=True
+ALL PASS

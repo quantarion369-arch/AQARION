@@ -1,0 +1,17 @@
+[    3s] n=4: 68354 monomials, 13447 multidegrees up to weight 12
+[    3s] built through degree index 0 / 13447 (weight 0); generators so far [1, 0, 0, 0, 0, 0]
+[   11s] built through degree index 2000 / 13447 (weight 8); generators so far [1, 14, 35, 35, 6, 0]
+[   33s] built through degree index 4000 / 13447 (weight 9); generators so far [1, 14, 35, 35, 14, 0]
+[   88s] built through degree index 6000 / 13447 (weight 10); generators so far [1, 14, 35, 35, 14, 0]
+[  235s] built through degree index 8000 / 13447 (weight 11); generators so far [1, 14, 35, 35, 14, 0]
+[  344s] built through degree index 10000 / 13447 (weight 12); generators so far [1, 14, 35, 35, 14, 1]
+[  675s] built through degree index 12000 / 13447 (weight 12); generators so far [1, 14, 35, 35, 14, 1]
+[  697s] PASS Betti table (homological degree, weight) equals the formula; totals [1, 14, 35, 35, 14, 1]
+[  697s] PASS every coefficient is +1 or -1 (entries: {2: 28, 1: 484})
+[  697s] PASS d^2 = 0 over the integers
+[  697s] PASS augmentation eps*d_1 = 0 exactly over the integers (every first-syzygy column has coefficient sum 0)
+[  698s] wrote resolution_n4.json (24575 bytes) sha256 c541b648ad707a413244f5b891263a44da5fe02b19c9ba88222254a0490aa76f
+[  761s] PASS exact over F_2 in all 13447 multidegrees up to weight 12
+[  825s] PASS exact over F_3 in all 13447 multidegrees up to weight 12
+[  889s] PASS exact over F_5 in all 13447 multidegrees up to weight 12
+ALL PASS

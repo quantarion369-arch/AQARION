@@ -1,0 +1,43 @@
+// AQARION P2: MINIMAL FREE RESOLUTION OF R_4
+// Computes the minimal free resolution of R_4 = S/(M_4, A, C)
+// and verifies the total Betti number is 100.
+
+ring R = 32003, (e0,e1,e2,e3, b0,b1,b2,b3, A, C), dp;
+
+// The generators of M_4 (squarefree monomials)
+ideal M4 =
+  e0*b0, e1*b1, e2*b2, e3*b3,       // E_i * B_i
+  b0*b1, b0*b2, b0*b3, b1*b2, b1*b3, b2*b3,  // B_i * B_j
+  e1*e2*e3, e0*e2*e3, e0*e1*e3, e0*e1*e2;   // Prod_{j!=i} E_j
+
+// The regular sequence (A, C)
+ideal seq = A, C;
+
+// The full ideal for R_4
+ideal I = M4, seq;
+
+// Compute the minimal free resolution
+resolution res = mres(I, 0);
+
+// Print the Betti table
+print(betti(res), "betti");
+
+// Compute the total Betti number
+int total = 0;
+for (int i = 0; i <= nvars(basering); i++) {
+  for (int j = 0; j <= 20; j++) {
+    total = total + betti(res)[i, j];
+  }
+}
+
+print("Total Betti number: " + string(total));
+
+if (total == 100) {
+  print("PASS: Total Betti number is 100.");
+} else {
+  print("FAIL: Total Betti number is " + string(total) + ", not 100.");
+}
+
+// Print the explicit minimal generators
+print("Minimal generators of the resolution:");
+res;

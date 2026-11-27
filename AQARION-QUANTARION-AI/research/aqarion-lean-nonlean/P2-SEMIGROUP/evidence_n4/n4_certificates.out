@@ -1,0 +1,14 @@
+PASS 15 leading monomials equal the claimed initial ideal L
+PASS 50 non-coprime S-pairs, each reduces to zero
+PASS each S-pair equals sum c*mono*g_k exactly, every term below the lcm (standard representation)
+PASS grading phi=a0+a1+a2+a3-k: weights 1,1,1,1,1,2,2,2,2,2 on A,E0-3,B0-3,C
+PASS generated semigroup = cone integer points up to weight 20 (128843 points)
+PASS HS(R)*(1-t)^5(1-t^2)^5 = Betti numerator, degree 12, zeros through weight 20
+PASS interior integer points = kappa+S, kappa=(1,1,1,1,1), up to weight 20
+PASS least interior weight is 3, so a(R)=-3 and deg numerator = 15-3 = 12
+PASS Taylor complex: 16384 cells, 8142 unit pairs cancelled, 100 cells remain (100 expected)
+PASS minimal: no remaining entry joins cells of equal multidegree
+PASS all remaining coefficients are +-1
+PASS d^2 = 0 over the integers
+PASS weighted Betti table of S/M_4 equals the formula table of R
+ALL PASS

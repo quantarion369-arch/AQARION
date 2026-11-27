@@ -1,0 +1,12 @@
+[    0s] n=3: 12870 monomials, 2025 multidegrees up to weight 8
+[    0s] built through degree index 0 / 2025 (weight 0); generators so far [1, 0, 0, 0, 0]
+[  104s] built through degree index 2000 / 2025 (weight 8); generators so far [1, 9, 16, 9, 1]
+[  104s] PASS Betti table (homological degree, weight) equals the formula; totals [1, 9, 16, 9, 1]
+[  104s] PASS every coefficient is +1 or -1 (entries: {2: 18, 1: 113})
+[  104s] PASS d^2 = 0 over the integers
+[  104s] PASS augmentation eps*d_1 = 0 exactly over the integers (every first-syzygy column has coefficient sum 0)
+[  104s] wrote resolution_n3.json (5957 bytes) sha256 3563bdcc5104e01fb6bdb38cbe8c09bb47c12cb3e88308fad66651c963492cd3
+[  114s] PASS exact over F_2 in all 2025 multidegrees up to weight 8
+[  123s] PASS exact over F_3 in all 2025 multidegrees up to weight 8
+[  132s] PASS exact over F_5 in all 2025 multidegrees up to weight 8
+ALL PASS
