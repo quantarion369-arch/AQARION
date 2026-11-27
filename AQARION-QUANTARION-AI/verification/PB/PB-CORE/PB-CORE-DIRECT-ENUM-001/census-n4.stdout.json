@@ -1,0 +1,55 @@
+{
+  "audit_id": "PB-CORE-DIRECT-ENUM-001",
+  "command": [
+    "/data/data/com.termux/files/usr/bin/python",
+    "pb_core_audit.py",
+    "--max-n",
+    "4"
+  ],
+  "elapsed_seconds": 0.042689,
+  "finished_utc": "2026-10-12T05:56:48.114108+00:00",
+  "per_n": {
+    "1": {
+      "constructed_relation_total": 1,
+      "direct_minus_formula": 0,
+      "direct_relation_total": 1,
+      "first_mismatch": null,
+      "formula_total": 1,
+      "maps_checked": 1,
+      "relation_set_mismatches": 0
+    },
+    "2": {
+      "constructed_relation_total": 6,
+      "direct_minus_formula": 0,
+      "direct_relation_total": 6,
+      "first_mismatch": null,
+      "formula_total": 6,
+      "maps_checked": 4,
+      "relation_set_mismatches": 0
+    },
+    "3": {
+      "constructed_relation_total": 51,
+      "direct_minus_formula": 0,
+      "direct_relation_total": 51,
+      "first_mismatch": null,
+      "formula_total": 51,
+      "maps_checked": 27,
+      "relation_set_mismatches": 0
+    },
+    "4": {
+      "constructed_relation_total": 592,
+      "direct_minus_formula": 0,
+      "direct_relation_total": 592,
+      "first_mismatch": null,
+      "formula_total": 592,
+      "maps_checked": 256,
+      "relation_set_mismatches": 0
+    }
+  },
+  "platform": "Android-16-aarch64-64bit-ELF",
+  "python_version": "3.13.13 (main, Apr 10 2026, 13:09:22) [Clang 21.0.0 (https://android.googlesource.com/toolchain/llvm-project 5e96669f0",
+  "scope": "all labelled maps [n]->[n] for n=1..4",
+  "source_sha256": "7c3b40c8b98ccda9b6b73f73c149a416bc60ceae428457b69e0365c274ddb42b",
+  "started_utc": "2026-10-12T05:56:48.071318+00:00",
+  "status": "PASS for stated finite scope only"
+}

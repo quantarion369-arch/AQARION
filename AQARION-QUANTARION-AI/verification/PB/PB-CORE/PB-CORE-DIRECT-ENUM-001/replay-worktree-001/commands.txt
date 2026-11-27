@@ -1,0 +1,2 @@
+python -B -m unittest -v test_pb_core_audit test_pb_core_audit_extra
+python -B pb_core_audit.py --max-n 6

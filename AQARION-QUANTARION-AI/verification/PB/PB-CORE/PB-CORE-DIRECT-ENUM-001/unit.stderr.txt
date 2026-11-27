@@ -1,0 +1,17 @@
+test_biconditional_not_just_forward_preservation (test_pb_core_audit.DirectPredicateTests.test_biconditional_not_just_forward_preservation) ... ok
+test_constant_map_only_universal_relation_survives (test_pb_core_audit.DirectPredicateTests.test_constant_map_only_universal_relation_survives) ... ok
+test_identity_fixes_every_equivalence (test_pb_core_audit.DirectPredicateTests.test_identity_fixes_every_equivalence) ... ok
+test_known_aggregate_totals (test_pb_core_audit.FormulaTests.test_known_aggregate_totals) ... ok
+test_partition_numbers (test_pb_core_audit.FormulaTests.test_partition_numbers) ... ok
+test_bell_counts_through_six (test_pb_core_audit.PartitionTests.test_bell_counts_through_six) ... ok
+test_empty_partition (test_pb_core_audit.PartitionTests.test_empty_partition) ... ok
+test_rejects_negative (test_pb_core_audit.PartitionTests.test_rejects_negative) ... ok
+test_chosen_retraction_fixes_core_and_commutes (test_pb_core_audit.RetractionTests.test_chosen_retraction_fixes_core_and_commutes) ... ok
+test_direct_and_constructed_relation_sets_on_shapes (test_pb_core_audit.RetractionTests.test_direct_and_constructed_relation_sets_on_shapes) ... ok
+test_mismatch_diagnostic_identifies_relations_in_each_difference (test_pb_core_audit.RetractionTests.test_mismatch_diagnostic_identifies_relations_in_each_difference) ... ok
+test_two_cycle_reaches_core_without_fixing_it_at_exponent_one (test_pb_core_audit.RetractionTests.test_two_cycle_reaches_core_without_fixing_it_at_exponent_one) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.004s
+
+OK
